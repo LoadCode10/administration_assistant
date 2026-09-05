@@ -70,22 +70,9 @@ raw = response.text
 print(f"the type of raw is: {type(raw)}")
 print("################")
 
-# cleaned = raw.strip()
-# if cleaned.startswith("```"):
-#     cleaned = cleaned.removeprefix("```json").removeprefix("```").removesuffix("```").strip()
-
-# try:
-#     data = json.loads(cleaned)
-#     print(f"the type of data is: {type(data)}")
-# except json.JSONDecodeError as e:
-#     print("Parsing failed. Raw model output was:")
-#     print(raw)
-#     raise e
-
 data = json.loads(raw)
 print(f"The type of data is: {type(data)}")
 print("################")
-# print(json.dumps(data, indent=2, ensure_ascii=False))
 save_extracted_proc(data)
 print("File successfully saved!")
 

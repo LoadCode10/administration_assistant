@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c ' *)",
+      "Bash(python3 -c \"import sys; print\\(sys.prefix\\)\")",
+      "Bash(pip show *)",
+      "Bash(python3 -c \"import jwt; print\\(jwt.__version__\\)\")",
+      "Read(//var/data/python/lib/python3.13/site-packages/**)"
+    ]
+  }
+}

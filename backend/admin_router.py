@@ -1,5 +1,6 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, status
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 from database import get_db
 from deps import require_admin
@@ -10,8 +11,6 @@ import schemas
 
 router = APIRouter(prefix="/admin", tags=["admin"])
 
-
-# --- Manual procedure CRUD ---
 
 @router.post("/procedures", response_model=schemas.ProcedureOut, status_code=status.HTTP_201_CREATED)
 def create_procedure(
@@ -47,8 +46,6 @@ def delete_procedure(
   db.delete(procedure)
   db.commit()
 
-
-# --- File upload -> LLM extraction -> staging for review ---
 
 @router.post("/extract", response_model=schemas.ExtractionStagingOut, status_code=status.HTTP_201_CREATED)
 def upload_and_extract(
@@ -159,3 +156,65 @@ def reject_extraction_staging(
   db.commit()
   db.refresh(staging)
   return staging
+
+
+@router.get("/stats", response_model=schemas.AdminStatsOut)
+def get_admin_stats(
+  db: Session = Depends(get_db),
+  admin: models.User = Depends(require_admin),
+):
+  since = datetime.now() - timedelta(days=7)
+
+  reponses_last_7_days = (
+    db.query(models.Reponse.response_type, func.count(models.Reponse.id_reponse))
+    .join(models.Question)
+    .filter(models.Question.question_date >= since)
+    .group_by(models.Reponse.response_type)
+    .all()
+  )
+  reponse_counts = {response_type: count for response_type, count in reponses_last_7_days}
+
+  top_row = (
+    db.query(
+      models.UserProcedure.id_procedure,
+      func.count(models.UserProcedure.id_user_procedure).label("times_started"),
+    )
+    .group_by(models.UserProcedure.id_procedure)
+    .order_by(func.count(models.UserProcedure.id_user_procedure).desc())
+    .first()
+  )
+  top_procedure = None
+  if top_row is not None:
+    top_id_procedure, times_started = top_row
+    top = db.query(models.Procedure).filter_by(id_procedure=top_id_procedure).first()
+    if top is not None:
+      top_procedure = schemas.TopProcedureOut(
+        id_procedure=top.id_procedure,
+        titre_proc=top.titre_proc,
+        times_started=times_started,
+      )
+
+  return schemas.AdminStatsOut(
+    total_procedures=db.query(models.Procedure).count(),
+    total_administrations=db.query(models.Administration).count(),
+    procedures_missing_embedding=db.query(models.Procedure).filter(
+      models.Procedure.embedding.is_(None)
+    ).count(),
+    total_users=db.query(models.User).count(),
+    total_admins=db.query(models.User).filter_by(role=models.UserRole.admin).count(),
+    pending_extraction_batches=db.query(models.ExtractionStaging).filter_by(
+      status=models.ExtractionStatus.pending
+    ).count(),
+    questions_last_7_days=db.query(models.Question).filter(
+      models.Question.question_date >= since
+    ).count(),
+    direct_answers_last_7_days=reponse_counts.get(models.ResponseType.answer, 0),
+    suggestions_last_7_days=reponse_counts.get(models.ResponseType.suggestions, 0),
+    procedures_in_progress=db.query(models.UserProcedure).filter_by(
+      status=models.UserProcedureStatus.en_cours
+    ).count(),
+    procedures_completed=db.query(models.UserProcedure).filter_by(
+      status=models.UserProcedureStatus.termine
+    ).count(),
+    top_procedure=top_procedure,
+  )

@@ -23,8 +23,8 @@ export default function Navbar() {
             </Link>
           )}
           {user?.role === 'admin' && (
-            <Link to="/admin/procedures" className="text-slate-600 hover:text-slate-900">
-              Administration
+            <Link to="/admin" className="text-slate-600 hover:text-slate-900">
+              Tableau de bord
             </Link>
           )}
           {user ? (

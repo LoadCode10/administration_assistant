@@ -388,7 +388,6 @@ class Question(Base):
   question_date: Mapped[datetime] = mapped_column(
     DateTime,
     nullable=False,
-    # default=datetime.now
   )
 
   id_user: Mapped[str | None] = mapped_column(

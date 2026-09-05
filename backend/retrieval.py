@@ -3,11 +3,6 @@ from sqlalchemy.orm import Session
 import models
 from embedding import embed_text
 
-# pgvector cosine_distance ranges [0, 2] (0 = identical, 1 = orthogonal, 2 = opposite).
-# This threshold decides whether the top match counts as "confident enough" to answer
-# directly vs. falling back to showing suggestions. Empirically tune once real data
-# is loaded — bge-m3 distances for genuinely matching French/Arabic queries tend to
-# land well under this, unrelated queries well above it.
 CONFIDENCE_DISTANCE_THRESHOLD = 0.5
 
 SUGGESTIONS_COUNT = 3

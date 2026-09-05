@@ -30,8 +30,6 @@ def handle_procedures():
     all_procs_data = load_procedures()
 
     for proc in all_procs_data:
-      # admin = get_or_create_administration(session, proc["proc_administration"][0])
-
       administrations = proc.get("proc_administration") or []
       admin_name = administrations[0] if administrations else "Unknown"
       admin = get_or_create_administration(session,admin_name)

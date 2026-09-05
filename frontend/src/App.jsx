@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import HistoryPage from './pages/HistoryPage'
 import HistoryDetailPage from './pages/HistoryDetailPage'
+import AdminDashboardPage from './pages/admin/AdminDashboardPage'
 import AdminProceduresPage from './pages/admin/AdminProceduresPage'
 import AdminProcedureFormPage from './pages/admin/AdminProcedureFormPage'
 import AdminExtractPage from './pages/admin/AdminExtractPage'
@@ -29,6 +30,7 @@ export default function App() {
             </Route>
 
             <Route element={<AdminRoute />}>
+              <Route path="/admin" element={<AdminDashboardPage />} />
               <Route path="/admin/procedures" element={<AdminProceduresPage />} />
               <Route path="/admin/procedures/new" element={<AdminProcedureFormPage />} />
               <Route path="/admin/procedures/:id/edit" element={<AdminProcedureFormPage />} />

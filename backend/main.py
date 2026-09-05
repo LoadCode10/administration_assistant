@@ -13,10 +13,6 @@ load_dotenv()
 
 app = FastAPI(title="Assistant Administratif Marocain")
 
-# CORS for a separately-hosted frontend. Auth now uses a cookie, which requires
-# allow_credentials=True — browsers reject that combined with a wildcard origin,
-# so FRONTEND_ORIGINS must be an explicit comma-separated list (falls back to the
-# local dev frontend if unset or left as "*").
 origins = os.environ.get("FRONTEND_ORIGINS", "")
 allow_origins = (
   [o.strip() for o in origins.split(",")]

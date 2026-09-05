@@ -16,8 +16,6 @@ def get_idarati_data():
   except FileNotFoundError:
     return []
 
-# idarati_data = get_idarati_data()
-
 def get_sub_themes_ids(idarati_data):
 
   thematics_ids = []
@@ -42,9 +40,6 @@ def get_sub_themes_ids(idarati_data):
         print("--------------")
 
   return sub_thematic_ids
-
-# sub_thematic_ids = get_sub_themes_ids(idarati_data)
-# print(sub_thematic_ids)
 
 def get_procedures_ids(sub_theme_id):
   url = f"{BASE}/sub-thematics/{sub_theme_id}/procedures"
@@ -84,9 +79,3 @@ if __name__ == "__main__":
   idarati_data = get_idarati_data()
   all_procs_ids = collect_all_procedures_ids(idarati_data)
   save_procs_ids(all_procs_ids)
-
-
-# sub_theme_id = "dca679c2-9c7e-4788-a1ab-6f1d6de2bc06"
-# proc_ids = get_procedures_ids(sub_theme_id)
-# print(f"{len(proc_ids)} unique procedures")
-# print(proc_ids)

@@ -71,8 +71,6 @@ class ProcedureSuggestion(BaseModel):
   titre_proc: str
 
 
-# --- Conversations / messages ---
-
 class MessageIn(BaseModel):
   question_content: str
   question_language: str | None = None
@@ -105,8 +103,6 @@ class ConversationDetailOut(BaseModel):
   messages: list[MessageOut]
 
 
-# --- Auth ---
-
 class UserRegisterIn(BaseModel):
   nom_user: str
   prenom_user: str
@@ -127,8 +123,6 @@ class UserOut(BaseModel):
   phone_user: str | None
   role: UserRole
 
-
-# --- Progress tracking ---
 
 class UserProcedureEtapeOut(BaseModel):
   model_config = ConfigDict(from_attributes=True)
@@ -173,8 +167,6 @@ class UserProcedureHistoryOut(BaseModel):
   percent_complete: float
 
 
-# --- Admin ingestion / extraction staging ---
-
 class ExtractedProcedure(BaseModel):
   proc_title: str
   proc_administration: list[str] = []
@@ -193,3 +185,23 @@ class ExtractionStagingOut(BaseModel):
 
 class ExtractionStagingUpdateIn(BaseModel):
   extracted_data: list[ExtractedProcedure]
+
+
+class TopProcedureOut(BaseModel):
+  id_procedure: str
+  titre_proc: str
+  times_started: int
+
+class AdminStatsOut(BaseModel):
+  total_procedures: int
+  total_administrations: int
+  procedures_missing_embedding: int
+  total_users: int
+  total_admins: int
+  pending_extraction_batches: int
+  questions_last_7_days: int
+  direct_answers_last_7_days: int
+  suggestions_last_7_days: int
+  procedures_in_progress: int
+  procedures_completed: int
+  top_procedure: TopProcedureOut | None

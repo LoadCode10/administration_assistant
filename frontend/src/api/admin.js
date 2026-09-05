@@ -1,5 +1,9 @@
 import client from './client'
 
+export function getStats() {
+  return client.get('/admin/stats').then((r) => r.data)
+}
+
 export function createProcedure(payload) {
   return client.post('/admin/procedures', payload).then((r) => r.data)
 }

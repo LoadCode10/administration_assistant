@@ -54,8 +54,6 @@ def answer_question(question):
     retrieved_procedures = my_retriever(session, question)
     retrieved_facts = build_facts(retrieved_procedures)
 
-    # print(retrieved_facts)
-
     prompt = f"""Tu es un assistant administratif marocain. Tu réponds aux
     citoyens en te basant UNIQUEMENT sur les informations officielles fournies
     ci-dessous. Tu n'inventes JAMAIS d'information.

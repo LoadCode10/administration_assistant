@@ -51,7 +51,6 @@ def get_procedures(administration: str | None = None):
     if proc["proc_administration"] == administration:
       procedures_administration.append(proc)
   return procedures_administration
-  # return [proc for proc in procedures if proc["proc_administration"] == administration]
 
 
 @app.get('/procedures/{item_id}', response_model=Procedure)
@@ -60,8 +59,7 @@ def get_procedure_by_id(item_id: str):
     if proc["proc_id"] == item_id:
       return proc
   raise HTTPException(status_code=404, detail="Procedure Not Found")
-  # return {"message": "Procedure Not Found"}
-  
+
 
 @app.post('/ask', response_model=Question)
 def take_user_question(payload: QuestionCreate):
@@ -69,35 +67,6 @@ def take_user_question(payload: QuestionCreate):
     id_question=str(uuid.uuid4()),
     **payload.model_dump()
   )
-  #The **payload.model_dump() just unpacks the client's fields into the new object so you don't retype them.
   questions.append(question.model_dump())
   save_questions()
   return question
-
-# @app.get('/procedures', response_model=list[Procedure])
-# def get_procedures_by_administration(administration: str | None=None):
-#   procedures_administration = []
-#   for proc in procedures:
-#     if proc["proc_administration"] == administration:
-#       procedures_administration.append(proc)
-#   return procedures_administration
-
-
-# @app.get("/items")
-# def get_items():
-#   return items
-
-# @app.get("/items/{item_id}")
-# def get_item_by_id(item_id: int):
-#   for item in items:
-#     if item["id"] == item_id:
-#       return item
-#   return {"error":"Item not found"}
-
-# @app.post("/items")
-# def create_item(item: dict):
-#   items.append(item)
-#   return {
-#     "message":"item added succesfully!",
-#     "item": item
-#   }

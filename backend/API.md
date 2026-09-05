@@ -105,9 +105,20 @@ done once everything is checked.
 | `PATCH /admin/extract/{id}` | admin | Correct the extracted data |
 | `POST /admin/extract/{id}/validate` | admin | Approve it — adds it to the real database |
 | `POST /admin/extract/{id}/reject` | admin | Discard it |
+| `GET /admin/stats` | admin | Dashboard KPIs — see below |
 
 Nothing an admin uploads reaches the real database until they explicitly
 validate it.
+
+`GET /admin/stats` returns a flat snapshot for an admin dashboard:
+content state (`total_procedures`, `total_administrations`,
+`procedures_missing_embedding` — should always be 0), account state
+(`total_users`, `total_admins`), the review queue
+(`pending_extraction_batches`), the last 7 days of chat activity
+(`questions_last_7_days`, `direct_answers_last_7_days`,
+`suggestions_last_7_days`), and engagement (`procedures_in_progress`,
+`procedures_completed`, `top_procedure` — the most-started procedure and
+how many times).
 
 ## Try it with curl
 

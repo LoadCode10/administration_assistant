@@ -15,7 +15,6 @@ def get_proc_by_id(proc_id: str, db: Session = Depends(get_db)):
   return my_procedure
 
 
-# http://localhost:8000/procedures?proc_title=association&proc_admin_name=CRI
 @router.get("", response_model=list[schemas.ProcedureOut])
 def list_procedures(
   proc_title: str | None = None,

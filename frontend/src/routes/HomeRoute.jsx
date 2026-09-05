@@ -9,6 +9,6 @@ export default function HomeRoute() {
 
   if (loading) return <Spinner />
   if (!user) return <Navigate to="/login" state={{ from: location }} replace />
-  if (user.role === 'admin') return <Navigate to="/admin/procedures" replace />
+  if (user.role === 'admin') return <Navigate to="/admin" replace />
   return <ChatPage />
 }

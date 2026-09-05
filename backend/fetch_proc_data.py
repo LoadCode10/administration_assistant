@@ -26,9 +26,6 @@ def get_procs_ids(sub_proc_id):
   print("Procedures IDS not found.")
   return []
 
-# my_procs_ids = get_procs_ids("a1ae09b2-ec5c-41dc-b0b1-b0e619a2faf4")
-# print(my_procs_ids)
-
 def fetch_data(url):
   resp = requests.get(url, headers=HEADERS, verify=False)
   resp.raise_for_status()
