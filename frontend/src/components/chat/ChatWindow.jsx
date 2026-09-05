@@ -29,6 +29,9 @@ export default function ChatWindow() {
   const [startingId, setStartingId] = useState(null)
   const [expandedByQuestion, setExpandedByQuestion] = useState({})
   const [deleteTarget, setDeleteTarget] = useState(null)
+  const [creatingConversation, setCreatingConversation] = useState(false)
+  const [savingEditId, setSavingEditId] = useState(null)
+  const [loadingSuggestionId, setLoadingSuggestionId] = useState(null)
   const bottomRef = useRef(null)
 
   useEffect(() => {
@@ -54,11 +57,16 @@ export default function ChatWindow() {
   }
 
   async function handleNew() {
-    const conversation = await createConversation()
-    setConversations((prev) => [conversation, ...prev])
-    setActiveId(conversation.id_conversation)
-    setTurns([])
-    setExpandedByQuestion({})
+    setCreatingConversation(true)
+    try {
+      const conversation = await createConversation()
+      setConversations((prev) => [conversation, ...prev])
+      setActiveId(conversation.id_conversation)
+      setTurns([])
+      setExpandedByQuestion({})
+    } finally {
+      setCreatingConversation(false)
+    }
   }
 
   async function handleDeleteConversation(id) {
@@ -90,25 +98,35 @@ export default function ChatWindow() {
   }
 
   async function handleEdit(questionId, newText) {
-    const updated = await editMessage(activeId, questionId, newText)
-    setTurns((prev) => prev.map((t) => (t.id_question === questionId ? updated : t)))
-    setExpandedByQuestion((prev) => {
-      const next = { ...prev }
-      delete next[questionId]
-      return next
-    })
+    setSavingEditId(questionId)
+    try {
+      const updated = await editMessage(activeId, questionId, newText)
+      setTurns((prev) => prev.map((t) => (t.id_question === questionId ? updated : t)))
+      setExpandedByQuestion((prev) => {
+        const next = { ...prev }
+        delete next[questionId]
+        return next
+      })
+    } finally {
+      setSavingEditId(null)
+    }
   }
 
   async function confirmDeleteMessage() {
     const questionId = deleteTarget
-    setDeleteTarget(null)
     await deleteMessage(activeId, questionId)
+    setDeleteTarget(null)
     setTurns((prev) => prev.filter((t) => t.id_question !== questionId))
   }
 
   async function handleSuggestionSelect(questionId, suggestion) {
-    const procedure = await getProcedure(suggestion.id_procedure)
-    setExpandedByQuestion((prev) => ({ ...prev, [questionId]: procedure }))
+    setLoadingSuggestionId(suggestion.id_procedure)
+    try {
+      const procedure = await getProcedure(suggestion.id_procedure)
+      setExpandedByQuestion((prev) => ({ ...prev, [questionId]: procedure }))
+    } finally {
+      setLoadingSuggestionId(null)
+    }
   }
 
   async function handleStart(procedure) {
@@ -129,6 +147,7 @@ export default function ChatWindow() {
         onSelect={selectConversation}
         onNew={handleNew}
         onDelete={handleDeleteConversation}
+        creating={creatingConversation}
       />
 
       <div className="flex flex-1 flex-col">
@@ -148,6 +167,7 @@ export default function ChatWindow() {
                   role="user"
                   onEdit={(newText) => handleEdit(turn.id_question, newText)}
                   onDelete={() => setDeleteTarget(turn.id_question)}
+                  saving={savingEditId === turn.id_question}
                 >
                   {turn.question_content}
                 </MessageBubble>
@@ -171,6 +191,7 @@ export default function ChatWindow() {
                     <SuggestionChips
                       suggestions={turn.suggestions}
                       onSelect={(s) => handleSuggestionSelect(turn.id_question, s)}
+                      loadingId={loadingSuggestionId}
                     />
                     {expandedByQuestion[turn.id_question] && (
                       <div className="max-w-[85%]">
@@ -197,6 +218,7 @@ export default function ChatWindow() {
         title="Supprimer ce message ?"
         message="Ce message et sa réponse seront définitivement supprimés."
         confirmLabel="Supprimer"
+        pendingLabel="Suppression..."
         danger
         onConfirm={confirmDeleteMessage}
         onCancel={() => setDeleteTarget(null)}

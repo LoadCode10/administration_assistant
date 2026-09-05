@@ -55,6 +55,7 @@ export default function AdminProceduresPage() {
         title="Supprimer cette procédure ?"
         message={`"${toDelete?.titre_proc}" sera définitivement supprimée, ainsi que le suivi des utilisateurs qui l'ont commencée.`}
         confirmLabel="Supprimer"
+        pendingLabel="Suppression..."
         danger
         onConfirm={confirmDelete}
         onCancel={() => setToDelete(null)}

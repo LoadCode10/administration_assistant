@@ -7,6 +7,7 @@ export default function ConversationSidebar({
   onSelect,
   onNew,
   onDelete,
+  creating = false,
 }) {
   const [toDelete, setToDelete] = useState(null)
 
@@ -21,9 +22,10 @@ export default function ConversationSidebar({
         <button
           type="button"
           onClick={onNew}
-          className="w-full rounded-md bg-emerald-600 px-3 py-2 text-sm font-medium text-white hover:bg-emerald-700"
+          disabled={creating}
+          className="w-full rounded-md bg-emerald-600 px-3 py-2 text-sm font-medium text-white hover:bg-emerald-700 disabled:opacity-60"
         >
-          + Nouvelle conversation
+          {creating ? 'Création...' : '+ Nouvelle conversation'}
         </button>
       </div>
       <ul className="space-y-1 overflow-y-auto px-2 pb-3" style={{ maxHeight: 'calc(75vh - 60px)' }}>
@@ -58,6 +60,7 @@ export default function ConversationSidebar({
         title="Supprimer cette conversation ?"
         message="Tous les messages de cette conversation seront définitivement supprimés."
         confirmLabel="Supprimer"
+        pendingLabel="Suppression..."
         danger
         onConfirm={confirmDelete}
         onCancel={() => setToDelete(null)}

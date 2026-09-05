@@ -22,7 +22,6 @@ export default function AdminExtractReviewPage() {
   const [staging, setStaging] = useState(null)
   const [items, setItems] = useState([])
   const [error, setError] = useState('')
-  const [saving, setSaving] = useState(false)
   const [confirmAction, setConfirmAction] = useState(null)
 
   useEffect(() => {
@@ -33,7 +32,6 @@ export default function AdminExtractReviewPage() {
   }, [id])
 
   async function handleSave() {
-    setSaving(true)
     setError('')
     try {
       const updated = await updateStaging(id, sanitize(items))
@@ -43,21 +41,35 @@ export default function AdminExtractReviewPage() {
     } catch {
       setError('Erreur lors de la sauvegarde.')
       return false
+    }
+  }
+
+  async function handleSaveConfirmed() {
+    try {
+      await handleSave()
     } finally {
-      setSaving(false)
+      setConfirmAction(null)
     }
   }
 
   async function handleValidate() {
-    const saved = await handleSave()
-    if (!saved) return
-    await validateStaging(id)
-    navigate('/admin/procedures')
+    try {
+      const saved = await handleSave()
+      if (!saved) return
+      await validateStaging(id)
+      navigate('/admin/procedures')
+    } finally {
+      setConfirmAction(null)
+    }
   }
 
   async function handleReject() {
-    await rejectStaging(id)
-    navigate('/admin/extract')
+    try {
+      await rejectStaging(id)
+      navigate('/admin/extract')
+    } finally {
+      setConfirmAction(null)
+    }
   }
 
   if (!staging) return <Spinner />
@@ -84,8 +96,7 @@ export default function AdminExtractReviewPage() {
         <button
           type="button"
           onClick={() => setConfirmAction('save')}
-          disabled={saving}
-          className="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-60"
+          className="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
         >
           Enregistrer les modifications
         </button>
@@ -110,10 +121,8 @@ export default function AdminExtractReviewPage() {
         title="Enregistrer les modifications ?"
         message="Les corrections apportées ci-dessus seront sauvegardées sur ce lot (rien n'est encore ajouté à la base)."
         confirmLabel="Enregistrer"
-        onConfirm={() => {
-          setConfirmAction(null)
-          handleSave()
-        }}
+        pendingLabel="Enregistrement..."
+        onConfirm={handleSaveConfirmed}
         onCancel={() => setConfirmAction(null)}
       />
       <ConfirmDialog
@@ -121,10 +130,8 @@ export default function AdminExtractReviewPage() {
         title="Valider ce lot ?"
         message="Les procédures ci-dessus seront ajoutées définitivement à la base et deviendront immédiatement consultables et indexées."
         confirmLabel="Valider"
-        onConfirm={() => {
-          setConfirmAction(null)
-          handleValidate()
-        }}
+        pendingLabel="Validation..."
+        onConfirm={handleValidate}
         onCancel={() => setConfirmAction(null)}
       />
       <ConfirmDialog
@@ -132,11 +139,9 @@ export default function AdminExtractReviewPage() {
         title="Rejeter ce lot ?"
         message="Les données extraites seront écartées et rien ne sera ajouté à la base."
         confirmLabel="Rejeter"
+        pendingLabel="Rejet..."
         danger
-        onConfirm={() => {
-          setConfirmAction(null)
-          handleReject()
-        }}
+        onConfirm={handleReject}
         onCancel={() => setConfirmAction(null)}
       />
     </div>

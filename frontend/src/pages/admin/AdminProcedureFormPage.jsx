@@ -70,7 +70,7 @@ export default function AdminProcedureFormPage() {
       {error && <p className="mb-3 text-sm text-rose-600">{error}</p>}
       <ProcedureForm initialValue={initialValue} onSubmit={handleSubmit} submitting={submitting} />
       <ConfirmDialog
-        open={Boolean(pendingPayload) && !submitting}
+        open={Boolean(pendingPayload)}
         title={isEdit ? 'Modifier cette procédure ?' : 'Créer cette procédure ?'}
         message={
           isEdit
@@ -78,6 +78,7 @@ export default function AdminProcedureFormPage() {
             : 'Cette procédure sera ajoutée à la base et deviendra immédiatement consultable.'
         }
         confirmLabel={isEdit ? 'Modifier' : 'Créer'}
+        pendingLabel={isEdit ? 'Modification...' : 'Création...'}
         onConfirm={confirmSubmit}
         onCancel={() => setPendingPayload(null)}
       />

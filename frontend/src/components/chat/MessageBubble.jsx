@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function MessageBubble({ role, children, onEdit, onDelete }) {
+export default function MessageBubble({ role, children, onEdit, onDelete, saving = false }) {
   const isUser = role === 'user'
   const [editing, setEditing] = useState(false)
   const [draft, setDraft] = useState('')
@@ -10,10 +10,10 @@ export default function MessageBubble({ role, children, onEdit, onDelete }) {
     setEditing(true)
   }
 
-  function handleSave() {
+  async function handleSave() {
     const trimmed = draft.trim()
     if (trimmed && trimmed !== children) {
-      onEdit(trimmed)
+      await onEdit(trimmed)
     }
     setEditing(false)
   }
@@ -52,22 +52,25 @@ export default function MessageBubble({ role, children, onEdit, onDelete }) {
             onChange={(e) => setDraft(e.target.value)}
             rows={2}
             autoFocus
-            className="w-full resize-none rounded-md border border-slate-200 p-2 text-sm focus:border-emerald-500 focus:outline-none"
+            disabled={saving}
+            className="w-full resize-none rounded-md border border-slate-200 p-2 text-sm focus:border-emerald-500 focus:outline-none disabled:opacity-60"
           />
           <div className="mt-1 flex justify-end gap-3">
             <button
               type="button"
               onClick={() => setEditing(false)}
-              className="text-xs text-slate-500 hover:underline"
+              disabled={saving}
+              className="text-xs text-slate-500 hover:underline disabled:opacity-60"
             >
               Annuler
             </button>
             <button
               type="button"
               onClick={handleSave}
-              className="text-xs font-medium text-emerald-700 hover:underline"
+              disabled={saving}
+              className="text-xs font-medium text-emerald-700 hover:underline disabled:opacity-60"
             >
-              Enregistrer
+              {saving ? 'Enregistrement...' : 'Enregistrer'}
             </button>
           </div>
         </div>

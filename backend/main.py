@@ -28,8 +28,9 @@ app.add_middleware(
   allow_headers=["*"],
 )
 
-app.include_router(auth_router.router)
+
 app.include_router(procedures_router.router)
 app.include_router(conversations_router.router)
 app.include_router(progress_router.router)
 app.include_router(admin_router.router)
+app.include_router(auth_router.router)
