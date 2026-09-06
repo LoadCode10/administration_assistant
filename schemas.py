@@ -29,26 +29,68 @@ class ProcedureOut(BaseModel):
   pieces: list[PieceOut]
   etapes: list[EtapeOut]
 
+# ask API pydantic Schemas
 class QuestionOut(BaseModel):
   model_config = ConfigDict(from_attributes=True)
   id_question: str
-  question_language: str | None
   question_content: str
   question_date: datetime
 
 class QuestionIn(BaseModel):
   question_content: str
-  question_language: str | None = None
 
 
 class SourceOut(BaseModel):
   model_config = ConfigDict(from_attributes=True)
-  id_procedure = str
-  titre_proc = str
-  administration = AdministrationOut
+  id_procedure : str
+  titre_proc : str
+  administration : AdministrationOut
 
 class AnswerOut(BaseModel):
   id_question: str
   question_content: str
   answer: str
   sources: list[SourceOut]
+
+# GET /admin/documents API pydantic Schemas
+class ExtractionSummaryOut(BaseModel):
+  model_config = ConfigDict(from_attributes=True)
+  id_extraction: str
+  filename: str
+  status: str
+  procedure_count: int
+  error_message: str | None
+
+class DocumentOut(BaseModel):
+  model_config = ConfigDict(from_attributes=True)
+  id_document: str
+  titre_doc: str
+  url_source: str | None
+  date_upload: datetime
+  extraction: ExtractionSummaryOut | None
+
+class ExtractionDetailOut(BaseModel):
+  model_config = ConfigDict(from_attributes=True)
+  id_extraction: str
+  filename: str
+  status: str
+  payload: list[dict] | None
+  procedure_count: int
+  date_creation: datetime
+  id_document: str | None
+  error_message: str | None
+
+class ExtractionUpdate(BaseModel):
+  payload: list[dict]
+
+class AdministrationUpdate(BaseModel):
+  nom_administration: str 
+  addr_administration: str | None
+  url_administration: str | None
+
+class Trackrequest(BaseModel):
+  id_procedure: str
+
+class DocumentUpdate(BaseModel):
+  est_coche: bool | None = None
+  note: str | None = None

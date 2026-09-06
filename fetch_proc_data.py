@@ -37,6 +37,7 @@ def fetch_data(url):
 def fetch_procedure_data(proc_id):
   proc_detail = fetch_data(f"{BASE}/procedures/{proc_id}")
   proc_documents = fetch_data(f"{BASE}/procedures/{proc_id}/documents")
+  proc_laws = fetch_data(f"{BASE}/procedures/{proc_id}/legal-provisions")
   admin = proc_detail.get("administrationInCharge")
 
   return {
@@ -46,6 +47,8 @@ def fetch_procedure_data(proc_id):
     "proc_steps": [],
     "fee": proc_detail.get("price"),
     "proc_delai": proc_detail.get("delay"),
+    "proc_description": proc_detail.get("description"),
+    "proc_lois": [law["content"] for law in proc_laws if law.get("content")]
   }
 
 def get_procedures_data(proc_ids_array):
@@ -60,13 +63,14 @@ def get_procedures_data(proc_ids_array):
     time.sleep(0.5)
   return procedures_data
 
-def save_fetched_data(procedures_data):
-  with open("fetched_data.json", "w", encoding="utf-8") as file:
+def save_fetched_data(procedures_data,proc_id):
+  with open(f"data/fetched_data_{proc_id}.json", "w", encoding="utf-8") as file:
     json.dump(procedures_data,file,ensure_ascii=False,indent=2)
   print(f"Saved {len(procedures_data)} procedures.")
 
 if __name__ == "__main__":
-  my_procs_ids = get_procs_ids("a1ae09b2-ec5c-41dc-b0b1-b0e619a2faf4")
+  id_procedure = "ee134f52-8aba-4aa1-b7b7-e188f5a442fa"
+  my_procs_ids = get_procs_ids(id_procedure)
   print(my_procs_ids)
   all_procedures_data = get_procedures_data(my_procs_ids)
-  save_fetched_data(all_procedures_data)
+  save_fetched_data(all_procedures_data, id_procedure)

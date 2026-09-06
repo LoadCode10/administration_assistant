@@ -2,7 +2,7 @@ import json
 from database import SessionLocal
 import models
 
-file_path = "fetched_data.json"
+file_path = "procedures.json"
 
 def load_procedures(path=file_path):
   with open(path, "r", encoding="utf-8") as file:
@@ -23,48 +23,70 @@ def get_or_create_piece(session, nom):
     session.add(piece)
   return piece
 
-def handle_procedures():
-  session = SessionLocal()
+def get_or_create_law(session, text):
+  loi = session.query(models.Loi).filter_by(texte_loi=text).first()
+  if loi is None:
+    loi = models.Loi(texte_loi=text)
+    session.add(loi)
+  return loi
 
-  try:
-    all_procs_data = load_procedures()
+def handle_procedures(session, procedures_data: list[dict], document=None, extraction=None):
+  # session = SessionLocal()
+  created = 0
+  skipped = 0
+  
+    # all_procs_data = load_procedures()
+  all_procs_data = procedures_data
+  for proc in all_procs_data:
+    # admin = get_or_create_administration(session, proc["proc_administration"][0])
 
-    for proc in all_procs_data:
-      # admin = get_or_create_administration(session, proc["proc_administration"][0])
+    administrations = proc.get("proc_administration") or []
+    admin_name = administrations[0] if administrations else "Unknown"
+    admin = get_or_create_administration(session,admin_name)
 
-      administrations = proc.get("proc_administration") or []
-      admin_name = administrations[0] if administrations else "Unknown"
-      admin = get_or_create_administration(session,admin_name)
+    procedure = session.query(models.Procedure).filter_by(
+      titre_proc=proc["proc_title"],
+      id_administration=admin.id_administration
+    ).first()
 
-      procedure = session.query(models.Procedure).filter_by(
-        titre_proc=proc["proc_title"],
-        id_administration=admin.id_administration
-      ).first()
+    if procedure is not None:
+      skipped += 1
+      continue
 
-      if procedure is not None:
-        continue
+    procedure = models.Procedure(
+      titre_proc = proc["proc_title"],
+      frais_proc = proc["fee"],
+      delai_proc = proc["proc_delai"],
+      description_proc=proc.get("proc_description"),
+      administration=admin
+    )
 
-      procedure = models.Procedure(
-        titre_proc = proc["proc_title"],
-        frais_proc = proc["fee"],
-        delai_proc = proc["proc_delai"],
-        administration=admin
-      )
+    session.add(procedure)
 
-      session.add(procedure)
+    if document is not None:
+      procedure.documents.append(document)
 
-      for piece_nom in proc["proc_pieces"]:
-        piece = get_or_create_piece(session, piece_nom)
-        procedure.pieces.append(piece)
+    if extraction is not None:
+      procedure.extraction = extraction
 
-      for i, etape_txt in enumerate(proc["proc_steps"], start=1):
-        etape= models.Etape(ordre_etape=i, description_etape=etape_txt)
-        procedure.etapes.append(etape)
+    for piece_nom in proc["proc_pieces"]:
+      piece = get_or_create_piece(session, piece_nom)
+      procedure.pieces.append(piece)
 
-    session.commit()
-    print("All procedures persisted.")
-  finally:
-    session.close()
+    for texte in proc["proc_law"]:
+      loi = get_or_create_law(session, texte)
+      procedure.lois.append(loi)
+
+    for i, etape_txt in enumerate(proc["proc_steps"], start=1):
+      etape= models.Etape(ordre_etape=i, description_etape=etape_txt)
+      procedure.etapes.append(etape)
+
+    created += 1
+
+  session.commit()
+  print("All procedures persisted.")
+  return {"created": created, "skipped": skipped}
+  
 
 if __name__ == "__main__":
-  handle_procedures()
+  print(handle_procedures())
