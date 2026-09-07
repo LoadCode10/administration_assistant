@@ -1,4 +1,4 @@
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from datetime import datetime
 
 class PieceOut(BaseModel):
@@ -37,7 +37,9 @@ class QuestionOut(BaseModel):
   question_date: datetime
 
 class QuestionIn(BaseModel):
-  question_content: str
+  model_config = ConfigDict(populate_by_name=True)
+  question_content: str = Field(alias="question")
+  conversation_id: str | None = None
 
 
 class SourceOut(BaseModel):

@@ -111,13 +111,33 @@ def generate_answer(question: str, facts: str) -> str:
   )
   return response.text
 
-@app.post("/ask", response_model=schemas.AnswerOut)
+@app.post("/ask")
 def ask_question(
   payload: schemas.QuestionIn,
   db: Session = Depends(get_db)
 ):
+  user_id = get_current_user_id(db)
+  if payload.conversation_id:
+    conv = db.query(models.Conversation).filter_by(
+      id_conversation = payload.conversation_id
+    ).first()
+
+    if conv is None:
+      raise HTTPException(status_code=404, detail="Discussion introuvable")
+    if conv.id_user != user_id:
+      raise HTTPException(status_code=403, detail="Accès refusé") 
+  else:
+    conv = models.Conversation(id_user=user_id)
+    db.add(conv)
+    db.flush()
+
+  if not conv.titre:
+    conv.titre = payload.question_content[:80]  
+
   question = models.Question(
     question_content = payload.question_content,
+    id_user = user_id,
+    conversation = conv,
   )
 
   db.add(question)
@@ -134,21 +154,31 @@ def ask_question(
   reponse = models.Reponse(
     reponse_content = answer_text,
     reponse_date = datetime.now(),
-    id_question = question.id_question
+    question = question
   )
 
   reponse.procedures = retrieved_procedures
-
   db.add(reponse)
+  conv.date_maj = datetime.now()
   db.commit()
   db.refresh(reponse)
 
-  return schemas.AnswerOut(
-    id_question=  question.id_question,
-    question_content= question.question_content,
-    answer= answer_text,
-    sources= retrieved_procedures,
-  )
+  return {
+    "id_question": question.id_question,
+    "conversation_id": conv.id_conversation,
+    "answer": answer_text,
+    "sources": [
+      {
+        "id_procedure": p.id_procedure,
+        "titre_proc": p.titre_proc,
+        "administration": {
+          "nom_administration": p.administration.nom_administration
+                                if p.administration else None
+        },
+      }
+      for p in retrieved_procedures
+    ],
+  }
 
 @app.get("/admin/documents")
 def list_documents(db: Session=Depends(get_db)):
@@ -688,3 +718,100 @@ def untrack_procedure(id_user_procedure: str, db: Session = Depends(get_db)):
     db.delete(tracked_proc)
     db.commit()
 
+def serialize_conversation(conv) -> dict:
+  return {
+    "id": conv.id_conversation,
+    "title": conv.titre,
+    "updated_at": conv.date_maj,
+    "message_count": len(conv.questions) * 2,
+   }
+
+@app.get("/citizen/conversations")
+def list_conversations(db: Session= Depends(get_db)):
+  user_id = get_current_user_id(db)
+  rows = (
+    db.query(models.Conversation)
+    .filter_by(id_user = user_id)
+    .order_by(models.Conversation.date_maj.desc())
+    .all()
+  )
+  return [serialize_conversation(conv) for conv in rows]
+
+@app.post("/citizen/conversations")
+def create_conversation(db: Session= Depends(get_db)):
+  user_id = get_current_user_id(db)
+  conv = models.Conversation(id_user = user_id)
+  db.add(conv)
+  db.commit()
+  db.refresh(conv)
+  return {"id": conv.id_conversation}
+
+@app.get("/citizen/conversations/{conversation_id}")
+def get_conversation(
+  conversation_id: str,
+  db: Session= Depends(get_db)
+):
+  user_id = get_current_user_id(db)
+
+  conv = db.query(models.Conversation).filter_by(
+    id_conversation = conversation_id
+  ).first()
+
+  if conv is None:
+    raise HTTPException(status_code=404, detail="Discussion introuvable")
+  if conv.id_user != user_id:
+    raise HTTPException(status_code=403, detail="Accès refusé")
+
+  messages = []
+  for question in sorted(conv.questions, key=lambda q:q.question_date):
+    messages.append({
+      "role": "user",
+      "content": question.question_content,
+      "created_at": question.question_date,
+      "sources": [],
+    })
+    if question.reponse:
+      messages.append({
+        "role": "assistant",
+        "content": question.reponse.reponse_content,
+        "created_at": question.reponse.reponse_date,
+        "sources": [
+          {
+            "id_procedure": p.id_procedure,
+            "titre_proc": p.titre_proc,
+            "administration": p.administration.nom_administration
+                              if p.administration else None,
+          }
+          for p in question.reponse.procedures
+        ],
+      })
+
+  return {
+    "id": conv.id_conversation,
+    "title": conv.titre,
+    "messages": messages,
+  }
+
+@app.post("/citizen/conversations/{conversation_id}/messages")
+def post_message(
+  conversation_id: str,
+  payload: schemas.QuestionIn,
+  db: Session = Depends(get_db),
+):
+  payload.conversation_id = conversation_id
+  return ask_question(payload, db)
+
+@app.delete("/citizen/conversations/{conversation_id}", status_code=204)
+def delete_conversation(conversation_id: str, db: Session = Depends(get_db)):
+  user_id = get_current_user_id(db)
+
+  conv = db.query(models.Conversation).filter_by(
+      id_conversation=conversation_id
+  ).first()
+  if conv is None:
+      raise HTTPException(status_code=404, detail="Discussion introuvable")
+  if conv.id_user != user_id:
+      raise HTTPException(status_code=403, detail="Accès refusé")
+
+  db.delete(conv)
+  db.commit()

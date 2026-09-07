@@ -343,10 +343,10 @@ class Reponse(Base):
     default=lambda: str(uuid.uuid4())
   )
 
-  reponse_language: Mapped[str] = mapped_column(
-    String,
-    nullable=False
-  )
+  # reponse_language: Mapped[str] = mapped_column(
+  #   String,
+  #   nullable=False
+  # )
 
   reponse_content: Mapped[str] = mapped_column(
     String,
