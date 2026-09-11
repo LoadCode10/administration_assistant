@@ -1,26 +1,33 @@
 [
   {
-    "proc_title": "Création d’une entreprise commerciale de type personne morale",
-    "proc_description": null,
+    "proc_title": "Création d'une entreprise commerciale de type personne morale",
+    "proc_description": "Ensemble des formalités administratives et des étapes principales pour la création d'une entreprise commerciale de type personne morale.",
     "proc_administration": [
       "Centres Régionaux d'Investissement",
-      "OMPIC",
-      "Ministère du Commerce et de l'Industrie",
-      "Registre Central du Commerce",
+      "Registres Central du Commerce",
+      "Service de création des entreprises à l'OMPIC",
+      "Antennes de l'OMPIC auprès des Délégations du Ministère du Commerce et de l'Industrie",
+      "notaire",
+      "fiduciaire ou conseiller juridique",
+      "banque",
       "Secrétariat greffier du tribunal de première instance",
       "Sous-direction des impôts",
       "Services de légalisation",
       "CNSS",
       "Journal d’Annonces Légales (AL)",
-      "Imprimerie officielle"
+      "Imprimerie officielle pour le Bulletin Officiel"
     ],
     "proc_pieces": [
+      "Certificat négatif",
+      "bulletins de souscriptions",
+      "déclaration de soucription et de versement",
+      "attestation bancaire",
       "demande d’inscription sur imprimé",
       "documents de constitution de l’entreprise",
-      "demande sur deux imprimes avec signature légalisée",
+      "demande sur deux imprimés avec signature légalisée",
       "déclaration des patentes",
-      "certificat négatif",
-      "statuts"
+      "statuts",
+      "PV de l’assemblée constitutive pour les SA"
     ],
     "proc_steps": [
       "La demande de Certificat négatif",
@@ -36,16 +43,17 @@
     ],
     "proc_law": [],
     "fee": "1% du capital avec un minimum de 1000 Dirhams",
-    "proc_delai": "Certificat négatif: 2 heures seulement pour les demandes déposées au OMPIC et CRI. Et 24 heures pour les demandes déposées au Antennes de l'OMPIC auprès des délégations du Ministère de l'Industrie du Commerce et des Télécommunications. Dépôt des statuts: 30 jours (à partir de la date de création de l’entreprise). Immatriculation au registre de commerce: dans les trois mois qui suivent la création de la société (délai ne doit pas dépasser 3 mois). Publications officielles: dans un délai n’excédant pas un mois (Parution des statuts et du PV de l’assemblée constitutive pour les SA)."
+    "proc_delai": "2 heures seulement pour les demandes de Certificat négatif déposées au OMPIC et CRI et 24 heures pour les demandes déposées aux Antennes de l'OMPIC auprès des délégations du Ministère de l'Industrie du Commerce et des Télécommunications; 30 jours (à partir de la date de création de l’entreprise) pour le dépôt des statuts; 3 mois pour l'immatriculation au registre de commerce (ne doit pas dépasser 3 mois); un mois pour les publications officielles."
   },
   {
-    "proc_title": "Création d’une société de personne",
-    "proc_description": null,
+    "proc_title": "Création d'une société de personne",
+    "proc_description": "Formalités requises pour la création d’une société de personne.",
     "proc_administration": [
-      "l’administration des impôts",
+      "administration des impôts",
       "secrétariat-greffe du tribunal"
     ],
     "proc_pieces": [
+      "certificat négatif",
       "demande écrite"
     ],
     "proc_steps": [
@@ -58,18 +66,17 @@
     "proc_delai": "dans les trois mois qui suivent l'ouverture de l'établissement commercial ou l'acquisition du fonds commercial"
   },
   {
-    "proc_title": "Constitution d’une association",
-    "proc_description": null,
+    "proc_title": "Constitution d'une association",
+    "proc_description": "Démarches et étapes pour la constitution d'une association.",
     "proc_administration": [
-      "l’autorité administrative locale",
+      "autorité administrative locale",
       "parquet du tribunal de première instance compétent",
       "secrétariat général du Gouvernement"
     ],
     "proc_pieces": [
       "déclaration",
       "pièces qui lui sont annexées",
-      "trois exemplaires des statuts",
-      "pièces y annexées",
+      "statuts",
       "Copies de leurs cartes d'identité nationale ou pour les étrangers de leurs cartes de séjour",
       "copies de leur casier judiciaire"
     ],
@@ -77,37 +84,37 @@
       "Dépôt d’une déclaration au siège de l’autorité administrative locale dans le ressort duquel se trouve le siége de l’association.",
       "Un exemplaire de cette déclaration ainsi que des pièces qui lui sont annexées sont adressés par cette autorité locale, au parquet du tribunal de première instance compétent afin de lui permettre de formuler, le cas échéant, un avis sur la demande. Lorsque la déclaration remplit les conditions, le récépissé définitif.",
       "Etablissement des statuts",
-      "Dépôt de trois exemplaires des statuts ainsi que de la déclaration et de pièces y annexées au siège de l'autorité locale qui en transmettra un au secrétariat général du Gouvernement.",
-      "La déclaration à déposer doit mentionner : le nom et l'objet de l'association, la liste des prénoms, noms, nationalité, âge, date et lieux de naissance, professions et domicile des membres du bureau dirigeant, la qualité dont disposent ces membres pour représenter l'association sous quelque dénomination que ce soit, copies de leurs cartes d'identité nationale ou pour les étrangers de leurs cartes de séjour et des copies de leur casier judiciaire, le siège de l'association, le nombre et les siège de ses succursales, filiales ou établissements détachés, créés par elle, fonctionnant sous sa direction ou en relation constante avec elle et dans un but d'action commune."
+      "Dépôt de trois exemplaires des statuts ainsi que de la déclaration et de pièces y annexées au siège de l'autorité locale qui en transmettra un au secrétariat général du Gouvernement."
     ],
     "proc_law": [],
     "fee": null,
     "proc_delai": null
   },
   {
-    "proc_title": "Constitution d’une coopérative",
-    "proc_description": null,
+    "proc_title": "Constitution d'une coopérative",
+    "proc_description": "Démarches et étapes pour la constitution et l'immatriculation d'une coopérative, avec assouplissement par l’inscription au registre public d’immatriculation des coopératives.",
     "proc_administration": [
+      "office de développement de la coopération",
       "banque dépositaire",
-      "l’autorité locale",
-      "l'office de développement de la coopération",
-      "l'autorité administrative locale"
+      "autorité administrative locale"
     ],
     "proc_pieces": [
-      "procuration",
       "demande d’immatriculation",
-      "Les statuts de la coopérative, dûment signés par les fondateurs ou par leurs mandataires habilités à cet effet",
-      "La liste des membres coopérateurs indiquant le nombre des parts souscrites, le capital libéré de chacun des membres",
-      "Une copie de la carte nationale d’identité ou du passeport",
-      "Une copie des inscriptions transcrites au registre de commerce pour les sociétés commerciales",
-      "Une copie des inscriptions transcrites au registre des coopératives lorsqu’il s’agit de coopératives",
-      "Un certificat délivré par la banque dépositaire attestant le dépôt des fonds récupérés de la libération du capital",
-      "Le reçu de dépôt l’autorité locale",
-      "rapport d'évaluation des apports en nature"
+      "procuration",
+      "statuts de la coopérative",
+      "liste des membres coopérateurs",
+      "copie de la carte nationale d’identité ou du passeport",
+      "copie des inscriptions transcrites au registre de commerce",
+      "copie des inscriptions transcrites au registre des coopératives",
+      "certificat délivré par la banque dépositaire attestant le dépôt des fonds récupérés de la libération du capital",
+      "reçu de dépôt l’autorité locale",
+      "rapport d'évaluation des apports en nature",
+      "copie des documents de création",
+      "actes de création de sociétés"
     ],
     "proc_steps": [
       "Consultation de l'avis de l'office de développement de la coopération concernant le choix de la dénomination de la coopérative.",
-      "Signature des statuts auxquel s doit être annexés le rapport d'évaluation des apports en nature.",
+      "Signature des statuts auxquels doit être annexés le rapport d'évaluation des apports en nature.",
       "Souscription de l'intégrité du capital et libération au moins du quart de la valeur nominale des apports en numéraire.",
       "Libération des apports en nature après leur évaluation.",
       "Le dépôt d'une copie des documents de création auprès de l'autorité administrative locale dans le ressort duquel se trouve le siège de la coopérative.",

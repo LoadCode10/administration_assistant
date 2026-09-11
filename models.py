@@ -161,6 +161,12 @@ class Procedure(Base):
     secondary=procedure_loi, back_populates="procedures"
   )
 
+  statut_proc: Mapped[str] = mapped_column(
+    String, nullable=False, default="active"
+  )
+
+  date_obsolete: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+
   id_administration: Mapped[str] = mapped_column(
     ForeignKey("administrations.id_administration"),
     nullable=False
@@ -191,6 +197,15 @@ class Procedure(Base):
   documents: Mapped[list["Document"]] = relationship(
     secondary=document_procedure,
     back_populates="procedures"
+  )
+
+  reponses: Mapped[list["Reponse"]] = relationship(
+    secondary=reponse_procedure, 
+    back_populates="procedures"
+  )
+
+  tracked_by: Mapped[list["UserProcedure"]] = relationship(
+    back_populates="procedure"
   )
 
   embedding: Mapped[list[float]] = mapped_column(
@@ -263,6 +278,12 @@ class User(Base):
     nullable=False
   )
 
+  userName: Mapped[str] = mapped_column(
+    String,
+    nullable=False,
+    unique=True
+  )
+
   phone_user: Mapped[str | None] = mapped_column(
     String,
     nullable=True
@@ -274,9 +295,20 @@ class User(Base):
     unique=True
   )
 
+  creation_date: Mapped[datetime] = mapped_column(
+    DateTime,
+    default=datetime.now
+  )
+
   password_hash: Mapped[str | None] = mapped_column(
     String,
     nullable=True
+  )
+
+  role: Mapped[str] = mapped_column(
+    String,
+    nullable=False,
+    default="citizen"
   )
 
   questions: Mapped[list["Question"]] = relationship(
@@ -322,7 +354,8 @@ class Question(Base):
 
   reponse: Mapped["Reponse | None"] = relationship(
     back_populates="question",
-    uselist=False
+    uselist=False,
+    cascade="all, delete-orphan"
   )
 
   id_conversation: Mapped[str | None] = mapped_column(
@@ -342,11 +375,6 @@ class Reponse(Base):
     primary_key=True,
     default=lambda: str(uuid.uuid4())
   )
-
-  # reponse_language: Mapped[str] = mapped_column(
-  #   String,
-  #   nullable=False
-  # )
 
   reponse_content: Mapped[str] = mapped_column(
     String,
@@ -368,7 +396,8 @@ class Reponse(Base):
   )
 
   procedures: Mapped[list["Procedure"]] = relationship(
-    secondary=reponse_procedure
+    secondary=reponse_procedure,
+    back_populates="reponses"
   )
 
 class Extraction(Base):
@@ -508,7 +537,9 @@ class UserProcedure(Base):
 
   user: Mapped["User"] = relationship(back_populates="tracked")
 
-  procedure: Mapped["Procedure"] = relationship()
+  procedure: Mapped["Procedure"] = relationship(
+    back_populates="tracked_by"
+  )
 
   documents: Mapped[list["UserProcedureDocument"]] = relationship(
     back_populates="user_procedure", cascade="all, delete-orphan"
@@ -532,3 +563,44 @@ class UserProcedureDocument(Base):
   user_procedure: Mapped["UserProcedure"] = relationship(back_populates="documents")
   
   piece: Mapped["Piece"] = relationship()
+
+class Log(Base):
+  __tablename__ = "logs"
+
+  id_log: Mapped[str] = mapped_column(
+    String,
+    primary_key=True,
+    default=lambda: str(uuid.uuid4())
+  )
+
+  action: Mapped[str] = mapped_column(
+    String,
+    nullable=False
+  )
+
+  user_role: Mapped[str | None]= mapped_column(
+    String,
+    nullable=True
+  )
+
+  entity_type: Mapped[str | None] = mapped_column(String, nullable=True)
+
+  entity_id: Mapped[str | None] = mapped_column(String, nullable=True)
+
+  detail: Mapped[str | None] = mapped_column(String, nullable=True)
+
+  ip_address: Mapped[str | None] = mapped_column(String, nullable=True)
+
+  user_agent: Mapped[str | None] = mapped_column(String, nullable=True)
+
+  method: Mapped[str | None] = mapped_column(String, nullable=True)
+
+  path: Mapped[str | None] = mapped_column(String, nullable=True)
+
+  date_log: Mapped[datetime] = mapped_column(DateTime, default=datetime.now)
+
+  id_user: Mapped[str | None] = mapped_column(
+    ForeignKey("users.id_user"), nullable=True
+  )
+
+  user: Mapped["User | None"] = relationship()

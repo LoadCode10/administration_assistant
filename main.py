@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Depends, UploadFile, File, Form, BackgroundTasks
+from fastapi import FastAPI, HTTPException, Depends, UploadFile, File, Form, BackgroundTasks, Response, Request, Cookie
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import func
 from collections import Counter
@@ -8,6 +8,7 @@ from test_llm_generation import my_retriever, build_facts
 from llm_extracter import extract_text, extract_with_llm
 from fill_db_tables import get_or_create_administration, get_or_create_piece, get_or_create_law, handle_procedures
 from embed_procedures import build_text_for_embedding, embedding_all_procedures
+from auth import hash_password, verify_password, create_acces_token, decode_acces_token, JWT_EXPIRE_HOURS
 from google import genai
 from dotenv import load_dotenv
 from datetime import datetime
@@ -24,13 +25,38 @@ app = FastAPI()
 
 app.add_middleware(
   CORSMiddleware,
-  allow_origins=["*"],
+  allow_origins=["http://127.0.0.1:5500", "http://localhost:5500"],
+  allow_credentials=True,
   allow_methods=["*"],
   allow_headers=["*"],
 )
 
 llm_client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
+def get_current_user(
+  access_token: str | None = Cookie(default=None),
+  db: Session = Depends(get_db)
+) -> models.User:
+  
+  if not access_token:
+    raise HTTPException(status_code=401, detail="Non authentifié")
+
+  payload = decode_acces_token(access_token)
+  if payload is None:
+    raise HTTPException(status_code=401, detail="Session invalide ou expirée")
+
+  user = db.query(models.User).filter_by(
+    id_user = payload.get("sub")
+  ).first()
+  if user is None:
+    raise HTTPException(status_code=401, detail="Utilisateur introuvable")
+  
+  return user
+
+def require_admin(current_user: models.User= Depends(get_current_user)) -> models.User:
+  if current_user.role != "admin":
+    raise HTTPException(status_code=403, detail="Accès réservé aux administrateurs")
+  return current_user
 
 
 @app.get("/procedures/{proc_id}", response_model=schemas.ProcedureOut)
@@ -45,6 +71,7 @@ def get_proc_by_id(proc_id: str, db: Session = Depends(get_db)):
 # http://localhost:8000/procedures?proc_title=association&proc_admin_name=CRI
 @app.get("/admin/procedures", response_model=list[schemas.ProcedureOut])
 def list_procedures(
+  current_user : models.User = Depends(require_admin),
   proc_title: str | None = None,
   proc_admin_name: str | None = None,
   db: Session = Depends(get_db),
@@ -65,7 +92,9 @@ def list_procedures(
 @app.delete("/admin/procedures/{proc_id}")
 def delete_procedure(
   proc_id: str,
+  request: Request,
   db: Session= Depends(get_db),
+  current_user : models.User = Depends(require_admin)
 ):
   procedure = db.query(models.Procedure).filter_by(
     id_procedure = proc_id
@@ -73,17 +102,48 @@ def delete_procedure(
 
   if procedure is None:
     raise HTTPException(status_code=404, detail="Procédure introuvable")
+
+  if procedure.tracked_by:
+    raise HTTPException(
+      status_code=409,
+      detail=f"{len(procedure.tracked_by)} citoyen(s) suivent cette procédure. Marquez-la obsolète."
+    )
+  
   deletion_info = {
     "deleted": procedure.titre_proc,
     "administration": procedure.administration.nom_administration if procedure.administration else None,
     "etapes": len(procedure.etapes),
     "pieces": len(procedure.pieces)
   }
+
+  write_log(
+    db, request, current_user,
+    action="delete_procedure",
+    entity_type="procedure",
+    entity_id=proc_id,
+    detail=procedure.titre_proc,
+  )
+
   db.delete(procedure)
   db.commit()
 
   return deletion_info
 
+@app.patch("/admin/procedures/{proc_id}/obsolete")
+def mark_obsolete(proc_id: str, request: Request,
+current_user: models.User = Depends(require_admin),db: Session = Depends(get_db)):
+  procedure = db.query(models.Procedure).filter_by(id_procedure=proc_id).first()
+  if procedure is None:
+    raise HTTPException(status_code=404, detail="Procédure introuvable")
+
+  procedure.statut_proc = "obsolete"
+  procedure.date_obsolete = datetime.now()
+
+  write_log(db, request, current_user, action="mark_obsolete",
+    entity_type="procedure", entity_id=proc_id,
+    detail=procedure.titre_proc)
+  db.commit()
+  return {"affected_users": len(procedure.tracked_by)}
 
 def generate_answer(question: str, facts: str) -> str:
   prompt = f"""Tu es un assistant administratif marocain. Tu réponds aux
@@ -114,9 +174,10 @@ def generate_answer(question: str, facts: str) -> str:
 @app.post("/ask")
 def ask_question(
   payload: schemas.QuestionIn,
+  current_user : models.User = Depends(get_current_user),
   db: Session = Depends(get_db)
 ):
-  user_id = get_current_user_id(db)
+  user_id = current_user.id_user
   if payload.conversation_id:
     conv = db.query(models.Conversation).filter_by(
       id_conversation = payload.conversation_id
@@ -181,7 +242,7 @@ def ask_question(
   }
 
 @app.get("/admin/documents")
-def list_documents(db: Session=Depends(get_db)):
+def list_documents(db: Session=Depends(get_db), current_user : models.User = Depends(require_admin)):
   documents = (
         db.query(models.Document)
         .order_by(models.Document.date_upload.desc())
@@ -240,9 +301,11 @@ os.makedirs(EXTRACTIONS_DIR, exist_ok=True)
 @app.post("/admin/documents", response_model=schemas.DocumentOut)
 async def upload_document(
   background_tasks: BackgroundTasks,
+  request: Request,
   file: UploadFile = File(...),
   titre: str | None = Form(None),
   url_source: str | None = Form(None),
+  current_user : models.User = Depends(require_admin),
   db: Session = Depends(get_db),
 ):
   doc_id = str(uuid.uuid4())
@@ -266,6 +329,13 @@ async def upload_document(
     document= document
   )
 
+  write_log(
+    db, request, current_user,
+    action="upload_document",
+    entity_type="document",
+    entity_id=document.id_document,
+    detail=document.titre_doc,
+  )
   db.add(document)
   db.add(extraction)
   db.commit()
@@ -280,39 +350,80 @@ async def upload_document(
   return document
 
 @app.delete("/admin/documents/{item_id}")
-def delete_document(item_id: str, db: Session=Depends(get_db)):
+def delete_document(
+  item_id: str,
+  request: Request,
+  db: Session = Depends(get_db),
+  current_user: models.User = Depends(require_admin),
+):
   document = db.query(models.Document).filter_by(
     id_document=item_id
   ).first()
 
   if document is not None:
-    deleted_count = len(document.procedures)
     name = document.titre_doc
+    deleted_count = len(document.procedures)
+    tracked_removed = 0
 
     for procedure in list(document.procedures):
+      for tracking in list(procedure.tracked_by):
+        db.delete(tracking)
+        tracked_removed += 1
       db.delete(procedure)
 
     if document.stored_path and os.path.exists(document.stored_path):
       os.remove(document.stored_path)
 
+    write_log(
+      db, request, current_user,
+      action="delete_document",
+      entity_type="document",
+      entity_id=document.id_document,
+      detail=f"{name} — {deleted_count} procédures, {tracked_removed} suivis supprimés",
+    )
+
     db.delete(document)
     db.commit()
-    return {"deleted": name, "kind": "document", "procedures": deleted_count}
+
+    return {
+      "deleted": name,
+      "kind": "document",
+      "procedures": deleted_count,
+      "tracked_removed": tracked_removed,
+    }
 
   extraction = db.query(models.Extraction).filter_by(
     id_extraction=item_id
   ).first()
 
   if extraction is not None:
-    deleted_count = len(extraction.procedures)
     name = extraction.filename
+    deleted_count = len(extraction.procedures)
+    tracked_removed = 0
 
     for procedure in list(extraction.procedures):
+      for tracking in list(procedure.tracked_by):
+        db.delete(tracking)
+        tracked_removed += 1
       db.delete(procedure)
+
+    write_log(
+      db, request, current_user,
+      action="delete_import_extraction",
+      entity_type="extraction",
+      entity_id=extraction.id_extraction,
+      detail=f"{name} — {deleted_count} procédures, {tracked_removed} suivis supprimés",
+    )
 
     db.delete(extraction)
     db.commit()
-    return {"deleted": name, "kind": "import", "procedures": deleted_count}
+
+    return {
+      "deleted": name,
+      "kind": "import",
+      "procedures": deleted_count,
+      "tracked_removed": tracked_removed,
+    }
 
   raise HTTPException(status_code=404, detail="Introuvable")
   
@@ -361,7 +472,7 @@ def run_extraction(extraction_id:str, file_path:str):
     db.close()
 
 @app.get("/admin/extractions/{extraction_id}", response_model=schemas.ExtractionDetailOut)
-def get_extraction(extraction_id: str, db:Session= Depends(get_db)):
+def get_extraction(extraction_id: str, db:Session= Depends(get_db),current_user : models.User = Depends(require_admin)):
   extraction = db.query(models.Extraction).filter_by(
     id_extraction = extraction_id
   ).first()
@@ -373,7 +484,9 @@ def get_extraction(extraction_id: str, db:Session= Depends(get_db)):
 @app.put("/admin/extractions/{extraction_id}", response_model=schemas.ExtractionDetailOut)
 def update_extraction(
   extraction_id: str,
+  request: Request,
   body: schemas.ExtractionUpdate,
+  current_user : models.User = Depends(require_admin),
   db: Session = Depends(get_db),
 ):
   extraction = db.query(models.Extraction).filter_by(
@@ -386,14 +499,22 @@ def update_extraction(
     raise HTTPException(status_code=409, detail="Extraction déjà traitée")
 
   extraction.payload = body.payload
+  write_log(
+    db, request, current_user,
+    action="update_extraction_payload",
+    entity_type="extraction",
+    entity_id=extraction.id_extraction,
+    detail=extraction.status,
+  )
   db.commit()
   db.refresh(extraction)
   return extraction
 
-
 @app.post("/admin/extractions/{extraction_id}/approve")
 def approve_extraction(
   extraction_id : str,
+  request: Request,
+  current_user : models.User = Depends(require_admin),
   db: Session= Depends(get_db),
 ):
   extraction = db.query(models.Extraction).filter_by(
@@ -412,15 +533,23 @@ def approve_extraction(
   embedded = embedding_all_procedures(db)
 
   extraction.status = "approved"
+  write_log(
+    db, request, current_user,
+    action="approved_extraction",
+    entity_type="extraction",
+    entity_id=extraction.id_extraction,
+    detail=extraction.status,
+  )
   db.commit()
 
   return{**result, "embedded": embedded}
 
-
 @app.post("/admin/imports")
 async def upload_json_file(
+  request: Request,
   file: UploadFile = File(...),
   source: str | None = Form(None),
+  current_user : models.User = Depends(require_admin),
   db: Session = Depends(get_db),
 ):
   contents = await file.read()
@@ -447,6 +576,14 @@ async def upload_json_file(
     payload= payload,
   )
 
+  write_log(
+    db, request, current_user,
+    action="upload_import_json",
+    entity_type="extraction",
+    entity_id=extraction.id_extraction,
+    detail=extraction.status,
+  )
+
   db.add(extraction)
   db.commit()
   db.refresh(extraction)
@@ -458,7 +595,7 @@ async def upload_json_file(
 
 
 @app.get("/admin/administrations")
-def list_administrations(db: Session = Depends(get_db)):
+def list_administrations(db: Session = Depends(get_db),current_user : models.User = Depends(require_admin),):
   rows = (
     db.query(
         models.Administration,
@@ -482,7 +619,9 @@ def list_administrations(db: Session = Depends(get_db)):
 @app.put("/admin/administrations/{admin_id}", response_model=schemas.AdministrationOut)
 def update_administration(
   admin_id: str,
+  request: Request,
   body: schemas.AdministrationUpdate,
+  current_user : models.User = Depends(require_admin),
   db: Session= Depends(get_db),
 ):
   administration = db.query(models.Administration).filter_by( id_administration = admin_id).first()
@@ -505,6 +644,14 @@ def update_administration(
   administration.addr_administration = body.addr_administration
   administration.url_administration = body.url_administration
 
+  write_log(
+    db, request, current_user,
+    action="modifier_administration_infos",
+    entity_type="administration",
+    entity_id=administration.id_administration,
+    detail=administration.nom_administration,
+  )
+
   db.commit()
   db.refresh(administration)
 
@@ -512,7 +659,7 @@ def update_administration(
 
 
 @app.get("/admin/stats")
-def get_stats(db: Session = Depends(get_db)):
+def get_stats(db: Session = Depends(get_db),current_user : models.User = Depends(require_admin)):
   totals = {
     "documents": db.query(models.Extraction).count(),
     "procedures": db.query(models.Procedure).count(),
@@ -569,20 +716,6 @@ def get_stats(db: Session = Depends(get_db)):
   }
 
 
-# User(Citizen) Dashboard endpoints:
-def get_current_user_id(db: Session) -> str:
-  user = db.query(models.User).first()
-  if user is None:
-      user = models.User(
-          nom_user="Hamza",
-          prenom_user="Mehdi",
-          email_user="demo@example.com",
-          password_hash="",
-      )
-      db.add(user)
-      db.commit()
-  return user.id_user
-
 def serialize_tracked_proc(tracked_proc) -> dict:
   return {
     "id_user_procedure": tracked_proc.id_user_procedure,
@@ -591,6 +724,8 @@ def serialize_tracked_proc(tracked_proc) -> dict:
     "administration": tracked_proc.procedure.administration.nom_administration
                       if tracked_proc.procedure.administration else None,
     "status": tracked_proc.status,
+    "statut_proc": tracked_proc.procedure.statut_proc,
+    "date_obsolete": tracked_proc.procedure.date_obsolete,
     "date_debut": tracked_proc.date_debut,
     "documents": [
       {
@@ -611,9 +746,10 @@ def serialize_tracked_proc(tracked_proc) -> dict:
 @app.post("/citizen/tracked")
 def track_procedure(
   body: schemas.Trackrequest,
+  current_user : models.User = Depends(get_current_user),
   db: Session = Depends(get_db)
 ):
-  user_id = get_current_user_id(db)
+  user_id = current_user.id_user
 
   procedure = db.query(models.Procedure).filter_by(
     id_procedure = body.id_procedure
@@ -621,6 +757,12 @@ def track_procedure(
 
   if procedure is None:
     raise HTTPException(status_code=404, detail="Procédure introuvable")
+
+  if procedure.statut_proc != "active":
+    raise HTTPException(
+      status_code=409,
+      detail="Cette procédure n'est plus en vigueur"
+    )
 
   exicting = db.query(models.UserProcedure).filter_by(
     id_user = user_id,
@@ -651,8 +793,11 @@ def track_procedure(
   return serialize_tracked_proc(tracked_procedure)
 
 @app.get("/citizen/tracked")
-def list_tracked_procs(db: Session= Depends(get_db)):
-  user_id = get_current_user_id(db)
+def list_tracked_procs(
+  db: Session= Depends(get_db),
+  current_user : models.User = Depends(get_current_user)
+):
+  user_id = current_user.id_user
 
   rows = (
     db.query(models.UserProcedure)
@@ -667,9 +812,10 @@ def list_tracked_procs(db: Session= Depends(get_db)):
 def update_tracked_proc_document(
   id_upd: str,
   body: schemas.DocumentUpdate,
+  current_user : models.User = Depends(get_current_user),
   db: Session= Depends(get_db)
 ):
-  user_id = get_current_user_id(db)
+  user_id = current_user.id_user
 
   doc = db.query(models.UserProcedureDocument).filter_by(
     id_upd = id_upd
@@ -704,8 +850,8 @@ def update_tracked_proc_document(
   }
 
 @app.delete("/citizen/tracked/{id_user_procedure}", status_code=204)
-def untrack_procedure(id_user_procedure: str, db: Session = Depends(get_db)):
-    user_id = get_current_user_id(db)
+def untrack_procedure(id_user_procedure: str,current_user : models.User = Depends(get_current_user) ,db: Session = Depends(get_db)):
+    user_id = current_user.id_user
 
     tracked_proc = db.query(models.UserProcedure).filter_by(
         id_user_procedure=id_user_procedure
@@ -727,8 +873,8 @@ def serialize_conversation(conv) -> dict:
    }
 
 @app.get("/citizen/conversations")
-def list_conversations(db: Session= Depends(get_db)):
-  user_id = get_current_user_id(db)
+def list_conversations(current_user : models.User = Depends(get_current_user),db: Session= Depends(get_db)):
+  user_id = current_user.id_user
   rows = (
     db.query(models.Conversation)
     .filter_by(id_user = user_id)
@@ -738,9 +884,23 @@ def list_conversations(db: Session= Depends(get_db)):
   return [serialize_conversation(conv) for conv in rows]
 
 @app.post("/citizen/conversations")
-def create_conversation(db: Session= Depends(get_db)):
-  user_id = get_current_user_id(db)
+def create_conversation(
+  request: Request,
+  payload: schemas.QuestionIn | None = None,
+  current_user : models.User = Depends(get_current_user),
+  db: Session= Depends(get_db)
+):
+  user_id = current_user.id_user
+  if payload and payload.question_content:
+    return ask_question(payload, current_user, db)
   conv = models.Conversation(id_user = user_id)
+  write_log(
+    db, request, current_user,
+    action="create_new_conversation",
+    entity_type="conversation",
+    entity_id=conv.id_conversation,
+    detail=conv.titre,
+  )
   db.add(conv)
   db.commit()
   db.refresh(conv)
@@ -749,9 +909,10 @@ def create_conversation(db: Session= Depends(get_db)):
 @app.get("/citizen/conversations/{conversation_id}")
 def get_conversation(
   conversation_id: str,
+  current_user : models.User = Depends(get_current_user),
   db: Session= Depends(get_db)
 ):
-  user_id = get_current_user_id(db)
+  user_id = current_user.id_user
 
   conv = db.query(models.Conversation).filter_by(
     id_conversation = conversation_id
@@ -794,16 +955,24 @@ def get_conversation(
 
 @app.post("/citizen/conversations/{conversation_id}/messages")
 def post_message(
+  request: Request,
   conversation_id: str,
   payload: schemas.QuestionIn,
+  current_user : models.User = Depends(get_current_user),
   db: Session = Depends(get_db),
 ):
   payload.conversation_id = conversation_id
-  return ask_question(payload, db)
+  write_log(
+    db, request, current_user,
+    action="messages_answers_conv",
+    entity_type="conversation",
+    entity_id=conversation_id,
+  )
+  return ask_question(payload,current_user, db)
 
 @app.delete("/citizen/conversations/{conversation_id}", status_code=204)
-def delete_conversation(conversation_id: str, db: Session = Depends(get_db)):
-  user_id = get_current_user_id(db)
+def delete_conversation(request: Request,conversation_id: str,current_user : models.User = Depends(get_current_user), db: Session = Depends(get_db)):
+  user_id = current_user.id_user
 
   conv = db.query(models.Conversation).filter_by(
       id_conversation=conversation_id
@@ -813,5 +982,268 @@ def delete_conversation(conversation_id: str, db: Session = Depends(get_db)):
   if conv.id_user != user_id:
       raise HTTPException(status_code=403, detail="Accès refusé")
 
+  write_log(
+    db, request, current_user,
+    action="delete_conversation",
+    entity_type="conversation",
+    entity_id=conv.id_conversation,
+    detail=conv.titre,
+  )
   db.delete(conv)
   db.commit()
+
+# Monitoring Endpoints for admin (users/logs)
+@app.get("/admin/users")
+def list_all_users(current_user : models.User = Depends(require_admin),db: Session= Depends(get_db)):
+  users_row = (
+    db.query(models.User)
+    .order_by(models.User.creation_date.desc())
+    .all()
+  )
+  users = []
+  for user in users_row:
+    users.append({
+      "id_user": user.id_user,
+      "nom_user": user.nom_user,
+      "prenom_user": user.prenom_user,
+      "email_user": user.email_user,
+      "userName_user": user.userName,
+      "role_user": user.role,
+      "creation_date": user.creation_date,
+      "tracked_count": len(user.tracked),
+      "conversations_count": len(user.conversations),
+    })
+
+  return users
+
+@app.get("/admin/users/{user_id}")
+def list_user_infos(
+  user_id: str,
+  current_user : models.User = Depends(require_admin),
+  db: Session= Depends(get_db)
+):
+  user = db.query(models.User).filter_by(
+    id_user = user_id
+  ).first()
+
+  if user is None:
+    raise HTTPException(status_code=404, detail="Utilisateur introuvable")
+  
+  return({
+    "id_user": user.id_user,
+    "nom_user": user.nom_user,
+    "prenom_user": user.prenom_user,
+    "email_user": user.email_user,
+    "userName_user": user.userName,
+    "role_user": user.role,
+    "creation_date": user.creation_date,
+    "tracked_procs":[
+      {
+        "id_up": tp.id_user_procedure,
+        "status": tp.status,
+        "titre_proc": tp.procedure.titre_proc,
+        "administration": tp.procedure.administration.nom_administration if tp.procedure.administration else None,
+      } for tp in user.tracked
+    ] ,
+    "tracked_count": len(user.tracked)
+  })
+
+def get_client_ip(request: Request) -> str | None:
+  forwarded = request.headers.get("x-forwarded-for")
+  if forwarded:
+    return forwarded.split(",")[0].strip()
+  return request.client.host if request.client else None
+
+def write_log(db, request, user, action, entity_type=None, entity_id=None, detail=None):
+  db.add(models.Log(
+    id_user=user.id_user if user else None,
+    user_role= user.role if user else None,
+    action=action,
+    entity_type=entity_type,
+    entity_id=entity_id,
+    detail=detail,
+    ip_address=get_client_ip(request),
+    user_agent=request.headers.get("user-agent"),
+    method=request.method,
+    path=str(request.url.path),
+  ))
+
+@app.get("/admin/logs")
+def list_logs(
+  action: str | None = None,
+  user_id: str | None = None,
+  limit: int = 100,
+  current_user: models.User = Depends(require_admin),
+  db: Session = Depends(get_db),
+):
+  query = db.query(models.Log)
+
+  if action is not None:
+    query = query.filter(models.Log.action == action)
+  if user_id is not None:
+    query = query.filter(models.Log.id_user == user_id)
+
+  rows = (
+    query
+    .order_by(models.Log.date_log.desc())
+    .limit(limit)
+    .all()
+  )
+
+  return [{
+    "id_log": log.id_log,
+    "action": log.action,
+    "entity_type": log.entity_type,
+    "entity_id": log.entity_id,
+    "detail": log.detail,
+    "ip_address": log.ip_address,
+    "user_agent": log.user_agent,
+    "method": log.method,
+    "path": log.path,
+    "date_log": log.date_log,
+    "user_role": log.user_role,
+    "user": {
+      "id_user": log.user.id_user,
+      "userName": log.user.userName,
+      "role": log.user.role,
+    } if log.user else None,
+  } for log in rows]
+# Authentication Endpoints (admin/citizen)
+@app.post("/auth/register")
+def register_user(
+  request: Request,
+  user_inputs: schemas.UserCreate,
+  db: Session= Depends(get_db)
+):
+  existing = db.query(models.User).filter_by(
+    userName = user_inputs.userName 
+  ).first()
+  if existing is not None:
+    write_log(
+      db, request, None, action="register_failed",
+      detail=f"Nom d'utilisateur déjà pris : {user_inputs.userName}"
+    )
+    db.commit()
+    raise HTTPException(status_code=409, detail="already exist")
+
+  existing = db.query(models.User).filter_by(
+    email_user = user_inputs.email_user
+  ).first()
+  if existing is not None:
+    write_log(
+      db, request, None, action="register_failed",
+      detail=f"Email déjà utilisé : {user_inputs.email_user}"
+    )
+    db.commit()
+    raise HTTPException(status_code=409, detail="already used")
+
+  new_user = models.User(
+    nom_user = user_inputs.nom_user,
+    prenom_user = user_inputs.prenom_user,
+    userName = user_inputs.userName,
+    phone_user = user_inputs.phone_user,
+    email_user = user_inputs.email_user,
+    password_hash = hash_password(user_inputs.password),
+  )
+
+  db.add(new_user)
+  db.flush()
+
+  write_log(
+    db, request, new_user, action="register",
+    entity_type="user", entity_id=new_user.id_user,
+    detail=f"{new_user.userName} registred"
+  )
+
+  db.commit()
+  db.refresh(new_user)
+
+  return {
+    "message": "Compte créé avec succès",
+    "id_user" : new_user.id_user
+  }
+
+@app.post("/auth/login")
+def login_user(
+  request: Request,
+  credentials: schemas.UserLogin,
+  response: Response,
+  db: Session= Depends(get_db)
+):
+  foundedUser = db.query(models.User).filter_by(
+    userName = credentials.userName
+  ).first()
+  if foundedUser is None or not foundedUser.password_hash:
+    write_log(
+      db, request, None, action="login_failed",
+      detail=f"Utilisateur inconnu : {credentials.userName}"
+    )
+    db.commit()
+    raise HTTPException(status_code=401, detail="Identifiants incorrects")
+
+  verified = verify_password(credentials.password, foundedUser.password_hash)
+  if not verified:
+    write_log(
+      db, request, None, action="login_failed",
+      detail="Mot de passe incorrect"
+    )
+    db.commit()
+    raise HTTPException(status_code=401, detail="Identifiants incorrects")
+
+  token = create_acces_token(
+    {
+      "sub": foundedUser.id_user,
+      "role": foundedUser.role
+    }
+  )
+
+  response.set_cookie(
+    key="access_token",
+    value=token,
+    httponly=True,
+    samesite="lax",
+    max_age=JWT_EXPIRE_HOURS * 3600,
+    path="/",
+  )
+
+  write_log(
+    db, request, foundedUser, action="login",
+    entity_type="user", entity_id=foundedUser.id_user, detail="user login"
+  )
+  db.commit()
+
+  return{
+    "user": {
+      "id_user": foundedUser.id_user,
+      "nom_user": foundedUser.nom_user,
+      "prenom_user": foundedUser.prenom_user,
+      "email_user": foundedUser.email_user,
+      "role": foundedUser.role,
+    }
+  }
+
+@app.get("/citizen/me")
+def get_me(current_user: models.User = Depends(get_current_user)):
+  return {
+    "id_user": current_user.id_user,
+    "nom_user": current_user.nom_user,
+    "prenom_user": current_user.prenom_user,
+    "email_user": current_user.email_user,
+    "role": current_user.role,
+  }
+
+
+@app.post("/auth/logout", status_code=204)
+def logout(
+  request: Request,
+  response: Response,
+  current_user: models.User = Depends(get_current_user),
+  db: Session= Depends(get_db)
+):
+  write_log(
+    db, request, current_user, action="logout",
+    entity_type="user", entity_id=current_user.id_user,
+    detail="user logout"
+  )
+  db.commit()
+  response.delete_cookie("access_token", path="/")

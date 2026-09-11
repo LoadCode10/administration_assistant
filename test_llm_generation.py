@@ -19,6 +19,7 @@ def my_retriever(session, question, top_k=3):
   q_vector = embed_model.encode(question)
   statement = (
     select(models.Procedure)
+    .where(models.Procedure.statut_proc == "active")
     .order_by(models.Procedure.embedding.cosine_distance(q_vector))
     .limit(top_k)
   )

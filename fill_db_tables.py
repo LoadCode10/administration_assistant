@@ -71,11 +71,13 @@ def handle_procedures(session, procedures_data: list[dict], document=None, extra
 
     for piece_nom in proc["proc_pieces"]:
       piece = get_or_create_piece(session, piece_nom)
-      procedure.pieces.append(piece)
+      if piece not in procedure.pieces:
+        procedure.pieces.append(piece)
 
     for texte in proc["proc_law"]:
       loi = get_or_create_law(session, texte)
-      procedure.lois.append(loi)
+      if loi not in procedure.lois:
+        procedure.lois.append(loi)
 
     for i, etape_txt in enumerate(proc["proc_steps"], start=1):
       etape= models.Etape(ordre_etape=i, description_etape=etape_txt)

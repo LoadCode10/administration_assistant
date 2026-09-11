@@ -25,6 +25,8 @@ class ProcedureOut(BaseModel):
   titre_proc: str 
   frais_proc: str | None
   delai_proc: str | None
+  statut_proc: str
+  date_obsolete: datetime | None
   administration: AdministrationOut
   pieces: list[PieceOut]
   etapes: list[EtapeOut]
@@ -96,3 +98,15 @@ class Trackrequest(BaseModel):
 class DocumentUpdate(BaseModel):
   est_coche: bool | None = None
   note: str | None = None
+
+class UserCreate(BaseModel):
+  nom_user : str
+  prenom_user : str
+  userName : str
+  phone_user : str | None=None
+  email_user : str
+  password : str = Field(min_length=8, max_length=72)
+
+class UserLogin(BaseModel):
+  userName: str
+  password: str
