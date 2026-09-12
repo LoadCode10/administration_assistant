@@ -1,3 +1,4 @@
+import enum
 import uuid
 from sqlalchemy import String, DateTime, Integer, Boolean, ForeignKey, Table, Column
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -244,6 +245,10 @@ class Etape(Base):
     back_populates="etapes"
   )
 
+class UserRole(str, enum.Enum):
+  admin = "admin"
+  user = "user"
+
 class User(Base):
   __tablename__ = "users"
 
@@ -279,6 +284,12 @@ class User(Base):
     nullable=True
   )
 
+  role: Mapped[str] = mapped_column(
+    String,
+    nullable=False,
+    default=UserRole.user.value
+  )
+
   questions: Mapped[list["Question"]] = relationship(
     back_populates= "user"
   )
@@ -289,6 +300,11 @@ class User(Base):
 
   tracked: Mapped[list["UserProcedure"]] = relationship(
     back_populates="user"
+  )
+
+  sessions: Mapped[list["UserSession"]] = relationship(
+    back_populates="user",
+    cascade="all, delete-orphan"
   )
 
 class Question(Base):
@@ -322,7 +338,8 @@ class Question(Base):
 
   reponse: Mapped["Reponse | None"] = relationship(
     back_populates="question",
-    uselist=False
+    uselist=False,
+    cascade="all, delete-orphan"
   )
 
   id_conversation: Mapped[str | None] = mapped_column(
@@ -530,5 +547,38 @@ class UserProcedureDocument(Base):
   id_piece: Mapped[str] = mapped_column(ForeignKey("pieces.id_piece"), nullable=False)
 
   user_procedure: Mapped["UserProcedure"] = relationship(back_populates="documents")
-  
+
   piece: Mapped["Piece"] = relationship()
+
+class UserSession(Base):
+  __tablename__ = "sessions"
+
+  id_session: Mapped[str] = mapped_column(
+    String,
+    primary_key=True,
+    default=lambda: str(uuid.uuid4())
+  )
+
+  token_hash: Mapped[str] = mapped_column(
+    String,
+    nullable=False,
+    unique=True,
+    index=True
+  )
+
+  id_user: Mapped[str] = mapped_column(
+    ForeignKey("users.id_user"),
+    nullable=False
+  )
+
+  created_at: Mapped[datetime] = mapped_column(
+    DateTime,
+    default=datetime.now
+  )
+
+  expires_at: Mapped[datetime] = mapped_column(
+    DateTime,
+    nullable=False
+  )
+
+  user: Mapped["User"] = relationship(back_populates="sessions")

@@ -60,7 +60,7 @@ def save_extracted_proc(data_proc):
 # full_prompt = PROMPT.replace("{paste the document text here}", document_text)
 
 # response = client.models.generate_content(
-#   model="gemini-2.5-flash",
+#   model="gemini-3.6-flash",
 #   contents=full_prompt,
 #   config={"response_mime_type": "application/json"}
 # )
@@ -138,7 +138,7 @@ def extract_with_llm(text: str) -> str:
   client = genai.Client(api_key = os.environ["GEMINI_API_KEY"])
 
   response = client.models.generate_content(
-      model="gemini-2.5-flash",
+      model="gemini-3.6-flash",
       contents=full_prompt,
       config={"response_mime_type": "application/json"},
   )

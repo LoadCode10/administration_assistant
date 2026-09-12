@@ -1,4 +1,4 @@
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, EmailStr, Field
 from datetime import datetime
 
 class PieceOut(BaseModel):
@@ -96,3 +96,22 @@ class Trackrequest(BaseModel):
 class DocumentUpdate(BaseModel):
   est_coche: bool | None = None
   note: str | None = None
+
+# Auth API pydantic Schemas
+class RegisterIn(BaseModel):
+  nom: str
+  prenom: str
+  email: EmailStr
+  password: str = Field(min_length=8)
+
+class LoginIn(BaseModel):
+  email: EmailStr
+  password: str
+
+class UserOut(BaseModel):
+  model_config = ConfigDict(from_attributes=True)
+  id_user: str
+  nom_user: str
+  prenom_user: str
+  email_user: str
+  role: str
