@@ -1,4 +1,5 @@
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator, EmailStr
+import re
 from datetime import datetime
 
 class PieceOut(BaseModel):
@@ -100,12 +101,26 @@ class DocumentUpdate(BaseModel):
   note: str | None = None
 
 class UserCreate(BaseModel):
-  nom_user : str
-  prenom_user : str
-  userName : str
-  phone_user : str | None=None
-  email_user : str
+  nom_user : str = Field(min_length=2, max_length=50)
+  prenom_user : str = Field(min_length=2, max_length=50)
+  userName : str = Field(min_length=2, max_length=30)
+  phone_user : str | None = Field(min_length=2, max_length=50)
+  email_user : EmailStr
   password : str = Field(min_length=8, max_length=72)
+
+  @field_validator("userName")
+  @classmethod
+  def username_format(cls, v: str) -> str:
+    if not re.fullmatch(r"[a-zA-Z0-9_.-]+", v):
+      raise ValueError("Seuls lettres, chiffres, . _ - sont autorisés")
+    return v.lower()
+
+  @field_validator("phone_user")
+  @classmethod
+  def phone_format(cls, v: str | None) -> str | None:
+    if v and not re.fullmatch(r"[0-9+\s()-]{8,20}", v):
+      raise ValueError("Numéro de téléphone invalide")
+    return v
 
 class UserLogin(BaseModel):
   userName: str

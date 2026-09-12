@@ -12,6 +12,9 @@ from auth import hash_password, verify_password, create_acces_token, decode_acce
 from google import genai
 from dotenv import load_dotenv
 from datetime import datetime
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
 import os
 import models
 import schemas
@@ -22,6 +25,10 @@ import pymupdf
 load_dotenv()
 
 app = FastAPI()
+
+limiter = Limiter(key_func=get_remote_address)
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 app.add_middleware(
   CORSMiddleware,
@@ -1110,6 +1117,7 @@ def list_logs(
   } for log in rows]
 # Authentication Endpoints (admin/citizen)
 @app.post("/auth/register")
+@limiter.limit("3/hour")
 def register_user(
   request: Request,
   user_inputs: schemas.UserCreate,
@@ -1164,6 +1172,7 @@ def register_user(
   }
 
 @app.post("/auth/login")
+@limiter.limit("5/minute")
 def login_user(
   request: Request,
   credentials: schemas.UserLogin,
