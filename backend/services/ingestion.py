@@ -1,13 +1,6 @@
-import json
-from database import SessionLocal
-import models as models
+from sqlalchemy.orm import Session
 
-file_path = "procedures.json"
-
-def load_procedures(path=file_path):
-  with open(path, "r", encoding="utf-8") as file:
-    return json.load(file)
-
+import models
 
 def get_or_create_administration(session, nom):
   admin = session.query(models.Administration).filter_by(nom_administration=nom).first()
@@ -31,15 +24,13 @@ def get_or_create_law(session, text):
   return loi
 
 def handle_procedures(session, procedures_data: list[dict], document=None, extraction=None):
-  # session = SessionLocal()
+  
   created = 0
   skipped = 0
   
-    # all_procs_data = load_procedures()
   all_procs_data = procedures_data
   for proc in all_procs_data:
-    # admin = get_or_create_administration(session, proc["proc_administration"][0])
-
+    
     administrations = proc.get("proc_administration") or []
     admin_name = administrations[0] if administrations else "Unknown"
     admin = get_or_create_administration(session,admin_name)
@@ -88,7 +79,3 @@ def handle_procedures(session, procedures_data: list[dict], document=None, extra
   session.commit()
   print("All procedures persisted.")
   return {"created": created, "skipped": skipped}
-  
-
-if __name__ == "__main__":
-  print(handle_procedures())
