@@ -111,39 +111,19 @@
         '</div>';
     }
 
-    /* Les réponses arrivent en Markdown : gras, titres, listes, filets. Sans
-       conversion l'utilisateur lit la syntaxe au lieu de la mise en forme, et
-       ces réponses sont longues et structurées (frais, délais, pièces).
+    /* Les réponses arrivent en Markdown : gras, titres, listes, filets. La
+       conversion et le lavage DOMPurify vivent dans h.markdownToHtml — le même
+       chemin sert aux bureaux à proximité, écran « Mes procédures ».
 
-       Deux garde-fous :
-       - seules les réponses de l'assistant passent par ce chemin. Le texte de
-         l'utilisateur reste échappé, il n'est jamais interprété comme du HTML ;
-       - le HTML produit est lavé par DOMPurify avant d'entrer dans la page.
-       Si l'une des deux bibliothèques manque (CDN injoignable), on retombe sur
-       le texte échappé : moins lisible, mais toujours affiché. */
-    function markdownToHtml(text) {
-      var parse = null;
-      if (typeof marked !== 'undefined' && marked) {
-        if (typeof marked.parse === 'function') parse = marked.parse;
-        else if (typeof marked === 'function') parse = marked;
-      }
-      if (!parse) return null;
-      if (typeof DOMPurify === 'undefined' || !DOMPurify ||
-          typeof DOMPurify.sanitize !== 'function') return null;
-
-      try {
-        // breaks : dans une réponse de chat, un retour à la ligne simple est
-        // voulu — le Markdown standard le mangerait.
-        var html = parse(String(text), { breaks: true, gfm: true });
-        return DOMPurify.sanitize(html);
-      } catch (error) {
-        return null;
-      }
-    }
+       Seules les réponses de l'assistant y passent : le texte de l'utilisateur
+       reste échappé, il n'est jamais interprété comme du HTML. Et si l'une des
+       deux bibliothèques manque (CDN injoignable), h.markdownToHtml renvoie
+       null : on retombe alors sur le texte échappé. */
 
     function renderMessage(message) {
       var side = message.role === 'user' ? 'is-user' : 'is-assistant';
-      var html = message.role === 'assistant' ? markdownToHtml(message.content) : null;
+      var html = message.role === 'assistant'
+        ? h.markdownToHtml(message.content) : null;
       // is-markdown : la bulle passe du texte préformaté au flux HTML, c'est
       // le CSS qui reprend l'espacement à partir de là.
       var bubble = html === null

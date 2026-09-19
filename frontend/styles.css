@@ -1507,6 +1507,124 @@ input.piece-note {
 input.piece-note:hover { border-color: var(--border); }
 input.piece-note:focus { background: var(--surface-2); border-color: var(--border-strong); }
 
+/* --- Bureaux à proximité --------------------------------------------------
+   Le bloc vit dans la carte dépliée, au-dessus des pièces : il prolonge le nom
+   de l'administration affiché dans l'en-tête. Il est séparé du reste par un
+   filet, parce qu'il ne parle ni des pièces ni des étapes. */
+.track-nearby { padding-bottom: 12px; margin-bottom: 14px; border-bottom: 0.5px solid var(--border); }
+.nearby-trigger { display: inline-flex; align-items: center; gap: 6px; }
+.nearby-trigger .icon { color: var(--text-accent); }
+.nearby-error { margin-bottom: 8px; }
+
+/* --- Attente -------------------------------------------------------------
+   Cinq à quinze secondes : bien au-delà de tout le reste de l'application. La
+   phrase compte donc autant que l'anneau — un disque qui tourne seul pendant
+   dix secondes se lit comme une panne. */
+.nearby-loading {
+  display: flex; align-items: center; gap: 9px;
+  font-size: 12px; color: var(--text-secondary); padding: 4px 0;
+}
+.nearby-spinner {
+  flex: none; width: 15px; height: 15px; border-radius: 99px;
+  border: 2px solid var(--border); border-top-color: var(--fill-accent);
+  animation: boot-spin .8s linear infinite;
+}
+
+/* --- Repli par ville -----------------------------------------------------
+   Les navigateurs refusent la géolocalisation en HTTP simple ailleurs que sur
+   localhost : sur ces installations, cette liste est le seul chemin. Elle est
+   traitée comme tel, pas comme un lot de consolation. */
+.nearby-fallback {
+  background: var(--surface-1); border-radius: var(--radius); padding: 10px 12px;
+}
+.nearby-fallback-text { margin: 0 0 8px; font-size: 12px; color: var(--text-secondary); }
+.nearby-fallback-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.nearby-fallback-row select { flex: 0 1 190px; }
+.nearby-fallback-row button { display: inline-flex; align-items: center; gap: 6px; flex: none; }
+.nearby-dismiss { margin-top: 8px; }
+
+/* --- Panneau de résultat -------------------------------------------------- */
+.nearby-panel {
+  border: 0.5px solid var(--border); border-radius: var(--radius);
+  padding: 12px 14px; background: var(--surface-1);
+}
+/* Aucune source officielle : la bordure le dit avant même qu'on lise. */
+.nearby-panel.is-unverified { border-color: var(--border-warning); }
+.nearby-panel-head {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+}
+.nearby-city { flex: 1; min-width: 0; font-size: 13px; font-weight: 500; }
+.nearby-panel-head .icon-btn { flex: none; }
+.nearby-panel-foot { margin-top: 12px; }
+
+/* --- Avertissement --------------------------------------------------------
+   Au-dessus du résultat, pleine largeur, dans la teinte d'alerte : quand rien
+   n'a pu être recoupé sur un site officiel, l'adresse affichée peut être
+   fausse, et quelqu'un se déplace pour rien. Ce n'est pas une note de bas de
+   panneau, c'est la condition de lecture de ce qui suit. */
+.nearby-warning {
+  display: flex; align-items: flex-start; gap: 10px;
+  background: var(--bg-warning); color: var(--text-warning);
+  border: 0.5px solid var(--border-warning); border-radius: var(--radius);
+  padding: 11px 13px; margin-bottom: 12px; font-size: 12.5px;
+}
+.nearby-warning .icon { flex: none; margin-top: 1px; }
+.nearby-warning p { margin: 0; line-height: 1.5; }
+.nearby-warning-title { font-weight: 600; margin-bottom: 3px; }
+
+/* --- Texte ---------------------------------------------------------------
+   Prose libre d'un modèle de langue : on ne connaît ni sa longueur ni ses
+   niveaux de titre. Mêmes règles que les bulles de l'assistant, dont elle
+   partage la conversion et le lavage. */
+.nearby-text { font-size: 13px; }
+.nearby-text.is-plain { white-space: pre-wrap; overflow-wrap: anywhere; }
+.nearby-text.is-markdown > :first-child { margin-top: 0; }
+.nearby-text.is-markdown > :last-child { margin-bottom: 0; }
+.nearby-text.is-markdown p { margin: .6em 0; line-height: 1.6; }
+.nearby-text.is-markdown strong { font-weight: 600; color: var(--text-accent); }
+.nearby-text.is-markdown h1,
+.nearby-text.is-markdown h2,
+.nearby-text.is-markdown h3,
+.nearby-text.is-markdown h4 {
+  font-size: 13px; font-weight: 600; margin: 1em 0 .4em;
+}
+.nearby-text.is-markdown ul,
+.nearby-text.is-markdown ol { margin: .5em 0; padding-left: 20px; }
+.nearby-text.is-markdown li { margin: .18em 0; line-height: 1.5; overflow-wrap: anywhere; }
+.nearby-text.is-markdown li::marker { color: var(--text-muted); }
+.nearby-text.is-markdown a { color: var(--text-accent); overflow-wrap: anywhere; }
+.nearby-text.is-markdown hr { border: none; border-top: 0.5px solid var(--border); margin: .9em 0; }
+.nearby-text.is-markdown table { border-collapse: collapse; font-size: 12px; }
+.nearby-text.is-markdown th,
+.nearby-text.is-markdown td { border: 0.5px solid var(--border); padding: 4px 8px; }
+
+/* --- Sources -------------------------------------------------------------
+   La distinction officielle / officieuse est portée par la pastille et non par
+   la seule couleur : c'est elle qui décide si l'on peut se fier à l'adresse. */
+.nearby-sources { margin-top: 12px; border-top: 0.5px solid var(--border); padding-top: 10px; }
+.nearby-sources-title {
+  font-size: 11px; text-transform: uppercase; letter-spacing: .04em;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.nearby-source {
+  display: flex; align-items: center; gap: 8px;
+  padding: 5px 0; font-size: 12px;
+  color: var(--text-secondary); text-decoration: none;
+}
+a.nearby-source:hover { color: var(--text-accent); }
+a.nearby-source:hover .nearby-source-title { text-decoration: underline; }
+.nearby-source .icon { flex: none; color: var(--text-muted); }
+.nearby-source.is-dead { color: var(--text-muted); }
+.nearby-source-title { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.nearby-source-badge {
+  flex: none; font-size: 10.5px; padding: 1px 7px; border-radius: 99px;
+  background: var(--surface-2); color: var(--text-muted);
+  border: 0.5px solid var(--border);
+}
+.nearby-source-badge.is-official {
+  background: var(--bg-success); color: var(--text-success); border-color: transparent;
+}
+
 /* --- Adaptatif ------------------------------------------------------------ */
 
 /* En dessous de 900 px la barre latérale sort du flux et glisse par-dessus le
@@ -1524,6 +1642,11 @@ input.piece-note:focus { background: var(--surface-2); border-color: var(--borde
      rien pour l'un ni pour l'autre. */
   .piece-row { flex-wrap: wrap; }
   input.piece-note { width: 100%; margin-left: 25px; }
+  /* La ville et son bouton passent l'un sous l'autre : côte à côte, le nom de
+     ville le plus long ne tient plus dans le menu. */
+  .nearby-fallback-row select,
+  .nearby-fallback-row button { flex: 1 1 100%; }
+  .nearby-fallback-row button { justify-content: center; }
 }
 
 /* ===========================================================================
@@ -1624,4 +1747,7 @@ body.is-standalone .screen-root { padding: 0; max-width: none; }
   .msg-bubble.is-thinking i { animation: none; opacity: .55; }
   .track-bar { transition: none; }
   .boot-dot { animation: none; }
+  /* L'anneau ne tourne plus, mais il reste visible : c'est la phrase à côté
+     qui porte l'attente, elle suffit. */
+  .nearby-spinner { animation: none; }
 }

@@ -757,15 +757,69 @@
     }
   }
 
+  /* Geocodage inverse factice : la ville dont le centre est le plus proche,
+     et rien au-dela de 120 km — hors du Maroc, le vrai service ne renvoie pas
+     une ville marocaine, il ne renvoie rien, et l'ecran doit voir ce 502. */
+  var CITY_CENTRES = [
+    { name: 'Rabat', lat: 34.0209, lon: -6.8416 },
+    { name: 'Casablanca', lat: 33.5731, lon: -7.5898 },
+    { name: 'Fès', lat: 34.0331, lon: -5.0003 },
+    { name: 'Marrakech', lat: 31.6295, lon: -7.9811 },
+    { name: 'Tanger', lat: 35.7595, lon: -5.8340 },
+    { name: 'Meknès', lat: 33.8935, lon: -5.5473 },
+    { name: 'Agadir', lat: 30.4278, lon: -9.5981 },
+    { name: 'Oujda', lat: 34.6867, lon: -1.9114 }
+  ];
+
+  function nearestCity(lat, lon) {
+    var best = null;
+    var bestDistance = Infinity;
+    CITY_CENTRES.forEach(function (city) {
+      // Approximation plane, largement suffisante a cette echelle : un degre
+      // de latitude vaut environ 111 km, un degre de longitude un peu moins
+      // selon la latitude — au Maroc, environ 92 km.
+      var dy = (city.lat - lat) * 111;
+      var dx = (city.lon - lon) * 92;
+      var distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = city.name;
+      }
+    });
+    return bestDistance <= 120 ? best : null;
+  }
+
+  /* Rattache le nom d'administration porte par une procedure a une entree de
+     la liste des administrations. Les noms du jeu d'essai ne se recoupent
+     presque jamais (« Bureau d'etat civil » n'est pas dans la liste) : a
+     defaut d'une correspondance exacte, on en choisit une de facon stable a
+     partir du nom, pour que chaque suivi ait un identifiant a adresser et que
+     le bouton « bureau le plus proche » soit relisible partout. */
+  function administrationIdFor(name) {
+    var wanted = String(name || '').trim().toLowerCase();
+    if (!wanted) return null;
+
+    var exact = administrations.filter(function (entry) {
+      return String(entry.nom_administration).trim().toLowerCase() === wanted;
+    })[0];
+    if (exact) return exact.id_administration;
+
+    var sum = 0;
+    for (var i = 0; i < wanted.length; i++) sum += wanted.charCodeAt(i);
+    return administrations[sum % administrations.length].id_administration;
+  }
+
   function buildTracked(procedureId) {
     var found = findProcedure(procedureId);
     if (!found) return null;
     var procedure = found.procedure;
+    var administrationName = (procedure.proc_administration || [])[0] || '';
     return {
       id: 't' + (nextCitizenId++),
       procedure_id: found.id,
       procedure_title: procedure.proc_title,
-      administration: (procedure.proc_administration || [])[0] || '',
+      administration: administrationName,
+      id_administration: administrationIdFor(administrationName),
       created_at: new Date().toISOString(),
       pieces: (procedure.proc_pieces || []).map(function (label, index) {
         return { id: 'p' + index, label: label, checked: false, note: '' };
@@ -1383,6 +1437,116 @@
       }
       tracked.push(item);
       return delay(JSON.parse(JSON.stringify(item)), 600);
+    },
+
+    /* --- Bureaux a proximite ----------------------------------------------
+
+       Rejoue GET /citizen/administrations/{id}/nearby. Deux variantes, et le
+       choix n'est pas au hasard : une administration dont on connait le site
+       (url_administration) rend une reponse verifiee, les autres rendent une
+       reponse dont toutes les sources sont officieuses. C'est exactement la
+       regle du backend — « verifie » ne vaut true que si une source officielle
+       a ete trouvee — et c'est ce qui permet de relire l'avertissement de
+       l'ecran sans toucher au code.
+
+       L'attente est longue (5 a 15 s en vrai) : on en garde trois secondes
+       ici, sinon l'etat de chargement passe trop vite pour etre relu. */
+    findNearbyOffices: function (adminId, lat, lon) {
+      var admin = administrations.filter(function (entry) {
+        return String(entry.id_administration) === String(adminId);
+      })[0];
+      if (!admin) {
+        return delay(null, 600).then(function () {
+          throw httpFailure(404, 'Administration introuvable.');
+        });
+      }
+
+      var ville = nearestCity(lat, lon);
+      if (!ville) {
+        return delay(null, 600).then(function () {
+          throw httpFailure(502, 'Localisation non reconnue.');
+        });
+      }
+
+      var nom = admin.nom_administration;
+      var officiel = String(admin.url_administration || '').trim();
+
+      if (officiel) {
+        return delay({
+          administration: nom,
+          ville: ville,
+          texte: '**Agence ' + ville + ' Centre**\n' +
+            '- Adresse : 27, rue Youssef Ibn Tachfine, quartier Hassan, ' + ville + '\n' +
+            '- Horaires : du lundi au vendredi, 8h30 – 16h30\n' +
+            '- Téléphone : 05 37 21 44 10\n\n' +
+            '**Agence ' + ville + ' Agdal**\n' +
+            '- Adresse : angle avenue de France et rue Jbel Bouiblane, Agdal, ' + ville + '\n' +
+            '- Horaires : du lundi au vendredi, 9h00 – 15h30\n' +
+            '- Guichet dédié aux employeurs le mardi matin\n\n' +
+            '**Antenne ' + ville + ' Yacoub El Mansour**\n' +
+            '- Adresse : boulevard Al Mansour Addahbi, ' + ville + '\n' +
+            '- Horaires : du lundi au jeudi, 8h30 – 15h00\n\n' +
+            'Pensez à vous munir de votre carte nationale et, le cas échéant, ' +
+            'du numéro d\'immatriculation figurant sur vos bulletins de paie.',
+          sources: [
+            {
+              title: officiel.replace(/^https?:\/\//i, '').replace(/\/+$/, ''),
+              uri: officiel + '/fr/reseau-agences',
+              officielle: true
+            },
+            {
+              title: 'service-public.ma',
+              uri: 'https://www.service-public.ma/annuaire/' +
+                encodeURIComponent(nom.toLowerCase()),
+              officielle: true
+            },
+            {
+              title: 'annuaire-administratif.ma',
+              uri: 'https://annuaire-administratif.ma/' +
+                encodeURIComponent(ville.toLowerCase()),
+              officielle: false
+            }
+          ],
+          verifie: true
+        }, 3000);
+      }
+
+      // Aucun site connu : la recherche ne trouve que des pages tierces. C'est
+      // le cas frequent, et celui qui doit declencher l'avertissement.
+      return delay({
+        administration: nom,
+        ville: ville,
+        texte: 'D\'après les pages consultées, ' + nom + ' disposerait de deux ' +
+          'points d\'accueil à ' + ville + ' :\n\n' +
+          '**Bureau principal**\n' +
+          '- Adresse indiquée : 14, avenue Moulay Youssef, ' + ville + '\n' +
+          '- Horaires mentionnés : 9h00 – 16h00 en semaine\n\n' +
+          '**Annexe**\n' +
+          '- Adresse indiquée : lotissement Ennasr, près du marché municipal, ' +
+          ville + '\n' +
+          '- Aucun horaire trouvé\n\n' +
+          'Les adresses ci-dessus proviennent de pages datées et se ' +
+          'contredisent sur le numéro de rue.',
+        sources: [
+          {
+            title: 'adresses-maroc.blogspot.com',
+            uri: 'https://adresses-maroc.blogspot.com/2019/03/administrations-' +
+              encodeURIComponent(ville.toLowerCase()) + '.html',
+            officielle: false
+          },
+          {
+            title: 'fr.scribd.com',
+            uri: 'https://fr.scribd.com/document/418299312/annuaire-administrations',
+            officielle: false
+          },
+          {
+            title: 'forum-demarches.ma',
+            uri: 'https://forum-demarches.ma/topic/1842-adresse-exacte',
+            officielle: false
+          }
+        ],
+        verifie: false
+      }, 3000);
     },
 
     untrackProcedure: function (trackingId) {

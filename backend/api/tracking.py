@@ -5,7 +5,9 @@ from sqlalchemy.orm import Session
 
 from database import get_db
 import models, schemas
+
 from core.security import get_current_user
+from services.search_agent import search_agencies, reverse_geocode
 
 router = APIRouter(tags=["tracking"])
 
@@ -14,6 +16,7 @@ def serialize_tracked_proc(tracked_proc) -> dict:
     "id_user_procedure": tracked_proc.id_user_procedure,
     "id_procedure": tracked_proc.id_procedure,
     "titre_proc": tracked_proc.procedure.titre_proc,
+    "id_administration": tracked_proc.procedure.id_administration,
     "administration": tracked_proc.procedure.administration.nom_administration
                       if tracked_proc.procedure.administration else None,
     "status": tracked_proc.status,
@@ -158,3 +161,34 @@ def untrack_procedure(id_user_procedure: str,current_user : models.User = Depend
   db.commit()
 
 
+@router.get("/citizen/administrations/{admin_id}/nearby")
+def find_nearby_agencies(
+  admin_id: str,
+  lat: float,
+  lon: float,
+  current_user: models.User = Depends(get_current_user),
+  db: Session = Depends(get_db),
+):
+  administration = db.query(models.Administration).filter_by(
+    id_administration=admin_id
+  ).first()
+  if administration is None:
+    raise HTTPException(status_code=404, detail="Administration introuvable")
+
+  ville = reverse_geocode(lat, lon)
+  if ville is None:
+    raise HTTPException(status_code=502, detail="Localisation non reconnue")
+
+  result = search_agencies(
+    administration.nom_administration,
+    administration.url_administration or "",
+    ville,
+  )
+
+  return {
+    "administration": administration.nom_administration,
+    "ville": ville,
+    "texte": result["texte"],
+    "sources": result["sources"],
+    "verifie": result["source_officielle_trouvee"],
+  } 

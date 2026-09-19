@@ -83,6 +83,43 @@
     return (bytes / (1024 * 1024)).toFixed(1).replace('.', ',') + ' Mo';
   };
 
+  /* --- Markdown ------------------------------------------------------------
+
+     Les textes produits par le modèle arrivent en Markdown : gras, titres,
+     listes, filets. Sans conversion l'utilisateur lit la syntaxe au lieu de la
+     mise en forme, et ces textes sont longs et structurés (adresses, horaires,
+     pièces).
+
+     Deux garde-fous, et ils ne sont pas facultatifs : seuls les textes venant
+     du modèle passent par ici — jamais une saisie d'utilisateur, qui reste
+     échappée — et le HTML produit est lavé par DOMPurify avant d'entrer dans
+     la page. Si l'une des deux bibliothèques manque (CDN injoignable), la
+     fonction renvoie null : l'appelant retombe alors sur le texte échappé,
+     moins lisible mais toujours affiché, et jamais interprété.
+
+     options.breaks : un retour à la ligne simple est voulu (réponse de chat,
+     liste d'agences) là où le Markdown standard le mangerait. */
+  h.markdownToHtml = function (text, options) {
+    var parse = null;
+    if (typeof global.marked !== 'undefined' && global.marked) {
+      if (typeof global.marked.parse === 'function') parse = global.marked.parse;
+      else if (typeof global.marked === 'function') parse = global.marked;
+    }
+    if (!parse) return null;
+    if (typeof global.DOMPurify === 'undefined' || !global.DOMPurify ||
+        typeof global.DOMPurify.sanitize !== 'function') return null;
+
+    try {
+      var html = parse(String(text), {
+        breaks: !options || options.breaks !== false,
+        gfm: true
+      });
+      return global.DOMPurify.sanitize(html);
+    } catch (error) {
+      return null;
+    }
+  };
+
   /* --- DOM ---------------------------------------------------------------- */
 
   h.icon = function (name, extraClass) {

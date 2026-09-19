@@ -26,7 +26,21 @@
       items: [],
       error: '',
       open: {},      // identifiants des cartes dépliées
-      pending: {}    // « suiviId:pieceId » -> true tant que l'appel est en vol
+      pending: {},   // « suiviId:pieceId » -> true tant que l'appel est en vol
+      /* Recherche des bureaux à proximité, par carte dépliée :
+           suiviId -> { phase, message, result }
+         phase : 'locating' | 'searching' | 'fallback' | 'result' | 'error'.
+         Pas d'entrée = pas de recherche en cours, le bouton est affiché.
+
+         Rien n'est conservé : replier la carte efface l'entrée. Une adresse
+         d'agence trouvée il y a dix minutes depuis un autre endroit n'est pas
+         une réponse à « où est le bureau le plus proche », et la remontrer
+         telle quelle laisserait croire qu'elle a été revérifiée. */
+      nearby: {},
+      // suiviId -> numéro de la dernière demande lancée. Une réponse qui
+      // revient après une fermeture ou une relance porte un numéro périmé et
+      // n'écrit plus rien.
+      nearbyToken: {}
     };
 
     var destroyed = false;
@@ -102,8 +116,175 @@
       '</div>';
     }
 
+    /* --- Bureaux à proximité ------------------------------------------------
+
+       Le déclencheur est dans la carte dépliée, pas dans la ligne repliée : la
+       ligne est dense, et cette action met cinq à quinze secondes — elle ne
+       doit pas être à un clic d'égarement.
+
+       Les villes de repli servent quand la géolocalisation est refusée,
+       indisponible ou trop lente. Ce n'est pas un ornement : les navigateurs
+       bloquent la géolocalisation en HTTP simple ailleurs que sur localhost,
+       et sur ces installations c'est le seul chemin qui fonctionne. */
+    var FALLBACK_CITIES = [
+      { name: 'Rabat', lat: 34.0209, lon: -6.8416 },
+      { name: 'Casablanca', lat: 33.5731, lon: -7.5898 },
+      { name: 'Fès', lat: 34.0331, lon: -5.0003 },
+      { name: 'Marrakech', lat: 31.6295, lon: -7.9811 },
+      { name: 'Tanger', lat: 35.7595, lon: -5.8340 },
+      { name: 'Meknès', lat: 33.8935, lon: -5.5473 },
+      { name: 'Agadir', lat: 30.4278, lon: -9.5981 },
+      { name: 'Oujda', lat: 34.6867, lon: -1.9114 }
+    ];
+
+    function renderNearbyButton(item, message) {
+      return (message
+        ? '<div class="inline-error nearby-error" role="alert">' +
+            icon('alert', 'icon-sm') + '<span>' + esc(message) + '</span></div>'
+        : '') +
+        '<button type="button" class="btn-tiny nearby-trigger" ' +
+          'data-nearby-find="' + esc(item.id) + '">' +
+          icon('map-pin', 'icon-sm') + 'Trouver le bureau le plus proche' +
+        '</button>';
+    }
+
+    /* L'attente est bien plus longue que tout le reste de l'application : elle
+       s'explique au lieu de tourner en silence. */
+    function renderNearbyLoading(message) {
+      return '<div class="nearby-loading" role="status">' +
+        '<span class="nearby-spinner" aria-hidden="true"></span>' +
+        '<span>' + esc(message) + '</span>' +
+      '</div>';
+    }
+
+    function renderNearbyFallback(item, message) {
+      return '<div class="nearby-fallback">' +
+        '<p class="nearby-fallback-text">' + esc(message) + '</p>' +
+        '<div class="nearby-fallback-row">' +
+          '<label class="sr-only" for="nearby-city-' + esc(item.id) + '">' +
+            'Ville de recherche</label>' +
+          '<select id="nearby-city-' + esc(item.id) + '" ' +
+              'data-nearby-city="' + esc(item.id) + '">' +
+            FALLBACK_CITIES.map(function (city) {
+              return '<option value="' + esc(city.name) + '">' + esc(city.name) + '</option>';
+            }).join('') +
+          '</select>' +
+          '<button type="button" data-nearby-city-go="' + esc(item.id) + '">' +
+            icon('search', 'icon-sm') + 'Chercher' +
+          '</button>' +
+        '</div>' +
+        '<button type="button" class="btn-tiny nearby-dismiss" ' +
+          'data-nearby-close="' + esc(item.id) + '">Fermer</button>' +
+      '</div>';
+    }
+
+    function renderNearbySources(sources) {
+      if (!sources.length) return '';
+      return '<div class="nearby-sources">' +
+        '<div class="nearby-sources-title">' +
+          h.plural(sources.length, 'Source', 'Sources') + '</div>' +
+        sources.map(function (source) {
+          var badge = '<span class="nearby-source-badge' +
+            (source.official ? ' is-official' : '') + '">' +
+            (source.official ? 'Officielle' : 'Non officielle') + '</span>';
+          /* Une source sans URL exploitable reste citée, mais pas en lien : un
+             lien mort ferait croire qu'il y a quelque chose à ouvrir.
+
+             Le protocole est revérifié ici alors que le normaliseur l'a déjà
+             fait. C'est voulu : cette URL vient d'une recherche menée par un
+             modèle, et c'est cette ligne qui écrit l'attribut href. La garde
+             appartient au dernier endroit qui touche le DOM, pas seulement au
+             premier qui touche la donnée. */
+          if (!/^https?:\/\//i.test(source.uri)) {
+            return '<span class="nearby-source is-dead">' +
+              '<span class="nearby-source-title">' + esc(source.title) + '</span>' +
+              badge + '</span>';
+          }
+          return '<a class="nearby-source' + (source.official ? ' is-official' : '') + '" ' +
+              'href="' + esc(source.uri) + '" target="_blank" rel="noopener noreferrer">' +
+            '<span class="nearby-source-title">' + esc(source.title) + '</span>' +
+            badge + icon('link', 'icon-sm') +
+          '</a>';
+        }).join('') +
+      '</div>';
+    }
+
+    /* « texte » est de la prose écrite par un modèle de langue. Elle passe par
+       h.markdownToHtml — le même chemin que les réponses de l'assistant, lavage
+       DOMPurify compris — et jamais par innerHTML directement. Si la conversion
+       n'est pas possible (bibliothèque absente), on affiche le texte échappé :
+       moins lisible, mais sûr. */
+    function renderNearbyText(text) {
+      var html = h.markdownToHtml(text);
+      return html === null
+        ? '<div class="nearby-text is-plain" dir="auto">' + esc(text) + '</div>'
+        : '<div class="nearby-text is-markdown" dir="auto">' + html + '</div>';
+    }
+
+    /* L'avertissement est au-dessus du résultat, et non en note de bas de
+       panneau : quand aucune source officielle n'a été trouvée, l'adresse
+       affichée peut être fausse, et quelqu'un qui se déplace pour rien est
+       précisément ce que cet écran doit éviter. */
+    function renderNearbyWarning() {
+      return '<div class="nearby-warning" role="alert">' +
+        icon('alert') +
+        '<div>' +
+          '<div class="nearby-warning-title">Informations non vérifiées</div>' +
+          '<p>Ces informations proviennent de sources non officielles et ' +
+            'n\'ont pas été vérifiées. Confirmez-les auprès de l\'administration ' +
+            'avant de vous déplacer.</p>' +
+        '</div>' +
+      '</div>';
+    }
+
+    function renderNearbyResult(item, result) {
+      return '<div class="nearby-panel' + (result.verified ? '' : ' is-unverified') + '">' +
+        '<div class="nearby-panel-head">' +
+          '<div class="nearby-city" dir="auto">' +
+            (result.city
+              ? 'Résultats pour ' + esc(result.city)
+              : 'Résultats') + '</div>' +
+          '<button type="button" class="icon-btn" data-nearby-close="' + esc(item.id) + '" ' +
+            'aria-label="Fermer les résultats">' + icon('x') + '</button>' +
+        '</div>' +
+        (result.verified ? '' : renderNearbyWarning()) +
+        renderNearbyText(result.text) +
+        renderNearbySources(result.sources) +
+        '<div class="nearby-panel-foot">' +
+          '<button type="button" class="btn-tiny" data-nearby-close="' + esc(item.id) + '">' +
+            'Fermer</button>' +
+        '</div>' +
+      '</div>';
+    }
+
+    function renderNearby(item) {
+      // Sans identifiant d'administration il n'y a rien à interroger : plutôt
+      // qu'un bouton qui échouerait à coup sûr, on n'en met pas.
+      if (item.administrationId === null || item.administrationId === undefined ||
+          item.administrationId === '') return '';
+
+      var current = state.nearby[item.id];
+      var inner;
+      if (!current) inner = renderNearbyButton(item, '');
+      else if (current.phase === 'locating') {
+        inner = renderNearbyLoading('Recherche de votre position…');
+      } else if (current.phase === 'searching') {
+        inner = renderNearbyLoading(
+          'Recherche des bureaux à proximité… cela peut prendre quelques secondes');
+      } else if (current.phase === 'fallback') {
+        inner = renderNearbyFallback(item, current.message);
+      } else if (current.phase === 'error') {
+        inner = renderNearbyButton(item, current.message);
+      } else {
+        inner = renderNearbyResult(item, current.result);
+      }
+
+      return '<div class="track-nearby" data-nearby="' + esc(item.id) + '">' + inner + '</div>';
+    }
+
     function renderBody(item) {
       return '<div class="track-body">' +
+        renderNearby(item) +
         '<div class="detail-block">' +
           '<div class="detail-title">Pièces requises' +
             '<span class="detail-count">' + item.pieces.length + '</span></div>' +
@@ -339,17 +520,150 @@
             return String(entry.id) !== String(item.id);
           });
           delete state.open[item.id];
+          nextToken(item.id);
+          delete state.nearby[item.id];
           render();
           h.toast('Procédure retirée du suivi.', 'success');
         }
       });
     }
 
+    /* --- Bureaux à proximité : comportement ---------------------------------- */
+
+    /* Repeint la seule zone concernée. Reconstruire la carte ferait perdre le
+       curseur dans une note en cours de saisie, et la recherche est justement
+       assez longue pour qu'on écrive pendant qu'elle tourne. */
+    function paintNearby(item) {
+      var zone = bodyNode.querySelector('[data-nearby="' + item.id + '"]');
+      if (!zone) return;
+      var fresh = h.fromHTML(renderNearby(item));
+      if (fresh) zone.parentNode.replaceChild(fresh, zone);
+    }
+
+    function setNearby(id, value) {
+      if (value) state.nearby[id] = value;
+      else delete state.nearby[id];
+      var item = find(id);
+      if (item) paintNearby(item);
+    }
+
+    // Toute réponse arrivée après une fermeture ou une relance porte un numéro
+    // périmé : elle est ignorée plutôt que peinte sur un panneau qui n'est
+    // plus le sien.
+    function nextToken(id) {
+      var token = (state.nearbyToken[id] || 0) + 1;
+      state.nearbyToken[id] = token;
+      return token;
+    }
+
+    function isStale(id, token) {
+      return destroyed || state.nearbyToken[id] !== token;
+    }
+
+    function closeNearby(id) {
+      nextToken(id);
+      setNearby(id, null);
+    }
+
+    function searchNearby(id, lat, lon) {
+      var item = find(id);
+      if (!item) return;
+      var token = nextToken(id);
+      setNearby(id, { phase: 'searching' });
+
+      App.api.findNearbyOffices(item.administrationId, lat, lon).then(function (result) {
+        if (isStale(id, token)) return;
+        setNearby(id, { phase: 'result', result: result });
+      }, function (error) {
+        if (isStale(id, token)) return;
+        // Le message du serveur est plus précis que ce qu'on inventerait :
+        // « Localisation non reconnue » ne se confond pas avec une panne. Le
+        // bouton revient avec lui, la recherche reste relançable.
+        setNearby(id, { phase: 'error', message: error.message });
+      });
+    }
+
+    /* Refus, indisponibilité, délai dépassé : dans les trois cas on explique
+       pourquoi la position était demandée et on propose la liste des villes.
+       Échouer en silence laisserait un bouton qui ne fait rien. */
+    function offerCities(id, reason) {
+      setNearby(id, {
+        phase: 'fallback',
+        message: reason + ' Votre position sert à classer les bureaux du plus ' +
+          'proche au plus loin. Choisissez plutôt une ville :'
+      });
+    }
+
+    function geolocationReason(error) {
+      var code = error && error.code;
+      if (code === 1) return 'Accès à votre position refusé.';
+      if (code === 3) return 'Votre position met trop de temps à être déterminée.';
+      return 'Votre position n\'a pas pu être déterminée.';
+    }
+
+    function locateThenSearch(id) {
+      var item = find(id);
+      if (!item || !item.administrationId) return;
+      // Une recherche déjà en vol : on ne la double pas.
+      var current = state.nearby[id];
+      if (current && (current.phase === 'locating' || current.phase === 'searching')) return;
+
+      if (!navigator.geolocation) {
+        offerCities(id, 'Ce navigateur ne sait pas donner votre position.');
+        return;
+      }
+
+      var token = nextToken(id);
+      setNearby(id, { phase: 'locating' });
+
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          if (isStale(id, token)) return;
+          searchNearby(id, position.coords.latitude, position.coords.longitude);
+        },
+        function (error) {
+          if (isStale(id, token)) return;
+          offerCities(id, geolocationReason(error));
+        },
+        // Sans délai maximum, le navigateur peut attendre indéfiniment une
+        // position qui ne viendra pas : le bouton resterait en attente sans
+        // rien dire. Dix secondes, puis on passe aux villes.
+        { timeout: 10000, maximumAge: 60000, enableHighAccuracy: false }
+      );
+    }
+
+    function searchFromCity(id) {
+      var select = bodyNode.querySelector('[data-nearby-city="' + id + '"]');
+      if (!select) return;
+      var chosen = FALLBACK_CITIES.filter(function (city) {
+        return city.name === select.value;
+      })[0];
+      if (!chosen) return;
+      searchNearby(id, chosen.lat, chosen.lon);
+    }
+
     /* --- Évènements ---------------------------------------------------------- */
+
+    h.on(view, 'click', '[data-nearby-find]', function (event, target) {
+      locateThenSearch(target.getAttribute('data-nearby-find'));
+    });
+
+    h.on(view, 'click', '[data-nearby-city-go]', function (event, target) {
+      searchFromCity(target.getAttribute('data-nearby-city-go'));
+    });
+
+    h.on(view, 'click', '[data-nearby-close]', function (event, target) {
+      closeNearby(target.getAttribute('data-nearby-close'));
+    });
 
     h.on(view, 'click', '[data-toggle]', function (event, target) {
       var id = target.getAttribute('data-toggle');
       state.open[id] = !state.open[id];
+      // Rien n'est gardé d'une ouverture à l'autre : rouvrir la carte remontre
+      // le bouton, jamais le résultat précédent. Le jeton avance pour qu'une
+      // recherche encore en vol ne vienne pas repeindre la carte rouverte.
+      nextToken(id);
+      delete state.nearby[id];
       render();
     });
 

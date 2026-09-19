@@ -623,11 +623,63 @@
       title: String(firstDefined(raw,
         ['procedure_title', 'titre_proc', 'title', 'proc_title'], 'Procédure sans titre')),
       administration: normalizeTrackedAdministration(raw),
+      // L'identifiant de l'administration, et non son nom : c'est lui qu'attend
+      // /citizen/administrations/{id}/nearby. Sans lui l'écran « Mes procédures »
+      // n'a rien à adresser et le bouton « bureau le plus proche » n'existe pas.
+      administrationId: firstDefined(raw,
+        ['id_administration', 'administration_id', 'administrationId'], null),
       status: String(firstDefined(raw, ['status', 'statut', 'etat'], '')),
       startedAt: firstDefined(raw,
         ['date_debut', 'created_at', 'started_at', 'createdAt'], null),
       pieces: pieces.map(normalizeTrackedPiece),
       steps: normalizeTrackedSteps(raw.steps || raw.etapes)
+    };
+  }
+
+  /* --- Bureaux à proximité ------------------------------------------------
+
+     GET /citizen/administrations/{id}/nearby?lat=&lon=
+       -> { administration, ville, texte, sources: [ { title, uri, officielle } ],
+            verifie }
+
+     « texte » est de la prose Markdown libre, écrite par un modèle : elle n'a
+     pas de structure sur laquelle s'appuyer, et elle n'entre dans la page
+     qu'après conversion et lavage (h.markdownToHtml). « verifie » ne vaut true
+     que si au moins une source officielle a été trouvée — l'écran s'en sert
+     pour avertir, c'est la seule valeur qui décide de ce qu'on affirme. */
+
+  /* Une source arrive avec une URL que personne n'a validée : on n'accepte que
+     http(s). Un « javascript: » glissé dans une réponse de modèle deviendrait
+     sinon un lien exécutable posé dans la page. */
+  function safeHttpUrl(value) {
+    var text = String(value === null || value === undefined ? '' : value).trim();
+    return /^https?:\/\//i.test(text) ? text : '';
+  }
+
+  function normalizeNearbySource(raw) {
+    raw = raw || {};
+    var uri = safeHttpUrl(firstDefined(raw, ['uri', 'url', 'lien', 'link'], ''));
+    var title = String(firstDefined(raw, ['title', 'titre', 'name', 'nom'], ''));
+    return {
+      // Sans titre, l'hôte du lien vaut mieux qu'une puce vide.
+      title: title || uri.replace(/^https?:\/\//i, '').split('/')[0] || 'Source sans titre',
+      uri: uri,
+      official: firstDefined(raw,
+        ['officielle', 'official', 'is_official'], false) === true
+    };
+  }
+
+  function normalizeNearby(raw) {
+    raw = raw || {};
+    var sources = firstDefined(raw, ['sources', 'liens'], null);
+    if (!Array.isArray(sources)) sources = [];
+    return {
+      administration: String(firstDefined(raw,
+        ['administration', 'nom_administration'], '')),
+      city: String(firstDefined(raw, ['ville', 'city'], '')),
+      text: String(firstDefined(raw, ['texte', 'text', 'reponse'], '') || ''),
+      sources: sources.map(normalizeNearbySource),
+      verified: firstDefined(raw, ['verifie', 'verified'], false) === true
     };
   }
 
@@ -1152,6 +1204,33 @@
         ? App.mock.trackProcedure(procedureId)
         : request('/citizen/tracked', { method: 'POST', json: { id_procedure: procedureId } });
       return promise.then(normalizeTracked);
+    },
+
+    /* Cherche les bureaux de cette administration autour d'un point. L'appel
+       est long — géocodage inverse, puis recherche web, puis rédaction : cinq à
+       quinze secondes. L'écran appelant doit donc dire l'attente, pas seulement
+       la faire tourner.
+
+       404 administration inconnue, 502 localisation non reconnue : les deux
+       remontent avec le message du serveur, il est plus précis que ce qu'on
+       inventerait ici. */
+    findNearbyOffices: function (adminId, lat, lon) {
+      if (adminId === null || adminId === undefined || adminId === '') {
+        return Promise.reject(new Error(
+          'Cette procédure n\'indique aucune administration : impossible de ' +
+          'chercher un bureau.'
+        ));
+      }
+      if (typeof lat !== 'number' || typeof lon !== 'number' ||
+          isNaN(lat) || isNaN(lon)) {
+        return Promise.reject(new Error('Coordonnées manquantes ou invalides.'));
+      }
+
+      var promise = config.USE_MOCK
+        ? App.mock.findNearbyOffices(adminId, lat, lon)
+        : request('/citizen/administrations/' + encodeURIComponent(adminId) +
+            '/nearby' + queryString({ lat: lat, lon: lon }));
+      return promise.then(normalizeNearby);
     },
 
     untrackProcedure: function (trackingId) {
