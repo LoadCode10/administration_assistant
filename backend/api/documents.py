@@ -120,7 +120,8 @@ async def upload_document(
   background_tasks.add_task(
     run_extraction, 
     extraction.id_extraction,
-    stored_path
+    stored_path,
+    current_user.id_user,
   )
 
   return document

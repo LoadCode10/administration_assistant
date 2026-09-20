@@ -8,7 +8,8 @@
    La fiche ne rejoue pas ce que la liste affichait : le serveur ne renvoie ici
    ni le nombre de discussions ni le téléphone, et on n'invente pas ces champs
    pour combler la mise en page. Ce qu'elle apporte, c'est le détail des
-   procédures suivies. */
+   procédures suivies et celui de la consommation de jetons — le compteur
+   d'appels et la ventilation par fonctionnalité, que la liste n'a pas. */
 (function (global) {
   'use strict';
 
@@ -16,8 +17,30 @@
   var h = App.helpers;
   var esc = h.esc;
   var icon = h.icon;
+  var charts = App.charts;
 
   var LIST_ROUTE = '#/users';
+
+  /* Les fonctionnalites qui appellent le modele. La cle vient du serveur
+     (colonne « feature » de token_usage), le libelle est pour l'ecran : un
+     administrateur n'a pas a savoir que la recherche de bureaux s'appelle
+     « agent » dans la base.
+
+     Les teintes sont prises dans la palette categorielle validee de
+     js/charts.js. Elles ne portent jamais seules le sens — chaque ligne
+     affiche son libelle, son total et son nombre d'appels — elles ne font
+     que relier la barre a sa ligne. */
+  var FEATURES = {
+    chat: { label: 'Assistant', color: '#2a78d6' },
+    extraction: { label: 'Extraction de documents', color: '#7a4fd0' },
+    agent: { label: 'Recherche de bureaux', color: '#0b8f9e' }
+  };
+
+  // Une cle inconnue garde sa valeur brute plutot que de disparaitre : une
+  // fonctionnalite ajoutee cote serveur doit rester visible ici sans livraison.
+  function featureView(key) {
+    return FEATURES[key] || { label: key || 'Fonctionnalité inconnue', color: '#5f6b76' };
+  }
 
   /* Les deux statuts du suivi, côté serveur : « en_cours » et « termine ».
      Un statut inconnu garde sa valeur brute dans une pastille neutre plutôt
@@ -90,6 +113,86 @@
         '</div>';
     }
 
+    /* --- Consommation de jetons ------------------------------------------
+
+       Trois choses, dans cet ordre : le total, ce qui le compose, et depuis
+       quand on mesure. La ventilation est le cœur du bloc — 200 000 jetons
+       venus de quatre extractions de documents et 200 000 jetons venus de
+       conversations ne racontent pas la même chose, et seul le détail par
+       fonctionnalité fait la différence. */
+
+    function tokenTotals(user) {
+      return '<div class="token-totals">' +
+          '<div class="token-figure">' +
+            '<div class="token-value">' + esc(charts.fmt(user.totalTokens)) + '</div>' +
+            '<div class="token-unit">' +
+              esc(Math.abs(user.totalTokens) >= 2 ? 'tokens' : 'token') + '</div>' +
+          '</div>' +
+          '<div class="user-chips">' +
+            '<span class="meta-chip">' + icon('upload', 'icon-sm') +
+              esc(charts.fmt(user.promptTokens) + ' en entrée') + '</span>' +
+            '<span class="meta-chip">' + icon('send', 'icon-sm') +
+              esc(charts.fmt(user.outputTokens) + ' en sortie') + '</span>' +
+            // « appels au modele » et non « reponses » : le compteur couvre
+            // desormais l'extraction et la recherche de bureaux, pas seulement
+            // les reponses de l'assistant.
+            '<span class="meta-chip">' + icon('sparkles', 'icon-sm') +
+              esc(h.plural(user.tokenCalls, 'appel au modèle', 'appels au modèle')) +
+              '</span>' +
+          '</div>' +
+        '</div>';
+    }
+
+    /* Une ligne par fonctionnalité, dans la disposition des statuts du tableau
+       de bord : le libellé, le total, la part, puis la barre sur toute la
+       largeur. La part se calcule sur la somme des lignes et non sur le total
+       du compte — les deux coïncident côté serveur, mais si jamais ils
+       divergeaient, des pourcentages qui ne font pas 100 se verraient plus
+       qu'un total en trop. */
+    function featureRow(line, sum) {
+      var view = featureView(line.feature);
+      var ratio = sum ? line.total / sum : 0;
+
+      return '<div class="status-row">' +
+          '<span class="status-key">' +
+            '<span class="status-dot" style="background:' + view.color + '"></span>' +
+            '<span dir="auto">' + esc(view.label) + '</span>' +
+          '</span>' +
+          '<span class="status-count">' + esc(charts.fmt(line.total)) + '</span>' +
+          '<span class="status-pct">' + Math.round(ratio * 100) + ' %</span>' +
+          '<span class="feature-calls">' +
+            esc(h.plural(line.calls, 'appel', 'appels')) + '</span>' +
+          charts.meter(ratio, view.color) +
+        '</div>';
+    }
+
+    function renderTokensBlock(user) {
+      var lines = user.tokensByFeature;
+      var sum = lines.reduce(function (total, line) {
+        return total + line.total;
+      }, 0);
+
+      var breakdown = lines.length
+        ? '<div class="status-list">' +
+            lines.map(function (line) { return featureRow(line, sum); }).join('') +
+          '</div>'
+        : '<div class="token-empty">Aucune consommation enregistrée.</div>';
+
+      return '<div class="card user-tokens">' +
+          '<div class="detail-title">Consommation de tokens</div>' +
+          tokenTotals(user) +
+          '<div class="detail-title token-breakdown-title">' +
+            'Répartition par fonctionnalité</div>' +
+          breakdown +
+          /* Le compteur est parti de zero le jour ou la table « token_usage »
+             est apparue : un compte actif de longue date affiche donc moins
+             que ce qu'il a reellement consomme. Le dire evite de lire le
+             chiffre comme un historique complet. */
+          '<p class="token-note">La mesure de consommation a été mise en place ' +
+            'récemment : les appels antérieurs ne sont pas comptabilisés.</p>' +
+        '</div>';
+    }
+
     /* Le titre, l'administration en dessous, le statut à droite : la même
        disposition que les cartes de suivi de l'espace citoyen, pour que la
        même information se lise au même endroit des deux côtés. */
@@ -125,12 +228,14 @@
     function render(user) {
       view.innerHTML = backLink() +
         renderProfile(user) +
+        renderTokensBlock(user) +
         renderTrackedBlock(user);
     }
 
     function renderLoading() {
       view.innerHTML = backLink() +
         '<div class="skeleton-card" style="height:96px"></div>' +
+        '<div class="skeleton-card" style="height:188px"></div>' +
         '<div class="skeleton-card" style="height:132px"></div>';
     }
 

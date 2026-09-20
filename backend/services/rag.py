@@ -74,7 +74,14 @@ def generate_answer(question: str, facts: str) -> str:
       model="gemini-2.5-flash",
       contents=prompt,
   )
-  return response.text
+
+  usage = response.usage_metadata
+  tokens_usage = {
+    "prompt_tokens": usage.prompt_token_count if usage else None,
+    "output_tokens": usage.candidates_token_count if usage else None,
+    "total_tokens": usage.total_token_count if usage else None,
+  }
+  return response.text, tokens_usage
 
 def build_text_for_embedding(procedure):
   combined_parts = [procedure.titre_proc]

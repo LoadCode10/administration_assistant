@@ -400,6 +400,10 @@ class Reponse(Base):
     back_populates="reponses"
   )
 
+  # prompt_tokens: Mapped[int | None] = mapped_column(Integer, nullable=True)
+  
+  # output_tokens: Mapped[int | None] = mapped_column(Integer, nullable=True)
+
 class Extraction(Base):
   __tablename__ = "extractions"
 
@@ -603,4 +607,27 @@ class Log(Base):
     ForeignKey("users.id_user"), nullable=True
   )
 
+  user: Mapped["User | None"] = relationship()
+
+class TokenUsage(Base):
+  __tablename__ = "token_usage"
+
+  id_usage: Mapped[str] = mapped_column(
+    String, primary_key=True, default=lambda: str(uuid.uuid4())
+  )
+
+  feature: Mapped[str] = mapped_column(String, nullable=False)
+
+  model: Mapped[str] = mapped_column(String, nullable=False)
+
+  prompt_tokens: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+
+  output_tokens: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+
+  date_usage: Mapped[datetime] = mapped_column(DateTime, default=datetime.now)
+
+  id_user: Mapped[str | None] = mapped_column(
+    ForeignKey("users.id_user", ondelete="SET NULL"), nullable=True
+  )
+  
   user: Mapped["User | None"] = relationship()

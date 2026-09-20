@@ -62,6 +62,12 @@
      plusieurs a des statuts differents, et deux inscriptions recentes pour
      que la date s'ecrive en relatif.
 
+     La consommation de jetons est volontairement tres etalee — un compte dans
+     les dizaines de milliers, deux dans les milliers, deux dans les centaines
+     et un a zero : c'est elle qui exerce l'abreviation de l'axe (« 12k »), la
+     pastille grise du compte inactif et l'ecart entre les lignes du
+     graphique. Un jeu ou tout le monde consomme pareil ne montrerait rien.
+
      « u1 » et « u2 » sont les deux comptes de connexion declares plus haut :
      se voir soi-meme dans la liste evite de croire qu'elle est incomplete. */
   var users = [
@@ -74,6 +80,26 @@
       role_user: 'citizen',
       creation_date: hoursAgo(5),
       conversations_count: 1,
+      tokens: { prompt: 560, output: 80, total: 640 },
+      features: [
+        { feature: 'chat', total: 640, nb_appels: 3 }
+      ],
+      tracked_procs: []
+    },
+    {
+      id_user: 'u7',
+      nom_user: 'Tazi',
+      prenom_user: 'Omar',
+      email_user: 'omar.tazi@example.ma',
+      userName_user: 'otazi',
+      role_user: 'citizen',
+      creation_date: hoursAgo(20),
+      conversations_count: 6,
+      tokens: { prompt: 11450, output: 1150, total: 12600 },
+      features: [
+        { feature: 'chat', total: 9100, nb_appels: 24 },
+        { feature: 'agent', total: 3500, nb_appels: 5 }
+      ],
       tracked_procs: []
     },
     {
@@ -85,6 +111,10 @@
       role_user: 'citizen',
       creation_date: hoursAgo(52),
       conversations_count: 4,
+      tokens: { prompt: 7660, output: 760, total: 8420 },
+      features: [
+        { feature: 'chat', total: 8420, nb_appels: 22 }
+      ],
       tracked_procs: [
         {
           id_up: 'up51',
@@ -103,6 +133,8 @@
       role_user: 'admin',
       creation_date: '2026-07-14T09:12:03',
       conversations_count: 0,
+      tokens: { prompt: 0, output: 0, total: 0 },
+      features: [],
       tracked_procs: []
     },
     {
@@ -116,6 +148,12 @@
       conversations_count: 9,
       // Plusieurs suivis, statuts melanges, et une administration nulle :
       // c'est la fiche qui exerce tout l'ecran de detail d'un coup.
+      tokens: { prompt: 41200, output: 4000, total: 45200 },
+      features: [
+        { feature: 'chat', total: 12400, nb_appels: 31 },
+        { feature: 'extraction', total: 31200, nb_appels: 4 },
+        { feature: 'agent', total: 1600, nb_appels: 2 }
+      ],
       tracked_procs: [
         {
           id_up: 'up31',
@@ -144,6 +182,22 @@
       ]
     },
     {
+      id_user: 'u8',
+      nom_user: 'Chraibi',
+      prenom_user: 'Imane',
+      email_user: 'imane.chraibi@example.ma',
+      userName_user: 'ichraibi',
+      role_user: 'citizen',
+      creation_date: '2026-05-30T14:20:11',
+      conversations_count: 2,
+      tokens: { prompt: 4820, output: 480, total: 5300 },
+      features: [
+        { feature: 'chat', total: 4100, nb_appels: 11 },
+        { feature: 'agent', total: 1200, nb_appels: 2 }
+      ],
+      tracked_procs: []
+    },
+    {
       id_user: 'u2',
       nom_user: 'Bennani',
       prenom_user: 'Salma',
@@ -152,6 +206,10 @@
       role_user: 'citizen',
       creation_date: '2026-04-21T11:05:00',
       conversations_count: 3,
+      tokens: { prompt: 2870, output: 280, total: 3150 },
+      features: [
+        { feature: 'chat', total: 3150, nb_appels: 9 }
+      ],
       tracked_procs: [
         {
           id_up: 'up21',
@@ -170,6 +228,10 @@
       role_user: 'admin',
       creation_date: '2026-01-09T08:30:00',
       conversations_count: 0,
+      tokens: { prompt: 192, output: 18, total: 210 },
+      features: [
+        { feature: 'extraction', total: 210, nb_appels: 1 }
+      ],
       tracked_procs: []
     }
   ];
@@ -857,6 +919,93 @@
     });
   }
 
+  /* --- Consommation de jetons ----------------------------------------------
+
+     Rejoue GET /admin/tokens/daily. Les séries sont fabriquées à partir du
+     total porté par chaque compte : la somme des points retombe donc exactement
+     sur le chiffre écrit sur la carte, comme côté serveur. Une carte qui
+     annonce 45 200 au-dessus d'une courbe qui en totalise 44 000 ferait douter
+     des deux.
+
+     Le tirage est déterministe — générateur à graine, semée sur l'identifiant
+     du compte : deux chargements donnent la même courbe. Une courbe qui saute
+     à chaque rendu se remarque tout de suite, et fait soupçonner le reste.
+
+     Environ un jour sur trois reste vide : personne ne questionne l'assistant
+     tous les jours, et c'est ce que l'écran doit savoir dessiner. */
+
+  /* Générateur congruentiel (Lehmer). Suffisant pour une silhouette de courbe,
+     et surtout reproductible, ce que Math.random() n'est pas. */
+  function seededRandom(seed) {
+    var value = seed % 2147483647;
+    if (value <= 0) value += 2147483646;
+    return function () {
+      value = (value * 16807) % 2147483647;
+      return (value - 1) / 2147483646;
+    };
+  }
+
+  function seedOf(text) {
+    var seed = 7;
+    for (var i = 0; i < String(text).length; i++) {
+      seed = (seed * 31 + String(text).charCodeAt(i)) % 2147483647;
+    }
+    return seed;
+  }
+
+  function dayKey(date) {
+    return date.getFullYear() + '-' +
+      String(date.getMonth() + 1).padStart(2, '0') + '-' +
+      String(date.getDate()).padStart(2, '0');
+  }
+
+  /* Un point par jour, du plus ancien au plus récent, zéros compris. Le reste
+     de l'arrondi est versé sur la journée la plus chargée : ajouter un jeton
+     sur un jour tiré à zéro rouvrirait une journée qu'on vient de fermer. */
+  function tokenPoints(user, days) {
+    var random = seededRandom(seedOf(user.id_user));
+    var total = (user.tokens && user.tokens.total) || 0;
+
+    var weights = [];
+    var sum = 0;
+    for (var i = 0; i < days; i++) {
+      var weight = random() < 0.34 ? 0 : random();
+      weights.push(weight);
+      sum += weight;
+    }
+    // Un compte qui consomme mais n'aurait tiré que des zéros : on lui laisse
+    // au moins une journée, sinon la division ci-dessous n'a pas de sens.
+    if (!sum) { weights[days - 1] = 1; sum = 1; }
+
+    var values = [];
+    var spent = 0;
+    var heaviest = 0;
+    for (var j = 0; j < days; j++) {
+      var value = Math.round((total * weights[j]) / sum);
+      values.push(value);
+      spent += value;
+      if (weights[j] > weights[heaviest]) heaviest = j;
+    }
+    values[heaviest] += total - spent;
+    if (values[heaviest] < 0) values[heaviest] = 0;
+
+    var today = new Date();
+    return values.map(function (value, index) {
+      var date = new Date(today.getFullYear(), today.getMonth(),
+        today.getDate() - (days - 1 - index));
+      // Même répartition que sur la fiche : la sortie pèse environ un dixième
+      // de l'entrée, une question courte appelant une réponse longue mais le
+      // contexte de la procédure occupant l'essentiel du prompt.
+      var output = Math.round(value * 0.09);
+      return {
+        date: dayKey(date),
+        prompt: value - output,
+        output: output,
+        total: value
+      };
+    });
+  }
+
   /* --- Journal d'activite --------------------------------------------------
 
      Rejoue GET /admin/logs. Les entrees sont fabriquees une fois, puis triees
@@ -1304,14 +1453,21 @@
           role_user: user.role_user,
           creation_date: user.creation_date,
           tracked_count: user.tracked_procs.length,
-          conversations_count: user.conversations_count
+          conversations_count: user.conversations_count,
+          tokens: {
+            prompt: user.tokens.prompt,
+            output: user.tokens.output,
+            total: user.tokens.total
+          }
         };
       }), 350);
     },
 
     /* La fiche ne renvoie ni le nombre de discussions ni le téléphone : le
        mock s'en tient à ce que sert le backend, sinon l'écran serait relu sur
-       des champs qui n'arriveront jamais. */
+       des champs qui n'arriveront jamais. Elle sert en revanche le détail de
+       la consommation, que la liste n'a pas : le compteur d'appels et la
+       ventilation par fonctionnalité. */
     getUser: function (id) {
       var found = users.filter(function (user) {
         return String(user.id_user) === String(id);
@@ -1321,6 +1477,14 @@
           throw httpFailure(404, 'Compte introuvable (' + id + ').');
         });
       }
+      /* Le compteur d'appels de la fiche est la SOMME des lignes de
+         ventilation : le serveur compte les memes enregistrements des deux
+         cotes, et deux chiffres qui ne se repondent pas sur le meme ecran se
+         remarquent tout de suite. */
+      var appels = found.features.reduce(function (sum, line) {
+        return sum + line.nb_appels;
+      }, 0);
+
       return delay({
         id_user: found.id_user,
         nom_user: found.nom_user,
@@ -1330,8 +1494,40 @@
         role_user: found.role_user,
         creation_date: found.creation_date,
         tracked_count: found.tracked_procs.length,
-        tracked_procs: JSON.parse(JSON.stringify(found.tracked_procs))
+        tracked_procs: JSON.parse(JSON.stringify(found.tracked_procs)),
+        tokens: {
+          prompt: found.tokens.prompt,
+          output: found.tokens.output,
+          total: found.tokens.total,
+          nb_appels: appels
+        },
+        tokens_par_feature: JSON.parse(JSON.stringify(found.features))
       }, 300);
+    },
+
+    /* Rejoue GET /admin/tokens/daily?days=&top=. Comme le serveur : trie du
+       plus gros consommateur au plus petit, coupe a « top », et n'expose que
+       les comptes qui ont reellement consomme — un compte a zero n'est pas un
+       « gros consommateur », il se lit sur sa carte. */
+    getTokensDaily: function (params) {
+      params = params || {};
+      var days = Math.max(1, Math.min(365, Number(params.days) || 30));
+      var top = Math.max(1, Number(params.top) || 10);
+
+      var series = users
+        .filter(function (user) { return (user.tokens && user.tokens.total) > 0; })
+        .map(function (user) {
+          return {
+            id_user: user.id_user,
+            userName: user.userName_user,
+            total: user.tokens.total,
+            points: tokenPoints(user, days)
+          };
+        })
+        .sort(function (a, b) { return b.total - a.total; })
+        .slice(0, top);
+
+      return delay({ days: days, series: series }, 450);
     },
 
     /* --- Espace citoyen : assistant --------------------------------------- */

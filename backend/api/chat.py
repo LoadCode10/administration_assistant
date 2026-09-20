@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from database import get_db
 import models, schemas
 from core.security import get_current_user
-from core.logging import write_log
+from core.logging import write_log, record_usage
 from services.rag import my_retriever, build_facts, generate_answer
 
 router = APIRouter(tags=["chat"])
@@ -58,17 +58,26 @@ def ask_question(
     raise HTTPException(status_code=503, detail="Aucune procédure indexée.")
 
   facts = build_facts(retrieved_procedures)
-  answer_text = generate_answer(payload.question_content, facts)
+  answer_text, tokens = generate_answer(payload.question_content, facts)
 
   reponse = models.Reponse(
     reponse_content = answer_text,
     reponse_date = datetime.now(),
-    question = question
+    question = question,
   )
 
   reponse.procedures = retrieved_procedures
   db.add(reponse)
   conv.date_maj = datetime.now()
+
+  record_usage(
+    db,
+    current_user,
+    feature="chat",
+    model="gemini-2.5-flash",
+    tokens= tokens,
+  )
+  
   db.commit()
   db.refresh(reponse)
 

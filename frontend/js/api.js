@@ -754,13 +754,66 @@
 
      La fiche ne renvoie NI le nombre de discussions NI le telephone : l'ecran
      de detail ne les affiche donc pas, et le normaliseur ne fabrique pas de
-     champ que le serveur ne remplit pas.
+     champ que le serveur ne remplit pas. Elle renvoie en revanche, depuis le
+     passage a la table « token_usage », le detail de la consommation :
+     « tokens » porte un compteur d'appels (nb_appels) que la liste n'a pas, et
+     « tokens_par_feature » ventile le total entre les fonctionnalites qui
+     appellent le modele.
 
        compte  = { id_user, nom_user, prenom_user, email_user, userName_user,
                    role_user, creation_date, tracked_count,
-                   conversations_count (liste seulement) }
+                   conversations_count (liste seulement),
+                   tokens: { prompt, output, total } partout,
+                           + nb_appels sur la fiche seulement,
+                   tokens_par_feature: [ { feature, total, nb_appels } ]
+                           (fiche seulement ; peut etre vide) }
        tracked = { id_up, status, titre_proc, administration } — « administration »
                  peut etre nulle, « status » vaut « en_cours » ou « termine ». */
+
+  /* Le bloc « tokens » d'un compte : { prompt, output, total }. Un compte qui
+     n'a jamais rien demandé le reçoit à zéro plutôt qu'absent, mais on ne s'y
+     fie pas — une ancienne version du backend ne l'envoie pas du tout, et
+     l'écran doit alors afficher « 0 token », pas « NaN ».
+
+     Le total est recalculé à partir des deux moitiés quand le serveur ne le
+     donne pas : c'est la seule valeur affichée sur la carte. */
+  function normalizeTokens(raw) {
+    var tokens = raw && typeof raw === 'object' ? raw : {};
+    var prompt = Number(firstDefined(tokens,
+      ['prompt', 'prompt_tokens', 'promptTokens', 'input'], 0)) || 0;
+    var output = Number(firstDefined(tokens,
+      ['output', 'output_tokens', 'outputTokens', 'completion'], 0)) || 0;
+    var total = firstDefined(tokens, ['total', 'total_tokens', 'totalTokens'], null);
+
+    /* « nb_appels » compte desormais TOUS les appels au modele — assistant,
+       extraction de documents, recherche de bureaux — la ou « nb_reponses »
+       ne comptait que les reponses de discussion. L'ancien nom reste lu en
+       repli : une reponse servie par une version precedente du backend doit
+       afficher son compteur, pas un zero. */
+    var calls = firstDefined(tokens,
+      ['nb_appels', 'nbAppels', 'calls', 'nb_reponses', 'nbReponses'], 0);
+
+    return {
+      promptTokens: prompt,
+      outputTokens: output,
+      totalTokens: total === null ? prompt + output : (Number(total) || 0),
+      calls: Number(calls) || 0
+    };
+  }
+
+  /* Une ligne de la repartition par fonctionnalite. « feature » est une cle
+     technique (chat, extraction, agent) : c'est l'ecran qui la traduit, le
+     normaliseur ne fait que la transmettre — une cle inconnue doit arriver
+     intacte jusqu'a l'affichage, qui saura la montrer telle quelle. */
+  function normalizeTokenFeature(raw) {
+    raw = raw || {};
+    var tokens = normalizeTokens(raw);
+    return {
+      feature: String(firstDefined(raw, ['feature', 'fonctionnalite', 'key'], '')),
+      total: tokens.totalTokens,
+      calls: tokens.calls
+    };
+  }
 
   function normalizeUserSummary(raw) {
     raw = raw || {};
@@ -768,6 +821,7 @@
       ['tracked_count', 'trackedCount', 'procedures_count', 'nb_procedures'], 0);
     var conversationsCount = firstDefined(raw,
       ['conversations_count', 'conversationsCount', 'discussions_count'], 0);
+    var tokens = normalizeTokens(raw.tokens || raw.jetons);
 
     return {
       id: String(firstDefined(raw, ['id_user', 'id', 'user_id', 'uuid'], '')),
@@ -780,7 +834,54 @@
       createdAt: firstDefined(raw,
         ['creation_date', 'created_at', 'createdAt', 'date_creation'], null),
       trackedCount: Number(trackedCount) || 0,
-      conversationsCount: Number(conversationsCount) || 0
+      conversationsCount: Number(conversationsCount) || 0,
+      promptTokens: tokens.promptTokens,
+      outputTokens: tokens.outputTokens,
+      totalTokens: tokens.totalTokens
+    };
+  }
+
+  /* --- Consommation de jetons --------------------------------------------
+
+     GET /admin/tokens/daily?days=30&top=10 -> { days, series }, reserve aux
+     administrateurs comme le reste de la console.
+
+       serie = { id_user, userName, total, points }
+       point = { date: 'AAAA-MM-JJ', prompt, output, total }
+
+     Deux garanties du serveur sur lesquelles l'ecran s'appuie, et qu'on ne
+     rejoue donc pas ici : « series » est DEJA trie, du plus gros consommateur
+     au plus petit, et chaque serie porte un point par jour de la periode,
+     zeros compris. Pas de trou a boucher, pas de tri a refaire — l'ordre recu
+     est celui qui fixe les couleurs du graphique. */
+
+  function normalizeTokenPoint(raw) {
+    raw = raw || {};
+    var tokens = normalizeTokens(raw);
+    return {
+      date: String(firstDefined(raw, ['date', 'day', 'jour'], '')),
+      prompt: tokens.promptTokens,
+      output: tokens.outputTokens,
+      total: tokens.totalTokens
+    };
+  }
+
+  function normalizeTokenSeries(raw) {
+    raw = raw || {};
+    var points = firstDefined(raw, ['points', 'daily', 'jours'], null);
+    var list = (Array.isArray(points) ? points : []).map(normalizeTokenPoint);
+    var total = firstDefined(raw, ['total', 'total_tokens', 'totalTokens'], null);
+
+    return {
+      id: String(firstDefined(raw, ['id_user', 'id', 'user_id', 'uuid'], '')),
+      username: String(firstDefined(raw,
+        ['userName', 'userName_user', 'username', 'user_name'], '')),
+      // A defaut de total annonce, la somme des points : les deux doivent
+      // coincider cote serveur, c'est la somme qui sert de repli.
+      total: total === null
+        ? list.reduce(function (sum, point) { return sum + point.total; }, 0)
+        : (Number(total) || 0),
+      points: list
     };
   }
 
@@ -803,6 +904,12 @@
     raw = raw || {};
     var summary = normalizeUserSummary(raw);
     var list = firstDefined(raw, ['tracked_procs', 'tracked', 'procedures'], null);
+    var tokens = normalizeTokens(raw.tokens || raw.jetons);
+    /* Tableau vide pour un compte qui n'a jamais rien declenche, et parfois
+       une seule fonctionnalite sur les trois : l'ecran ne doit compter sur
+       aucune ligne en particulier. */
+    var features = firstDefined(raw,
+      ['tokens_par_feature', 'tokensParFeature', 'tokensByFeature'], null);
 
     return {
       id: summary.id,
@@ -813,7 +920,13 @@
       role: summary.role,
       createdAt: summary.createdAt,
       trackedCount: summary.trackedCount,
-      tracked: (Array.isArray(list) ? list : []).map(normalizeUserTracked)
+      tracked: (Array.isArray(list) ? list : []).map(normalizeUserTracked),
+      promptTokens: tokens.promptTokens,
+      outputTokens: tokens.outputTokens,
+      totalTokens: tokens.totalTokens,
+      tokenCalls: tokens.calls,
+      tokensByFeature: (Array.isArray(features) ? features : [])
+        .map(normalizeTokenFeature)
     };
   }
 
@@ -1074,6 +1187,26 @@
         ? App.mock.getUser(id)
         : request('/admin/users/' + encodeURIComponent(id));
       return promise.then(normalizeUserDetail);
+    },
+
+    /* Consommation quotidienne des « top » plus gros consommateurs sur les
+       « days » derniers jours. Le serveur trie et complete les jours vides :
+       on garde son ordre et ses points tels quels. */
+    getTokensDaily: function (days, top) {
+      var params = { days: Number(days) || 30, top: Number(top) || 10 };
+      var promise = config.USE_MOCK
+        ? App.mock.getTokensDaily(params)
+        : request('/admin/tokens/daily' + queryString(params));
+
+      return promise.then(function (payload) {
+        payload = payload && typeof payload === 'object' ? payload : {};
+        var list = Array.isArray(payload) ? payload
+          : (payload.series || payload.items || payload.results) || [];
+        return {
+          days: Number(firstDefined(payload, ['days', 'jours'], params.days)) || params.days,
+          series: list.map(normalizeTokenSeries)
+        };
+      });
     },
 
     /* --- Journal d'activité ------------------------------------------------

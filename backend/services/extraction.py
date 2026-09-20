@@ -76,7 +76,7 @@ def read_document_text(file_path: str) -> str:
     return extract_pdf_text(file_path)
   raise ValueError(f"Format non supporté : {ext}")
 
-def extract_with_llm(text: str) -> list:
+def extract_with_llm(text: str) -> tuple[list, dict]:
   full_prompt = EXTRACTION_PROMPT.replace("{document_text}", text)
 
   response = llm_client.models.generate_content(
@@ -84,6 +84,12 @@ def extract_with_llm(text: str) -> list:
       contents=full_prompt,
       config={"response_mime_type": "application/json"},
   )
+
+  usage = response.usage_metadata
+  tokens = {
+    "prompt_tokens": usage.prompt_token_count if usage else None,
+    "output_tokens": usage.candidates_token_count if usage else None,
+  }
 
   raw = response.text
 
@@ -95,9 +101,9 @@ def extract_with_llm(text: str) -> list:
   if not isinstance(data, list):
       raise ValueError("Le LLM n'a pas retourné un tableau JSON")
 
-  return data
+  return data, tokens
 
-def run_extraction(extraction_id:str, file_path:str):
+def run_extraction(extraction_id:str, file_path:str, user_id: str | None = None):
   db = SessionLocal()
   try:
     extraction = db.query(models.Extraction).filter_by(
@@ -108,12 +114,20 @@ def run_extraction(extraction_id:str, file_path:str):
       return
     try:
       text = read_document_text(file_path)
-      procedures= extract_with_llm(text)
+      procedures, tokens= extract_with_llm(text)
       extraction.payload = procedures
 
       extract_path = os.path.join(EXTRACTIONS_DIR, extraction.filename)
       with open(extract_path, "w", encoding="utf-8") as f:
         json.dump(procedures, f, ensure_ascii=False, indent=2)
+
+      db.add(models.TokenUsage(
+        id_user=user_id,
+        feature="extraction",
+        model="gemini-2.5-flash",
+        prompt_tokens=tokens.get("prompt_tokens") or 0,
+        output_tokens=tokens.get("output_tokens") or 0,
+      ))
 
       extraction.status = "pending_review"
     except Exception as e:

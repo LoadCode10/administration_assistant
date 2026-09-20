@@ -794,6 +794,37 @@ input:dir(rtl), textarea:dir(rtl) { line-height: 1.6; }
 .chart-tip strong { font-weight: 600; }
 .chart-tip span { opacity: .78; }
 
+/* Legende des series multiples : la seule cle de lecture des dix lignes, donc
+   sous le trace et non dans un coin. Chaque entree est un BOUTON — cliquer
+   masque sa ligne — d'ou la remise a plat du style de bouton par defaut : une
+   bordure et un fond blanc par entree feraient dix boites la ou il faut dix
+   etiquettes. */
+.ct-legend {
+  display: flex; flex-wrap: wrap; gap: 4px 10px;
+  margin-top: 12px; padding-top: 10px;
+  border-top: 0.5px solid var(--border);
+}
+.ct-legend-item {
+  background: none; border: none; border-radius: 6px;
+  padding: 3px 6px; gap: 6px; font-size: 12px; color: var(--text-secondary);
+  max-width: 100%; min-width: 0;
+}
+.ct-legend-item:hover:not(:disabled) { background: var(--surface-1); }
+/* Serie masquee : la pastille perd sa couleur et le texte passe en gris. La
+   teinte seule ne porte pas l'etat — l'opacite le double. */
+.ct-legend-item.is-off { opacity: .45; }
+.ct-legend-item i {
+  width: 9px; height: 9px; border-radius: 2px; flex: none; display: block;
+}
+.ct-legend-item.is-off i { background: var(--text-muted) !important; }
+.ct-legend-name {
+  min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.ct-legend-total {
+  color: var(--text); font-weight: 600;
+  font-variant-numeric: tabular-nums; flex: none;
+}
+
 /* Jumeau tableau : chaque graphique reste lisible sans couleur ni survol. */
 .chart-table { margin-top: 12px; border-top: 0.5px solid var(--border); padding-top: 10px; }
 .chart-table table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
@@ -906,6 +937,12 @@ input:dir(rtl), textarea:dir(rtl) { line-height: 1.6; }
 .meta-chip .icon { color: var(--text-muted); }
 .meta-chip.is-missing { background: var(--bg-warning); color: var(--text-warning); }
 .meta-chip.is-missing .icon { color: var(--text-warning); }
+
+/* Compte sans aucune consommation : la pastille reste, en gris. La masquer
+   ferait croire que la donnee manque, alors qu'un compte inactif est
+   justement ce qu'on cherche a reperer. */
+.meta-chip.is-quiet { color: var(--text-muted); background: transparent; }
+.meta-chip.is-quiet .icon { color: var(--text-muted); opacity: .7; }
 
 /* --- Administrations ----------------------------------------------------- */
 /* Meme carte que les procedures : le nom en tete, l'adresse et le site en
@@ -1020,6 +1057,22 @@ input:dir(rtl), textarea:dir(rtl) { line-height: 1.6; }
    activite — et les blocs se lisent mieux cote a cote qu'empiles sur toute la
    largeur. La colonne se retreint jusqu'a 260 px, en dessous la grille passe
    d'elle-meme a une seule colonne. */
+/* --- Consommation de jetons ----------------------------------------------
+   La carte se pose AU-DESSUS de la barre de recherche : elle ne depend ni du
+   filtre ni de la pagination — elle porte toujours sur les dix plus gros
+   consommateurs de toute la base — et la lire avant de fouiller la grille est
+   justement ce qu'on vient y faire. */
+.tokens-card { margin-bottom: 14px; }
+/* Les onglets de periode reutilisent .tabs, ecrit pour des <a> : ici ce sont
+   des boutons, dont il faut defaire le fond, la bordure et le rembourrage. */
+.tokens-card .tabs { flex: none; }
+.tokens-card .tab {
+  background: none; border: none; cursor: pointer;
+  font-family: inherit; font-size: 13px; line-height: 1.5;
+}
+.tokens-card .tab.is-active { background: var(--surface-2); }
+.tokens-card .tab:hover:not(:disabled) { background: var(--surface-2); }
+
 .user-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 10px; align-items: start;
@@ -1089,6 +1142,47 @@ input:dir(rtl), textarea:dir(rtl) { line-height: 1.6; }
 }
 .user-profile-bits .user-date { margin-top: 0; }
 .user-profile-bits .user-mail { margin-top: 0; }
+
+/* --- Consommation de jetons (fiche d'un compte) --------------------------
+   Le total en grand, ce qui le compose en pastilles, puis la ventilation par
+   fonctionnalite. Celle-ci reprend telles quelles les lignes de statut du
+   tableau de bord (.status-row, .status-dot, .meter) : c'est la meme figure —
+   un libelle, un nombre, une part, une barre — et elle n'a pas a se dessiner
+   deux fois. Seule la grille change, pour loger le nombre d'appels. */
+.user-tokens { margin-bottom: 10px; }
+
+.token-totals {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 16px;
+  margin-bottom: 16px;
+}
+.token-figure { display: flex; align-items: baseline; gap: 5px; flex: none; }
+/* Chiffres proportionnels : comme les tuiles du tableau de bord, `tabular-nums`
+   ferait paraitre le nombre trop aere a cette taille. */
+.token-value { font-size: 26px; font-weight: 600; letter-spacing: -.02em; }
+.token-unit { font-size: 13px; color: var(--text-muted); }
+.token-totals .user-chips { margin-top: 0; }
+
+.token-breakdown-title { margin-top: 16px; }
+
+/* Une colonne de plus que les lignes de statut du tableau de bord : le nombre
+   d'appels, a droite de la part. La barre continue de courir sous toute la
+   ligne (.meter porte deja grid-column: 1 / -1). */
+.user-tokens .status-row { grid-template-columns: 1fr auto auto auto; }
+.feature-calls {
+  font-size: 12px; color: var(--text-muted);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+
+.token-empty { font-size: 13px; color: var(--text-muted); }
+
+/* La mesure a commence a une date donnee : un compte ancien affiche donc moins
+   que ce qu'il a consomme. La note est grise et petite — c'est une precaution
+   de lecture, pas un avertissement. */
+.token-note {
+  font-size: 11px; color: var(--text-muted);
+  margin: 14px 0 0; padding-top: 10px;
+  border-top: 0.5px solid var(--border);
+}
 
 /* Les procedures suivies : des lignes separees par un filet, dans une seule
    carte. Le titre en tete, l'administration dessous, le statut a droite —

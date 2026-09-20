@@ -337,6 +337,254 @@
     });
   };
 
+  /* --- Palette catégorielle (séries multiples) -----------------------------
+
+     Dix teintes pour dix lignes. Contrairement à la rampe bleue ci-dessus, il
+     ne s'agit pas d'un ordre mais d'une identité : chaque teinte désigne un
+     compte, et rien d'autre. Elles sont donc espacées en teinte plutôt qu'en
+     clarté, et toutes tiennent au moins 3:1 sur fond blanc — une ligne de 2 px
+     qu'on ne distingue pas du fond n'est pas une série, c'est un artefact.
+
+     L'attribution se fait par RANG dans la série, jamais par identifiant : le
+     serveur renvoyant toujours le même ordre (du plus gros consommateur au
+     plus petit), la couleur d'un compte ne saute pas d'un rendu à l'autre. */
+
+  var SERIES = [
+    '#2a78d6', '#d03b3b', '#0f8a4d', '#c98500', '#7a4fd0',
+    '#0b8f9e', '#c4437f', '#5f6b76', '#8a6a2f', '#2f6f2a'
+  ];
+  App.charts.SERIES = SERIES;
+
+  function seriesColor(index) {
+    var i = Number(index) || 0;
+    return SERIES[((i % SERIES.length) + SERIES.length) % SERIES.length];
+  }
+  App.charts.seriesColor = seriesColor;
+
+  /* Écriture compacte, pour les graduations d'axe : « 12k » là où fmt() écrit
+     « 12 000 ». Sur un axe, les cinq caractères de trop déplacent toute la
+     zone de tracé. La valeur exacte reste lisible au survol et dans la
+     légende — c'est l'axe seul qui abrège. */
+  function fmtCompact(value) {
+    var n = Number(value) || 0;
+    var abs = Math.abs(n);
+    if (abs < 1000) return String(Math.round(n));
+
+    var scaled, suffix;
+    if (abs < 1000000) { scaled = n / 1000; suffix = 'k'; }
+    else { scaled = n / 1000000; suffix = 'M'; }
+
+    // Une décimale tant que le nombre est court (3,4k), aucune au-delà (340k) :
+    // « 340,2k » est plus long à lire qu'à arrondir.
+    var text = Math.abs(scaled) < 10
+      ? scaled.toFixed(1).replace(/[.,]0$/, '').replace('.', ',')
+      : String(Math.round(scaled));
+    return text + suffix;
+  }
+  App.charts.fmtCompact = fmtCompact;
+
+  /* --- Lignes multiples (une série par compte) ------------------------------
+
+     Même socle que l'aire ci-dessus — même grille, même espacement des dates,
+     même infobulle — mais plusieurs séries superposées, sans aplat : dix aires
+     empilées ne se liraient plus.
+
+     options = {
+       series    [ { label, total, points: [ { label, full, value } ] } ],
+                 déjà trié par l'appelant ; on garde son ordre, c'est lui qui
+                 fixe les couleurs et l'ordre de la légende ;
+       height    hauteur du tracé, légende non comprise ;
+       unit      mot affiché après la valeur dans l'infobulle ;
+       ariaLabel résumé du graphique pour les lecteurs d'écran.
+     }
+
+     Toutes les séries ont le même nombre de points (un par jour de la période,
+     zéros compris) : c'est le contrat du serveur, et c'est ce qui permet de
+     partager un seul axe des abscisses.
+
+     Un clic sur la légende masque une ligne. L'état vit dans la fermeture et
+     non dans le DOM : il survit donc au redessin déclenché par un
+     redimensionnement. L'échelle, elle, ne bouge pas quand on masque une
+     ligne — sinon isoler un compte ferait grandir sa courbe, et on croirait
+     qu'il consomme plus qu'avant. */
+
+  App.charts.linesMulti = function (container, options) {
+    var series = options.series || [];
+    var height = options.height || 240;
+    var padL = 46, padR = 16, padT = 12, padB = 26;
+
+    // Séries masquées, par rang. Vide au départ : tout est affiché.
+    var hidden = {};
+
+    // Le nombre de points de l'axe : toutes les séries ont le même, on prend
+    // la plus longue par prudence.
+    var length = series.reduce(function (longest, serie) {
+      return Math.max(longest, (serie.points || []).length);
+    }, 0);
+
+    var max = niceMax(series.reduce(function (top, serie) {
+      return (serie.points || []).reduce(function (inner, point) {
+        return Math.max(inner, Number(point.value) || 0);
+      }, top);
+    }, 0));
+
+    function plotHeight() { return height - padT - padB; }
+    function yOf(value, plotH) { return padT + plotH - (value / max) * plotH; }
+
+    function legend() {
+      return '<div class="ct-legend">' + series.map(function (serie, rank) {
+        var off = !!hidden[rank];
+        return '<button type="button" class="ct-legend-item' + (off ? ' is-off' : '') +
+          '" data-serie="' + rank + '" aria-pressed="' + (off ? 'false' : 'true') +
+          '" title="' + esc(serie.label + ' — ' + fmt(serie.total) + ' ' +
+            (options.unit || '')) + '">' +
+          '<i aria-hidden="true" style="background:' + seriesColor(rank) + '"></i>' +
+          '<span class="ct-legend-name" dir="auto">' +
+            esc(truncate(serie.label, 16)) + '</span>' +
+          '<span class="ct-legend-total">' + esc(fmtCompact(serie.total)) + '</span>' +
+          '</button>';
+      }).join('') + '</div>';
+    }
+
+    function draw(width) {
+      if (!series.length || length < 2) {
+        return '<div class="chart-empty">Pas assez de points.</div>';
+      }
+
+      var plotW = width - padL - padR;
+      var plotH = plotHeight();
+
+      function px(i) { return padL + (i / (length - 1)) * plotW; }
+
+      // Grille : traits pleins d'un cran au-dessus du fond, jamais pointillés.
+      var grid = '';
+      for (var t = 0; t <= 4; t++) {
+        var value = (max / 4) * t;
+        var y = yOf(value, plotH);
+        grid += '<line x1="' + padL + '" y1="' + y + '" x2="' + (width - padR) +
+            '" y2="' + y + '" stroke="' + (t === 0 ? INK.axis : INK.grid) +
+            '" stroke-width="1"></line>' +
+          '<text x="' + (padL - 8) + '" y="' + y + '" text-anchor="end" ' +
+            'dominant-baseline="central" class="ct-tick">' +
+            esc(fmtCompact(Math.round(value))) + '</text>';
+      }
+
+      var lines = series.map(function (serie, rank) {
+        var d = (serie.points || []).map(function (point, i) {
+          return (i ? 'L' : 'M') + px(i).toFixed(1) + ',' +
+            yOf(Number(point.value) || 0, plotH).toFixed(1);
+        }).join(' ');
+        return '<path class="ct-line" data-serie="' + rank + '" d="' + d + '" ' +
+          'fill="none" stroke="' + seriesColor(rank) + '" stroke-width="1.8" ' +
+          'stroke-linejoin="round" stroke-linecap="round"' +
+          (hidden[rank] ? ' opacity="0"' : '') + '></path>';
+      }).join('');
+
+      /* Étiquettes de dates espacées pour ne jamais se chevaucher : à 90 jours
+         une date sur dix, à 7 jours toutes. Le dernier jour est toujours
+         écrit — c'est celui qu'on cherche en premier. */
+      var reference = series[0].points || [];
+      var every = Math.ceil(length / Math.max(2, Math.floor(plotW / 64)));
+      var xLabels = '';
+      reference.forEach(function (point, i) {
+        if (i % every && i !== length - 1) return;
+        xLabels += '<text x="' + px(i) + '" y="' + (height - 6) +
+          '" text-anchor="middle" class="ct-tick">' + esc(point.label) + '</text>';
+      });
+
+      return '<svg width="' + width + '" height="' + height + '" ' +
+          'role="img" aria-label="' + esc(options.ariaLabel || '') + '">' +
+        grid +
+        '<line class="crosshair" x1="0" y1="' + padT + '" x2="0" y2="' +
+          (padT + plotH) + '" stroke="' + INK.axis +
+          '" stroke-width="1" opacity="0"></line>' +
+        lines +
+        // Marqueur de survol : anneau blanc de 2 px pour rester lisible sur la ligne.
+        '<circle class="hover-dot" r="4.5" fill="' + ACCENT + '" stroke="' + INK.surface +
+          '" stroke-width="2" opacity="0"></circle>' +
+        xLabels +
+        '</svg>' + legend();
+    }
+
+    mount(container, draw, function (root, svg, show, hide) {
+      /* La légende est refabriquée à chaque redessin : on délègue sur elle, et
+         non sur le conteneur, sinon les écouteurs s'empileraient à chaque
+         redimensionnement et un clic basculerait deux fois. */
+      var legendNode = root.querySelector('.ct-legend');
+      if (legendNode) {
+        h.on(legendNode, 'click', '.ct-legend-item', function (event, target) {
+          var rank = Number(target.getAttribute('data-serie'));
+          hidden[rank] = !hidden[rank];
+
+          var path = root.querySelector('.ct-line[data-serie="' + rank + '"]');
+          if (path) path.setAttribute('opacity', hidden[rank] ? '0' : '1');
+          target.classList.toggle('is-off', !!hidden[rank]);
+          target.setAttribute('aria-pressed', hidden[rank] ? 'false' : 'true');
+          hide();
+        });
+      }
+
+      if (!svg) return;
+      var crosshair = svg.querySelector('.crosshair');
+      var dot = svg.querySelector('.hover-dot');
+
+      function clear() {
+        hide();
+        if (crosshair) crosshair.setAttribute('opacity', '0');
+        if (dot) dot.setAttribute('opacity', '0');
+      }
+
+      svg.addEventListener('mousemove', function (event) {
+        var box = svg.getBoundingClientRect();
+        var plotW = box.width - padL - padR;
+        var plotH = plotHeight();
+        var ratio = (event.clientX - box.left - padL) / plotW;
+        var i = Math.round(Math.max(0, Math.min(1, ratio)) * (length - 1));
+        var x = padL + (i / (length - 1)) * plotW;
+        var pointerY = event.clientY - box.top;
+
+        /* Dix lignes partagent le même jour : le curseur désigne celle dont il
+           est le plus proche verticalement. Une série masquée n'est plus
+           désignable — c'est tout l'intérêt de la masquer. */
+        var best = -1;
+        var bestGap = Infinity;
+        series.forEach(function (serie, rank) {
+          if (hidden[rank]) return;
+          var point = (serie.points || [])[i];
+          if (!point) return;
+          var gap = Math.abs(yOf(Number(point.value) || 0, plotH) - pointerY);
+          if (gap < bestGap) { bestGap = gap; best = rank; }
+        });
+
+        if (best === -1) { clear(); return; }
+
+        var chosen = series[best];
+        var value = Number(chosen.points[i].value) || 0;
+        var color = seriesColor(best);
+
+        if (crosshair) {
+          crosshair.setAttribute('x1', x);
+          crosshair.setAttribute('x2', x);
+          crosshair.setAttribute('opacity', '1');
+        }
+        if (dot) {
+          dot.setAttribute('cx', x);
+          dot.setAttribute('cy', yOf(value, plotH));
+          dot.setAttribute('fill', color);
+          dot.setAttribute('opacity', '1');
+        }
+
+        var frame = root.getBoundingClientRect();
+        show('<strong>' + esc(chosen.points[i].full || chosen.points[i].label) + '</strong>' +
+             '<span>' + esc(chosen.label) + '</span>' +
+             '<span>' + fmt(value) + ' ' + esc(options.unit || '') + '</span>',
+          event.clientX - frame.left, event.clientY - frame.top);
+      });
+
+      svg.addEventListener('mouseleave', clear);
+    });
+  };
+
   /* --- Étincelle (tuiles de statistiques) ---------------------------------
      Rendue en chaîne : pas de survol, pas d'axe — c'est un ornement de tuile,
      la valeur exacte est le grand chiffre à côté. */

@@ -23,3 +23,12 @@ def write_log(
     method=request.method,
     path=str(request.url.path),
   ))
+
+def record_usage(db, user, feature: str, model: str, tokens: dict) -> None:
+  db.add(models.TokenUsage(
+    id_user=user.id_user if user else None,
+    feature=feature,
+    model=model,
+    prompt_tokens=tokens.get("prompt_tokens") or 0,
+    output_tokens=tokens.get("output_tokens") or 0,
+  ))
