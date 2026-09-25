@@ -7,11 +7,39 @@
   var App = global.App || (global.App = {});
   var config = App.config;
   var toStringArray = App.helpers.toStringArray;
+  var pick = App.helpers.pick;
 
   /* --- Requête générique -------------------------------------------------- */
 
   function url(path) {
     return config.API_BASE_URL.replace(/\/+$/, '') + path;
+  }
+
+  /* Chemin du champ fautif dans un 422 de FastAPI : loc vaut
+     ["body","payload",0,"proc_steps",1,"ar"] et on en fait
+     « payload.0.proc_steps.1.ar ».
+
+     Ce chemin est la seule chose qui permette a l'editeur de designer l'input
+     a corriger. Sans lui, « String should have at least 1 character » est
+     exact et parfaitement inexploitable sur un fichier de trente procedures. */
+  function locPath(loc) {
+    if (!Array.isArray(loc)) return '';
+    return loc.filter(function (part, index) {
+      // « body » / « query » / « path » en tete nomme l'emplacement, pas un champ.
+      return !(index === 0 &&
+        (part === 'body' || part === 'query' || part === 'path'));
+    }).join('.');
+  }
+
+  /* Les chemins des champs refuses par un 422, dans l'ordre ou le serveur les
+     donne. Tableau vide pour toute autre erreur : l'appelant peut appeler sans
+     tester le code. */
+  function validationFields(payload) {
+    var detail = payload && typeof payload === 'object' ? payload.detail : null;
+    if (!Array.isArray(detail)) return [];
+    return detail.map(function (item) {
+      return item ? locPath(item.loc) : '';
+    }).filter(function (path) { return path.length > 0; });
   }
 
   function describeHttpError(response, payload) {
@@ -21,7 +49,11 @@
       if (typeof detail === 'string' && detail) return detail;
       if (Array.isArray(detail) && detail.length) {
         return detail.map(function (item) {
-          return item && item.msg ? item.msg : JSON.stringify(item);
+          var message = item && item.msg ? item.msg : JSON.stringify(item);
+          var path = item ? locPath(item.loc) : '';
+          // Le champ d'abord : c'est ce qu'on cherche des lors qu'il y a
+          // plusieurs erreurs dans le meme envoi.
+          return path ? path + ' : ' + message : message;
         }).join(' · ');
       }
     }
@@ -69,6 +101,9 @@
             // plutot que comme un echec global.
             var httpError = new Error(describeHttpError(response, payload));
             httpError.status = response.status;
+            // Chemins des champs refuses par un 422 — l'editeur s'en sert pour
+            // surligner les inputs concernes.
+            httpError.fields = validationFields(payload);
 
             /* Session expiree ou cookie revoque : la conclusion est la meme quel
                que soit l'ecran qui a lance la requete, on la tire une seule fois
@@ -193,6 +228,51 @@
     };
   }
 
+  /* --- Contenu d'une extraction (bilingue) --------------------------------
+
+     Le contenu d'une extraction n'est plus du texte simple : chaque valeur est
+     une paire { "fr": …, "ar": … }, produite directement par le modele. Seul
+     « proc_law » reste une liste de chaines — un texte de loi est cite dans sa
+     langue d'origine, il ne se traduit pas.
+
+     L'editeur travaille donc sur des paires et non sur des chaines : c'est le
+     seul ecran a le faire, parce que c'est le seul ou les deux langues sont
+     modifiees. Partout ailleurs, h.pick n'en garde qu'une pour l'affichage.
+
+     Le backend refuse par un 422 toute paire dont un cote est vide. L'editeur
+     conserve donc les deux moities telles quelles, meme vides, plutot que de
+     les rabattre sur null : c'est ce qui permet de montrer a l'administrateur
+     le champ qu'il reste a remplir. */
+
+  /* Une valeur bilingue, toujours ramenee a { fr, ar } avec deux chaines.
+     Accepte la paire, une chaine seule (ancienne forme : elle devient le
+     francais), ou null. */
+  function normalizePair(raw) {
+    if (raw === null || raw === undefined) return { fr: '', ar: '' };
+    if (typeof raw !== 'object') {
+      return { fr: String(raw), ar: '' };
+    }
+    return {
+      fr: raw.fr === null || raw.fr === undefined ? '' : String(raw.fr),
+      ar: raw.ar === null || raw.ar === undefined ? '' : String(raw.ar)
+    };
+  }
+
+  function normalizePairList(raw) {
+    if (!Array.isArray(raw)) {
+      return raw === null || raw === undefined ? [] : [normalizePair(raw)];
+    }
+    return raw.map(normalizePair);
+  }
+
+  function isEmptyPair(pair) {
+    return !String(pair.fr).trim() && !String(pair.ar).trim();
+  }
+
+  function trimPair(pair) {
+    return { fr: String(pair.fr).trim(), ar: String(pair.ar).trim() };
+  }
+
   /* Une procédure, complétée avec tous les champs attendus par l'éditeur. */
   function normalizeProcedure(raw) {
     raw = raw && typeof raw === 'object' ? raw : {};
@@ -200,44 +280,53 @@
     // On conserve les champs inconnus pour ne rien perdre à l'enregistrement.
     Object.keys(raw).forEach(function (key) { normalized[key] = raw[key]; });
 
-    normalized.proc_title = raw.proc_title === null || raw.proc_title === undefined
-      ? '' : String(raw.proc_title);
-    normalized.proc_description = raw.proc_description === null || raw.proc_description === undefined
-      ? '' : String(raw.proc_description);
-    normalized.proc_administration = toStringArray(raw.proc_administration);
-    if (!normalized.proc_administration.length) normalized.proc_administration = [''];
-    normalized.proc_pieces = toStringArray(raw.proc_pieces);
-    normalized.proc_steps = toStringArray(raw.proc_steps);
+    normalized.proc_title = normalizePair(raw.proc_title);
+    normalized.proc_description = normalizePair(raw.proc_description);
+    normalized.proc_administration = normalizePairList(raw.proc_administration);
+    // L'editeur affiche toujours un champ « Administration » : sans entree, il
+    // n'aurait rien a lier et l'absence passerait inapercue.
+    if (!normalized.proc_administration.length) {
+      normalized.proc_administration = [normalizePair(null)];
+    }
+    normalized.proc_pieces = normalizePairList(raw.proc_pieces);
+    normalized.proc_steps = normalizePairList(raw.proc_steps);
+    // Les textes de loi restent des chaines simples.
     normalized.proc_law = toStringArray(raw.proc_law);
-    normalized.fee = raw.fee === null || raw.fee === undefined ? '' : String(raw.fee);
-    normalized.proc_delai = raw.proc_delai === null || raw.proc_delai === undefined
-      ? '' : String(raw.proc_delai);
+    normalized.fee = normalizePair(raw.fee);
+    normalized.proc_delai = normalizePair(raw.proc_delai);
     return normalized;
   }
 
   /* Remet une procédure éditée dans la forme attendue par le backend :
-     chaînes vides -> null, listes nettoyées. */
+     paires entierement vides -> null, listes nettoyees de leurs lignes vides.
+
+     Une paire a moitie remplie est envoyee telle quelle, et c'est voulu : le
+     serveur la refusera en nommant le cote manquant, ce qui est exactement le
+     message que l'administrateur doit lire. La faire disparaitre ici
+     reviendrait a effacer sa saisie sans rien dire. */
   function serializeProcedure(procedure) {
     var out = {};
     Object.keys(procedure).forEach(function (key) { out[key] = procedure[key]; });
 
-    function cleanList(list) {
-      return (list || []).map(function (item) { return String(item).trim(); })
-        .filter(function (item) { return item.length > 0; });
+    function cleanPairList(list) {
+      return (list || []).map(normalizePair).map(trimPair)
+        .filter(function (pair) { return !isEmptyPair(pair); });
     }
-    function orNull(value) {
-      var trimmed = String(value === null || value === undefined ? '' : value).trim();
-      return trimmed ? trimmed : null;
+    function pairOrNull(value) {
+      var pair = trimPair(normalizePair(value));
+      return isEmptyPair(pair) ? null : pair;
     }
 
-    out.proc_title = String(procedure.proc_title || '').trim();
-    out.proc_description = orNull(procedure.proc_description);
-    out.proc_administration = cleanList(procedure.proc_administration);
-    out.proc_pieces = cleanList(procedure.proc_pieces);
-    out.proc_steps = cleanList(procedure.proc_steps);
-    out.proc_law = cleanList(procedure.proc_law);
-    out.fee = orNull(procedure.fee);
-    out.proc_delai = orNull(procedure.proc_delai);
+    out.proc_title = trimPair(normalizePair(procedure.proc_title));
+    out.proc_description = pairOrNull(procedure.proc_description);
+    out.proc_administration = cleanPairList(procedure.proc_administration);
+    out.proc_pieces = cleanPairList(procedure.proc_pieces);
+    out.proc_steps = cleanPairList(procedure.proc_steps);
+    out.proc_law = (procedure.proc_law || []).map(function (item) {
+      return String(item).trim();
+    }).filter(function (item) { return item.length > 0; });
+    out.fee = pairOrNull(procedure.fee);
+    out.proc_delai = pairOrNull(procedure.proc_delai);
     return out;
   }
 
@@ -316,6 +405,17 @@
     return out;
   }
 
+  /* Une barre de la repartition par administration. Le serveur sert
+     { label, label_ar, value }, « label » etant le francais : on choisit la
+     langue ici, charts.js n'a pas a savoir qu'il y en a deux. */
+  function pickStatLabel(item) {
+    item = item || {};
+    return {
+      label: pick({ label_fr: item.label, label_ar: item.label_ar }, 'label'),
+      value: Number(item.value) || 0
+    };
+  }
+
   function deriveStats(documents) {
     var byStatus = { published: 0, review: 0, extracting: 0, failed: 0 };
     var daily = {};
@@ -346,15 +446,23 @@
   }
 
   /* Une procedure telle que la renvoie /admin/procedures : forme « base de
-     donnees » (titre_proc, administration imbriquee, pieces/etapes/lois en
-     objets). On la remet a plat dans le format attendu par les ecrans. */
+     donnees », ou chaque texte porte desormais deux colonnes — titre_proc_fr /
+     titre_proc_ar, l'administration imbriquee, les pieces et les etapes en
+     objets eux aussi bilingues.
+
+     L'ecran « Procedures » ne fait que LIRE : on n'y garde donc qu'une langue
+     par valeur, celle de l'interface (h.pick), et la procedure ressort en
+     chaines simples — la meme forme qu'avant la migration, d'ou un ecran
+     inchange. L'edition des deux langues, elle, n'existe que dans l'editeur
+     d'extraction, qui travaille sur des paires. */
   function mapStoredProcedure(raw) {
     raw = raw && typeof raw === 'object' ? raw : {};
 
     var administration = raw.administration || null;
     var administrationName = administration
-      ? firstDefined(administration, ['nom_administration', 'nom', 'name'], null)
-      : null;
+      ? (pick(administration, 'nom_administration') ||
+         String(firstDefined(administration, ['nom', 'name'], '')))
+      : '';
 
     var etapes = Array.isArray(raw.etapes) ? raw.etapes.slice() : [];
     etapes.sort(function (a, b) {
@@ -363,16 +471,18 @@
 
     return {
       id: firstDefined(raw, ['id_procedure', 'id', 'procedure_id', 'proc_id'], null),
-      proc_title: firstDefined(raw, ['titre_proc', 'proc_title'], ''),
-      proc_description: firstDefined(raw, ['description_proc', 'proc_description'], ''),
-      fee: firstDefined(raw, ['frais_proc', 'fee'], ''),
-      proc_delai: firstDefined(raw, ['delai_proc', 'proc_delai'], ''),
-      proc_administration: administrationName ? [administrationName] : [],
+      proc_title: pick(raw, 'titre_proc'),
+      proc_description: pick(raw, 'description_proc'),
+      fee: pick(raw, 'frais_proc'),
+      proc_delai: pick(raw, 'delai_proc'),
+      proc_administration: administrationName ? [String(administrationName)] : [],
+      // h.pick rend telle quelle une valeur qui n'est pas un objet : une piece
+      // arrivant en simple chaine (mode demonstration) traverse sans cas a part.
       proc_pieces: (Array.isArray(raw.pieces) ? raw.pieces : []).map(function (piece) {
-        return piece && piece.nom_piece !== undefined ? piece.nom_piece : piece;
+        return pick(piece, 'nom_piece');
       }),
       proc_steps: etapes.map(function (etape) {
-        return etape && etape.description_etape !== undefined ? etape.description_etape : etape;
+        return pick(etape, 'description_etape');
       }),
       proc_law: (Array.isArray(raw.lois) ? raw.lois : []).map(function (loi) {
         return loi && loi.texte_loi !== undefined ? loi.texte_loi : loi;
@@ -395,16 +505,27 @@
   }
 
   /* Une administration telle que consommee par l'ecran « Administrations » :
-     { id, name, address, url, procedureCount }.
+     { id, name, nameFr, nameAr, address, url, procedureCount }.
+
+     « name » est le nom a AFFICHER — une seule langue, celle de l'interface.
+     « nameFr » et « nameAr » sont les deux valeurs a EDITER : le formulaire
+     porte deux champs et le PUT renvoie les deux colonnes, sinon la moitie
+     non affichee serait ecrasee par celle qu'on vient de taper.
+
      L'adresse et le site sont tres souvent nuls dans les donnees importees :
      on les ramene a la chaine vide pour que les champs du formulaire s'y
      lient sans avoir a tester null a chaque rendu. */
   function normalizeAdministration(raw) {
     raw = raw || {};
     var count = firstDefined(raw, ['procedure_count', 'procedures_count', 'nb_procedures'], 0);
+    var nameFr = String(firstDefined(raw,
+      ['nom_administration_fr', 'nom', 'name'], ''));
+    var nameAr = String(firstDefined(raw, ['nom_administration_ar'], ''));
     return {
       id: firstDefined(raw, ['id_administration', 'id', 'administration_id'], null),
-      name: String(firstDefined(raw, ['nom_administration', 'nom', 'name'], '')),
+      name: pick(raw, 'nom_administration') || nameFr || nameAr,
+      nameFr: nameFr,
+      nameAr: nameAr,
       address: String(firstDefined(raw, ['addr_administration', 'adresse', 'address'], '')),
       url: String(firstDefined(raw, ['url_administration', 'url', 'site'], '')),
       procedureCount: Number(count) || 0
@@ -480,7 +601,7 @@
 
        GET    /citizen/tracked
                 -> [ tracked ]
-       POST   /citizen/tracked                     { id_procedure }
+       POST   /citizen/tracked                     { id_procedure, lang }
                 -> tracked
        DELETE /citizen/tracked/{id_user_procedure}
        PATCH  /citizen/tracked/documents/{id_upd}  { est_coche, note }
@@ -488,51 +609,97 @@
                               la case, pas la carte entière)
 
        message = { id, role: 'user'|'assistant', content, created_at,
-                   sources: [ { procedure_id, procedure_title,
-                                administration } ] }
-       tracked = { id_user_procedure, id_procedure, titre_proc,
-                   administration, status, date_debut,
-                   documents: [ { id_upd, id_piece, nom_piece,
+                   lang: 'fr'|'ar' (reponses seulement),
+                   sources: [ source ] }
+       source  = { id_procedure, titre_proc_fr, titre_proc_ar,
+                   administration: { nom_administration_fr,
+                                     nom_administration_ar } }
+       tracked = { id_user_procedure, id_procedure, lang: 'fr'|'ar',
+                   titre_proc_fr, titre_proc_ar,
+                   id_administration,
+                   administration: { nom_administration_fr,
+                                     nom_administration_ar } | null,
+                   status, date_debut,
+                   documents: [ { id_upd, id_piece,
+                                  nom_piece_fr, nom_piece_ar,
                                   est_coche, note } ],
-                   etapes:    [ { ordre_etape, description_etape } ] }
+                   etapes:    [ { ordre_etape, description_etape_fr,
+                                  description_etape_ar } ] }
 
-     « administration » arrive en clair (une chaîne) ; les normaliseurs
-     acceptent aussi l'objet administration complet.
+     « source » a exactement la meme forme dans /ask et dans
+     /citizen/conversations/{id} — avant la migration bilingue, le premier
+     servait un objet et le second une chaine.
+
+     « administration » est un objet bilingue, ou null quand la procedure n'en
+     cite aucune. Les normaliseurs acceptent aussi une chaine seule, forme
+     servie par le mode demonstration.
 
      Le rôle d'un message est ramené à deux valeurs : tout ce qui n'est pas
      l'utilisateur est présenté comme une réponse de l'assistant. */
 
+  /* Le nom d'une administration, quelle que soit la forme sous laquelle elle
+     arrive : l'objet bilingue { nom_administration_fr, nom_administration_ar }
+     que servent desormais /ask, /citizen/tracked, /citizen/.../nearby et
+     /admin/users/{id} ; une chaine seule (mode demonstration) ; ou rien.
+     On n'en garde que la langue courante — aucun de ces ecrans ne l'edite. */
+  function administrationName(raw) {
+    if (raw === null || raw === undefined) return '';
+    if (typeof raw !== 'object') return String(raw);
+    return pick(raw, 'nom_administration') ||
+      String(firstDefined(raw, ['nom', 'name', 'label', 'title'], ''));
+  }
+
   function normalizeSource(raw) {
     raw = raw || {};
 
-    // « administration » arrive soit en clair (suivi des procédures), soit en
-    // objet complet (sources de l'assistant) : on ramène les deux au nom.
+    /* « administration » est maintenant un objet bilingue dans les DEUX
+       points d'entree — /ask et /citizen/conversations/{id} — la ou l'un
+       servait un objet et l'autre une chaine. La chaine reste acceptee pour
+       le mode demonstration. */
     var administration = firstDefined(raw,
-      ['administration', 'nom_administration', 'administration_name', 'admin'], '');
-    if (administration && typeof administration === 'object') {
-      administration = firstDefined(administration,
-        ['nom_administration', 'nom', 'name', 'administration'], '');
-    }
+      ['administration', 'administration_name', 'admin'], '');
+    var bilingualAdmin = (administration && typeof administration === 'object')
+      ? administration : {};
 
     return {
       procedureId: firstDefined(raw,
         ['procedure_id', 'procedureId', 'id_procedure', 'id'], null),
-      title: String(firstDefined(raw,
-        ['procedure_title', 'titre_proc', 'title', 'proc_title', 'titre'],
-        'Procédure sans titre')),
-      administration: String(administration)
+      // title / administration : dans la langue de l'interface, comme partout.
+      // Les paires _fr / _ar restent a cote : l'ecran les reprend dans la
+      // langue du message (h.pick(source, 'title', message.lang)).
+      // Pas de « Procédure sans titre » ici : l'écran le met dans la langue
+      // de la réponse.
+      title: pick(raw, 'titre_proc') ||
+        String(firstDefined(raw,
+          ['procedure_title', 'title', 'proc_title', 'titre'], '')),
+      title_fr: String(raw.titre_proc_fr || ''),
+      title_ar: String(raw.titre_proc_ar || ''),
+      administration: administrationName(administration),
+      administration_fr: String(bilingualAdmin.nom_administration_fr || ''),
+      administration_ar: String(bilingualAdmin.nom_administration_ar || '')
     };
+  }
+
+  /* Langue d'une reponse, detectee par le serveur sur la question : « fr » ou
+     « ar ». Tout le reste — absent, ancien message, valeur inattendue — donne
+     null, et l'ecran retombe sur la langue de l'interface. */
+  function normalizeLang(value) {
+    var lang = String(value === null || value === undefined ? '' : value).toLowerCase();
+    return (lang === 'fr' || lang === 'ar') ? lang : null;
   }
 
   function normalizeMessage(raw) {
     raw = raw || {};
     var role = String(firstDefined(raw, ['role', 'author', 'sender'], 'assistant')).toLowerCase();
+    var isUser = role === 'user' || role === 'utilisateur' || role === 'citizen';
     var sources = raw.sources || raw.citations || raw.references || [];
     return {
       id: String(firstDefined(raw, ['id', 'message_id', 'id_question', 'uuid'], '')),
-      role: (role === 'user' || role === 'utilisateur' || role === 'citizen') ? 'user' : 'assistant',
+      role: isUser ? 'user' : 'assistant',
       content: String(firstDefined(raw, ['content', 'text', 'message', 'answer', 'reponse'], '')),
       createdAt: firstDefined(raw, ['created_at', 'createdAt', 'date'], null),
+      // Seules les reponses portent une langue ; la question n'en a pas.
+      lang: isUser ? null : normalizeLang(raw.lang),
       sources: (Array.isArray(sources) ? sources : []).map(normalizeSource)
     };
   }
@@ -575,7 +742,11 @@
       // citoyens suivant la procédure.
       id: String(firstDefined(raw,
         ['id_upd', 'id', 'piece_id', 'id_piece'], 'p' + index)),
-      label: String(firstDefined(raw, ['label', 'nom_piece', 'name', 'piece'], '')),
+      label: pick(raw, 'nom_piece') ||
+        String(firstDefined(raw, ['label', 'name', 'piece'], '')),
+      // Les deux langues restent là : la carte affiche celle du suivi.
+      label_fr: String(raw.nom_piece_fr || ''),
+      label_ar: String(raw.nom_piece_ar || ''),
       checked: firstDefined(raw,
         ['checked', 'est_coche', 'is_checked', 'done'], false) === true,
       note: String(firstDefined(raw, ['note', 'comment', 'remarque'], '') || '')
@@ -591,21 +762,20 @@
       raw = raw || {};
       return {
         order: Number(firstDefined(raw, ['order', 'ordre_etape', 'position'], index + 1)),
-        label: String(firstDefined(raw, ['label', 'description_etape', 'text', 'etape'], ''))
+        label: pick(raw, 'description_etape') ||
+          String(firstDefined(raw, ['label', 'text', 'etape'], '')),
+        label_fr: String(raw.description_etape_fr || ''),
+        label_ar: String(raw.description_etape_ar || '')
       };
     }).sort(function (a, b) { return a.order - b.order; });
   }
 
-  /* L'administration est tantôt une chaîne, tantôt l'objet administration
-     complet : dans les deux cas on ne garde que son nom. */
+  /* « administration » est desormais un objet bilingue — ou null quand la
+     procedure n'en cite aucune. On n'en garde que le nom, dans la langue de
+     l'interface. */
   function normalizeTrackedAdministration(raw) {
-    var value = firstDefined(raw,
-      ['administration', 'nom_administration', 'administration_name'], '');
-    if (value && typeof value === 'object') {
-      value = firstDefined(value,
-        ['nom_administration', 'name', 'nom', 'label', 'title'], '');
-    }
-    return String(value || '');
+    return administrationName(firstDefined(raw,
+      ['administration', 'administration_name'], ''));
   }
 
   function normalizeTracked(raw) {
@@ -614,15 +784,28 @@
     // accepté pour le mode démonstration.
     var pieces = firstDefined(raw, ['documents', 'pieces'], null);
     if (!Array.isArray(pieces)) pieces = [];
+    var administration = raw.administration;
+    var bilingualAdmin = (administration && typeof administration === 'object')
+      ? administration : {};
 
     return {
       id: String(firstDefined(raw,
         ['id_user_procedure', 'id', 'tracking_id', 'id_suivi'], '')),
       procedureId: firstDefined(raw,
         ['procedure_id', 'procedureId', 'id_procedure'], null),
-      title: String(firstDefined(raw,
-        ['procedure_title', 'titre_proc', 'title', 'proc_title'], 'Procédure sans titre')),
+      // Langue dans laquelle la procédure a été suivie ; null (ancien suivi)
+      // = celle de l'interface. title / administration restent dans la
+      // langue de l'interface, les paires _fr / _ar servent à la carte.
+      // Pas de « Procédure sans titre » ici : la carte le met dans sa langue.
+      lang: normalizeLang(raw.lang),
+      title: pick(raw, 'titre_proc') ||
+        String(firstDefined(raw,
+          ['procedure_title', 'title', 'proc_title'], '')),
+      title_fr: String(raw.titre_proc_fr || ''),
+      title_ar: String(raw.titre_proc_ar || ''),
       administration: normalizeTrackedAdministration(raw),
+      administration_fr: String(bilingualAdmin.nom_administration_fr || ''),
+      administration_ar: String(bilingualAdmin.nom_administration_ar || ''),
       // L'identifiant de l'administration, et non son nom : c'est lui qu'attend
       // /citizen/administrations/{id}/nearby. Sans lui l'écran « Mes procédures »
       // n'a rien à adresser et le bouton « bureau le plus proche » n'existe pas.
@@ -674,8 +857,11 @@
     var sources = firstDefined(raw, ['sources', 'liens'], null);
     if (!Array.isArray(sources)) sources = [];
     return {
-      administration: String(firstDefined(raw,
-        ['administration', 'nom_administration'], '')),
+      // « administration » est passee d'une chaine a l'objet bilingue.
+      administration: administrationName(raw.administration),
+      // Paires gardées : le panneau affiche le nom dans la langue de la carte.
+      administration_fr: String((raw.administration && raw.administration.nom_administration_fr) || ''),
+      administration_ar: String((raw.administration && raw.administration.nom_administration_ar) || ''),
       city: String(firstDefined(raw, ['ville', 'city'], '')),
       text: String(firstDefined(raw, ['texte', 'text', 'reponse'], '') || ''),
       sources: sources.map(normalizeNearbySource),
@@ -767,8 +953,10 @@
                            + nb_appels sur la fiche seulement,
                    tokens_par_feature: [ { feature, total, nb_appels } ]
                            (fiche seulement ; peut etre vide) }
-       tracked = { id_up, status, titre_proc, administration } — « administration »
-                 peut etre nulle, « status » vaut « en_cours » ou « termine ». */
+       tracked = { id_up, status, titre_proc_fr, titre_proc_ar,
+                   administration: { nom_administration_fr,
+                                     nom_administration_ar } | null }
+                 « status » vaut « en_cours » ou « termine ». */
 
   /* Le bloc « tokens » d'un compte : { prompt, output, total }. Un compte qui
      n'a jamais rien demandé le reçoit à zéro plutôt qu'absent, mais on ne s'y
@@ -893,8 +1081,9 @@
     return {
       id: String(firstDefined(raw, ['id_up', 'id_user_procedure', 'id'], '')),
       status: String(firstDefined(raw, ['status', 'statut', 'etat'], '')),
-      procedureTitle: String(firstDefined(raw,
-        ['titre_proc', 'procedure_title', 'title', 'proc_title'], 'Procédure sans titre')),
+      procedureTitle: pick(raw, 'titre_proc') ||
+        String(firstDefined(raw,
+          ['procedure_title', 'title', 'proc_title'], 'Procédure sans titre')),
       // Souvent nulle : l'ecran le dit plutot que de laisser une ligne vide.
       administration: normalizeTrackedAdministration(raw)
     };
@@ -937,6 +1126,22 @@
   var api = {
     normalizeProcedure: normalizeProcedure,
     serializeProcedure: serializeProcedure,
+
+    /* Normaliseurs internes, exposes pour les tests : ils traduisent les
+       reponses du backend et c'est la qu'une migration de champs se casse en
+       premier. Aucun ecran ne doit les appeler — ils recoivent du brut. */
+    __test: {
+      mapStoredProcedure: mapStoredProcedure,
+      normalizeAdministration: normalizeAdministration,
+      normalizeSource: normalizeSource,
+      normalizeTracked: normalizeTracked,
+      normalizeUpdatedPiece: normalizeUpdatedPiece,
+      normalizeNearby: normalizeNearby,
+      normalizeUserTracked: normalizeUserTracked,
+      pickStatLabel: pickStatLabel,
+      describeHttpError: describeHttpError,
+      validationFields: validationFields
+    },
 
     listDocuments: function () {
       var promise = config.USE_MOCK ? App.mock.listDocuments() : request('/admin/documents');
@@ -1059,6 +1264,13 @@
       return request('/admin/stats').then(function (payload) {
         payload = payload || {};
         payload.partial = false;
+        /* byAdministration arrive en { label, label_ar, value }, « label »
+           etant le francais. Le graphique n'attend qu'un libelle : on choisit
+           la langue ici plutot que dans charts.js, qui ne doit rien savoir du
+           bilinguisme. */
+        if (Array.isArray(payload.byAdministration)) {
+          payload.byAdministration = payload.byAdministration.map(pickStatLabel);
+        }
         if (!payload.weekly && payload.daily) payload.weekly = weeklyBuckets(payload.daily);
         return payload;
       }, function () {
@@ -1075,8 +1287,11 @@
       return request('/admin/procedures').then(function (payload) {
         var list = Array.isArray(payload) ? payload
           : (payload && (payload.procedures || payload.items || payload.results)) || [];
+        /* mapStoredProcedure rend deja des chaines pretes a afficher : on ne
+           repasse PAS par normalizeProcedure, qui fabrique les paires { fr, ar }
+           de l'editeur — cet ecran ne fait que lire. */
         return list.map(function (raw, index) {
-          var procedure = normalizeProcedure(mapStoredProcedure(raw));
+          var procedure = mapStoredProcedure(raw);
           // Rang dans la liste : sert de clé de dépliage quand le backend
           // n'expose pas de position dans le fichier d'origine.
           if (procedure.index === undefined || procedure.index === null) procedure.index = index;
@@ -1120,8 +1335,23 @@
           'Cette procédure n\'a pas d\'identifiant : /admin/procedures doit renvoyer un champ « id ».'
         ));
       }
-      if (config.USE_MOCK) return App.mock.deleteProcedure(id);
-      return request('/admin/procedures/' + encodeURIComponent(id), { method: 'DELETE' });
+      var promise = config.USE_MOCK
+        ? App.mock.deleteProcedure(id)
+        : request('/admin/procedures/' + encodeURIComponent(id), { method: 'DELETE' });
+      /* La reponse porte maintenant « deleted_fr » / « deleted_ar » et
+         « administration_fr » / « administration_ar » la ou elle donnait
+         « deleted » et « administration ». On la ramene a ce que l'ecran
+         affiche : un titre et une administration, dans la langue courante. */
+      return promise.then(function (payload) {
+        payload = payload || {};
+        return {
+          deleted: pick(payload, 'deleted') || String(payload.deleted || ''),
+          administration: pick(payload, 'administration') ||
+            administrationName(payload.administration),
+          etapes: Number(payload.etapes) || 0,
+          pieces: Number(payload.pieces) || 0
+        };
+      });
     },
 
     /* Les administrations proprietaires des procedures — ecran
@@ -1147,8 +1377,12 @@
           'Cette administration n\'a pas d\'identifiant : /admin/administrations doit renvoyer un champ « id_administration ».'
         ));
       }
+      /* Les deux noms partent ensemble, toujours : le backend remplace la
+         ligne entiere, et n'envoyer que la langue affichee effacerait
+         l'autre. */
       var body = {
-        nom_administration: String((data && data.name) || '').trim(),
+        nom_administration_fr: String((data && data.nameFr) || '').trim(),
+        nom_administration_ar: String((data && data.nameAr) || '').trim(),
         addr_administration: String((data && data.address) || '').trim(),
         url_administration: String((data && data.url) || '').trim()
       };
@@ -1296,10 +1530,14 @@
             'Réponse acceptée mais le serveur n\'a pas renvoyé d\'identifiant de discussion.'
           );
         }
+        // /ask pose « lang » a plat, a cote de « answer » ; si la reponse est
+        // enveloppee dans « message » sans sa propre langue, on la reprend la.
+        var message = normalizeMessage(payload.message || payload);
+        if (!message.lang) message.lang = normalizeLang(payload.lang);
         return {
           conversationId: String(id),
           title: payload.title || null,
-          message: normalizeMessage(payload.message || payload)
+          message: message
         };
       });
     },
@@ -1327,15 +1565,20 @@
       });
     },
 
-    trackProcedure: function (procedureId) {
+    /* « lang » : la langue dans laquelle la procédure sera affichée dans
+       « Mes procédures » — celle de la réponse d'où on la suit. Sans
+       précision, la langue de l'interface. */
+    trackProcedure: function (procedureId, lang) {
       if (procedureId === null || procedureId === undefined || procedureId === '') {
         return Promise.reject(new Error(
           'Cette source n\'a pas d\'identifiant de procédure : impossible de la suivre.'
         ));
       }
+      lang = App.helpers.contentLang(lang);
       var promise = config.USE_MOCK
-        ? App.mock.trackProcedure(procedureId)
-        : request('/citizen/tracked', { method: 'POST', json: { id_procedure: procedureId } });
+        ? App.mock.trackProcedure(procedureId, lang)
+        : request('/citizen/tracked',
+            { method: 'POST', json: { id_procedure: procedureId, lang: lang } });
       return promise.then(normalizeTracked);
     },
 

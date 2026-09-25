@@ -7,21 +7,32 @@
   var esc = h.esc;
   var icon = h.icon;
 
-  /* Statistiques calculées côté client à partir des données éditées. */
+  /* Statistiques calculées côté client à partir des données éditées.
+
+     Les valeurs éditées sont des paires { fr, ar } : on compte une ligne dès
+     que l'une des deux langues porte du texte, et les administrations sont
+     dédoublonnées sur leur nom français — le seul des deux que le backend
+     utilise pour rapprocher deux imports. */
+  function filled(pair) {
+    if (pair === null || pair === undefined) return false;
+    if (typeof pair !== 'object') return String(pair).trim().length > 0;
+    return String(pair.fr || '').trim().length > 0 ||
+      String(pair.ar || '').trim().length > 0;
+  }
+
   function computeSummary(procedures) {
     var administrations = {};
     var pieces = 0;
     var steps = 0;
 
     procedures.forEach(function (procedure) {
-      var administration = String((procedure.proc_administration || [])[0] || '').trim();
+      var first = (procedure.proc_administration || [])[0];
+      var administration = first && typeof first === 'object'
+        ? String(first.fr || first.ar || '').trim()
+        : String(first || '').trim();
       if (administration) administrations[administration.toLowerCase()] = true;
-      pieces += (procedure.proc_pieces || []).filter(function (item) {
-        return String(item).trim();
-      }).length;
-      steps += (procedure.proc_steps || []).filter(function (item) {
-        return String(item).trim();
-      }).length;
+      pieces += (procedure.proc_pieces || []).filter(filled).length;
+      steps += (procedure.proc_steps || []).filter(filled).length;
     });
 
     return {
@@ -103,6 +114,9 @@
           confirmButton.textContent = 'Approuver';
           showProgress(false);
           showError(error.message);
+          // L'editeur surligne le champ refuse par un 422 ; la modale reste
+          // ouverte, avec le message qui le nomme.
+          if (options.onError) options.onError(error);
         });
     }
 

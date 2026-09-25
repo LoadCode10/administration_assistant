@@ -102,9 +102,12 @@ def list_user_infos(
       {
         "id_up": tp.id_user_procedure,
         "status": tp.status,
-        "titre_proc": tp.procedure.titre_proc,
-        "administration": tp.procedure.administration.nom_administration
-                          if tp.procedure.administration else None,
+        "titre_proc_fr": tp.procedure.titre_proc_fr,
+        "titre_proc_ar": tp.procedure.titre_proc_ar,
+        "administration": {
+          "nom_administration_fr": tp.procedure.administration.nom_administration_fr,
+          "nom_administration_ar": tp.procedure.administration.nom_administration_ar,
+        } if tp.procedure.administration else None,
       }
       for tp in user.tracked
     ],

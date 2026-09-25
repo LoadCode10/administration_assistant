@@ -7,7 +7,7 @@ from database import get_db
 import models, schemas
 from core.security import get_current_user
 from core.logging import write_log, record_usage
-from services.rag import my_retriever, build_facts, generate_answer
+from services.rag import my_retriever, build_facts, generate_answer, detect_lang
 
 router = APIRouter(tags=["chat"])
 
@@ -17,6 +17,18 @@ def serialize_conversation(conv) -> dict:
     "title": conv.titre,
     "updated_at": conv.date_maj,
     "message_count": len(conv.questions) * 2,
+  }
+
+def serialize_source(p) -> dict:
+  admin = p.administration
+  return {
+    "id_procedure": p.id_procedure,
+    "titre_proc_fr": p.titre_proc_fr,
+    "titre_proc_ar": p.titre_proc_ar,
+    "administration": {
+      "nom_administration_fr": admin.nom_administration_fr if admin else None,
+      "nom_administration_ar": admin.nom_administration_ar if admin else None,
+    },
   }
 
 @router.post("/ask")
@@ -57,7 +69,8 @@ def ask_question(
   if not retrieved_procedures:
     raise HTTPException(status_code=503, detail="Aucune procédure indexée.")
 
-  facts = build_facts(retrieved_procedures)
+  lang = detect_lang(payload.question_content)
+  facts = build_facts(retrieved_procedures, lang)
   answer_text, tokens = generate_answer(payload.question_content, facts)
 
   reponse = models.Reponse(
@@ -85,17 +98,8 @@ def ask_question(
     "id_question": question.id_question,
     "conversation_id": conv.id_conversation,
     "answer": answer_text,
-    "sources": [
-      {
-        "id_procedure": p.id_procedure,
-        "titre_proc": p.titre_proc,
-        "administration": {
-          "nom_administration": p.administration.nom_administration
-                                if p.administration else None
-        },
-      }
-      for p in retrieved_procedures
-    ],
+    "lang": lang,
+    "sources": [serialize_source(p) for p in retrieved_procedures],
   }
 
 @router.get("/citizen/conversations")
@@ -166,15 +170,8 @@ def get_conversation(
         "role": "assistant",
         "content": question.reponse.reponse_content,
         "created_at": question.reponse.reponse_date,
-        "sources": [
-          {
-            "id_procedure": p.id_procedure,
-            "titre_proc": p.titre_proc,
-            "administration": p.administration.nom_administration
-                              if p.administration else None,
-          }
-          for p in question.reponse.procedures
-        ],
+        "lang": detect_lang(question.question_content),
+        "sources": [serialize_source(p) for p in question.reponse.procedures],
       })
 
   return {

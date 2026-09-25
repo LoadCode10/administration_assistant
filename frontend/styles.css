@@ -552,8 +552,28 @@ select {
 }
 .list-empty { font-size: 12px; color: var(--text-muted); padding: 2px 0 4px; }
 
+/* --- Champs bilingues (editeur d'extraction) -----------------------------
+
+   Chaque texte d'une extraction se saisit en francais ET en arabe : le
+   backend refuse une paire dont un cote est vide. Les deux champs sont donc
+   cote a cote, jamais l'un sous l'autre — on traduit en comparant, et la
+   moitie manquante doit se voir sans defiler. Sous 720px la grille .two-col
+   repasse d'elle-meme en colonne unique. */
+.field-sublabel {
+  display: block; font-size: 11px; color: var(--text-muted); margin-bottom: 3px;
+}
+.list-item-bilingual { align-items: flex-start; padding-top: 7px; }
+.list-item-bilingual .step-num { padding-top: 5px; }
+.list-item-langs { flex: 1; min-width: 0; }
+/* Le champ arabe garde le fond des champs de liste, mais aligne son texte a
+   droite : dir="rtl" est pose en dur sur l'input, la regle :dir() generique
+   plus bas ne s'applique qu'aux rangees a une seule langue. */
+.list-item-langs input[type="text"][dir="rtl"] { text-align: right; }
+
 .field-warning { font-size: 12px; color: var(--text-warning); margin-top: 4px; }
-input.is-invalid { border-color: var(--border-warning); background: var(--bg-warning); }
+input.is-invalid, textarea.is-invalid {
+  border-color: var(--border-warning); background: var(--bg-warning);
+}
 .admin-form input.is-invalid { border-color: var(--border-danger); background: var(--bg-danger); }
 
 /* Barre de pagination, partagee : l'editeur, les procedures, les pieces, les
@@ -713,8 +733,10 @@ input:dir(rtl), textarea:dir(rtl) { line-height: 1.6; }
 /* Le numero d'etape appartient a la liste, pas au texte : quand le champ passe
    en arabe, la rangee entiere se retourne pour que le numero reste devant.
    :has() + :dir() ; sans support, la rangee reste en LTR et demeure lisible. */
-.list-item:has(input:dir(rtl)) { flex-direction: row-reverse; }
-.list-item:has(input:dir(rtl)) input[type="text"] { text-align: right; }
+   Une rangee bilingue est exclue : elle porte TOUJOURS un champ arabe, la
+   retourner reviendrait a retourner toutes les lignes de toutes les listes. */
+.list-item:not(.list-item-bilingual):has(input:dir(rtl)) { flex-direction: row-reverse; }
+.list-item:not(.list-item-bilingual):has(input:dir(rtl)) input[type="text"] { text-align: right; }
 
 /* Nom de fichier rappele en second, sous le titre saisi par l'admin. */
 .doc-file { font-family: var(--font-mono); unicode-bidi: isolate; }
@@ -1008,9 +1030,9 @@ input:dir(rtl), textarea:dir(rtl) { line-height: 1.6; }
 .detail-title { font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; }
 .detail-count {
   font-weight: 400; color: var(--text-muted);
-  background: var(--surface-1); border-radius: 99px; padding: 1px 7px; margin-left: 2px;
+  background: var(--surface-1); border-radius: 99px; padding: 1px 7px; margin-inline-start: 2px;
 }
-.detail-list { margin: 0; padding-left: 20px; font-size: 13px; }
+.detail-list { margin: 0; padding-inline-start: 20px; font-size: 13px; }
 .detail-list li { margin-bottom: 4px; }
 /* La puce/le numero doit suivre le sens du texte quand l'element est arabe. */
 .detail-list li:dir(rtl) { direction: rtl; }
@@ -1472,6 +1494,12 @@ input:dir(rtl), textarea:dir(rtl) { line-height: 1.6; }
   font-size: 11px; text-transform: uppercase; letter-spacing: .05em;
   color: var(--text-muted); margin-bottom: 8px;
 }
+/* Bloc en arabe (dir="rtl", suit la langue de la question) : l'espacement
+   des lettres casse les liaisons de l'écriture arabe, et les capitales n'y
+   existent pas — on garde seulement la petite taille et la couleur. */
+.msg-sources[dir="rtl"] .msg-sources-title {
+  letter-spacing: 0; text-transform: none; font-size: 12px;
+}
 .source-row {
   display: flex; align-items: center; gap: 10px;
   padding: 7px 0; border-top: 0.5px solid var(--surface-1);
@@ -1537,7 +1565,7 @@ input:dir(rtl), textarea:dir(rtl) { line-height: 1.6; }
 .track-toggle {
   display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0;
   background: none; border: none; padding: 0; cursor: pointer;
-  font: inherit; color: var(--text); text-align: left;
+  font: inherit; color: var(--text); text-align: start;
 }
 .track-toggle:hover { background: none; }
 .track-toggle > .icon { color: var(--text-muted); }
@@ -1552,6 +1580,10 @@ input:dir(rtl), textarea:dir(rtl) { line-height: 1.6; }
 }
 .track-admin.is-empty { color: var(--text-muted); font-style: italic; }
 .track-head .pill, .track-head .icon-btn { flex: none; }
+/* Carte en arabe (dir="rtl", langue du suivi) : le chevron replie pointe
+   vers le debut de la ligne, donc vers la gauche. La fleche vers le bas est
+   symetrique, le miroir ne la change pas. */
+.track-card[dir="rtl"] .track-toggle > .icon { transform: scaleX(-1); }
 
 /* --- Avancement ----------------------------------------------------------
    Barre pleine et non animée : celle du haut de l'application signale une
@@ -1647,7 +1679,9 @@ input.piece-note:focus { background: var(--surface-2); border-color: var(--borde
 .nearby-panel-head {
   display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
 }
-.nearby-city { flex: 1; min-width: 0; font-size: 13px; font-weight: 500; }
+.nearby-city { flex: 1; min-width: 0; font-size: 13px; font-weight: 500; text-align: start; }
+.nearby-city > span { display: block; }
+.nearby-admin { font-size: 12px; font-weight: 400; color: var(--text-secondary); margin-top: 2px; }
 .nearby-panel-head .icon-btn { flex: none; }
 .nearby-panel-foot { margin-top: 12px; }
 
@@ -1683,7 +1717,7 @@ input.piece-note:focus { background: var(--surface-2); border-color: var(--borde
   font-size: 13px; font-weight: 600; margin: 1em 0 .4em;
 }
 .nearby-text.is-markdown ul,
-.nearby-text.is-markdown ol { margin: .5em 0; padding-left: 20px; }
+.nearby-text.is-markdown ol { margin: .5em 0; padding-inline-start: 20px; }
 .nearby-text.is-markdown li { margin: .18em 0; line-height: 1.5; overflow-wrap: anywhere; }
 .nearby-text.is-markdown li::marker { color: var(--text-muted); }
 .nearby-text.is-markdown a { color: var(--text-accent); overflow-wrap: anywhere; }
@@ -1735,7 +1769,7 @@ a.nearby-source:hover .nearby-source-title { text-decoration: underline; }
   /* La note passe sous le libellé : à cette largeur, côte à côte, il ne reste
      rien pour l'un ni pour l'autre. */
   .piece-row { flex-wrap: wrap; }
-  input.piece-note { width: 100%; margin-left: 25px; }
+  input.piece-note { width: 100%; margin-inline-start: 25px; }
   /* La ville et son bouton passent l'un sous l'autre : côte à côte, le nom de
      ville le plus long ne tient plus dans le menu. */
   .nearby-fallback-row select,

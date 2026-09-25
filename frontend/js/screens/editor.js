@@ -7,19 +7,66 @@
   var esc = h.esc;
   var icon = h.icon;
 
+  /* « bilingual » distingue les listes de paires { fr, ar } — pieces, etapes —
+     de celle des textes de loi, qui restent des chaines simples : un texte de
+     loi est cite dans sa langue d'origine, il ne se traduit pas. */
   var LISTS = {
-    pieces: { key: 'proc_pieces', label: 'Documents requis', add: 'Ajouter un document', numbered: false },
-    steps:  { key: 'proc_steps',  label: 'Étapes',           add: 'Ajouter une étape',   numbered: true },
-    law:    { key: 'proc_law',    label: 'Textes de loi',    add: 'Ajouter un texte de loi', numbered: false }
+    pieces: { key: 'proc_pieces', label: 'Documents requis', add: 'Ajouter un document', numbered: false, bilingual: true },
+    steps:  { key: 'proc_steps',  label: 'Étapes',           add: 'Ajouter une étape',   numbered: true,  bilingual: true },
+    law:    { key: 'proc_law',    label: 'Textes de loi',    add: 'Ajouter un texte de loi', numbered: false, bilingual: false }
   };
 
+  var LANGS = [
+    { key: 'fr', label: 'Français', dir: 'auto' },
+    { key: 'ar', label: 'Arabe',    dir: 'rtl'  }
+  ];
+
+  /* Le texte a afficher hors des champs de saisie — titre replie de la carte,
+     confirmation de suppression : la langue de l'interface, l'autre en repli. */
+  function display(pair) {
+    return h.pick(pair);
+  }
+
+  function pairOf(value) {
+    if (!value || typeof value !== 'object') return { fr: '', ar: '' };
+    return value;
+  }
+
   function isMissingAdministration(procedure) {
-    var admin = procedure.proc_administration && procedure.proc_administration[0];
-    return !String(admin || '').trim();
+    var admin = pairOf((procedure.proc_administration || [])[0]);
+    // Manquante veut dire « aucune des deux langues » : une administration
+    // nommee seulement en arabe n'est pas absente, elle est incomplete, et
+    // c'est le serveur qui le dira au moment d'enregistrer.
+    return !String(admin.fr || '').trim() && !String(admin.ar || '').trim();
+  }
+
+  /* Une paire a moitie remplie part quand meme au serveur, qui la refuse en
+     nommant le cote manquant. On le signale avant l'envoi : c'est le motif de
+     422 le plus frequent sur un fichier extrait. */
+  function incompleteCount(procedure) {
+    var count = 0;
+    function check(pair) {
+      pair = pairOf(pair);
+      var fr = String(pair.fr || '').trim();
+      var ar = String(pair.ar || '').trim();
+      if ((fr && !ar) || (ar && !fr)) count += 1;
+    }
+    check(procedure.proc_title);
+    check(procedure.proc_description);
+    check(procedure.fee);
+    check(procedure.proc_delai);
+    (procedure.proc_administration || []).forEach(check);
+    (procedure.proc_pieces || []).forEach(check);
+    (procedure.proc_steps || []).forEach(check);
+    return count;
   }
 
   function summaryText(procedure) {
     if (isMissingAdministration(procedure)) return 'Administration manquante';
+    var incomplete = incompleteCount(procedure);
+    if (incomplete) {
+      return h.plural(incomplete, 'traduction manquante', 'traductions manquantes');
+    }
     return h.plural((procedure.proc_pieces || []).length, 'document');
   }
 
@@ -35,7 +82,15 @@
       page: 0,
       dirty: false,
       showRaw: false,
-      saving: false
+      saving: false,
+      /* Champs refuses par le dernier 422, indexes par le chemin que le
+         serveur donne (« payload.0.proc_steps.2.ar »). Les inputs portent le
+         meme chemin en data-path : le surlignage se pose sans table de
+         correspondance. */
+      invalidFields: {},
+      // Message du serveur, affiche tel quel : il nomme le champ fautif, ce
+      // qu'un « enregistrement impossible » generique ne fait pas.
+      saveError: ''
     };
 
     root.innerHTML = '<div id="editor-shell">' + renderLoading() + '</div>';
@@ -60,6 +115,74 @@
       state.dirty = false;
       App.state.hasUnsavedChanges = false;
       updateFooter();
+    }
+
+    /* --- Champs refuses par le serveur ------------------------------------- */
+
+    function clearInvalid(path, node) {
+      if (!path || !state.invalidFields[path]) return;
+      delete state.invalidFields[path];
+      if (node) node.classList.remove('is-invalid');
+      // Plus aucun champ en defaut : le bandeau d'erreur n'a plus d'objet.
+      if (!Object.keys(state.invalidFields).length && state.saveError) {
+        state.saveError = '';
+        updateSaveError();
+      }
+    }
+
+    function resetInvalid() {
+      state.invalidFields = {};
+      state.saveError = '';
+    }
+
+    /* Pose le message du serveur et surligne les champs qu'il nomme. Renvoie
+       l'index de la premiere procedure fautive, pour l'ouvrir : sur un fichier
+       de trente procedures, un message sans deplacement ne sert a rien. */
+    function applyServerError(error) {
+      var paths = (error && error.fields) || [];
+      state.saveError = (error && error.message) || 'Enregistrement impossible.';
+      state.invalidFields = {};
+      var firstIndex = -1;
+
+      paths.forEach(function (path) {
+        state.invalidFields[path] = true;
+        // « payload.<index>.<champ>… » : le rang de la procedure est en 2e position.
+        var parts = String(path).split('.');
+        var index = Number(parts[1]);
+        if (!isNaN(index) && (firstIndex === -1 || index < firstIndex)) firstIndex = index;
+      });
+
+      return firstIndex;
+    }
+
+    /* Ouvre la procedure fautive, la place a l'ecran et donne le focus au
+       premier champ refuse. */
+    function revealInvalid(index) {
+      if (index < 0 || index >= state.procedures.length) {
+        renderCardsOnly();
+        return;
+      }
+      var size = App.config.EDITOR_PAGE_SIZE;
+      if (pageCount() > 1) state.page = Math.floor(index / size);
+      state.openIndex = index;
+      renderCardsOnly();
+
+      var field = shell.querySelector('.proc-body .is-invalid');
+      if (field) {
+        if (field.scrollIntoView) field.scrollIntoView({ block: 'center' });
+        field.focus();
+      }
+    }
+
+    function saveErrorMarkup() {
+      if (!state.saveError) return '';
+      return '<div class="inline-error" role="alert">' + icon('alert') +
+        '<span dir="auto">' + esc(state.saveError) + '</span></div>';
+    }
+
+    function updateSaveError() {
+      var box = shell.querySelector('#editor-error');
+      if (box) box.innerHTML = saveErrorMarkup();
     }
 
     /* Une extraction deja approuvee ou en echec est consultable mais figee :
@@ -91,22 +214,107 @@
       return state.procedures.filter(isMissingAdministration).length;
     }
 
+    /* Chemin du champ tel que le serveur le nomme dans un 422 :
+       « payload.3.proc_steps.2.ar ». C'est la cle qui relie le message
+       d'erreur a l'input, et elle est posee sur l'input lui-meme — pas de
+       table de correspondance a tenir a jour a cote. */
+    function fieldPath(index, field, lang, itemIndex) {
+      var parts = ['payload', index, field];
+      if (itemIndex !== undefined && itemIndex !== null) parts.push(itemIndex);
+      if (lang) parts.push(lang);
+      return parts.join('.');
+    }
+
+    function invalidAttr(path) {
+      return state.invalidFields[path] ? ' is-invalid' : '';
+    }
+
+    /* Un champ bilingue : les deux langues cote a cote, l'arabe en dir="rtl".
+       Le rtl est ecrit en dur et non laisse a « auto » : le champ est souvent
+       vide au moment ou on vient le remplir, et « auto » n'a alors aucun
+       caractere sur lequel trancher — le curseur partirait a gauche. */
+    function renderPairField(options) {
+      var pair = pairOf(options.value);
+      return '<div class="field-group">' +
+        '<label class="field-label">' + esc(options.label) + '</label>' +
+        '<div class="two-col">' +
+          LANGS.map(function (lang) {
+            var path = fieldPath(options.index, options.field, lang.key, options.item);
+            var id = options.field + '-' + lang.key + '-' + options.index;
+            var value = pair[lang.key] === null || pair[lang.key] === undefined
+              ? '' : pair[lang.key];
+            var input = options.multiline
+              ? '<textarea dir="' + lang.dir + '" lang="' + lang.key + '" id="' + esc(id) + '" ' +
+                  'class="' + invalidAttr(path) + '" ' +
+                  'data-field="' + esc(options.field) + '" data-lang="' + lang.key + '" ' +
+                  'data-index="' + options.index + '" data-path="' + esc(path) + '" ' +
+                  'placeholder="' + esc(options.placeholder || '') + '"' + lockedAttr() + '>' +
+                  esc(value) + '</textarea>'
+              : '<input type="text" dir="' + lang.dir + '" lang="' + lang.key + '" id="' + esc(id) + '" ' +
+                  'class="' + invalidAttr(path) + '" ' +
+                  'data-field="' + esc(options.field) + '" data-lang="' + lang.key + '" ' +
+                  'data-index="' + options.index + '" data-path="' + esc(path) + '" ' +
+                  'placeholder="' + esc(options.placeholder || '') + '" ' +
+                  'value="' + esc(value) + '"' + lockedAttr() + '>';
+            return '<div>' +
+              '<label class="field-sublabel" for="' + esc(id) + '">' + lang.label + '</label>' +
+              input +
+              '</div>';
+          }).join('') +
+        '</div>' +
+        (options.warning || '') +
+        '</div>';
+    }
+
     function renderListItems(procedure, index, kind) {
       var spec = LISTS[kind];
       var items = procedure[spec.key] || [];
       if (!items.length) {
         return '<div class="list-empty">Aucun élément.</div>';
       }
+
       return items.map(function (value, itemIndex) {
-        return '<div class="list-item">' +
-          (spec.numbered ? '<span class="step-num">' + (itemIndex + 1) + '.</span>' : '') +
-          '<input type="text" dir="auto" value="' + esc(value) + '" ' +
-            'data-field="list" data-kind="' + kind + '" data-index="' + index + '" ' +
-            'data-item="' + itemIndex + '" aria-label="' + esc(spec.label) + ' ' + (itemIndex + 1) + '"' +
-            lockedAttr() + '>' +
+        var removeButton =
           '<button type="button" class="icon-btn" data-action="remove-item" data-kind="' + kind + '" ' +
             'data-index="' + index + '" data-item="' + itemIndex + '" ' +
-            'aria-label="Supprimer cet élément"' + lockedAttr() + '>' + icon('trash', 'icon-sm') + '</button>' +
+            'aria-label="Supprimer cet élément"' + lockedAttr() + '>' +
+            icon('trash', 'icon-sm') + '</button>';
+        var number = spec.numbered
+          ? '<span class="step-num">' + (itemIndex + 1) + '.</span>' : '';
+
+        // Textes de loi : une seule valeur, dans sa langue d'origine.
+        if (!spec.bilingual) {
+          var path = fieldPath(index, spec.key, null, itemIndex);
+          return '<div class="list-item">' + number +
+            '<input type="text" dir="auto" value="' + esc(value) + '" ' +
+              'class="' + invalidAttr(path) + '" ' +
+              'data-field="list" data-kind="' + kind + '" data-index="' + index + '" ' +
+              'data-item="' + itemIndex + '" data-path="' + esc(path) + '" ' +
+              'aria-label="' + esc(spec.label) + ' ' + (itemIndex + 1) + '"' +
+              lockedAttr() + '>' +
+            removeButton +
+            '</div>';
+        }
+
+        var pair = pairOf(value);
+        return '<div class="list-item list-item-bilingual">' + number +
+          '<div class="two-col list-item-langs">' +
+            LANGS.map(function (lang) {
+              var langPath = fieldPath(index, spec.key, lang.key, itemIndex);
+              var text = pair[lang.key] === null || pair[lang.key] === undefined
+                ? '' : pair[lang.key];
+              return '<input type="text" dir="' + lang.dir + '" lang="' + lang.key + '" ' +
+                'class="' + invalidAttr(langPath) + '" ' +
+                'value="' + esc(text) + '" ' +
+                'data-field="list" data-kind="' + kind + '" data-lang="' + lang.key + '" ' +
+                'data-index="' + index + '" data-item="' + itemIndex + '" ' +
+                'data-path="' + esc(langPath) + '" ' +
+                'placeholder="' + esc(lang.label) + '" ' +
+                'aria-label="' + esc(spec.label) + ' ' + (itemIndex + 1) + ' — ' +
+                  esc(lang.label) + '"' + lockedAttr() + '>';
+            }).join('') +
+          '</div>' +
+          removeButton +
           '</div>';
       }).join('');
     }
@@ -124,37 +332,31 @@
     function renderBody(procedure, index) {
       var missing = isMissingAdministration(procedure);
       return '<div class="proc-body">' +
-        '<div class="field-group">' +
-          '<label class="field-label" for="title-' + index + '">Titre</label>' +
-          '<input type="text" dir="auto" id="title-' + index + '" data-field="proc_title" data-index="' + index + '" ' +
-            'value="' + esc(procedure.proc_title) + '"' + lockedAttr() + '>' +
-        '</div>' +
-        '<div class="field-group">' +
-          '<label class="field-label" for="desc-' + index + '">Description</label>' +
-          '<textarea dir="auto" id="desc-' + index + '" data-field="proc_description" data-index="' + index + '" ' +
-            'placeholder="Résumé court de la procédure"' + lockedAttr() + '>' +
-            esc(procedure.proc_description) + '</textarea>' +
-        '</div>' +
-        '<div class="field-group three-col">' +
-          '<div>' +
-            '<label class="field-label" for="admin-' + index + '">Administration</label>' +
-            '<input type="text" dir="auto" id="admin-' + index + '" data-field="proc_administration" data-index="' + index + '" ' +
-              'class="' + (missing ? 'is-invalid' : '') + '" ' +
-              'value="' + esc(procedure.proc_administration[0] || '') + '"' + lockedAttr() + '>' +
-            '<div class="field-warning" data-admin-warning style="' + (missing ? '' : 'display:none') + '">' +
-              'Administration manquante</div>' +
-          '</div>' +
-          '<div>' +
-            '<label class="field-label" for="fee-' + index + '">Frais</label>' +
-            '<input type="text" dir="auto" id="fee-' + index + '" data-field="fee" data-index="' + index + '" ' +
-              'placeholder="Non spécifié" value="' + esc(procedure.fee) + '"' + lockedAttr() + '>' +
-          '</div>' +
-          '<div>' +
-            '<label class="field-label" for="delai-' + index + '">Délai</label>' +
-            '<input type="text" dir="auto" id="delai-' + index + '" data-field="proc_delai" data-index="' + index + '" ' +
-              'placeholder="Non spécifié" value="' + esc(procedure.proc_delai) + '"' + lockedAttr() + '>' +
-          '</div>' +
-        '</div>' +
+        renderPairField({
+          index: index, field: 'proc_title', label: 'Titre',
+          value: procedure.proc_title
+        }) +
+        renderPairField({
+          index: index, field: 'proc_description', label: 'Description',
+          value: procedure.proc_description, multiline: true,
+          placeholder: 'Résumé court de la procédure'
+        }) +
+        /* L'administration est une LISTE cote serveur, mais le modele n'en
+           retient qu'une par procedure : on edite la premiere, comme avant. */
+        renderPairField({
+          index: index, field: 'proc_administration', item: 0,
+          label: 'Administration', value: procedure.proc_administration[0],
+          warning: '<div class="field-warning" data-admin-warning style="' +
+            (missing ? '' : 'display:none') + '">Administration manquante</div>'
+        }) +
+        renderPairField({
+          index: index, field: 'fee', label: 'Frais',
+          value: procedure.fee, placeholder: 'Non spécifié'
+        }) +
+        renderPairField({
+          index: index, field: 'proc_delai', label: 'Délai',
+          value: procedure.proc_delai, placeholder: 'Non spécifié'
+        }) +
         renderListBlock(procedure, index, 'pieces') +
         renderListBlock(procedure, index, 'steps') +
         renderListBlock(procedure, index, 'law') +
@@ -165,7 +367,7 @@
       var open = state.openIndex === index;
       var missing = isMissingAdministration(procedure);
       var classes = 'proc-card' + (open ? ' is-open' : '') + (missing ? ' is-invalid' : '');
-      var title = procedure.proc_title.trim() || 'Procédure sans titre';
+      var title = display(procedure.proc_title).trim() || 'Procédure sans titre';
 
       return '<div class="' + classes + '" data-card="' + index + '">' +
         '<div class="proc-row">' +
@@ -224,14 +426,25 @@
       }
 
       var invalid = invalidCount();
+      /* Une paire a moitie remplie serait refusee par un 422 : on le dit
+         avant l'envoi plutot que de laisser partir un enregistrement dont on
+         connait deja l'issue. */
+      var incomplete = state.procedures.filter(function (procedure) {
+        return incompleteCount(procedure) > 0;
+      }).length;
+
       var countText = h.plural(state.procedures.length, 'procédure') +
         (state.procedures.length >= 2 ? ' seront enregistrées' : ' sera enregistrée');
-      var text = invalid
-        ? h.plural(invalid, 'procédure') + ' à corriger avant l\'enregistrement'
-        : countText;
-      var blocked = invalid > 0 || !state.procedures.length;
+      var text = countText;
+      if (invalid) {
+        text = h.plural(invalid, 'procédure') + ' à corriger avant l\'enregistrement';
+      } else if (incomplete) {
+        text = h.plural(incomplete, 'procédure') +
+          ' avec une traduction manquante (français et arabe sont exigés)';
+      }
+      var blocked = invalid > 0 || incomplete > 0 || !state.procedures.length;
 
-      return '<span class="footer-count ' + (invalid ? 'footer-blocked' : '') + '">' +
+      return '<span class="footer-count ' + (blocked ? 'footer-blocked' : '') + '">' +
           esc(text) + (state.dirty ? ' · modifications non enregistrées' : '') + '</span>' +
         '<button type="button" data-action="save-draft"' + (state.saving ? ' disabled' : '') + '>' +
           'Enregistrer le brouillon</button>' +
@@ -264,6 +477,7 @@
             icon('code') + (state.showRaw ? 'Masquer le JSON brut' : 'Voir le JSON brut') + '</button>' +
         '</div>' +
         '<div id="raw-block">' + renderRaw() + '</div>' +
+        '<div id="editor-error">' + saveErrorMarkup() + '</div>' +
         '<div id="proc-list">' + renderCards() + '</div>' +
         '<div class="editor-footer" id="editor-footer">' + footerMarkup() + '</div>';
     }
@@ -273,6 +487,7 @@
       if (list) list.innerHTML = renderCards();
       var raw = shell.querySelector('#raw-block');
       if (raw) raw.innerHTML = renderRaw();
+      updateSaveError();
       updateFooter();
     }
 
@@ -289,7 +504,7 @@
       var missing = isMissingAdministration(procedure);
       card.classList.toggle('is-invalid', missing);
       card.querySelector('.proc-title-text').textContent =
-        procedure.proc_title.trim() || 'Procédure sans titre';
+        display(procedure.proc_title).trim() || 'Procédure sans titre';
       card.querySelector('.proc-summary').textContent = summaryText(procedure);
       var adminInput = card.querySelector('[data-field="proc_administration"]');
       if (adminInput) adminInput.classList.toggle('is-invalid', missing);
@@ -322,15 +537,29 @@
       var procedure = state.procedures[index];
       if (!procedure) return;
 
+      var lang = target.getAttribute('data-lang');
+
       if (field === 'list') {
         var kind = target.getAttribute('data-kind');
         var itemIndex = Number(target.getAttribute('data-item'));
-        procedure[LISTS[kind].key][itemIndex] = target.value;
+        var list = procedure[LISTS[kind].key];
+        if (LISTS[kind].bilingual) {
+          list[itemIndex] = pairOf(list[itemIndex]);
+          list[itemIndex][lang] = target.value;
+        } else {
+          list[itemIndex] = target.value;
+        }
       } else if (field === 'proc_administration') {
-        procedure.proc_administration[0] = target.value;
+        procedure.proc_administration[0] = pairOf(procedure.proc_administration[0]);
+        procedure.proc_administration[0][lang] = target.value;
       } else {
-        procedure[field] = target.value;
+        procedure[field] = pairOf(procedure[field]);
+        procedure[field][lang] = target.value;
       }
+
+      // Le champ vient d'etre corrige : son surlignage n'a plus lieu d'etre,
+      // meme si le serveur ne s'est pas encore reprononce.
+      clearInvalid(target.getAttribute('data-path'), target);
       markDirty();
       refreshRowState(index);
     });
@@ -356,7 +585,7 @@
         }
 
       } else if (action === 'delete-proc') {
-        var title = state.procedures[index].proc_title.trim() || 'cette procédure';
+        var title = display(state.procedures[index].proc_title).trim() || 'cette procédure';
         if (!global.confirm('Supprimer « ' + h.isolate(title) + ' » du fichier ?\n\n' +
           'La suppression ne sera définitive qu\'après enregistrement.')) return;
         state.procedures.splice(index, 1);
@@ -369,7 +598,9 @@
       } else if (action === 'add-item') {
         var addKind = target.getAttribute('data-kind');
         var list = state.procedures[index][LISTS[addKind].key];
-        list.push('');
+        // Une ligne bilingue nait avec ses deux moities, vides : le serveur
+        // exige les deux, autant que les deux champs existent tout de suite.
+        list.push(LISTS[addKind].bilingual ? { fr: '', ar: '' } : '');
         markDirty();
         redrawList(index, addKind, list.length - 1);
 
@@ -403,6 +634,8 @@
     function saveDraft() {
       if (state.saving) return Promise.resolve(false);
       state.saving = true;
+      resetInvalid();
+      updateSaveError();
       updateFooter();
       return App.api.saveExtraction(extractionId, state.procedures).then(function () {
         state.saving = false;
@@ -411,16 +644,42 @@
         return true;
       }).catch(function (error) {
         state.saving = false;
-        updateFooter();
-        h.toast('Enregistrement impossible : ' + error.message, 'error');
+        handleSaveError(error);
         return false;
       });
+    }
+
+    /* Un 422 nomme le champ refuse — « payload.0.proc_steps.2.ar » : on
+       affiche ce message-la, on surligne le champ et on l'amene a l'ecran.
+       Toute autre erreur reste un toast : il n'y a rien a montrer sur un
+       champ en particulier. */
+    function handleSaveError(error) {
+      if (error && error.status === 422) {
+        var index = applyServerError(error);
+        revealInvalid(index);
+        updateSaveError();
+        updateFooter();
+        return;
+      }
+      updateFooter();
+      h.toast('Enregistrement impossible : ' + error.message, 'error');
     }
 
     function openApproveModal() {
       App.modals.approve({
         extractionId: extractionId,
         procedures: state.procedures,
+        /* La modale affiche deja le message ; elle le repasse ici pour que
+           l'editeur surligne le champ refuse derriere elle — sans quoi on
+           fermerait la fenetre sans savoir ou corriger. */
+        onError: function (error) {
+          if (error && error.status === 422) {
+            var index = applyServerError(error);
+            revealInvalid(index);
+            updateSaveError();
+            updateFooter();
+          }
+        },
         onApproved: function () {
           clearDirty();
           h.toast('Procédures enregistrées et mises en file d\'indexation.', 'success');
@@ -438,6 +697,7 @@
         state.procedures = extraction.procedures;
         state.openIndex = -1;
         state.page = 0;
+        resetInvalid();
         clearDirty();
         renderAll();
       }).catch(function (error) {

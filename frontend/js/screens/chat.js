@@ -82,29 +82,41 @@
     /* Sous une réponse : les procédures qu'elle a utilisées. C'est le seul
        endroit d'où l'on peut lancer un suivi — d'où le bouton par source,
        plutôt qu'un lien vers un catalogue à re-chercher. */
+    /* Le bloc entier prend la langue de la réponse : titres et administrations
+       via h.pick (repli sur l'autre langue si la moitié est vide), libellés
+       via h.labelsFor, et dir sur le bloc pour que l'icône, le texte et le
+       bouton se retournent ensemble. Chaque texte garde son dir="auto" : un
+       titre français de repli dans un bloc arabe reste lisible. */
     function renderSources(message) {
       if (!message.sources.length) return '';
 
-      return '<div class="msg-sources">' +
+      var lang = h.contentLang(message.lang);
+      var labels = h.labelsFor(lang);
+
+      return '<div class="msg-sources" lang="' + lang + '" dir="' + h.langDir(lang) + '">' +
         '<div class="msg-sources-title">' + icon('file-text', 'icon-sm') +
-          esc(h.plural(message.sources.length, 'source utilisée', 'sources utilisées')) +
+          esc(labels.sourcesCount(message.sources.length)) +
         '</div>' +
         message.sources.map(function (source) {
           var isTracked = source.procedureId !== null &&
             state.trackedIds[String(source.procedureId)] === true;
+          var title = h.pick(source, 'title', lang) || source.title || labels.untitled;
+          var administration = h.pick(source, 'administration', lang) || source.administration;
           return '<div class="source-row">' +
             '<div class="source-main">' +
-              '<div class="source-title" dir="auto">' + esc(source.title) + '</div>' +
-              (source.administration
-                ? '<div class="source-admin" dir="auto">' + icon('building', 'icon-sm') +
-                  '<span>' + esc(source.administration) + '</span></div>'
-                : '<div class="source-admin is-empty">Administration non renseignée</div>') +
+              '<div class="source-title" dir="auto">' + esc(title) + '</div>' +
+              (administration
+                ? '<div class="source-admin">' + icon('building', 'icon-sm') +
+                  '<span dir="auto">' + esc(administration) + '</span></div>'
+                : '<div class="source-admin is-empty">' + esc(labels.noAdministration) + '</div>') +
             '</div>' +
             '<button type="button" class="btn-tiny source-track' +
               (isTracked ? ' is-tracked' : '') + '" ' +
               'data-track="' + esc(source.procedureId === null ? '' : source.procedureId) + '"' +
               (isTracked || source.procedureId === null ? ' disabled' : '') + '>' +
-              (isTracked ? icon('check', 'icon-sm') + 'Déjà suivie' : 'Suivre cette procédure') +
+              (isTracked
+                ? icon('check', 'icon-sm') + esc(labels.tracked)
+                : esc(labels.track)) +
             '</button>' +
           '</div>';
         }).join('') +
@@ -124,11 +136,16 @@
       var side = message.role === 'user' ? 'is-user' : 'is-assistant';
       var html = message.role === 'assistant'
         ? h.markdownToHtml(message.content) : null;
+      // Une réponse dont le serveur a donné la langue prend le sens de cette
+      // langue, comme ses sources ; le reste (questions, anciens messages)
+      // garde dir="auto".
+      var dir = message.role === 'assistant' && message.lang
+        ? h.langDir(message.lang) : 'auto';
       // is-markdown : la bulle passe du texte préformaté au flux HTML, c'est
       // le CSS qui reprend l'espacement à partir de là.
       var bubble = html === null
-        ? '<div class="msg-bubble" dir="auto">' + esc(message.content) + '</div>'
-        : '<div class="msg-bubble is-markdown" dir="auto">' + html + '</div>';
+        ? '<div class="msg-bubble" dir="' + dir + '">' + esc(message.content) + '</div>'
+        : '<div class="msg-bubble is-markdown" dir="' + dir + '">' + html + '</div>';
 
       return '<div class="msg ' + side + '">' +
         bubble +
@@ -357,20 +374,27 @@
     /* --- Suivi d'une procédure depuis une source ---------------------------- */
 
     function track(procedureId, button) {
-      button.disabled = true;
-      button.textContent = 'Ajout…';
+      // Les libellés, et la langue dans laquelle la procédure sera suivie,
+      // sont ceux de la réponse dont le bouton fait partie.
+      var block = button.closest('.msg-sources');
+      var lang = h.contentLang(block && block.getAttribute('lang'));
+      var labels = h.labelsFor(lang);
 
-      App.api.trackProcedure(procedureId).then(function (item) {
+      button.disabled = true;
+      button.textContent = labels.adding;
+
+      App.api.trackProcedure(procedureId, lang).then(function (item) {
         if (destroyed) return;
         state.trackedIds[String(item.procedureId === null ? procedureId : item.procedureId)] = true;
         // La même procédure peut être citée par plusieurs réponses du fil :
         // on redessine, tous ses boutons passent à « Déjà suivie ».
         renderStream(true);
-        h.toast('Procédure suivie — retrouvez-la dans « Mes procédures ».', 'success');
+        // isolate : le toast est en LTR, un message arabe y garde son sens.
+        h.toast(h.isolate(labels.trackedToast), 'success');
       }, function (error) {
         if (destroyed) return;
         button.disabled = false;
-        button.textContent = 'Suivre cette procédure';
+        button.textContent = labels.track;
         h.toast(error.message, 'error');
       });
     }

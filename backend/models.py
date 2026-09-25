@@ -64,10 +64,21 @@ class Administration(Base):
     default=lambda: str(uuid.uuid4())
   )
 
-  nom_administration : Mapped[str] = mapped_column(
+  # nom_administration : Mapped[str] = mapped_column(
+  #   String,
+  #   nullable=False 
+  # )
+
+  nom_administration_fr : Mapped[str] = mapped_column(
     String,
     nullable=False 
   )
+
+  nom_administration_ar : Mapped[str] = mapped_column(
+    String,
+    nullable=False 
+  )
+
 
   addr_administration: Mapped[str | None] = mapped_column(
     String,
@@ -137,22 +148,62 @@ class Procedure(Base):
     default= lambda: str(uuid.uuid4())
   )
 
-  titre_proc : Mapped[str] = mapped_column(
+  # titre_proc : Mapped[str] = mapped_column(
+  #   String,
+  #   nullable=False
+  # )
+
+  titre_proc_fr : Mapped[str] = mapped_column(
     String,
     nullable=False
   )
 
-  frais_proc : Mapped[str | None] = mapped_column(
+  titre_proc_ar : Mapped[str] = mapped_column(
+    String,
+    nullable=False
+  )
+
+  # frais_proc : Mapped[str | None] = mapped_column(
+  #   String,
+  #   nullable=True
+  # )
+
+  frais_proc_fr : Mapped[str | None] = mapped_column(
     String,
     nullable=True
   )
 
-  delai_proc : Mapped[str | None] = mapped_column(
+  frais_proc_ar : Mapped[str | None] = mapped_column(
     String,
     nullable=True
   )
 
-  description_proc: Mapped[str | None] = mapped_column(
+  # delai_proc : Mapped[str | None] = mapped_column(
+  #   String,
+  #   nullable=True
+  # )
+
+  delai_proc_fr : Mapped[str | None] = mapped_column(
+    String,
+    nullable=True
+  )
+
+  delai_proc_ar : Mapped[str | None] = mapped_column(
+    String,
+    nullable=True
+  )
+
+  # description_proc: Mapped[str | None] = mapped_column(
+  #   String,
+  #   nullable=True
+  # )
+
+  description_proc_fr: Mapped[str | None] = mapped_column(
+    String,
+    nullable=True
+  )
+
+  description_proc_ar: Mapped[str | None] = mapped_column(
     String,
     nullable=True
   )
@@ -221,7 +272,17 @@ class Piece(Base):
     default= lambda: str(uuid.uuid4())
   )
 
-  nom_piece : Mapped[str] = mapped_column(
+  # nom_piece : Mapped[str] = mapped_column(
+  #   String,
+  #   nullable=False
+  # )
+
+  nom_piece_fr: Mapped[str] = mapped_column(
+    String,
+    nullable=False 
+  )
+    
+  nom_piece_ar: Mapped[str] = mapped_column(
     String,
     nullable=False
   )
@@ -245,7 +306,17 @@ class Etape(Base):
     nullable=False
   )
 
-  description_etape: Mapped[str] = mapped_column(
+  # description_etape: Mapped[str] = mapped_column(
+  #   String,
+  #   nullable=False
+  # )
+
+  description_etape_fr: Mapped[str] = mapped_column(
+    String,
+    nullable=False
+  )
+
+  description_etape_ar: Mapped[str] = mapped_column(
     String,
     nullable=False
   )
@@ -523,6 +594,8 @@ class UserProcedure(Base):
     nullable=False,
     default="en_cours"
   )
+
+  lang: Mapped[str] = mapped_column(String, nullable=False, default="fr")
 
   date_debut: Mapped[datetime] = mapped_column(
     DateTime,

@@ -2,6 +2,7 @@ from datetime import datetime
 
 from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
+from sqlalchemy import or_
 
 from database import get_db
 import models, schemas
@@ -21,12 +22,18 @@ def list_procedures(
   procedures = db.query(models.Procedure)
   if proc_title is not None:
     procedures = procedures.filter(
-      models.Procedure.titre_proc.ilike(f"%{proc_title}%")
+      or_(
+        models.Procedure.titre_proc_fr.ilike(f"%{proc_title}%"),
+        models.Procedure.titre_proc_ar.ilike(f"%{proc_title}%")
+      )
     )
   if proc_admin_name is not None:
     procedures = procedures.filter(
       models.Procedure.administration.has(
-        models.Administration.nom_administration.ilike(f"%{proc_admin_name}%")
+        or_(
+          models.Administration.nom_administration_fr.ilike(f"%{proc_admin_name}%"),
+          models.Administration.nom_administration_ar.ilike(f"%{proc_admin_name}%")
+        )
       )
     )
   return procedures.all()
@@ -52,10 +59,12 @@ def delete_procedure(
     )
   
   deletion_info = {
-    "deleted": procedure.titre_proc,
-    "administration": procedure.administration.nom_administration if procedure.administration else None,
+    "deleted_fr": procedure.titre_proc_fr,
+    "deleted_ar": procedure.titre_proc_ar,
+    "administration_fr": procedure.administration.nom_administration_fr if procedure.administration else None,
+    "administration_ar": procedure.administration.nom_administration_ar if procedure.administration else None,
     "etapes": len(procedure.etapes),
-    "pieces": len(procedure.pieces)
+    "pieces": len(procedure.pieces),
   }
 
   write_log(
@@ -63,7 +72,7 @@ def delete_procedure(
     action="delete_procedure",
     entity_type="procedure",
     entity_id=proc_id,
-    detail=procedure.titre_proc,
+    detail=f"{procedure.titre_proc_fr} / {procedure.titre_proc_ar}",
   )
 
   db.delete(procedure)
@@ -83,6 +92,6 @@ current_user: models.User = Depends(require_admin),db: Session = Depends(get_db)
 
   write_log(db, request, current_user, action="mark_obsolete",
     entity_type="procedure", entity_id=proc_id,
-    detail=procedure.titre_proc)
+    detail=f"{procedure.titre_proc_fr} / {procedure.titre_proc_ar}")
   db.commit()
   return {"affected_users": len(procedure.tracked_by)}

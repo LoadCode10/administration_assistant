@@ -5,7 +5,7 @@ from slowapi.errors import RateLimitExceeded
 
 from core.limiter import limiter
 from api import (
-  auth, users, tracking, logs, administrations, procedures, chat, extractions, documents, stats
+  auth, users, tracking, logs, administrations, procedures, chat, documents, stats, extractions
 )
 
 app = FastAPI()

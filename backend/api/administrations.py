@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, Request
-from sqlalchemy import func
+from sqlalchemy import func, or_
 from sqlalchemy.orm import Session
 
 from database import get_db
@@ -18,13 +18,14 @@ def list_administrations(db: Session = Depends(get_db),current_user : models.Use
     )
     .outerjoin(models.Procedure)
     .group_by(models.Administration.id_administration)
-    .order_by(models.Administration.nom_administration)
+    .order_by(models.Administration.nom_administration_fr)
     .all()
   )
 
   return [{
     "id_administration": admin.id_administration,
-    "nom_administration": admin.nom_administration,
+    "nom_administration_fr": admin.nom_administration_fr,
+    "nom_administration_ar": admin.nom_administration_ar,
     "addr_administration": admin.addr_administration,
     "url_administration": admin.url_administration,
     "procedure_count": count,
@@ -45,7 +46,10 @@ def update_administration(
     raise HTTPException(status_code=404, detail="Administration Introuvable")
 
   duplicate = db.query(models.Administration).filter(
-        models.Administration.nom_administration == body.nom_administration,
+        or_(
+          models.Administration.nom_administration_fr == body.nom_administration_fr,
+          models.Administration.nom_administration_ar == body.nom_administration_ar,
+        ),
         models.Administration.id_administration != admin_id,
     ).first()
 
@@ -55,7 +59,8 @@ def update_administration(
         detail="Une autre administration porte déjà ce nom",
     )
 
-  administration.nom_administration = body.nom_administration
+  administration.nom_administration_fr = body.nom_administration_fr
+  administration.nom_administration_ar = body.nom_administration_ar
   administration.addr_administration = body.addr_administration
   administration.url_administration = body.url_administration
 
@@ -64,7 +69,7 @@ def update_administration(
     action="modifier_administration_infos",
     entity_type="administration",
     entity_id=administration.id_administration,
-    detail=administration.nom_administration,
+    detail=f"{administration.nom_administration_fr} / {administration.nom_administration_ar}",
   )
 
   db.commit()

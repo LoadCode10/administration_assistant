@@ -9,7 +9,13 @@
    Cocher une case écrit sur le serveur. L'affichage bouge d'abord — attendre
    la réponse ferait clignoter la case — mais si l'enregistrement échoue, la
    case revient en arrière et l'échec est dit. Une barre d'avancement qui ne
-   correspond pas à ce qui est enregistré serait pire que pas de barre. */
+   correspond pas à ce qui est enregistré serait pire que pas de barre.
+
+   Chaque carte est rendue dans la langue où la procédure a été suivie
+   (item.lang, celle de la réponse de l'assistant) : titre, pièces, étapes et
+   libellés fixes, avec dir sur la carte. Une liste peut donc mêler cartes
+   françaises et arabes ; l'en-tête de l'écran, lui, reste dans la langue de
+   l'interface. */
 (function (global) {
   'use strict';
 
@@ -81,6 +87,28 @@
       return state.items.filter(function (item) { return String(item.id) === String(id); })[0] || null;
     }
 
+    /* Langue d'une carte, et ses textes dans cette langue — h.pick retombe sur
+       l'autre langue quand la moitié demandée est vide. */
+    function langOf(item) {
+      return h.contentLang(item.lang);
+    }
+
+    function labelsOf(item) {
+      return h.labelsFor(langOf(item));
+    }
+
+    function titleOf(item) {
+      return h.pick(item, 'title', langOf(item)) || item.title || labelsOf(item).untitled;
+    }
+
+    function administrationOf(item) {
+      return h.pick(item, 'administration', langOf(item)) || item.administration;
+    }
+
+    function labelOf(item, entry) {
+      return h.pick(entry, 'label', langOf(item)) || entry.label;
+    }
+
     /* --- Rendu -------------------------------------------------------------- */
 
     function renderProgress(item) {
@@ -93,26 +121,26 @@
             'style="width:' + progress.percent + '%"></span>' +
         '</div>' +
         '<div class="track-progress-label">' +
-          esc(progress.done + ' / ' + progress.total + ' ' +
-            (progress.total >= 2 ? 'pièces réunies' : 'pièce réunie')) +
-          ' · ' + progress.percent + ' %' +
+          esc(labelsOf(item).progress(progress.done, progress.total, progress.percent)) +
         '</div>' +
       '</div>';
     }
 
     function renderPiece(item, piece) {
       var key = item.id + ':' + piece.id;
+      var label = labelOf(item, piece);
+      var labels = labelsOf(item);
       return '<div class="piece-row' + (piece.checked ? ' is-checked' : '') + '" ' +
           'data-piece-row="' + esc(key) + '">' +
         '<label class="piece-check">' +
           '<input type="checkbox" data-piece="' + esc(key) + '"' +
             (piece.checked ? ' checked' : '') + '>' +
-          '<span dir="auto">' + esc(piece.label) + '</span>' +
+          '<span dir="auto">' + esc(label) + '</span>' +
         '</label>' +
         '<input type="text" class="piece-note" dir="auto" data-note="' + esc(key) + '" ' +
           'value="' + esc(piece.note) + '" ' +
-          'placeholder="Note (facultatif)" ' +
-          'aria-label="Note pour ' + esc(piece.label) + '">' +
+          'placeholder="' + esc(labels.notePlaceholder) + '" ' +
+          'aria-label="' + esc(labels.noteAria(label)) + '">' +
       '</div>';
     }
 
@@ -144,7 +172,7 @@
         : '') +
         '<button type="button" class="btn-tiny nearby-trigger" ' +
           'data-nearby-find="' + esc(item.id) + '">' +
-          icon('map-pin', 'icon-sm') + 'Trouver le bureau le plus proche' +
+          icon('map-pin', 'icon-sm') + esc(labelsOf(item).nearbyFind) +
         '</button>';
     }
 
@@ -158,11 +186,12 @@
     }
 
     function renderNearbyFallback(item, message) {
+      var labels = labelsOf(item);
       return '<div class="nearby-fallback">' +
         '<p class="nearby-fallback-text">' + esc(message) + '</p>' +
         '<div class="nearby-fallback-row">' +
           '<label class="sr-only" for="nearby-city-' + esc(item.id) + '">' +
-            'Ville de recherche</label>' +
+            esc(labels.nearbyCity) + '</label>' +
           '<select id="nearby-city-' + esc(item.id) + '" ' +
               'data-nearby-city="' + esc(item.id) + '">' +
             FALLBACK_CITIES.map(function (city) {
@@ -170,23 +199,24 @@
             }).join('') +
           '</select>' +
           '<button type="button" data-nearby-city-go="' + esc(item.id) + '">' +
-            icon('search', 'icon-sm') + 'Chercher' +
+            icon('search', 'icon-sm') + esc(labels.nearbySearch) +
           '</button>' +
         '</div>' +
         '<button type="button" class="btn-tiny nearby-dismiss" ' +
-          'data-nearby-close="' + esc(item.id) + '">Fermer</button>' +
+          'data-nearby-close="' + esc(item.id) + '">' + esc(labels.close) + '</button>' +
       '</div>';
     }
 
-    function renderNearbySources(sources) {
+    function renderNearbySources(item, sources) {
       if (!sources.length) return '';
+      var labels = labelsOf(item);
       return '<div class="nearby-sources">' +
         '<div class="nearby-sources-title">' +
-          h.plural(sources.length, 'Source', 'Sources') + '</div>' +
+          esc(labels.nearbySources(sources.length)) + '</div>' +
         sources.map(function (source) {
           var badge = '<span class="nearby-source-badge' +
             (source.official ? ' is-official' : '') + '">' +
-            (source.official ? 'Officielle' : 'Non officielle') + '</span>';
+            esc(source.official ? labels.official : labels.unofficial) + '</span>';
           /* Une source sans URL exploitable reste citée, mais pas en lien : un
              lien mort ferait croire qu'il y a quelque chose à ouvrir.
 
@@ -197,12 +227,12 @@
              premier qui touche la donnée. */
           if (!/^https?:\/\//i.test(source.uri)) {
             return '<span class="nearby-source is-dead">' +
-              '<span class="nearby-source-title">' + esc(source.title) + '</span>' +
+              '<span class="nearby-source-title" dir="auto">' + esc(source.title) + '</span>' +
               badge + '</span>';
           }
           return '<a class="nearby-source' + (source.official ? ' is-official' : '') + '" ' +
               'href="' + esc(source.uri) + '" target="_blank" rel="noopener noreferrer">' +
-            '<span class="nearby-source-title">' + esc(source.title) + '</span>' +
+            '<span class="nearby-source-title" dir="auto">' + esc(source.title) + '</span>' +
             badge + icon('link', 'icon-sm') +
           '</a>';
         }).join('') +
@@ -225,34 +255,41 @@
        panneau : quand aucune source officielle n'a été trouvée, l'adresse
        affichée peut être fausse, et quelqu'un qui se déplace pour rien est
        précisément ce que cet écran doit éviter. */
-    function renderNearbyWarning() {
+    function renderNearbyWarning(item) {
+      var labels = labelsOf(item);
       return '<div class="nearby-warning" role="alert">' +
         icon('alert') +
         '<div>' +
-          '<div class="nearby-warning-title">Informations non vérifiées</div>' +
-          '<p>Ces informations proviennent de sources non officielles et ' +
-            'n\'ont pas été vérifiées. Confirmez-les auprès de l\'administration ' +
-            'avant de vous déplacer.</p>' +
+          '<div class="nearby-warning-title">' + esc(labels.unverifiedTitle) + '</div>' +
+          '<p>' + esc(labels.unverifiedText) + '</p>' +
         '</div>' +
       '</div>';
     }
 
+    /* Le nom de l'administration est repris dans la langue de la carte ; le
+       texte de la recherche, lui, est affiché tel que le serveur l'a écrit. */
     function renderNearbyResult(item, result) {
+      var labels = labelsOf(item);
+      var administration = h.pick(result, 'administration', langOf(item)) ||
+        result.administration;
       return '<div class="nearby-panel' + (result.verified ? '' : ' is-unverified') + '">' +
         '<div class="nearby-panel-head">' +
-          '<div class="nearby-city" dir="auto">' +
-            (result.city
-              ? 'Résultats pour ' + esc(result.city)
-              : 'Résultats') + '</div>' +
+          '<div class="nearby-city">' +
+            '<span dir="auto">' +
+              esc(result.city ? labels.resultsFor(result.city) : labels.results) + '</span>' +
+            (administration
+              ? '<span class="nearby-admin" dir="auto">' + esc(administration) + '</span>'
+              : '') +
+          '</div>' +
           '<button type="button" class="icon-btn" data-nearby-close="' + esc(item.id) + '" ' +
-            'aria-label="Fermer les résultats">' + icon('x') + '</button>' +
+            'aria-label="' + esc(labels.closeResults) + '">' + icon('x') + '</button>' +
         '</div>' +
-        (result.verified ? '' : renderNearbyWarning()) +
+        (result.verified ? '' : renderNearbyWarning(item)) +
         renderNearbyText(result.text) +
-        renderNearbySources(result.sources) +
+        renderNearbySources(item, result.sources) +
         '<div class="nearby-panel-foot">' +
           '<button type="button" class="btn-tiny" data-nearby-close="' + esc(item.id) + '">' +
-            'Fermer</button>' +
+            esc(labels.close) + '</button>' +
         '</div>' +
       '</div>';
     }
@@ -267,10 +304,9 @@
       var inner;
       if (!current) inner = renderNearbyButton(item, '');
       else if (current.phase === 'locating') {
-        inner = renderNearbyLoading('Recherche de votre position…');
+        inner = renderNearbyLoading(labelsOf(item).nearbyLocating);
       } else if (current.phase === 'searching') {
-        inner = renderNearbyLoading(
-          'Recherche des bureaux à proximité… cela peut prendre quelques secondes');
+        inner = renderNearbyLoading(labelsOf(item).nearbySearching);
       } else if (current.phase === 'fallback') {
         inner = renderNearbyFallback(item, current.message);
       } else if (current.phase === 'error') {
@@ -283,23 +319,24 @@
     }
 
     function renderBody(item) {
+      var labels = labelsOf(item);
       return '<div class="track-body">' +
         renderNearby(item) +
         '<div class="detail-block">' +
-          '<div class="detail-title">Pièces requises' +
+          '<div class="detail-title">' + esc(labels.piecesTitle) +
             '<span class="detail-count">' + item.pieces.length + '</span></div>' +
           (item.pieces.length
             ? item.pieces.map(function (piece) { return renderPiece(item, piece); }).join('')
-            : '<div class="list-empty">Aucune pièce à réunir pour cette procédure.</div>') +
+            : '<div class="list-empty">' + esc(labels.noPieces) + '</div>') +
         '</div>' +
         '<div class="detail-block">' +
-          '<div class="detail-title">Étapes' +
+          '<div class="detail-title">' + esc(labels.stepsTitle) +
             '<span class="detail-count">' + item.steps.length + '</span></div>' +
           (item.steps.length
             ? '<ol class="detail-list">' + item.steps.map(function (step) {
-                return '<li dir="auto">' + esc(step.label) + '</li>';
+                return '<li dir="auto">' + esc(labelOf(item, step)) + '</li>';
               }).join('') + '</ol>'
-            : '<div class="list-empty">Aucune étape listée pour cette procédure.</div>') +
+            : '<div class="list-empty">' + esc(labels.noSteps) + '</div>') +
         '</div>' +
       '</div>';
     }
@@ -307,24 +344,27 @@
     function renderCard(item) {
       var progress = progressOf(item);
       var isOpen = state.open[item.id] === true;
+      var lang = langOf(item);
+      var labels = labelsOf(item);
+      var administration = administrationOf(item);
 
       return '<div class="card track-card' + (isOpen ? ' is-open' : '') + '" ' +
-          'data-card="' + esc(item.id) + '">' +
+          'data-card="' + esc(item.id) + '" lang="' + lang + '" dir="' + h.langDir(lang) + '">' +
         '<div class="track-head">' +
           '<button type="button" class="track-toggle" data-toggle="' + esc(item.id) + '" ' +
               'aria-expanded="' + (isOpen ? 'true' : 'false') + '">' +
             icon(isOpen ? 'chevron-down' : 'chevron-right') +
             '<span class="track-titles">' +
-              '<span class="track-title" dir="auto">' + esc(item.title) + '</span>' +
-              (item.administration
-                ? '<span class="track-admin" dir="auto">' + esc(item.administration) + '</span>'
-                : '<span class="track-admin is-empty">Administration non renseignée</span>') +
+              '<span class="track-title" dir="auto">' + esc(titleOf(item)) + '</span>' +
+              (administration
+                ? '<span class="track-admin" dir="auto">' + esc(administration) + '</span>'
+                : '<span class="track-admin is-empty">' + esc(labels.noAdministration) + '</span>') +
             '</span>' +
           '</button>' +
           '<span class="pill pill-success track-done"' + (progress.complete ? '' : ' hidden') + '>' +
-            'Terminé</span>' +
+            esc(labels.done) + '</span>' +
           '<button type="button" class="icon-btn" data-remove="' + esc(item.id) + '" ' +
-            'aria-label="Ne plus suivre cette procédure">' + icon('trash') + '</button>' +
+            'aria-label="' + esc(labels.untrack) + '">' + icon('trash') + '</button>' +
         '</div>' +
         renderProgress(item) +
         (isOpen ? renderBody(item) : '') +
@@ -385,9 +425,8 @@
       }
       var label = card.querySelector('.track-progress-label');
       if (label) {
-        label.textContent = progress.done + ' / ' + progress.total + ' ' +
-          (progress.total >= 2 ? 'pièces réunies' : 'pièce réunie') +
-          ' · ' + progress.percent + ' %';
+        // Même langue que la carte : le libellé ne bascule pas après un PATCH.
+        label.textContent = labelsOf(item).progress(progress.done, progress.total, progress.percent);
       }
       var done = card.querySelector('.track-done');
       if (done) done.hidden = !progress.complete;
@@ -470,7 +509,7 @@
           piece.checked = previous;
           checkbox.checked = previous;
           refreshCard(item);
-          h.toast('Pièce non enregistrée : ' + error.message, 'error');
+          h.toast(h.isolate(labelsOf(item).pieceFailed + error.message), 'error');
         });
     }
 
@@ -491,7 +530,7 @@
           // Le champ peut avoir été réécrit depuis : on ne remet l'ancienne
           // valeur que s'il affiche encore celle qui a échoué.
           if (input.value === value) input.value = previous;
-          h.toast('Note non enregistrée : ' + error.message, 'error');
+          h.toast(h.isolate(labelsOf(item).noteFailed + error.message), 'error');
         });
     }
 
@@ -504,7 +543,7 @@
 
       App.modals.confirmDelete({
         title: 'Ne plus suivre cette procédure',
-        target: item.title,
+        target: titleOf(item),
         consequences: [
           'Elle disparaîtra de « Mes procédures ».',
           progress.done
@@ -586,19 +625,23 @@
     /* Refus, indisponibilité, délai dépassé : dans les trois cas on explique
        pourquoi la position était demandée et on propose la liste des villes.
        Échouer en silence laisserait un bouton qui ne fait rien. */
+    // « reason » est une clé du dictionnaire : le message suit la langue de
+    // la carte.
     function offerCities(id, reason) {
+      var item = find(id);
+      if (!item) return;
+      var labels = labelsOf(item);
       setNearby(id, {
         phase: 'fallback',
-        message: reason + ' Votre position sert à classer les bureaux du plus ' +
-          'proche au plus loin. Choisissez plutôt une ville :'
+        message: labels[reason] + ' ' + labels.nearbyFallback
       });
     }
 
     function geolocationReason(error) {
       var code = error && error.code;
-      if (code === 1) return 'Accès à votre position refusé.';
-      if (code === 3) return 'Votre position met trop de temps à être déterminée.';
-      return 'Votre position n\'a pas pu être déterminée.';
+      if (code === 1) return 'nearbyDenied';
+      if (code === 3) return 'nearbyTimeout';
+      return 'nearbyUnavailable';
     }
 
     function locateThenSearch(id) {
@@ -609,7 +652,7 @@
       if (current && (current.phase === 'locating' || current.phase === 'searching')) return;
 
       if (!navigator.geolocation) {
-        offerCities(id, 'Ce navigateur ne sait pas donner votre position.');
+        offerCities(id, 'nearbyNoGeolocation');
         return;
       }
 

@@ -41,7 +41,8 @@ def get_stats(db: Session = Depends(get_db),current_user : models.User = Depends
 
   admin_rows = (
     db.query(
-        models.Administration.nom_administration,
+        models.Administration.nom_administration_fr,
+        models.Administration.nom_administration_ar,
         func.count(models.Procedure.id_procedure),
     )
     .join(models.Procedure)
@@ -52,7 +53,8 @@ def get_stats(db: Session = Depends(get_db),current_user : models.User = Depends
   )
 
   by_administration = [
-    {"label": name, "value": count} for name, count in admin_rows
+    {"label": nom_fr, "label_ar": nom_ar, "value": count}
+    for nom_fr, nom_ar, count in admin_rows
   ]
 
   date_rows = db.query(models.Extraction.date_creation).all()
@@ -66,3 +68,4 @@ def get_stats(db: Session = Depends(get_db),current_user : models.User = Depends
     "byAdministration": by_administration,
     "daily": dict(daily),
   }
+
