@@ -1020,6 +1020,12 @@
     return error;
   }
 
+  function isApproved(extractionId) {
+    return documents.some(function (doc) {
+      return doc.extraction_id === extractionId && doc.status === 'published';
+    });
+  }
+
   function delay(value, ms) {
     return new Promise(function (resolve) {
       setTimeout(function () { resolve(value); }, ms === undefined ? 350 : ms);
@@ -1368,6 +1374,11 @@
 
     saveExtraction: function (id, procedures) {
       if (!extractions[id]) return Promise.reject(new Error('Extraction introuvable.'));
+      if (isApproved(id)) {
+        return delay(null, 300).then(function () {
+          throw httpFailure(409, 'Extraction déjà traitée');
+        });
+      }
       extractions[id].procedures = JSON.parse(JSON.stringify(procedures));
       documents.forEach(function (doc) {
         if (doc.extraction_id === id) doc.procedure_count = procedures.length;
@@ -1375,11 +1386,25 @@
       return delay({ ok: true }, 500);
     },
 
+    /* Rejoue POST /admin/extractions/{id}/approve : 409 si deja traitee, sinon
+       { created, skipped, embedding: "en_cours" } — les embeddings se calculent
+       en tache de fond cote serveur. */
     approveExtraction: function (id) {
+      if (isApproved(id)) {
+        return delay(null, 300).then(function () {
+          throw httpFailure(409, 'Extraction déjà traitée');
+        });
+      }
       documents.forEach(function (doc) {
         if (doc.extraction_id === id) doc.status = 'published';
       });
-      return delay({ ok: true }, 1400);
+      var count = extractions[id] ? (extractions[id].procedures || []).length : 0;
+      return delay({ created: count, skipped: 0, embedding: 'en_cours' }, 1400);
+    },
+
+    getExtractionStatus: function (id) {
+      if (!extractions[id]) return Promise.reject(httpFailure(404, 'Extraction introuvable'));
+      return delay({ status: isApproved(id) ? 'approved' : 'pending_review' }, 200);
     },
 
     /* --- Authentification -------------------------------------------------

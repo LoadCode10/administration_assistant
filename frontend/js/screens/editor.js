@@ -83,6 +83,8 @@
       dirty: false,
       showRaw: false,
       saving: false,
+      // Approbation en cours dans la modale.
+      approving: false,
       /* Champs refuses par le dernier 422, indexes par le chemin que le
          serveur donne (« payload.0.proc_steps.2.ar »). Les inputs portent le
          meme chemin en data-path : le surlignage se pose sans table de
@@ -449,7 +451,7 @@
         '<button type="button" data-action="save-draft"' + (state.saving ? ' disabled' : '') + '>' +
           'Enregistrer le brouillon</button>' +
         '<button type="button" class="btn-primary" data-action="approve"' +
-          (blocked || state.saving ? ' disabled' : '') + '>' +
+          (blocked || state.saving || state.approving ? ' disabled' : '') + '>' +
           icon('check') + 'Approuver et enregistrer</button>';
     }
 
@@ -666,6 +668,7 @@
     }
 
     function openApproveModal() {
+      if (state.approving) return;
       App.modals.approve({
         extractionId: extractionId,
         procedures: state.procedures,
@@ -680,9 +683,17 @@
             updateFooter();
           }
         },
-        onApproved: function () {
+        // Tant que la requete court, « Approuver et enregistrer » reste
+        // desactive : pas de seconde approbation en parallele.
+        onBusyChange: function (on) {
+          state.approving = on;
+          updateFooter();
+        },
+        // La liste des documents se recharge a l'arrivee sur #/documents :
+        // l'extraction y apparait approuvee.
+        onApproved: function (message, type) {
           clearDirty();
-          h.toast('Procédures enregistrées et mises en file d\'indexation.', 'success');
+          h.toast(message, type);
           App.router.navigate('#/documents');
         }
       });

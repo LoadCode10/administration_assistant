@@ -1,3 +1,5 @@
+import logging
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from slowapi import _rate_limit_exceeded_handler
@@ -7,6 +9,9 @@ from core.limiter import limiter
 from api import (
   auth, users, tracking, logs, administrations, procedures, chat, documents, stats, extractions
 )
+
+# Without this, logger.info/exception from background tasks (embedding) is silently dropped
+logging.basicConfig(level=logging.INFO)
 
 app = FastAPI()
 

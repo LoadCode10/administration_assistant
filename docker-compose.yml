@@ -21,7 +21,10 @@ services:
     environment:
       DB_HOST: db
       DB_PORT: 5432
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
     volumes:
+      - ./backend:/app
       - hf-cache:/root/.cache/huggingface
       - ./backend/uploads:/app/uploads
       - ./backend/extractions:/app/extractions

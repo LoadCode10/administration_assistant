@@ -1,10 +1,12 @@
 import json
+import logging
+logger = logging.getLogger(__name__)
 
-from fastapi import APIRouter, Depends, File, Form, HTTPException, Request, UploadFile
+from fastapi import APIRouter, Depends, File, Form, HTTPException, Request, UploadFile, BackgroundTasks
 from pydantic import TypeAdapter, ValidationError
 from sqlalchemy.orm import Session
 
-from database import get_db
+from database import get_db, SessionLocal
 import models, schemas
 from core.security import require_admin
 from core.logging import write_log
@@ -29,6 +31,15 @@ def validate_payload(payload) -> list[dict]:
     )
   return [p.model_dump() for p in validated]
 
+def embed_in_background():
+  db = SessionLocal()
+  try:
+    count = embedding_all_procedures(db)
+    logger.info("Background embedding finished: %s procedures", count)
+  except Exception:
+    logger.exception("Background embedding FAILED: procedures are saved but not searchable")
+  finally:
+    db.close()
 
 @router.get("/admin/extractions/{extraction_id}", response_model=schemas.ExtractionDetailOut)
 def get_extraction(extraction_id: str, db: Session = Depends(get_db), current_user: models.User = Depends(require_admin)):
@@ -76,6 +87,7 @@ def update_extraction(
 def approve_extraction(
   extraction_id: str,
   request: Request,
+  background_tasks: BackgroundTasks,
   current_user: models.User = Depends(require_admin),
   db: Session = Depends(get_db),
 ):
@@ -95,7 +107,7 @@ def approve_extraction(
 
   result = handle_procedures(db, payload, document=extraction.document, extraction=extraction)
 
-  embedded = embedding_all_procedures(db)
+  # embedded = embedding_all_procedures(db)
 
   extraction.status = "approved"
   write_log(
@@ -107,7 +119,8 @@ def approve_extraction(
   )
   db.commit()
 
-  return {**result, "embedded": embedded}
+  background_tasks.add_task(embed_in_background)
+  return {**result, "embedding": "en_cours"}
 
 
 @router.post("/admin/imports")

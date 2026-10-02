@@ -57,9 +57,14 @@
         }).join(' · ');
       }
     }
-    if (typeof payload === 'string' && payload.trim()) return payload.trim().slice(0, 300);
+    /* Un corps qui n'est pas du JSON n'est jamais affiche : c'est le plus
+       souvent une page d'erreur HTML du proxy (nginx), illisible dans un
+       message. Le code HTTP suffit a construire une phrase. */
     if (response.status === 404) return 'Ressource introuvable (404).';
     if (response.status === 413) return 'Fichier refusé par le serveur : trop volumineux (413).';
+    if (response.status === 502) return 'Le serveur est momentanément injoignable (502).';
+    if (response.status === 503) return 'Le service est momentanément indisponible (503). Réessayez dans un instant.';
+    if (response.status === 504) return 'Le serveur met trop de temps à répondre (504).';
     if (response.status >= 500) return 'Erreur du serveur (' + response.status + ').';
     return 'La requête a échoué (' + response.status + ').';
   }
@@ -99,8 +104,17 @@
             // Le code est porte par l'erreur : certains ecrans distinguent un
             // conflit (409) d'une panne, pour le montrer sur le champ fautif
             // plutot que comme un echec global.
+            // Un corps d'erreur texte n'est retenu que s'il est du JSON valide
+            // (en-tete Content-Type manquant) ; sinon on l'ignore.
+            if (typeof payload === 'string') {
+              try { payload = JSON.parse(payload); } catch (e) { payload = null; }
+            }
             var httpError = new Error(describeHttpError(response, payload));
             httpError.status = response.status;
+            // 502/503/504 : la reponse vient du proxy, pas de FastAPI — la
+            // requete a pu aboutir cote serveur malgre l'erreur.
+            httpError.gateway = response.status === 502 ||
+              response.status === 503 || response.status === 504;
             // Chemins des champs refuses par un 422 — l'editeur s'en sert pour
             // surligner les inputs concernes.
             httpError.fields = validationFields(payload);
@@ -1199,9 +1213,32 @@
       });
     },
 
+    /* Le backend enregistre, repond, puis calcule les embeddings en tache de
+       fond : la reponse vaut { created, skipped, embedding: "en_cours" }. */
     approveExtraction: function (id) {
-      if (config.USE_MOCK) return App.mock.approveExtraction(id);
-      return request('/admin/extractions/' + encodeURIComponent(id) + '/approve', { method: 'POST' });
+      var promise = config.USE_MOCK
+        ? App.mock.approveExtraction(id)
+        : request('/admin/extractions/' + encodeURIComponent(id) + '/approve', { method: 'POST' });
+      return promise.then(function (payload) {
+        payload = payload && typeof payload === 'object' ? payload : {};
+        return {
+          created: Number(payload.created) || 0,
+          skipped: Number(payload.skipped) || 0
+        };
+      });
+    },
+
+    /* Statut brut de l'extraction (« pending_review », « approved »…), sans
+       passer par normalizeStatus : la modale d'approbation doit distinguer
+       « approved » de tout autre etat traite. */
+    getExtractionStatus: function (id) {
+      var promise = config.USE_MOCK
+        ? App.mock.getExtractionStatus(id)
+        : request('/admin/extractions/' + encodeURIComponent(id));
+      return promise.then(function (payload) {
+        var status = payload && typeof payload === 'object' ? payload.status : '';
+        return String(status || '').toLowerCase().trim();
+      });
     },
 
     /* --- Authentification ------------------------------------------------

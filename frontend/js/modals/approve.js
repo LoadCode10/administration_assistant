@@ -79,44 +79,118 @@
         : '';
     }
 
-    function showProgress(on) {
+    function showProgress(on, label) {
       progressBox.innerHTML = on
         ? '<div class="progress-block" style="margin:0 0 4px">' +
             '<div class="progress-track"><div class="progress-bar"></div></div>' +
-            '<div class="progress-label">Enregistrement et indexation en cours… ne fermez pas cette fenêtre.</div>' +
+            '<div class="progress-label">' + esc(label ||
+              'Enregistrement et indexation en cours… ne fermez pas cette fenêtre.') + '</div>' +
           '</div>'
         : '';
     }
 
+    /* Verrouille la modale et le bouton « Approuver et enregistrer » de
+       l'editeur : deux approbations simultanees enregistreraient deux fois
+       les memes procedures. */
+    function setBusy(on) {
+      busy = on;
+      confirmButton.disabled = on;
+      cancelButton.disabled = on;
+      confirmButton.textContent = on ? 'Enregistrement…' : 'Approuver';
+      if (options.onBusyChange) options.onBusyChange(on);
+    }
+
+    // type : « success », ou « info » quand l'extraction l'etait deja.
+    function succeed(message, type) {
+      setBusy(false);
+      modal.close();
+      if (options.onApproved) options.onApproved(message, type || 'success');
+    }
+
+    function fail(error) {
+      setBusy(false);
+      showProgress(false);
+      showError(error.message);
+      // L'editeur surligne le champ refuse par un 422 ; la modale reste
+      // ouverte, avec le message qui le nomme.
+      if (options.onError) options.onError(error);
+    }
+
+    function wait(ms) {
+      return new Promise(function (resolve) { setTimeout(resolve, ms); });
+    }
+
+    /* 502/503/504 sur l'approbation : c'est le proxy qui a abandonne, pas
+       forcement le serveur. On relit le statut deux fois, a quelques secondes
+       d'intervalle, avant de conclure a un echec. */
+    function verifyAfterTimeout(error) {
+      showProgress(true, 'Le serveur met trop de temps à répondre. ' +
+        'L\'enregistrement continue peut-être : vérification en cours…');
+
+      function attempt(remaining) {
+        return wait(4000)
+          .then(function () { return App.api.getExtractionStatus(options.extractionId); })
+          .catch(function () { return ''; })
+          .then(function (status) {
+            if (status === 'approved') {
+              succeed('Procédures enregistrées. Le nombre exact n\'a pas pu être récupéré ; ' +
+                'l\'indexation pour la recherche se termine en arrière-plan.');
+            } else if (remaining > 1) {
+              return attempt(remaining - 1);
+            } else {
+              fail(error);
+            }
+          });
+      }
+      return attempt(2);
+    }
+
+    /* 409 « Extraction déjà traitée » : le plus souvent, une approbation
+       precedente a abouti (apres un delai depasse, par exemple). On le
+       confirme par le statut avant de le presenter comme tel. */
+    function handleConflict(error) {
+      return App.api.getExtractionStatus(options.extractionId)
+        .catch(function () { return 'approved'; })
+        .then(function (status) {
+          if (status === 'approved') {
+            succeed('Cette extraction est déjà approuvée : ses procédures sont enregistrées.', 'info');
+          } else {
+            fail(error);
+          }
+        });
+    }
+
+    function successMessage(result) {
+      var text = h.plural(result.created, 'procédure') +
+        (result.created >= 2 ? ' enregistrées' : ' enregistrée');
+      if (result.skipped > 0) {
+        text += ', ' + result.skipped + (result.skipped >= 2 ? ' ignorées (doublons)' : ' ignorée (doublon)');
+      }
+      return text + '. L\'indexation pour la recherche se termine en arrière-plan.';
+    }
+
     function confirm() {
       if (busy) return;
-      busy = true;
-      confirmButton.disabled = true;
-      cancelButton.disabled = true;
-      confirmButton.textContent = 'Enregistrement…';
+      setBusy(true);
       showError('');
       showProgress(true);
 
+      var approving = false;
       // On enregistre d'abord les modifications, puis on approuve.
       App.api.saveExtraction(options.extractionId, options.procedures)
         .then(function () {
+          approving = true;
           return App.api.approveExtraction(options.extractionId);
         })
-        .then(function () {
-          busy = false;
-          modal.close();
-          if (options.onApproved) options.onApproved();
+        .then(function (result) {
+          succeed(successMessage(result));
         })
         .catch(function (error) {
-          busy = false;
-          confirmButton.disabled = false;
-          cancelButton.disabled = false;
-          confirmButton.textContent = 'Approuver';
-          showProgress(false);
-          showError(error.message);
-          // L'editeur surligne le champ refuse par un 422 ; la modale reste
-          // ouverte, avec le message qui le nomme.
-          if (options.onError) options.onError(error);
+          // Le PUT d'enregistrement renvoie lui aussi 409 une fois l'extraction
+          // approuvee : meme conclusion dans les deux cas.
+          if (error && error.status === 409) return handleConflict(error);
+          if (approving && error && error.gateway) return verifyAfterTimeout(error);
+          fail(error);
         });
     }
 
