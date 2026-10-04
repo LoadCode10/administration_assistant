@@ -68,7 +68,7 @@ def search_agencies(administration_nom: str, site_officiel: str, ville: str) -> 
           web_sources.append({
             "title": chunk.web.title,
             "uri": real_url,
-            "officielle": site_officiel in real_url,
+            "officielle": bool(site_officiel) and site_officiel in real_url,
           })
 
   return {

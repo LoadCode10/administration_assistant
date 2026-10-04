@@ -1,0 +1,3336 @@
+[
+  {
+    "question_id": "s001",
+    "question": "Je veux me présenter aux élections communales, quel document prouve que je suis inscrit sur les listes électorales ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "7cc8f17c-f5a3-4ad5-b279-a9bbfc1582b8"
+    ],
+    "expected_titles": [
+      "Attestation d'inscription sur les listes électorales générales"
+    ],
+    "reference": "La procédure concernée est « Attestation d'inscription sur les listes électorales générales » (Ministère de l'Intérieur-Direction des Affaires Electorales). Documents à fournir : Copie de la carte nationale d'identité. Frais : Gratuit. Délai : 3 jours.",
+    "must_include": [
+      "Copie de la carte nationale d'identité",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s002",
+    "question": "ما هي الوثائق التي أحتاجها للحصول على ورقة تثبت أنني مسجل في اللوائح الانتخابية؟",
+    "lang": "ar",
+    "category": "documents",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "7cc8f17c-f5a3-4ad5-b279-a9bbfc1582b8"
+    ],
+    "expected_titles": [
+      "Attestation d'inscription sur les listes électorales générales"
+    ],
+    "reference": "الإجراء المعني هو « شهادة التسجيل في اللوائح الانتخابية العامة » (وزارة الداخلية- مديرية الشؤون الانتخابية). الوثائق المطلوبة: نسخة من البطاقة الوطنية للتعريف. الرسوم: بالمجان. الآجال: 3 أيام.",
+    "must_include": [
+      "نسخة من البطاقة الوطنية للتعريف",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s003",
+    "question": "أسكن في قرية تابعة لنفوذ الدرك الملكي وأريد تجديد بطاقتي الوطنية، من أين أحصل على شهادة السكنى؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "a1e2b847-662f-407e-bcb0-c74dae953233"
+    ],
+    "expected_titles": [
+      "Attestation de résidence délivrée par les services de la Gendarmerie Royale"
+    ],
+    "reference": "الإجراء المعني هو « شهادة الإقامة المسلمة من طرف مصالح الدرك الملكي » (إدارة الدفاع الوطني). الوثائق المطلوبة: تصريح بالشرف بالإقامة أو آخر فاتورة أداء واجبات استهلاك الماء والكهرباء ؛ صورة فوتوغرافية للمرتفق ؛ شهادة العمل أو شهادة الحضور في الالتزامات بالنسبة للعسكريين. الرسوم: بالمجان. الآجال: يوم واحد.",
+    "must_include": [
+      "تصريح بالشرف بالإقامة أو آخر فاتورة أداء واجبات استهلاك…",
+      "صورة فوتوغرافية للمرتفق",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s004",
+    "question": "attestation residence gendarmerie pour renouveler ma cnie c gratuit ?",
+    "lang": "fr",
+    "category": "user_style",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "a1e2b847-662f-407e-bcb0-c74dae953233"
+    ],
+    "expected_titles": [
+      "Attestation de résidence délivrée par les services de la Gendarmerie Royale"
+    ],
+    "reference": "La procédure concernée est « Attestation de résidence délivrée par les services de la Gendarmerie Royale » (Administration de la Défense Nationale). Documents à fournir : Déclaration sur l'honneur de résidence ou dernière facture acquittée de consommation d'eau et d'électricité ; Photographie d'identité de l'usager ; Certificat de travail ou attestation de présence dans le cadre des obligations pour les militaires. Frais : Gratuit. Délai : 1 jour.",
+    "must_include": [
+      "Déclaration sur l'honneur de résidence ou dernière facture…",
+      "Photographie d'identité de l'usager",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s005",
+    "question": "Je suis étranger et je vis au Maroc depuis un an, comment renouveler mon titre de séjour et combien ça coûte ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "516a82e1-4fac-4a3c-bca6-ee8550da96fc"
+    ],
+    "expected_titles": [
+      "Carte de séjour pour étrangers ou son renouvellement"
+    ],
+    "reference": "La procédure concernée est « Carte de séjour pour étrangers ou son renouvellement » (Administration de la Défense Nationale). Documents à fournir : Copie des pages du passeport du demandeur ; Photographie du demandeur ; Certificat de propriété ou contrat de location ou tout document attestant de la résidence effective à une adresse fixe… ; Certificat médical ; Document justifiant la nature de l'activité à exercer, le cas échéant. Frais : Droit d'enregistrement et de timbre : 100 dirhams. Délai : 30 jours.",
+    "must_include": [
+      "Copie des pages du passeport du demandeur",
+      "Photographie du demandeur"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s006",
+    "question": "كم تكلف بطاقة الإقامة للأجانب وكم من الوقت يستغرق الحصول عليها؟",
+    "lang": "ar",
+    "category": "fees_delay",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "516a82e1-4fac-4a3c-bca6-ee8550da96fc"
+    ],
+    "expected_titles": [
+      "Carte de séjour pour étrangers ou son renouvellement"
+    ],
+    "reference": "الإجراء المعني هو « بطاقة الإقامة للأجانب أو تجديدها » (إدارة الدفاع الوطني). الوثائق المطلوبة: نسخة من صفحات جواز السفر للمرتفق ؛ صورة فوتوغرافية للمرتفق ؛ شهادة ملكية أو عقد كراء أو أية وثيقة تثبت الإقامة الفعلية بعنوان قار بالمملكة ؛ شهادة طبية ؛ وثيقة تثبت طبيعة النشاط المراد ممارسته عند الاقتضاء. الرسوم: واجب التسجيل والتنبر100 درهم. الآجال: 30 يوما.",
+    "must_include": [
+      "نسخة من صفحات جواز السفر للمرتفق",
+      "صورة فوتوغرافية للمرتفق",
+      "واجب التسجيل والتنبر100 درهم",
+      "30 يوما"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s007",
+    "question": "Un ressortissant étranger qui vient s'installer au Maroc doit se faire enregistrer : quels documents doit-il préparer ?",
+    "lang": "fr",
+    "category": "ambiguous",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "5a6d0807-a182-40e5-9b5c-f40520d76882",
+      "516a82e1-4fac-4a3c-bca6-ee8550da96fc"
+    ],
+    "expected_titles": [
+      "Carte d'enregistrement des étrangers",
+      "Carte de séjour pour étrangers ou son renouvellement"
+    ],
+    "reference": "La procédure concernée est « Carte d'enregistrement des étrangers » (Administration de la Défense Nationale). Documents à fournir : Copie des pages du passeport du demandeur ; Photo d'identité du demandeur ; Certificat de propriété, contrat de location ou tout document justifiant la résidence effective à une adresse fixe au… ; Document justifiant la nature de l'activité à exercer, le cas échéant ; Certificat médical ; Documents justifiant que le demandeur étranger dispose de moyens de subsistance suffisants. Frais : Droit d'enregistrement et de timbre : 100 dirhams. Délai : 30 jours. Selon la situation exacte, la procédure « Carte de séjour pour étrangers ou son renouvellement » peut aussi s'appliquer.",
+    "must_include": [
+      "Copie des pages du passeport du demandeur",
+      "Photo d'identité du demandeur"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s008",
+    "question": "أنا مغربي مقيم في فرنسا وأحتاج نسخة مطابقة للأصل من شهادتي الجامعية، هل يمكن ذلك في القنصلية وكم الثمن؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "1b0e68d0-3f32-4aa1-9069-b03157d87367"
+    ],
+    "expected_titles": [
+      "Certification de conformité de copies de documents à la demande des Marocains résidant à l'étranger"
+    ],
+    "reference": "الإجراء المعني هو « التصديق على مطابقة نسخ الوثائق لأصولها (بطلب من المواطن (ة)المغربي(ة) المقيم(ة) بالخارج) » (وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي). الوثائق المطلوبة: البطاقة الوطنية للتعريف الإلكترونية أو جواز السفر البيومتري ؛ الوثيقة المراد التصديق عليها. الرسوم: الرسوم القنصلية: 50 درهما - تعرفة على الخدمات (SEGMA): 10 دراهم. الآجال: على الفور.",
+    "must_include": [
+      "البطاقة الوطنية للتعريف الإلكترونية أو جواز السفر البيومتري",
+      "الوثيقة المراد التصديق عليها"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s009",
+    "question": "Je vis en Belgique et j'ai besoin en urgence d'un papier qui prouve que je suis de nationalité marocaine, que faire ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "c4b758d0-4741-49fa-bc56-a8b47bdd1245"
+    ],
+    "expected_titles": [
+      "Certificat de reconnaissance de la nationalité marocaine (administratif) (Marocains résidant à l’étranger)"
+    ],
+    "reference": "La procédure concernée est « Certificat de reconnaissance de la nationalité marocaine (administratif) (Marocains résidant à l’étranger) » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Carte nationale d’identité électronique ou passeport biométrique ; Livret de famille ou carnet d’identité et d’état civil ; Certificat de nationalité marocaine pour les enfants nés d’une mère marocaine et d’un père étranger. Frais : 0. Délai : 60 jours.",
+    "must_include": [
+      "Carte nationale d’identité électronique ou passeport…",
+      "Livret de famille ou carnet d’identité et d’état civil",
+      "0"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s010",
+    "question": "Je réside en Espagne, que dois-je apporter au consulat pour faire légaliser ma signature ?",
+    "lang": "fr",
+    "category": "ambiguous",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "7240789f-139b-4c25-a2fa-ebb3d0a329c1",
+      "e218f1e6-c638-4f1d-95c0-b0197934972f"
+    ],
+    "expected_titles": [
+      "Légalisation de signature (sur demande du citoyen marocain résidant à l’étranger)",
+      "Légalisation de signature sur une procuration autre que celle relative à une transaction immobilière qui doit être établie par les notaires (à la demande du citoyen marocain résidant à l'étranger)"
+    ],
+    "reference": "La procédure concernée est « Légalisation de signature (sur demande du citoyen marocain résidant à l’étranger) » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Carte nationale d’identité électronique ou passeport biométrique ; Document à légaliser. Frais : Frais consulaires : 50 dirhams Tarif des services (SEGMA) : dix (10) dirhams. Délai : immédiatement. Selon la situation exacte, la procédure « Légalisation de signature sur une procuration autre que celle relative à une transaction immobilière qui doit être établie par les notaires (à la demande du citoyen marocain résidant à l'étranger) » peut aussi s'appliquer.",
+    "must_include": [
+      "Carte nationale d’identité électronique ou passeport…",
+      "Document à légaliser"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s011",
+    "question": "أريد توكيل أخي في المغرب لسحب وثائق باسمي وأنا مقيم في إيطاليا، كيف أصحح إمضائي على الوكالة في القنصلية؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "e218f1e6-c638-4f1d-95c0-b0197934972f",
+      "7240789f-139b-4c25-a2fa-ebb3d0a329c1"
+    ],
+    "expected_titles": [
+      "Légalisation de signature sur une procuration autre que celle relative à une transaction immobilière qui doit être établie par les notaires (à la demande du citoyen marocain résidant à l'étranger)",
+      "Légalisation de signature (sur demande du citoyen marocain résidant à l’étranger)"
+    ],
+    "reference": "الإجراء المعني هو « تصحيح الإمضاء على الوكالة بخلاف تلك المتعلقة بصفقة عقارية والتي يجب أن تكون محررة من طرف العدول  (بطلب من المواطن المغربي المقيم بالخارج) » (وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي). الوثائق المطلوبة: البطاقة الوطنية للتعريف الإلكترونية أو جواز السفر البيومتري ؛ الوكالة أو التصريح أو الوثيقة المراد التصديق عليها. الرسوم: الرسوم القنصلية : 50 درهما التعرفة على الخدمات (SEGMA) : 10 دراهم. الآجال: على الفور. وحسب الحالة، قد ينطبق أيضا إجراء « تصحيح الإمضاء(بطلب من المواطن (ة) المغربي(ة) المقيم(ة) بالخارج) ».",
+    "must_include": [
+      "البطاقة الوطنية للتعريف الإلكترونية أو جواز السفر البيومتري",
+      "الوكالة أو التصريح أو الوثيقة المراد التصديق عليها"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s012",
+    "question": "أنا تاجر وأريد الترشح لانتخابات غرفة التجارة والصناعة، ما الشهادة التي يجب أن أحصل عليها؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "095e6329-ee34-4195-97d2-3097faaf8413"
+    ],
+    "expected_titles": [
+      "Certificat d'inscription sur les listes électorales des chambres professionnelles"
+    ],
+    "reference": "الإجراء المعني هو « شهادة التسجيل في اللوائح الانتخابية الخاصة بالغرف المهنية » (وزارة الداخلية- مديرية الشؤون الانتخابية). الوثائق المطلوبة: نسخة من البطاقة الوطنية للتعريف. الرسوم: بالمجان. الآجال: 3 أيام.",
+    "must_include": [
+      "نسخة من البطاقة الوطنية للتعريف",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s013",
+    "question": "Mon nom n'est pas écrit pareil sur mon acte étranger et sur mes papiers marocains, comment obtenir un document qui confirme qu'il s'agit de la même personne ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "89d29fe8-ada1-460f-8f9a-3eb35b31fb12"
+    ],
+    "expected_titles": [
+      "Obtention de l'attestation de concordance par les Marocains résidant à l'étranger"
+    ],
+    "reference": "La procédure concernée est « Obtention de l'attestation de concordance par les Marocains résidant à l'étranger » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Carte nationale d'identité électronique ou passeport biométrique ; Document justifiant la concordance demandée. Frais : Frais consulaires : 20 dirhams Tarif des services (SEGMA) : 00 dirham. Délai : immédiatement.",
+    "must_include": [
+      "Carte nationale d'identité électronique ou passeport…",
+      "Document justifiant la concordance demandée"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s014",
+    "question": "أنا مقيم بالخارج وأريد استخراج البطاقة الوطنية لأول مرة، ما هي الوثائق المطلوبة؟",
+    "lang": "ar",
+    "category": "documents",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "2d52c4ea-4d4e-4dad-98f6-f0ab80f93636"
+    ],
+    "expected_titles": [
+      "Obtention de la carte nationale d'identité (pour les Marocains résidant à l'étranger)"
+    ],
+    "reference": "الإجراء المعني هو « الحصول على البطاقة الوطنية للتعريف ( بالنسبة للمغاربة المقيمين بالخارج) » (وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي). الوثائق المطلوبة: نسخة من صفحة الدفتر العائلي الخاصة بالشخص المعني، مع الإدلاء بالدفتر ؛ شهادة التسجيل القنصلي ؛ صورة شخصية ملونة على خلفية بيضاء أو زرقاء ؛ الإدلاء بنظير أو بنسخة من الوثيقة الممنوحة بموجبها الجنسية المغربية للأجانب الذين حصلوا على هذه الجنسية، وبالنسبة… ؛ بالنسبة للخانة الاختيارية المدرجة في طلب التسجيل المتعلقة بـ \"الزوجة\" أو \"الأرملة\" أو \"الأرمل\"، يجب على المعني الإدلاء… ؛ نسخة من عقد الزواج؛. الرسوم: 75 درهما بالنسبة للرسوم القنصلية 30 درهما بالنسبة لتعرفة على الخدمات (SEGMA). الآجال: 60يوما.",
+    "must_include": [
+      "نسخة من صفحة الدفتر العائلي الخاصة بالشخص المعني، مع…",
+      "شهادة التسجيل القنصلي"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s015",
+    "question": "Combien coûte la carte d'identité quand on la demande depuis un consulat à l'étranger, et en combien de temps on la reçoit ?",
+    "lang": "fr",
+    "category": "fees_delay",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "2d52c4ea-4d4e-4dad-98f6-f0ab80f93636"
+    ],
+    "expected_titles": [
+      "Obtention de la carte nationale d'identité (pour les Marocains résidant à l'étranger)"
+    ],
+    "reference": "La procédure concernée est « Obtention de la carte nationale d'identité (pour les Marocains résidant à l'étranger) » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Copie de la page du livret de famille relative à la personne concernée, avec présentation du livret ; Certificat d'immatriculation consulaire ; Photographie d'identité en couleur sur fond blanc ou bleu ; Présentation de l'original ou d'une copie de l'acte en vertu duquel la nationalité marocaine a été accordée aux… ; Pour la rubrique optionnelle figurant dans la demande d'enregistrement relative à « l'épouse » ou « la veuve » ou « le… ; Copie de l'acte de mariage. Frais : 75 dirhams pour les frais consulaires 30 dirhams pour le tarif des services (SEGMA). Délai : 60 jours.",
+    "must_include": [
+      "Copie de la page du livret de famille relative à la…",
+      "Certificat d'immatriculation consulaire",
+      "60 jours"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s016",
+    "question": "Mon fils de 15 ans a perdu son passeport pendant les vacances en France, comment le refaire ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "46404f1a-1463-4297-9a21-079e5946478b"
+    ],
+    "expected_titles": [
+      "Obtention du passeport biométrique en cas de perte pour les mineurs (de 12 à 18 ans) (Marocains résidant à l'étranger)"
+    ],
+    "reference": "La procédure concernée est « Obtention du passeport biométrique en cas de perte pour les mineurs (de 12 à 18 ans) (Marocains résidant à l'étranger) » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Demande de passeport biométrique ; Déclaration sur l'honneur de perte signée par le tuteur légal de l'intéressé ou son représentant légal ; Copie intégrale de l'acte de naissance ou copie complète du certificat de naissance, datant de moins de 6 mois, ou… ; Photo d'identité couleur sur fond blanc ou bleu ; En cas de renouvellement, l'ancien passeport doit être remis ; Document justificatif de résidence en cours de validité. Frais : 80 dirhams. Délai : 15 jours.",
+    "must_include": [
+      "Demande de passeport biométrique",
+      "Déclaration sur l'honneur de perte signée par le tuteur…",
+      "80 dirhams"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s017",
+    "question": "ضاع جواز سفر ابنتي البالغة 8 سنوات ونحن نعيش في هولندا، ما العمل؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "f42624a5-69fa-4bef-9c10-4e9930f621d7"
+    ],
+    "expected_titles": [
+      "Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)"
+    ],
+    "reference": "الإجراء المعني هو « الحصول على جواز السفر البيومتري في حالة الضياع بالنسبة للقاصرين دون 12 سنة (المغاربة المقيمون بالخارج) » (وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي). الوثائق المطلوبة: طلب جواز السفر البيوميتري ؛ تصريح بالشرف بالضياع موقع من طرف ولي أمر المعني بالامر أو ممثله القانوني ؛ نسخة موجزة من رسم الولادة أو النسخة الكاملة من شهادة الميلاد، لا يتعدى تاريخ إصدارها 6 أشهر، أو نسخة من الدفتر العائلي ؛ صورة شخصية ملونة على خلفية بيضاء أو زرقاء ؛ في حالة التجديد، يجب تسليم جواز السفر القديم. ؛ وثيقة إثبات الإقامة سارية المفعول. الرسوم: الرسوم القنصلية00 درهم تعرفة على الخدمات (SEGMA)80 درهما. الآجال: 15يوما.",
+    "must_include": [
+      "طلب جواز السفر البيوميتري",
+      "تصريح بالشرف بالضياع موقع من طرف ولي أمر المعني بالامر أو…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s018",
+    "question": "ابني عمره 14 سنة ويحتاج جواز سفر بيومتري لأول مرة ونحن نعيش بالخارج، ما هي الوثائق المطلوبة؟",
+    "lang": "ar",
+    "category": "documents",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "d01ca460-72f3-4a72-b92c-6c9d7022f4e5"
+    ],
+    "expected_titles": [
+      "Obtention du passeport biométrique pour les mineurs âgés de 12 à 18 ans (Marocains résidant à l'étranger)"
+    ],
+    "reference": "الإجراء المعني هو « الحصول على جواز السفر البيومتري بالنسبة للأشخاص القاصرين المتراوح عمرهم ما بين 12 و18 سنة(المغاربة المقيمون بالخارج) » (وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي). الوثائق المطلوبة: طلب جواز السفر البيوميتري ؛ بطاقة التعريف الوطنية سارية الصلاحية أو وصل إيداع طلب إصدار أو تجديد البطاقة الوطنية ؛ في حالة الإدلاء بوصل طلب الحصول على البطاقة الوطنية ، يتعين على المعني الإدلاء بنسخة من عقد الازدياد أو النسخة الكاملة… ؛ صورة شخصية ملونة على خلفية بيضاء أو زرقاء ؛ في حالة التجديد، يجب تسليم جواز السفر القديم ؛ وثيقة إثبات الإقامة سارية المفعول. الرسوم: الرسوم القنصلية : 00 درهم تعريفة على الخدمات (SEGMA) : 60 درهما. الآجال: 15 يوما.",
+    "must_include": [
+      "طلب جواز السفر البيوميتري",
+      "بطاقة التعريف الوطنية سارية الصلاحية أو وصل إيداع طلب إصدار…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s019",
+    "question": "Je suis MRE adulte, combien je vais payer pour un passeport biométrique et quel est le délai ?",
+    "lang": "fr",
+    "category": "fees_delay",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "1cab07b6-e4c4-4666-bd0b-e2299b95528b"
+    ],
+    "expected_titles": [
+      "Obtention du passeport biométrique pour les adultes (Marocains résidant à l'étranger)"
+    ],
+    "reference": "La procédure concernée est « Obtention du passeport biométrique pour les adultes (Marocains résidant à l'étranger) » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Formulaire de demande de passeport biométrique. ; Carte d'identité nationale en cours de validité ou récépissé de dépôt de demande de délivrance ou de renouvellement de… ; En cas de présentation du récépissé de demande de carte nationale, l'intéressé doit fournir une copie de l'acte de… ; Photo d'identité couleur sur fond blanc ou bleu ; En cas de renouvellement, il faut remettre l'ancien passeport. ; Document de preuve de résidence en cours de validité. Frais : Frais consulaires 800 dirhams Tarif sur services (SEGMA) 60 dirhams. Délai : 15 jours.",
+    "must_include": [
+      "Formulaire de demande de passeport biométrique.",
+      "Carte d'identité nationale en cours de validité ou…",
+      "15 jours"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s020",
+    "question": "Quels papiers pour faire le passeport d'un bébé né en Allemagne de parents marocains ?",
+    "lang": "fr",
+    "category": "documents",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "3d502e99-4ce8-4a71-8689-72ad55299ac8"
+    ],
+    "expected_titles": [
+      "Obtention du passeport biométrique pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)"
+    ],
+    "reference": "La procédure concernée est « Obtention du passeport biométrique pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger) » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Demande de passeport biométrique ; Copie abrégée de l'acte de naissance ou copie intégrale du certificat de naissance, datant de moins de 6 mois, ou copie… ; Photographie d'identité couleur sur fond blanc ou bleu ; En cas de renouvellement, l'ancien passeport doit être remis ; Document justificatif de résidence en cours de validité ; Si le document de résidence habituel ne comporte pas l'adresse actuelle, il convient de fournir une preuve de résidence…. Frais : 60 dirhams. Délai : 15 jours.",
+    "must_include": [
+      "Demande de passeport biométrique",
+      "Copie abrégée de l'acte de naissance ou copie intégrale du…",
+      "60 dirhams"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s021",
+    "question": "كم يكلف جواز السفر إذا ضاع مني وأنا راشد مقيم بالخارج؟",
+    "lang": "ar",
+    "category": "fees_delay",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "9f02c313-f6bd-486b-bcbd-6e5a66a6d673"
+    ],
+    "expected_titles": [
+      "Obtention du passeport en cas de perte pour les adultes (plus de 18 ans) (Marocains résidant à l'étranger)"
+    ],
+    "reference": "الإجراء المعني هو « الحصول على جواز السفر في حالة الضياع بالنسبة للراشدين (أكثر من 18 سنة)(المغاربة المقيمون يالخارج) » (وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي). الوثائق المطلوبة: طلب جواز السفر البيوميتري ؛ تصريح بالشرف بالضياع موقع من طرف المعني بالامر ؛ بطاقة التعريف الوطنية سارية الصلاحية أو وصل إيداع طلب إصدار أو تجديد البطاقة الوطنية ؛ في حالة الإدلاء بوصل طلب الحصول على البطاقة الوطنية ، يتعين على المعني بالأمر الإدلاء بنسخة من عقد الازدياد أو النسخة… ؛ صورة شخصية ملونة على خلفية بيضاء أو زرقاء ؛ في حالة التجديد، يجب تسليم جواز السفر القديم. الرسوم: 1080 درهما - الرسوم القنصلية1000 درهما - تعرفة على الخدمات (SEGMA)80 درهما. الآجال: 15 يوما.",
+    "must_include": [
+      "طلب جواز السفر البيوميتري",
+      "تصريح بالشرف بالضياع موقع من طرف المعني بالامر",
+      "15 يوما"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s022",
+    "question": "Mon passeport a été volé à Paris et je dois rentrer au Maroc dans deux jours, existe-t-il un document de voyage temporaire ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "7af2ca96-5eab-4e56-9fb0-c2afd9c483ed"
+    ],
+    "expected_titles": [
+      "Obtention d'un laissez-passer (pour les Marocains résidant à l'étranger)"
+    ],
+    "reference": "La procédure concernée est « Obtention d'un laissez-passer (pour les Marocains résidant à l'étranger) » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Demande de passeport biométrique ; Tout document ; Pour les mineurs de moins de 18 ans ne disposant pas de carte nationale ; Photo d'identité en couleur sur fond blanc ou bleu ; Déclaration de perte ou de vol du passeport, le cas échéant ; Remise de l'ancien passeport s’il s’agit d’un passeport expiré ou détérioré. Frais : 150 dirhams pour les frais consulaires 20 dirhams pour le tarif des services (SEGMA). Délai : immédiatement.",
+    "must_include": [
+      "Demande de passeport biométrique",
+      "Tout document"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s023",
+    "question": "Comment faire un passeport biométrique quand on habite à l'étranger ?",
+    "lang": "fr",
+    "category": "ambiguous",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "46404f1a-1463-4297-9a21-079e5946478b",
+      "f42624a5-69fa-4bef-9c10-4e9930f621d7",
+      "d01ca460-72f3-4a72-b92c-6c9d7022f4e5",
+      "1cab07b6-e4c4-4666-bd0b-e2299b95528b",
+      "3d502e99-4ce8-4a71-8689-72ad55299ac8",
+      "9f02c313-f6bd-486b-bcbd-6e5a66a6d673"
+    ],
+    "expected_titles": [
+      "Obtention du passeport biométrique en cas de perte pour les mineurs (de 12 à 18 ans) (Marocains résidant à l'étranger)",
+      "Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)",
+      "Obtention du passeport biométrique pour les mineurs âgés de 12 à 18 ans (Marocains résidant à l'étranger)",
+      "Obtention du passeport biométrique pour les adultes (Marocains résidant à l'étranger)",
+      "Obtention du passeport biométrique pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)",
+      "Obtention du passeport en cas de perte pour les adultes (plus de 18 ans) (Marocains résidant à l'étranger)"
+    ],
+    "reference": "La procédure concernée est « Obtention du passeport biométrique en cas de perte pour les mineurs (de 12 à 18 ans) (Marocains résidant à l'étranger) » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Demande de passeport biométrique ; Déclaration sur l'honneur de perte signée par le tuteur légal de l'intéressé ou son représentant légal ; Copie intégrale de l'acte de naissance ou copie complète du certificat de naissance, datant de moins de 6 mois, ou… ; Photo d'identité couleur sur fond blanc ou bleu ; En cas de renouvellement, l'ancien passeport doit être remis ; Document justificatif de résidence en cours de validité. Frais : 80 dirhams. Délai : 15 jours. Selon la situation exacte, la procédure « Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger) » ou « Obtention du passeport biométrique pour les mineurs âgés de 12 à 18 ans (Marocains résidant à l'étranger) » ou « Obtention du passeport biométrique pour les adultes (Marocains résidant à l'étranger) » ou « Obtention du passeport biométrique pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger) » ou « Obtention du passeport en cas de perte pour les adultes (plus de 18 ans) (Marocains résidant à l'étranger) » peut aussi s'appliquer.",
+    "must_include": [
+      "Demande de passeport biométrique",
+      "Déclaration sur l'honneur de perte signée par le tuteur…",
+      "80 dirhams"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s024",
+    "question": "بشحال كيدير جواز السفر للي ساكن برا المغرب؟",
+    "lang": "ar",
+    "category": "ambiguous",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "46404f1a-1463-4297-9a21-079e5946478b",
+      "f42624a5-69fa-4bef-9c10-4e9930f621d7",
+      "d01ca460-72f3-4a72-b92c-6c9d7022f4e5",
+      "1cab07b6-e4c4-4666-bd0b-e2299b95528b",
+      "3d502e99-4ce8-4a71-8689-72ad55299ac8",
+      "9f02c313-f6bd-486b-bcbd-6e5a66a6d673"
+    ],
+    "expected_titles": [
+      "Obtention du passeport biométrique en cas de perte pour les mineurs (de 12 à 18 ans) (Marocains résidant à l'étranger)",
+      "Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)",
+      "Obtention du passeport biométrique pour les mineurs âgés de 12 à 18 ans (Marocains résidant à l'étranger)",
+      "Obtention du passeport biométrique pour les adultes (Marocains résidant à l'étranger)",
+      "Obtention du passeport biométrique pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)",
+      "Obtention du passeport en cas de perte pour les adultes (plus de 18 ans) (Marocains résidant à l'étranger)"
+    ],
+    "reference": "الإجراء المعني هو « الحصول على جواز السفر البيومتري في حالة الضياع بالنسبة للقاصرين (من 12 إلى 18 سنة)(المغاربة المقيمون بالخارج) » (وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي). الوثائق المطلوبة: طلب جواز السفر البيوميتري ؛ تصريح بالشرف بالضياع موقع من طرف ولي أمر المعني بالامر أو ممثله القانوني ؛ نسخة موجزة من رسم الولادة أو النسخة الكاملة من شهادة الميلاد، لا يتعدى تاريخ إصدارها 6 أشهر، أو نسخة من الدفتر العائلي ؛ صورة شخصية ملونة على خلفية بيضاء أو زرقاء ؛ في حالة التجديد، يجب تسليم جواز السفر القديم ؛ وثيقة إثبات الإقامة سارية المفعول. الرسوم: 80 درهما. الآجال: 15 يوما. وحسب الحالة، قد ينطبق أيضا إجراء « الحصول على جواز السفر البيومتري في حالة الضياع بالنسبة للقاصرين دون 12 سنة (المغاربة المقيمون بالخارج) » أو « الحصول على جواز السفر البيومتري بالنسبة للأشخاص القاصرين المتراوح عمرهم ما بين 12 و18 سنة(المغاربة المقيمون بالخارج) » أو « الحصول على جواز السفر البيومتري بالنسبة للأشخاص الراشدين (المغاربة المقيمون بالخارج) » أو « الحصول على جواز السفر البيومتري بالنسبة للقاصرين  أقل من 12 سنة (المغاربة المقيمون بالخارج) » أو « الحصول على جواز السفر في حالة الضياع بالنسبة للراشدين (أكثر من 18 سنة)(المغاربة المقيمون يالخارج) ».",
+    "must_include": [
+      "طلب جواز السفر البيوميتري",
+      "تصريح بالشرف بالضياع موقع من طرف ولي أمر المعني بالامر أو…",
+      "80 درهما"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s025",
+    "question": "passport perdu enfant 10 ans on vit en italie quoi faire",
+    "lang": "fr",
+    "category": "user_style",
+    "theme": "Citoyenneté et documents d'identité",
+    "expected_ids": [
+      "f42624a5-69fa-4bef-9c10-4e9930f621d7"
+    ],
+    "expected_titles": [
+      "Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)"
+    ],
+    "reference": "La procédure concernée est « Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger) » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Formulaire de demande de passeport biométrique. ; Déclaration sur l'honneur de perte signée par le représentant légal de l'intéressé ou son mandataire légal. ; Extrait d'acte de naissance ou copie intégrale de l'acte de naissance, datant de moins de 6 mois, ou copie du livret de… ; Photographie d'identité en couleur sur fond blanc ou bleu ; En cas de renouvellement, l'ancien passeport doit être remis. ; Document de preuve de résidence en cours de validité. Frais : Droits consulaires 00 dirhams Redevance sur les services (SEGMA) 80 dirhams. Délai : 15 jours.",
+    "must_include": [
+      "Formulaire de demande de passeport biométrique.",
+      "Déclaration sur l'honneur de perte signée par le…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s026",
+    "question": "Avant de créer ma société je dois réserver un nom, comment faire et combien de jours ça prend ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "0a3d899f-d631-4cd5-bf5d-4f58ec16835a"
+    ],
+    "expected_titles": [
+      "Demande d'obtention du nom commercial (certificat négatif)"
+    ],
+    "reference": "La procédure concernée est « Demande d'obtention du nom commercial (certificat négatif) » (Office Marocain De La Propriété Industrielle Et Commerciale). Documents à fournir : Justificatif de paiement des redevances dues ; Demande d'obtention du nom commercial. Frais : Redevances dues de la décision tarifaire du Conseil d’administration n° 1/2019 du 22 mai 2019, applicables à compter du 2 septembre 2019.. Délai : 2 jours.",
+    "must_include": [
+      "Justificatif de paiement des redevances dues",
+      "Demande d'obtention du nom commercial"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s027",
+    "question": "بغيت نحجز سمية تجارية للشركة ديالي، كيفاش ندير؟",
+    "lang": "ar",
+    "category": "user_style",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "0a3d899f-d631-4cd5-bf5d-4f58ec16835a"
+    ],
+    "expected_titles": [
+      "Demande d'obtention du nom commercial (certificat négatif)"
+    ],
+    "reference": "الإجراء المعني هو « طلب الحصول على الاسم التجاري (الشهادة السلبية) » (المكتب المغربي للملكية الصناعية والتجارية). الوثائق المطلوبة: اثبات دفع الرسوم المستحقة ؛ طلب الحصول على الاسم التجاري. الرسوم: الرسوم المستحقة في قرار التسعيرة لمجلس الادارة رقم 1/ 2019 ل 22 ماي 2019 المطبقة ابتداء من 2 شتنبر 2019. الآجال: يومان.",
+    "must_include": [
+      "اثبات دفع الرسوم المستحقة",
+      "طلب الحصول على الاسم التجاري"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s028",
+    "question": "J'ouvre une épicerie en mon nom propre, comment m'inscrire au registre du commerce ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "0c1b11e8-4245-4369-b71a-e124dad08caf"
+    ],
+    "expected_titles": [
+      "Immatriculation d'une personne physique au registre du commerce"
+    ],
+    "reference": "La procédure concernée est « Immatriculation d'une personne physique au registre du commerce » (Ministère de la Justice). Documents à fournir : Certificat original d'inscription à la taxe professionnelle ; Copie de la carte d'identité nationale pour le commerçant, ou copie de la carte d'enregistrement pour les étrangers… ; Autorisation prévue à l'article 42 ; Original du certificat négatif datant de moins de 90 jours en cas de choix d'une enseigne ou d'un nom commercial ; Copie de l'autorisation et/ou du diplôme ou du certificat nécessaire à l'exercice de l'activité réglementée, le cas… ; Extrait de l'acte indiquant le régime matrimonial pour les commerçants étrangers, le cas échéant. Frais : Frais d'inscription au registre du commerce 150 dirhams. Délai : 2 jours.",
+    "must_include": [
+      "Certificat original d'inscription à la taxe professionnelle",
+      "Copie de la carte d'identité nationale pour le commerçant,…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s029",
+    "question": "كم يكلف تسجيل تاجر شخص ذاتي في السجل التجاري وكم يستغرق؟",
+    "lang": "ar",
+    "category": "fees_delay",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "0c1b11e8-4245-4369-b71a-e124dad08caf"
+    ],
+    "expected_titles": [
+      "Immatriculation d'une personne physique au registre du commerce"
+    ],
+    "reference": "الإجراء المعني هو « تسجيل شخص ذاتي بالسجل التجاري » (وزارة العدل). الوثائق المطلوبة: شهادة أصلية للتسجيل بالرسم المهني ؛ صورة من بطاقة التعريف الوطنية بالنسبة للتاجر أو صورة لبطاقة التسجيل بالنسبة للأجانب المقيمين أو صورة لجواز السفر أو ما… ؛ الإذن المنصوص عليه في المادة 42 ؛ أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما في حالة اختيار شعار أو اسم تجاري ؛ صورة من الإذن و /أو الدبلوم أو الشهادة اللازمة لمزاولة النشاط المشروع فيه عند الاقتضاء. ؛ مستخرج للعقد المتضمن بيان نظام الزوجية بالنسبة للتجار الأجانب عند الاقتضاء.. الرسوم: رسوم التسجيل بالسجل التجاري 150 درهما. الآجال: يومان.",
+    "must_include": [
+      "شهادة أصلية للتسجيل بالرسم المهني",
+      "صورة من بطاقة التعريف الوطنية بالنسبة للتاجر أو صورة لبطاقة…",
+      "رسوم التسجيل بالسجل التجاري 150 درهما",
+      "يومان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s030",
+    "question": "papiers pr immatriculer une sarl au rc ?",
+    "lang": "fr",
+    "category": "user_style",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "f9ffd868-e59c-4e92-a52c-822a1e4dbb2e"
+    ],
+    "expected_titles": [
+      "Immatriculation d'une société à responsabilité limitée (SARL) au registre du commerce"
+    ],
+    "reference": "La procédure concernée est « Immatriculation d'une société à responsabilité limitée (SARL) au registre du commerce » (Ministère de la Justice). Documents à fournir : Documents de dépôt ; Original des statuts de la société signés par tous les associés ou par un mandataire muni d'une procuration écrite et… ; Copie du contrat signé et enregistré, par lequel le gérant a été nommé si cette nomination a été faite par un contrat… ; Rapport du commissaire aux apports si les apports sont en nature. ; Attestation de blocage du capital ; Documents d'immatriculation. Frais : Frais d'inscription au registre de commerce : 200 dirhams pour le dépôt 150 dirhams pour l'enregistrement. Délai : (2) 2 jours.",
+    "must_include": [
+      "Documents de dépôt",
+      "Original des statuts de la société signés par tous les…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s031",
+    "question": "أنا وشريكي نريد تأسيس شركة ذات مسؤولية محدودة، كيف نسجلها في السجل التجاري؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "f9ffd868-e59c-4e92-a52c-822a1e4dbb2e"
+    ],
+    "expected_titles": [
+      "Immatriculation d'une société à responsabilité limitée (SARL) au registre du commerce"
+    ],
+    "reference": "الإجراء المعني هو « تسجيل شركة ذات المسؤولية المحدودة بالسجل التجاري » (وزارة العدل). الوثائق المطلوبة: وثائق الإيداع ؛ أصل النظام الأساسي للشركة موقع من طرف جميع الشركاء أو من طرف وكيل مزود بوكالة كتابية و مسجل لدى إدارة التسجيل، أو نظير… ؛ نسخة من العقد الموقع والمسجل، الذي تم بمقتضاه تعيين المسير إذا تم هذا التعيين بمقتضى عقد منفصل ؛ تقرير مراقب الحصص إذا كانت الحصص عينية . ؛ شهادة تجميد رأس المال ؛ وثائق التسجيل. الرسوم: رسوم التسجيل بالسجل التجاري : 200درهما عن الإيداع 150 درهما عن التقييد. الآجال: (2) يومان.",
+    "must_include": [
+      "وثائق الإيداع",
+      "أصل النظام الأساسي للشركة موقع من طرف جميع الشركاء أو من…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s032",
+    "question": "Avec trois associés on lance une SA, qu'est-ce qu'on dépose au greffe pour qu'elle existe légalement ?",
+    "lang": "fr",
+    "category": "documents",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "625a4d93-058e-4969-b04d-57d50727c440"
+    ],
+    "expected_titles": [
+      "Immatriculation d'une société anonyme au registre du commerce"
+    ],
+    "reference": "La procédure concernée est « Immatriculation d'une société anonyme au registre du commerce » (Ministère de la Justice). Documents à fournir : Documents de dépôt ; Original des statuts de la société signé par l'ensemble des actionnaires ou par un mandataire muni d'une procuration… ; Copie de l'acte de nomination des membres des organes d'administration ou de gestion et des commissaires aux comptes,… ; Original du certificat négatif datant de moins de 90 jours ; Certificat de blocage du capital ; Exemplaire du certificat de souscription et de versement indiquant les souscriptions au capital social et la part des…. Frais : Frais d'immatriculation au registre de commerce 200 dirhams par dépôt 150 dirhams par inscription. Délai : 2 jours.",
+    "must_include": [
+      "Documents de dépôt",
+      "Original des statuts de la société signé par l'ensemble des…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s033",
+    "question": "نحن ثلاثة إخوة نريد تأسيس شركة نكون فيها مسؤولين بالتضامن عن ديونها، كيف نسجلها؟",
+    "lang": "ar",
+    "category": "factual",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "144f86c5-dcb6-449e-b9b4-c43bef3d92ee"
+    ],
+    "expected_titles": [
+      "Immatriculation d'une société en nom collectif au registre du commerce"
+    ],
+    "reference": "الإجراء المعني هو « تسجيل شركة التضامن بالسجل التجاري » (وزارة العدل). الوثائق المطلوبة: وثائق الإيداع ؛ أصل النظام الأساسي للشركة موقع من طرف جميع الشركاء أو من طرف وكيل مزود بوكالة كتابية و مسجل لدى إدارة التسجيل، أو نظير… ؛ نسخة من العقد الموقع والمسجل، الذي تم بمقتضاه تعيين المسير إذا تم هذا التعيين بمقتضى عقد منفصل ؛ أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما ؛ وثائق التسجيل ؛ شهادة أصلية للتسجيل بالرسم المهني. الرسوم: رسوم التسجيل بالسجل التجاري:350 درهما 200 درهما عن الإيداع 150 درهما عن التقييد. الآجال: يومان.",
+    "must_include": [
+      "وثائق الإيداع",
+      "أصل النظام الأساسي للشركة موقع من طرف جميع الشركاء أو من…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s034",
+    "question": "Je suis développeur freelance et je veux un statut simple pour facturer mes clients, comment m'inscrire ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "540d669a-469f-40ae-8cd3-7d30a169ed59"
+    ],
+    "expected_titles": [
+      "Inscription au régime de l’auto-entrepreneur"
+    ],
+    "reference": "La procédure concernée est « Inscription au régime de l’auto-entrepreneur » (Barid Al-Maghrib Sa). Documents à fournir : Photo d’identité ; Copie de la carte d’identité nationale ; Demande d’inscription. Frais : Pour la Poste, Banque Gratuit Attijari Wafa Bank : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service. Banque Populaire : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service. Attijari Wafa Bank Dar Assafaa : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service. Fondation Banque Populaire pour le micro-crédit : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service. Banque Marocaine du Commerce Extérieur : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service. Crédit Agricole : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service. Crédit Immobilier et Touristique : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service.. Délai : 15 jours.",
+    "must_include": [
+      "Photo d’identité",
+      "Copie de la carte d’identité nationale"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s035",
+    "question": "كيفاش نسجل راسي أوطو أونطروبرونور فالبريد؟",
+    "lang": "ar",
+    "category": "user_style",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "540d669a-469f-40ae-8cd3-7d30a169ed59"
+    ],
+    "expected_titles": [
+      "Inscription au régime de l’auto-entrepreneur"
+    ],
+    "reference": "الإجراء المعني هو « الانخراط في نظام المقاول الذاتي » (بريد المغرب). الوثائق المطلوبة: صورة شخصية ؛ نسخة من البطاقة الوطنية للتعريف ؛ طلب التسجيل. الرسوم: بالنسبة للبريد بنكمجانامجانا التجاري وفابنكتختلف من بنك لآخربريد المغرب قام بتفويض هاته الابناك للقيام بتلقي طلب القرار الإداري مقابل عمولة معينة تختلف من بنك لآخر على حسب نوعية الخدمة البنك الشعبيتختلف من بنك لآخربريد المغرب قام بتفويض هاته الابناك للقيام بتلقي طلب القرار الإداري مقابل عمولة معينة تختلف من بنك لآخر على حسب نوعية الخدمة التجاري وفابنك دار الصفاءتختلف من بنك لآخربريد المغرب قام بتفويض هاته الابناك للقيام بتلقي طلب القرار الإداري مقابل عمولة معينة تختلف من بنك لآخر على حسب نوعية الخدمة مؤسسة البنك الشعبي للقروض الصغرىتختلف من بنك لآخربريد المغرب قام بتفويض هاته الابناك للقيام بتلقي طلب القرار الإداري مقابل عمولة معينة تختلف من بنك لآخر على حسب نوعية الخدمة البنك المغربي للتجارة الخارجيةتختلف من بنك لآخربريد المغرب قام بتفويض هاته الابناك للقيام بتلقي طلب القرار الإداري مقابل عمولة معينة تختلف من بنك لآخر على حسب نوعية الخدمة القرض الفلاحيتختلف من بنك لآخربريد المغرب قام بتفويض هاته الابناك للقيام بتلقي طلب القرار الإداري مقابل عمولة معينة تختلف من بنك لآخر على حسب نوعية الخدمة القرض العقاري و السياحيتختلف من بنك لآخربريد المغرب قام بتفويض هاته الابناك للقيام بتلقي طلب القرار الإداري مقابل عمولة معينة تختلف من بنك لآخر على حسب نوعية الخدمة. الآجال: 15 يوم.",
+    "must_include": [
+      "صورة شخصية",
+      "نسخة من البطاقة الوطنية للتعريف"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s036",
+    "question": "J'ai arrêté mon activité, comment obtenir le document qui prouve que je ne suis plus soumis à la taxe professionnelle ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "8e903d40-4e30-48d5-8a8a-5ccddd8549f1"
+    ],
+    "expected_titles": [
+      "Certificat de radiation de la taxe professionnelle"
+    ],
+    "reference": "La procédure concernée est « Certificat de radiation de la taxe professionnelle » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : Pour les demandes électroniques ; Demande électronique ; Pour les demandes non électroniques, pour les personnes physiques ; Cas de transfert du domicile fiscal ou de l'établissement principal ; Demande formulaire n° AAC350 ; Déclaration de transfert de domicile fiscal ou d'établissement principal. Frais : Gratuit. Délai : 2 jours.",
+    "must_include": [
+      "Pour les demandes électroniques",
+      "Demande électronique",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s037",
+    "question": "ما هي الوثائق المطلوبة للحصول على شهادة التسجيل في الرسم المهني (الباتانتا)؟",
+    "lang": "ar",
+    "category": "documents",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "0c8e513b-df76-4525-940a-997a9a323bb3"
+    ],
+    "expected_titles": [
+      "Certificat d'inscription à la taxe professionnelle"
+    ],
+    "reference": "الإجراء المعني هو « شهادة التسجيل في الرسم المهني » (وزارة الاقتصاد والمالية-المديرية العامة للضرائب). الوثائق المطلوبة: شخص ذاتي أو اعتباري سبق إحداثه ؛ طلب إلكتروني أو طلب رقم AAC050 ؛ تحويل الموطن الضريبي المقر الاجتماعي أو المؤسسة الرئيسية ؛ طلب رقم AAC050 ؛ نسخة من محضر تحويل المقر ؛ نسخة من عقد الكراء المسجل ؛. الرسوم: بالمجان. الآجال: يومان.",
+    "must_include": [
+      "شخص ذاتي أو اعتباري سبق إحداثه",
+      "طلب إلكتروني أو طلب رقم AAC050",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s038",
+    "question": "comment avoir la patente pour mon commerce ?",
+    "lang": "fr",
+    "category": "user_style",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "0c8e513b-df76-4525-940a-997a9a323bb3"
+    ],
+    "expected_titles": [
+      "Certificat d'inscription à la taxe professionnelle"
+    ],
+    "reference": "La procédure concernée est « Certificat d'inscription à la taxe professionnelle » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : Personne physique ou morale déjà créée ; Demande électronique ou formulaire AAC050 ; Transfert du domicile fiscal, du siège social ou de l'établissement principal ; N° de commande AAC050 ; Copie du procès-verbal de transfert du siège ; Une copie du contrat de location enregistré.. Frais : Gratuit. Délai : 2 jours.",
+    "must_include": [
+      "Personne physique ou morale déjà créée",
+      "Demande électronique ou formulaire AAC050",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s039",
+    "question": "Mon entreprise répond à un appel d'offres public, quelle attestation fiscale dois-je joindre au dossier ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "3739b209-27f2-45cb-810e-09b393121f01"
+    ],
+    "expected_titles": [
+      "Attestation de situation fiscale pour la participation aux marchés publics (P203)"
+    ],
+    "reference": "La procédure concernée est « Attestation de situation fiscale pour la participation aux marchés publics (P203) » (Ministère de l’Économie et des Finances- Trésorerie générale du Royaume). Documents à fournir : Demande d'attestation de situation fiscale pour les soumissionnaires aux marchés publics ; Attestation délivrée par les services d'assiette fiscale ; Attestation délivrée par les services d'assiette chargés des impôts locaux. Frais : Gratuit. Délai : 5 jours.",
+    "must_include": [
+      "Demande d'attestation de situation fiscale pour les…",
+      "Attestation délivrée par les services d'assiette fiscale",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s040",
+    "question": "شركتي تشارك في صفقة عمومية وطلبوا مني شهادة من الضمان الاجتماعي، كيف أحصل عليها؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "a9d0dd9a-d63b-4dbe-a9b0-fd748e9d20c9"
+    ],
+    "expected_titles": [
+      "Attestation de participation aux marchés publics (Invest)"
+    ],
+    "reference": "الإجراء المعني هو « شهادة للمشاركة في الصفقات العمومية (Invest) » (الصندوق الوطني للضمان الاجتماعي). الوثائق المطلوبة: طلب الشهادة يحمل إمضاء و خاتم المنخرط و يبين. الرسوم: بالمجان. الآجال: يومان.",
+    "must_include": [
+      "طلب الشهادة يحمل إمضاء و خاتم المنخرط و يبين",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s041",
+    "question": "Les actionnaires de notre SA ont apporté de nouveaux fonds en espèces, comment le déclarer au greffe ?",
+    "lang": "fr",
+    "category": "factual",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "1b750f6e-e604-469a-b725-c074d8ffaa17"
+    ],
+    "expected_titles": [
+      "Augmentation de capital d'une société anonyme par apports en numéraire"
+    ],
+    "reference": "La procédure concernée est « Augmentation de capital d'une société anonyme par apports en numéraire » (Ministère de la Justice). Documents à fournir : Documents de dépôt ; Copie du procès-verbal de l'assemblée générale décidant l'augmentation de capital, signé et enregistré auprès de… ; Attestation bancaire certifiant le blocage du montant de l'augmentation de capital à hauteur d'au moins le quart ; Certificat de souscription et de versement ; Bulletins de souscription pour les contrats non notariés ; Liste des souscripteurs. Frais : 50 dirhams par dépôt 50 dirhams par enregistrement. Délai : 2 jours.",
+    "must_include": [
+      "Documents de dépôt",
+      "Copie du procès-verbal de l'assemblée générale décidant…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s042",
+    "question": "قررنا رفع رأسمال شركتنا ذات المسؤولية المحدودة بمساهمات نقدية، ما الوثائق التي يجب إيداعها؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "1f27cfb8-031d-4d07-9698-707b24d34365"
+    ],
+    "expected_titles": [
+      "Augmentation du capital d'une société à responsabilité limitée par apports en numéraire"
+    ],
+    "reference": "الإجراء المعني هو « الزيادة في رأسمال  شركة ذات المسؤولية المحدودة عن طريق حصص نقدية » (وزارة العدل). الوثائق المطلوبة: وثائق الإيداع ؛ نسخة من محضر الجمعية العمومية التي تقرر بمقتضاها الزيادة في رأس المال موقع ومسجل بإدارة التسجيل ؛ شهادة تجميد رأس المال إذا كان مبلغ الزيادة في رأس المال يفوق مائة ألف درهم ؛ وثائق التسجيل ؛ التصريح نموذج 1/ 4 محرر وموقع من طرف الملزم أو وكيله المزود بوكالة كتابية ؛ وكالة كتابية في حالة التسجيل بواسطة وكيل. الرسوم: رسوم التسجيل بالسجل التجاري 50درهما عن الإيداع, 50 درهما عن التقييد. الآجال: (2) يومان.",
+    "must_include": [
+      "وثائق الإيداع",
+      "نسخة من محضر الجمعية العمومية التي تقرر بمقتضاها الزيادة في…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s043",
+    "question": "Les associés ont voté la dissolution de notre société, que faut-il faire au registre du commerce ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "2e00440c-dc4f-4a05-9fdd-2e1ec9f5aab6"
+    ],
+    "expected_titles": [
+      "Enregistrement de la dissolution de société au registre du commerce"
+    ],
+    "reference": "La procédure concernée est « Enregistrement de la dissolution de société au registre du commerce » (Ministère de la Justice). Documents à fournir : Documents de dépôt ; Copie du procès-verbal de l'assemblée générale ayant décidé la dissolution de la société, comportant la désignation du… ; Certificat délivré par le registre national électronique des sûretés mobilières, signé électroniquement, attestant… ; Mainlevée si le fonds de commerce est grevé de charges non soumises à publicité au registre national électronique des… ; Les références du Bulletin officiel dans lequel a été publiée la dissolution de la société si elle fait appel public à… ; Le journal dans lequel a été publiée la décision de dissolution.. Frais : Frais d'immatriculation au registre du commerce 50 dirhams pour le dépôt, 50 dirhams pour l'inscription.. Délai : (2) 2 jours.",
+    "must_include": [
+      "Documents de dépôt",
+      "Copie du procès-verbal de l'assemblée générale ayant décidé…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s044",
+    "question": "انتهت عملية تصفية الشركة، كيف نعلن عن اختتام التصفية؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "f71f0b6a-743a-4314-bf07-2bd2493b54d8"
+    ],
+    "expected_titles": [
+      "Clôture de la liquidation"
+    ],
+    "reference": "الإجراء المعني هو « قفل التصفية » (وزارة العدل). الوثائق المطلوبة: وثائق الإيداع ؛ نسخة من محضر الجمعية العمومية التي تقرر بمقتضاها قفل التصفية موقع ومسجل بإدارة التسجيل ؛ حسابات المصفي ؛ وثائق التقييد ؛ الجريدة الرسمية التي تم فيها إشهار قفل التصفية إذا كانت الشركة تدعو الجمهور للاكتتاب ؛ الجريدة التي تم فيها نشر قفل التصفية. الرسوم: رسوم التسجيل بالسجل التجاري: 100 درهم 50 درهما عن الإيداع 50 درهما عن التقييد. الآجال: يومان.",
+    "must_include": [
+      "وثائق الإيداع",
+      "نسخة من محضر الجمعية العمومية التي تقرر بمقتضاها قفل…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s045",
+    "question": "توفي والدي وكان تاجرا، كيف نشطب اسمه من السجل التجاري؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "2b839b5d-b924-45ac-b1af-081ff4a4dfdc"
+    ],
+    "expected_titles": [
+      "Radiation du commerçant suite à décès"
+    ],
+    "reference": "الإجراء المعني هو « التشطيب على التاجر تبعا للوفاة » (وزارة العدل). الوثائق المطلوبة: شهادة مسلمة من السجل الوطني الإلكتروني للضمانات المنقولة موقعة إلكترونيا تفيد عدم وجود أي تقييد. ؛ رفع اليد إذا كان الأصل التجاري مثقلا بتحملات غير خاضعة للإشهار بالسجل الوطني الإلكتروني للضمانات المنقولة. ؛ شهادة الوفاة ؛ التصريح نموذج 4 محرر وموقع من طرف الملزم أو وكيله المزود بوكالة كتابية ؛ وكالة كتابية في حالة التشطيب بواسطة وكيل ؛ صورة من وثيقة إثبات الهوية للوكيل في حالة التشطيب بواسطة وكيل.. الرسوم: رسوم التسجيل بالسجل التجاري: 150 درهما. الآجال: (2) يومان.",
+    "must_include": [
+      "شهادة مسلمة من السجل الوطني الإلكتروني للضمانات المنقولة…",
+      "رفع اليد إذا كان الأصل التجاري مثقلا بتحملات غير خاضعة…",
+      "رسوم التسجيل بالسجل التجاري: 150 درهما"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s046",
+    "question": "Je ferme définitivement mon commerce, comment me radier du registre du commerce ?",
+    "lang": "fr",
+    "category": "ambiguous",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "73ce7fd4-b5c0-469c-8d08-548d5c91196b",
+      "b5f790de-8131-4e53-8809-2ad351ba9f86"
+    ],
+    "expected_titles": [
+      "Procédure de radiation du commerçant suite à la cessation totale de l’activité commerciale",
+      "Radiation d'un commerçant pour cessation d'activité commerciale"
+    ],
+    "reference": "La procédure concernée est « Procédure de radiation du commerçant suite à la cessation totale de l’activité commerciale » (Ministère de la Justice). Documents à fournir : Attestation délivrée par le registre national électronique des sûretés mobilières, signée électroniquement, certifiant… ; Mainlevée si le fonds de commerce est grevé de charges non soumises à publicité au registre national électronique des… ; Déclaration modèle 4 rédigée et signée par l’assujetti ou son mandataire muni d’une procuration écrite ; Procuration écrite en cas d’enregistrement par mandataire ; Copie du document d’identité du mandataire en cas d’enregistrement par mandataire.. Frais : Frais d'enregistrement au registre du commerce : 50 dirhams. Délai : (2) 2 jours. Selon la situation exacte, la procédure « Radiation d'un commerçant pour cessation d'activité commerciale » peut aussi s'appliquer.",
+    "must_include": [
+      "Attestation délivrée par le registre national électronique…",
+      "Mainlevée si le fonds de commerce est grevé de charges non…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s047",
+    "question": "أغلقت محلي نهائيا، شحال خاصني نخلص باش نحيد السمية ديالي من السجل التجاري؟",
+    "lang": "ar",
+    "category": "fees_delay",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "b5f790de-8131-4e53-8809-2ad351ba9f86",
+      "73ce7fd4-b5c0-469c-8d08-548d5c91196b"
+    ],
+    "expected_titles": [
+      "Radiation d'un commerçant pour cessation d'activité commerciale",
+      "Procédure de radiation du commerçant suite à la cessation totale de l’activité commerciale"
+    ],
+    "reference": "الإجراء المعني هو « التشطيب على التاجر تبعا للتوقف عن ممارسة النشاط التجاري » (وزارة العدل). الوثائق المطلوبة: شهادة مسلمة من السجل الوطني الإلكتروني للضمانات المنقولة موقعة إلكترونيا تفيد عدم وجود أي تقييد. ؛ رفع اليد إذا كان الأصل التجاري مثقلا بتحملات غير خاضعة للإشهار بالسجل الوطني للضمانات المنقولة. ؛ التصريح نموذج 4 محرر وموقع من طرف الملزم أو وكيله المزود بوكالة كتابية ؛ وكالة كتابية في حالة التسجيل بواسطة وكيل ؛ صورة لوثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل.. الرسوم: 50 درهما. الآجال: يومان. وحسب الحالة، قد ينطبق أيضا إجراء « مسطرة التشطيب على التاجر تبعا للتوقف الكلي عن ممارسة النشاط التجاري ».",
+    "must_include": [
+      "شهادة مسلمة من السجل الوطني الإلكتروني للضمانات المنقولة…",
+      "رفع اليد إذا كان الأصل التجاري مثقلا بتحملات غير خاضعة…",
+      "50 درهما",
+      "يومان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s048",
+    "question": "Je déménage ma boutique dans un autre quartier de la même ville, quelle démarche au registre du commerce ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "9304b15c-71f0-44f5-a550-63b02d996df4"
+    ],
+    "expected_titles": [
+      "Transfert du siège du fonds de commerce dans le ressort judiciaire du même tribunal"
+    ],
+    "reference": "La procédure concernée est « Transfert du siège du fonds de commerce dans le ressort judiciaire du même tribunal » (Ministère de la Justice). Documents à fournir : Attestation d'avis certifiant la publicité de toute inscription, inscription modificative, inscription subséquente ou… ; Justificatif de l'information du créancier nanti conformément aux conditions prévues à l'article 111 du Code de… ; Copie du titre de propriété ou du contrat de location ou du contrat de domiciliation ou tout autre document prouvant la… ; Déclaration modèle n° 4 rédigée et signée par le déclarant ou son mandataire muni d'une procuration écrite. ; Autorisation de transfert pour les charges non soumises à publicité au registre national électronique des sûretés… ; Procuration écrite en cas d'inscription par mandataire. Frais : Frais d'inscription au registre de commerce 50 dirhams. Délai : (2) 2 jours.",
+    "must_include": [
+      "Attestation d'avis certifiant la publicité de toute…",
+      "Justificatif de l'information du créancier nanti…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s049",
+    "question": "عندي محل مسجل في السجل التجاري وأريد فتح محل تجاري ثان في نفس المدينة، ما هي الإجراءات؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "2ccb004d-391a-49c6-96d8-51d17d5a8aea"
+    ],
+    "expected_titles": [
+      "Création d'un nouveau fonds de commerce dans le ressort judiciaire du tribunal d'immatriculation du commerçant"
+    ],
+    "reference": "الإجراء المعني هو « إنشاء أصل تجاري جديد بنفس الدائرة القضائية للمحكمة المسجل بها التاجر » (وزارة العدل). الوثائق المطلوبة: شهادة أصلية للتسجيل بالرسم المهني ؛ صورة من عقد الكراء أو شهادة الملكية أو عقد التوطين أو أي وثيقة أخرى تثبت تواجد المحل ؛ أصل الشهادة السلبية لا يتجاوز أمدها 90 يوما عند الاقتضاء ؛ صورة من الإذن أو الدبلوم أو هما معا إذا كان النشاط المزاول منظما ؛ التصريح نموذج 4 محرر وموقع من طرف الملزم أو وكيله المزود بوكالة كتابية ؛ وكالة كتابية في حالة التسجيل بواسطة وكيل. الرسوم: رسوم التسجيل بالسجل التجاري : 50 درهما. الآجال: يومان.",
+    "must_include": [
+      "شهادة أصلية للتسجيل بالرسم المهني",
+      "صورة من عقد الكراء أو شهادة الملكية أو عقد التوطين أو أي…",
+      "رسوم التسجيل بالسجل التجاري : 50 درهما"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s050",
+    "question": "Je veux ajouter un logo à mon commerce (personne physique), que dois-je déposer ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "446743b1-89ca-48b8-91c3-98f9b4c4a423"
+    ],
+    "expected_titles": [
+      "Ajout ou modification du logo d’un fonds de commerce « personne physique »"
+    ],
+    "reference": "La procédure concernée est « Ajout ou modification du logo d’un fonds de commerce « personne physique » » (Ministère de la Justice). Documents à fournir : Original du certificat négatif datant de moins de 90 jours ; Déclaration ; Procuration écrite en cas d’inscription par mandataire ; Copie de la pièce d’identité du mandataire en cas d’inscription par mandataire. Frais : 50 dirhams. Délai : (2)2 jours.",
+    "must_include": [
+      "Original du certificat négatif datant de moins de 90 jours",
+      "Déclaration",
+      "50 dirhams"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s051",
+    "question": "Je vais exploiter un café en location-gérance, dois-je m'inscrire au RC et avec quels documents ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "f5d13e81-5ac1-42f0-8e67-5c978086ceda"
+    ],
+    "expected_titles": [
+      "Inscription du gérant libre au registre du commerce – Cas du gérant libre non inscrit"
+    ],
+    "reference": "La procédure concernée est « Inscription du gérant libre au registre du commerce – Cas du gérant libre non inscrit » (Ministère de la Justice). Documents à fournir : Contrat de location-gérance signé et enregistré auprès de l’administration de l’enregistrement ; Références du Bulletin officiel dans lequel a été publié l’extrait du contrat de gérance libre ; Exemplaire du journal d’annonces légales dans lequel a été publié un extrait du contrat de gérance. ; Copie des « inscriptions modèle 7 » délivrée au nom du bailleur par le greffier du tribunal compétent, le cas échéant. ; Copie du diplôme ou certificat nécessaire pour l’exercice de l’activité, le cas échéant ; Certificat original d’inscription à la taxe professionnelle. Frais : Frais d'inscription au registre de commerce : 150 dirhams. Délai : (2) 2 jours.",
+    "must_include": [
+      "Contrat de location-gérance signé et enregistré auprès de…",
+      "Références du Bulletin officiel dans lequel a été publié…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s052",
+    "question": "نحن مجموعة من النساء نريد تأسيس تعاونية لإنتاج الكسكس، أين نودع الملف وما هي الوثائق؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "bf9c0323-e934-4c8a-87ed-527a6122c6fc"
+    ],
+    "expected_titles": [
+      "Récépissé de dépôt du dossier de constitution de coopérative"
+    ],
+    "reference": "الإجراء المعني هو « وصل إيداع ملفات تأسيس التعاونيات » (وزارة الداخلية - مديرية الإدارة الترابية). الوثائق المطلوبة: طلب موقع من طرف المؤسسين أو رئيس مجلس الإدارة أو المسير أو أحد المسيرين أو وكلائهم، المفوض لهم حق التوقيع على الطلب.… ؛ النظام الأساسي للتعاونية موقع بشكل قانوني، مصادق عليه من طرف الجهات المختصة، من قبل المؤسسين أو من وكلائهم المفوض لهم… ؛ قائمة بالأعضاء المتعاونين، تبين عدد الحصص المكتتبة ورأس المال المكتتب والمبلغ المحرر من قبل كل واحد منهم ؛ نسخة من البطاقة الوطنية للتعريف الإلكترونية بالنسبة للأعضاء المغاربة ومن بطاقة التسجيل بالنسبة للأجانب المقيمين بالمغرب… ؛ نسخة من البطاقة الوطنية للتعريف الإلكترونية بالنسبة لأعضاء أجهزة الإدارة والتسيير المغاربة ومن بطاقة التسجيل بالنسبة… ؛ شهادة ممنوحة من طرف البنك المودع لديه تثبت إيداع الأموال المستخلصة من تحرير رأس المال. الرسوم: بالمجان. الآجال: على الفور.",
+    "must_include": [
+      "طلب موقع من طرف المؤسسين أو رئيس مجلس الإدارة أو المسير أو…",
+      "النظام الأساسي للتعاونية موقع بشكل قانوني، مصادق عليه من…",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s053",
+    "question": "Est-ce que le dépôt du dossier de création d'une coopérative est payant ?",
+    "lang": "fr",
+    "category": "fees_delay",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "bf9c0323-e934-4c8a-87ed-527a6122c6fc"
+    ],
+    "expected_titles": [
+      "Récépissé de dépôt du dossier de constitution de coopérative"
+    ],
+    "reference": "La procédure concernée est « Récépissé de dépôt du dossier de constitution de coopérative » (Ministère de l'Intérieur-Direction de l'Administration Territoriale). Documents à fournir : Demande signée par les fondateurs ou le président du conseil d’administration ou le gérant ou l’un des gérants ou leurs… ; Les statuts de la coopérative signés légalement, visés par les autorités compétentes, par les fondateurs ou leurs… ; Liste des membres coopérateurs, indiquant le nombre de parts souscrites, le capital souscrit et le montant libéré par… ; Copie de la carte nationale d’identité électronique pour les membres marocains, de la carte d’immatriculation pour les… ; Copie de la carte nationale d’identité électronique pour les membres marocains des organes d’administration et de… ; Attestation délivrée par la banque dépositaire attestant le dépôt des fonds issus de la libération du capital.. Frais : Gratuit. Délai : immédiatement.",
+    "must_include": [
+      "Demande signée par les fondateurs ou le président du…",
+      "Les statuts de la coopérative signés légalement, visés par…",
+      "Gratuit",
+      "immédiatement"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s054",
+    "question": "أسسنا ناديا لكرة القدم في الحي، كيف نحصل على موافقة الوزارة على نظامه الأساسي؟",
+    "lang": "ar",
+    "category": "factual",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "5a0d1050-2f24-4710-839d-f4687ce8d508"
+    ],
+    "expected_titles": [
+      "Approbation des statuts d'une association sportive"
+    ],
+    "reference": "الإجراء المعني هو « المصادقة على النظام الأساسي لجمعية رياضية » (وزارة الشباب والثقافة والتواصل). الوثائق المطلوبة: النظام الأساسي المطابق للأنظمة الأساسية النموذجية المنصوص عليها في المادة 9 من القانون السالف الذكر رقم 30.09 مصادق…. الرسوم: بالمجان. الآجال: 60 يوما.",
+    "must_include": [
+      "النظام الأساسي المطابق للأنظمة الأساسية النموذجية المنصوص…",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s055",
+    "question": "Notre association veut organiser une collecte de dons pour les sinistrés, faut-il une autorisation ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "9ec1feba-9772-41cc-8c2a-e41689d285e4"
+    ],
+    "expected_titles": [
+      "Autorisation de sollicitation de la charité publique"
+    ],
+    "reference": "La procédure concernée est « Autorisation de sollicitation de la charité publique » (Secrétariat Général du Gouvernement). Documents à fournir : Demande adressée au Secrétaire Général du Gouvernement. ; Copie des statuts de l'association. ; Copie de la liste des membres responsables de l'administration de l'association avec indication de leur nationalité,… ; Récépissé de constitution de l'association ou récépissé du dernier renouvellement de ses organes. ; Copie des états financiers de l'association. ; Programme de la manifestation.. Frais : Gratuit. Délai : 15 jours.",
+    "must_include": [
+      "Demande adressée au Secrétaire Général du Gouvernement.",
+      "Copie des statuts de l'association.",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s056",
+    "question": "كم تكلف دراسة ملف ترخيص تثبيت لوحة إشهارية وما هي مدة المعالجة؟",
+    "lang": "ar",
+    "category": "fees_delay",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "d92a05d2-7c65-4c84-ae99-56239d94737f"
+    ],
+    "expected_titles": [
+      "Autorisation pour l'installation de panneaux publicitaires"
+    ],
+    "reference": "الإجراء المعني هو « الحصول على رخصة لنصـب اللوحــات الإشهــارية » (وزارة التجهيز والماء). الوثائق المطلوبة: 1- طلب رخصة الاحتلال المؤقت للملك العمومي ؛ 2 التصاميم ؛ تصميم موقعي يحدد على خريطة مناسبة موقع اللوحة المراد نصبها. ؛ تصميم اللوحة المراد نصبها بمقياس يبين أبعادها ؛ 3-وصل أداء مستحقات دراسة الملف. الرسوم: مصاريف دراسة الملف: - 1000 درهم عن كل طلب إدا كانت المساحة تقل أو تساوي 1000 متر مربع أو متر طولي؛ -1000 درهم عن كل طلب إدا كانت المساحة تقل أو تساوي 1000 متر مربع أو متر طولي مع إضافة 500 درهم عن كل شطر إضافي يقل أو يساوي 1000 متر مربع أو متر طولي مع تحديد الأقصى في 25000 درهم؛ -الاتاوة 500 درهم للمتر المربع حسب مساحة اللوحة الاشهارية (وفق الملحق رقم 1 من القرار رقم 3371.14) الجريدة الرسمية عدد 6330500 درهم للمتر المربع حسب مساحة اللوحة الاشهارية ويحتسب كل جزء من المتر مترا مربعا كاملا. الآجال: 60 يوما.",
+    "must_include": [
+      "1- طلب رخصة الاحتلال المؤقت للملك العمومي",
+      "2 التصاميم",
+      "60 يوما"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s057",
+    "question": "Je veux ouvrir une école privée, quels documents pour obtenir l'autorisation ?",
+    "lang": "fr",
+    "category": "documents",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "524de9ae-9c50-4032-a47f-e67d6e1ccb28"
+    ],
+    "expected_titles": [
+      "Autorisation de gestion d'un établissement d'enseignement privé"
+    ],
+    "reference": "La procédure concernée est « Autorisation de gestion d'un établissement d'enseignement privé » (Ministère de l’Education Nationale, du Préscolaire et du Sport-Académies Régionales d'Education et de Formation). Documents à fournir : Demande d'autorisation d'exercer la mission de directeur ; Fiche de renseignements concernant le ; Copie de la carte nationale d'identité électronique ; Copie du certificat de propriété du bâtiment ou du contrat de location précisant son usage comme établissement… ; Copie du diplôme de licence ou d'un titre équivalent ou tenant lieu pour l'enseignement scolaire privé ; État des services attestant d'une pratique d'enseignement d'au moins trois. Frais : Gratuit. Délai : 30 jours.",
+    "must_include": [
+      "Demande d'autorisation d'exercer la mission de directeur",
+      "Fiche de renseignements concernant le",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s058",
+    "question": "تغير مدير مدرستنا الخاصة، ما هي الوثائق المطلوبة لتسجيل المدير الجديد؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "94e762fb-9538-45c8-ab59-1d539db3f42a"
+    ],
+    "expected_titles": [
+      "Changement de gérant ou de fondateur d'un établissement privé"
+    ],
+    "reference": "الإجراء المعني هو « تغيير متصرف أو مؤسس مؤسسة خصوصية » (وزارة التربية الوطنية والتعليم الأولي والرياضة-الأكاديميات الجهوية للتربية والتكوين). الوثائق المطلوبة: طلب تغيير متصرف أو مؤسس مؤسسة خصوصية ؛ القانون الأساسي المحين ؛ نسخة من البطاقة الوطنية للتعريف الإلكترونية للمتصرف الجديد ؛ نسخة من السجل العدلي ؛ نسخة من رخصة فتح المؤسسة. الرسوم: بالمجان. الآجال: 30يوما.",
+    "must_include": [
+      "طلب تغيير متصرف أو مؤسس مؤسسة خصوصية",
+      "القانون الأساسي المحين",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s059",
+    "question": "Nous voulons changer le nom de notre établissement scolaire privé, que faut-il fournir ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "604ff21d-b41b-49c8-bd22-daf7038d12f0"
+    ],
+    "expected_titles": [
+      "Changement de dénomination d'un établissement privé"
+    ],
+    "reference": "La procédure concernée est « Changement de dénomination d'un établissement privé » (Ministère de l’Education Nationale, du Préscolaire et du Sport-Académies Régionales d'Education et de Formation). Documents à fournir : Demande d'autorisation de changement de dénomination de l'établissement ; Certificat négatif relatif à la nouvelle dénomination. Frais : Gratuit. Délai : 30 jours.",
+    "must_include": [
+      "Demande d'autorisation de changement de dénomination de…",
+      "Certificat négatif relatif à la nouvelle dénomination",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s060",
+    "question": "Je veux fermer définitivement mon agence de location de voitures, quels papiers dois-je rendre ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "1b626e8b-4130-429c-8ded-caff66d7ee9d"
+    ],
+    "expected_titles": [
+      "Fermeture définitive d’une agence de location de voitures"
+    ],
+    "reference": "La procédure concernée est « Fermeture définitive d’une agence de location de voitures » (Ministère de l’Equipement, du Transport, de la Logistique et de L’Eau). Documents à fournir : Demande de fermeture définitive de l’établissement ; Original de l’autorisation définitive d’ouverture d’une agence de location de voitures sans chauffeur ; Procès-verbal de l’assemblée générale indiquant l’arrêt définitif de l’activité de location de voitures sans chauffeur ; Attestation de radiation de la taxe professionnelle ; Registre du commerce indiquant la radiation de l’entreprise ; Originaux des documents de circulation des véhicules utilisés pour la location de voitures sans chauffeur. Frais : Gratuit. Délai : 60 jours.",
+    "must_include": [
+      "Demande de fermeture définitive de l’établissement",
+      "Original de l’autorisation définitive d’ouverture d’une…",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s061",
+    "question": "أريد إغلاق وكالة كراء السيارات بدون سائق مؤقتا لبضعة أشهر، ما هو الإجراء؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "56e1cbc6-679e-4ace-8185-5c44bed030d1"
+    ],
+    "expected_titles": [
+      "Fermeture temporaire d'un établissement de location de voitures sans chauffeur"
+    ],
+    "reference": "الإجراء المعني هو « الإغلاق المؤقت لمؤسسة لكراء السيارات بدون سائق » (وزارة النقل واللوجيستيك). الوثائق المطلوبة: طلب موقع من أجل الإيقاف المؤقت لوكالة كراء السيارات بدون سائق ؛ أصول أوراق سير السيارات. الرسوم: مجانا. الآجال: 60 يوما.",
+    "must_include": [
+      "طلب موقع من أجل الإيقاف المؤقت لوكالة كراء السيارات بدون…",
+      "أصول أوراق سير السيارات",
+      "مجانا"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s062",
+    "question": "Nous avons racheté une agence de voyages et voulons lui donner un nouveau nom, quelle démarche ?",
+    "lang": "fr",
+    "category": "factual",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "af2b588e-e02c-4228-9b10-7deacb6730df"
+    ],
+    "expected_titles": [
+      "Décision de changement de dénomination d'une agence de voyages"
+    ],
+    "reference": "La procédure concernée est « Décision de changement de dénomination d'une agence de voyages » (Ministère du Tourisme, de l’Artisanat et de l’Economie sociale et solidaire-Département du Tourisme). Documents à fournir : Certificat du registre du commerce portant le nouveau nom ; Procès-verbal de l'assemblée générale précisant la décision de changement du nom commercial de l'agence ; Contrat d'assurance contre les conséquences financières de la responsabilité civile professionnelle portant le nouveau… ; Attestation délivrée par la Caisse de Dépôt et de Gestion précisant le changement du nom commercial de l'agence pour la… ; Avenant au contrat de travail conclu entre l'agence et le directeur indiquant le nouveau nom de l'agence. Frais : Gratuit. Délai : 60 jours.",
+    "must_include": [
+      "Certificat du registre du commerce portant le nouveau nom",
+      "Procès-verbal de l'assemblée générale précisant la décision…",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s063",
+    "question": "قررنا إغلاق وكالة الأسفار نهائيا، ما هي الوثائق المطلوبة؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "a61666bf-87fa-4b62-83b8-322d55bd0ab2"
+    ],
+    "expected_titles": [
+      "Décision de fermeture définitive d’une agence de voyages"
+    ],
+    "reference": "الإجراء المعني هو « قرار  الاغلاق النهائي لوكالة الأسفار » (وزارة السياحة والصناعة التقليدية والاقتصاد الاجتماعي والتضامني-قطاع السياحة). الوثائق المطلوبة: 1- محضر الجمع العام يوضح اتخاذ قرار الاغلاق و تصفية وكالة الأسفار و تعيين المكلف بتصفية الوكالة ؛ 2- شهادة رقم الحساب البنكي للمكلف بالتصفية الوكالة ؛ 3- شهادة التشطيب من السجل التجاري النموذج رقم 13. الرسوم: بالمجان. الآجال: 60 يوما.",
+    "must_include": [
+      "1- محضر الجمع العام يوضح اتخاذ قرار الاغلاق و تصفية وكالة…",
+      "2- شهادة رقم الحساب البنكي للمكلف بالتصفية الوكالة",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s064",
+    "question": "Notre salle de cinéma ferme pour de bon, quelle décision faut-il demander ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "6e099baa-1517-4ee6-a4c1-a09c4fc5b664"
+    ],
+    "expected_titles": [
+      "Décision de fermeture définitive d’un complexe ou d’une salle de cinéma"
+    ],
+    "reference": "La procédure concernée est « Décision de fermeture définitive d’un complexe ou d’une salle de cinéma » (Centre Cinematographique Marocain). Documents à fournir : Demande adressée au Directeur du Centre Cinématographique Marocain ; Les tickets non utilisés à détruire ; Registre des recettes journalières ; Attestation délivrée par la Chambre Marocaine des Distributeurs de Films certifiant que la salle est en situation… ; Paiement de tous les impôts à compter de la date de fermeture. Frais : Gratuit. Délai : 7 jours.",
+    "must_include": [
+      "Demande adressée au Directeur du Centre Cinématographique…",
+      "Les tickets non utilisés à détruire",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s065",
+    "question": "شركتنا توزع قنينات غاز البوتان، كيف نستفيد من دعم صندوق المقاصة؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "7b560bcc-9322-4acb-a6d4-4025b299476b"
+    ],
+    "expected_titles": [
+      "Bénéfice du soutien à la distribution de gaz butane"
+    ],
+    "reference": "الإجراء المعني هو « الاستفادة من دعم توزيع مادة غاز البوطان » (صندوق المقاصة). الوثائق المطلوبة: طلب الدعم لمادة غاز البوطان ؛ فواتير مراكز التعبئة لشركات التوزيع ؛ كشف بالمبيعات الشهرية ؛ كشف بالكميات الغاز بوطان المتوصل بها من طرف المودعين. الرسوم: مجانا. الآجال: 15 يوما.",
+    "must_include": [
+      "طلب الدعم لمادة غاز البوطان",
+      "فواتير مراكز التعبئة لشركات التوزيع",
+      "مجانا"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s066",
+    "question": "Nous raffinons du sucre, comment toucher l'aide de l'État sur nos ventes locales ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "cfff55c1-4ced-4911-9b34-586b6fc5d689"
+    ],
+    "expected_titles": [
+      "Soutien forfaitaire pour le sucre"
+    ],
+    "reference": "La procédure concernée est « Soutien forfaitaire pour le sucre » (Caisse De Compensation). Documents à fournir : Demande de bénéfice du soutien pour le sucre sur les ventes locales ; État détaillé des ventes locales bénéficiant du soutien ; Fiche détaillée des ventes mensuelles avec calcul du taux de la TVA pour l'ensemble des ventes ; État du sucre raffiné et du sucre brut ; Déclaration mensuelle de TVA ; Reçu de paiement de la TVA ou récépissé de dépôt. Frais : Gratuit. Délai : 15 jours.",
+    "must_include": [
+      "Demande de bénéfice du soutien pour le sucre sur les ventes…",
+      "État détaillé des ventes locales bénéficiant du soutien",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s067",
+    "question": "كيف تستفيد الشركات المصنعة للكمامات غير الطبية من دعم الأسعار؟",
+    "lang": "ar",
+    "category": "factual",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "4a4cf099-3cc0-49b8-bfae-05874cc27805"
+    ],
+    "expected_titles": [
+      "Subvention des prix des masques de protection en non-tissé à usage non médical"
+    ],
+    "reference": "الإجراء المعني هو « دعم أثمان الكمامات الواقية المصنوعة من الثوب الغير المنسوج ذات الاستعمال غير الطبي » (صندوق المقاصة). الوثائق المطلوبة: فواتير البيع للموزعين ؛ حالة مخزون الكمامات الشهري ؛ شهادة إنتاج الكمامات من المعهد المغربي للتقييس ؛ شهادة استلام البضاعة من طرف الزبون ؛ بيانات التصفية من طرف الشركة. الرسوم: مجانا. الآجال: 15 يوما.",
+    "must_include": [
+      "فواتير البيع للموزعين",
+      "حالة مخزون الكمامات الشهري",
+      "مجانا"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s068",
+    "question": "Notre société importe beaucoup et veut des facilités de dédouanement, comment obtenir un statut spécial auprès de la douane ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "1db41e0c-61b1-4efe-9f02-ca94e06462c5"
+    ],
+    "expected_titles": [
+      "Statut d’opérateur économique agréé – Simplifications douanières"
+    ],
+    "reference": "La procédure concernée est « Statut d’opérateur économique agréé – Simplifications douanières » (Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects). Documents à fournir : Demande d’autorisation de statut d’opérateur économique accepté – Simplifications douanières ; Rapport d’audit réalisé par le cabinet d’audit choisi par l’entreprise conformément au référentiel défini par…. Frais : Gratuit. Délai : 60 jours.",
+    "must_include": [
+      "Demande d’autorisation de statut d’opérateur économique…",
+      "Rapport d’audit réalisé par le cabinet d’audit choisi par…",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s069",
+    "question": "أريد استغلال مقلع للرمل، ما هي الوثائق المطلوبة للتصريح بذلك؟",
+    "lang": "ar",
+    "category": "documents",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "951f1aa4-6e1a-4507-bdb7-c303337761d3"
+    ],
+    "expected_titles": [
+      "Délivrance du récépissé de déclaration d'exploitation de carrière"
+    ],
+    "reference": "الإجراء المعني هو « منح وصل تصريح باستغلال مقلع » (وزارة التجهيز والماء). الوثائق المطلوبة: 1. التصريح المسبق باستغلال المقلع ؛ 2. وثائق العقار ؛ 3. تصميم موقعي 20.000/1 على شعاع 2 كلم ؛ 4. تصميم أنسوبي 1000/1 ؛ 5. تصميم للمكمن بالوسط المائي 1000/1 ؛ 6. خطة التشوير. الرسوم: بالمجان. الآجال: (30) يوما لمقالع الأشغال العمومية ومقالع أخذ العينات للاستكشاف (60) يوما للمقالع الأخرى.",
+    "must_include": [
+      "1. التصريح المسبق باستغلال المقلع",
+      "2. وثائق العقار",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s070",
+    "question": "Mon entreprise de BTP veut participer aux marchés publics, comment obtenir sa qualification et sa classification ?",
+    "lang": "fr",
+    "category": "ambiguous",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "158958e7-3eee-4b3d-afa5-df19deb6661a",
+      "cef3f3df-822a-45fa-95d5-45ad6ae2bfde"
+    ],
+    "expected_titles": [
+      "Certificat de qualification et de classification des entreprises de bâtiment et de travaux publics",
+      "Certificat de classification et de classement des entreprises de construction"
+    ],
+    "reference": "La procédure concernée est « Certificat de qualification et de classification des entreprises de bâtiment et de travaux publics » (Ministère de l’Equipement et de L’Eau). Documents à fournir : Copie du certificat d'inscription de l'entreprise au registre du commerce ; Attestation de la masse salariale déclarée par l'entreprise ; Attestation du chiffre d'affaires réalisé au cours des cinq dernières années ; Références techniques de l'entreprise, en précisant notamment la nature et le volume des travaux réalisés ; Liste des équipements de l'entreprise, accompagnée des justificatifs ou de tout document attestant de leur acquisition ; Liste des agents d'encadrement et de supervision, avec indication de leurs qualifications professionnelles, justifiée…. Frais : Gratuit. Délai : 45 jours. Selon la situation exacte, la procédure « Certificat de classification et de classement des entreprises de construction » peut aussi s'appliquer.",
+    "must_include": [
+      "Copie du certificat d'inscription de l'entreprise au…",
+      "Attestation de la masse salariale déclarée par l'entreprise",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s071",
+    "question": "J'organise des séjours de chasse pour des touristes étrangers, quel agrément dois-je obtenir ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "3581e5f9-8114-4c13-af71-547e34b89a40"
+    ],
+    "expected_titles": [
+      "Agrément d'organisateur de chasse touristique"
+    ],
+    "reference": "La procédure concernée est « Agrément d'organisateur de chasse touristique » (Agence Nationale des Eaux et Forêts). Documents à fournir : Autorisation d'exploitation de la chasse amodiée ; Demande d'agrément d'organisateur de chasse touristique. Frais : Gratuit. Délai : 30 jours.",
+    "must_include": [
+      "Autorisation d'exploitation de la chasse amodiée",
+      "Demande d'agrément d'organisateur de chasse touristique",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s072",
+    "question": "كيف تحصل شركة على اعتماد لتقديم خدمات المناولة الأرضية في المطارات؟",
+    "lang": "ar",
+    "category": "factual",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "4c70d414-e7eb-4ebb-b389-5338e5f9c9b2"
+    ],
+    "expected_titles": [
+      "Agrément pour la prestation de services de manutention au sol dans les aéroports"
+    ],
+    "reference": "الإجراء المعني هو « اعتماد تقديم خدمات المناولة الأرضية بالمطارات » (وزارة النقل واللوجيستيك -المديرية العامة للطيران المدني). الوثائق المطلوبة: 5. وصف مفصل لأنشطة المساعدة التي زاولها الطالب، إذا كان الطالب قد زاول نشاطا مهنيا قبل تقديم طلبه ؛ ؛ 3. نسخة من السنة المحاسبية المنصرمة إذا كان الطالب قد زاول نشاطا مهنيا قبل تقديم طلبه ؛ ؛ 4. وصف مفصل للمؤهلات المالية والتقنية والمهنية التي يتوفر عليها الطالب ؛ ؛ 6 نسخة من الانظمة الأساسية للمعني. ؛ 2. التزام وفق النموذج المعد لهذا الغرض من لدن الوزارة المكلفة بالطيران المدني ؛ ؛ 1. طلب الممارسة مقدم وفق النموذج المعد لهذا الغرض من لدن الوزارة المكلفة بالطيران المدني؛. الرسوم: بالمجان. الآجال: 30 يوما.",
+    "must_include": [
+      "5. وصف مفصل لأنشطة المساعدة التي زاولها الطالب، إذا كان…",
+      "3. نسخة من السنة المحاسبية المنصرمة إذا كان الطالب قد زاول…",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s073",
+    "question": "Comment faire agréer une école qui forme des pilotes ou du personnel de l'aviation ?",
+    "lang": "fr",
+    "category": "factual",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "ae33532d-627e-499c-9c9e-a3c4e2499a5f"
+    ],
+    "expected_titles": [
+      "Certificat d'agrément d'un établissement de formation dans le domaine de l'aviation civile"
+    ],
+    "reference": "La procédure concernée est « Certificat d'agrément d'un établissement de formation dans le domaine de l'aviation civile » (Ministère de  Transport et de la Logistique-Direction Générale de l'Aviation Civile). Documents à fournir : Documents justifiant que le centre remplit toutes les conditions stipulées ; Documents attestant de la réponse aux observations figurant dans le rapport de mission d'audit ; Manuels de procédures requis ; Demande portant la signature et le cachet du centre. Frais : CHOF dirham 1000 dirham 1000 x Nombre inspecteur x Nombre heure. Délai : 60 jours.",
+    "must_include": [
+      "Documents justifiant que le centre remplit toutes les…",
+      "Documents attestant de la réponse aux observations figurant…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s074",
+    "question": "أحتاج وثيقة من المكتب المغربي للملكية الصناعية تثبت أن شركتي مسجلة، كم ثمنها؟",
+    "lang": "ar",
+    "category": "fees_delay",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "728f0699-3aa8-4091-952b-6d80f7ff226e",
+      "761b661b-48ac-459e-aad7-2aecaae5b5ee"
+    ],
+    "expected_titles": [
+      "Certificat d'inscription au registre local du commerce délivré par le registre central du commerce",
+      "Copie des inscriptions délivrée par le service du registre central du commerce"
+    ],
+    "reference": "الإجراء المعني هو « شهادة التسجيل بالسجل التجاري المحلي التي يسلمها السجل التجاري المركزي » (المكتب المغربي للملكية الصناعية والتجارية). الوثائق المطلوبة: استمارة طلب شهادة التسجيل بالسجل التجاريC1 ؛ إثبات استفاء الرسوم المستحقة.. الرسوم: الرسوم المستحقة : 180 درهم. الآجال: يومان (2). وحسب الحالة، قد ينطبق أيضا إجراء « نسخة التقييدات التي تسلمها مصلحة السجل التجاري المركزي ».",
+    "must_include": [
+      "استمارة طلب شهادة التسجيل بالسجل التجاريC1",
+      "إثبات استفاء الرسوم المستحقة.",
+      "الرسوم المستحقة : 180 درهم",
+      "يومان (2)"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s075",
+    "question": "J'ai besoin d'une copie des inscriptions d'une société au registre central du commerce, combien ça coûte ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "761b661b-48ac-459e-aad7-2aecaae5b5ee"
+    ],
+    "expected_titles": [
+      "Copie des inscriptions délivrée par le service du registre central du commerce"
+    ],
+    "reference": "La procédure concernée est « Copie des inscriptions délivrée par le service du registre central du commerce » (Office Marocain De La Propriété Industrielle Et Commerciale). Documents à fournir : Formulaire de demande de copie des inscriptions au registre du commerce C4 ; Justificatif de paiement de la redevance due. Frais : Frais dus 300 dirhams. Délai : 3 jours.",
+    "must_include": [
+      "Formulaire de demande de copie des inscriptions au registre…",
+      "Justificatif de paiement de la redevance due",
+      "Frais dus 300 dirhams"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s076",
+    "question": "Une société française veut ouvrir une succursale à Casablanca, comment l'immatriculer ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "e0c1dcda-61ee-4019-a416-3f1a1579e2cf"
+    ],
+    "expected_titles": [
+      "Immatriculation d'une succursale d'une société située à l'étranger"
+    ],
+    "reference": "La procédure concernée est « Immatriculation d'une succursale d'une société située à l'étranger » (Ministère de la Justice). Documents à fournir : Documents de dépôt ; Copie de la décision de création de la succursale ou de l'agence avec nomination du gérant, signée et enregistrée… ; Original du certificat négatif datant de moins de 90 jours. ; Documents d'immatriculation ; Certificat original d'inscription à la taxe professionnelle. ; Certificat d'immatriculation de la société mère ou document équivalent.. Frais : Frais d'immatriculation au registre du commerce 50 dirhams pour le dépôt, 50 dirhams pour l'inscription.. Délai : (2) 2 jours.",
+    "must_include": [
+      "Documents de dépôt",
+      "Copie de la décision de création de la succursale ou de…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s077",
+    "question": "شركتنا في الرباط وتريد فتح فرع داخل نفس دائرة المحكمة، كيف نسجل هذا الفرع؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "94030670-3c73-4bbb-9f47-15c550a94609"
+    ],
+    "expected_titles": [
+      "Enregistrement de succursale dans le ressort du tribunal d'immatriculation de la société mère"
+    ],
+    "reference": "الإجراء المعني هو « تسجيل فرع داخل الدائرة القضائية للمحكمة المسجلة بها الشركة الأم » (وزارة العدل). الوثائق المطلوبة: وثائق الإيداع ؛ نسخة من قرار إحداث الفرع أو الوكالة مع تعيين المسير موقع ومسجل بإدارة التسجيل. ؛ أصل الشهادة السلبية عند الاقتضاء، لا يتجاوز تاريخها 90 يوما ؛ الإذن أو الدبلوم أو هما معا عند الاقتضاء. ؛ وثائق التسجيل ؛ شهادة أصلية للتسجيل بالرسم المهني. الرسوم: رسوم التسجيل بالسجل التجاري 50درهما عن الإيداع, 50 درهما عن التقييد. الآجال: (2) يومان.",
+    "must_include": [
+      "وثائق الإيداع",
+      "نسخة من قرار إحداث الفرع أو الوكالة مع تعيين المسير موقع…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s078",
+    "question": "Plusieurs PME veulent mettre des moyens en commun dans une structure juridique partagée, comment l'enregistrer ?",
+    "lang": "fr",
+    "category": "factual",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "e285e12e-db11-4f3f-982f-cf26f9912b35"
+    ],
+    "expected_titles": [
+      "Immatriculation des groupements d'intérêt économique au registre du commerce"
+    ],
+    "reference": "La procédure concernée est « Immatriculation des groupements d'intérêt économique au registre du commerce » (Ministère de la Justice). Documents à fournir : Documents de dépôt ; Contrat de groupement signé par tous les membres ou par un mandataire muni d'une procuration écrite et enregistré… ; Copie du procès-verbal de l'assemblée des membres qui décide la nomination du ou des gérants et détermine leurs… ; Journal d'annonces légales dans lequel le contrat de groupement a été publié. ; Références du Bulletin officiel dans lequel le contrat de groupement a été publié ; Original du certificat négatif datant de moins de 90 jours.. Frais : 200 dirhams pour le dépôt 150 dirhams pour l'enregistrement. Délai : 2 jours.",
+    "must_include": [
+      "Documents de dépôt",
+      "Contrat de groupement signé par tous les membres ou par un…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s079",
+    "question": "أحتاج ممرا عبر الملك العمومي للوصول إلى أرضي ومشروعي الاستثماري، ما هي الرخصة المطلوبة؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "55993d15-fa28-4a3b-99f9-366a99804cfa"
+    ],
+    "expected_titles": [
+      "Permis d'occupation temporaire du domaine public pour l'accès aux propriétés privées et aux projets d'investissement (SVR) (Invest)"
+    ],
+    "reference": "الإجراء المعني هو « رخصة الاحتلال المؤقت للملك العمومي قصد الولوج إلى الملكيات الخاصة والمشاريع الاستثمارية (SVR) (Invest) » (وزارة التجهيز والماء). الوثائق المطلوبة: 1- طلب رخصة الاحتلال المؤقت للملك العمومي ؛ 2- التصاميم ؛ تصميم موقعي يحدد على خريطة مناسبة موقع القطعة الأرضية المراد احتلالها. ؛ تصميم القطعة المراد احتلالها مع المنشآت المزمع إنجازها بمقياس ملائم مع توضيح احداثيات لامبير لهذه الأرضية مرتبطة بشبكة… ؛ تصميم أنسوبي ؛ تصميم يبين ولوجيات وتفاصيل مجاري المياه. الرسوم: مصاريف دراسة الملف: - 1000 درهم عن كل طلب إدا كانت المساحة تقل أو تساوي 1000 متر مربع أو متر طولي - 1000 درهم عن كل طلب إدا كانت المساحة تقل أو تساوي 1000 متر مربع أو متر طولي مع إضافة 500 درهم عن كل شطر إضافي يقل أو يساوي 1000 متر مربع أو متر طولي مع تحديد الأقصى في 25000 درهم.. الآجال: 30 يوما.",
+    "must_include": [
+      "1- طلب رخصة الاحتلال المؤقت للملك العمومي",
+      "2- التصاميم"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s080",
+    "question": "Notre association de pêcheurs veut louer un lot de pêche dans un lac, comment participer à l'appel d'offres ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "65868482-0757-4e41-8b70-33b03ff4c4cb"
+    ],
+    "expected_titles": [
+      "Participation aux appels d'offres pour la location du droit de pêche dans les eaux continentales"
+    ],
+    "reference": "La procédure concernée est « Participation aux appels d'offres pour la location du droit de pêche dans les eaux continentales » (Agence Nationale des Eaux et Forêts). Documents à fournir : Demande de location ; Pour les associations ; Copie des statuts de l'association ; Copie du procès-verbal de l'assemblée générale constitutive ; Récépissé de dépôt des statuts auprès des autorités locales ; Liste des membres du bureau et liste des adhérents. Frais : Gratuit. Délai : 30 jours.",
+    "must_include": [
+      "Demande de location",
+      "Pour les associations",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s081",
+    "question": "كيف يتم تصنيف مؤسسة مضرة بالصحة أو مزعجة أو خطيرة؟",
+    "lang": "ar",
+    "category": "factual",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "7c227795-f2ed-43cc-81d6-f1b6259f8aa5"
+    ],
+    "expected_titles": [
+      "Classement des établissements classés (insalubres, incommodes ou dangereux)"
+    ],
+    "reference": "الإجراء المعني هو « ترتيب المؤسسات المصنفة (المضرة وغير الملائمة أو الخطيرة) » (وزارة التجهيز والماء). الوثائق المطلوبة: طلب ترتيب المؤسسة ؛ بطاقة تقنية تبين الإسم الشخصي والعائلي لصاحب الطلب أو صفة الشركة ومركزها وإسم مندوبها، نوعية ومحتوى المؤسسة المقرر…. الرسوم: بالمجان. الآجال: 10 أيام.",
+    "must_include": [
+      "طلب ترتيب المؤسسة",
+      "بطاقة تقنية تبين الإسم الشخصي والعائلي لصاحب الطلب أو صفة…",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s082",
+    "question": "Un armateur marocain veut assurer son navire auprès d'un assureur étranger, est-ce autorisé ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "0d970837-5baa-4bf0-8539-7d4a955a63b3"
+    ],
+    "expected_titles": [
+      "Autorisation de souscrire un contrat d'assurance maritime à l'étranger"
+    ],
+    "reference": "La procédure concernée est « Autorisation de souscrire un contrat d'assurance maritime à l'étranger » (Autorité De Controle Des Assurances Et De La Prevoyance Sociale). Documents à fournir : Demande préalable signée par l'intéressé ou la personne mandatée par lui à cet effet, précisant l'objet de… ; Copie des conditions générales d'assurance en version papier ou électronique ; Copie de la proposition d'assurance ou du projet de contrat d'assurance indiquant le nom du navire et la durée de la… ; Certificat de la Direction de la Marine Marchande ou du Département de la Pêche Maritime, selon l'usage, attestant que… ; Acte de nationalité indiquant que le navire est la propriété du demandeur de l'autorisation ou, en cas de navire… ; Pour les navires effectuant des voyages déterminés pendant des périodes données. Frais : Gratuit. Délai : 30 jours.",
+    "must_include": [
+      "Demande préalable signée par l'intéressé ou la personne…",
+      "Copie des conditions générales d'assurance en version…",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s083",
+    "question": "أريد أن أصبح وسيط تأمين، ما هي الوثائق المطلوبة للحصول على الاعتماد؟",
+    "lang": "ar",
+    "category": "documents",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "f26b7ebb-5362-4595-b4f1-2fdb7f1f6cc7"
+    ],
+    "expected_titles": [
+      "Décision relative à l'octroi de l'agrément d'intermédiaire d'assurance"
+    ],
+    "reference": "الإجراء المعني هو « قرار متعلق بمنح الإعتماد لوسيط التأمين » (هيئة مراقبة التأمينات والاحتياط الاجتماعي). الوثائق المطلوبة: من أجل الحصول على الاعتماد، يجب إكمال ملف المرشح الذي اجتاز بنجاح الامتحان المهني بالوثائق التالية ؛ أ) بالنسبة للشخص الذاتي ؛ تصريح بالشرف طبقا للنموذج الملحق بمنشور رئيس الهيئة ؛ نسخة من عقد تأمين المسؤولية المدنية المهنية؛ ؛ شهادة تثبت تقييد الشعار في السجل التجاري عند الاقتضاء؛ ؛ نسخة من اتفاق التعيين بالنسبة لوكلاء التأمين؛. الرسوم: بالمجان. الآجال: 60 يوما.",
+    "must_include": [
+      "من أجل الحصول على الاعتماد، يجب إكمال ملف المرشح الذي اجتاز…",
+      "أ) بالنسبة للشخص الذاتي",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s084",
+    "question": "Je n'ai pas remporté l'appel d'offres, comment récupérer ma caution provisoire par virement ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "1c48c9fa-3ea6-4cbb-b630-f7ade00e71ba"
+    ],
+    "expected_titles": [
+      "Demande de remboursement de la caution provisoire par virement bancaire"
+    ],
+    "reference": "La procédure concernée est « Demande de remboursement de la caution provisoire par virement bancaire » (Caisse De Depot Et De Gestion). Documents à fournir : Attestation de mainlevée délivrée par le maître d'ouvrage ; L'original du récépissé de dépôt ; Demande du soumissionnaire/enchérisseur ; Attestation d'identité bancaire du soumissionnaire/enchérisseur ; En cas de perte du reçu de paiement ; En cas d'envoi du reçu de paiement par le maître d'ouvrage avec les documents de paiement. Frais : Gratuit. Délai : 60 jours.",
+    "must_include": [
+      "Attestation de mainlevée délivrée par le maître d'ouvrage",
+      "L'original du récépissé de dépôt",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s085",
+    "question": "طلبت مني إدارة وضع ضمانة مالية لدى صندوق الإيداع والتدبير، كم يكلف الوصل وكم يستغرق؟",
+    "lang": "ar",
+    "category": "fees_delay",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "dcf307a6-62a9-4f2f-be2d-d1d236ec76d5"
+    ],
+    "expected_titles": [
+      "Obtention du reçu de cautionnement administratif"
+    ],
+    "reference": "الإجراء المعني هو « الحصول على وصل تأسيس الضمانة الادارية » (صندوق الإيداع والتدبير). الوثائق المطلوبة: المطبوع الخاص بالضمانة معبأ وموقع ؛ شِيكٌ مُصَدَّق عَلَيْهِ من قبل البنك بمبلغ الضمانة. الرسوم: رسم التنبر0,025% من مبلغ الكفالة. الآجال: يومان.",
+    "must_include": [
+      "المطبوع الخاص بالضمانة معبأ وموقع",
+      "شِيكٌ مُصَدَّق عَلَيْهِ من قبل البنك بمبلغ الضمانة",
+      "رسم التنبر0,025% من مبلغ الكفالة",
+      "يومان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s086",
+    "question": "Notre association porte un projet de développement local, comment demander un financement à l'Agence de développement social ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "6beefda1-a671-49c5-9198-e26b4d5358dc"
+    ],
+    "expected_titles": [
+      "Traitement de la demande de financement de projets et programmes de développement au profit des acteurs de développement"
+    ],
+    "reference": "La procédure concernée est « Traitement de la demande de financement de projets et programmes de développement au profit des acteurs de développement » (Agence de Développement Social). Documents à fournir : Le formulaire de demande « Demande de financement de projets et programmes de développement au profit des acteurs de… ; Récépissé de dépôt légal pour les associations, ou certificat d'enregistrement au tribunal pour les coopératives ; Les statuts du porteur de la demande de financement ; La liste des membres du bureau exécutif du porteur de la demande de financement ; Les rapports moral et financier des deux dernières années du porteur de la demande de financement ; Le procès-verbal de la réunion de l'organe responsable du porteur de la demande de financement, comportant la décision…. Frais : Gratuit. Délai : 60 jours.",
+    "must_include": [
+      "Le formulaire de demande « Demande de financement de…",
+      "Récépissé de dépôt légal pour les associations, ou…",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s087",
+    "question": "كيف تحصل مؤسسة على اعتماد لإنجاز التدقيق الطاقي؟",
+    "lang": "ar",
+    "category": "factual",
+    "theme": "Vie d'entreprise",
+    "expected_ids": [
+      "e26f1e17-891b-4150-9df3-453a5242f788"
+    ],
+    "expected_titles": [
+      "Agrément des organismes d'audit énergétique"
+    ],
+    "reference": "الإجراء المعني هو « اعتماد هيئات الافتحاص الطاقي » (وزارة الانتقال الطاقي والتنمية المستدامة-قطاع الانتقال الطاقي). الوثائق المطلوبة: طلب موقع من قبل الممثل القانوني للهيأة صاحبة الطلب يوضح وضعها القانوني ومقرها الاجتماعي ويبين القطاع أو القطاعات المراد… ؛ نسخة من السجل التجاري ؛ نسخة من النظام الأساسي لهيأة الافتحاص صاحبة الطلب. ؛ قائمة بأسماء المساهمين أو الشركاء، حسب الحالة، أو قائمة بأسماء أعضاء الجهاز التداولي أو هما معا مع الإشارة إلى هوية… ؛ شهادة الانخراط في صناديق الضمان الاجتماعي. ؛ لائحة بأسماء الأشخاص الذين يزاولون مهنة مفتحص طاقي والأشخاص الذين يعملون تحت إشرافهم داخل هيأة الافتحاص، حسب الشروط…. الرسوم: بالمجان. الآجال: 60 يوما.",
+    "must_include": [
+      "طلب موقع من قبل الممثل القانوني للهيأة صاحبة الطلب يوضح…",
+      "نسخة من السجل التجاري",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s088",
+    "question": "Je suis étudiant et je n'ai pas pris mon allocation de devises au moment de partir étudier à l'étranger, puis-je encore l'obtenir ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "05309d3e-7671-4c8b-8063-56ab9a479df2"
+    ],
+    "expected_titles": [
+      "Allocation de départ à l'étranger non perçue par l'étudiant lors de son départ"
+    ],
+    "reference": "La procédure concernée est « Allocation de départ à l'étranger non perçue par l'étudiant lors de son départ » (Office Des Changes). Documents à fournir : Lettre explicative ; Copie d'un document d'identité ; Certificat d'inscription ou de réinscription. Frais : Gratuit. Délai : 60 jours.",
+    "must_include": [
+      "Lettre explicative",
+      "Copie d'un document d'identité",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s089",
+    "question": "أشتري خدمات ومنتجات من مواقع أجنبية على الإنترنت، كيف أحصل على مخصص من العملة الصعبة للتجارة الإلكترونية؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "8565d7dd-e674-4ff1-8b41-37462f43c0ef"
+    ],
+    "expected_titles": [
+      "Allocation de devises pour le commerce électronique"
+    ],
+    "reference": "الإجراء المعني هو « منح التجارة الإلكترونية » (مكتب الصرف). الوثائق المطلوبة: نسخة من بطاقة الهوية بالنسبة للأشخاص الذاتيين ؛ الميزانية التوقعية للنفقات المتعلقة بالمنح المطلوبة ؛ تقرير عن استعمال المنح السابقة، عند الاقتضاء ؛ ملحق بنكي معبأ وموقع ومختوم ؛ نسخة لمستخرج السجل التجاري. الرسوم: بالمجان. الآجال: 60 يوما.",
+    "must_include": [
+      "نسخة من بطاقة الهوية بالنسبة للأشخاص الذاتيين",
+      "الميزانية التوقعية للنفقات المتعلقة بالمنح المطلوبة",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s090",
+    "question": "Comment obtenir la licence définitive pour ouvrir un bureau de change ?",
+    "lang": "fr",
+    "category": "factual",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "2b49df74-dff8-448c-bf05-bc0d3955f07e"
+    ],
+    "expected_titles": [
+      "Agrément définitif pour l'exercice de l'activité de change manuel – Licence de catégorie « D »"
+    ],
+    "reference": "La procédure concernée est « Agrément définitif pour l'exercice de l'activité de change manuel – Licence de catégorie « D » » (Office Des Changes). Documents à fournir : 1- Annexe n° 4 – Instructions régissant l'exercice de l'activité de change manuel en date du 17 juillet 2018 ; 2- Copie des statuts de la société ; 3- Copie du registre de commerce ; 4- Copie du certificat d'inscription à la taxe professionnelle ou de tout document justifiant le paiement de cette taxe ; 5- Copie de la licence du ministère du Tourisme pour les agences de voyages ; 6- Décision de classement pour les hôtels. Frais : Gratuit. Délai : 60 jours.",
+    "must_include": [
+      "1- Annexe n° 4 – Instructions régissant l'exercice de…",
+      "2- Copie des statuts de la société",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s091",
+    "question": "سأرافق والدتي للعلاج في الخارج، هل يمكنني الحصول على العملة الصعبة لمصاريف إقامتي؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "81a3877f-fad8-420f-94d6-001f4edc45be"
+    ],
+    "expected_titles": [
+      "Allocation ou prise en charge des frais de séjour de l'accompagnant du patient à l'étranger"
+    ],
+    "reference": "الإجراء المعني هو « منحة أو أداء مصاريف إقامة مرافق المريض بالخارج » (مكتب الصرف). الوثائق المطلوبة: ملحق بنكي معبأ وموقع ومختوم ؛ رسالة توضيحية تحدد صلة القرابة ؛ شهادة صادرة عن المستشفى الأجنبي، تحدد مدة إقامة المريض ؛ الميزانية التوقعية للنفقات ؛ نسخة من بطاقة الهوية. الرسوم: بالمجان. الآجال: 60 يوما.",
+    "must_include": [
+      "ملحق بنكي معبأ وموقع ومختوم",
+      "رسالة توضيحية تحدد صلة القرابة",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s092",
+    "question": "Quels justificatifs pour obtenir une dotation en devises pour un voyage d'affaires ?",
+    "lang": "fr",
+    "category": "documents",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "f31aae3e-4a7b-45dd-a524-815634bee3cb"
+    ],
+    "expected_titles": [
+      "Allocations pour voyages d'affaires"
+    ],
+    "reference": "La procédure concernée est « Allocations pour voyages d'affaires » (Office Des Changes). Documents à fournir : Relevé bancaire des montants alloués aux voyages d'affaires pour l'exercice en cours, pour les entités remplissant les… ; Budget prévisionnel des dépenses estimatives au titre des allocations demandées. ; Rapport sur l'utilisation des allocations antérieures, visé et cacheté par la banque domiciliataire. ; Annexe bancaire dûment remplie, signée et cachetée. ; Quittance de paiement de l'impôt sur les sociétés ; Ordre de mission ou invitation pour les allocations spécifiques. Frais : Gratuit. Délai : 60 jours.",
+    "must_include": [
+      "Relevé bancaire des montants alloués aux voyages d'affaires…",
+      "Budget prévisionnel des dépenses estimatives au titre des…",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s093",
+    "question": "زبون أجنبي طلب مني وثيقة رسمية تبين مداخيل شركتي السنوية، من أين أحصل عليها؟",
+    "lang": "ar",
+    "category": "factual",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "39bb0371-c80a-480f-9a56-a4dbedd7c0ce"
+    ],
+    "expected_titles": [
+      "Attestation de chiffre d'affaires"
+    ],
+    "reference": "الإجراء المعني هو « شهادة رقم الأعمال » (وزارة الاقتصاد والمالية-المديرية العامة للضرائب). الوثائق المطلوبة: طلب إلكتروني ؛ أو طلب نموذج رقم AAC240. الرسوم: مجانا. الآجال: على الفور: بالنسبة للطلبات الإلكترونية •يومان: بالنسبة للطلبات التى لم تودع بطريقة الكترونية.",
+    "must_include": [
+      "طلب إلكتروني",
+      "أو طلب نموذج رقم AAC240",
+      "مجانا"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s094",
+    "question": "La banque me demande un document qui prouve que je suis en règle avec les impôts, lequel demander ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "26b01df7-8d9d-427f-b697-e865f1b7adaa"
+    ],
+    "expected_titles": [
+      "Attestation de la situation fiscale légale"
+    ],
+    "reference": "La procédure concernée est « Attestation de la situation fiscale légale » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : Demande électronique ; ou formulaire n° AAC270. Frais : Gratuit. Délai : 2 jours.",
+    "must_include": [
+      "Demande électronique",
+      "ou formulaire n° AAC270",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s095",
+    "question": "combien coute attestation situation fiscale et ca prend combien de jours",
+    "lang": "fr",
+    "category": "user_style",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "26b01df7-8d9d-427f-b697-e865f1b7adaa",
+      "3739b209-27f2-45cb-810e-09b393121f01"
+    ],
+    "expected_titles": [
+      "Attestation de la situation fiscale légale",
+      "Attestation de situation fiscale pour la participation aux marchés publics (P203)"
+    ],
+    "reference": "La procédure concernée est « Attestation de la situation fiscale légale » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : Demande électronique ; ou formulaire n° AAC270. Frais : Gratuit. Délai : 2 jours. Selon la situation exacte, la procédure « Attestation de situation fiscale pour la participation aux marchés publics (P203) » peut aussi s'appliquer.",
+    "must_include": [
+      "Demande électronique",
+      "ou formulaire n° AAC270",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s096",
+    "question": "Je suis MRE et je dois déclarer à l'Office des changes les biens que je possède à l'étranger, comment obtenir l'attestation ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "ffc78827-8834-4327-8f33-67fd25c647d5"
+    ],
+    "expected_titles": [
+      "Attestation de l'accomplissement de la déclaration relative aux biens et avoirs constitués à l'étranger par les Marocains résidant à l'étranger ayant transféré leur résidence fiscale au Maroc"
+    ],
+    "reference": "La procédure concernée est « Attestation de l'accomplissement de la déclaration relative aux biens et avoirs constitués à l'étranger par les Marocains résidant à l'étranger ayant transféré leur résidence fiscale au Maroc » (Office Des Changes). Documents à fournir : Formulaire type de déclaration des biens et avoirs constitués à l'étranger par les Marocains résidant à l'étranger qui… ; Certificat de résidence à l'étranger, titre de séjour, certificat de radiation des registres consulaires ou des… ; Documents justifiant l'exercice d'une activité professionnelle durant la période de résidence à l'étranger, tels que ; Documents justifiant la valeur des biens immobiliers ; Documents justifiant la valeur des actifs financiers ; Documents justifiant les montants des dépôts en espèces. Frais : Gratuit. Délai : 60 jours.",
+    "must_include": [
+      "Formulaire type de déclaration des biens et avoirs…",
+      "Certificat de résidence à l'étranger, titre de séjour,…",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s097",
+    "question": "انتهيت من سداد قرض السيارة لدى النظام الجماعي لمنح رواتب التقاعد، كيف أحصل على رفع اليد؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "7867b4ed-c0a5-4bb2-978a-4877ee9ebf81"
+    ],
+    "expected_titles": [
+      "Attestation de mainlevée (prêt automobile)"
+    ],
+    "reference": "الإجراء المعني هو « شهادة رفع اليد (قرض السيارة) » (النظام الجماعي لمنح رواتب التقاعد). الوثائق المطلوبة: طلب ؛ نسخة من البطاقة الرمادية المشطبة. الرسوم: بالمجان. الآجال: 15 يوما.",
+    "must_include": [
+      "طلب",
+      "نسخة من البطاقة الرمادية المشطبة",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s098",
+    "question": "La CNSS peut-elle me donner un document prouvant que je n'ai aucune dette envers elle ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "6b0f0f85-64ab-46b8-a6a3-474bf9f4c239"
+    ],
+    "expected_titles": [
+      "Attestation de quitus"
+    ],
+    "reference": "La procédure concernée est « Attestation de quitus » (Caisse Nationale De La Sécurité Sociale). Documents à fournir : Demande d'attestation de quitus. Frais : Gratuit. Délai : 30 jours.",
+    "must_include": [
+      "Demande d'attestation de quitus",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s099",
+    "question": "عشت 12 سنة في ألمانيا وأريد إدخال سيارتي إلى المغرب مع تخفيض 90% من الرسوم الجمركية، ما هي الشهادة المطلوبة؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "edf6c880-e533-49a1-95b0-d7068d7c979d"
+    ],
+    "expected_titles": [
+      "Attestation de résidence d’au moins 10 ans à l’étranger pour bénéficier de la réduction de 90 % des droits de douane sur un véhicule (Marocains résidant à l’étranger)"
+    ],
+    "reference": "الإجراء المعني هو « شهادة تثبت إقامة الشخص ببلد الإقامة لا تقل على 10 سنوات من أجل استفادة من التخفيض الممنوح للتخليص  الجمركي للسيارة والمقدر ب 90%(المغاربة المقيمون بالخارج) » (وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي). الوثائق المطلوبة: البطاقة الوطنية للتعريف ؛ بطاقة الإقامة أو بطاقة التعريف الأجنبية تحمل العنوان بالخارج، أو ما يثبت الإقامة لمدة 10 سنوات بالخارج. الرسوم: الرسوم القنصلية00 درهما تعرفة على الخدمات (SEGMA)00 دراهم. الآجال: على الفور.",
+    "must_include": [
+      "البطاقة الوطنية للتعريف",
+      "بطاقة الإقامة أو بطاقة التعريف الأجنبية تحمل العنوان…"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s100",
+    "question": "Je dois prouver à un client étranger que je suis résident fiscal au Maroc pour éviter d'être imposé deux fois, quel document ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "2abb6af0-05da-4f7f-940d-7a288da13fda"
+    ],
+    "expected_titles": [
+      "Attestation de résidence fiscale"
+    ],
+    "reference": "La procédure concernée est « Attestation de résidence fiscale » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : Demande électronique ; Pour les demandes non déposées par voie électronique ; Pour les personnes physiques ; Demande sur formulaire n° AAC310. ; Tout document prouvant que le demandeur a un domicile permanent au Maroc, ou le centre de ses intérêts économiques ; Copies des passeports ou des documents justifiant que la durée de séjour continue ou discontinue au Maroc dépasse 183…. Frais : Gratuit. Délai : 2 jours.",
+    "must_include": [
+      "Demande électronique",
+      "Pour les demandes non déposées par voie électronique",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s101",
+    "question": "شحال كياخد الوقت باش نحصل على شهادة الإقامة الجبائية؟",
+    "lang": "ar",
+    "category": "user_style",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "2abb6af0-05da-4f7f-940d-7a288da13fda"
+    ],
+    "expected_titles": [
+      "Attestation de résidence fiscale"
+    ],
+    "reference": "الإجراء المعني هو « شهادة الإقامة الجبائية » (وزارة الاقتصاد والمالية-المديرية العامة للضرائب). الوثائق المطلوبة: طلب إلكتروني ؛ بالنسبة للطلبات التى لم تودع بطريقة الكترونية ؛ بالنسبة للأشخاص الذاتيين ؛ طلب نموذج رقم AAC310. ؛ أية وثيقة تثبت أن مقدم الطلب لديه موطن دائم في المغرب، أو مركز مصالحه الاقتصادية؛ ؛ نسخ من جوازات السفر أو الوثائق التي تبرر أن مدة الإقامة المستمرة أو المتقطعة في المغرب تتجاوز 183 يومًا لمدة 365 يومًا.. الرسوم: بالمجان. الآجال: على الفور : بالنسبة للطلبات الإلكترونية • يومان: بالنسبة للطلبات التى لم تودع بطريقة الكترونية.",
+    "must_include": [
+      "طلب إلكتروني",
+      "بالنسبة للطلبات التى لم تودع بطريقة الكترونية",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s102",
+    "question": "أنا متقاعد لدى النظام الجماعي لمنح رواتب التقاعد وأحتاج شهادة الاقتطاع من المنبع للضريبة على الدخل، كيف أحصل عليها؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "469224e9-c418-46af-89af-dbc91f091019"
+    ],
+    "expected_titles": [
+      "Attestation de retenue à la source de l'impôt sur le revenu"
+    ],
+    "reference": "الإجراء المعني هو « شهادة اقتطاع الضريبة على الدخل » (النظام الجماعي لمنح رواتب التقاعد). الوثائق المطلوبة: البطاقة الوطنية أو وكالة. الرسوم: بالمجان. الآجال: على الفور.",
+    "must_include": [
+      "البطاقة الوطنية أو وكالة",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s103",
+    "question": "Je suis promoteur et le notaire me demande l'attestation d'exonération de la taxe d'habitation pour les logements neufs, comment l'obtenir ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "b3309af5-b21f-405f-aa2b-d514af5cd460"
+    ],
+    "expected_titles": [
+      "Attestation d'exonération de la taxe d'habitation et de la taxe des services communaux"
+    ],
+    "reference": "La procédure concernée est « Attestation d'exonération de la taxe d'habitation et de la taxe des services communaux » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : Formulaire de demande n° AAC090 ; Contrat d'acquisition du terrain ; Règlement de copropriété ; Contrats de vente ; Permis d'habiter ou certificat de conformité ; Permis de construire. Frais : Gratuit. Délai : 2 jours.",
+    "must_include": [
+      "Formulaire de demande n° AAC090",
+      "Contrat d'acquisition du terrain",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s104",
+    "question": "أحتاج وثيقة رسمية تبين كم كان يساوي الأورو مقابل الدرهم في تاريخ معين، كم ثمنها؟",
+    "lang": "ar",
+    "category": "fees_delay",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "764d8cfd-252a-4938-a44a-e58f5b74726d"
+    ],
+    "expected_titles": [
+      "Attestation du cours de change des devises étrangères par rapport au dirham marocain"
+    ],
+    "reference": "الإجراء المعني هو « شهادة سعر صرف العملات الأجنبية مقابل الدرهم المغربي » (بنك المغرب). الوثائق المطلوبة: طلب. الرسوم: تسعيرة طلب شهادة حول أسعار الصرف : الاشخاص الذاتيون والمعنويون : 110 دراهم مع احتساب الرسوم. في حالة تاريخ سعر الصرف ما قبل 1959أو العملة غير مسعرة تسلم شهادة عدم تقييم الدرهم من طرف بنك المغرب : بالمجان.. الآجال: الحالة 1: تاريخ سعر الصرف قبل1959 أو العملة غير مسعرة: استصدار فوري لشهادة تتضمن عدم تقييم الدرهم ما قبل 1959 أو عدم تحديد سعر صرف العملة من طرف بنك المغرب. الحالة 2: تاريخ سعر الصرف بين 1959 و1962:استصدار الشهادة خلال يومين بعد إيداع الطلب الحالة 3: تاريخ سعر الصرف بعد 1962 والعملة مسعرة: استصدار فوري لشهادة سعر الصرف.",
+    "must_include": [
+      "طلب",
+      "الحالة 1: تاريخ سعر الصرف قبل1959 أو العملة غير مسعرة: استصدار فوري لشهادة تتضمن عدم تقييم الدرهم ما قبل 1959 أو عدم تحديد سعر صرف العملة من طرف بنك المغرب. الحالة 2: تاريخ سعر الصرف بين 1959 و1962:استصدار الشهادة خلال يومين بعد إيداع الطلب الحالة 3: تاريخ سعر الصرف بعد 1962 والعملة مسعرة: استصدار فوري لشهادة سعر الصرف"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s105",
+    "question": "Mon père est décédé en France et nous voulons rapatrier ses meubles au Maroc sans payer la douane, est-ce possible ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "1bc721be-edab-4708-a6a2-d63f35d3c458"
+    ],
+    "expected_titles": [
+      "Autorisation d’exonération des droits et taxes exigibles à l’importation des bagages et biens meubles usagés provenant d’une succession"
+    ],
+    "reference": "La procédure concernée est « Autorisation d’exonération des droits et taxes exigibles à l’importation des bagages et biens meubles usagés provenant d’une succession » (Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects). Documents à fournir : Demande d’autorisation d’exonération des droits et taxes exigibles à l’importation des bagages et biens meubles usagés… ; Certificat de résidence des héritiers ; Certificat d’hérédité délivré par les autorités du lieu de provenance des bagages et biens meubles ou par un notaire,…. Frais : Gratuit. Délai : 10 jours.",
+    "must_include": [
+      "Demande d’autorisation d’exonération des droits et taxes…",
+      "Certificat de résidence des héritiers",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s106",
+    "question": "استوردت كرسيا متحركا خاصا لابني المعاق، كيف أعفيه من الرسوم الجمركية؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "b528cdd8-15df-4758-be02-40de593f3e4f"
+    ],
+    "expected_titles": [
+      "Autorisation d'exonération des droits et taxes de douane pour le dédouanement des fauteuils roulants spécialement conçus pour les personnes en situation de handicap"
+    ],
+    "reference": "الإجراء المعني هو « الترخيص بالإعفاء من الرسوم والمكوس الجمركية عند تعشير  الكراسي المعدة خصيصا للأشخاص في وضعية إعاقة » (وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة). الوثائق المطلوبة: طلب الترخيص بالإعفاء من الرسوم والمكوس الجمركية عند تعشير كرسي معد خصيصا للأشخاص في وضعية إعاقة. ؛ شهادة طبية مسلمة وفق القانون رقم 05-52 بمثابة مدونة السير. ؛ ترخيص خاص مسلم من لدن مديرية الأدوية والصيدلة التابعة لوزارة الصحة. الرسوم: بالمجان. الآجال: 10 أيام.",
+    "must_include": [
+      "طلب الترخيص بالإعفاء من الرسوم والمكوس الجمركية عند تعشير…",
+      "شهادة طبية مسلمة وفق القانون رقم 05-52 بمثابة مدونة السير.",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s107",
+    "question": "Nous rapatrions le corps d'un proche décédé à l'étranger, faut-il payer des droits de douane sur le cercueil ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "45a71020-df0f-4bdf-934a-6e59a36d61fa"
+    ],
+    "expected_titles": [
+      "Autorisation d'exonération des droits et taxes de douane pour les cercueils et caisses contenant les corps ou restes mortels"
+    ],
+    "reference": "La procédure concernée est « Autorisation d'exonération des droits et taxes de douane pour les cercueils et caisses contenant les corps ou restes mortels » (Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects). Documents à fournir : Dossier sanitaire délivré dans le pays d'origine et au Maroc ; Déclaration de transport au Maroc délivrée par les autorités compétentes. Frais : Gratuit. Délai : immédiatement.",
+    "must_include": [
+      "Dossier sanitaire délivré dans le pays d'origine et au Maroc",
+      "Déclaration de transport au Maroc délivrée par les…",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s108",
+    "question": "قررت العودة نهائيا إلى المغرب بعد سنوات في الخارج، كيف أدخل أثاثي دون أداء الرسوم الجمركية؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "061983ca-90b5-49bb-9a96-0f240b4823c1"
+    ],
+    "expected_titles": [
+      "Autorisation d'exonération des droits et taxes de douane pour les Marocains de retour et les étrangers s'installant au Maroc, à l'importation de leurs bagages et effets personnels"
+    ],
+    "reference": "الإجراء المعني هو « الترخيص بالإعفاء من الرسوم والمكوس الجمركية لفائدة  المواطنين العائدين للمغرب أو الأجانب القادمين للاستقرار في المغرب عند استيراد أمتعتهم وأغراضهم الشخصية » (وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة). الوثائق المطلوبة: طلب الحصول على ترخيص الاستفادة من الإعفاء من الرسوم والمكوس الجمركية عند استيراد الأمتعة الشخصية ؛ شهادة تغيير الإقامة المسلمة من طرف السلطة المحلية لمكان الذهاب أو من طرف قنصل المغرب الداخل مكان الإقامة السابق في… ؛ جرد مفصل للأشياء المستوردة ؛ جرد مفصل للمعدات والأدوات المستعملة. الرسوم: مجانا. الآجال: 10 أيام.",
+    "must_include": [
+      "طلب الحصول على ترخيص الاستفادة من الإعفاء من الرسوم والمكوس…",
+      "شهادة تغيير الإقامة المسلمة من طرف السلطة المحلية لمكان…",
+      "مجانا"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s109",
+    "question": "Ma fille étudie à l'étranger et revient avec son trousseau scolaire, est-il exonéré de douane ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "a8baabb4-5705-472b-aa9e-d4371616bc8f"
+    ],
+    "expected_titles": [
+      "Autorisation d'exonération des droits et taxes exigibles à l'importation des trousseaux scolaires des élèves résidant à l'étranger venant poursuivre leurs études au Maroc ou des trousseaux de mariage des personnes venant s'établir au Maroc à la suite de leur mariage avec une personne y résidant"
+    ],
+    "reference": "La procédure concernée est « Autorisation d'exonération des droits et taxes exigibles à l'importation des trousseaux scolaires des élèves résidant à l'étranger venant poursuivre leurs études au Maroc ou des trousseaux de mariage des personnes venant s'établir au Maroc à la suite de leur mariage avec une personne y résidant » (Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects). Documents à fournir : Concernant les trousseaux scolaires ; 1- Demande d'autorisation d'exonération des droits et taxes exigibles à l'importation des trousseaux scolaires ; 2- Certificat de scolarité délivré par le directeur de l'établissement d'enseignement ; 3- Inventaire du trousseau ; Concernant les trousseaux de mariage ; 1- Demande d'autorisation d'exonération des droits et taxes exigibles à l'importation des trousseaux de mariage. Frais : Gratuit. Délai : 10 jours.",
+    "must_include": [
+      "Concernant les trousseaux scolaires",
+      "1- Demande d'autorisation d'exonération des droits et taxes…",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s110",
+    "question": "هل يوجد إعفاء من رسوم الاستيراد لسيارة مجهزة خصيصا لشخص في وضعية إعاقة؟",
+    "lang": "ar",
+    "category": "factual",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "ea4d5f41-5cf8-4c78-bccb-370f5be1f1f9"
+    ],
+    "expected_titles": [
+      "Autorisation d'exonération du droit d'importation lors du dédouanement de véhicules spécialement équipés pour personnes en situation de handicap"
+    ],
+    "reference": "الإجراء المعني هو « الترخيص  بالإعفاء من رسم الاستيراد عند تعشير السيارات المعدة خصيصا للأشخاص في وضعية إعاقة » (وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة). الوثائق المطلوبة: طلب مؤشر عليه من طرف السلطة الحكومية المكلفة بالأشخاص في وضعية اعاقة ؛ نسخة من شهادة المصادقة بصفة منعزلة مسلمة من طرف السلطة الحكومية المكلفة بالتجهيز و النقل ؛ شهادة التعريف مسلمة من طرف السلطة الحكومية المكلفة بالتجهيز و النقل ؛ شهادة طبية مسلمة وفق القانون رقم 05-52 بمثابة مدونة السير. ؛ نسخة من البطاقة الوطنية للتعريف الإلكترونية أو من شهادة الإقامة بالنسبة للأجانب المقيمين بالمغرب ؛ نسخة من رخصة السياقة. الرسوم: مجانا.",
+    "must_include": [
+      "طلب مؤشر عليه من طرف السلطة الحكومية المكلفة بالأشخاص في…",
+      "نسخة من شهادة المصادقة بصفة منعزلة مسلمة من طرف السلطة…",
+      "مجانا"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s111",
+    "question": "Comment une entreprise exportatrice peut-elle acheter sans payer la TVA sur ses achats ?",
+    "lang": "fr",
+    "category": "factual",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "c41a5097-2e9e-4adb-ad25-a115eaa0833d"
+    ],
+    "expected_titles": [
+      "Certificat d'achat en suspension de la taxe sur la valeur ajoutée"
+    ],
+    "reference": "La procédure concernée est « Certificat d'achat en suspension de la taxe sur la valeur ajoutée » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : En cas de première demande déposée au cours de l'année ; Demande, modèle AAC101 ; Liste des fournisseurs ; Certificat de classification ; Justificatifs du chiffre d'affaires réalisé au cours de l'année écoulée au titre des opérations d'exportation ; Pour l'exportation de produits. Frais : Gratuit. Délai : 10 jours.",
+    "must_include": [
+      "En cas de première demande déposée au cours de l'année",
+      "Demande, modèle AAC101",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s112",
+    "question": "اشتريت سيارة جديدة لأستغلها كطاكسي، كيف أستفيد من الإعفاء من الضريبة على القيمة المضافة؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "b1194478-cead-4c12-9d50-9e495cc7a4ed"
+    ],
+    "expected_titles": [
+      "Certificat d'achat exonéré de la taxe sur la valeur ajoutée d'un véhicule neuf destiné à l'exploitation exclusive comme taxi"
+    ],
+    "reference": "الإجراء المعني هو « شهادة شراء معفى من الضريبة على القيمة المضافة لعربة جديدة بغرض استغلالها خصيصا كسيارة أجرة » (وزارة الاقتصاد والمالية-المديرية العامة للضرائب). الوثائق المطلوبة: طلب إلكتروني أو طلب، نموذج AAP111 ؛ فاتورة شكلية أو مقايسة. الرسوم: مجانا. الآجال: 10 أيام.",
+    "must_include": [
+      "طلب إلكتروني أو طلب، نموذج AAP111",
+      "فاتورة شكلية أو مقايسة",
+      "مجانا"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s113",
+    "question": "J'achète un appartement, comment vérifier que les impôts sur le bien sont payés avant de signer ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "eaf43100-203d-4de8-84cf-df28f675bb5f"
+    ],
+    "expected_titles": [
+      "Certificat d'acquittement des impôts et taxes grevant l'immeuble (P480)"
+    ],
+    "reference": "La procédure concernée est « Certificat d'acquittement des impôts et taxes grevant l'immeuble (P480) » (Ministère de l’Économie et des Finances- Trésorerie générale du Royaume). Documents à fournir : Demande d'obtention du certificat d'acquittement des impôts et taxes grevant l'immeuble ; Copie du contrat de vente ou tout document justificatif de la transaction. Frais : Gratuit. Délai : 5 jours.",
+    "must_include": [
+      "Demande d'obtention du certificat d'acquittement des impôts…",
+      "Copie du contrat de vente ou tout document justificatif de…",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s114",
+    "question": "شركتنا ملتزمة ضريبيا ونريد أن تعترف إدارة الضرائب بأنها مقاولة ذات وضعية سليمة، كيف؟",
+    "lang": "ar",
+    "category": "factual",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "25f0fe34-c85b-47c5-a78c-df3993f0e427"
+    ],
+    "expected_titles": [
+      "Certificat de classement délivré par la Direction Générale des Impôts"
+    ],
+    "reference": "الإجراء المعني هو « شهادة التصنيف مسلمة من المديرية العامة للضرائب » (وزارة الاقتصاد والمالية-المديرية العامة للضرائب). الوثائق المطلوبة: طلب نموذج رقم AAC280 ؛ بيان معلومات خاص بالملزم يسلم من طرف القابض. الرسوم: بالمجان. الآجال: يومان.",
+    "must_include": [
+      "طلب نموذج رقم AAC280",
+      "بيان معلومات خاص بالملزم يسلم من طرف القابض",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s115",
+    "question": "Le fisc a inscrit une hypothèque légale sur mon terrain et j'ai tout payé, comment la lever ?",
+    "lang": "fr",
+    "category": "ambiguous",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "490c0d8b-219b-4c6b-bf46-0c80c45ee77b",
+      "cb403f72-fd16-4dca-b1fb-1de9c3e64ff5"
+    ],
+    "expected_titles": [
+      "Certificat de mainlevée de l'hypothèque légale forcée",
+      "Mainlevée d'hypothèque ou de procédure d'exécution diligentée par le percepteur"
+    ],
+    "reference": "La procédure concernée est « Certificat de mainlevée de l'hypothèque légale forcée » (Ministère de l’Économie et des Finances- Trésorerie générale du Royaume). Documents à fournir : Demande de certificat de mainlevée de l’hypothèque légale forcée. Frais : Gratuit. Délai : 05 jours. Selon la situation exacte, la procédure « Mainlevée d'hypothèque ou de procédure d'exécution diligentée par le percepteur » peut aussi s'appliquer.",
+    "must_include": [
+      "Demande de certificat de mainlevée de l’hypothèque légale…",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s116",
+    "question": "سددت ديوني الضريبية وأريد رفع الرهن عن أصلي التجاري، ما العمل؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "aea21998-ff2b-4633-8f8c-01477d14b82a"
+    ],
+    "expected_titles": [
+      "Certificat de mainlevée du nantissement du fonds de commerce"
+    ],
+    "reference": "الإجراء المعني هو « شهادة رفع اليد عن رهن الأصل التجاري » (وزارة الاقتصاد والمالية-الخزينة العامة للمملكة). الوثائق المطلوبة: طلب الحصول على شهادة رفع اليد عن رهن الأصل التجاري. الرسوم: بالمجان. الآجال: 5 أيام.",
+    "must_include": [
+      "طلب الحصول على شهادة رفع اليد عن رهن الأصل التجاري",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s117",
+    "question": "opposition sur ma voiture a cause des impots, comment l'enlever pour la vendre",
+    "lang": "fr",
+    "category": "user_style",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "f42a4b3f-2fc6-4246-938a-033952116c82"
+    ],
+    "expected_titles": [
+      "Certificat de mainlevée d'opposition sur véhicules au centre d'immatriculation des véhicules"
+    ],
+    "reference": "La procédure concernée est « Certificat de mainlevée d'opposition sur véhicules au centre d'immatriculation des véhicules » (Ministère de l’Économie et des Finances- Trésorerie générale du Royaume). Documents à fournir : Demande d'obtention du certificat de mainlevée d'opposition sur véhicules auprès du centre d'immatriculation des…. Frais : Gratuit. Délai : 5 jours.",
+    "must_include": [
+      "Demande d'obtention du certificat de mainlevée d'opposition…",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s118",
+    "question": "أكري محلا لشركة وهي تقتطع الضريبة من مبلغ الكراء، كيف أحصل على ما يثبت أداء هذه الضريبة؟",
+    "lang": "ar",
+    "category": "factual",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "aabfe1b0-1886-432c-a824-56a8d418657f"
+    ],
+    "expected_titles": [
+      "Certificat de paiement de l'impôt sur le revenu retenu à la source au titre des revenus fonciers versés"
+    ],
+    "reference": "الإجراء المعني هو « شهادة أداء الضريبة على الدخل المحجوزة في المنبع برسم الدخول العقارية المدفوعة » (وزارة الاقتصاد والمالية-المديرية العامة للضرائب). الوثائق المطلوبة: طلب إلكتروني ؛ طلب عادي. الرسوم: بالمجان. الآجال: على الفور: بالنسبة للطلبات الإلكترونية • يومان: بالنسبة للطلبات التى لم تودع بطريقة الكترونية.",
+    "must_include": [
+      "طلب إلكتروني",
+      "طلب عادي",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s119",
+    "question": "Ma voiture devrait être exonérée de la vignette, comment obtenir le certificat d'exonération ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "68075f31-3312-4734-9f62-df362384ba90"
+    ],
+    "expected_titles": [
+      "Certificat d'exonération de la taxe spéciale annuelle sur les véhicules"
+    ],
+    "reference": "La procédure concernée est « Certificat d'exonération de la taxe spéciale annuelle sur les véhicules » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : Demande ordinaire présentée par le redevable pour le certificat d'exonération de la taxe spéciale annuelle sur les… ; Pièces justificatives de l'exonération selon le cas. Frais : Gratuit. Délai : 10 jours.",
+    "must_include": [
+      "Demande ordinaire présentée par le redevable pour le…",
+      "Pièces justificatives de l'exonération selon le cas",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s120",
+    "question": "لا أستطيع أداء ضرائبي المتأخرة دفعة واحدة، هل يمكن الحصول على تسهيلات في الأداء؟",
+    "lang": "ar",
+    "category": "ambiguous",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "60b924a7-212e-4b5d-9f70-10bd807fa591",
+      "5e7f9100-0a27-41ba-8634-618cb4e36488"
+    ],
+    "expected_titles": [
+      "Décision relative à l’octroi ou au refus des facilités de paiement",
+      "Fractionnement du paiement de la dette fiscale en tranches assorties d'une garantie acceptée par le receveur"
+    ],
+    "reference": "الإجراء المعني هو « قرار بخصوص منح أو عدم منح التسهيلات في الأداء. » (وزارة الاقتصاد والمالية-الخزينة العامة للمملكة). الوثائق المطلوبة: طلب الحصول على التسهيلات في الأداء. الرسوم: بالمجان. الآجال: 15 يوما. وحسب الحالة، قد ينطبق أيضا إجراء « تقسيم أداء الدين الضريبي على دفعات مشمولة بضمان يقبله القابض ».",
+    "must_include": [
+      "طلب الحصول على التسهيلات في الأداء",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s121",
+    "question": "Peut-on payer sa dette fiscale en plusieurs fois avec une garantie, et en combien de temps la demande est traitée ?",
+    "lang": "fr",
+    "category": "fees_delay",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "5e7f9100-0a27-41ba-8634-618cb4e36488",
+      "60b924a7-212e-4b5d-9f70-10bd807fa591"
+    ],
+    "expected_titles": [
+      "Fractionnement du paiement de la dette fiscale en tranches assorties d'une garantie acceptée par le receveur",
+      "Décision relative à l’octroi ou au refus des facilités de paiement"
+    ],
+    "reference": "La procédure concernée est « Fractionnement du paiement de la dette fiscale en tranches assorties d'une garantie acceptée par le receveur » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : Demande présentée par le redevable accompagnée de la garantie proposée. Frais : Gratuit. Délai : 10 jours. Selon la situation exacte, la procédure « Décision relative à l’octroi ou au refus des facilités de paiement » peut aussi s'appliquer.",
+    "must_include": [
+      "Demande présentée par le redevable accompagnée de la…",
+      "Gratuit",
+      "10 jours"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s122",
+    "question": "Comment obtenir un duplicata d'une autorisation délivrée par l'Office des changes ?",
+    "lang": "fr",
+    "category": "factual",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "e99a3498-c2da-4227-b819-dd29d7f1f165"
+    ],
+    "expected_titles": [
+      "Délivrance de duplicata par l'Office des Changes"
+    ],
+    "reference": "La procédure concernée est « Délivrance de duplicata par l'Office des Changes » (Office Des Changes). Documents à fournir : Lettre explicative ; Attestation bancaire attestant de la non-réception de l'original, le cas échéant ; Copie de la carte d'identité ; Copie de l'extrait du registre de commerce. Frais : Gratuit. Délai : 60.",
+    "must_include": [
+      "Lettre explicative",
+      "Attestation bancaire attestant de la non-réception de…",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s123",
+    "question": "توفي زوجي وكان موظفا، كيف نسترجع المبالغ المودعة باسمه لدى صندوق الإيداع والتدبير؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "6c31417e-8533-4444-afff-1d43aebde406"
+    ],
+    "expected_titles": [
+      "Demande de recouvrement des montants relatifs aux fonctionnaires décédés"
+    ],
+    "reference": "الإجراء المعني هو « طلب استخلاص المبالغ المتعلقة بالموظفين المتوفين » (صندوق الإيداع والتدبير). الوثائق المطلوبة: طلب ذوي الحقوق ؛ رسم اراثة وفريضة الهالك ؛ نسخة من مقرر الايداع ؛ نسخ من بطائق التعريف الوطنية للورثة ؛ في حالة أداء عن طريق تحويل بنكي ؛ في حالة التوكيل وكالة خاصة على أن لا يتعدى تاريخ صدورها 3 أشهر أو تعزيزها بشواهد الحياة. الرسوم: بالمجان. الآجال: 60 يوما.",
+    "must_include": [
+      "طلب ذوي الحقوق",
+      "رسم اراثة وفريضة الهالك",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s124",
+    "question": "La conservation foncière m'a fait payer deux fois les mêmes droits, comment me faire rembourser ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "e91f5424-2120-4577-9b80-d2922d38e7fb"
+    ],
+    "expected_titles": [
+      "Demande de restitution des droits perçus par erreur ou omission"
+    ],
+    "reference": "La procédure concernée est « Demande de restitution des droits perçus par erreur ou omission » (Agence Nationale De La Conservation Foncière, Du Cadastre Et De La Cartographie). Documents à fournir : Demande de restitution des droits perçus par erreur ou omission ; Copie de la carte nationale d'identité ; Chèque annulé. Frais : Gratuit. Délai : 60 jours.",
+    "must_include": [
+      "Demande de restitution des droits perçus par erreur ou…",
+      "Copie de la carte nationale d'identité",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s125",
+    "question": "بغيت نشوف شنو خلصت من الضرائب، واش كاينة شي ورقة فيها كاع الأداءات؟",
+    "lang": "ar",
+    "category": "user_style",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "09b1e9b1-5d9b-4d52-80fc-242cead9628e"
+    ],
+    "expected_titles": [
+      "État des paiements"
+    ],
+    "reference": "الإجراء المعني هو « بيـــــــــــــــــــــــــــــــان  الأداءات » (وزارة الاقتصاد والمالية-الخزينة العامة للمملكة). الوثائق المطلوبة: طلب الحصول على بيــــــــان الأداءات. الرسوم: بالمجان. الآجال: على الفور.",
+    "must_include": [
+      "طلب الحصول على بيــــــــان الأداءات",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s126",
+    "question": "J'ai payé la taxe de services communaux en retard, puis-je demander l'annulation des pénalités ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "a9bce303-dae0-4853-9426-5ae23e2d4e7e"
+    ],
+    "expected_titles": [
+      "Exonération ou réduction des pénalités relatives aux taxes locales gérées par les collectivités territoriales"
+    ],
+    "reference": "La procédure concernée est « Exonération ou réduction des pénalités relatives aux taxes locales gérées par les collectivités territoriales » (Ministère de l'Intérieur-Direction des Finances des Collectivités Territoriales). Documents à fournir : Extrait du rôle des taxes concernées par la réclamation, ayant donné lieu à un titre de recouvrement ; Demande d'exonération ou de réduction des pénalités relatives aux taxes locales gérées par les collectivités…. Frais : Gratuit. Délai : 60 jours, selon le montant de l'exonération ou de la réduction, selon le montant de l'exonération ou de la réduction.",
+    "must_include": [
+      "Extrait du rôle des taxes concernées par la réclamation,…",
+      "Demande d'exonération ou de réduction des pénalités…",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s127",
+    "question": "تأخرت في أداء اشتراكات أجرائي لدى الضمان الاجتماعي، هل يمكن إعفائي من غرامات التأخير؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "bdc3d0ef-3a1b-4452-a7b9-c183ce71052d"
+    ],
+    "expected_titles": [
+      "Exonération totale ou partielle des majorations de retard, des amendes et des frais de recouvrement par décision ministérielle"
+    ],
+    "reference": "الإجراء المعني هو « الإعفاء الكلي أو الجزئي من ذعائر التأخير، الغرامات ومصاريف التحصيل بموجب قرار وزاري » (الصندوق الوطني للضمان الاجتماعي). الوثائق المطلوبة: طلب. الرسوم: بالمجان. الآجال: 60 يوما.",
+    "must_include": [
+      "طلب",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s128",
+    "question": "Faut-il une autorisation pour sortir temporairement des billets et des pièces de monnaie marocains du pays ?",
+    "lang": "fr",
+    "category": "factual",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "a029cd82-06f6-48e1-a1e1-f2deeb3711fd"
+    ],
+    "expected_titles": [
+      "Exportation temporaire de monnaie métallique et de billets de banque marocains"
+    ],
+    "reference": "La procédure concernée est « Exportation temporaire de monnaie métallique et de billets de banque marocains » (Office Des Changes). Documents à fournir : Lettre explicative ; Détail des types de monnaie concernés par l'exportation ; Copie de l'extrait du registre de commerce. Frais : Gratuit. Délai : 60 jours.",
+    "must_include": [
+      "Lettre explicative",
+      "Détail des types de monnaie concernés par l'exportation",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s129",
+    "question": "كيف أحول مصاريف دراسة أبنائي في الخارج بالعملة الصعبة؟",
+    "lang": "ar",
+    "category": "ambiguous",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "a22bf5c8-ef50-4dd3-a5f1-508a4dcf3e89",
+      "9428be65-5675-4c90-b77b-b3f85557a26e"
+    ],
+    "expected_titles": [
+      "Frais de scolarité",
+      "Paiement des frais de scolarité : primaire, collège et secondaire"
+    ],
+    "reference": "الإجراء المعني هو « تكاليف التمدرس » (مكتب الصرف). الوثائق المطلوبة: إثبات أداء تكاليف التمدرس ؛ نسخة من وثيقة تثبت الهوية ؛ إشهاد بنكي يثبت عدم تحويل التكاليف المعنية ؛ ملحق بنكي معبأ وموقع ومختوم ؛ نسخة من الفواتير ؛ شهادة التسجيل. الرسوم: بالمجان. الآجال: 60 يوما. وحسب الحالة، قد ينطبق أيضا إجراء « أداء مصاريف التمدرس: الابتدائي والإعدادي والثانوي ».",
+    "must_include": [
+      "إثبات أداء تكاليف التمدرس",
+      "نسخة من وثيقة تثبت الهوية",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s130",
+    "question": "Mon fils est au collège en France, quels documents pour transférer ses frais de scolarité ?",
+    "lang": "fr",
+    "category": "documents",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "9428be65-5675-4c90-b77b-b3f85557a26e",
+      "a22bf5c8-ef50-4dd3-a5f1-508a4dcf3e89"
+    ],
+    "expected_titles": [
+      "Paiement des frais de scolarité : primaire, collège et secondaire",
+      "Frais de scolarité"
+    ],
+    "reference": "La procédure concernée est « Paiement des frais de scolarité : primaire, collège et secondaire » (Office Des Changes). Documents à fournir : Relevé d'identité bancaire ; Lettre explicative ; Certificat d'inscription ; Factures des frais de scolarité ; Contrat de location ; Documents justificatifs du tuteur. Frais : Gratuit. Délai : 60 jours. Selon la situation exacte, la procédure « Frais de scolarité » peut aussi s'appliquer.",
+    "must_include": [
+      "Relevé d'identité bancaire",
+      "Lettre explicative",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s131",
+    "question": "Promoteur immobilier, j'ai terminé mon projet, comment récupérer ma caution bancaire ou lever l'hypothèque prise par les impôts ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "97bdb378-05d9-4ca0-a3ca-e8c31d4821ed"
+    ],
+    "expected_titles": [
+      "Mainlevée d'hypothèque ou restitution de la caution bancaire"
+    ],
+    "reference": "La procédure concernée est « Mainlevée d'hypothèque ou restitution de la caution bancaire » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : Demande formulaire n° AAC360 ; Réalisation d'un projet immobilier ; Copie du contrat d'acquisition ; Copie de la carte nationale d'identité pour les personnes physiques ; Copie des autorisations de construire ou d'équiper ; Copie des plans structurels pour les grands projets de construction et d'équipement. Frais : Gratuit. Délai : 2 jours.",
+    "must_include": [
+      "Demande formulaire n° AAC360",
+      "Réalisation d'un projet immobilier",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s132",
+    "question": "أنا متقاعد لدى الصندوق المغربي للتقاعد وأحتاج شهادة الضريبة على الدخل عن السنوات الماضية، كيف أحصل عليها؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "ac819efa-7571-40eb-a418-572a5172aa2a"
+    ],
+    "expected_titles": [
+      "Obtention d'une attestation d'impôt sur le revenu au titre des années antérieures"
+    ],
+    "reference": "الإجراء المعني هو « الحصول على شهادة للضريبة على الدخل برسم السنوات السابقة » (الصندوق المغربي للتقاعد). الوثائق المطلوبة: نسخة من البطاقة الوطنية ؛ وكالة في حالة عدم حضور المعني بالأمر. الرسوم: بالمجان. الآجال: فورا: عند حضور المعني بالأمر يومان (2): عند التوصل بالطلب عبر مختلف قنوات التواصل المتاحة (البوابة الإلكترونية للصندوق المغربي للتقاعد، البريد العادي...).",
+    "must_include": [
+      "نسخة من البطاقة الوطنية",
+      "وكالة في حالة عدم حضور المعني بالأمر",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s133",
+    "question": "Comment ouvrir un compte en devises au Maroc pour mon entreprise ?",
+    "lang": "fr",
+    "category": "factual",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "ad528fdd-3c3b-4598-9120-1cefc106212b"
+    ],
+    "expected_titles": [
+      "Ouverture de compte en devises ou en dirham convertible"
+    ],
+    "reference": "La procédure concernée est « Ouverture de compte en devises ou en dirham convertible » (Office Des Changes). Documents à fournir : Annexe bancaire dûment remplie, signée et cachetée ; Lettre explicative précisant la banque domiciliataire et le mode de fonctionnement du compte ; Documents justifiant le remboursement des prêts ou dons, accompagnés du contrat de partenariat ; Copie de l'extrait du registre de commerce. Frais : Gratuit. Délai : 60 jours.",
+    "must_include": [
+      "Annexe bancaire dûment remplie, signée et cachetée",
+      "Lettre explicative précisant la banque domiciliataire et le…",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s134",
+    "question": "كيف أفتح اعتمادا مستنديا لاستيراد بضائع من الخارج؟",
+    "lang": "ar",
+    "category": "factual",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "3cd6b1b0-9dc2-40b3-8634-2da16fb460fc"
+    ],
+    "expected_titles": [
+      "Ouverture de crédit documentaire"
+    ],
+    "reference": "الإجراء المعني هو « فتح اعتماد مستندي » (مكتب الصرف). الوثائق المطلوبة: ملحق بنكي معبأ وموقع ومختوم ؛ طلب فتح اعتماد مستندي لدى البنك ؛ نسخة من الفواتير و/ أو عقد تجاري ؛ نسخة من مستخرج السجل التجاري ؛ التزام استيراد موطن ؛ وثيقة تثبت شحن البضاعة نحو المغرب. الرسوم: بالمجان. الآجال: 60 يوما.",
+    "must_include": [
+      "ملحق بنكي معبأ وموقع ومختوم",
+      "طلب فتح اعتماد مستندي لدى البنك",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s135",
+    "question": "Mon fournisseur chinois exige d'être payé avant l'expédition, puis-je payer d'avance une importation ?",
+    "lang": "fr",
+    "category": "ambiguous",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "ba27618d-c59b-493f-a795-d2dd789489ce",
+      "64c7dc9f-8676-4e9d-a054-1a562138311d"
+    ],
+    "expected_titles": [
+      "Paiement anticipé à l'importation",
+      "Paiement d’une avance au titre d’une opération d’importation"
+    ],
+    "reference": "La procédure concernée est « Paiement anticipé à l'importation » (Office Des Changes). Documents à fournir : Copie du contrat de marché, en cas d’importation réalisée dans le cadre d’un marché ; Annexe bancaire dûment remplie, signée et cachetée ; Copie de l’extrait du registre de commerce ; Copie des factures et/ou d’un contrat commercial précisant les conditions de paiement. Frais : Gratuit. Délai : 60 jours. Selon la situation exacte, la procédure « Paiement d’une avance au titre d’une opération d’importation » peut aussi s'appliquer.",
+    "must_include": [
+      "Copie du contrat de marché, en cas d’importation réalisée…",
+      "Annexe bancaire dûment remplie, signée et cachetée",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s136",
+    "question": "أنا أجنبي وسأغادر المغرب نهائيا، كيف أحول ثمن بيع شقتي إلى الخارج؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "6423b230-d1d9-4924-a0f7-e2f94b522b3e"
+    ],
+    "expected_titles": [
+      "Paiement dans le cadre du départ définitif"
+    ],
+    "reference": "الإجراء المعني هو « الأداء في إطار المغادرة النهائية » (مكتب الصرف). الوثائق المطلوبة: ملحق بنكي معبئ وموقع ومختوم ؛ وثائق إثبات مصدر الأموال ؛ عقد شراء العقار ؛ عقد بيع العقار ؛ وثائق إثبات دفع الضرائب و الرسوم ؛ كشف حساب مفصل يبين الرصيد المحيّن. الرسوم: بالمجان. الآجال: 60 يوما.",
+    "must_include": [
+      "ملحق بنكي معبئ وموقع ومختوم",
+      "وثائق إثبات مصدر الأموال",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s137",
+    "question": "Suite à un litige avec un fournisseur étranger, nous devons lui payer une indemnité, quelle autorisation faut-il ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "36ffeaf3-a4ce-476b-9abf-437510f0eef7"
+    ],
+    "expected_titles": [
+      "Paiement découlant d’un litige commercial"
+    ],
+    "reference": "La procédure concernée est « Paiement découlant d’un litige commercial » (Office Des Changes). Documents à fournir : Tous les documents relatifs au litige ; Annexe bancaire dûment remplie, signée et cachetée ; Engagement d’importation incluant les restrictions douanières ; Copie des factures et/ou du contrat commercial ; Copie de l’extrait du registre de commerce. Frais : Gratuit. Délai : 60 jours.",
+    "must_include": [
+      "Tous les documents relatifs au litige",
+      "Annexe bancaire dûment remplie, signée et cachetée",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s138",
+    "question": "شركتنا تنظم مهرجانا وتريد أداء أجور فنانين أجانب، ما هو الإجراء؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "b0a9672e-d2c4-4e9e-a7f8-10e560489ccd"
+    ],
+    "expected_titles": [
+      "Paiement des cachets des artistes par des entités privées"
+    ],
+    "reference": "الإجراء المعني هو « أداء أجور الفنانين من طرف جهات خاصة » (مكتب الصرف). الوثائق المطلوبة: ملحق بنكي معبأ وموقع ومختوم ؛ نسخة من الفواتير و/ أو العقد ؛ نسخة من مستخرج السجل التجاري. الرسوم: بالمجان. الآجال: 60 يوما.",
+    "must_include": [
+      "ملحق بنكي معبأ وموقع ومختوم",
+      "نسخة من الفواتير و/ أو العقد",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s139",
+    "question": "Nos ingénieurs partent en mission à l'étranger, comment leur transférer les frais de mission ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "efb6a40e-b0bc-4d80-a79d-a218b161bd69"
+    ],
+    "expected_titles": [
+      "Paiement des frais de mission à l'étranger pour les employés marocains"
+    ],
+    "reference": "La procédure concernée est « Paiement des frais de mission à l'étranger pour les employés marocains » (Office Des Changes). Documents à fournir : Imprimé bancaire dûment rempli, signé et cacheté ; Contrat de travail ; Documents justificatifs des frais de mission à l'étranger ; Copie de la carte d'identité. Frais : Gratuit. Délai : 60 jours.",
+    "must_include": [
+      "Imprimé bancaire dûment rempli, signé et cacheté",
+      "Contrat de travail",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s140",
+    "question": "ابني طالب في كندا ويسكن مع زملائه في شقة مشتركة، كيف أحول له مصاريف الكراء؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "75aae052-28da-4616-a58d-b11c1a9ab817"
+    ],
+    "expected_titles": [
+      "Paiement des frais de loyer des étudiants dans le cadre de contrats de colocation"
+    ],
+    "reference": "الإجراء المعني هو « أداء مصاريف إيجار الطلبة في إطار عقود الكراء المشترك » (مكتب الصرف). الوثائق المطلوبة: نسخة من عقد السكن المشترك ؛ ملحق بنكي معبأ وموقع ومختوم ؛ شهادة التسجيل ؛ نسخة من بطاقة الهوية. الرسوم: بالمجان. الآجال: 60 يوما.",
+    "must_include": [
+      "نسخة من عقد السكن المشترك",
+      "ملحق بنكي معبأ وموقع ومختوم",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s141",
+    "question": "Comment une compagnie aérienne marocaine paie-t-elle ses quotas d'émissions de CO2 à l'étranger ?",
+    "lang": "fr",
+    "category": "factual",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "3adbce1a-6fdf-4cf7-a809-38b421593f52"
+    ],
+    "expected_titles": [
+      "Paiement du quota d'émissions de gaz à effet de serre des compagnies aériennes"
+    ],
+    "reference": "La procédure concernée est « Paiement du quota d'émissions de gaz à effet de serre des compagnies aériennes » (Office Des Changes). Documents à fournir : Copie de l'extrait du registre de commerce ; Annexe bancaire dûment remplie, signée et cachetée ; Copie des factures. Frais : Gratuit. Délai : 60 jours.",
+    "must_include": [
+      "Copie de l'extrait du registre de commerce",
+      "Annexe bancaire dûment remplie, signée et cachetée",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s142",
+    "question": "أنا مستثمر أجنبي أملك عقارا مؤجرا في المغرب، كيف أحول مداخيل الكراء إلى الخارج؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "70a05597-965d-49f1-884f-9aef7cac44d5"
+    ],
+    "expected_titles": [
+      "Rapatriement de revenus d'investissement (revenus locatifs)"
+    ],
+    "reference": "الإجراء المعني هو « دفع دخول الاستثمارات ( مداخيل الكراء) » (مكتب الصرف). الوثائق المطلوبة: بيان يوضح المبالغ المحصلة عن كل كراء والتكاليف الناتجة عنه، بما في ذلك الضرائب والرسوم المدفوعة. يتم إعداد هذا البيان… ؛ نسخة من عقد الكراء أو أي وثيقة تحل محله، تبين مبلغ الكراء ؛ نسخة من كشف الحساب المفتوح باسم الطالب ؛ وثائق إثبات دفع الضرائب و الرسوم ؛ نسخة لمستخرج السجل التجاري. الرسوم: بالمجان. الآجال: 60 يوما.",
+    "must_include": [
+      "بيان يوضح المبالغ المحصلة عن كل كراء والتكاليف الناتجة عنه،…",
+      "نسخة من عقد الكراء أو أي وثيقة تحل محله، تبين مبلغ الكراء",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s143",
+    "question": "Notre filiale marocaine veut verser des dividendes à sa maison mère en Espagne, quelles démarches ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "23e9f155-51e7-417e-a2fd-a02cdcfa34e0"
+    ],
+    "expected_titles": [
+      "Transfert des revenus d'investissement : dividendes distribués ou parts de bénéfices"
+    ],
+    "reference": "La procédure concernée est « Transfert des revenus d'investissement : dividendes distribués ou parts de bénéfices » (Office Des Changes). Documents à fournir : Annexe bancaire dûment remplie, signée et cachetée ; Bilan et compte de produits et charges, visés par l'administration fiscale, ainsi que les documents annexes relatifs à… ; Procès-verbal de l'assemblée générale ordinaire ayant statué sur les résultats de la société, indiquant l'affectation… ; Liste des actionnaires et des administrateurs étrangers ou marocains résidant à l'étranger, mentionnant leur identité,… ; Copie du relevé de compte ouvert au nom du demandeur ; Copie de l'extrait du registre de commerce. Frais : Gratuit. Délai : 60 jours.",
+    "must_include": [
+      "Annexe bancaire dûment remplie, signée et cachetée",
+      "Bilan et compte de produits et charges, visés par…",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s144",
+    "question": "Mon mari, assuré à la CNSS, est décédé et je suis la représentante légale de nos enfants, comment récupérer ses cotisations ?",
+    "lang": "fr",
+    "category": "ambiguous",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "b4b47d65-7567-41a0-9dab-a188d8f23d09",
+      "181ccba2-dc22-4e49-b247-3f126408a872"
+    ],
+    "expected_titles": [
+      "Remboursement des cotisations salariales des ayants droit (représentant légal des enfants) – Expertise",
+      "Remboursement des cotisations salariales pour les ayants droit (veuve ou veuf) (Expertise)"
+    ],
+    "reference": "La procédure concernée est « Remboursement des cotisations salariales des ayants droit (représentant légal des enfants) – Expertise » (Caisse Nationale De La Sécurité Sociale). Documents à fournir : Demande de remboursement des cotisations salariales des ayants droit ; Copie de la carte d’immatriculation à la Caisse Nationale de Sécurité Sociale de l’assuré décédé. ; Copie de la carte d’identité nationale électronique ; Certificat de décès de l’assuré. ; Pour les travailleurs des mines, attestation justifiant d’un travail souterrain d’une durée d’au moins cinq ans, pour… ; Acte de naissance.. Frais : Gratuit. Délai : 3 mois et demi. Selon la situation exacte, la procédure « Remboursement des cotisations salariales pour les ayants droit (veuve ou veuf) (Expertise) » peut aussi s'appliquer.",
+    "must_include": [
+      "Demande de remboursement des cotisations salariales des…",
+      "Copie de la carte d’immatriculation à la Caisse Nationale…",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s145",
+    "question": "أنا مطلقة وأتكفل بأطفالي، توفي طليقي وكان مؤمنا لدى الضمان الاجتماعي، كيف أسترجع اشتراكاته لأطفالي؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "2e89c1ef-0353-49df-94f6-2d522acba68a"
+    ],
+    "expected_titles": [
+      "Remboursement des cotisations salariales pour les ayants droit (personne divorcée ayant la charge d’enfants) (Expertise)"
+    ],
+    "reference": "الإجراء المعني هو « استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (المطلق(ة) المتكفل بأطفال) (Expertise) » (الصندوق الوطني للضمان الاجتماعي). الوثائق المطلوبة: طلب استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق ؛ نسخة من بطاقة التسجيل بالصندوق الوطني للضمان الاجتماعي خاصة بالمؤمن له المتوفى ؛ نسخة من البطاقة الوطنية للتعريف الإلكترونية ؛ شهادة الوفاة للمؤمن له ؛ بالنسبة لعمال المناجم، شهادة تثبت الاشتغال في باطن الأرض مدة خمس سنوات على الأقل للاستفادة من التعويض ابتداء من سن 55… ؛ عقد الازدياد. الرسوم: بالمجان. الآجال: 3 أشهر ونصف.",
+    "must_include": [
+      "طلب استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق",
+      "نسخة من بطاقة التسجيل بالصندوق الوطني للضمان الاجتماعي خاصة…",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s146",
+    "question": "Notre père, assuré à la CNSS, est décédé ; nous sommes ses enfants majeurs, pouvons-nous récupérer ses cotisations salariales ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "f4394067-5284-4a88-8647-a923a8115918"
+    ],
+    "expected_titles": [
+      "Remboursement des cotisations salariales pour ayants droit (enfants majeurs) (Expertise)"
+    ],
+    "reference": "La procédure concernée est « Remboursement des cotisations salariales pour ayants droit (enfants majeurs) (Expertise) » (Caisse Nationale De La Sécurité Sociale). Documents à fournir : Demande de remboursement du montant des cotisations salariales pour ayants droit ; Copie de la carte d'immatriculation à la Caisse Nationale de Sécurité Sociale ; Copie de la carte d'identité nationale électronique ; Certificat de décès de l'assuré ; Pour les travailleurs des mines, une attestation justifiant le travail dans le sous-sol pendant une durée d'au moins… ; Acte de naissance. Frais : Gratuit. Délai : 3 mois et demi.",
+    "must_include": [
+      "Demande de remboursement du montant des cotisations…",
+      "Copie de la carte d'immatriculation à la Caisse Nationale…",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s147",
+    "question": "توفي زوجي المؤمن لدى الضمان الاجتماعي، كم تستغرق معالجة طلب استرجاع اشتراكاته بصفتي أرملة؟",
+    "lang": "ar",
+    "category": "fees_delay",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "181ccba2-dc22-4e49-b247-3f126408a872"
+    ],
+    "expected_titles": [
+      "Remboursement des cotisations salariales pour les ayants droit (veuve ou veuf) (Expertise)"
+    ],
+    "reference": "الإجراء المعني هو « استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (الأرملة أو الأرمل) (Expertise) » (الصندوق الوطني للضمان الاجتماعي). الوثائق المطلوبة: طلب استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق ؛ نسخة من بطاقة التسجيل بالصندوق الوطني للضمان الاجتماعي خاصة بالمؤمن له المتوفى ؛ نسخة من البطاقة الوطنية للتعريف الإلكترونية ؛ شهادة الوفاة للمؤمن له ؛ بالنسبة لعمال المناجم، شهادة تثبت الاشتغال في باطن الأرض مدة خمس سنوات على الأقل للاستفادة من التعويض ابتداء من سن 55… ؛ نسخة من البطاقة الوطنية للتعريف الإلكترونية. الرسوم: بالمجان. الآجال: 3 أشهر ونصف.",
+    "must_include": [
+      "طلب استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق",
+      "نسخة من بطاقة التسجيل بالصندوق الوطني للضمان الاجتماعي خاصة…",
+      "بالمجان",
+      "3 أشهر ونصف"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s148",
+    "question": "Mes billets ont été abîmés dans un incendie, Bank Al-Maghrib peut-elle les remplacer ?",
+    "lang": "fr",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "2f112763-e2ff-467b-bbea-877ec6993b4b"
+    ],
+    "expected_titles": [
+      "Remplacement des billets de banque marocains mutilés, détériorés ou altérés"
+    ],
+    "reference": "La procédure concernée est « Remplacement des billets de banque marocains mutilés, détériorés ou altérés » (Bank Al-Maghrib). Documents à fournir : Copie de la pièce d'identité du demandeur ; Déclaration sur l'honneur ; En cas d'incendie, d'inondation, etc.. Frais : Gratuit. Délai : 60 jours.",
+    "must_include": [
+      "Copie de la pièce d'identité du demandeur",
+      "Déclaration sur l'honneur",
+      "Gratuit"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s149",
+    "question": "سأسافر للعلاج في مستشفى بإسبانيا، كيف أحصل على العملة الصعبة لتكاليف العلاج؟",
+    "lang": "ar",
+    "category": "situation",
+    "theme": "Impôts et argent",
+    "expected_ids": [
+      "a7b87b2c-c32b-4a7b-83ca-5b377cdde7e2"
+    ],
+    "expected_titles": [
+      "Services de soins médicaux"
+    ],
+    "reference": "الإجراء المعني هو « خدمات الرعاية الطبية » (مكتب الصرف). الوثائق المطلوبة: ملحق بنكي معبأ وموقع ومختوم ؛ رسالة توضيحية ؛ شهادة طبية ؛ وثيقة حجز الموعد ؛ أي وثيقة تثبت مدة الإقامة ؛ نسخة من الفواتير، بيان الأثمنة …. الرسوم: بالمجان. الآجال: 60 يوما.",
+    "must_include": [
+      "ملحق بنكي معبأ وموقع ومختوم",
+      "رسالة توضيحية",
+      "بالمجان"
+    ],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s150",
+    "question": "Comment renouveler mon permis de conduire ?",
+    "lang": "fr",
+    "category": "no_answer",
+    "theme": null,
+    "expected_ids": [],
+    "expected_titles": [],
+    "reference": "Les procédures disponibles ne contiennent pas d'information sur cette démarche : l'assistant doit le dire clairement, sans inventer de réponse.",
+    "must_include": [],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s151",
+    "question": "Comment déclarer la naissance de mon enfant à l'état civil ?",
+    "lang": "fr",
+    "category": "no_answer",
+    "theme": null,
+    "expected_ids": [],
+    "expected_titles": [],
+    "reference": "Les procédures disponibles ne contiennent pas d'information sur cette démarche : l'assistant doit le dire clairement, sans inventer de réponse.",
+    "must_include": [],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s152",
+    "question": "Comment demander une bourse pour mes études à l'université ?",
+    "lang": "fr",
+    "category": "no_answer",
+    "theme": null,
+    "expected_ids": [],
+    "expected_titles": [],
+    "reference": "Les procédures disponibles ne contiennent pas d'information sur cette démarche : l'assistant doit le dire clairement, sans inventer de réponse.",
+    "must_include": [],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s153",
+    "question": "Quels documents faut-il pour établir un acte de mariage chez les adouls ?",
+    "lang": "fr",
+    "category": "no_answer",
+    "theme": null,
+    "expected_ids": [],
+    "expected_titles": [],
+    "reference": "Les procédures disponibles ne contiennent pas d'information sur cette démarche : l'assistant doit le dire clairement, sans inventer de réponse.",
+    "must_include": [],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s154",
+    "question": "Comment payer une amende de stationnement en ligne ?",
+    "lang": "fr",
+    "category": "no_answer",
+    "theme": null,
+    "expected_ids": [],
+    "expected_titles": [],
+    "reference": "Les procédures disponibles ne contiennent pas d'information sur cette démarche : l'assistant doit le dire clairement, sans inventer de réponse.",
+    "must_include": [],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s155",
+    "question": "Comment inscrire mon fils en première année dans une école publique ?",
+    "lang": "fr",
+    "category": "no_answer",
+    "theme": null,
+    "expected_ids": [],
+    "expected_titles": [],
+    "reference": "Les procédures disponibles ne contiennent pas d'information sur cette démarche : l'assistant doit le dire clairement, sans inventer de réponse.",
+    "must_include": [],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s156",
+    "question": "Comment obtenir le permis de construire pour une maison individuelle ?",
+    "lang": "fr",
+    "category": "no_answer",
+    "theme": null,
+    "expected_ids": [],
+    "expected_titles": [],
+    "reference": "Les procédures disponibles ne contiennent pas d'information sur cette démarche : l'assistant doit le dire clairement, sans inventer de réponse.",
+    "must_include": [],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s157",
+    "question": "كيف أجدد رخصة السياقة؟",
+    "lang": "ar",
+    "category": "no_answer",
+    "theme": null,
+    "expected_ids": [],
+    "expected_titles": [],
+    "reference": "لا تتضمن الإجراءات المتوفرة معلومات عن هذا الموضوع: يجب على المساعد أن يوضح ذلك بدون اختلاق جواب.",
+    "must_include": [],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s158",
+    "question": "كيف أحصل على بطاقة السجل العدلي؟",
+    "lang": "ar",
+    "category": "no_answer",
+    "theme": null,
+    "expected_ids": [],
+    "expected_titles": [],
+    "reference": "لا تتضمن الإجراءات المتوفرة معلومات عن هذا الموضوع: يجب على المساعد أن يوضح ذلك بدون اختلاق جواب.",
+    "must_include": [],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s159",
+    "question": "كيف أطلب استرجاع مصاريف الأدوية من التأمين الإجباري عن المرض؟",
+    "lang": "ar",
+    "category": "no_answer",
+    "theme": null,
+    "expected_ids": [],
+    "expected_titles": [],
+    "reference": "لا تتضمن الإجراءات المتوفرة معلومات عن هذا الموضوع: يجب على المساعد أن يوضح ذلك بدون اختلاق جواب.",
+    "must_include": [],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s160",
+    "question": "كيف أسجل مولودا جديدا في سجلات الحالة المدنية؟",
+    "lang": "ar",
+    "category": "no_answer",
+    "theme": null,
+    "expected_ids": [],
+    "expected_titles": [],
+    "reference": "لا تتضمن الإجراءات المتوفرة معلومات عن هذا الموضوع: يجب على المساعد أن يوضح ذلك بدون اختلاق جواب.",
+    "must_include": [],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s161",
+    "question": "ما هي الوثائق المطلوبة لعقد الزواج؟",
+    "lang": "ar",
+    "category": "no_answer",
+    "theme": null,
+    "expected_ids": [],
+    "expected_titles": [],
+    "reference": "لا تتضمن الإجراءات المتوفرة معلومات عن هذا الموضوع: يجب على المساعد أن يوضح ذلك بدون اختلاق جواب.",
+    "must_include": [],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s162",
+    "question": "كيف أحصل على منحة التعليم العالي؟",
+    "lang": "ar",
+    "category": "no_answer",
+    "theme": null,
+    "expected_ids": [],
+    "expected_titles": [],
+    "reference": "لا تتضمن الإجراءات المتوفرة معلومات عن هذا الموضوع: يجب على المساعد أن يوضح ذلك بدون اختلاق جواب.",
+    "must_include": [],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s163",
+    "question": "كيف أسجل سيارتي المستعملة وأحصل على البطاقة الرمادية باسمي؟",
+    "lang": "ar",
+    "category": "no_answer",
+    "theme": null,
+    "expected_ids": [],
+    "expected_titles": [],
+    "reference": "لا تتضمن الإجراءات المتوفرة معلومات عن هذا الموضوع: يجب على المساعد أن يوضح ذلك بدون اختلاق جواب.",
+    "must_include": [],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  },
+  {
+    "question_id": "s164",
+    "question": "كيف أطلب الاستفادة من الدعم الاجتماعي المباشر للأسر؟",
+    "lang": "ar",
+    "category": "no_answer",
+    "theme": null,
+    "expected_ids": [],
+    "expected_titles": [],
+    "reference": "لا تتضمن الإجراءات المتوفرة معلومات عن هذا الموضوع: يجب على المساعد أن يوضح ذلك بدون اختلاق جواب.",
+    "must_include": [],
+    "source": "synthetic",
+    "generator": "claude (reviewed: overlap + bm25 ambiguity)"
+  }
+]

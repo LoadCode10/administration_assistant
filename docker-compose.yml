@@ -18,10 +18,17 @@ services:
   backend:
     build: ./backend
     env_file: ./backend/.env
+    dns:
+      - 172.20.10.1
+      - 8.8.8.8
+      - 1.1.1.1
     environment:
       DB_HOST: db
       DB_PORT: 5432
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
     volumes:
+      - ./backend:/app
       - hf-cache:/root/.cache/huggingface
       - ./backend/uploads:/app/uploads
       - ./backend/extractions:/app/extractions

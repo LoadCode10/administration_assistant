@@ -10,6 +10,65 @@
   var extractions = {};
   var documents = [];
 
+  /* --- Bilinguisme du jeu d'essai -----------------------------------------
+
+     Le backend sert desormais chaque texte en deux langues. Les fixtures
+     ci-dessous restent ecrites en une seule — les relire a deux colonnes les
+     rendrait illisibles, et une traduction inventee n'apprendrait rien de
+     plus a l'interface. On les dedouble donc mecaniquement, a la frontiere
+     des reponses : la valeur est recopiee dans les deux langues.
+
+     Les deux cotes sont remplis a dessein : c'est ce que le backend exige, et
+     un jeu d'essai a moitie vide ferait echouer l'editeur sur chaque fiche
+     pour une raison qui ne tient qu'au mock. */
+  function bi(value) {
+    if (value === null || value === undefined || value === '') return null;
+    if (typeof value === 'object') {
+      return { fr: String(value.fr || ''), ar: String(value.ar || '') };
+    }
+    return { fr: String(value), ar: String(value) };
+  }
+
+  // Idem, mais en deux colonnes suffixees : { base_fr, base_ar }.
+  function biColumns(target, base, value) {
+    var pair = bi(value) || { fr: '', ar: '' };
+    target[base + '_fr'] = pair.fr;
+    target[base + '_ar'] = pair.ar;
+    return target;
+  }
+
+  /* L'inverse de bi() : ramene une paire a une seule chaine, selon la langue
+     de l'interface. Sert aux reponses du mock qui, comme le contrat l'indique
+     dans api.js, ont le droit de servir une chaine la ou le vrai backend sert
+     un objet — le suivi et les sources de l'assistant. */
+  function flat(value) {
+    return App.helpers.pick(value);
+  }
+
+  function biList(list) {
+    return (Array.isArray(list) ? list : []).map(bi).filter(function (pair) {
+      return pair !== null;
+    });
+  }
+
+  /* Une procedure du contenu d'extraction, mise a la forme que sert le vrai
+     GET /admin/extractions/{id} : toutes les valeurs en paires, sauf les
+     textes de loi. Les champs hors contrat (statut_proc, date_obsolete, que
+     le mock utilise pour rejouer l'archivage) sont conserves tels quels. */
+  function biProcedure(procedure) {
+    var out = {};
+    Object.keys(procedure || {}).forEach(function (key) { out[key] = procedure[key]; });
+    out.proc_title = bi(procedure.proc_title) || { fr: '', ar: '' };
+    out.proc_description = bi(procedure.proc_description);
+    out.proc_administration = biList(procedure.proc_administration);
+    out.proc_pieces = biList(procedure.proc_pieces);
+    out.proc_steps = biList(procedure.proc_steps);
+    out.proc_law = Array.isArray(procedure.proc_law) ? procedure.proc_law.slice() : [];
+    out.fee = bi(procedure.fee);
+    out.proc_delai = bi(procedure.proc_delai);
+    return out;
+  }
+
   /* Les administrations, telles que les renverrait GET /admin/administrations :
      deja triees par nom. L'adresse et le site manquent souvent — c'est
      precisement le trou que l'ecran « Administrations » sert a combler.
@@ -52,6 +111,20 @@
       procedure_count: 3
     }
   ];
+
+  /* Les administrations sont ecrites plus haut avec un nom unique ; le backend
+     en sert deux. On dedouble une fois pour toutes, a l'initialisation : le
+     reste du mock ne manipule plus que les colonnes reelles. */
+  administrations.forEach(function (entry) {
+    biColumns(entry, 'nom_administration', entry.nom_administration);
+    delete entry.nom_administration;
+  });
+
+  // Le nom a comparer ou a afficher, quelle que soit la langue disponible.
+  function adminName(entry) {
+    return String((entry && (entry.nom_administration_fr ||
+      entry.nom_administration_ar)) || '');
+  }
 
   /* --- Comptes, tels que les renverrait GET /admin/users -------------------
 
@@ -692,10 +765,18 @@
   function sourceOf(procedureId) {
     var found = findProcedure(procedureId);
     if (!found) return null;
+    // Meme forme que le vrai /ask : identifiant, titre bilingue, et
+    // l'administration en objet bilingue.
+    var title = bi(found.procedure.proc_title) || { fr: '', ar: '' };
+    var admin = bi((found.procedure.proc_administration || [])[0]) || { fr: '', ar: '' };
     return {
-      procedure_id: found.id,
-      procedure_title: found.procedure.proc_title,
-      administration: (found.procedure.proc_administration || [])[0] || ''
+      id_procedure: found.id,
+      titre_proc_fr: title.fr,
+      titre_proc_ar: title.ar,
+      administration: {
+        nom_administration_fr: admin.fr,
+        nom_administration_ar: admin.ar
+      }
     };
   }
 
@@ -750,14 +831,23 @@
     return sourcesOf(['e1:0', 'e2:0']);
   }
 
-  function citizenMessage(role, content, sources) {
-    return {
+  function citizenMessage(role, content, sources, lang) {
+    var message = {
       id: 'm' + (nextCitizenId++),
       role: role,
       content: content,
       created_at: new Date().toISOString(),
       sources: sources || []
     };
+    // Comme /ask : seule la reponse porte sa langue, « fr » ou « ar ».
+    if (lang) message.lang = lang;
+    return message;
+  }
+
+  // Le serveur ne connait que deux langues : tout ce qui n'est pas arabe
+  // (l'anglais compris) lui revient comme « fr ».
+  function serverLang(language) {
+    return language === 'ar' ? 'ar' : 'fr';
   }
 
   function conversationSummary(conversation) {
@@ -784,7 +874,7 @@
         id: 'c1', title: q1, updated_at: hoursAgo(2),
         messages: [
           { id: 'm901', role: 'user', content: q1, created_at: hoursAgo(2), sources: [] },
-          { id: 'm902', role: 'assistant', content: ANSWERS.fr,
+          { id: 'm902', role: 'assistant', content: ANSWERS.fr, lang: 'fr',
             created_at: hoursAgo(2), sources: sourcesOf(['e1:0', 'en1:0']) }
         ]
       },
@@ -792,7 +882,7 @@
         id: 'c2', title: q2, updated_at: hoursAgo(30),
         messages: [
           { id: 'm903', role: 'user', content: q2, created_at: hoursAgo(30), sources: [] },
-          { id: 'm904', role: 'assistant', content: ANSWERS.ar,
+          { id: 'm904', role: 'assistant', content: ANSWERS.ar, lang: 'ar',
             created_at: hoursAgo(30), sources: sourcesOf(['ar1:0', 'e2:0']) }
         ]
       },
@@ -800,7 +890,7 @@
         id: 'c3', title: q3, updated_at: hoursAgo(24 * 9),
         messages: [
           { id: 'm905', role: 'user', content: q3, created_at: hoursAgo(24 * 9), sources: [] },
-          { id: 'm906', role: 'assistant', content: ANSWERS.en,
+          { id: 'm906', role: 'assistant', content: ANSWERS.en, lang: 'fr',
             created_at: hoursAgo(24 * 9), sources: sourcesOf(['en1:0']) }
         ]
       }
@@ -862,7 +952,7 @@
     if (!wanted) return null;
 
     var exact = administrations.filter(function (entry) {
-      return String(entry.nom_administration).trim().toLowerCase() === wanted;
+      return adminName(entry).trim().toLowerCase() === wanted;
     })[0];
     if (exact) return exact.id_administration;
 
@@ -871,25 +961,42 @@
     return administrations[sum % administrations.length].id_administration;
   }
 
-  function buildTracked(procedureId) {
+  function buildTracked(procedureId, lang) {
     var found = findProcedure(procedureId);
     if (!found) return null;
     var procedure = found.procedure;
-    var administrationName = (procedure.proc_administration || [])[0] || '';
-    return {
+    /* Le suivi garde sa forme interne — { id, label, checked, note } — que les
+       normaliseurs acceptent (voir le contrat dans api.js) : c'est elle que
+       fait evoluer updateTrackedPiece. « label » reste ramene a la langue
+       affichee ; les colonnes bilingues du vrai /citizen/tracked sont posees
+       a cote, avec la langue du suivi, pour que la carte puisse s'en servir. */
+    var rawAdministration = (procedure.proc_administration || [])[0];
+    var administrationName = flat(rawAdministration);
+    var admin = bi(rawAdministration);
+    var item = {
       id: 't' + (nextCitizenId++),
       procedure_id: found.id,
-      procedure_title: procedure.proc_title,
-      administration: administrationName,
+      lang: lang === 'ar' ? 'ar' : 'fr',
+      procedure_title: flat(procedure.proc_title),
+      administration: admin ? {
+        nom_administration_fr: admin.fr,
+        nom_administration_ar: admin.ar
+      } : null,
       id_administration: administrationIdFor(administrationName),
       created_at: new Date().toISOString(),
       pieces: (procedure.proc_pieces || []).map(function (label, index) {
-        return { id: 'p' + index, label: label, checked: false, note: '' };
+        var piece = { id: 'p' + index, label: flat(label), checked: false, note: '' };
+        biColumns(piece, 'nom_piece', label);
+        return piece;
       }),
       steps: (procedure.proc_steps || []).map(function (label, index) {
-        return { order: index + 1, label: label };
+        var step = { order: index + 1, label: flat(label) };
+        biColumns(step, 'description_etape', label);
+        return step;
       })
     };
+    biColumns(item, 'titre_proc', procedure.proc_title);
+    return item;
   }
 
   /* Combien de citoyens suivent une procedure : le vrai backend le lit en
@@ -913,10 +1020,70 @@
     return error;
   }
 
+  function isApproved(extractionId) {
+    return documents.some(function (doc) {
+      return doc.extraction_id === extractionId && doc.status === 'published';
+    });
+  }
+
   function delay(value, ms) {
     return new Promise(function (resolve) {
       setTimeout(function () { resolve(value); }, ms === undefined ? 350 : ms);
     });
+  }
+
+  /* --- Indexation (embeddings) ----------------------------------------------
+
+     Rejoue /admin/indexing/status et /admin/indexing/run : une procedure est
+     « indexee » toutes les INDEX_MS millisecondes tant qu'un lot tourne. Le
+     jeu d'essai demarre avec quelques procedures en attente, pour que le
+     bouton « Lancer l'indexation » soit visible sans rien importer. */
+  var INDEX_MS = 500;
+  var indexing = {
+    total: 48, embedded: 42,
+    run: { started_at: null, finished_at: null, done: 0, total: 0, failed: 0, last_error: null },
+    startedMs: null
+  };
+
+  function advanceIndexing() {
+    if (indexing.startedMs === null) return;
+    var done = Math.min(Math.floor((Date.now() - indexing.startedMs) / INDEX_MS), indexing.run.total);
+    indexing.embedded += done - indexing.run.done;
+    indexing.run.done = done;
+    if (done >= indexing.run.total) {
+      indexing.startedMs = null;
+      indexing.run.finished_at = new Date().toISOString().slice(0, 19);
+    }
+  }
+
+  function startIndexing() {
+    advanceIndexing();
+    if (indexing.startedMs !== null || indexing.embedded >= indexing.total) return false;
+    indexing.startedMs = Date.now();
+    indexing.run = {
+      started_at: new Date().toISOString().slice(0, 19), finished_at: null,
+      done: 0, total: indexing.total - indexing.embedded, failed: 0, last_error: null
+    };
+    return true;
+  }
+
+  function indexingStatus() {
+    advanceIndexing();
+    var running = indexing.startedMs !== null;
+    var run = indexing.run;
+    var eta = null;
+    if (running && run.done) {
+      eta = Math.round((Date.now() - indexing.startedMs) / 1000 / run.done * (run.total - run.done));
+    }
+    return {
+      total: indexing.total,
+      embedded: indexing.embedded,
+      pending: indexing.total - indexing.embedded,
+      percent: indexing.total ? Math.round(1000 * indexing.embedded / indexing.total) / 10 : 100,
+      running: running,
+      eta_seconds: eta,
+      run: JSON.parse(JSON.stringify(run))
+    };
   }
 
   /* --- Consommation de jetons ----------------------------------------------
@@ -1248,14 +1415,24 @@
       return delay({ ok: true }, 400);
     },
 
+    /* Le contenu d'une extraction est bilingue : chaque texte est une paire
+       { fr, ar }, sauf « proc_law » qui reste une liste de chaines. Les
+       fixtures sont ecrites en une langue et dedoublees ici — voir bi(). */
     getExtraction: function (id) {
       var found = extractions[id];
       if (!found) return Promise.reject(new Error('Extraction introuvable (' + id + ').'));
-      return delay(JSON.parse(JSON.stringify(found)));
+      var copy = JSON.parse(JSON.stringify(found));
+      copy.procedures = (copy.procedures || []).map(biProcedure);
+      return delay(copy);
     },
 
     saveExtraction: function (id, procedures) {
       if (!extractions[id]) return Promise.reject(new Error('Extraction introuvable.'));
+      if (isApproved(id)) {
+        return delay(null, 300).then(function () {
+          throw httpFailure(409, 'Extraction déjà traitée');
+        });
+      }
       extractions[id].procedures = JSON.parse(JSON.stringify(procedures));
       documents.forEach(function (doc) {
         if (doc.extraction_id === id) doc.procedure_count = procedures.length;
@@ -1263,11 +1440,42 @@
       return delay({ ok: true }, 500);
     },
 
+    /* Rejoue POST /admin/extractions/{id}/approve : 409 si deja traitee, sinon
+       { created, skipped, embedding: "en_cours" } — les embeddings se calculent
+       en tache de fond cote serveur. */
     approveExtraction: function (id) {
+      if (isApproved(id)) {
+        return delay(null, 300).then(function () {
+          throw httpFailure(409, 'Extraction déjà traitée');
+        });
+      }
       documents.forEach(function (doc) {
         if (doc.extraction_id === id) doc.status = 'published';
       });
-      return delay({ ok: true }, 1400);
+      var count = extractions[id] ? (extractions[id].procedures || []).length : 0;
+      // Comme le backend : l'indexation demarre en tache de fond, apres la reponse.
+      indexing.total += count;
+      setTimeout(startIndexing, 600);
+      return delay({ created: count, skipped: 0, embedding: 'en_cours' }, 1400);
+    },
+
+    getIndexingStatus: function () {
+      return delay(indexingStatus(), 200);
+    },
+
+    runIndexing: function () {
+      // Comme le backend, le statut renvoye est celui d'avant le lancement.
+      var status = indexingStatus();
+      status.started = false;
+      if (status.running) status.reason = 'already_running';
+      else if (!status.pending) status.reason = 'nothing_to_index';
+      else status.started = startIndexing();
+      return delay(status, 250);
+    },
+
+    getExtractionStatus: function (id) {
+      if (!extractions[id]) return Promise.reject(httpFailure(404, 'Extraction introuvable'));
+      return delay({ status: isApproved(id) ? 'approved' : 'pending_review' }, 200);
     },
 
     /* --- Authentification -------------------------------------------------
@@ -1336,18 +1544,30 @@
         var extraction = extractions[extractionId];
 
         extraction.procedures.forEach(function (procedure, index) {
-          var copy = JSON.parse(JSON.stringify(procedure));
-          // Identifiant stable factice : le vrai backend renvoie le sien.
-          copy.id = extractionId + ':' + index;
-          copy.extractionId = extractionId;
-          copy.extractionName = extraction.filename;
-          copy.index = index;
-          /* Meme forme que mapStoredProcedure cote api.js : le statut d'une
-             procedure dit si elle est encore en vigueur, pas ou en est son
-             fichier d'origine. */
-          copy.status = procedure.statut_proc === 'obsolete' ? 'obsolete' : 'active';
-          copy.obsoleteAt = procedure.date_obsolete || null;
-          out.push(copy);
+          /* App.api.listProcedures rend la main directement en mode
+             demonstration : il ne passe pas par mapStoredProcedure. C'est
+             donc ici la forme deja aplatie qu'attend l'ecran « Procedures »,
+             une seule langue par valeur. */
+          var paired = biProcedure(procedure);
+          out.push({
+            // Identifiant stable factice : le vrai backend renvoie le sien.
+            id: extractionId + ':' + index,
+            proc_title: flat(paired.proc_title),
+            proc_description: flat(paired.proc_description),
+            fee: flat(paired.fee),
+            proc_delai: flat(paired.proc_delai),
+            proc_administration: paired.proc_administration.map(flat),
+            proc_pieces: paired.proc_pieces.map(flat),
+            proc_steps: paired.proc_steps.map(flat),
+            proc_law: paired.proc_law.slice(),
+            extractionId: extractionId,
+            extractionName: extraction.filename,
+            index: index,
+            /* Le statut d'une procedure dit si elle est encore en vigueur, pas
+               ou en est son fichier d'origine. */
+            status: procedure.statut_proc === 'obsolete' ? 'obsolete' : 'active',
+            obsoleteAt: procedure.date_obsolete || null
+          });
         });
       });
       return delay(out, 400);
@@ -1412,10 +1632,15 @@
       })[0];
       if (!target) return delay(null, 300).then(function () { throw httpFailure(404, 'Administration introuvable.'); });
 
-      var name = String((body && body.nom_administration) || '').trim();
+      /* Le vrai backend refuse le doublon sur l'UNE OU L'AUTRE des deux
+         colonnes : deux organismes ne peuvent partager ni leur nom francais
+         ni leur nom arabe. Le mock rejoue la meme condition. */
+      var nameFr = String((body && body.nom_administration_fr) || '').trim();
+      var nameAr = String((body && body.nom_administration_ar) || '').trim();
       var taken = administrations.some(function (a) {
-        return a.id_administration !== target.id_administration &&
-          a.nom_administration.toLowerCase() === name.toLowerCase();
+        if (a.id_administration === target.id_administration) return false;
+        return (nameFr && String(a.nom_administration_fr).toLowerCase() === nameFr.toLowerCase()) ||
+          (nameAr && String(a.nom_administration_ar).toLowerCase() === nameAr.toLowerCase());
       });
       if (taken) {
         return delay(null, 300).then(function () {
@@ -1423,14 +1648,17 @@
         });
       }
 
-      target.nom_administration = name;
+      target.nom_administration_fr = nameFr;
+      target.nom_administration_ar = nameAr;
       // Le backend stocke null, pas la chaine vide : le mock fait pareil pour
       // que l'ecran soit teste sur la forme reellement recue.
       target.addr_administration = String((body && body.addr_administration) || '').trim() || null;
       target.url_administration = String((body && body.url_administration) || '').trim() || null;
 
+      // Le backend trie sur la colonne francaise.
       administrations.sort(function (a, b) {
-        return a.nom_administration.localeCompare(b.nom_administration, 'fr');
+        return String(a.nom_administration_fr)
+          .localeCompare(String(b.nom_administration_fr), 'fr');
       });
       return delay(JSON.parse(JSON.stringify(target)), 400);
     },
@@ -1494,7 +1722,23 @@
         role_user: found.role_user,
         creation_date: found.creation_date,
         tracked_count: found.tracked_procs.length,
-        tracked_procs: JSON.parse(JSON.stringify(found.tracked_procs)),
+        /* Meme forme que le vrai GET /admin/users/{id} : titre bilingue, et
+           l'administration en objet — ou null quand la procedure n'en cite
+           aucune, cas que le jeu d'essai contient a dessein. */
+        tracked_procs: found.tracked_procs.map(function (item) {
+          var title = bi(item.titre_proc) || { fr: '', ar: '' };
+          var admin = bi(item.administration);
+          return {
+            id_up: item.id_up,
+            status: item.status,
+            titre_proc_fr: title.fr,
+            titre_proc_ar: title.ar,
+            administration: admin ? {
+              nom_administration_fr: admin.fr,
+              nom_administration_ar: admin.ar
+            } : null
+          };
+        }),
         tokens: {
           prompt: found.tokens.prompt,
           output: found.tokens.output,
@@ -1561,7 +1805,8 @@
        invisible et donc intestable. */
     sendMessage: function (conversationId, question) {
       var language = answerLanguage(question);
-      var answer = citizenMessage('assistant', ANSWERS[language], pickSources(question));
+      var answer = citizenMessage('assistant', ANSWERS[language], pickSources(question),
+        serverLang(language));
       var conversation = conversationId
         ? conversations.filter(function (c) { return String(c.id) === String(conversationId); })[0]
         : null;
@@ -1617,7 +1862,7 @@
       return delay(JSON.parse(JSON.stringify(tracked)), 350);
     },
 
-    trackProcedure: function (procedureId) {
+    trackProcedure: function (procedureId, lang) {
       var already = tracked.filter(function (item) {
         return String(item.procedure_id) === String(procedureId);
       })[0];
@@ -1625,7 +1870,7 @@
       // renvoie celui qui existe deja plutot qu'un doublon.
       if (already) return delay(JSON.parse(JSON.stringify(already)), 400);
 
-      var item = buildTracked(procedureId);
+      var item = buildTracked(procedureId, lang);
       if (!item) {
         return delay(null, 300).then(function () {
           throw httpFailure(404, 'Procédure introuvable (' + procedureId + ').');
@@ -1664,7 +1909,11 @@
         });
       }
 
-      var nom = admin.nom_administration;
+      // « administration » est un objet bilingue dans la reponse reelle.
+      var nom = {
+        nom_administration_fr: admin.nom_administration_fr,
+        nom_administration_ar: admin.nom_administration_ar
+      };
       var officiel = String(admin.url_administration || '').trim();
 
       if (officiel) {
@@ -1693,7 +1942,7 @@
             {
               title: 'service-public.ma',
               uri: 'https://www.service-public.ma/annuaire/' +
-                encodeURIComponent(nom.toLowerCase()),
+                encodeURIComponent(adminName(admin).toLowerCase()),
               officielle: true
             },
             {
@@ -1712,7 +1961,7 @@
       return delay({
         administration: nom,
         ville: ville,
-        texte: 'D\'après les pages consultées, ' + nom + ' disposerait de deux ' +
+        texte: 'D\'après les pages consultées, ' + adminName(admin) + ' disposerait de deux ' +
           'points d\'accueil à ' + ville + ' :\n\n' +
           '**Bureau principal**\n' +
           '- Adresse indiquée : 14, avenue Moulay Youssef, ' + ville + '\n' +

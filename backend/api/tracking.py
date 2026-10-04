@@ -15,27 +15,34 @@ def serialize_tracked_proc(tracked_proc) -> dict:
   return {
     "id_user_procedure": tracked_proc.id_user_procedure,
     "id_procedure": tracked_proc.id_procedure,
-    "titre_proc": tracked_proc.procedure.titre_proc,
+    "titre_proc_fr": tracked_proc.procedure.titre_proc_fr,
+    "titre_proc_ar": tracked_proc.procedure.titre_proc_ar,
     "id_administration": tracked_proc.procedure.id_administration,
-    "administration": tracked_proc.procedure.administration.nom_administration
-                      if tracked_proc.procedure.administration else None,
+    "administration": {
+      "nom_administration_fr": tracked_proc.procedure.administration.nom_administration_fr,
+      "nom_administration_ar": tracked_proc.procedure.administration.nom_administration_ar,
+    } if tracked_proc.procedure.administration else None,
     "status": tracked_proc.status,
     "statut_proc": tracked_proc.procedure.statut_proc,
+    "lang": tracked_proc.lang,
     "date_obsolete": tracked_proc.procedure.date_obsolete,
     "date_debut": tracked_proc.date_debut,
     "documents": [
       {
         "id_upd": doc.id_upd,
         "id_piece": doc.id_piece,
-        "nom_piece": doc.piece.nom_piece,
+        "nom_piece_fr": doc.piece.nom_piece_fr,
+        "nom_piece_ar": doc.piece.nom_piece_ar,
         "est_coche": doc.est_coche,
         "note": doc.note,
       }
       for doc in tracked_proc.documents
     ],
     "etapes": [
-      {"ordre_etape": e.ordre_etape, "description_etape": e.description_etape}
-      for e in sorted(tracked_proc.procedure.etapes, key=lambda e: e.ordre_etape)
+      {
+        "ordre_etape": e.ordre_etape, "description_etape_fr": e.description_etape_fr,
+        "description_etape_ar": e.description_etape_ar,
+      } for e in sorted(tracked_proc.procedure.etapes, key=lambda e: e.ordre_etape)
     ],
   }
 
@@ -71,7 +78,8 @@ def track_procedure(
   tracked_procedure = models.UserProcedure(
     id_user= user_id,
     id_procedure= body.id_procedure,
-    status = "en_cours"
+    status = "en_cours",
+    lang=body.lang,
   )
 
   db.add(tracked_procedure)
@@ -139,10 +147,12 @@ def update_tracked_proc_document(
   return{
     "id_upd": doc.id_upd,
     "id_piece": doc.id_piece,
-    "nom_piece": doc.piece.nom_piece,
+    "nom_piece_fr": doc.piece.nom_piece_fr,
+    "nom_piece_ar": doc.piece.nom_piece_ar,
     "est_coche": doc.est_coche,
     "note": doc.note,
     "statut_procedure": tracked_proc.status,
+    "lang": tracked_proc.lang,
   }
 
 @router.delete("/citizen/tracked/{id_user_procedure}", status_code=204)
@@ -180,13 +190,16 @@ def find_nearby_agencies(
     raise HTTPException(status_code=502, detail="Localisation non reconnue")
 
   result = search_agencies(
-    administration.nom_administration,
+    administration.nom_administration_fr,
     administration.url_administration or "",
     ville,
   )
 
   return {
-    "administration": administration.nom_administration,
+    "administration": {
+      "nom_administration_fr": administration.nom_administration_fr,
+      "nom_administration_ar": administration.nom_administration_ar,
+    },
     "ville": ville,
     "texte": result["texte"],
     "sources": result["sources"],

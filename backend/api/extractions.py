@@ -1,36 +1,67 @@
 import json
+import logging
+logger = logging.getLogger(__name__)
 
-from fastapi import APIRouter, Depends, File, Form, HTTPException, Request, UploadFile
+from fastapi import APIRouter, Depends, File, Form, HTTPException, Request, UploadFile, BackgroundTasks
+from pydantic import TypeAdapter, ValidationError
 from sqlalchemy.orm import Session
 
-from database import get_db
+from database import get_db, SessionLocal
 import models, schemas
 from core.security import require_admin
 from core.logging import write_log
 from services.ingestion import handle_procedures
 from services.rag import embedding_all_procedures
+from services import indexing
 
 router = APIRouter(tags=["extractions"])
 
+_procedures_adapter = TypeAdapter(list[schemas.ExtractedProcedure])
+
+
+def validate_payload(payload) -> list[dict]:
+  """Checks the bilingual structure and returns plain dicts ready for JSONB."""
+  try:
+    validated = _procedures_adapter.validate_python(payload)
+  except ValidationError as e:
+    first = e.errors()[0]
+    location = ".".join(str(part) for part in first["loc"])
+    raise HTTPException(
+      status_code=422,
+      detail=f"Payload invalide ({e.error_count()} erreur(s)) — {location} : {first['msg']}",
+    )
+  return [p.model_dump() for p in validated]
+
+def embed_in_background():
+  db = SessionLocal()
+  try:
+    count = embedding_all_procedures(db)
+    logger.info("Background embedding finished: %s procedures", count)
+  except Exception:
+    logger.exception("Background embedding FAILED: procedures are saved but not searchable")
+  finally:
+    db.close()
+
 @router.get("/admin/extractions/{extraction_id}", response_model=schemas.ExtractionDetailOut)
-def get_extraction(extraction_id: str, db:Session= Depends(get_db),current_user : models.User = Depends(require_admin)):
+def get_extraction(extraction_id: str, db: Session = Depends(get_db), current_user: models.User = Depends(require_admin)):
   extraction = db.query(models.Extraction).filter_by(
-    id_extraction = extraction_id
+    id_extraction=extraction_id
   ).first()
   if extraction is None:
     raise HTTPException(status_code=404, detail="Extraction Introuvable")
   return extraction
+
 
 @router.put("/admin/extractions/{extraction_id}", response_model=schemas.ExtractionDetailOut)
 def update_extraction(
   extraction_id: str,
   request: Request,
   body: schemas.ExtractionUpdate,
-  current_user : models.User = Depends(require_admin),
+  current_user: models.User = Depends(require_admin),
   db: Session = Depends(get_db),
 ):
   extraction = db.query(models.Extraction).filter_by(
-    id_extraction = extraction_id
+    id_extraction=extraction_id
   ).first()
 
   if extraction is None:
@@ -38,7 +69,9 @@ def update_extraction(
   if extraction.status != "pending_review":
     raise HTTPException(status_code=409, detail="Extraction déjà traitée")
 
-  extraction.payload = body.payload
+  # body.payload holds Pydantic objects; JSONB needs plain dicts
+  extraction.payload = [p.model_dump() for p in body.payload]
+
   write_log(
     db, request, current_user,
     action="update_extraction_payload",
@@ -50,15 +83,17 @@ def update_extraction(
   db.refresh(extraction)
   return extraction
 
+
 @router.post("/admin/extractions/{extraction_id}/approve")
 def approve_extraction(
-  extraction_id : str,
+  extraction_id: str,
   request: Request,
-  current_user : models.User = Depends(require_admin),
-  db: Session= Depends(get_db),
+  background_tasks: BackgroundTasks,
+  current_user: models.User = Depends(require_admin),
+  db: Session = Depends(get_db),
 ):
   extraction = db.query(models.Extraction).filter_by(
-    id_extraction = extraction_id
+    id_extraction=extraction_id
   ).first()
 
   if extraction is None:
@@ -68,9 +103,12 @@ def approve_extraction(
   if not extraction.payload:
     raise HTTPException(status_code=400, detail="Aucune procédure à enregistrer")
 
-  result = handle_procedures(db, extraction.payload, document=extraction.document, extraction=extraction)
+  # Rejects old flat-format payloads before anything is written to the database
+  payload = validate_payload(extraction.payload)
 
-  embedded = embedding_all_procedures(db)
+  result = handle_procedures(db, payload, document=extraction.document, extraction=extraction)
+
+  # embedded = embedding_all_procedures(db)
 
   extraction.status = "approved"
   write_log(
@@ -82,38 +120,36 @@ def approve_extraction(
   )
   db.commit()
 
-  return{**result, "embedded": embedded}
+  background_tasks.add_task(indexing.run_indexing)
+  return {**result, "embedding": "en_cours"}
+
 
 @router.post("/admin/imports")
 async def upload_json_file(
   request: Request,
   file: UploadFile = File(...),
   source: str | None = Form(None),
-  current_user : models.User = Depends(require_admin),
+  current_user: models.User = Depends(require_admin),
   db: Session = Depends(get_db),
 ):
   contents = await file.read()
   try:
-    payload = json.loads(contents.decode("utf-8"))
+    raw_payload = json.loads(contents.decode("utf-8"))
   except (json.JSONDecodeError, UnicodeDecodeError) as e:
     raise HTTPException(status_code=400, detail=f"Fichier JSON invalide : {e}")
 
-  if not isinstance(payload, list):
+  if not isinstance(raw_payload, list):
     raise HTTPException(status_code=400, detail="Le fichier doit contenir un tableau JSON")
-  if not payload:
+  if not raw_payload:
     raise HTTPException(status_code=400, detail="Le fichier ne contient aucune procédure")
 
-  for i,proc in enumerate(payload):
-    if not isinstance(proc, dict):
-      raise HTTPException(status_code=400, detail=f"Entrée {i + 1} : objet attendu")
-    if not proc.get("proc_title"):
-      raise HTTPException(status_code=400, detail=f"Entrée {i + 1} : titre manquant")
+  payload = validate_payload(raw_payload)
 
   extraction = models.Extraction(
-    filename = file.filename,
-    status = "pending_review",
-    url_source = source,
-    payload= payload,
+    filename=file.filename,
+    status="pending_review",
+    url_source=source,
+    payload=payload,
   )
 
   db.add(extraction)
@@ -130,7 +166,7 @@ async def upload_json_file(
   db.commit()
   db.refresh(extraction)
 
-  return{
+  return {
     "extraction_id": extraction.id_extraction,
     "procedure_count": len(payload),
   }

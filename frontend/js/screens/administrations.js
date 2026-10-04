@@ -66,8 +66,11 @@
     function filtered() {
       if (!state.query) return state.administrations;
       var needle = normalize(state.query);
+      // La recherche porte sur les deux langues : on cherche un organisme, pas
+      // la traduction qu'on a sous les yeux.
       return state.administrations.filter(function (administration) {
-        return normalize(administration.name).indexOf(needle) !== -1;
+        return normalize(administration.nameFr).indexOf(needle) !== -1 ||
+          normalize(administration.nameAr).indexOf(needle) !== -1;
       });
     }
 
@@ -124,18 +127,30 @@
        à jour à la frappe — un redessin (un 409, par exemple) ne perd donc jamais
        ce qui a été tapé. */
     function renderForm(administration) {
-      var draft = state.draft || { name: '', address: '', url: '' };
+      var draft = state.draft || { nameFr: '', nameAr: '', address: '', url: '' };
       var id = administration.id;
+      /* Les deux noms sont saisis cote a cote : le backend remplace la ligne
+         entiere, et n'envoyer que la langue affichee effacerait l'autre.
+         Le champ arabe porte dir="rtl" en dur — « auto » ne sert a rien sur un
+         champ vide, qui est justement celui qu'on vient remplir. */
       return '<div class="admin-form">' +
-          '<div class="field-group">' +
-            '<label class="field-label" for="admin-name-' + esc(id) + '">Nom</label>' +
-            '<input type="text" dir="auto" id="admin-name-' + esc(id) + '" data-draft="name" ' +
-              'class="' + (state.nameError ? 'is-invalid' : '') + '" ' +
-              'value="' + esc(draft.name) + '">' +
-            (state.nameError
-              ? '<div class="field-error">' + esc(state.nameError) + '</div>'
-              : '') +
+          '<div class="field-group two-col">' +
+            '<div>' +
+              '<label class="field-label" for="admin-name-fr-' + esc(id) + '">Nom (français)</label>' +
+              '<input type="text" dir="auto" id="admin-name-fr-' + esc(id) + '" data-draft="nameFr" ' +
+                'class="' + (state.nameError ? 'is-invalid' : '') + '" ' +
+                'value="' + esc(draft.nameFr) + '">' +
+            '</div>' +
+            '<div>' +
+              '<label class="field-label" for="admin-name-ar-' + esc(id) + '">Nom (arabe)</label>' +
+              '<input type="text" dir="rtl" lang="ar" id="admin-name-ar-' + esc(id) + '" data-draft="nameAr" ' +
+                'class="' + (state.nameError ? 'is-invalid' : '') + '" ' +
+                'value="' + esc(draft.nameAr) + '">' +
+            '</div>' +
           '</div>' +
+          (state.nameError
+            ? '<div class="field-error">' + esc(state.nameError) + '</div>'
+            : '') +
           '<div class="field-group two-col">' +
             '<div>' +
               '<label class="field-label" for="admin-addr-' + esc(id) + '">Adresse</label>' +
@@ -189,7 +204,7 @@
     /* Redonne le focus au champ « Nom » : appelé après un conflit, pour que la
        correction se fasse sans reprendre la souris. */
     function focusName() {
-      var input = bodyNode.querySelector('[data-draft="name"]');
+      var input = bodyNode.querySelector('[data-draft="nameFr"]');
       if (!input) return;
       input.focus();
       input.select();
@@ -238,7 +253,8 @@
       if (!administration) return;
       state.editingId = administration.id;
       state.draft = {
-        name: administration.name,
+        nameFr: administration.nameFr,
+        nameAr: administration.nameAr,
         address: administration.address,
         url: administration.url
       };
@@ -266,7 +282,7 @@
     function isDirty() {
       var administration = find(state.editingId);
       if (!administration || !state.draft) return false;
-      return ['name', 'address', 'url'].some(function (field) {
+      return ['nameFr', 'nameAr', 'address', 'url'].some(function (field) {
         return String(state.draft[field] || '') !== String(administration[field] || '');
       });
     }
@@ -277,7 +293,7 @@
     function changePage(delta) {
       if (state.saving) return;
       if (isDirty() && !global.confirm(
-        'Les modifications sur « ' + h.isolate(state.draft.name) +
+        'Les modifications sur « ' + h.isolate(state.draft.nameFr || state.draft.nameAr) +
         ' » ne sont pas enregistrées.\n\n' +
         'Changer de page et les perdre ?')) return;
       state.page += delta;
@@ -290,8 +306,10 @@
       if (!administration || state.saving) return;
 
       var draft = state.draft;
-      if (!String(draft.name || '').trim()) {
-        state.nameError = 'Le nom est obligatoire.';
+      // Le backend exige les deux : un seul des deux noms ferait un 422, dont
+      // le message serait moins clair que celui-ci.
+      if (!String(draft.nameFr || '').trim() || !String(draft.nameAr || '').trim()) {
+        state.nameError = 'Les deux noms, français et arabe, sont obligatoires.';
         render();
         focusName();
         return;
@@ -306,6 +324,8 @@
         // Mise à jour sur place. Le backend ne renvoie pas le nombre de
         // procédures : on garde celui déjà affiché.
         administration.name = updated.name;
+        administration.nameFr = updated.nameFr;
+        administration.nameAr = updated.nameAr;
         administration.address = updated.address;
         administration.url = updated.url;
         closeForm();

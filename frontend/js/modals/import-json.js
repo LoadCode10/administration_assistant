@@ -11,6 +11,43 @@
   var MAX_LISTED_PROBLEMS = 8;
   var PREVIEW_TITLES = 4;
 
+  /* Le format attendu depuis le passage au bilingue : chaque texte est une
+     paire { "fr": …, "ar": … }, et les deux cotes doivent etre remplis. Le
+     backend refuse l'ancien format plat par un 422 — on le dit ici, avant
+     l'envoi, parce que c'est le fichier qu'il faut regenerer et non la saisie
+     qu'il faut corriger.
+
+     « proc_law » fait exception : une liste de chaines, les textes de loi
+     etant cites dans leur langue d'origine. */
+  var PAIR_FIELDS = ['proc_title', 'proc_description', 'fee', 'proc_delai'];
+  var PAIR_LISTS = ['proc_administration', 'proc_pieces', 'proc_steps'];
+
+  function isPair(value) {
+    return value !== null && typeof value === 'object' && !Array.isArray(value) &&
+      typeof value.fr === 'string' && typeof value.ar === 'string';
+  }
+
+  /* Renvoie le probleme de cette valeur, ou null si elle convient.
+     « optional » : la valeur peut etre absente ou null (description, frais,
+     delai) ; elle ne peut pas etre a moitie remplie pour autant. */
+  function pairProblem(value, name, optional) {
+    if (value === undefined || value === null) {
+      return optional ? null : name + ' manquant.';
+    }
+    if (typeof value === 'string') {
+      return name + ' est au format plat (une chaîne) : le format bilingue ' +
+        '{ "fr": …, "ar": … } est désormais attendu.';
+    }
+    if (!isPair(value)) {
+      return name + ' doit être un objet { "fr": …, "ar": … }.';
+    }
+    if (!value.fr.trim() || !value.ar.trim()) {
+      return name + ' : les deux langues sont obligatoires (' +
+        (value.fr.trim() ? 'arabe' : 'français') + ' vide).';
+    }
+    return null;
+  }
+
   /* Valide le contenu d'un fichier JSON de procédures.
      Renvoie { valid, problems: [], procedures: [] } */
   function validate(text) {
@@ -43,24 +80,41 @@
         return;
       }
 
-      if (!String(entry.proc_title === undefined || entry.proc_title === null ? '' : entry.proc_title).trim()) {
-        problems.push(label + 'titre manquant (proc_title).');
-      }
+      // Titre obligatoire, description / frais / délai facultatifs.
+      var titleProblem = pairProblem(entry.proc_title, 'titre (proc_title)', false);
+      if (titleProblem) problems.push(label + titleProblem);
 
-      var administration = entry.proc_administration;
-      var firstAdministration = Array.isArray(administration) ? administration[0] : administration;
-      if (!String(firstAdministration === undefined || firstAdministration === null ? '' : firstAdministration).trim()) {
-        problems.push(label + 'administration manquante.');
-      } else if (!Array.isArray(administration)) {
-        problems.push(label + 'proc_administration doit être un tableau.');
-      }
-
-      ['proc_pieces', 'proc_steps', 'proc_law'].forEach(function (key) {
-        var value = entry[key];
-        if (value !== undefined && value !== null && !Array.isArray(value)) {
-          problems.push(label + key + ' doit être un tableau.');
-        }
+      PAIR_FIELDS.slice(1).forEach(function (key) {
+        var problem = pairProblem(entry[key], key, true);
+        if (problem) problems.push(label + problem);
       });
+
+      PAIR_LISTS.forEach(function (key) {
+        var value = entry[key];
+        if (value === undefined || value === null) {
+          // proc_administration absente : la procédure sera rattachée à
+          // « Administration non spécifiée », ce n'est pas un refus.
+          return;
+        }
+        if (!Array.isArray(value)) {
+          problems.push(label + key + ' doit être un tableau.');
+          return;
+        }
+        value.forEach(function (item, itemIndex) {
+          var problem = pairProblem(item, key + '[' + itemIndex + ']', false);
+          if (problem) problems.push(label + problem);
+        });
+      });
+
+      // Les textes de loi restent des chaînes simples.
+      if (entry.proc_law !== undefined && entry.proc_law !== null) {
+        if (!Array.isArray(entry.proc_law)) {
+          problems.push(label + 'proc_law doit être un tableau.');
+        } else if (entry.proc_law.some(function (item) { return typeof item !== 'string'; })) {
+          problems.push(label + 'proc_law doit être une liste de chaînes ' +
+            '(les textes de loi ne sont pas traduits).');
+        }
+      }
     });
 
     return { valid: problems.length === 0, problems: problems, procedures: parsed };
@@ -71,7 +125,8 @@
 
     if (result.valid) {
       var titles = result.procedures.slice(0, PREVIEW_TITLES).map(function (entry) {
-        return '<li>' + esc(String(entry.proc_title).trim()) + '</li>';
+        // Le titre est une paire : on montre celui de la langue courante.
+        return '<li dir="auto">' + esc(h.pick(entry.proc_title).trim()) + '</li>';
       }).join('');
       var remaining = result.procedures.length - PREVIEW_TITLES;
       return '<div class="validation-box ok">' +
@@ -105,7 +160,8 @@
         'aria-label="Choisir un fichier JSON">' +
         '<div id="json-zone-content">' +
           '<div>Glissez un fichier ici ou cliquez pour parcourir</div>' +
-          '<div class="dz-hint">Fichier .json uniquement</div>' +
+          '<div class="dz-hint">Fichier .json uniquement · format bilingue ' +
+            '{ "fr": …, "ar": … }</div>' +
         '</div>' +
       '</div>' +
       '<div id="json-validation"></div>' +
@@ -132,7 +188,8 @@
 
     function showError(message) {
       errorBox.innerHTML = message
-        ? '<div class="inline-error">' + icon('alert') + '<span>' + esc(message) + '</span></div>'
+        ? '<div class="inline-error" role="alert">' + icon('alert') +
+          '<span dir="auto">' + esc(message) + '</span></div>'
         : '';
     }
 
@@ -188,7 +245,13 @@
         busy = false;
         submitButton.disabled = false;
         submitButton.textContent = 'Importer';
-        showError(error.message);
+        /* Un 422 vient du refus de l'ancien format plat : son message nomme
+           l'entrée et le champ fautifs. On l'affiche tel quel — c'est le
+           fichier qu'il faut regénérer, et rien d'autre ne le dit aussi
+           precisement. */
+        showError(error.status === 422
+          ? 'Format refusé par le serveur — ' + error.message
+          : error.message);
       });
     }
 

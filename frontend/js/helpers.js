@@ -26,6 +26,193 @@
     return '⁨' + String(value === null || value === undefined ? '' : value) + '⁩';
   };
 
+  /* --- Textes bilingues ---------------------------------------------------
+
+     Depuis le passage du backend aux colonnes bilingues, chaque texte arrive
+     en deux exemplaires : « titre_proc_fr » et « titre_proc_ar », ou bien une
+     paire { fr, ar } dans le contenu d'une extraction. L'interface n'en
+     affiche qu'un — celui de la langue courante — et c'est h.pick qui tranche,
+     partout, plutot que chaque ecran a sa facon. */
+
+  /* La langue de l'interface se lit sur <html lang>. Elle vaut « fr » par
+     defaut : c'est la langue de la console, et une valeur inconnue ne doit pas
+     faire basculer l'affichage en arabe. */
+  h.lang = function () {
+    var declared = String(
+      (global.document && document.documentElement &&
+        document.documentElement.getAttribute('lang')) || ''
+    ).toLowerCase();
+    return declared.indexOf('ar') === 0 ? 'ar' : 'fr';
+  };
+
+  /* Renvoie le texte de la langue courante, en chaine prete a afficher.
+
+       h.pick(procedure, 'titre_proc')  -> titre_proc_fr  ou titre_proc_ar
+       h.pick(paire)                    -> paire.fr       ou paire.ar
+
+     Le repli sur l'autre langue n'est pas un detail : l'extraction laisse
+     souvent une des deux moitiees vide, et un titre en arabe dans une console
+     francaise reste infiniment plus utile qu'une ligne vide. Une chaine recue
+     telle quelle est rendue telle quelle — le mode demonstration et les
+     anciennes reponses passent donc sans cas particulier.
+
+     « lang » force une langue autre que celle de l'interface : les sources
+     d'une reponse de l'assistant suivent la langue de la question. Une valeur
+     absente ou inconnue retombe sur h.lang(). */
+  h.pick = function (value, base, lang) {
+    if (value === null || value === undefined) return '';
+    if (typeof value !== 'object') return String(value);
+
+    var prefix = base ? base + '_' : '';
+    if (lang !== 'fr' && lang !== 'ar') lang = h.lang();
+    var mine = value[prefix + lang];
+    var other = value[prefix + (lang === 'ar' ? 'fr' : 'ar')];
+    var chosen = (mine === null || mine === undefined || mine === '') ? other : mine;
+    return chosen === null || chosen === undefined ? '' : String(chosen);
+  };
+
+  /* --- Contenus dans leur propre langue ------------------------------------
+
+     Le chrome de l'interface reste dans la langue de l'interface. Deux
+     contenus portent la leur : une reponse de l'assistant (et ses sources),
+     dans la langue de la question, et une procedure suivie, dans la langue
+     ou elle a ete suivie. Pour eux : la langue (h.contentLang), le sens
+     (h.langDir) et les libelles fixes (h.labelsFor), tous ici pour que
+     l'assistant et « Mes procedures » disent les memes choses. */
+
+  // « fr » ou « ar » ; toute autre valeur (absente, ancienne donnee)
+  // retombe sur la langue de l'interface.
+  h.contentLang = function (lang) {
+    return (lang === 'fr' || lang === 'ar') ? lang : h.lang();
+  };
+
+  h.langDir = function (lang) {
+    return h.contentLang(lang) === 'ar' ? 'rtl' : 'ltr';
+  };
+
+  var CONTENT_LABELS = {
+    fr: {
+      // Communs
+      untitled: 'Procédure sans titre',
+      noAdministration: 'Administration non renseignée',
+
+      // Sources sous une réponse de l'assistant
+      sourcesCount: function (n) { return h.plural(n, 'source utilisée', 'sources utilisées'); },
+      track: 'Suivre cette procédure',
+      tracked: 'Déjà suivie',
+      adding: 'Ajout…',
+      trackedToast: 'Procédure suivie — retrouvez-la dans « Mes procédures ».',
+
+      // Carte d'une procédure suivie
+      done: 'Terminé',
+      untrack: 'Ne plus suivre cette procédure',
+      progress: function (done, total, percent) {
+        return done + ' / ' + total + ' ' + (total >= 2 ? 'pièces réunies' : 'pièce réunie') +
+          ' · ' + percent + ' %';
+      },
+      piecesTitle: 'Pièces requises',
+      noPieces: 'Aucune pièce à réunir pour cette procédure.',
+      stepsTitle: 'Étapes',
+      noSteps: 'Aucune étape listée pour cette procédure.',
+      notePlaceholder: 'Note (facultatif)',
+      noteAria: function (label) { return 'Note pour ' + label; },
+      pieceFailed: 'Pièce non enregistrée : ',
+      noteFailed: 'Note non enregistrée : ',
+
+      // Bureaux à proximité, dans la carte
+      nearbyFind: 'Trouver le bureau le plus proche',
+      nearbyLocating: 'Recherche de votre position…',
+      nearbySearching: 'Recherche des bureaux à proximité… cela peut prendre quelques secondes',
+      nearbyNoGeolocation: 'Ce navigateur ne sait pas donner votre position.',
+      nearbyDenied: 'Accès à votre position refusé.',
+      nearbyTimeout: 'Votre position met trop de temps à être déterminée.',
+      nearbyUnavailable: 'Votre position n\'a pas pu être déterminée.',
+      nearbyFallback: 'Votre position sert à classer les bureaux du plus proche au ' +
+        'plus loin. Choisissez plutôt une ville :',
+      nearbyCity: 'Ville de recherche',
+      nearbySearch: 'Chercher',
+      close: 'Fermer',
+      closeResults: 'Fermer les résultats',
+      results: 'Résultats',
+      resultsFor: function (city) { return 'Résultats pour ' + city; },
+      nearbySources: function (n) { return h.plural(n, 'Source', 'Sources'); },
+      official: 'Officielle',
+      unofficial: 'Non officielle',
+      unverifiedTitle: 'Informations non vérifiées',
+      unverifiedText: 'Ces informations proviennent de sources non officielles et ' +
+        'n\'ont pas été vérifiées. Confirmez-les auprès de l\'administration ' +
+        'avant de vous déplacer.'
+    },
+    ar: {
+      untitled: 'مسطرة بدون عنوان',
+      noAdministration: 'الإدارة غير محددة',
+
+      sourcesCount: function (n) {
+        return (n === 1 ? 'المصدر المستعمل' : 'المصادر المستعملة') + ' (' + n + ')';
+      },
+      track: 'تتبع هذه المسطرة',
+      tracked: 'قيد التتبع',
+      adding: 'جارٍ الإضافة…',
+      trackedToast: 'تمت إضافة المسطرة إلى التتبع — تجدونها في « Mes procédures ».',
+
+      done: 'مكتملة',
+      untrack: 'إلغاء تتبع هذه المسطرة',
+      // Les chiffres sont isolés : « 3 / 5 » dans une phrase arabe
+      // s'afficherait sinon « 5 / 3 ».
+      progress: function (done, total, percent) {
+        return 'الوثائق المجمعة: ' + h.isolate(done + ' / ' + total) +
+          ' · ' + h.isolate(percent + ' %');
+      },
+      piecesTitle: 'الوثائق المطلوبة',
+      noPieces: 'لا توجد وثائق مطلوبة لهذه المسطرة.',
+      stepsTitle: 'المراحل',
+      noSteps: 'لا توجد مراحل مذكورة لهذه المسطرة.',
+      notePlaceholder: 'ملاحظة (اختياري)',
+      noteAria: function (label) { return 'ملاحظة حول ' + label; },
+      pieceFailed: 'لم يتم حفظ الوثيقة: ',
+      noteFailed: 'لم يتم حفظ الملاحظة: ',
+
+      nearbyFind: 'البحث عن أقرب مكتب',
+      nearbyLocating: 'جارٍ تحديد موقعك…',
+      nearbySearching: 'جارٍ البحث عن المكاتب القريبة… قد يستغرق ذلك بضع ثوانٍ',
+      nearbyNoGeolocation: 'هذا المتصفح لا يستطيع تحديد موقعك.',
+      nearbyDenied: 'تم رفض الوصول إلى موقعك.',
+      nearbyTimeout: 'تحديد موقعك يستغرق وقتا طويلا.',
+      nearbyUnavailable: 'تعذر تحديد موقعك.',
+      nearbyFallback: 'يُستعمل موقعك لترتيب المكاتب من الأقرب إلى الأبعد. ' +
+        'اختر مدينة بدلا من ذلك:',
+      nearbyCity: 'مدينة البحث',
+      nearbySearch: 'بحث',
+      close: 'إغلاق',
+      closeResults: 'إغلاق النتائج',
+      results: 'النتائج',
+      resultsFor: function (city) { return 'النتائج في ' + city; },
+      nearbySources: function (n) { return (n === 1 ? 'المصدر' : 'المصادر') + ' (' + n + ')'; },
+      official: 'رسمي',
+      unofficial: 'غير رسمي',
+      unverifiedTitle: 'معلومات غير مؤكدة',
+      unverifiedText: 'هذه المعلومات مصدرها مواقع غير رسمية ولم يتم التحقق منها. ' +
+        'تأكد منها لدى الإدارة قبل التنقل.'
+    }
+  };
+
+  // Les libellés fixes d'un contenu, dans sa langue.
+  h.labelsFor = function (lang) {
+    return CONTENT_LABELS[h.contentLang(lang)];
+  };
+
+  var ARABIC = /[؀-ۿݐ-ݿ]/;
+
+  /* Valeur de l'attribut dir pour un texte dont on ne connait pas la langue.
+     « auto » suffit dans la plupart des cas — le navigateur tranche sur le
+     premier caractere fort — mais un champ de saisie vide n'a pas de premier
+     caractere : la ou la langue est connue d'avance (le champ « arabe » d'un
+     formulaire bilingue), on ecrit dir="rtl" en dur. */
+  h.dirOf = function (value) {
+    return ARABIC.test(String(value === null || value === undefined ? '' : value))
+      ? 'rtl' : 'auto';
+  };
+
   // Accord simple : 1 procédure / 2 procédures.
   h.plural = function (count, singular, plural) {
     return count + ' ' + (Math.abs(count) >= 2 ? (plural || singular + 's') : singular);

@@ -30,22 +30,25 @@ EXTRACTION_PROMPT = """
   OUTPUT SCHEMA
   Return ONLY a JSON array. Each element:
   {
-    "proc_title": string,               // the procedure's name
-    "proc_description": string | null,  // one-sentence summary of its purpose
-    "proc_administration": string[],    // administration(s) involved; [] if none stated
-    "proc_pieces": string[],            // required documents; [] if none stated
-    "proc_steps": string[],             // ordered steps, each a short sentence; [] if none
-    "proc_law": string[],               // legal texts cited; [] if none stated
-    "fee": string | null,               // fees exactly as stated; null if not stated
-    "proc_delai": string | null         // processing time as stated; null if not stated
+    "proc_title": { "fr": string, "ar": string },
+    "proc_description": { "fr": string, "ar": string } | null,
+    "proc_administration": [{ "fr": string, "ar": string }],
+    "proc_pieces": [{ "fr": string, "ar": string }],
+    "proc_steps": [{ "fr": string, "ar": string }],   // in order
+    "proc_law": string[],                             // original language only
+    "fee": { "fr": string, "ar": string } | null,
+    "proc_delai": { "fr": string, "ar": string } | null
   }
 
   RULES
   - Output ONLY the JSON array. No markdown, no ```json fences, no commentary.
-  - Keep the document's original language in all extracted values. Do not translate.
+  - Every text value must be given in French AND Arabic. Copy the text
+    verbatim in the document's own language, and translate it into the other
+    using official Moroccan administrative terminology, not a literal
+    translation (e.g. « الشهادة السلبية » = « certificat négatif »).
+  - Keep numbers, amounts, dates and legal references identical in both languages.
   - Never guess typical values. If the document doesn't state something,
     use null (or [] for lists).
-  - Extract fees and delays exactly as written; do not convert or approximate.
   - Every element must include every key above, even when the value is null or [].
 
   DOCUMENT
@@ -53,7 +56,6 @@ EXTRACTION_PROMPT = """
   {document_text}
   >>>
   """
-
 
 def extract_text(file_path: str) -> str:
   with open(file_path, 'r', encoding="utf-8") as file:
@@ -136,3 +138,4 @@ def run_extraction(extraction_id:str, file_path:str, user_id: str | None = None)
     db.commit()
   finally:
     db.close()
+

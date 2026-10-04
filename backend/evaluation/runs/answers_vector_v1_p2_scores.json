@@ -1,0 +1,940 @@
+{
+  "config": {
+    "experiment_name": "answers_vector_v1_p2",
+    "date": "2026-10-04T13:53:04",
+    "git_commit": null,
+    "dataset": "synthetic_v1.json",
+    "start": 21,
+    "limit": 20,
+    "retrieval_mode": "vector",
+    "top_k": 3,
+    "retrieval_only": false,
+    "llm_model": "gemini-2.5-flash",
+    "embedding_model": "BAAI/bge-m3",
+    "scored_from": "answers_vector_v1_p2.json",
+    "judge": {
+      "model": "deepseek-flash",
+      "base_url": "https://api.deepseek.com",
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "temperature": 0.0,
+      "ragas_version": "0.4.3",
+      "embedding_model": "BAAI/bge-m3"
+    },
+    "metrics": [
+      "answer_relevancy",
+      "context_precision",
+      "context_recall",
+      "faithfulness",
+      "language_match",
+      "refusal"
+    ],
+    "scoring_date": "2026-10-04T14:08:07",
+    "judge_usage_last_session": {
+      "calls": 190,
+      "prompt_tokens": 342537,
+      "completion_tokens": 49728,
+      "reasoning_tokens": 0,
+      "cache_hit_tokens": 144256,
+      "estimated_cost_usd": 0.1624
+    }
+  },
+  "rows": [
+    {
+      "question_id": "s021",
+      "question": "كم يكلف جواز السفر إذا ضاع مني وأنا راشد مقيم بالخارج؟",
+      "lang": "ar",
+      "category": "fees_delay",
+      "expected_ids": [
+        "f0cfdfaa-901a-4398-ae82-1939de6623f4"
+      ],
+      "reference": "الإجراء المعني هو « الحصول على جواز السفر في حالة الضياع بالنسبة للراشدين (أكثر من 18 سنة)(المغاربة المقيمون يالخارج) » (وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي). الوثائق المطلوبة: طلب جواز السفر البيوميتري ؛ تصريح بالشرف بالضياع موقع من طرف المعني بالامر ؛ بطاقة التعريف الوطنية سارية الصلاحية أو وصل إيداع طلب إصدار أو تجديد البطاقة الوطنية ؛ في حالة الإدلاء بوصل طلب الحصول على البطاقة الوطنية ، يتعين على المعني بالأمر الإدلاء بنسخة من عقد الازدياد أو النسخة… ؛ صورة شخصية ملونة على خلفية بيضاء أو زرقاء ؛ في حالة التجديد، يجب تسليم جواز السفر القديم. الرسوم: 1080 درهما - الرسوم القنصلية1000 درهما - تعرفة على الخدمات (SEGMA)80 درهما. الآجال: 15 يوما.",
+      "must_include": [
+        "طلب جواز السفر البيوميتري",
+        "تصريح بالشرف بالضياع موقع من طرف المعني بالامر",
+        "15 يوما"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "f0cfdfaa-901a-4398-ae82-1939de6623f4",
+        "e561a669-e5e6-47ba-a317-0d72b6b90d1b",
+        "fef069e6-87b5-46b7-95bb-426f4d210309"
+      ],
+      "retrieved_titles": [
+        "Obtention du passeport en cas de perte pour les adultes (plus de 18 ans) (Marocains résidant à l'étranger)",
+        "Obtention du passeport biométrique en cas de perte pour les mineurs (de 12 à 18 ans) (Marocains résidant à l'étranger)",
+        "Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: الحصول على جواز السفر في حالة الضياع بالنسبة للراشدين (أكثر من 18 سنة)(المغاربة المقيمون يالخارج)\nDescription: الحصول على جواز السفر في حالة الضياع بالنسبة للراشدين (أكثر من 18 سنة)(المغاربة المقيمون بالخارج)\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: 1080 درهما\n- الرسوم القنصلية1000 درهما\n- تعرفة على الخدمات (SEGMA)80 درهما\nDélai: 15 يوما\nDocuments requis:\n - طلب جواز السفر البيوميتري\n - تصريح بالشرف بالضياع موقع من طرف المعني بالامر\n - بطاقة التعريف الوطنية سارية الصلاحية  أو  وصل إيداع طلب إصدار أو تجديد البطاقة الوطنية\n - في حالة الإدلاء بوصل طلب الحصول على البطاقة الوطنية ، يتعين على المعني بالأمر الإدلاء بنسخة من عقد الازدياد أو النسخة الكاملة من شهادة الميلاد لا يتعدى تاريخ إصدارها 6 أشهر\n - صورة شخصية ملونة على خلفية بيضاء أو زرقاء (حجم 35x45 مم)، تظهر بوضوح ملامح وجه صاحب الطلب\n - في حالة التجديد، يجب تسليم جواز السفر القديم\n - وثيقة إثبات الإقامة سارية المفعول (بطاقة الإقامة، بطاقة السكن، تأشيرة طويلة الأمد،  تأشيرة أو تصريح الدراسة، تصريح عمل، بطاقة هوية أجنبية أو جواز سفر أجنبي)، أو أي وثيقة رسمية تتضمن الإشارة إلى مكان وعنوان الشخص المعني\n - إذا كانت وثيقة الإقامة الاعتيادية لا تتضمن العنوان الحالي، فيجب الإدلاء بما يثبت الإقامة في هذا العنوان (شهادة الإقامة، عقد الإيجار، فاتورة الماء ، فاتورة الكهرباء ، أو فاتورة  الهاتف الثابت أو شهادة الإيواء مؤشر عليها من قبل المصالح القنصلية أو السلطات ا\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الحصول على جواز السفر البيومتري في حالة الضياع بالنسبة للقاصرين (من 12 إلى 18 سنة)(المغاربة المقيمون بالخارج)\nDescription: الحصول على جواز السفر البيومتري في حالة الضياع بالنسبة للقاصرين دون 12 سنة\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: 80 درهما\nDélai: 15 يوما\nDocuments requis:\n - طلب جواز السفر البيوميتري\n - تصريح بالشرف بالضياع موقع من طرف ولي أمر المعني بالامر أو ممثله القانوني\n - نسخة موجزة من رسم الولادة أو النسخة الكاملة من شهادة الميلاد، لا يتعدى تاريخ إصدارها 6 أشهر، أو نسخة من الدفتر العائلي (كناش التعريف والحالة المدنية القديم غير مقبول) يجب أن تتضمن هذه الوثيقة اسم ولقب المعني وأسماء والديه باللغة العربية واللاتينية\n - صورة شخصية ملونة على خلفية بيضاء أو زرقاء (حجم 35x45 مم)، تظهر بوضوح ملامح وجه صاحب الطلب\n - في حالة التجديد، يجب تسليم جواز السفر القديم\n - وثيقة إثبات الإقامة سارية المفعول (بطاقة الإقامة، بطاقة السكن، تأشيرة طويلة الأمد،  تأشيرة أو تصريح الدراسة، تصريح عمل، بطاقة هوية أجنبية أو جواز سفر أجنبي)، أو أي وثيقة رسمية تتضمن الإشارة إلى مكان وعنوان الشخص المعني\n - إذا كانت وثيقة الإقامة الاعتيادية لا تتضمن العنوان الحالي، فيجب الإدلاء بما يثبت الإقامة في هذا العنوان (شهادة الإقامة، عقد الإيجار، فاتورة الماء ، فاتورة الكهرباء ، أو فاتورة  الهاتف الثابت أو شهادة الإيواء مؤشر عليها من قبل المصالح القنصلية أو السلطات ا\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الحصول على جواز السفر البيومتري في حالة الضياع بالنسبة للقاصرين دون 12 سنة (المغاربة المقيمون بالخارج)\nDescription: الحصول على جواز السفر البيومتري في حالة الضياع بالنسبة للقاصرين\nدون 12 سنة (المغاربة المقيمون بالخارج)\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: الرسوم القنصلية00 درهم\nتعرفة على الخدمات (SEGMA)80 درهما\nDélai: 15يوما\nDocuments requis:\n - طلب جواز السفر البيوميتري\n - تصريح بالشرف بالضياع موقع من طرف ولي أمر المعني بالامر أو ممثله القانوني\n - نسخة موجزة من رسم الولادة أو النسخة الكاملة من شهادة الميلاد، لا يتعدى تاريخ إصدارها 6 أشهر، أو نسخة من الدفتر العائلي (كناش التعريف والحالة المدنية القديم غير مقبول) يجب أن تتضمن هذه الوثيقة اسم ولقب المعني وأسماء والديه باللغة العربية واللاتينية\n - صورة شخصية ملونة على خلفية بيضاء أو زرقاء (حجم 35x45 مم)، تظهر بوضوح ملامح وجه صاحب الطلب\n - في حالة التجديد، يجب تسليم جواز السفر القديم.\n - وثيقة إثبات الإقامة سارية المفعول (بطاقة الإقامة، بطاقة السكن، تأشيرة طويلة الأمد،  تأشيرة أو تصريح الدراسة، تصريح عمل، بطاقة هوية أجنبية أو جواز سفر أجنبي)، أو أي وثيقة رسمية تتضمن الإشارة إلى مكان وعنوان الشخص المعني\n - إذا كانت وثيقة الإقامة الاعتيادية لا تتضمن العنوان الحالي، فيجب الإدلاء بما يثبت الإقامة في هذا العنوان (شهادة الإقامة، عقد الإيجار، فاتورة الماء ، فاتورة الكهرباء ، أو فاتورة  الهاتف الثابت أو شهادة الإيواء مؤشر عليها من قبل المصالح القنصلية أو السلطات ا\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 1884,
+      "answer": "يكلف الحصول على جواز السفر في حالة الضياع بالنسبة للراشدين المقيمين بالخارج 1080 درهما، تتكون من 1000 درهم كرسوم قنصلية و 80 درهما كتعرفة على الخدمات (SEGMA).\n\nالمصدر: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي.",
+      "generation_ms": 6255,
+      "prompt_tokens": 1646,
+      "output_tokens": 102,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8667,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s022",
+      "question": "Mon passeport a été volé à Paris et je dois rentrer au Maroc dans deux jours, existe-t-il un document de voyage temporaire ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "5d3f64c5-3c52-4505-9c69-1090219f63ba"
+      ],
+      "reference": "La procédure concernée est « Obtention d'un laissez-passer (pour les Marocains résidant à l'étranger) » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Demande de passeport biométrique ; Tout document ; Pour les mineurs de moins de 18 ans ne disposant pas de carte nationale ; Photo d'identité en couleur sur fond blanc ou bleu ; Déclaration de perte ou de vol du passeport, le cas échéant ; Remise de l'ancien passeport s’il s’agit d’un passeport expiré ou détérioré. Frais : 150 dirhams pour les frais consulaires 20 dirhams pour le tarif des services (SEGMA). Délai : immédiatement.",
+      "must_include": [
+        "Demande de passeport biométrique",
+        "Tout document"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "5d3f64c5-3c52-4505-9c69-1090219f63ba",
+        "fef069e6-87b5-46b7-95bb-426f4d210309",
+        "e561a669-e5e6-47ba-a317-0d72b6b90d1b"
+      ],
+      "retrieved_titles": [
+        "Obtention d'un laissez-passer (pour les Marocains résidant à l'étranger)",
+        "Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)",
+        "Obtention du passeport biométrique en cas de perte pour les mineurs (de 12 à 18 ans) (Marocains résidant à l'étranger)"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Obtention d'un laissez-passer (pour les Marocains résidant à l'étranger)\nDescription: Obtention d'un laissez-passer, qui est un document de voyage de courte durée, valable un mois. Il est délivré dans des circonstances exceptionnelles à une personne ne disposant pas d'un passeport en cours de validité, ou ayant perdu son passeport, pour lui permettre de regagner le Maroc, après vérification de son identité et de sa nationalité marocaine.\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 150 dirhams pour les frais consulaires\n20 dirhams pour le tarif des services (SEGMA)\nDélai: immédiatement\nDocuments requis:\n - Demande de passeport biométrique\n - Tout document (original) prouvant la nationalité marocaine (carte d’identité nationale électronique ou ancien passeport)\n - Pour les mineurs de moins de 18 ans ne disposant pas de carte nationale : copie de l'acte de naissance, fiche individuelle d’état civil délivrée par l’état civil ou livret de famille, ainsi que la présence du représentant légal muni de sa carte d’identité\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - Déclaration de perte ou de vol du passeport, le cas échéant\n - Remise de l'ancien passeport s’il s’agit d’un passeport expiré ou détérioré\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)\nDescription: Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Droits consulaires 00 dirhams\nRedevance sur les services (SEGMA) 80 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Déclaration sur l'honneur de perte signée par le tuteur légal de l'intéressé ou son représentant légal\n - Copie intégrale de l'acte de naissance ou copie complète du certificat de naissance, datant de moins de 6 mois, ou copie du livret de famille (l'ancien carnet d'identité et d'état civil n'est pas accepté). Ce document doit comporter le nom et prénom de l'\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis.\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention du passeport biométrique en cas de perte pour les mineurs (de 12 à 18 ans) (Marocains résidant à l'étranger)\nDescription: Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 80 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Déclaration sur l'honneur de perte signée par le tuteur légal de l'intéressé ou son représentant légal\n - Copie intégrale de l'acte de naissance ou copie complète du certificat de naissance, datant de moins de 6 mois, ou copie du livret de famille (l'ancien carnet d'identité et d'état civil n'est pas accepté). Ce document doit comporter le nom et prénom de l'\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 556,
+      "answer": "Oui, il existe un document de voyage temporaire appelé laissez-passer pour votre situation. Ce document de courte durée est valable un mois et est délivré pour vous permettre de regagner le Maroc après la perte de votre passeport.\n\nVoici les informations concernant son obtention :\n\n*   **Administration :** Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\n*   **Frais :**\n    *   150 dirhams pour les frais consulaires\n    *   20 dirhams pour le tarif des services (SEGMA)\n*   **Délai :** Immédiatement\n*   **Documents requis :**\n    *   Demande de passeport biométrique\n    *   Tout document (original) prouvant la nationalité marocaine (carte d’identité nationale électronique ou ancien passeport)\n    *   Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n    *   Déclaration de perte ou de vol du passeport\n    *   Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n    *   Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a)",
+      "generation_ms": 9520,
+      "prompt_tokens": 1545,
+      "output_tokens": 370,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8933,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s023",
+      "question": "Comment faire un passeport biométrique quand on habite à l'étranger ?",
+      "lang": "fr",
+      "category": "ambiguous",
+      "expected_ids": [
+        "e561a669-e5e6-47ba-a317-0d72b6b90d1b",
+        "fef069e6-87b5-46b7-95bb-426f4d210309",
+        "b1dec960-490e-487e-a572-da8d0c295f03",
+        "2ef82081-8630-47ec-bd23-249486c1e28c",
+        "679152c6-1975-424d-9257-67ac30e08231",
+        "f0cfdfaa-901a-4398-ae82-1939de6623f4"
+      ],
+      "reference": "La procédure concernée est « Obtention du passeport biométrique en cas de perte pour les mineurs (de 12 à 18 ans) (Marocains résidant à l'étranger) » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Demande de passeport biométrique ; Déclaration sur l'honneur de perte signée par le tuteur légal de l'intéressé ou son représentant légal ; Copie intégrale de l'acte de naissance ou copie complète du certificat de naissance, datant de moins de 6 mois, ou… ; Photo d'identité couleur sur fond blanc ou bleu ; En cas de renouvellement, l'ancien passeport doit être remis ; Document justificatif de résidence en cours de validité. Frais : 80 dirhams. Délai : 15 jours. Selon la situation exacte, la procédure « Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger) » ou « Obtention du passeport biométrique pour les mineurs âgés de 12 à 18 ans (Marocains résidant à l'étranger) » ou « Obtention du passeport biométrique pour les adultes (Marocains résidant à l'étranger) » ou « Obtention du passeport biométrique pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger) » ou « Obtention du passeport en cas de perte pour les adultes (plus de 18 ans) (Marocains résidant à l'étranger) » peut aussi s'appliquer.",
+      "must_include": [
+        "Demande de passeport biométrique",
+        "Déclaration sur l'honneur de perte signée par le tuteur…",
+        "80 dirhams"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "2ef82081-8630-47ec-bd23-249486c1e28c",
+        "b1dec960-490e-487e-a572-da8d0c295f03",
+        "679152c6-1975-424d-9257-67ac30e08231"
+      ],
+      "retrieved_titles": [
+        "Obtention du passeport biométrique pour les adultes (Marocains résidant à l'étranger)",
+        "Obtention du passeport biométrique pour les mineurs âgés de 12 à 18 ans (Marocains résidant à l'étranger)",
+        "Obtention du passeport biométrique pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Obtention du passeport biométrique pour les adultes (Marocains résidant à l'étranger)\nDescription: Obtention du passeport biométrique pour les personnes adultes (Marocains résidant à l'étranger)\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Frais consulaires 800 dirhams\nTarif sur services (SEGMA) 60 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Carte nationale d'identité en cours de validité ou récépissé de dépôt de demande de délivrance ou de renouvellement de la carte nationale\n - En cas de présentation du récépissé de demande de la carte nationale, l'intéressé doit fournir une copie de l'acte de naissance ou l'extrait intégral de l'acte de naissance datant de moins de 6 mois\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention du passeport biométrique pour les mineurs âgés de 12 à 18 ans (Marocains résidant à l'étranger)\nDescription: Obtention du passeport biométrique pour les mineurs âgés de 12 à 18 ans (Marocains résidant à l'étranger)\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Frais consulaires : 00 dirham\nTarif sur les services (SEGMA) : 60 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Carte nationale d'identité en cours de validité ou récépissé de dépôt de demande de délivrance ou de renouvellement de la carte nationale\n - En cas de présentation du récépissé de demande de la carte nationale, l'intéressé doit fournir une copie de l'acte de naissance ou l'extrait intégral de l'acte de naissance datant de moins de 6 mois\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention du passeport biométrique pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)\nDescription: Obtention du passeport biométrique pour les mineurs de moins de 12 ans\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 60 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Copie intégrale de l'acte de naissance ou copie complète du certificat de naissance, datant de moins de 6 mois, ou copie du livret de famille (l'ancien carnet d'identité et d'état civil n'est pas accepté). Ce document doit comporter le nom et prénom de l'\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 425,
+      "answer": "Pour l'obtention d'un passeport biométrique en tant que Marocain résidant à l'étranger, l'administration compétente est le **Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine**.\n\nLe délai pour cette procédure est de **15 jours** pour toutes les catégories. Les informations varient selon l'âge du demandeur :\n\n**1. Pour les adultes (Marocains résidant à l'étranger) :**\n*   **Frais :** 800 dirhams (frais consulaires) + 60 dirhams (tarif sur services SEGMA).\n*   **Documents requis :**\n    *   Demande de passeport biométrique.\n    *   Carte nationale d'identité en cours de validité ou récépissé de dépôt de demande de délivrance ou de renouvellement de la carte nationale. En cas de présentation du récépissé de demande de la carte nationale, l'intéressé doit fournir une copie de l'acte de naissance ou l'extrait intégral de l'acte de naissance datant de moins de 6 mois.\n    *   Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur.\n    *   En cas de renouvellement, l'ancien passeport doit être remis.\n    *   Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le.\n    *   Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a).\n\n**2. Pour les mineurs âgés de 12 à 18 ans (Marocains résidant à l'étranger) :**\n*   **Frais :** 00 dirham (frais consulaires) + 60 dirhams (tarif sur les services SEGMA).\n*   **Documents requis :**\n    *   Demande de passeport biométrique.\n    *   Carte nationale d'identité en cours de validité ou récépissé de dépôt de demande de délivrance ou de renouvellement de la carte nationale. En cas de présentation du récépissé de demande de la carte nationale, l'intéressé doit fournir une copie de l'acte de naissance ou l'extrait intégral de l'acte de naissance datant de moins de 6 mois.\n    *   Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur.\n    *   En cas de renouvellement, l'ancien passeport doit être remis.\n    *   Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le.\n    *   Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a).\n\n**3. Pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger) :**\n*   **Frais :** 60 dirhams.\n*   **Documents requis :**\n    *   Demande de passeport biométrique.\n    *   Copie intégrale de l'acte de naissance ou copie complète du certificat de naissance, datant de moins de 6 mois, ou copie du livret de famille (l'ancien carnet d'identité et d'état civil n'est pas accepté). Ce document doit comporter le nom et prénom de l'.\n    *   Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur.\n    *   En cas de renouvellement, l'ancien passeport doit être remis.\n    *   Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le.\n    *   Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a).",
+      "generation_ms": 23495,
+      "prompt_tokens": 1381,
+      "output_tokens": 1082,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7713,
+        "context_precision": 0.0,
+        "context_recall": 0.2,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s024",
+      "question": "بشحال كيدير جواز السفر للي ساكن برا المغرب؟",
+      "lang": "ar",
+      "category": "ambiguous",
+      "expected_ids": [
+        "e561a669-e5e6-47ba-a317-0d72b6b90d1b",
+        "fef069e6-87b5-46b7-95bb-426f4d210309",
+        "b1dec960-490e-487e-a572-da8d0c295f03",
+        "2ef82081-8630-47ec-bd23-249486c1e28c",
+        "679152c6-1975-424d-9257-67ac30e08231",
+        "f0cfdfaa-901a-4398-ae82-1939de6623f4"
+      ],
+      "reference": "الإجراء المعني هو « الحصول على جواز السفر البيومتري في حالة الضياع بالنسبة للقاصرين (من 12 إلى 18 سنة)(المغاربة المقيمون بالخارج) » (وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي). الوثائق المطلوبة: طلب جواز السفر البيوميتري ؛ تصريح بالشرف بالضياع موقع من طرف ولي أمر المعني بالامر أو ممثله القانوني ؛ نسخة موجزة من رسم الولادة أو النسخة الكاملة من شهادة الميلاد، لا يتعدى تاريخ إصدارها 6 أشهر، أو نسخة من الدفتر العائلي ؛ صورة شخصية ملونة على خلفية بيضاء أو زرقاء ؛ في حالة التجديد، يجب تسليم جواز السفر القديم ؛ وثيقة إثبات الإقامة سارية المفعول. الرسوم: 80 درهما. الآجال: 15 يوما. وحسب الحالة، قد ينطبق أيضا إجراء « الحصول على جواز السفر البيومتري في حالة الضياع بالنسبة للقاصرين دون 12 سنة (المغاربة المقيمون بالخارج) » أو « الحصول على جواز السفر البيومتري بالنسبة للأشخاص القاصرين المتراوح عمرهم ما بين 12 و18 سنة(المغاربة المقيمون بالخارج) » أو « الحصول على جواز السفر البيومتري بالنسبة للأشخاص الراشدين (المغاربة المقيمون بالخارج) » أو « الحصول على جواز السفر البيومتري بالنسبة للقاصرين  أقل من 12 سنة (المغاربة المقيمون بالخارج) » أو « الحصول على جواز السفر في حالة الضياع بالنسبة للراشدين (أكثر من 18 سنة)(المغاربة المقيمون يالخارج) ».",
+      "must_include": [
+        "طلب جواز السفر البيوميتري",
+        "تصريح بالشرف بالضياع موقع من طرف ولي أمر المعني بالامر أو…",
+        "80 درهما"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "5d3f64c5-3c52-4505-9c69-1090219f63ba",
+        "2ef82081-8630-47ec-bd23-249486c1e28c",
+        "b1dec960-490e-487e-a572-da8d0c295f03"
+      ],
+      "retrieved_titles": [
+        "Obtention d'un laissez-passer (pour les Marocains résidant à l'étranger)",
+        "Obtention du passeport biométrique pour les adultes (Marocains résidant à l'étranger)",
+        "Obtention du passeport biométrique pour les mineurs âgés de 12 à 18 ans (Marocains résidant à l'étranger)"
+      ],
+      "rank": 2,
+      "contexts": [
+        "PROCÉDURE: الحصول على رخصة مرور (بالنسبة للمغاربة المقيمين بالخارج)\nDescription: الحصول على رخصة مرور، وهي وثيقة سفر قصيرة الأمد، صالحة لمدة شهر واحد. تصدر في ظروف استثنائية لشخص لا يتوفر على جواز سفر ساري الصلاحية، أو ضاع منه جواز السفر، لتمكينه من العودة إلى المغرب، بعد أن يتم التأكد من هويته وجنسيته المغربية والتحقق منها.\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: 150 درهما  بالنسبة للرسوم القنصلية\n20 درهما بالنسبة لتعرفة على الخدمات (SEGMA)\nDélai: على الفور\nDocuments requis:\n - طلب جواز السفر البيوميتري\n - أي وثيقة (أصلية) تثبت الجنسية المغربية (بطاقة التعريف الوطنية الالكترونية، أو جواز سفر قديم)\n - بالنسبة للقاصرين دون سن 18 الذين لا يتوفرون على البطاقة الوطنية: نسخة من عقد الازدياد، بطاقة الأحوال المدنية الفردية من الحالة المدنية أو الدفتر العائلي، إضافة إلى حضور الممثل الشرعي مصحوبا ببطاقة هويته وتصريح الإقامة،\n - صورة شخصية ملونة على خلفية بيضاء أو زرقاء (حجم 35x45 مم)، تظهر بوضوح ملامح وجه صاحب الطلب\n - التصريح بضياع جواز السفر المفقود أو المسروق عند الاقتضاء\n - تسليم جواز السفر القديم إذا تعلق الأمر بجواز سفر منتهي الصلاحية أو متلاشي\n - وثيقة إثبات الإقامة سارية المفعول (بطاقة الإقامة، بطاقة السكن، تأشيرة طويلة الأمد،  تأشيرة أو تصريح الدراسة، تصريح عمل، بطاقة هوية أجنبية أو جواز سفر أجنبي)، أو أي وثيقة رسمية تتضمن الإشارة إلى مكان وعنوان الشخص المعني\n - إذا كانت وثيقة الإقامة الاعتيادية لا تتضمن العنوان الحالي، فيجب الإدلاء بما يثبت الإقامة في هذا العنوان (شهادة الإقامة، عقد الإيجار، فاتورة الماء ، فاتورة الكهرباء ، أو فاتورة  الهاتف الثابت أو شهادة الإيواء مؤشر عليها من قبل المصالح القنصلية أو السلطات ا\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الحصول على جواز السفر البيومتري بالنسبة للأشخاص الراشدين (المغاربة المقيمون بالخارج)\nDescription: الحصول على جواز السفر البيومتري بالنسبة للأشخاص الراشدين (المغاربة المقيمون بالخارج)\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: الرسوم القنصلية800 درهما\nتعرفة على الخدمات (SEGMA)60 درهما\nDélai: 15 يوما\nDocuments requis:\n - طلب جواز السفر البيوميتري\n - بطاقة التعريف الوطنية سارية الصلاحية  أو  وصل إيداع طلب إصدار أو تجديد البطاقة الوطنية\n - في حالة الإدلاء بوصل طلب الحصول على البطاقة الوطنية ، يتعين على المعني الإدلاء بنسخة من عقد الازدياد أو النسخة الكاملة من شهادة الميلاد لا يتعدى تاريخ إصدارها 6 أشهر\n - صورة شخصية ملونة على خلفية بيضاء أو زرقاء (حجم 35x45 مم)، تظهر بوضوح ملامح وجه صاحب الطلب\n - في حالة التجديد، يجب تسليم جواز السفر القديم\n - وثيقة إثبات الإقامة سارية المفعول (بطاقة الإقامة، بطاقة السكن، تأشيرة طويلة الأمد،  تأشيرة أو تصريح الدراسة، تصريح عمل، بطاقة هوية أجنبية أو جواز سفر أجنبي)، أو أي وثيقة رسمية تتضمن الإشارة إلى مكان وعنوان الشخص المعني\n - إذا كانت وثيقة الإقامة الاعتيادية لا تتضمن العنوان الحالي، فيجب الإدلاء بما يثبت الإقامة في هذا العنوان (شهادة الإقامة، عقد الإيجار، فاتورة الماء ، فاتورة الكهرباء ، أو فاتورة  الهاتف الثابت أو شهادة الإيواء مؤشر عليها من قبل المصالح القنصلية أو السلطات ا\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الحصول على جواز السفر البيومتري بالنسبة للأشخاص القاصرين المتراوح عمرهم ما بين 12 و18 سنة(المغاربة المقيمون بالخارج)\nDescription: الحصول على جواز السفر البيومتري بالنسبة للأشخاص القاصرين المتراوح عمرهم ما بين 12 و18 سنة (المغاربة المقيمون بالخارج)\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: الرسوم القنصلية : 00 درهم\nتعريفة على الخدمات (SEGMA) : 60 درهما\nDélai: 15 يوما\nDocuments requis:\n - طلب جواز السفر البيوميتري\n - بطاقة التعريف الوطنية سارية الصلاحية  أو  وصل إيداع طلب إصدار أو تجديد البطاقة الوطنية\n - في حالة الإدلاء بوصل طلب الحصول على البطاقة الوطنية ، يتعين على المعني الإدلاء بنسخة من عقد الازدياد أو النسخة الكاملة من شهادة الميلاد لا يتعدى تاريخ إصدارها 6 أشهر\n - صورة شخصية ملونة على خلفية بيضاء أو زرقاء (حجم 35x45 مم)، تظهر بوضوح ملامح وجه صاحب الطلب\n - في حالة التجديد، يجب تسليم جواز السفر القديم\n - وثيقة إثبات الإقامة سارية المفعول (بطاقة الإقامة، بطاقة السكن، تأشيرة طويلة الأمد،  تأشيرة أو تصريح الدراسة، تصريح عمل، بطاقة هوية أجنبية أو جواز سفر أجنبي)، أو أي وثيقة رسمية تتضمن الإشارة إلى مكان وعنوان الشخص المعني\n - إذا كانت وثيقة الإقامة الاعتيادية لا تتضمن العنوان الحالي، فيجب الإدلاء بما يثبت الإقامة في هذا العنوان (شهادة الإقامة، عقد الإيجار، فاتورة الماء ، فاتورة الكهرباء ، أو فاتورة  الهاتف الثابت أو شهادة الإيواء مؤشر عليها من قبل المصالح القنصلية أو السلطات ا\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 385,
+      "answer": "بالنسبة للمغاربة المقيمين بالخارج:\n\n*   تبلغ رسوم الحصول على جواز السفر البيومتري للأشخاص الراشدين 800 درهم (رسوم قنصلية) + 60 درهم (تعرفة على الخدمات SEGMA).\n*   تبلغ رسوم الحصول على جواز السفر البيومتري للأشخاص القاصرين المتراوح عمرهم ما بين 12 و18 سنة 00 درهم (رسوم قنصلية) + 60 درهم (تعريفة على الخدمات SEGMA).\n\nالمصدر: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي.",
+      "generation_ms": 6909,
+      "prompt_tokens": 1682,
+      "output_tokens": 167,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.6507,
+        "context_precision": 0.0,
+        "context_recall": 0.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s025",
+      "question": "passport perdu enfant 10 ans on vit en italie quoi faire",
+      "lang": "fr",
+      "category": "user_style",
+      "expected_ids": [
+        "fef069e6-87b5-46b7-95bb-426f4d210309"
+      ],
+      "reference": "La procédure concernée est « Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger) » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Formulaire de demande de passeport biométrique. ; Déclaration sur l'honneur de perte signée par le représentant légal de l'intéressé ou son mandataire légal. ; Extrait d'acte de naissance ou copie intégrale de l'acte de naissance, datant de moins de 6 mois, ou copie du livret de… ; Photographie d'identité en couleur sur fond blanc ou bleu ; En cas de renouvellement, l'ancien passeport doit être remis. ; Document de preuve de résidence en cours de validité. Frais : Droits consulaires 00 dirhams Redevance sur les services (SEGMA) 80 dirhams. Délai : 15 jours.",
+      "must_include": [
+        "Formulaire de demande de passeport biométrique.",
+        "Déclaration sur l'honneur de perte signée par le…"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "e561a669-e5e6-47ba-a317-0d72b6b90d1b",
+        "fef069e6-87b5-46b7-95bb-426f4d210309",
+        "f0cfdfaa-901a-4398-ae82-1939de6623f4"
+      ],
+      "retrieved_titles": [
+        "Obtention du passeport biométrique en cas de perte pour les mineurs (de 12 à 18 ans) (Marocains résidant à l'étranger)",
+        "Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)",
+        "Obtention du passeport en cas de perte pour les adultes (plus de 18 ans) (Marocains résidant à l'étranger)"
+      ],
+      "rank": 2,
+      "contexts": [
+        "PROCÉDURE: Obtention du passeport biométrique en cas de perte pour les mineurs (de 12 à 18 ans) (Marocains résidant à l'étranger)\nDescription: Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 80 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Déclaration sur l'honneur de perte signée par le tuteur légal de l'intéressé ou son représentant légal\n - Copie intégrale de l'acte de naissance ou copie complète du certificat de naissance, datant de moins de 6 mois, ou copie du livret de famille (l'ancien carnet d'identité et d'état civil n'est pas accepté). Ce document doit comporter le nom et prénom de l'\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)\nDescription: Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Droits consulaires 00 dirhams\nRedevance sur les services (SEGMA) 80 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Déclaration sur l'honneur de perte signée par le tuteur légal de l'intéressé ou son représentant légal\n - Copie intégrale de l'acte de naissance ou copie complète du certificat de naissance, datant de moins de 6 mois, ou copie du livret de famille (l'ancien carnet d'identité et d'état civil n'est pas accepté). Ce document doit comporter le nom et prénom de l'\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis.\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention du passeport en cas de perte pour les adultes (plus de 18 ans) (Marocains résidant à l'étranger)\nDescription: Obtention du passeport en cas de perte pour les adultes (plus de 18 ans) (Marocains résidant à l'étranger)\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 1080 dirhams\n- Frais consulaires : 1000 dirhams\n- Tarif des services (SEGMA) : 80 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Déclaration sur l'honneur de perte signée par l'intéressé\n - Carte nationale d'identité en cours de validité ou récépissé de dépôt de demande de délivrance ou de renouvellement de la carte nationale\n - En cas de présentation du récépissé de demande de carte nationale, l'intéressé doit fournir une copie de l'acte de naissance ou la copie intégrale de l'acte de naissance datant de moins de 6 mois.\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 411,
+      "answer": "Pour l'obtention d'un passeport biométrique en cas de perte pour un enfant de 10 ans résidant à l'étranger (comme en Italie), voici la procédure :\n\n**Administration concernée :** Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine.\n\n**Documents requis :**\n*   Demande de passeport biométrique.\n*   Déclaration sur l'honneur de perte signée par le tuteur légal de l'intéressé ou son représentant légal.\n*   Copie intégrale de l'acte de naissance ou copie complète du certificat de naissance, datant de moins de 6 mois, ou copie du livret de famille (l'ancien carnet d'identité et d'état civil n'est pas accepté). Ce document doit comporter le nom et prénom de l'enfant.\n*   Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur.\n*   En cas de renouvellement, l'ancien passeport doit être remis.\n*   Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant la résidence.\n*   Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou abonnement).\n\n**Frais :**\n*   Droits consulaires : 00 dirhams.\n*   Redevance sur les services (SEGMA) : 80 dirhams.\n\n**Délai :** 15 jours.\n\n(Source : Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine)",
+      "generation_ms": 10997,
+      "prompt_tokens": 1485,
+      "output_tokens": 481,
+      "attempts": 2,
+      "scores": {
+        "faithfulness": 0.7333,
+        "answer_relevancy": 0.8584,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s026",
+      "question": "Avant de créer ma société je dois réserver un nom, comment faire et combien de jours ça prend ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "bb5433cb-aefe-46f2-8fa6-6ad55805cfee"
+      ],
+      "reference": "La procédure concernée est « Demande d'obtention du nom commercial (certificat négatif) » (Office Marocain De La Propriété Industrielle Et Commerciale). Documents à fournir : Justificatif de paiement des redevances dues ; Demande d'obtention du nom commercial. Frais : Redevances dues de la décision tarifaire du Conseil d’administration n° 1/2019 du 22 mai 2019, applicables à compter du 2 septembre 2019.. Délai : 2 jours.",
+      "must_include": [
+        "Justificatif de paiement des redevances dues",
+        "Demande d'obtention du nom commercial"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "7492e184-a957-4f64-90ce-31b4d4c08d83",
+        "bf5773fa-d73e-4fc5-9b1c-c1bdf1e47213",
+        "a627c740-593b-4f54-9b22-0a4e10914ffb"
+      ],
+      "retrieved_titles": [
+        "Création d'une personne morale",
+        "Immatriculation d'une société en nom collectif au registre du commerce",
+        "Changement de dénomination d'un établissement de location de voitures sans chauffeur après obtention de l'approbation préalable"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: Création d'une personne morale\nDescription: Les formalités de création d'une entreprise peuvent être accomplies auprès de l'un des centres régionaux d'investissement ou de chaque administration / organisme qui intervient dans le processus de la création de l'entreprise.\nAdministration: Registre Central du Commerce\nFrais: Droit d’enregistrement (1% du capital avec un minimum de 1000 Dirhams)\nDélai: Certificat négatif : 2 heures pour les demandes déposées au OMPIC et CRI, 24 heures pour les demandes déposées aux antennes de l'OMPIC auprès des délégations du Ministère de l'Industrie du Commerce et des Télécommunications. Dépôt des statuts : 30 jours (à partir de la date de création de l’entreprise). Immatriculation au registre de commerce : 3 mois (à partir de la création de la société). Publications officielles : 1 mois (après l’immatriculation au registre de commerce).\nDocuments requis:\n - Certificat négatif\n - Statuts\n - Bulletins de souscriptions\n - Déclaration de souscription et de versement\n - Attestation bancaire (prouvant le blocage du capital)\n - Actes de création de la société\n - Imprimé de demande d'inscription à la taxe professionnelle\n - Documents de constitution de l'entreprise\n - Déclaration des patentes\n - Imprimés d'immatriculation au registre de commerce\n - PV de l’assemblée constitutive (pour les SA)\nÉtapes:\n1. Demande de Certificat négatif\n2. Établissement des statuts\n3. Établissement des bulletins de souscriptions\n4. Déclaration de souscription et de versement\n5. Blocage du montant du capital libéré\n6. Dépôt des actes de création de la société et formalités d’enregistrement\n7. Inscription à la taxe professionnelle et identification fiscale\n8. Immatriculation au registre de commerce\n9. Affiliation à la CNSS\n10. Publications officielles au journal d’annonces légales et au bulletin officiel",
+        "PROCÉDURE: Immatriculation d'une société en nom collectif au registre du commerce\nDescription: Immatriculation au registre du commerce conformément aux dispositions légales, le législateur ayant, en vertu de l'article 37 du Code de commerce, rendu l'immatriculation au registre du commerce obligatoire pour tous les commerçants, personnes physiques ou morales, marocains ou étrangers, exerçant une activité commerciale sur le territoire du Royaume.\nEn outre, la personnalité morale des sociétés n'est acquise qu'à compter de la date d'immatriculation au registre du commerce – étant entendu que les sociétés en participation ne sont pas immatriculées au registre du commerce et ne jouissent pas de la personnalité morale –\nDans le cadre du contrôle effectué par le greffier sur les documents et pièces qui lui sont présentés – sauf dans les cas où la loi impose la conservation des originaux – le déclarant doit produire l'original du document et le greffier se charge de le photocopier et de le restituer immédiatement à l'intéressé.\nEn ce qui concerne la signature des déclarations, contrats et documents soumis à la présente procédure, elle doit être apposée devant le greffier qui mentionne sur le même document le nom du signataire, le numéro de sa carte nationale, sa qualité, et appose le cachet du tribunal ainsi que sa propre signature.\nAdministration: Ministère de la Justice\nFrais: Frais d'enregistrement au registre de commerce : 350 dirhams  \n200 dirhams pour le dépôt  \n150 dirhams pour l'inscription\nDélai: 2 jours\nDocuments requis:\n - Documents de dépôt\n - Original des statuts de la société signés par tous les associés ou par un mandataire muni d'une procuration écrite et enregistrés auprès de l'administration de l'enregistrement, ou une copie conforme\n - Copie du contrat signé et enregistré en vertu duquel le gérant a été désigné, si cette désignation a été faite par un contrat séparé\n - Original du certificat négatif datant de moins de 90 jours\n - Documents d'inscription\n - Certificat original d’inscription à la taxe professionnelle.\n - Certificat d'immatriculation ou document en tenant lieu si l'un des associés est une personne morale\n - Photocopie du contrat de bail signé et enregistré auprès de l'administration de l'enregistrement ou contrat de domiciliation signé ou tout document justifiant l'existence du local\n - Extrait de l'acte comportant l'indication du régime matrimonial pour l'associé étranger, le cas échéant\n - Photocopie de la carte d'identité nationale de tous les associés et gérants ou photocopie de la carte d'immatriculation pour les étrangers résidents ou photocopie du passeport pour les étrangers non-résidents ou tout document en tenant lieu pour justifier\n - Déclaration (formulaire n° 2) établie et signée par le déclarant ou son mandataire muni d'une procuration écrite.\n - Copie de l'autorisation et/ou du diplôme ou du certificat nécessaire à l'exercice de l'activité projetée, le cas échéant, conformément aux dispositions de certains textes spéciaux relatifs à l'exercice de certaines activités réglementées.\n - Procuration écrite en cas de dépôt par mandataire (Remarque : elle doit être enregistrée auprès de l'administration de l'enregistrement)\n - Photocopie du document d'identité du mandataire en cas d'inscription par mandataire\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Changement de dénomination d'un établissement de location de voitures sans chauffeur après obtention de l'approbation préalable\nDescription: Changement de dénomination d'un établissement de location de voitures sans chauffeur après obtention de l'approbation préalable\nAdministration: Ministère de l’Equipement, du Transport, de la Logistique et de L’Eau\nFrais: Gratuit\nDélai: 30 jours\nDocuments requis:\n - Demande de changement de dénomination de l'entreprise\n - Original de l'approbation préalable\n - Cahier des charges signé sur toutes les pages, portant la mention « lu et approuvé » et la signature du gérant de l'entreprise\n - Copie des statuts mis à jour, limitant l'activité de l'établissement exclusivement à la location de voitures sans chauffeur (pour les personnes morales)\n - Procès-verbal de l'assemblée générale nommant le gérant, définissant ses pouvoirs et la durée de son mandat (pour les personnes morales)\n - Original de l'attestation bancaire de blocage d'un capital d'au moins cinq cent mille dirhams (500 000 DH) précisant la qualité des signataires (pour les personnes morales et physiques) ou documents attestant de la possession d'au moins 5 voitures neuves\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 441,
+      "answer": "Pour réserver le nom de votre future société, vous devez faire une demande de Certificat négatif.\n\nVoici comment faire et les délais :\n\n*   **Comment faire :** Vous devez effectuer une demande de Certificat négatif. Cette demande peut être déposée auprès de l'Office Marocain de la Propriété Industrielle et Commerciale (OMPIC) et des Centres Régionaux d'Investissement (CRI), ou aux antennes de l'OMPIC auprès des délégations du Ministère de l'Industrie du Commerce et des Télécommunications.\n*   **Délai :**\n    *   2 heures pour les demandes déposées à l'OMPIC et aux CRI.\n    *   24 heures pour les demandes déposées aux antennes de l'OMPIC auprès des délégations du Ministère de l'Industrie du Commerce et des Télécommunications.\n\nSource : Registre Central du Commerce.",
+      "generation_ms": 8734,
+      "prompt_tokens": 1706,
+      "output_tokens": 190,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8726,
+        "context_precision": 0.0,
+        "context_recall": 0.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s027",
+      "question": "بغيت نحجز سمية تجارية للشركة ديالي، كيفاش ندير؟",
+      "lang": "ar",
+      "category": "user_style",
+      "expected_ids": [
+        "bb5433cb-aefe-46f2-8fa6-6ad55805cfee"
+      ],
+      "reference": "الإجراء المعني هو « طلب الحصول على الاسم التجاري (الشهادة السلبية) » (المكتب المغربي للملكية الصناعية والتجارية). الوثائق المطلوبة: اثبات دفع الرسوم المستحقة ؛ طلب الحصول على الاسم التجاري. الرسوم: الرسوم المستحقة في قرار التسعيرة لمجلس الادارة رقم 1/ 2019 ل 22 ماي 2019 المطبقة ابتداء من 2 شتنبر 2019. الآجال: يومان.",
+      "must_include": [
+        "اثبات دفع الرسوم المستحقة",
+        "طلب الحصول على الاسم التجاري"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "b5d950ec-f1f2-4ce9-9dd1-b8b5070aea9e",
+        "8821fb8e-a444-402d-9b8c-bca0d2f7877f",
+        "bb5433cb-aefe-46f2-8fa6-6ad55805cfee"
+      ],
+      "retrieved_titles": [
+        "Immatriculation de la société en commandite par actions au registre du commerce",
+        "Approbation de modification du nom commercial de la société",
+        "Demande d'obtention du nom commercial (certificat négatif)"
+      ],
+      "rank": 3,
+      "contexts": [
+        "PROCÉDURE: تسجيل شركة التوصية بالأسهم بالسجل التجاري\nDescription: التسجيل بالسجل التجاري وفق المقتضيات المنصوص عليها قانونا، لكون المشرع ووفق المادة 37 من مدونة التجارة جعل التسجيل بالسجل التجاري أمرا إلزاميا على جميع التجار الذاتيين والاعتباريين مغاربة كانوا أو أجانب الذين يمارسون نشاطا تجاريا في تراب المملكة.\nهذا بالإضافة إلى أن  الشخصية المعنوية للشركات لا تكتسب إلا منذ تاريخ التسجيل في السجل التجاري ـــ مع الأخذ بعين الاعتبار أن شركات المحاصة لا تسجل بالسجل التجاري ولا تتمتع بالشخصية المعنويةـــ\nفي إطار المراقبة التي يجريها كاتب الضبط للوثائق والمستندات المقدمة إليه-في غير الحالات التي يجب فيها قانونا الاحتفاظ بأصول الوثائق- يتعين على المرتفق الإدلاء بأصل الوثيقة ويتولى كاتب الضبط أمر نسخها وإرجاعها فورا إلى المعني بالأمر.\nوبالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء يجب أن يتم أمام كاتب الضبط الذي يشير بنفس الوثيقة  إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيع كاتب الضبط\nAdministration: وزارة العدل\nFrais: رسوم التسجيل بالسجل التجاري\n200درهما عن الإيداع, \n150 درهما عن التقييد\nDélai: (2) يومان\nDocuments requis:\n - وثائق الإيداع\n - أصل النظام الأساسي للشركة موقع من طرف جميع الشركاء أو من طرف وكيل مزود بوكالة كتابية و مسجل لدى إدارة التسجيل، أو نظير منه  .\n - نسخة من العقد الموقع والمسجل، الذي تم بمقتضاه تعيين المسير إذا تم هذا التعيين بمقتضى عقد منفصل\n - أوراق الاكتتاب بالنسبة للعقود الغير الموثقة\n - أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما\n - نظير من شهادة  الاكتتاب والدفع  تبين الاكتتابات في رأس المال وكذا حصة الأسهم المحررة من طرف كل مساهم\n - قائمة المكتتبين تتضمن الأسماء الشخصية والعائلية وعناوين وجنسيات المكتتبين بالإضافة إلى صفاتهم ومهنهم وعدد الأسهم المكتتبة ومبلغ الدفعات التي قام بها كل واحد منهم .\n - وثائق التسجيل\n - شهادة أصلية للتسجيل بالرسم المهني\n - شهادة التسجيل أو ما يقوم مقامها  إذا كان أحد الشركاء شخصا اعتباريا.\n - صورة من الإذن و /أو الدبلوم أو الشهادة اللازمة لمزاولة النشاط المشروع فيه عند الاقتضاء. \" وفق ما تقضي به بعض النصوص الخاصة المتعلقة بممارسة بعض الأنشطة المنظمة\"\n - صورة من عقد الكراء موقع  ومسجل بإدارة التسجيل أو عقد التوطين موقع  أو أي وثيقة تثبت تواجد المحل .\n - مستخرج للعقد المتضمن بيان نظام الزوجية بالنسبة للشريك المتضامن الأجنبي عند الاقتضاء وصورة منه.\n - صورة من بطاقة التعريف الوطنية لجميع الشركاء المتضامنين والمسيرين المغاربة أو من بطاقة التسجيل بالنسبة للأجانب المقيمين أو من جواز السفر بالنسبة للأجانب غير المقيمين أو ما يقوم مقامه لإثبات الهوية.\n - التصريح نموذج 2 محرر  وموقع  من طرف الملزم أو وكيله المزود بوكالة كتابية\n - وكالة كتابية في حالة التسجيل بواسطة وكيل \n(ملاحظة: يجب أن تكون الوكالة مسجلة بإدارة التسجيل)\n - صورة لوثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل.\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الموافقة على تغيير الاسم التجاري للشركة\nDescription: الموافقة على تغيير الاسم التجاري للشركة\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - رخصة مزاولة نشاط الصرف اليدوي  الأصلية\n - طلب يحدد تفاصيل ودوافع العملية\nÉtapes:\nغير محدد",
+        "PROCÉDURE: طلب الحصول على الاسم التجاري (الشهادة السلبية)\nDescription: الحصول على إسم تجاري من أجل إنشاء شركة أو مقاولة فردية\nAdministration: المكتب المغربي للملكية الصناعية والتجارية\nFrais: الرسوم المستحقة في قرار التسعيرة لمجلس الادارة  رقم 1/ 2019  ل 22 ماي 2019 المطبقة ابتداء من 2 شتنبر 2019\nDélai: يومان\nDocuments requis:\n - اثبات دفع الرسوم المستحقة\n - طلب  الحصول على  الاسم التجاري\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 405,
+      "answer": "باش تحجز سمية تجارية للشركة ديالك، خاصك دير طلب الحصول على الاسم التجاري (الشهادة السلبية).\n\nهذه هي المعلومات اللي عندنا بخصوص هاد الإجراء:\n\n*   **الإدارة**: المكتب المغربي للملكية الصناعية والتجارية.\n*   **الوثائق المطلوبة**:\n    *   إثبات دفع الرسوم المستحقة.\n    *   طلب الحصول على الاسم التجاري.\n*   **المصاريف**: الرسوم المستحقة في قرار التسعيرة لمجلس الإدارة رقم 1/ 2019 ل 22 ماي 2019 المطبقة ابتداء من 2 شتنبر 2019.\n*   **الأجل**: يومان.",
+      "generation_ms": 8331,
+      "prompt_tokens": 1309,
+      "output_tokens": 166,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.9371,
+        "context_precision": 0.3333,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s028",
+      "question": "J'ouvre une épicerie en mon nom propre, comment m'inscrire au registre du commerce ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "5a8c92ef-c867-4d9b-8421-834f7b965b8d"
+      ],
+      "reference": "La procédure concernée est « Immatriculation d'une personne physique au registre du commerce » (Ministère de la Justice). Documents à fournir : Certificat original d'inscription à la taxe professionnelle ; Copie de la carte d'identité nationale pour le commerçant, ou copie de la carte d'enregistrement pour les étrangers… ; Autorisation prévue à l'article 42 ; Original du certificat négatif datant de moins de 90 jours en cas de choix d'une enseigne ou d'un nom commercial ; Copie de l'autorisation et/ou du diplôme ou du certificat nécessaire à l'exercice de l'activité réglementée, le cas… ; Extrait de l'acte indiquant le régime matrimonial pour les commerçants étrangers, le cas échéant. Frais : Frais d'inscription au registre du commerce 150 dirhams. Délai : 2 jours.",
+      "must_include": [
+        "Certificat original d'inscription à la taxe professionnelle",
+        "Copie de la carte d'identité nationale pour le commerçant,…"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "5a8c92ef-c867-4d9b-8421-834f7b965b8d",
+        "b93cd482-2ed9-4c65-b7de-d8755b8c20cc",
+        "2a56600d-9d95-4c95-ba4d-4e18ed77558d"
+      ],
+      "retrieved_titles": [
+        "Immatriculation d'une personne physique au registre du commerce",
+        "Enregistrement de succursale dans le ressort du tribunal d'immatriculation de la société mère",
+        "Inscription du gérant libre au registre du commerce – Cas du gérant libre non inscrit"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Immatriculation d'une personne physique au registre du commerce\nDescription: L'immatriculation au registre du commerce conformément aux dispositions légales, étant donné que le législateur, en vertu de l'article 37 du Code de commerce, a rendu l'immatriculation au registre du commerce obligatoire pour tous les commerçants personnes physiques ou morales, marocains ou étrangers, exerçant une activité commerciale sur le territoire du Royaume.\nDans le cadre du contrôle effectué par le greffier des documents et pièces qui lui sont présentés – sauf dans les cas où la loi exige la conservation des originaux – l'usager doit présenter l'original du document et le greffier se charge de le copier et de le restituer immédiatement à l'intéressé.\nQuant à la signature des déclarations, contrats et documents soumis à cette procédure, elle doit avoir lieu devant le greffier qui indique sur le même document le nom du signataire, le numéro de sa carte nationale, sa qualité, avec apposition du cachet du tribunal et la signature du greffier.\nAdministration: Ministère de la Justice\nFrais: Frais d'inscription au registre du commerce 150 dirhams\nDélai: 2 jours\nDocuments requis:\n - Certificat original d’inscription à la taxe professionnelle.\n - Copie de la carte d'identité nationale pour le commerçant, ou copie de la carte d'enregistrement pour les étrangers résidents, ou copie du passeport ou de tout document en tenant lieu pour justifier l'identité pour les étrangers non-résidents\n - Autorisation prévue à l'article 42 (4) du Code de commerce s'il s'agit d'un mineur, d'un tuteur ou d'un représentant légal qui exploite les biens du mineur dans le commerce\n - Original du certificat négatif datant de moins de 90 jours en cas de choix d'une enseigne ou d'un nom commercial\n - Copie de l'autorisation et/ou du diplôme ou du certificat nécessaire à l'exercice de l'activité réglementée, le cas échéant\n - Extrait de l'acte indiquant le régime matrimonial pour les commerçants étrangers, le cas échéant\n - Autorisation du président du tribunal prévue à l'article 16 du Code de commerce si le commerçant étranger est mineur au regard de la loi marocaine\n - En cas de création d'un fonds de commerce, copie du certificat de propriété, du contrat de bail, du contrat de domiciliation ou de tout autre document attestant de l'existence du local. En cas de déclaration de l'adresse du domicile pour l'exercice de l'a\n - Certificat attestant la radiation de l'ancien propriétaire ou la radiation du fonds de commerce en cas d'acquisition du fonds de commerce par achat, partage, adjudication, donation ou indivision\n - Déclaration modèle 1 établie et signée par l'assujetti ou son mandataire muni d'une procuration écrite\n - Procuration écrite en cas d'immatriculation par mandataire (Note : la procuration doit être enregistrée auprès de l'administration de l'enregistrement)\n - Photocopie du document d'identité du mandataire en cas d'inscription par mandataire.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Enregistrement de succursale dans le ressort du tribunal d'immatriculation de la société mère\nDescription: L’inscription au registre du commerce est effectuée conformément aux dispositions légales, le législateur ayant, en vertu de l’article 37 du Code de commerce, rendu obligatoire l’inscription des succursales et agences des entreprises marocaines ou étrangères au registre du commerce.\nDans le cadre du contrôle exercé par le greffier sur les documents et pièces qui lui sont présentés — sauf dans les cas où la loi impose la conservation des originaux — le requérant est tenu de présenter l’original du document ; le greffier en fait une copie et le restitue immédiatement à l’intéressé.\nQuant à la signature des déclarations, contrats et documents soumis à cette procédure, elle doit être apposée en présence du greffier, qui mentionne sur le même document le nom du signataire, son numéro de carte nationale d’identité, sa qualité, et y appose le cachet du tribunal ainsi que sa propre signature.\nAdministration: Ministère de la Justice\nFrais: Frais d'immatriculation au registre du commerce\n50 dirhams pour le dépôt,\n50 dirhams pour l'inscription.\nDélai: (2) 2 jours\nDocuments requis:\n - Documents de dépôt\n - Copie de la décision de création de la succursale ou de l’agence avec désignation du gérant, signée et enregistrée auprès de l’administration de l’enregistrement.\n - Original du certificat négatif, le cas échéant, n’excédant pas 90 jours à compter de sa date.\n - Licence ou diplôme ou les deux, le cas échéant.\n - Documents d'inscription\n - Certificat original d’inscription à la taxe professionnelle.\n - Copie du contrat de bail ou du contrat de domiciliation - en tenant compte des dispositions du second alinéa de l'article 544-3 du Code de commerce - ou de tout autre document établissant l'existence du local.\n - Copie de la carte d’identité nationale pour le gérant de la succursale, ou copie de la carte d’immatriculation pour les étrangers résidant au Maroc, ou du passeport ou de tout document en tenant lieu attestant de l’identité pour les étrangers non résident\n - Déclaration du modèle n° 1-4, rédigée et signée par le déclarant ou son mandataire muni d’une procuration écrite.\n - Procuration écrite en cas d’inscription par mandataire\n(Note : elle doit être enregistrée auprès du service de l’enregistrement).\n - Copie du document d'identité du mandataire en cas de dépôt par mandataire\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Inscription du gérant libre au registre du commerce – Cas du gérant libre non inscrit\nDescription: Inscription au registre du commerce conformément aux dispositions légales, le gérant acquérant la qualité de commerçant et étant soumis à toutes les obligations découlant de cette qualité, notamment les dispositions de l’article 37 du Code de commerce qui rendent l’inscription au registre du commerce obligatoire pour tous les commerçants, personnes physiques ou morales, marocains ou étrangers, exerçant une activité commerciale sur le territoire du Royaume.\nLe bailleur doit soit demander la radiation de son nom du registre du commerce, soit modifier son inscription personnelle en mentionnant expressément la mise du fonds de commerce en gérance libre, conformément aux dispositions de l’article 153 du Code de commerce.\nDans le cadre du contrôle effectué par le greffier des documents et pièces présentés – sauf les cas où la loi impose de conserver les originaux – l’usager doit présenter l’original du document et le greffier procède à sa copie et le restitue immédiatement à l’intéressé.\nQuant à la signature des déclarations, contrats et documents soumis à cette procédure, elle doit être apposée devant le greffier qui mentionne sur le même document le nom du signataire, le numéro de sa carte nationale, sa qualité, avec l’apposition du cachet du tribunal et la signature du greffier.\nAdministration: Ministère de la Justice\nFrais: Frais d'inscription au registre de commerce : 150 dirhams\nDélai: (2) 2 jours\nDocuments requis:\n - Contrat de location-gérance signé et enregistré auprès de l’administration de l’enregistrement ;\n - Références du Bulletin officiel dans lequel a été publié l’extrait du contrat de gérance libre\n - Exemplaire du journal d’annonces légales dans lequel a été publié un extrait du contrat de gérance.\n - Copie des « inscriptions modèle 7 » délivrée au nom du bailleur par le greffier du tribunal compétent, le cas échéant.\n - Copie du diplôme ou certificat nécessaire pour l’exercice de l’activité, le cas échéant\n - Certificat original d’inscription à la taxe professionnelle.\n - Copie de la carte nationale d’identité électronique pour le commerçant, ou copie de la carte d’immatriculation pour les étrangers résidents, ou copie du passeport ou titre en tenant lieu pour justifier l’identité pour les étrangers non-résidents.\n - Déclaration modèle 1.1 rédigée et signée par l’assujetti ou son mandataire muni d’un mandat écrit\n - Procuration écrite en cas de dépôt par mandataire\n - Photocopie du document d'identité du mandataire en cas d'inscription par mandataire.\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 408,
+      "answer": "Pour vous inscrire au registre du commerce pour l'ouverture de votre épicerie en votre nom propre, vous devez suivre la procédure d'**Immatriculation d'une personne physique au registre du commerce**.\n\nSelon le **Ministère de la Justice**, voici les informations relatives à cette procédure :\n\n**Description :**\nL'immatriculation au registre du commerce est obligatoire pour tous les commerçants personnes physiques ou morales, marocains ou étrangers, exerçant une activité commerciale sur le territoire du Royaume, conformément à l'article 37 du Code de commerce.\nLors de la présentation des documents, l'original doit être présenté au greffier, qui se chargera de le copier et de le restituer immédiatement. La signature des déclarations, contrats et documents doit avoir lieu devant le greffier, qui indiquera sur le document le nom du signataire, le numéro de sa carte nationale, sa qualité, avec apposition du cachet du tribunal et sa signature.\n\n**Frais :**\nLes frais d'inscription au registre du commerce sont de 150 dirhams.\n\n**Délai :**\nLe délai est de 2 jours.\n\n**Documents requis :**\n*   Certificat original d’inscription à la taxe professionnelle.\n*   Copie de la carte d'identité nationale pour le commerçant, ou copie de la carte d'enregistrement pour les étrangers résidents, ou copie du passeport ou de tout document en tenant lieu pour justifier l'identité pour les étrangers non-résidents.\n*   Autorisation prévue à l'article 42 (4) du Code de commerce s'il s'agit d'un mineur, d'un tuteur ou d'un représentant légal qui exploite les biens du mineur dans le commerce.\n*   Original du certificat négatif datant de moins de 90 jours en cas de choix d'une enseigne ou d'un nom commercial.\n*   Copie de l'autorisation et/ou du diplôme ou du certificat nécessaire à l'exercice de l'activité réglementée, le cas échéant.\n*   Extrait de l'acte indiquant le régime matrimonial pour les commerçants étrangers, le cas échéant.\n*   Autorisation du président du tribunal prévue à l'article 16 du Code de commerce si le commerçant étranger est mineur au regard de la loi marocaine.\n*   En cas de création d'un fonds de commerce, copie du certificat de propriété, du contrat de bail, du contrat de domiciliation ou de tout autre document attestant de l'existence du local. En cas de déclaration de l'adresse du domicile pour l'exercice de l'a.\n*   Certificat attestant la radiation de l'ancien propriétaire ou la radiation du fonds de commerce en cas d'acquisition du fonds de commerce par achat, partage, adjudication, donation ou indivision.\n*   Déclaration modèle 1 établie et signée par l'assujetti ou son mandataire muni d'une procuration écrite.\n*   Procuration écrite en cas d'immatriculation par mandataire (Note : la procuration doit être enregistrée auprès de l'administration de l'enregistrement).\n*   Photocopie du document d'identité du mandataire en cas d'inscription par mandataire.\n\nLes étapes spécifiques de la procédure ne sont pas spécifiées dans les informations fournies.\n\n**Source :** Ministère de la Justice.",
+      "generation_ms": 11328,
+      "prompt_tokens": 2114,
+      "output_tokens": 731,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.9524,
+        "answer_relevancy": 0.8324,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s029",
+      "question": "كم يكلف تسجيل تاجر شخص ذاتي في السجل التجاري وكم يستغرق؟",
+      "lang": "ar",
+      "category": "fees_delay",
+      "expected_ids": [
+        "5a8c92ef-c867-4d9b-8421-834f7b965b8d"
+      ],
+      "reference": "الإجراء المعني هو « تسجيل شخص ذاتي بالسجل التجاري » (وزارة العدل). الوثائق المطلوبة: شهادة أصلية للتسجيل بالرسم المهني ؛ صورة من بطاقة التعريف الوطنية بالنسبة للتاجر أو صورة لبطاقة التسجيل بالنسبة للأجانب المقيمين أو صورة لجواز السفر أو ما… ؛ الإذن المنصوص عليه في المادة 42 ؛ أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما في حالة اختيار شعار أو اسم تجاري ؛ صورة من الإذن و /أو الدبلوم أو الشهادة اللازمة لمزاولة النشاط المشروع فيه عند الاقتضاء. ؛ مستخرج للعقد المتضمن بيان نظام الزوجية بالنسبة للتجار الأجانب عند الاقتضاء.. الرسوم: رسوم التسجيل بالسجل التجاري 150 درهما. الآجال: يومان.",
+      "must_include": [
+        "شهادة أصلية للتسجيل بالرسم المهني",
+        "صورة من بطاقة التعريف الوطنية بالنسبة للتاجر أو صورة لبطاقة…",
+        "رسوم التسجيل بالسجل التجاري 150 درهما",
+        "يومان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "5a8c92ef-c867-4d9b-8421-834f7b965b8d",
+        "0587b11b-d24e-4e52-bada-d4c1d46f0fc1",
+        "bf5773fa-d73e-4fc5-9b1c-c1bdf1e47213"
+      ],
+      "retrieved_titles": [
+        "Immatriculation d'une personne physique au registre du commerce",
+        "Immatriculation d'une société en commandite simple au registre du commerce",
+        "Immatriculation d'une société en nom collectif au registre du commerce"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: تسجيل شخص ذاتي بالسجل التجاري\nDescription: التسجيل بالسجل التجاري وفق المقتضيات المنصوص عليها قانونا، لكون المشرع ووفق المادة 37 من مدونة التجارة جعل التسجيل بالسجل التجاري أمرا إلزاميا على جميع التجار الذاتيين أو اعتباريين مغاربة كانوا أو أجانب الذين يمارسون نشاطا تجاريا في تراب المملكة.\nفي إطار المراقبة التي يجريها كاتب الضبط للوثائق والمستندات المقدمة إليه-في غير الحالات التي يجب فيها قانونا الاحتفاظ بأصول الوثائق- يتعين على المرتفق الإدلاء بأصل الوثيقة ويتولى كاتب الضبط أمر نسخها وإرجاعها فورا إلى المعني بالأمر.\nوبالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء يجب أن يتم أمام كاتب الضبط الذي يشير بنفس الوثيقة  إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيع كاتب الضبط.\nAdministration: وزارة العدل\nFrais: رسوم التسجيل بالسجل التجاري\n150 درهما\nDélai: يومان\nDocuments requis:\n - شهادة أصلية للتسجيل بالرسم المهني\n - صورة من بطاقة التعريف الوطنية بالنسبة للتاجر أو صورة لبطاقة التسجيل بالنسبة للأجانب المقيمين أو صورة لجواز السفر أو ما يقوم مقامه لإثبات الهوية بالنسبة للأجانب غير المقيمين.\n - الإذن المنصوص عليه في المادة 42 (4) من مدونة التجارة إذا تعلق الأمر بقاصر أو بوصي أو بمقدم يستغل أموال القاصر في التجارة\n - أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما في حالة اختيار شعار أو اسم تجاري\n - صورة من الإذن و /أو الدبلوم أو الشهادة اللازمة لمزاولة النشاط المشروع فيه عند الاقتضاء.\n - مستخرج للعقد المتضمن بيان نظام الزوجية بالنسبة للتجار الأجانب عند الاقتضاء.\n - إذن رئيس المحكمة المنصوص عليه في المادة 16 من مدونة التجارة إذا كان التاجر الأجنبي قاصرا بالنظر إلى القانون المغربي\n - في حالة إنشاء أصل تجاري، نسخة من شهادة الملكية أو عقد الكراء أو عقد التوطين أو أي وثيقة أخرى تثبت تواجد المحل. في حالة التصريح بعنوان محل السكنى لمزاولة النشاط، يجب على الملزم الإدلاء بما يفيد إشعار مالك المحل عن نيته اتخاذ محل سكناه مقرا لمقاولته عند الا\n - شهادة  تثبت التشطيب على المالك السابق أو التشطيب على الأصل التجاري في حالة تملك الأصل التجاري عن طريق الشراء أو القسمة أو المزاد أو الهبة أو الشياع\n - التصريح نموذج 1 محرر   وموقع  من طرف الملزم أو وكيله المزود بوكالة كتابية\n - وكالة كتابية في حالة التسجيل بواسطة وكيل(ملاحظة: يجب أن تكون الوكالة مسجلة بإدارة التسجيل)\n - صورة من وثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل.\nÉtapes:\nغير محدد",
+        "PROCÉDURE: تسجيل شركة التوصية البسيطة بالسجل التجاري\nDescription: التسجيل بالسجل التجاري وفق المقتضيات المنصوص عليها قانونا، لكون المشرع ووفق المادة 37 من مدونة التجارة جعل التسجيل بالسجل التجاري أمرا إلزاميا على جميع التجار الذاتيين والاعتباريين مغاربة كانوا أو أجانب الذين يمارسون نشاطا تجاريا في تراب المملكة.\nهذا بالإضافة إلى أن  الشخصية الاعتبارية للشركات لا تكتسب إلا منذ تاريخ التسجيل في السجل التجاري ـــ مع الأخذ بعين الاعتبار أن شركات المحاصة لا تسجل بالسجل التجاري ولا تتمتع بالشخصية الاعتبارية ـــ\nفي إطار المراقبة التي يجريها كاتب الضبط للوثائق والمستندات المقدمة إليه-في غير الحالات التي يجب فيها قانونا الاحتفاظ بأصول الوثائق- يتعين على المرتفق الإدلاء بأصل الوثيقة ويتولى كاتب الضبط أمر نسخها وإرجاعها فورا إلى المعني بالأمر.\nوبالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء يجب أن يتم أمام كاتب الضبط الذي يشير بنفس الوثيقة  إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيع كاتب الضبط\nAdministration: وزارة العدل\nFrais: رسوم التسجيل بالسجل التجاري\n150 درهما عن التقييد\n200 درهما عن الإيداع\nDélai: (2) يومان\nDocuments requis:\n - وثائق الإيداع\n - أصل النظام الأساسي للشركة موقع من طرف جميع الشركاء أو من طرف وكيل مزود بوكالة كتابية و مسجل لدى إدارة التسجيل، أو نظير منه  .\n - نسخة من العقد الموقع والمسجل، الذي تم بمقتضاه تعيين المسير إذا تم هذا التعيين بمقتضى عقد منفصل .\n - أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما.\n - وثائق التسجيل\n - شهادة أصلية للتسجيل بالرسم المهني\n - صورة من عقد الكراء موقع ومسجل بإدارة التسجيل أو عقد التوطين موقع  أو أي وثيقة تثبت تواجد المحل .\n - صورة من الإذن و /أو الدبلوم أو الشهادة اللازمة لمزاولة النشاط المشروع فيه عند الاقتضاء. \" وفق ما تقضي به بعض النصوص الخاصة المتعلقة بممارسة بعض الأنشطة المنظمة\"\n - مستخرج للعقد المتضمن بيان نظام الزوجية بالنسبة للشريك المتضامن الأجنبي عند الاقتضاء.\n - نسخة من البطاقة الوطنية للتعريف الإلكترونية لجميع الشركاء المتضامنين والمسيرين المغاربة أو صورة لبطاقة التسجيل بالنسبة للأجانب المقيمين أو من جواز السفر بالنسبة للأجانب غير المقيمين أو ما يقوم مقامه لإثبات الهوية.\n - التصريح نموذج 2 محرر  وموقع  من طرف الملزم أو وكيله المزود بوكالة كتابية\n - وكالة كتابية في حالة التسجيل بواسطة وكيل  (ملاحظة: يجب أن تكون مسجلة بإدارة التسجيل) .\n - صورة من وثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل.\nÉtapes:\nغير محدد",
+        "PROCÉDURE: تسجيل شركة التضامن بالسجل التجاري\nDescription: التسجيل بالسجل التجاري وفق المقتضيات المنصوص عليها قانونا، لكون المشرع ووفق المادة 37 من مدونة التجارة جعل التسجيل بالسجل التجاري أمرا إلزاميا على جميع التجار الذاتيين والاعتباريين مغاربة كانوا أو أجانب الذين يمارسون نشاطا تجاريا في تراب المملكة.\nهذا بالإضافة إلى أن  الشخصية الاعتبارية للشركات لا تكتسب إلا منذ تاريخ التسجيل في السجل التجاري ـــ مع الأخذ بعين الاعتبار أن شركات المحاصة لا تسجل بالسجل التجاري ولا تتمتع بالشخصية الاعتبارية ـــ\nوفي إطار المراقبة التي يجريها كاتب الضبط للوثائق والمستندات المقدمة إليه-في غير الحالات التي يجب فيها قانونا الاحتفاظ بأصول الوثائق- يتعين على المرتفق الإدلاء بأصل الوثيقة ويتولى كاتب الضبط أمر نسخها وإرجاعها فورا إلى المعني بالأمر.\nوبالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء يجب أن يتم أمام كاتب الضبط الذي يشير بنفس الوثيقة  إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيع كاتب الضبط\nAdministration: وزارة العدل\nFrais: رسوم التسجيل بالسجل التجاري:350 درهما\n200 درهما عن الإيداع  \n150 درهما عن التقييد\nDélai: يومان\nDocuments requis:\n - وثائق الإيداع\n - أصل النظام الأساسي للشركة موقع  من طرف جميع الشركاء أو من طرف وكيل مزود بوكالة كتابية و مسجل  لدى إدارة التسجيل، أو نظير منه\n - نسخة من العقد الموقع والمسجل، الذي تم بمقتضاه تعيين المسير إذا تم هذا التعيين بمقتضى عقد منفصل\n - أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما\n - وثائق التسجيل\n - شهادة أصلية للتسجيل بالرسم المهني\n - شهادة التسجيل أو ما يقوم مقامها  إذا كان أحد الشركاء شخصا اعتباريا\n - صورة من عقد الكراء موقع ومسجل بإدارة التسجيل أو عقد التوطين موقع  أو أي وثيقة تثبت تواجد المحل\n - مستخرج للعقد المتضمن بيان نظام الزوجية بالنسبة للشريك الأجنبي، إن اقتضى الحال\n - صورة  من بطاقة التعريف الوطنية لجميع الشركاء والمسيرين أو صورة لبطاقة التسجيل بالنسبة للأجانب المقيمين أو صورة لجواز السفر بالنسبة للأجانب غير المقيمين أو ما يقوم مقامه لإثبات الهوية\n - التصريح نموذج 2 محرر وموقع  من طرف الملزم أو وكيله المزود بوكالة كتابية\n - صورة من الإذن و /أو الدبلوم أو الشهادة اللازمة لمزاولة النشاط المشروع فيه عند الاقتضاء. \" وفق ما تقضي به بعض النصوص الخاصة المتعلقة بممارسة بعض الأنشطة المنظمة\"\n - وكالة كتابية في حالة التسجيل بواسطة وكيل  (ملاحظة: يجب أن تكون مسجلة بإدارة التسجيل)\n - صورة لوثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 387,
+      "answer": "لتسجيل شخص ذاتي في السجل التجاري، الرسوم هي 150 درهما ويستغرق يومين.\n\nالمصدر: وزارة العدل.",
+      "generation_ms": 11452,
+      "prompt_tokens": 2419,
+      "output_tokens": 36,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.9322,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s030",
+      "question": "papiers pr immatriculer une sarl au rc ?",
+      "lang": "fr",
+      "category": "user_style",
+      "expected_ids": [
+        "fc846efc-f892-4a0b-9d96-7e18fdcb72a0"
+      ],
+      "reference": "La procédure concernée est « Immatriculation d'une société à responsabilité limitée (SARL) au registre du commerce » (Ministère de la Justice). Documents à fournir : Documents de dépôt ; Original des statuts de la société signés par tous les associés ou par un mandataire muni d'une procuration écrite et… ; Copie du contrat signé et enregistré, par lequel le gérant a été nommé si cette nomination a été faite par un contrat… ; Rapport du commissaire aux apports si les apports sont en nature. ; Attestation de blocage du capital ; Documents d'immatriculation. Frais : Frais d'inscription au registre de commerce : 200 dirhams pour le dépôt 150 dirhams pour l'enregistrement. Délai : (2) 2 jours.",
+      "must_include": [
+        "Documents de dépôt",
+        "Original des statuts de la société signés par tous les…"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "fc846efc-f892-4a0b-9d96-7e18fdcb72a0",
+        "68cf9a7c-dcd6-493c-a018-c25214041bee",
+        "a545aa1d-ec13-434b-9d23-ee788d54f233"
+      ],
+      "retrieved_titles": [
+        "Immatriculation d'une société à responsabilité limitée (SARL) au registre du commerce",
+        "Certificat d'inscription à la taxe professionnelle",
+        "Immatriculation d'une succursale d'une société située à l'étranger"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Immatriculation d'une société à responsabilité limitée (SARL) au registre du commerce\nDescription: L'immatriculation au registre du commerce conformément aux dispositions légales, le législateur ayant, en vertu de l'article 37 du Code de commerce, rendu l'immatriculation au registre du commerce obligatoire pour tous les commerçants, personnes physiques ou morales, marocains ou étrangers, exerçant une activité commerciale sur le territoire du Royaume.\nDe plus, la personnalité morale des sociétés n'est acquise qu'à compter de la date d'immatriculation au registre du commerce, étant entendu que les sociétés en participation ne sont pas immatriculées au registre du commerce et ne jouissent pas de la personnalité morale.\nDans le cadre du contrôle effectué par le greffier des documents et pièces qui lui sont présentés — sauf dans les cas où la loi exige la conservation des originaux — l'usager doit présenter le document original ; le greffier en fait une copie et le restitue immédiatement à l'intéressé.\nQuant à la signature des déclarations, contrats et documents soumis à cette procédure, elle doit être effectuée en présence du greffier, qui mentionne sur le document lui-même le nom du signataire, le numéro de sa carte nationale d'identité et sa qualité, et y appose le cachet du tribunal et sa signature.\nAdministration: Ministère de la Justice\nFrais: Frais d'inscription au registre de commerce :\n200 dirhams pour le dépôt\n150 dirhams pour l'enregistrement\nDélai: (2) 2 jours\nDocuments requis:\n - Documents de dépôt\n - Original des statuts de la société signés par tous les associés ou par un mandataire muni d'une procuration écrite et enregistré auprès de l'administration de l'enregistrement, ou une copie conforme.\n - Copie du contrat signé et enregistré en vertu duquel le gérant a été désigné, si cette désignation a été faite par un contrat séparé\n - Rapport du commissaire aux apports si les apports sont en nature.\n - Attestation de blocage du capital (au moins le quart), si les apports sont en numéraire et que le montant du capital fixé par les associés dépasse cent mille dirhams.\n - Documents d'inscription\n - Original du certificat négatif datant de moins de 90 jours\n - Copie du contrat de bail signé et enregistré auprès de l'administration de l'enregistrement ou du contrat de domiciliation signé ou de tout document attestant de l'existence du local.\n - Certificat d'immatriculation ou document en tenant lieu si l'un des associés est une personne morale.\n - Copie de l'autorisation et/ou du diplôme ou du certificat nécessaire à l'exercice de l'activité projetée, le cas échéant, conformément aux dispositions de certains textes spéciaux relatifs à l'exercice de certaines activités réglementées.\n - Copie de la carte nationale d'identité des gérants de la société ou de la carte d'immatriculation pour les étrangers résidant au Maroc, ou du passeport ou de tout document en tenant lieu pour justifier de l'identité des étrangers non résidents.\n - Déclaration (formulaire n° 2) établie et signée par le déclarant ou son mandataire muni d'une procuration écrite.\n - Procuration écrite en cas d'immatriculation par mandataire (Note : doit être enregistrée auprès de l'administration de l'enregistrement)\n - Copie de la pièce d'identité du mandataire en cas d'immatriculation par mandataire.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Certificat d'inscription à la taxe professionnelle\nDescription: Inscription à la taxe professionnelle\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 2 jours\nDocuments requis:\n - Personne physique ou morale déjà créée :\n - Demande électronique ou formulaire AAC050\n - Transfert du domicile fiscal, du siège social ou de l'établissement principal :\n - -N° de commande AAC050\n - - Copie du procès-verbal de transfert du siège (pour les personnes morales) ;\n - - Une copie du contrat de location enregistré.\n - ou une copie de la quittance de location\n - - Une copie de tout titre de propriété (propriété, bail ou bien commercial).\n - - Ou une copie du contrat de localisation.\n - Création d'une personne physique\n - Référence AAC50\n - - ou copie du contrat de domiciliation ;\n - - Copie de la carte nationale d'identité ou de la carte de séjour ;\n - - Copie de l'autorisation nécessaire pour l'exercice de l'activité (pour les activités réglementées).\n - Création d'une nouvelle personne morale : sociétés anonymes ; sociétés à responsabilité limitée ; sociétés en nom collectif et sociétés en commandite :\n - - Une copie des statuts de la société.\n - - Copie de la carte nationale d'identité, ou de la carte de séjour, ou du passeport, ou du registre de commerce du gérant, ou de l'équivalent du registre de commerce traduit pour les personnes morales non résidentes ;\n - - Copie de l'autorisation nécessaire pour l'exercice de l'activité (pour les activités réglementées) ;\n - - Copie du procès-verbal de nomination du gérant s'il n'est pas désigné dans les statuts (pour les sociétés à responsabilité limitée).\n - Coopératives :\n - - Copie de la décision d'autorisation publiée au Bulletin Officiel ;\n - - Copie de la carte nationale d'identité du président de la coopérative ;\n - ou copie de la quittance de loyer ;\n - Organismes de placement collectif en valeurs mobilières :\n - - Copie du règlement de gestion (pour les OPCVM) ou copie des statuts de la société enregistrés (pour les sociétés d'investissement à capital variable) ;\n - - Copie de l'autorisation délivrée par l'Autorité Marocaine du Marché des Capitaux ;\n - Sociétés mutualistes :\n - - Copie de l'arrêté conjoint du ministre de l'emploi et des affaires sociales et du ministre des finances ;\n - Copie de la carte nationale d'identité du président du conseil d'administration de la société.\n - Groupements d'intérêt économique :\n - - Copie du contrat de groupement ;\n - - Copie de la carte nationale d'identité du gérant du groupe ;\n - Établissements stables :\n - - Copie du contrat de bail ou d'achat enregistré ;\n - - Copie des statuts de la société mère, traduits si nécessaire ;\n - - Copie du procès-verbal de constitution de l'établissement stable ;\n - - Copie du marché ;\n - Copie de la carte nationale d'identité, ou du passeport, ou de la carte de séjour du représentant de l'établissement stable.\n - Sociétés concessionnaires de gestion d'un service public :\n - - Copie du contrat de concession ;\n - Fonds créés par un texte législatif ou réglementaire :\n - Copie de la décision de création du fonds.\n - Centres de gestion comptable agréés :\n - Copie de l'agrément.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Immatriculation d'une succursale d'une société située à l'étranger\nDescription: Immatriculation au registre du commerce conformément aux dispositions légales prévues, le législateur, en vertu de l'article 37 du Code de commerce, ayant rendu obligatoire l'immatriculation des succursales et agences des entreprises marocaines ou étrangères au registre du commerce.\nDans le cadre du contrôle effectué par le greffier sur les documents et pièces qui lui sont remis – sauf dans les cas où la conservation des originaux est légalement requise – le demandeur doit présenter l'original du document, et le greffier se charge de le copier et de le restituer immédiatement à l'intéressé.\nConcernant la signature des déclarations, contrats et documents soumis à cette procédure, elle doit être effectuée devant le greffier qui mentionne sur le même document le nom du signataire, le numéro de sa carte nationale, sa qualité, avec apposition du cachet du tribunal et la signature du greffier.\nAdministration: Ministère de la Justice\nFrais: Frais d'immatriculation au registre du commerce\n50 dirhams pour le dépôt,\n50 dirhams pour l'inscription.\nDélai: (2) 2 jours\nDocuments requis:\n - Documents de dépôt\n - Copie de la décision de création de la succursale ou de l’agence avec désignation du gérant, signée et enregistrée auprès de l’administration de l’enregistrement.\n - Original du certificat négatif datant de moins de 90 jours\n - Documents d'inscription\n - Certificat original d’inscription à la taxe professionnelle.\n - Certificat d'immatriculation de la société mère ou document équivalent.\n - Copie des statuts de la société mère ou document équivalent.\n - Copie du contrat de location ou de domiciliation ou tout autre document prouvant l'existence du local.\n - Copie de la carte d'identité nationale pour le gérant, ou copie de la carte d'immatriculation pour les étrangers résidents, ou copie du passeport ou document équivalent prouvant l'identité pour les étrangers non-résidents.\n - Déclaration modèle n° 3 établie et signée par le déclarant ou son mandataire muni d'une procuration écrite.\n - Procuration écrite en cas de dépôt par mandataire\n - Copie du document d'identité du mandataire en cas de dépôt par mandataire\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 343,
+      "answer": "Pour immatriculer une SARL au registre du commerce, vous aurez besoin des documents suivants, selon le Ministère de la Justice :\n\n**Documents de dépôt :**\n*   Original des statuts de la société signés par tous les associés ou par un mandataire muni d'une procuration écrite et enregistré auprès de l'administration de l'enregistrement, ou une copie conforme.\n*   Copie du contrat signé et enregistré en vertu duquel le gérant a été désigné, si cette désignation a été faite par un contrat séparé.\n*   Rapport du commissaire aux apports si les apports sont en nature.\n*   Attestation de blocage du capital (au moins le quart), si les apports sont en numéraire et que le montant du capital fixé par les associés dépasse cent mille dirhams.\n\n**Documents d'inscription :**\n*   Original du certificat négatif datant de moins de 90 jours.\n*   Copie du contrat de bail signé et enregistré auprès de l'administration de l'enregistrement ou du contrat de domiciliation signé ou de tout document attestant de l'existence du local.\n*   Certificat d'immatriculation ou document en tenant lieu si l'un des associés est une personne morale.\n*   Copie de l'autorisation et/ou du diplôme ou du certificat nécessaire à l'exercice de l'activité projetée, le cas échéant, conformément aux dispositions de certains textes spéciaux relatifs à l'exercice de certaines activités réglementées.\n*   Copie de la carte nationale d'identité des gérants de la société ou de la carte d'immatriculation pour les étrangers résidant au Maroc, ou du passeport ou de tout document en tenant lieu pour justifier de l'identité des étrangers non résidents.\n*   Déclaration (formulaire n° 2) établie et signée par le déclarant ou son mandataire muni d'une procuration écrite.\n*   Procuration écrite en cas d'immatriculation par mandataire (à noter : doit être enregistrée auprès de l'administration de l'enregistrement).\n*   Copie de la pièce d'identité du mandataire en cas d'immatriculation par mandataire.",
+      "generation_ms": 12929,
+      "prompt_tokens": 2318,
+      "output_tokens": 471,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8379,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s031",
+      "question": "أنا وشريكي نريد تأسيس شركة ذات مسؤولية محدودة، كيف نسجلها في السجل التجاري؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "fc846efc-f892-4a0b-9d96-7e18fdcb72a0"
+      ],
+      "reference": "الإجراء المعني هو « تسجيل شركة ذات المسؤولية المحدودة بالسجل التجاري » (وزارة العدل). الوثائق المطلوبة: وثائق الإيداع ؛ أصل النظام الأساسي للشركة موقع من طرف جميع الشركاء أو من طرف وكيل مزود بوكالة كتابية و مسجل لدى إدارة التسجيل، أو نظير… ؛ نسخة من العقد الموقع والمسجل، الذي تم بمقتضاه تعيين المسير إذا تم هذا التعيين بمقتضى عقد منفصل ؛ تقرير مراقب الحصص إذا كانت الحصص عينية . ؛ شهادة تجميد رأس المال ؛ وثائق التسجيل. الرسوم: رسوم التسجيل بالسجل التجاري : 200درهما عن الإيداع 150 درهما عن التقييد. الآجال: (2) يومان.",
+      "must_include": [
+        "وثائق الإيداع",
+        "أصل النظام الأساسي للشركة موقع من طرف جميع الشركاء أو من…"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "fc846efc-f892-4a0b-9d96-7e18fdcb72a0",
+        "0587b11b-d24e-4e52-bada-d4c1d46f0fc1",
+        "bf5773fa-d73e-4fc5-9b1c-c1bdf1e47213"
+      ],
+      "retrieved_titles": [
+        "Immatriculation d'une société à responsabilité limitée (SARL) au registre du commerce",
+        "Immatriculation d'une société en commandite simple au registre du commerce",
+        "Immatriculation d'une société en nom collectif au registre du commerce"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: تسجيل شركة ذات المسؤولية المحدودة بالسجل التجاري\nDescription: التسجيل بالسجل التجاري وفق المقتضيات المنصوص عليها قانونا، لكون المشرع ووفق المادة 37 من مدونة التجارة جعل التسجيل بالسجل التجاري أمرا إلزاميا على جميع التجار الذاتيين والاعتباريين مغاربة كانوا أو أجانب الذين يمارسون نشاطا تجاريا في تراب المملكة.\nهذا بالإضافة إلى أن  الشخصية الاعتبارية للشركات لا تكتسب إلا منذ تاريخ التسجيل في السجل التجاري ـــ مع الأخذ بعين الاعتبار أن شركات المحاصة لا تسجل بالسجل التجاري ولا تتمتع بالشخصية الاعتبارية-\nوفي إطار المراقبة التي يجريها كاتب الضبط للوثائق والمستندات المقدمة إليه-في غير الحالات التي يجب فيها قانونا الاحتفاظ بأصول الوثائق- يتعين على المرتفق الإدلاء بأصل الوثيقة ويتولى كاتب الضبط أمر نسخها وإرجاعها فورا إلى المعني بالأمر.\nوبالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء يجب أن يتم أمام كاتب الضبط الذي يشير بنفس الوثيقة  إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيع كاتب الضبط\nAdministration: وزارة العدل\nFrais: رسوم التسجيل بالسجل التجاري :\n200درهما عن الإيداع\n150 درهما عن التقييد\nDélai: (2) يومان\nDocuments requis:\n - وثائق الإيداع\n - أصل النظام الأساسي للشركة موقع من طرف جميع الشركاء أو من طرف وكيل مزود بوكالة كتابية و مسجل لدى إدارة التسجيل، أو نظير منه .\n - نسخة من العقد الموقع والمسجل، الذي تم بمقتضاه تعيين المسير إذا تم هذا التعيين بمقتضى عقد منفصل\n - تقرير مراقب الحصص إذا كانت الحصص عينية .\n - شهادة تجميد رأس المال (الربع على الأقل)، إذا كانت الحصص نقدية وكان مبلغ رأس المال المحدد من طرف الشركاء يتجاوز مائة ألف درهم\n - وثائق التسجيل\n - أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما\n - صورة من عقد الكراء موقع ومسجل بإدارة التسجيل أو عقد التوطين موقع أو أي وثيقة تثبت تواجد المحل .\n - شهادة التسجيل أو ما يقوم مقامها  إذا كان أحد الشركاء شخصا اعتباريا.\n - صورة من الإذن و /أو الدبلوم أو الشهادة اللازمة لمزاولة النشاط المشروع فيه عند الاقتضاء. \" وفق ما تقضي به بعض النصوص الخاصة المتعلقة بممارسة بعض الأنشطة المنظمة\"\n - صورة من بطاقة التعريف الوطنية لمسيري الشركة أو لبطاقة التسجيل بالنسبة للأجانب المقيمين بالمغرب أو لجواز السفر أو ما يقوم مقامه لإثبات الهوية بالنسبة للأجانب غير المقيمين بالمغرب.\n - التصريح نموذج 2 محرر وموقع  من طرف الملزم أو وكيله المزود بوكالة كتابية\n - وكالة كتابية في حالة التسجيل بواسطة وكيل(ملاحظة: يجب أن تكون مسجلة بإدارة التسجيل)\n - صورة  لوثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل.\nÉtapes:\nغير محدد",
+        "PROCÉDURE: تسجيل شركة التوصية البسيطة بالسجل التجاري\nDescription: التسجيل بالسجل التجاري وفق المقتضيات المنصوص عليها قانونا، لكون المشرع ووفق المادة 37 من مدونة التجارة جعل التسجيل بالسجل التجاري أمرا إلزاميا على جميع التجار الذاتيين والاعتباريين مغاربة كانوا أو أجانب الذين يمارسون نشاطا تجاريا في تراب المملكة.\nهذا بالإضافة إلى أن  الشخصية الاعتبارية للشركات لا تكتسب إلا منذ تاريخ التسجيل في السجل التجاري ـــ مع الأخذ بعين الاعتبار أن شركات المحاصة لا تسجل بالسجل التجاري ولا تتمتع بالشخصية الاعتبارية ـــ\nفي إطار المراقبة التي يجريها كاتب الضبط للوثائق والمستندات المقدمة إليه-في غير الحالات التي يجب فيها قانونا الاحتفاظ بأصول الوثائق- يتعين على المرتفق الإدلاء بأصل الوثيقة ويتولى كاتب الضبط أمر نسخها وإرجاعها فورا إلى المعني بالأمر.\nوبالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء يجب أن يتم أمام كاتب الضبط الذي يشير بنفس الوثيقة  إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيع كاتب الضبط\nAdministration: وزارة العدل\nFrais: رسوم التسجيل بالسجل التجاري\n150 درهما عن التقييد\n200 درهما عن الإيداع\nDélai: (2) يومان\nDocuments requis:\n - وثائق الإيداع\n - أصل النظام الأساسي للشركة موقع من طرف جميع الشركاء أو من طرف وكيل مزود بوكالة كتابية و مسجل لدى إدارة التسجيل، أو نظير منه  .\n - نسخة من العقد الموقع والمسجل، الذي تم بمقتضاه تعيين المسير إذا تم هذا التعيين بمقتضى عقد منفصل .\n - أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما.\n - وثائق التسجيل\n - شهادة أصلية للتسجيل بالرسم المهني\n - صورة من عقد الكراء موقع ومسجل بإدارة التسجيل أو عقد التوطين موقع  أو أي وثيقة تثبت تواجد المحل .\n - صورة من الإذن و /أو الدبلوم أو الشهادة اللازمة لمزاولة النشاط المشروع فيه عند الاقتضاء. \" وفق ما تقضي به بعض النصوص الخاصة المتعلقة بممارسة بعض الأنشطة المنظمة\"\n - مستخرج للعقد المتضمن بيان نظام الزوجية بالنسبة للشريك المتضامن الأجنبي عند الاقتضاء.\n - نسخة من البطاقة الوطنية للتعريف الإلكترونية لجميع الشركاء المتضامنين والمسيرين المغاربة أو صورة لبطاقة التسجيل بالنسبة للأجانب المقيمين أو من جواز السفر بالنسبة للأجانب غير المقيمين أو ما يقوم مقامه لإثبات الهوية.\n - التصريح نموذج 2 محرر  وموقع  من طرف الملزم أو وكيله المزود بوكالة كتابية\n - وكالة كتابية في حالة التسجيل بواسطة وكيل  (ملاحظة: يجب أن تكون مسجلة بإدارة التسجيل) .\n - صورة من وثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل.\nÉtapes:\nغير محدد",
+        "PROCÉDURE: تسجيل شركة التضامن بالسجل التجاري\nDescription: التسجيل بالسجل التجاري وفق المقتضيات المنصوص عليها قانونا، لكون المشرع ووفق المادة 37 من مدونة التجارة جعل التسجيل بالسجل التجاري أمرا إلزاميا على جميع التجار الذاتيين والاعتباريين مغاربة كانوا أو أجانب الذين يمارسون نشاطا تجاريا في تراب المملكة.\nهذا بالإضافة إلى أن  الشخصية الاعتبارية للشركات لا تكتسب إلا منذ تاريخ التسجيل في السجل التجاري ـــ مع الأخذ بعين الاعتبار أن شركات المحاصة لا تسجل بالسجل التجاري ولا تتمتع بالشخصية الاعتبارية ـــ\nوفي إطار المراقبة التي يجريها كاتب الضبط للوثائق والمستندات المقدمة إليه-في غير الحالات التي يجب فيها قانونا الاحتفاظ بأصول الوثائق- يتعين على المرتفق الإدلاء بأصل الوثيقة ويتولى كاتب الضبط أمر نسخها وإرجاعها فورا إلى المعني بالأمر.\nوبالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء يجب أن يتم أمام كاتب الضبط الذي يشير بنفس الوثيقة  إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيع كاتب الضبط\nAdministration: وزارة العدل\nFrais: رسوم التسجيل بالسجل التجاري:350 درهما\n200 درهما عن الإيداع  \n150 درهما عن التقييد\nDélai: يومان\nDocuments requis:\n - وثائق الإيداع\n - أصل النظام الأساسي للشركة موقع  من طرف جميع الشركاء أو من طرف وكيل مزود بوكالة كتابية و مسجل  لدى إدارة التسجيل، أو نظير منه\n - نسخة من العقد الموقع والمسجل، الذي تم بمقتضاه تعيين المسير إذا تم هذا التعيين بمقتضى عقد منفصل\n - أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما\n - وثائق التسجيل\n - شهادة أصلية للتسجيل بالرسم المهني\n - شهادة التسجيل أو ما يقوم مقامها  إذا كان أحد الشركاء شخصا اعتباريا\n - صورة من عقد الكراء موقع ومسجل بإدارة التسجيل أو عقد التوطين موقع  أو أي وثيقة تثبت تواجد المحل\n - مستخرج للعقد المتضمن بيان نظام الزوجية بالنسبة للشريك الأجنبي، إن اقتضى الحال\n - صورة  من بطاقة التعريف الوطنية لجميع الشركاء والمسيرين أو صورة لبطاقة التسجيل بالنسبة للأجانب المقيمين أو صورة لجواز السفر بالنسبة للأجانب غير المقيمين أو ما يقوم مقامه لإثبات الهوية\n - التصريح نموذج 2 محرر وموقع  من طرف الملزم أو وكيله المزود بوكالة كتابية\n - صورة من الإذن و /أو الدبلوم أو الشهادة اللازمة لمزاولة النشاط المشروع فيه عند الاقتضاء. \" وفق ما تقضي به بعض النصوص الخاصة المتعلقة بممارسة بعض الأنشطة المنظمة\"\n - وكالة كتابية في حالة التسجيل بواسطة وكيل  (ملاحظة: يجب أن تكون مسجلة بإدارة التسجيل)\n - صورة لوثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 254,
+      "answer": "لتسجيل شركتكم ذات المسؤولية المحدودة في السجل التجاري، إليك الإجراءات والمعلومات الرسمية المتاحة:\n\n**الإجراء:** تسجيل شركة ذات المسؤولية المحدودة بالسجل التجاري\n\n**الإدارة:** وزارة العدل\n\n**الرسوم:**\n*   200 درهما عن الإيداع\n*   150 درهما عن التقييد\n\n**الأجل:** يومان\n\n**الوثائق المطلوبة:**\n\n*   **وثائق الإيداع:**\n    *   أصل النظام الأساسي للشركة موقع من طرف جميع الشركاء أو من طرف وكيل مزود بوكالة كتابية ومسجل لدى إدارة التسجيل، أو نظير منه.\n    *   نسخة من العقد الموقع والمسجل، الذي تم بمقتضاه تعيين المسير إذا تم هذا التعيين بمقتضى عقد منفصل.\n    *   تقرير مراقب الحصص إذا كانت الحصص عينية.\n    *   شهادة تجميد رأس المال (الربع على الأقل)، إذا كانت الحصص نقدية وكان مبلغ رأس المال المحدد من طرف الشركاء يتجاوز مائة ألف درهم.\n\n*   **وثائق التسجيل:**\n    *   أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما.\n    *   صورة من عقد الكراء موقع ومسجل بإدارة التسجيل أو عقد التوطين موقع أو أي وثيقة تثبت تواجد المحل.\n    *   شهادة التسجيل أو ما يقوم مقامها إذا كان أحد الشركاء شخصا اعتباريا.\n    *   صورة من الإذن و/أو الدبلوم أو الشهادة اللازمة لمزاولة النشاط المشروع فيه عند الاقتضاء. \"وفق ما تقضي به بعض النصوص الخاصة المتعلقة بممارسة بعض الأنشطة المنظمة\".\n    *   صورة من بطاقة التعريف الوطنية لمسيري الشركة أو لبطاقة التسجيل بالنسبة للأجانب المقيمين بالمغرب أو لجواز السفر أو ما يقوم مقامه لإثبات الهوية بالنسبة للأجانب غير المقيمين بالمغرب.\n    *   التصريح نموذج 2 محرر وموقع من طرف الملزم أو وكيله المزود بوكالة كتابية.\n    *   وكالة كتابية في حالة التسجيل بواسطة وكيل (ملاحظة: يجب أن تكون مسجلة بإدارة التسجيل).\n    *   صورة لوثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل.\n\n**الخطوات:**\n*   الخطوات التفصيلية غير محددة ضمن المعلومات المتوفرة.\n\n**ملاحظات هامة:**\n*   التسجيل بالسجل التجاري إلزامي وفق المادة 37 من مدونة التجارة.\n*   تكتسب الشخصية الاعتبارية للشركات منذ تاريخ التسجيل في السجل التجاري (باستثناء شركات المحاصة).\n*   يتعين الإدلاء بأصل الوثيقة لكاتب الضبط لنسخها وإرجاعها فوراً.\n*   يجب أن يتم التوقيع على التصاريح والعقود والوثائق أمام كاتب الضبط.\n\nالمصدر: وزارة العدل",
+      "generation_ms": 9650,
+      "prompt_tokens": 2469,
+      "output_tokens": 693,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.79,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s032",
+      "question": "Avec trois associés on lance une SA, qu'est-ce qu'on dépose au greffe pour qu'elle existe légalement ?",
+      "lang": "fr",
+      "category": "documents",
+      "expected_ids": [
+        "3fee170c-39d9-4760-a695-e43e1417168d"
+      ],
+      "reference": "La procédure concernée est « Immatriculation d'une société anonyme au registre du commerce » (Ministère de la Justice). Documents à fournir : Documents de dépôt ; Original des statuts de la société signé par l'ensemble des actionnaires ou par un mandataire muni d'une procuration… ; Copie de l'acte de nomination des membres des organes d'administration ou de gestion et des commissaires aux comptes,… ; Original du certificat négatif datant de moins de 90 jours ; Certificat de blocage du capital ; Exemplaire du certificat de souscription et de versement indiquant les souscriptions au capital social et la part des…. Frais : Frais d'immatriculation au registre de commerce 200 dirhams par dépôt 150 dirhams par inscription. Délai : 2 jours.",
+      "must_include": [
+        "Documents de dépôt",
+        "Original des statuts de la société signé par l'ensemble des…"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "3fee170c-39d9-4760-a695-e43e1417168d",
+        "fc846efc-f892-4a0b-9d96-7e18fdcb72a0",
+        "b5d950ec-f1f2-4ce9-9dd1-b8b5070aea9e"
+      ],
+      "retrieved_titles": [
+        "Immatriculation d'une société anonyme au registre du commerce",
+        "Immatriculation d'une société à responsabilité limitée (SARL) au registre du commerce",
+        "Immatriculation de la société en commandite par actions au registre du commerce"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Immatriculation d'une société anonyme au registre du commerce\nDescription: En application des dispositions de l'article 50 du Code de commerce : « toute modification ou changement relatif aux données devant être inscrites au registre du commerce conformément aux articles 42 à 48 doit faire l'objet d'une demande d'inscription aux fins de modification. »\nEn cas d'apport en nature, le rapport du ou des commissaires aux apports doit être déposé au greffe, tenu à la disposition des futurs actionnaires cinq jours au moins avant la signature des statuts par ces derniers, en application des dispositions de l'article 26 de la loi sur les sociétés anonymes.\nDans le cadre du contrôle des documents et pièces présentés par le greffier – sauf dans les cas où la loi exige la conservation des originaux – l'usager doit présenter l'original du document et le greffier est chargé de le copier et de le restituer immédiatement à l'intéressé.\nConcernant la signature des déclarations, contrats et documents soumis à cette procédure, elle doit être effectuée devant le greffier qui indique sur le même document le nom du signataire, son numéro de carte nationale d'identité et sa qualité, avec apposition du cachet du tribunal et signature du greffier.\nAdministration: Ministère de la Justice\nFrais: Frais d'immatriculation au registre de commerce\n200 dirhams par dépôt\n150 dirhams par inscription\nDélai: 2 jours\nDocuments requis:\n - Documents de dépôt\n - Original des statuts de la société signé par l'ensemble des actionnaires ou par un mandataire muni d'une procuration écrite et enregistrée auprès de l'administration de l'enregistrement, ou une copie de celui-ci\n - Copie de l'acte de nomination des membres des organes d'administration ou de gestion et des commissaires aux comptes, signé et enregistré auprès de l'administration de l'enregistrement si cette nomination a été faite par acte séparé\n - Original du certificat négatif datant de moins de 90 jours\n - Certificat de blocage du capital (au moins le quart) si les apports sont en numéraire\n - Copie conforme du certificat de souscription et de versement indiquant les souscriptions au capital et la part des actions libérées par chaque actionnaire.\n - Bulletins de souscription pour les contrats non notariés\n - Liste des souscripteurs comprenant les noms et prénoms, adresses et nationalités des souscripteurs, ainsi que leurs qualités et professions, le nombre d'actions souscrites et le montant des versements effectués par chacun d'eux.\n - Original du rapport du commissaire aux apports, le cas échéant\n - Documents d'inscription\n - Copie du contrat de bail signé et enregistré auprès de l'administration de l'enregistrement, ou du contrat de domiciliation signé, ou de tout autre document justifiant l'existence du local\n - Certificat original d’inscription à la taxe professionnelle.\n - Certificat d'immatriculation ou document en tenant lieu si l'un des actionnaires est une personne morale\n - Copie de l'autorisation et/ou du diplôme ou du certificat requis pour l'exercice de l'activité projetée, le cas échéant, conformément aux dispositions de certains textes spéciaux relatifs à l'exercice de certaines activités réglementées\n - Copie de la carte d'identité nationale des membres des organes d'administration et des directeurs nommés pendant la durée de la société, ou copie de la carte d'immatriculation pour les étrangers résidant au Maroc, ou copie du passeport ou document équival\n - Déclaration modèle 2 rédigée et signée par le déclarant ou son mandataire muni d'une procuration écrite\n - Procuration écrite en cas d’inscription par mandataire (Note : la procuration doit être enregistrée auprès de l’administration de l’enregistrement).\n - Photocopie du document d'identité du mandataire en cas d'inscription par mandataire\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Immatriculation d'une société à responsabilité limitée (SARL) au registre du commerce\nDescription: L'immatriculation au registre du commerce conformément aux dispositions légales, le législateur ayant, en vertu de l'article 37 du Code de commerce, rendu l'immatriculation au registre du commerce obligatoire pour tous les commerçants, personnes physiques ou morales, marocains ou étrangers, exerçant une activité commerciale sur le territoire du Royaume.\nDe plus, la personnalité morale des sociétés n'est acquise qu'à compter de la date d'immatriculation au registre du commerce, étant entendu que les sociétés en participation ne sont pas immatriculées au registre du commerce et ne jouissent pas de la personnalité morale.\nDans le cadre du contrôle effectué par le greffier des documents et pièces qui lui sont présentés — sauf dans les cas où la loi exige la conservation des originaux — l'usager doit présenter le document original ; le greffier en fait une copie et le restitue immédiatement à l'intéressé.\nQuant à la signature des déclarations, contrats et documents soumis à cette procédure, elle doit être effectuée en présence du greffier, qui mentionne sur le document lui-même le nom du signataire, le numéro de sa carte nationale d'identité et sa qualité, et y appose le cachet du tribunal et sa signature.\nAdministration: Ministère de la Justice\nFrais: Frais d'inscription au registre de commerce :\n200 dirhams pour le dépôt\n150 dirhams pour l'enregistrement\nDélai: (2) 2 jours\nDocuments requis:\n - Documents de dépôt\n - Original des statuts de la société signés par tous les associés ou par un mandataire muni d'une procuration écrite et enregistré auprès de l'administration de l'enregistrement, ou une copie conforme.\n - Copie du contrat signé et enregistré en vertu duquel le gérant a été désigné, si cette désignation a été faite par un contrat séparé\n - Rapport du commissaire aux apports si les apports sont en nature.\n - Attestation de blocage du capital (au moins le quart), si les apports sont en numéraire et que le montant du capital fixé par les associés dépasse cent mille dirhams.\n - Documents d'inscription\n - Original du certificat négatif datant de moins de 90 jours\n - Copie du contrat de bail signé et enregistré auprès de l'administration de l'enregistrement ou du contrat de domiciliation signé ou de tout document attestant de l'existence du local.\n - Certificat d'immatriculation ou document en tenant lieu si l'un des associés est une personne morale.\n - Copie de l'autorisation et/ou du diplôme ou du certificat nécessaire à l'exercice de l'activité projetée, le cas échéant, conformément aux dispositions de certains textes spéciaux relatifs à l'exercice de certaines activités réglementées.\n - Copie de la carte nationale d'identité des gérants de la société ou de la carte d'immatriculation pour les étrangers résidant au Maroc, ou du passeport ou de tout document en tenant lieu pour justifier de l'identité des étrangers non résidents.\n - Déclaration (formulaire n° 2) établie et signée par le déclarant ou son mandataire muni d'une procuration écrite.\n - Procuration écrite en cas d'immatriculation par mandataire (Note : doit être enregistrée auprès de l'administration de l'enregistrement)\n - Copie de la pièce d'identité du mandataire en cas d'immatriculation par mandataire.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Immatriculation de la société en commandite par actions au registre du commerce\nDescription: L'immatriculation au registre du commerce conformément aux dispositions légales, le législateur ayant, en vertu de l'article 37 du Code de commerce, rendu l'immatriculation au registre du commerce obligatoire pour tous les commerçants personnes physiques ou morales, marocains ou étrangers, exerçant une activité commerciale sur le territoire du Royaume.\nEn outre, la personnalité morale des sociétés n'est acquise qu'à compter de la date d'immatriculation au registre du commerce – à l'exception des sociétés en participation qui ne sont pas immatriculées au registre du commerce et ne jouissent pas de la personnalité morale.\nDans le cadre du contrôle effectué par le greffier sur les documents et pièces qui lui sont présentés – sauf dans les cas où la loi impose la conservation des originaux – le requérant doit produire l'original du document, le greffier se charge de le copier et de le restituer immédiatement à l'intéressé.\nS'agissant de la signature des déclarations, contrats et documents soumis à cette procédure, elle doit intervenir devant le greffier qui mentionne sur le même document le nom du signataire, le numéro de sa carte nationale, sa qualité, avec apposition du cachet du tribunal et la signature du greffier.\nAdministration: Ministère de la Justice\nFrais: Frais d'inscription au registre de commerce\n200 dirhams pour le dépôt,\n150 dirhams pour l'immatriculation\nDélai: (2) 2 jours\nDocuments requis:\n - Documents de dépôt\n - Original des statuts de la société signés par tous les associés ou par un mandataire muni d'une procuration écrite et enregistrés auprès de l'administration de l'enregistrement, ou une copie conforme.\n - Copie du contrat signé et enregistré en vertu duquel le gérant a été désigné, si cette désignation a été faite par un contrat séparé\n - Bulletins de souscription pour les contrats non notariés\n - Original du certificat négatif datant de moins de 90 jours\n - Copie conforme du certificat de souscription et de versement indiquant les souscriptions au capital et la part des actions libérées par chaque actionnaire.\n - Liste des souscripteurs comprenant les noms et prénoms, adresses et nationalités des souscripteurs, ainsi que leurs qualités et professions, le nombre d'actions souscrites et le montant des versements effectués par chacun d'eux.\n - Documents d'inscription\n - Certificat original d’inscription à la taxe professionnelle.\n - Certificat d'immatriculation ou document en tenant lieu si l'un des associés est une personne morale.\n - Copie de l'autorisation et/ou du diplôme ou du certificat nécessaire à l'exercice de l'activité projetée, le cas échéant, conformément aux dispositions de certains textes spéciaux relatifs à l'exercice de certaines activités réglementées.\n - Copie du contrat de bail signé et enregistré auprès de l'administration de l'enregistrement, ou du contrat de domiciliation signé, ou de tout document prouvant l'existence du local.\n - Extrait de l'acte contenant l'indication du régime matrimonial pour l'associé commandité étranger, le cas échéant, et une copie de celui-ci.\n - Copie de la carte d'identité nationale de tous les associés commandités et gérants marocains, ou de la carte d'immatriculation pour les étrangers résidents, ou du passeport pour les étrangers non résidents, ou de tout document en tenant lieu justifiant l'\n - Déclaration modèle 2 rédigée et signée par le déclarant ou son mandataire muni d'une procuration écrite\n - Procuration écrite en cas d'inscription par mandataire \n(Note : la procuration doit être enregistrée auprès de l'administration de l'enregistrement).\n - Copie du document d'identité du mandataire en cas de dépôt par mandataire\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 430,
+      "answer": "Bonjour,\n\nPour l'immatriculation d'une société anonyme (SA) au registre du commerce, vous devez déposer les documents suivants auprès du greffe du tribunal, comme indiqué par le Ministère de la Justice :\n\n**Documents de dépôt :**\n*   Original des statuts de la société, signé par l'ensemble des actionnaires ou par un mandataire muni d'une procuration écrite et enregistrée auprès de l'administration de l'enregistrement, ou une copie de celui-ci.\n*   Copie de l'acte de nomination des membres des organes d'administration ou de gestion et des commissaires aux comptes, signé et enregistré auprès de l'administration de l'enregistrement, si cette nomination a été faite par acte séparé.\n*   Original du certificat négatif datant de moins de 90 jours.\n*   Certificat de blocage du capital (au moins le quart) si les apports sont en numéraire.\n*   Copie conforme du certificat de souscription et de versement indiquant les souscriptions au capital et la part des actions libérées par chaque actionnaire.\n*   Bulletins de souscription pour les contrats non notariés.\n*   Liste des souscripteurs comprenant les noms et prénoms, adresses et nationalités des souscripteurs, ainsi que leurs qualités et professions, le nombre d'actions souscrites et le montant des versements effectués par chacun d'eux.\n*   Original du rapport du commissaire aux apports, le cas échéant (en cas d'apport en nature, ce rapport doit être déposé au greffe et mis à disposition des futurs actionnaires cinq jours au moins avant la signature des statuts).\n\n**Documents d'inscription :**\n*   Copie du contrat de bail signé et enregistré auprès de l'administration de l'enregistrement, ou du contrat de domiciliation signé, ou de tout autre document justifiant l'existence du local.\n*   Certificat original d’inscription à la taxe professionnelle.\n*   Certificat d'immatriculation ou document en tenant lieu si l'un des actionnaires est une personne morale.\n*   Copie de l'autorisation et/ou du diplôme ou du certificat requis pour l'exercice de l'activité projetée, le cas échéant, conformément aux dispositions de certains textes spéciaux relatifs à l'exercice de certaines activités réglementées.\n*   Copie de la carte d'identité nationale des membres des organes d'administration et des directeurs nommés pendant la durée de la société, ou copie de la carte d'immatriculation pour les étrangers résidant au Maroc, ou copie du passeport ou document équivalent.\n*   Déclaration modèle 2 rédigée et signée par le déclarant ou son mandataire muni d'une procuration écrite.\n*   Procuration écrite en cas d’inscription par mandataire (la procuration doit être enregistrée auprès de l’administration de l’enregistrement).\n*   Photocopie du document d'identité du mandataire en cas d'inscription par mandataire.\n\n**Points importants à noter :**\n*   Concernant la signature des déclarations, contrats et documents soumis à cette procédure, elle doit être effectuée devant le greffier qui indique sur le même document le nom du signataire, son numéro de carte nationale d'identité et sa qualité, avec apposition du cachet du tribunal et signature du greffier.\n*   L'usager doit présenter l'original du document pour les pièces non soumises à conservation par la loi ; le greffier est chargé de le copier et de le restituer immédiatement.\n\n**Frais :**\n*   Frais d'immatriculation au registre de commerce : 200 dirhams par dépôt et 150 dirhams par inscription.\n\n**Délai :**\n*   Le délai est de 2 jours.\n\nSource : Ministère de la Justice.",
+      "generation_ms": 9162,
+      "prompt_tokens": 2738,
+      "output_tokens": 834,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.6335,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s033",
+      "question": "نحن ثلاثة إخوة نريد تأسيس شركة نكون فيها مسؤولين بالتضامن عن ديونها، كيف نسجلها؟",
+      "lang": "ar",
+      "category": "factual",
+      "expected_ids": [
+        "bf5773fa-d73e-4fc5-9b1c-c1bdf1e47213"
+      ],
+      "reference": "الإجراء المعني هو « تسجيل شركة التضامن بالسجل التجاري » (وزارة العدل). الوثائق المطلوبة: وثائق الإيداع ؛ أصل النظام الأساسي للشركة موقع من طرف جميع الشركاء أو من طرف وكيل مزود بوكالة كتابية و مسجل لدى إدارة التسجيل، أو نظير… ؛ نسخة من العقد الموقع والمسجل، الذي تم بمقتضاه تعيين المسير إذا تم هذا التعيين بمقتضى عقد منفصل ؛ أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما ؛ وثائق التسجيل ؛ شهادة أصلية للتسجيل بالرسم المهني. الرسوم: رسوم التسجيل بالسجل التجاري:350 درهما 200 درهما عن الإيداع 150 درهما عن التقييد. الآجال: يومان.",
+      "must_include": [
+        "وثائق الإيداع",
+        "أصل النظام الأساسي للشركة موقع من طرف جميع الشركاء أو من…"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "bf5773fa-d73e-4fc5-9b1c-c1bdf1e47213",
+        "c41112b4-7cb7-4260-a43e-f63e0eb50b26",
+        "b5d950ec-f1f2-4ce9-9dd1-b8b5070aea9e"
+      ],
+      "retrieved_titles": [
+        "Immatriculation d'une société en nom collectif au registre du commerce",
+        "Transformation d'une société anonyme en société en nom collectif",
+        "Immatriculation de la société en commandite par actions au registre du commerce"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: تسجيل شركة التضامن بالسجل التجاري\nDescription: التسجيل بالسجل التجاري وفق المقتضيات المنصوص عليها قانونا، لكون المشرع ووفق المادة 37 من مدونة التجارة جعل التسجيل بالسجل التجاري أمرا إلزاميا على جميع التجار الذاتيين والاعتباريين مغاربة كانوا أو أجانب الذين يمارسون نشاطا تجاريا في تراب المملكة.\nهذا بالإضافة إلى أن  الشخصية الاعتبارية للشركات لا تكتسب إلا منذ تاريخ التسجيل في السجل التجاري ـــ مع الأخذ بعين الاعتبار أن شركات المحاصة لا تسجل بالسجل التجاري ولا تتمتع بالشخصية الاعتبارية ـــ\nوفي إطار المراقبة التي يجريها كاتب الضبط للوثائق والمستندات المقدمة إليه-في غير الحالات التي يجب فيها قانونا الاحتفاظ بأصول الوثائق- يتعين على المرتفق الإدلاء بأصل الوثيقة ويتولى كاتب الضبط أمر نسخها وإرجاعها فورا إلى المعني بالأمر.\nوبالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء يجب أن يتم أمام كاتب الضبط الذي يشير بنفس الوثيقة  إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيع كاتب الضبط\nAdministration: وزارة العدل\nFrais: رسوم التسجيل بالسجل التجاري:350 درهما\n200 درهما عن الإيداع  \n150 درهما عن التقييد\nDélai: يومان\nDocuments requis:\n - وثائق الإيداع\n - أصل النظام الأساسي للشركة موقع  من طرف جميع الشركاء أو من طرف وكيل مزود بوكالة كتابية و مسجل  لدى إدارة التسجيل، أو نظير منه\n - نسخة من العقد الموقع والمسجل، الذي تم بمقتضاه تعيين المسير إذا تم هذا التعيين بمقتضى عقد منفصل\n - أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما\n - وثائق التسجيل\n - شهادة أصلية للتسجيل بالرسم المهني\n - شهادة التسجيل أو ما يقوم مقامها  إذا كان أحد الشركاء شخصا اعتباريا\n - صورة من عقد الكراء موقع ومسجل بإدارة التسجيل أو عقد التوطين موقع  أو أي وثيقة تثبت تواجد المحل\n - مستخرج للعقد المتضمن بيان نظام الزوجية بالنسبة للشريك الأجنبي، إن اقتضى الحال\n - صورة  من بطاقة التعريف الوطنية لجميع الشركاء والمسيرين أو صورة لبطاقة التسجيل بالنسبة للأجانب المقيمين أو صورة لجواز السفر بالنسبة للأجانب غير المقيمين أو ما يقوم مقامه لإثبات الهوية\n - التصريح نموذج 2 محرر وموقع  من طرف الملزم أو وكيله المزود بوكالة كتابية\n - صورة من الإذن و /أو الدبلوم أو الشهادة اللازمة لمزاولة النشاط المشروع فيه عند الاقتضاء. \" وفق ما تقضي به بعض النصوص الخاصة المتعلقة بممارسة بعض الأنشطة المنظمة\"\n - وكالة كتابية في حالة التسجيل بواسطة وكيل  (ملاحظة: يجب أن تكون مسجلة بإدارة التسجيل)\n - صورة لوثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل\nÉtapes:\nغير محدد",
+        "PROCÉDURE: تحويل شركة مساهمة إلى شركة تضامن\nDescription: تطبيقا لمقتضيات المادة 50 من مدونة التجارة \" يجب أن يكون كل تغيير أو تعديل يتعلق بالبيانات الواجب تقييدها بالسجل التجاري طبقا للمواد من 42 إلى 48 محل طلب تقييد من أجل التعديل.\nفي إطار المراقبة التي يجريها كاتب الضبط للوثائق والمستندات المقدمة إليه-في غير الحالات التي يجب فيها قانونا الاحتفاظ بأصول الوثائق- يتعين على المرتفق الإدلاء بأصل الوثيقة ويتولى كاتب الضبط أمر نسخها وإرجاعها فورا إلى المعني بالأمر.\nوبالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء يجب أن يتم أمام كاتب الضبط الذي يشير بنفس الوثيقة  إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيع كاتب الضبط\nAdministration: وزارة العدل\nFrais: رسوم التسجيل بالسجل التجاري: 100 درهم \n\n50 درهما عن الإيداع\n50 درهما عن التقييد\nDélai: يومان\nDocuments requis:\n - وثائق الإيداع\n - نسخة من محضر الجمعية العمومية التي تقرر بمقتضاها تحويل الشكل القانوني للشركة موقع و مسجل  لدى إدارة التسجيل ، مع الأخذ بعين الاعتبار المقتضيات الواردة في المادة 220 من قانون شركات المساهمة\n - تقرير مراقب أو مراقبي حسابات الشركة، يشهد على أن الوضعية الصافية للشركة لا  قل عن رأسمالها، مع الأخذ بعين الاعتبار المقتضيات الواردة في المادة 220 من قانون شركات المساهمة\n - أصل النظام الأساسي المنقح للشركة موقع  من طرف جميع الشركاء أو من طرف وكيل مزود بوكالة كتابية و مسجل لدى إدارة التسجيل، أو نظير منه\n - وثائق التقييد\n - صورة من بطاقة التعريف الوطنية بالنسبة لمسيري الشركة والشركاء أو صورة من بطاقة التسجيل بالنسبة للأجانب المقيمين بالمغرب أو من جواز السفر بالنسبة للأجانب غير المقيمين بالمغرب أو ما يقوم مقامه\n - مستخرج العقد المتضمن بيان نظام الزوجية بالنسبة للشركاء الأجانب إن اقتضى الحال\n - شهادة أصلية للتسجيل بالرسم المهني تتضمن الشكل الجديد للشركة\n - التصريح نموذج 1/ 4 محرر وموقع  من طرف الملزم أو وكيله المزود بوكالة كتابية\n - وكالة كتابية في حالة التسجيل بواسطة وكيل المادة 38 من مدونة التجارة\".(ملاحظة: يجب أن تكون الوكالة مسجلة بإدارة التسجيل)\n - صورة لوثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل.\nÉtapes:\nغير محدد",
+        "PROCÉDURE: تسجيل شركة التوصية بالأسهم بالسجل التجاري\nDescription: التسجيل بالسجل التجاري وفق المقتضيات المنصوص عليها قانونا، لكون المشرع ووفق المادة 37 من مدونة التجارة جعل التسجيل بالسجل التجاري أمرا إلزاميا على جميع التجار الذاتيين والاعتباريين مغاربة كانوا أو أجانب الذين يمارسون نشاطا تجاريا في تراب المملكة.\nهذا بالإضافة إلى أن  الشخصية المعنوية للشركات لا تكتسب إلا منذ تاريخ التسجيل في السجل التجاري ـــ مع الأخذ بعين الاعتبار أن شركات المحاصة لا تسجل بالسجل التجاري ولا تتمتع بالشخصية المعنويةـــ\nفي إطار المراقبة التي يجريها كاتب الضبط للوثائق والمستندات المقدمة إليه-في غير الحالات التي يجب فيها قانونا الاحتفاظ بأصول الوثائق- يتعين على المرتفق الإدلاء بأصل الوثيقة ويتولى كاتب الضبط أمر نسخها وإرجاعها فورا إلى المعني بالأمر.\nوبالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء يجب أن يتم أمام كاتب الضبط الذي يشير بنفس الوثيقة  إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيع كاتب الضبط\nAdministration: وزارة العدل\nFrais: رسوم التسجيل بالسجل التجاري\n200درهما عن الإيداع, \n150 درهما عن التقييد\nDélai: (2) يومان\nDocuments requis:\n - وثائق الإيداع\n - أصل النظام الأساسي للشركة موقع من طرف جميع الشركاء أو من طرف وكيل مزود بوكالة كتابية و مسجل لدى إدارة التسجيل، أو نظير منه  .\n - نسخة من العقد الموقع والمسجل، الذي تم بمقتضاه تعيين المسير إذا تم هذا التعيين بمقتضى عقد منفصل\n - أوراق الاكتتاب بالنسبة للعقود الغير الموثقة\n - أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما\n - نظير من شهادة  الاكتتاب والدفع  تبين الاكتتابات في رأس المال وكذا حصة الأسهم المحررة من طرف كل مساهم\n - قائمة المكتتبين تتضمن الأسماء الشخصية والعائلية وعناوين وجنسيات المكتتبين بالإضافة إلى صفاتهم ومهنهم وعدد الأسهم المكتتبة ومبلغ الدفعات التي قام بها كل واحد منهم .\n - وثائق التسجيل\n - شهادة أصلية للتسجيل بالرسم المهني\n - شهادة التسجيل أو ما يقوم مقامها  إذا كان أحد الشركاء شخصا اعتباريا.\n - صورة من الإذن و /أو الدبلوم أو الشهادة اللازمة لمزاولة النشاط المشروع فيه عند الاقتضاء. \" وفق ما تقضي به بعض النصوص الخاصة المتعلقة بممارسة بعض الأنشطة المنظمة\"\n - صورة من عقد الكراء موقع  ومسجل بإدارة التسجيل أو عقد التوطين موقع  أو أي وثيقة تثبت تواجد المحل .\n - مستخرج للعقد المتضمن بيان نظام الزوجية بالنسبة للشريك المتضامن الأجنبي عند الاقتضاء وصورة منه.\n - صورة من بطاقة التعريف الوطنية لجميع الشركاء المتضامنين والمسيرين المغاربة أو من بطاقة التسجيل بالنسبة للأجانب المقيمين أو من جواز السفر بالنسبة للأجانب غير المقيمين أو ما يقوم مقامه لإثبات الهوية.\n - التصريح نموذج 2 محرر  وموقع  من طرف الملزم أو وكيله المزود بوكالة كتابية\n - وكالة كتابية في حالة التسجيل بواسطة وكيل \n(ملاحظة: يجب أن تكون الوكالة مسجلة بإدارة التسجيل)\n - صورة لوثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل.\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 432,
+      "answer": "بناءً على المعلومات الرسمية المتوفرة، لتأسيس شركة تضامن تكونوا فيها مسؤولين بالتضامن عن ديونها، يمكنكم اتباع الإجراءات التالية:\n\n**الإجراء:** تسجيل شركة التضامن بالسجل التجاري\n\n**الإدارة:** وزارة العدل\n\n**الرسوم:**\n*   رسوم التسجيل بالسجل التجاري: 350 درهماً\n    *   200 درهماً عن الإيداع\n    *   150 درهماً عن التقييد\n\n**الآجال:** يومان\n\n**الوثائق المطلوبة:**\n\n**وثائق الإيداع:**\n1.  أصل النظام الأساسي للشركة موقع من طرف جميع الشركاء (أو من طرف وكيل مزود بوكالة كتابية) ومسجل لدى إدارة التسجيل، أو نظير منه.\n2.  نسخة من العقد الموقع والمسجل، الذي تم بمقتضاه تعيين المسير إذا تم هذا التعيين بمقتضى عقد منفصل.\n3.  أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوماً.\n\n**وثائق التسجيل:**\n1.  شهادة أصلية للتسجيل بالرسم المهني.\n2.  شهادة التسجيل أو ما يقوم مقامها إذا كان أحد الشركاء شخصاً اعتبارياً (غير منطبق في حالتكم كأفراد).\n3.  صورة من عقد الكراء موقع ومسجل بإدارة التسجيل أو عقد التوطين موقع أو أي وثيقة تثبت تواجد المحل.\n4.  مستخرج للعقد المتضمن بيان نظام الزوجية بالنسبة للشريك الأجنبي، إن اقتضى الحال (غير منطبق إذا كنتم جميعاً مواطنين مغاربة).\n5.  صورة من بطاقة التعريف الوطنية لجميع الشركاء والمسيرين (أو صورة لبطاقة التسجيل بالنسبة للأجانب المقيمين أو صورة لجواز السفر بالنسبة للأجانب غير المقيمين أو ما يقوم مقامه لإثبات الهوية).\n6.  التصريح نموذج 2 محرر وموقع من طرف الملزم أو وكيله المزود بوكالة كتابية.\n7.  صورة من الإذن و/أو الدبلوم أو الشهادة اللازمة لمزاولة النشاط المشروع فيه عند الاقتضاء. \"وفق ما تقضي به بعض النصوص الخاصة المتعلقة بممارسة بعض الأنشطة المنظمة\".\n8.  وكالة كتابية في حالة التسجيل بواسطة وكيل (ملاحظة: يجب أن تكون مسجلة بإدارة التسجيل).\n9.  صورة لوثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل.\n\n**ملاحظات إضافية:**\n*   في إطار المراقبة، يتعين على المرتفق الإدلاء بأصل الوثيقة ويتولى كاتب الضبط أمر نسخها وإرجاعها فورا إلى المعني بالأمر.\n*   بالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء يجب أن يتم أمام كاتب الضبط الذي يشير بنفس الوثيقة إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيع كاتب الضبط.\n\n**الخطوات:** غير محددة في المعلومات المتوفرة.",
+      "generation_ms": 11903,
+      "prompt_tokens": 2501,
+      "output_tokens": 716,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.96,
+        "answer_relevancy": 0.6463,
+        "context_precision": 0.8333,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s034",
+      "question": "Je suis développeur freelance et je veux un statut simple pour facturer mes clients, comment m'inscrire ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "67c629df-d219-49bd-a6f9-99851643c797"
+      ],
+      "reference": "La procédure concernée est « Inscription au régime de l’auto-entrepreneur » (Barid Al-Maghrib Sa). Documents à fournir : Photo d’identité ; Copie de la carte d’identité nationale ; Demande d’inscription. Frais : Pour la Poste, Banque Gratuit Attijari Wafa Bank : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service. Banque Populaire : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service. Attijari Wafa Bank Dar Assafaa : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service. Fondation Banque Populaire pour le micro-crédit : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service. Banque Marocaine du Commerce Extérieur : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service. Crédit Agricole : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service. Crédit Immobilier et Touristique : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service.. Délai : 15 jours.",
+      "must_include": [
+        "Photo d’identité",
+        "Copie de la carte d’identité nationale"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "67c629df-d219-49bd-a6f9-99851643c797",
+        "fadff82a-f880-4427-8b74-fa8e3c972b7c",
+        "0587b11b-d24e-4e52-bada-d4c1d46f0fc1"
+      ],
+      "retrieved_titles": [
+        "Inscription au régime de l’auto-entrepreneur",
+        "Statut d’opérateur économique agréé – Simplifications douanières",
+        "Immatriculation d'une société en commandite simple au registre du commerce"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Inscription au régime de l’auto-entrepreneur\nDescription: Détermination des modalités d’inscription au registre national de l’auto-entrepreneur en vue de l’obtention du statut d’auto-entrepreneur.\nAdministration: Barid Al-Maghrib Sa\nFrais: Pour la Poste, Banque Gratuit\nAttijari Wafa Bank : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service.\nBanque Populaire : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service.\nAttijari Wafa Bank Dar Assafaa : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service.\nFondation Banque Populaire pour le micro-crédit : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service.\nBanque Marocaine du Commerce Extérieur : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service.\nCrédit Agricole : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service.\nCrédit Immobilier et Touristique : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service.\nDélai: 15 jours\nDocuments requis:\n - Photo d’identité\n - Copie de la carte d’identité nationale\n - Demande d’inscription\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Statut d’opérateur économique agréé – Simplifications douanières\nDescription: – Accompagnement de l'évolution du tissu économique national afin de l'encadrer et de le qualifier à tous les niveaux ;\n– Développement et promotion de la culture participative avec le secteur privé ;\n– Renforcement de la coopération avec les administrations douanières partenaires.\nLes entreprises titulaires de l'autorisation de statut d’opérateur économique agréé – Simplifications douanières – bénéficient également d’un ensemble de facilités douanières leur permettant de simplifier et de réaliser les opérations commerciales dans des conditions appropriées, sachant que cette autorisation se divise en deux catégories : – Opérateur économique agréé – Simplifications douanières – Catégorie A – et – Opérateur économique agréé – Simplifications douanières – Catégorie B –.\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Demande d’autorisation de statut d’opérateur économique accepté – Simplifications douanières\n - Rapport d’audit réalisé par le cabinet d’audit choisi par l’entreprise conformément au référentiel défini par l’Administration.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Immatriculation d'une société en commandite simple au registre du commerce\nDescription: Immatriculation au registre du commerce conformément aux prescriptions légales. En vertu de l'article 37 du Code de commerce, le législateur a rendu obligatoire l'immatriculation au registre du commerce pour tous les commerçants, personnes physiques ou morales, marocains ou étrangers, exerçant une activité commerciale sur le territoire du Royaume.\nPar ailleurs, la personnalité morale des sociétés n'est acquise qu'à compter de la date d'immatriculation au registre du commerce – étant rappelé que les sociétés en participation ne sont pas immatriculées au registre du commerce et ne jouissent pas de la personnalité morale.\nDans le cadre du contrôle opéré par le greffier sur les documents et pièces qui lui sont présentés – sauf dans les cas où la loi exige la conservation des originaux – l'usager doit présenter l'original du document ; le greffier en fait une copie et restitue immédiatement l'original à l'intéressé.\nLa signature des déclarations, contrats et documents soumis à cette procédure doit être apposée en présence du greffier qui indique sur le même document le nom du signataire, le numéro de sa carte nationale, sa qualité, y appose le timbre du tribunal et sa propre signature.\nAdministration: Ministère de la Justice\nFrais: Droits d'enregistrement au registre du commerce\n150 dirhams pour l'inscription\n200 dirhams pour le dépôt\nDélai: (2) 2 jours\nDocuments requis:\n - Documents de dépôt\n - Original des statuts de la société signés par tous les associés ou par un mandataire muni d'une procuration écrite et enregistrés auprès de l'administration de l'enregistrement, ou une copie conforme.\n - Copie du contrat signé et enregistré, par lequel a été nommé le gérant si cette nomination a été faite par contrat séparé.\n - Original du certificat négatif datant de moins de 90 jours.\n - Documents d'inscription\n - Certificat original d’inscription à la taxe professionnelle.\n - Copie du contrat de bail signé et enregistré auprès de l'administration de l'enregistrement, ou contrat de domiciliation signé, ou tout document prouvant l'existence du local.\n - Copie de l'autorisation et/ou du diplôme ou du certificat nécessaire à l'exercice de l'activité projetée, le cas échéant, conformément aux dispositions de certains textes spéciaux relatifs à l'exercice de certaines activités réglementées.\n - Extrait du contrat comportant l'indication du régime matrimonial pour l'associé commandité étranger, le cas échéant.\n - Copie de la carte nationale d'identité électronique pour tous les associés commandités et gérants marocains, ou copie de la carte d'immatriculation pour les étrangers résidents, ou du passeport pour les étrangers non-résidents, ou tout document équivalent\n - Déclaration modèle 2 rédigée et signée par le déclarant ou son mandataire muni d'une procuration écrite\n - Procuration écrite en cas d'immatriculation par mandataire (note : elle doit être enregistrée auprès de l'administration de l'enregistrement).\n - Photocopie du document d'identité du mandataire en cas d'inscription par mandataire.\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 385,
+      "answer": "Pour vous inscrire et obtenir un statut simple pour facturer vos clients en tant que développeur freelance, la procédure d'inscription au régime de l'auto-entrepreneur est disponible.\n\nVoici les informations officielles concernant cette procédure :\n\n*   **Description :** Elle détermine les modalités d’inscription au registre national de l’auto-entrepreneur en vue de l’obtention de ce statut.\n*   **Administration :** Barid Al-Maghrib Sa.\n*   **Frais :**\n    *   Pour la Poste et Banque Gratuit : Gratuit.\n    *   Pour d'autres banques (comme Attijari Wafa Bank, Banque Populaire, Attijari Wafa Bank Dar Assafaa, Fondation Banque Populaire pour le micro-crédit, Banque Marocaine du Commerce Extérieur, Crédit Agricole, Crédit Immobilier et Touristique), les frais varient d'une banque à l'autre, car Poste Maroc a mandaté ces banques pour recevoir la demande moyennant une commission déterminée.\n*   **Délai :** 15 jours.\n*   **Documents requis :**\n    *   Photo d’identité\n    *   Copie de la carte d’identité nationale\n    *   Demande d’inscription\n\n(Source : Barid Al-Maghrib Sa)",
+      "generation_ms": 9029,
+      "prompt_tokens": 1728,
+      "output_tokens": 286,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.6622,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s035",
+      "question": "كيفاش نسجل راسي أوطو أونطروبرونور فالبريد؟",
+      "lang": "ar",
+      "category": "user_style",
+      "expected_ids": [
+        "67c629df-d219-49bd-a6f9-99851643c797"
+      ],
+      "reference": "الإجراء المعني هو « الانخراط في نظام المقاول الذاتي » (بريد المغرب). الوثائق المطلوبة: صورة شخصية ؛ نسخة من البطاقة الوطنية للتعريف ؛ طلب التسجيل. الرسوم: بالنسبة للبريد بنكمجانامجانا التجاري وفابنكتختلف من بنك لآخربريد المغرب قام بتفويض هاته الابناك للقيام بتلقي طلب القرار الإداري مقابل عمولة معينة تختلف من بنك لآخر على حسب نوعية الخدمة البنك الشعبيتختلف من بنك لآخربريد المغرب قام بتفويض هاته الابناك للقيام بتلقي طلب القرار الإداري مقابل عمولة معينة تختلف من بنك لآخر على حسب نوعية الخدمة التجاري وفابنك دار الصفاءتختلف من بنك لآخربريد المغرب قام بتفويض هاته الابناك للقيام بتلقي طلب القرار الإداري مقابل عمولة معينة تختلف من بنك لآخر على حسب نوعية الخدمة مؤسسة البنك الشعبي للقروض الصغرىتختلف من بنك لآخربريد المغرب قام بتفويض هاته الابناك للقيام بتلقي طلب القرار الإداري مقابل عمولة معينة تختلف من بنك لآخر على حسب نوعية الخدمة البنك المغربي للتجارة الخارجيةتختلف من بنك لآخربريد المغرب قام بتفويض هاته الابناك للقيام بتلقي طلب القرار الإداري مقابل عمولة معينة تختلف من بنك لآخر على حسب نوعية الخدمة القرض الفلاحيتختلف من بنك لآخربريد المغرب قام بتفويض هاته الابناك للقيام بتلقي طلب القرار الإداري مقابل عمولة معينة تختلف من بنك لآخر على حسب نوعية الخدمة القرض العقاري و السياحيتختلف من بنك لآخربريد المغرب قام بتفويض هاته الابناك للقيام بتلقي طلب القرار الإداري مقابل عمولة معينة تختلف من بنك لآخر على حسب نوعية الخدمة. الآجال: 15 يوم.",
+      "must_include": [
+        "صورة شخصية",
+        "نسخة من البطاقة الوطنية للتعريف"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "681e35de-db81-4b9a-9e84-c9dcc68aaffa",
+        "48a37408-817e-451e-9ba6-a31ce3258c12",
+        "de97dd1c-d2ca-4698-86f4-e784317ac6a8"
+      ],
+      "retrieved_titles": [
+        "Avis technique de l’Office concernant la demande d’exonération douanière (Avis technique ONICL/DFD) dans le cadre des accords conclus entre le Maroc et ses partenaires économiques (Union européenne, États-Unis d’Amérique, Royaume-Uni de Grande-Bretagne et d’Irlande du Nord)",
+        "Certificat de mainlevée de saisie conservatoire",
+        "Certificat de mainlevée de la saisie conservatoire sur les navires"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: الرأي التقني للمكتب حول طلب الاعفاء الجمركي (Avis technique ONICL/DFD) في اطار الاتفاقيات المبرمة بين المغرب وشركائه الاقتصاديين (الاتحاد الأوروبي والولايات المتحدة الامريكية والمملكة المتحدة لبريطانيا العظمى و إيرلاندا الشمالية)\nDescription: استيراد حصص الحبوب و القطاني بموجب الاتفاقيات المبرمة بين المغرب وشركائه الاقتصاديين (الاتحاد الأوروبي والولايات المتحدة الامريكية والمملكة المتحدة لبريطانيا العظمى و إيرلاندا الشمالية)\nAdministration: المكتب الوطني المهني للحبوب والقطاني\nFrais: بالمجان\nDélai: يوم واحد\nDocuments requis:\n - طلب الاعفاء الجمركي\n - إقرار بالعائدات أو نسخة من شهادة إيداع شيك مصرفي صادرة عن الخزينة العامة للمملكة ، أو أي مستند آخر يبرر دفع مبلغ القسط\n - نسخة من وثيقة الشحن(connaissement) تبرر استيراد الكمية التي يغطيها طلب الامتياز الجمركي\n - نسخة من الفاتورة التجارية\n - إقرار بالأداء وفقًا للملحق الثالث لدفتر الشروط الخاصة\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة رفع اليد عن الحجز التحفظي\nDescription: استخلاص المتأخرات الضريبية\nAdministration: وزارة الاقتصاد والمالية-الخزينة العامة للمملكة\nFrais: مجانا\nDélai: 05 أيام\nDocuments requis:\n - طلب الحصول على شهادة رفع اليد عن الحجز التحفظي\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة رفع اليد على الحجز التحفظي على البواخر\nDescription: استخلاص المتأخرات الضريبية\nAdministration: وزارة الاقتصاد والمالية-الخزينة العامة للمملكة\nFrais: بالمجان\nDélai: 05 أيام\nDocuments requis:\n - طلب الحصول على شهادة رفع اليد عن الحجز التحفظي على البواخر\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 313,
+      "answer": "لا أتوفر على معلومات حول إجراءات تسجيل المقاول الذاتي \"أوطو أونطروبرونور\" بالبريد.",
+      "generation_ms": 6823,
+      "prompt_tokens": 665,
+      "output_tokens": 30,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "context_recall": 0.0,
+        "refusal": 1.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s036",
+      "question": "J'ai arrêté mon activité, comment obtenir le document qui prouve que je ne suis plus soumis à la taxe professionnelle ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "17786404-87be-4b41-8364-bc1fe51e1b27"
+      ],
+      "reference": "La procédure concernée est « Certificat de radiation de la taxe professionnelle » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : Pour les demandes électroniques ; Demande électronique ; Pour les demandes non électroniques, pour les personnes physiques ; Cas de transfert du domicile fiscal ou de l'établissement principal ; Demande formulaire n° AAC350 ; Déclaration de transfert de domicile fiscal ou d'établissement principal. Frais : Gratuit. Délai : 2 jours.",
+      "must_include": [
+        "Pour les demandes électroniques",
+        "Demande électronique",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "17786404-87be-4b41-8364-bc1fe51e1b27",
+        "68cf9a7c-dcd6-493c-a018-c25214041bee",
+        "14f32915-b287-4df5-a166-027cd562da19"
+      ],
+      "retrieved_titles": [
+        "Certificat de radiation de la taxe professionnelle",
+        "Certificat d'inscription à la taxe professionnelle",
+        "Attestation d'exonération de la taxe d'habitation et de la taxe des services communaux"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Certificat de radiation de la taxe professionnelle\nDescription: Attestation de radiation de la taxe professionnelle\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 2 jours\nDocuments requis:\n - Pour les demandes électroniques :\n - • Demande électronique\n - Pour les demandes non électroniques, pour les personnes physiques :\n - Cas de transfert du domicile fiscal ou de l'établissement principal\n - • Demande formulaire n° AAC350 ;\n - • Déclaration de transfert de domicile fiscal ou d'établissement principal (formulaire ADC140) ;\n - • Résiliation du contrat de bail antérieur ou annulation de domiciliation, cession du droit au bail, du fonds de commerce ou de l'immeuble, ou déclaration sur l'honneur de libération des locaux ;\n - • Certificat d'inscription au rôle de la taxe professionnelle à la nouvelle adresse.\n - Cas de cessation d'activité\n - • Copie du certificat de radiation du registre de commerce ou du certificat de non-inscription au registre de commerce ;\n - Relevé des versements et/ou extrait des rôles délivré par le percepteur.\n - Cas de vente\n - Copie du certificat de radiation du registre de commerce ou du certificat de non-inscription au registre de commerce ;\n - • Copie du contrat de cession du droit au bail, du fonds de commerce ou de l'immeuble ;\n - • Relevé des versements et/ou extrait des rôles délivré par le percepteur.\n - Pour les personnes morales :\n - Cas de transfert du siège social\n - - Formulaire de demande n° AAC350.\n - • Copie du procès-verbal de l'assemblée générale extraordinaire, enregistré ;\n - • Déclaration de transfert de siège social (formulaire ADC140) ;\n - Cas de fermeture de succursale\n - • Copie du procès-verbal constatant la fermeture de la succursale, enregistré ;\n - • Résiliation du contrat de bail antérieur ou annulation de domiciliation, cession du droit au bail, du fonds de commerce ou de l'immeuble, ou déclaration sur l'honneur de libération des locaux.\n - Cas de liquidation\n - • Copie du procès-verbal de dissolution de la société, enregistré ;\n - • Copie du jugement de liquidation judiciaire, le cas échéant ;\n - • Copie du procès-verbal de clôture de la liquidation, enregistré ;\n - • Copie du rapport du liquidateur ;\n - • Copie du certificat de radiation du registre de commerce ;\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Certificat d'inscription à la taxe professionnelle\nDescription: Inscription à la taxe professionnelle\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 2 jours\nDocuments requis:\n - Personne physique ou morale déjà créée :\n - Demande électronique ou formulaire AAC050\n - Transfert du domicile fiscal, du siège social ou de l'établissement principal :\n - -N° de commande AAC050\n - - Copie du procès-verbal de transfert du siège (pour les personnes morales) ;\n - - Une copie du contrat de location enregistré.\n - ou une copie de la quittance de location\n - - Une copie de tout titre de propriété (propriété, bail ou bien commercial).\n - - Ou une copie du contrat de localisation.\n - Création d'une personne physique\n - Référence AAC50\n - - ou copie du contrat de domiciliation ;\n - - Copie de la carte nationale d'identité ou de la carte de séjour ;\n - - Copie de l'autorisation nécessaire pour l'exercice de l'activité (pour les activités réglementées).\n - Création d'une nouvelle personne morale : sociétés anonymes ; sociétés à responsabilité limitée ; sociétés en nom collectif et sociétés en commandite :\n - - Une copie des statuts de la société.\n - - Copie de la carte nationale d'identité, ou de la carte de séjour, ou du passeport, ou du registre de commerce du gérant, ou de l'équivalent du registre de commerce traduit pour les personnes morales non résidentes ;\n - - Copie de l'autorisation nécessaire pour l'exercice de l'activité (pour les activités réglementées) ;\n - - Copie du procès-verbal de nomination du gérant s'il n'est pas désigné dans les statuts (pour les sociétés à responsabilité limitée).\n - Coopératives :\n - - Copie de la décision d'autorisation publiée au Bulletin Officiel ;\n - - Copie de la carte nationale d'identité du président de la coopérative ;\n - ou copie de la quittance de loyer ;\n - Organismes de placement collectif en valeurs mobilières :\n - - Copie du règlement de gestion (pour les OPCVM) ou copie des statuts de la société enregistrés (pour les sociétés d'investissement à capital variable) ;\n - - Copie de l'autorisation délivrée par l'Autorité Marocaine du Marché des Capitaux ;\n - Sociétés mutualistes :\n - - Copie de l'arrêté conjoint du ministre de l'emploi et des affaires sociales et du ministre des finances ;\n - Copie de la carte nationale d'identité du président du conseil d'administration de la société.\n - Groupements d'intérêt économique :\n - - Copie du contrat de groupement ;\n - - Copie de la carte nationale d'identité du gérant du groupe ;\n - Établissements stables :\n - - Copie du contrat de bail ou d'achat enregistré ;\n - - Copie des statuts de la société mère, traduits si nécessaire ;\n - - Copie du procès-verbal de constitution de l'établissement stable ;\n - - Copie du marché ;\n - Copie de la carte nationale d'identité, ou du passeport, ou de la carte de séjour du représentant de l'établissement stable.\n - Sociétés concessionnaires de gestion d'un service public :\n - - Copie du contrat de concession ;\n - Fonds créés par un texte législatif ou réglementaire :\n - Copie de la décision de création du fonds.\n - Centres de gestion comptable agréés :\n - Copie de l'agrément.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Attestation d'exonération de la taxe d'habitation et de la taxe des services communaux\nDescription: Attestation de l'exonération de la taxe d'habitation et de la taxe des services communaux auprès des notaires\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 2 jours\nDocuments requis:\n - Formulaire de demande n° AAC090\n - Contrat d'acquisition du terrain\n - Règlement de copropriété\n - Contrats de vente\n - Permis d'habiter ou certificat de conformité\n - Permis de construire ;\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 287,
+      "answer": "Pour obtenir le document prouvant que vous n'êtes plus soumis à la taxe professionnelle suite à la cessation de votre activité, vous devez demander une \"Attestation de radiation de la taxe professionnelle\".\n\nLes documents requis pour les personnes physiques en cas de cessation d'activité sont les suivants :\n*   Copie du certificat de radiation du registre de commerce ou du certificat de non-inscription au registre de commerce.\n*   Relevé des versements et/ou extrait des rôles délivré par le percepteur.\n\nCette procédure est gratuite et le délai de traitement est de 2 jours.\n\nSource : Ministère de l’Économie et des Finances - Direction Générale des Impôts.",
+      "generation_ms": 7351,
+      "prompt_tokens": 1729,
+      "output_tokens": 143,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8179,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s037",
+      "question": "ما هي الوثائق المطلوبة للحصول على شهادة التسجيل في الرسم المهني (الباتانتا)؟",
+      "lang": "ar",
+      "category": "documents",
+      "expected_ids": [
+        "68cf9a7c-dcd6-493c-a018-c25214041bee"
+      ],
+      "reference": "الإجراء المعني هو « شهادة التسجيل في الرسم المهني » (وزارة الاقتصاد والمالية-المديرية العامة للضرائب). الوثائق المطلوبة: شخص ذاتي أو اعتباري سبق إحداثه ؛ طلب إلكتروني أو طلب رقم AAC050 ؛ تحويل الموطن الضريبي المقر الاجتماعي أو المؤسسة الرئيسية ؛ طلب رقم AAC050 ؛ نسخة من محضر تحويل المقر ؛ نسخة من عقد الكراء المسجل ؛. الرسوم: بالمجان. الآجال: يومان.",
+      "must_include": [
+        "شخص ذاتي أو اعتباري سبق إحداثه",
+        "طلب إلكتروني أو طلب رقم AAC050",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "68cf9a7c-dcd6-493c-a018-c25214041bee",
+        "17786404-87be-4b41-8364-bc1fe51e1b27",
+        "3fb45c98-3713-432c-93a4-ab7845d77b2d"
+      ],
+      "retrieved_titles": [
+        "Certificat d'inscription à la taxe professionnelle",
+        "Certificat de radiation de la taxe professionnelle",
+        "Obtention du certificat d'agrément des personnes physiques ou morales effectuant des travaux d'études et de supervision de projets"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: شهادة التسجيل في الرسم المهني\nDescription: التسجيل في الرسم المهني\nAdministration: وزارة الاقتصاد والمالية-المديرية العامة للضرائب\nFrais: بالمجان\nDélai: يومان\nDocuments requis:\n - شخص ذاتي أو اعتباري سبق إحداثه :\n - طلب إلكتروني أو طلب رقم AAC050\n - تحويل الموطن الضريبي المقر الاجتماعي أو المؤسسة الرئيسية :\n - -طلب رقم AAC050\n - - نسخة من محضر تحويل المقر (بالنسبة للأشخاص الاعتباريين)؛\n - - نسخة من عقد الكراء المسجل ؛\n - أو نسخة من توصيل الكراء\n - - أو نسخة من أي سند ملكية (عقار، حق في الإيجار، أو أصل تجاري)؛\n - - أو نسخة من عقد التوطين .\n - إحداث شخص ذاتي\n - طلب رقم AAC50\n - - أو نسخة من عقد التوطين ؛\n - - نسخة من البطاقة الوطنية للتعريف أو من بطاقة الإقامة؛\n - - نسخة من الترخيص اللازم لمزاولة النشاط (بالنسبة للأنشطة المنظمة).\n - إحداث شخص اعتباري جديد الشركات المجهولة الإسم   ؛    الشركات ذات المسؤولية المحدودة ؛     شركات التضامن و شركات التوصية :\n - - نسخة من النظام الأساسي للشركة مسجل؛\n - - نسخة من البطاقة الوطنية للتعريف أو من بطاقة الإقامة أو من جواز السفر أو من السجل التجاري للمتصرف أو ما يعادل السجل التجاري مترجم بالنسبة للأشخاص الاعتباريين غير المقيمين؛\n - - نسخة من الترخيص اللازم لمزاولة النشاط (بالنسبة للأنشطة المنظمة)؛\n - - نسخة من محضر تعيين المسير إذا لم يعين في النظام الأساسي (بالنسبة للشركات ذات المسؤولية المحدودة).\n - التعاونيات :\n - - نسخة من قرار الترخيص المنشور بالجريدة الرسمية؛\n - - نسخة من البطاقة الوطنية لرئيس التعاونية؛\n - أو نسخة من توصيل الكراء؛\n - الهيئات المكلفة بالتوظيف الجماعي للقيم المنقولة :\n - - نسخة من نظام التسيير (بالنسبة لصناديق التوظيف المشتركة) أو نسخة من النظام الأساسي للشركة مسجل (بالنسبة لشركات الاستثمار ذات رأس المال المتغير)؛\n - - نسخة من الترخيص المسلم من طرف الهيئة المغربية لسوق الرساميل؛\n - الشركات التعاضدية :\n - - نسخة من القرار المشترك لوزير التشغيل والشؤون الاجتماعية ووزير المالية؛\n - نسخة من البطاقة الوطنية للتعريف لرئيس المجلس الإداري للشركة.\n - المجموعات ذات النفع الاقتصادي :\n - - نسخة من عقد المجموعة؛\n - - نسخة من البطاقة الوطنية للتعريف المتعلقة بمتصرف المجموعة؛\n - المؤسسات القارة :\n - - نسخة من عقد الكراء أو الشراء مسجل ؛\n - - نسخة من النظام الأساسي للشركة الأم، مترجم إذا اقتضى الحال؛\n - - نسخة من محضر تأسيس المؤسسة القارة؛\n - - نسخة من الصفقة؛\n - نسخة من البطاقة الوطنية للتعريف, أو من جواز السفر, أو من بطاقة إقامة ممثل المؤسسة القارة.\n - الشركات الحاصلة على امتياز لإدارة مرفق عام :\n - - نسخة من عقد الامتياز؛\n - الصناديق المحدثة بنص تشريعي أو تنظيمي :\n - نسخة من قرار إنشاء الصندوق.\n - مراكز تدبير الحسابات المعتمدة :\n - نسخة من الاعتماد.\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة التشطيب من الرسم المهني\nDescription: إثبات التشطيب من الرسم المهني\nAdministration: وزارة الاقتصاد والمالية-المديرية العامة للضرائب\nFrais: بالمجان\nDélai: - فورا  بالنسبة للطلبات الإلكترونية؛ \n- يومان  بالنسبة للطلبات التى لم تودع بطريقة الكترونية؛\nDocuments requis:\n - بالنسبة للطلبات الإلكترونية:\n - • طلب إلكتروني\n - بالنسبة للطلبات التى لم تودع بطريقة الكترونية بالنسبة لشخص ذاتي :\n - حالة تحويل الموطن الضريبي أو المؤسسة الرئيسية\n - •طلب نموذج رقم  AAC350؛\n - • إقرار بتحويل الموطن الضريبي أو المؤسسة الرئيسية (نموذج ADC140 ) ؛\n - • فسخ عقد الكراء السابق أو إلغاء التوطين، تفويت الحق في الإيجار أو الأصل التجاري أو العقار أو تصريح بالشرف يفيد إخلاء المحل؛\n - • شهادة التسجيل في جدول الرسم المهني بالعنوان الجديد.\n - حالة التوقف عن مزاولة النشاط\n - • نسخة من شهادة التشطيب من السجل التجاري أو شهادة عدم التسجيل في السجل التجاري  ؛\n - بيان الأداءات و /أو مستخرج الجداول يسلمه القابض.\n - حالة البيع\n - نسخة من شهادة التشطيب من السجل التجاري أو شهادة عدم التسجيل في السجل التجاري  ؛\n - • نسخة من عقد تفويت الحق في الإيجار أو الأصل التجاري أو العقار ؛\n - • بيان الأداءات و /أو مستخرج الجداول يسلمه القابض.\n - بالنسبة لشخص اعتباري :\n - حالة تحويل المقر الاجتماعي\n - • طلب نموذج رقم  AAC350؛\n - • نسخة من محضر الجمع العام الاستثنائي مسجل؛\n - • إقرار بتحويل المقر الاجتماعي (نموذج ADC140 )  ؛\n - حالة إغلاق الفرع\n - • نسخة من محضر يثبت إغلاق الفرع مسجل؛\n - • فسخ عقد الكراء السابق أو إلغاء التوطين، تفويت الحق في الإيجار أو الأصل التجاري أو العقار أو تصريح بالشرف يفيد إخلاء المحل.\n - حالة التصفية\n - • نسخة من محضر حل الشركة المسجل؛\n - • نسخة من حكم التصفية القضائية إن اقضى الحال؛\n - • نسخة من محضر انتهاء عملية التصفية مسجل؛\n - • نسخة من تقرير المصفي؛\n - • نسخة من شهادة التشطيب من السجل التجاري؛\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الحصول على شهادة اعتماد  الأشخاص الطبيعيين أو المعنويين القائمين بأعمال الدراسات والإشراف على المشاريع\nDescription: المشاركة في الصفقات العمومية\nAdministration: وزارة التجهيز والماء\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - طلب الحصول على شهادة إعتماد  الأشخاص الطبيعيين أو المعنويين القائمين بأعمال الدراسات والإشراف على المشاريع\n - شهادة الإقامة بالنسبة للأشخاص الطبيعين\n - شهادة مسلمة من مؤسسة جامعية أو مدرسة وطنية أو شهادة معادلة طبقا للنصوص التشريعية و التنظيمية الجاري بها العمل\n - نسخة من السجل العدلي (نشرة رقم 3)\n - شهادة القيد في  سجل الضريبة المهنية\n - الوثائق المثبتة لقيام الشخص الطبيعي صاحب الطلب بإنجاز الخدمات المحددة في المادة 2 من المرسوم رقم 2.98.984\n - شهادة السجل التجاري نموذج  j\n - قائمة لا يتجاوز تاريخها سنة مؤشر عليها بصورة قانونية من قبل الصندوق الوطني للضمان الإجتماعي بمستخدمي الشخص المعني و المنخرطين بالصندوق المذكور.\n - شهادة تسلمها مصالح الضرائب المباشرة و الرسوم المماثلة تبين رقم المعاملات خلال السنوات الثلاث الأخيرة أو منذ إنطلاق الأنشطة إن كانت قد إبتدأت منذ أقل من ثلاث سنوات.\n - شهادة مسلمة منذ ما لا يقل عن سنة من عند القابض التابع له مكان فرض الضريبة تشهد أن صاحب الطلب يوجد في وضعية جبائية صحيحة في حالة عدم الأداء أنه قد كون ضمانات يراه المحاسب المكلف بالتحصيل كافية.\n - المراجع التقنية المتعلقة بطبيعة و مبالغ الخدمات المنجزة و بمكان و تاريخ إنجازها و كذا إسم و موطن أصحاب المشاريع المستفيدين من الخدمات المذكورة أو إن إقتضى الحال تسميتهم و عنوانهم.و لا يعتد إلا بمراجع الخدمات المنجزة مباشرة من طرف المعني بالأمر بإستعمال وس\n - قائمة بالوسائل المادية مع تحديد مواصفاتها التقنية و بيان تاريخ و مبلغ إقتنائها\n - قائمة بأعوان الإشراف و التأطير مع تحديد مؤهلاتهم المهنية على الخصوص.\n - نسخة من النظام الأساسي\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 388,
+      "answer": "الوثائق المطلوبة للحصول على شهادة التسجيل في الرسم المهني هي كالتالي، حسب الفئة المعنية:\n\n**بالنسبة لشخص ذاتي أو اعتباري سبق إحداثه:**\n*   طلب إلكتروني أو طلب رقم AAC050\n*   تحويل الموطن الضريبي المقر الاجتماعي أو المؤسسة الرئيسية:\n    *   طلب رقم AAC050\n    *   نسخة من محضر تحويل المقر (بالنسبة للأشخاص الاعتباريين)؛\n    *   نسخة من عقد الكراء المسجل ؛\n    *   أو نسخة من توصيل الكراء\n    *   أو نسخة من أي سند ملكية (عقار، حق في الإيجار، أو أصل تجاري)؛\n    *   أو نسخة من عقد التوطين .\n\n**بالنسبة لإحداث شخص ذاتي:**\n*   طلب رقم AAC50\n*   أو نسخة من عقد التوطين ؛\n*   نسخة من البطاقة الوطنية للتعريف أو من بطاقة الإقامة؛\n*   نسخة من الترخيص اللازم لمزاولة النشاط (بالنسبة للأنشطة المنظمة).\n\n**بالنسبة لإحداث شخص اعتباري جديد (الشركات المجهولة الإسم، الشركات ذات المسؤولية المحدودة، شركات التضامن وشركات التوصية):**\n*   نسخة من النظام الأساسي للشركة مسجل؛\n*   نسخة من البطاقة الوطنية للتعريف أو من بطاقة الإقامة أو من جواز السفر أو من السجل التجاري للمتصرف أو ما يعادل السجل التجاري مترجم بالنسبة للأشخاص الاعتباريين غير المقيمين؛\n*   نسخة من الترخيص اللازم لمزاولة النشاط (بالنسبة للأنشطة المنظمة)؛\n*   نسخة من محضر تعيين المسير إذا لم يعين في النظام الأساسي (بالنسبة للشركات ذات المسؤولية المحدودة).\n\n**بالنسبة للتعاونيات:**\n*   نسخة من قرار الترخيص المنشور بالجريدة الرسمية؛\n*   نسخة من البطاقة الوطنية لرئيس التعاونية؛\n*   أو نسخة من توصيل الكراء؛\n\n**بالنسبة للهيئات المكلفة بالتوظيف الجماعي للقيم المنقولة:**\n*   نسخة من نظام التسيير (بالنسبة لصناديق التوظيف المشتركة) أو نسخة من النظام الأساسي للشركة مسجل (بالنسبة لشركات الاستثمار ذات رأس المال المتغير)؛\n*   نسخة من الترخيص المسلم من طرف الهيئة المغربية لسوق الرساميل؛\n\n**بالنسبة للشركات التعاضدية:**\n*   نسخة من القرار المشترك لوزير التشغيل والشؤون الاجتماعية ووزير المالية؛\n*   نسخة من البطاقة الوطنية للتعريف لرئيس المجلس الإداري للشركة.\n\n**بالنسبة للمجموعات ذات النفع الاقتصادي:**\n*   نسخة من عقد المجموعة؛\n*   نسخة من البطاقة الوطنية للتعريف المتعلقة بمتصرف المجموعة؛\n\n**بالنسبة للمؤسسات القارة:**\n*   نسخة من عقد الكراء أو الشراء مسجل ؛\n*   نسخة من النظام الأساسي للشركة الأم، مترجم إذا اقتضى الحال؛\n*   نسخة من محضر تأسيس المؤسسة القارة؛\n*   نسخة من الصفقة؛\n*   نسخة من البطاقة الوطنية للتعريف, أو من جواز السفر, أو من بطاقة إقامة ممثل المؤسسة القارة.\n\n**بالنسبة للشركات الحاصلة على امتياز لإدارة مرفق عام:**\n*   نسخة من عقد الامتياز؛\n\n**بالنسبة للصناديق المحدثة بنص تشريعي أو تنظيمي:**\n*   نسخة من قرار إنشاء الصندوق.\n\n**بالنسبة لمراكز تدبير الحسابات المعتمدة:**\n*   نسخة من الاعتماد.\n\nالمصدر: وزارة الاقتصاد والمالية-المديرية العامة للضرائب.",
+      "generation_ms": 9725,
+      "prompt_tokens": 2165,
+      "output_tokens": 892,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8769,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s038",
+      "question": "comment avoir la patente pour mon commerce ?",
+      "lang": "fr",
+      "category": "user_style",
+      "expected_ids": [
+        "68cf9a7c-dcd6-493c-a018-c25214041bee"
+      ],
+      "reference": "La procédure concernée est « Certificat d'inscription à la taxe professionnelle » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : Personne physique ou morale déjà créée ; Demande électronique ou formulaire AAC050 ; Transfert du domicile fiscal, du siège social ou de l'établissement principal ; N° de commande AAC050 ; Copie du procès-verbal de transfert du siège ; Une copie du contrat de location enregistré.. Frais : Gratuit. Délai : 2 jours.",
+      "must_include": [
+        "Personne physique ou morale déjà créée",
+        "Demande électronique ou formulaire AAC050",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "b5d950ec-f1f2-4ce9-9dd1-b8b5070aea9e",
+        "0587b11b-d24e-4e52-bada-d4c1d46f0fc1",
+        "d14ff74a-bff9-4142-9398-ff12fe34e596"
+      ],
+      "retrieved_titles": [
+        "Immatriculation de la société en commandite par actions au registre du commerce",
+        "Immatriculation d'une société en commandite simple au registre du commerce",
+        "Création d'un nouveau fonds de commerce dans le ressort judiciaire du tribunal d'immatriculation du commerçant"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: Immatriculation de la société en commandite par actions au registre du commerce\nDescription: L'immatriculation au registre du commerce conformément aux dispositions légales, le législateur ayant, en vertu de l'article 37 du Code de commerce, rendu l'immatriculation au registre du commerce obligatoire pour tous les commerçants personnes physiques ou morales, marocains ou étrangers, exerçant une activité commerciale sur le territoire du Royaume.\nEn outre, la personnalité morale des sociétés n'est acquise qu'à compter de la date d'immatriculation au registre du commerce – à l'exception des sociétés en participation qui ne sont pas immatriculées au registre du commerce et ne jouissent pas de la personnalité morale.\nDans le cadre du contrôle effectué par le greffier sur les documents et pièces qui lui sont présentés – sauf dans les cas où la loi impose la conservation des originaux – le requérant doit produire l'original du document, le greffier se charge de le copier et de le restituer immédiatement à l'intéressé.\nS'agissant de la signature des déclarations, contrats et documents soumis à cette procédure, elle doit intervenir devant le greffier qui mentionne sur le même document le nom du signataire, le numéro de sa carte nationale, sa qualité, avec apposition du cachet du tribunal et la signature du greffier.\nAdministration: Ministère de la Justice\nFrais: Frais d'inscription au registre de commerce\n200 dirhams pour le dépôt,\n150 dirhams pour l'immatriculation\nDélai: (2) 2 jours\nDocuments requis:\n - Documents de dépôt\n - Original des statuts de la société signés par tous les associés ou par un mandataire muni d'une procuration écrite et enregistrés auprès de l'administration de l'enregistrement, ou une copie conforme.\n - Copie du contrat signé et enregistré en vertu duquel le gérant a été désigné, si cette désignation a été faite par un contrat séparé\n - Bulletins de souscription pour les contrats non notariés\n - Original du certificat négatif datant de moins de 90 jours\n - Copie conforme du certificat de souscription et de versement indiquant les souscriptions au capital et la part des actions libérées par chaque actionnaire.\n - Liste des souscripteurs comprenant les noms et prénoms, adresses et nationalités des souscripteurs, ainsi que leurs qualités et professions, le nombre d'actions souscrites et le montant des versements effectués par chacun d'eux.\n - Documents d'inscription\n - Certificat original d’inscription à la taxe professionnelle.\n - Certificat d'immatriculation ou document en tenant lieu si l'un des associés est une personne morale.\n - Copie de l'autorisation et/ou du diplôme ou du certificat nécessaire à l'exercice de l'activité projetée, le cas échéant, conformément aux dispositions de certains textes spéciaux relatifs à l'exercice de certaines activités réglementées.\n - Copie du contrat de bail signé et enregistré auprès de l'administration de l'enregistrement, ou du contrat de domiciliation signé, ou de tout document prouvant l'existence du local.\n - Extrait de l'acte contenant l'indication du régime matrimonial pour l'associé commandité étranger, le cas échéant, et une copie de celui-ci.\n - Copie de la carte d'identité nationale de tous les associés commandités et gérants marocains, ou de la carte d'immatriculation pour les étrangers résidents, ou du passeport pour les étrangers non résidents, ou de tout document en tenant lieu justifiant l'\n - Déclaration modèle 2 rédigée et signée par le déclarant ou son mandataire muni d'une procuration écrite\n - Procuration écrite en cas d'inscription par mandataire \n(Note : la procuration doit être enregistrée auprès de l'administration de l'enregistrement).\n - Copie du document d'identité du mandataire en cas de dépôt par mandataire\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Immatriculation d'une société en commandite simple au registre du commerce\nDescription: Immatriculation au registre du commerce conformément aux prescriptions légales. En vertu de l'article 37 du Code de commerce, le législateur a rendu obligatoire l'immatriculation au registre du commerce pour tous les commerçants, personnes physiques ou morales, marocains ou étrangers, exerçant une activité commerciale sur le territoire du Royaume.\nPar ailleurs, la personnalité morale des sociétés n'est acquise qu'à compter de la date d'immatriculation au registre du commerce – étant rappelé que les sociétés en participation ne sont pas immatriculées au registre du commerce et ne jouissent pas de la personnalité morale.\nDans le cadre du contrôle opéré par le greffier sur les documents et pièces qui lui sont présentés – sauf dans les cas où la loi exige la conservation des originaux – l'usager doit présenter l'original du document ; le greffier en fait une copie et restitue immédiatement l'original à l'intéressé.\nLa signature des déclarations, contrats et documents soumis à cette procédure doit être apposée en présence du greffier qui indique sur le même document le nom du signataire, le numéro de sa carte nationale, sa qualité, y appose le timbre du tribunal et sa propre signature.\nAdministration: Ministère de la Justice\nFrais: Droits d'enregistrement au registre du commerce\n150 dirhams pour l'inscription\n200 dirhams pour le dépôt\nDélai: (2) 2 jours\nDocuments requis:\n - Documents de dépôt\n - Original des statuts de la société signés par tous les associés ou par un mandataire muni d'une procuration écrite et enregistrés auprès de l'administration de l'enregistrement, ou une copie conforme.\n - Copie du contrat signé et enregistré, par lequel a été nommé le gérant si cette nomination a été faite par contrat séparé.\n - Original du certificat négatif datant de moins de 90 jours.\n - Documents d'inscription\n - Certificat original d’inscription à la taxe professionnelle.\n - Copie du contrat de bail signé et enregistré auprès de l'administration de l'enregistrement, ou contrat de domiciliation signé, ou tout document prouvant l'existence du local.\n - Copie de l'autorisation et/ou du diplôme ou du certificat nécessaire à l'exercice de l'activité projetée, le cas échéant, conformément aux dispositions de certains textes spéciaux relatifs à l'exercice de certaines activités réglementées.\n - Extrait du contrat comportant l'indication du régime matrimonial pour l'associé commandité étranger, le cas échéant.\n - Copie de la carte nationale d'identité électronique pour tous les associés commandités et gérants marocains, ou copie de la carte d'immatriculation pour les étrangers résidents, ou du passeport pour les étrangers non-résidents, ou tout document équivalent\n - Déclaration modèle 2 rédigée et signée par le déclarant ou son mandataire muni d'une procuration écrite\n - Procuration écrite en cas d'immatriculation par mandataire (note : elle doit être enregistrée auprès de l'administration de l'enregistrement).\n - Photocopie du document d'identité du mandataire en cas d'inscription par mandataire.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Création d'un nouveau fonds de commerce dans le ressort judiciaire du tribunal d'immatriculation du commerçant\nDescription: En application des dispositions de l'article 50 du Code de commerce : « Tout changement ou modification relatif aux mentions devant être inscrites au registre du commerce conformément aux articles 42 à 48 doit faire l'objet d'une demande d'inscription modificative. Dans le cadre du contrôle effectué par le greffier des documents et pièces qui lui sont présentés - hormis les cas où la conservation des originaux est légalement obligatoire - le requérant doit présenter l'original du document, le greffier se charge de le photocopier et de le restituer immédiatement à l'intéressé. Quant à la signature des déclarations, contrats et documents soumis à cette procédure, elle doit être effectuée devant le greffier qui mentionne sur le même document le nom du signataire, son numéro de carte nationale, sa qualité, avec apposition du cachet du tribunal et la signature du greffier. »\nAdministration: Ministère de la Justice\nFrais: Frais d'inscription au registre de commerce : 50 dirhams\nDélai: 2 jours\nDocuments requis:\n - Certificat original d’inscription à la taxe professionnelle.\n - Copie du contrat de bail ou du certificat de propriété ou du contrat de domiciliation ou de toute autre pièce justifiant l'existence du local\n - Original du certificat négatif de moins de 90 jours, le cas échéant\n - Copie de l'autorisation ou du diplôme ou des deux si l'activité exercée est réglementée\n - Déclaration modèle 4 rédigée et signée par le déclarant ou son mandataire muni d'une procuration écrite\n - Procuration écrite en cas d’inscription par mandataire (Note : la procuration doit être enregistrée auprès de l’administration de l’enregistrement).\n - Photocopie du document d'identité du mandataire en cas d'inscription par mandataire\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 227,
+      "answer": "Je n'ai pas d'informations sur la procédure pour \"avoir la patente\" (inscription à la taxe professionnelle) parmi les procédures officielles disponibles. Les documents que je possède mentionnent le \"Certificat original d’inscription à la taxe professionnelle\" comme un document requis pour l'immatriculation d'une société ou la création d'un fonds de commerce, mais ils n'expliquent pas comment l'obtenir.",
+      "generation_ms": 7957,
+      "prompt_tokens": 2221,
+      "output_tokens": 86,
+      "attempts": 4,
+      "scores": {
+        "faithfulness": 0.75,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "context_recall": 0.0,
+        "refusal": 1.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s039",
+      "question": "Mon entreprise répond à un appel d'offres public, quelle attestation fiscale dois-je joindre au dossier ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "f18bd12a-280b-465e-8cb0-a63f7d1c323d"
+      ],
+      "reference": "La procédure concernée est « Attestation de situation fiscale pour la participation aux marchés publics (P203) » (Ministère de l’Économie et des Finances- Trésorerie générale du Royaume). Documents à fournir : Demande d'attestation de situation fiscale pour les soumissionnaires aux marchés publics ; Attestation délivrée par les services d'assiette fiscale ; Attestation délivrée par les services d'assiette chargés des impôts locaux. Frais : Gratuit. Délai : 5 jours.",
+      "must_include": [
+        "Demande d'attestation de situation fiscale pour les…",
+        "Attestation délivrée par les services d'assiette fiscale",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "f18bd12a-280b-465e-8cb0-a63f7d1c323d",
+        "ff0acc71-27a8-44fb-8da0-62be07694b70",
+        "26a88c6f-2187-4732-ada2-84229f829644"
+      ],
+      "retrieved_titles": [
+        "Attestation de situation fiscale pour la participation aux marchés publics (P203)",
+        "Attestation de participation aux marchés publics (Invest)",
+        "Certificat de qualification et de classification des entreprises de bâtiment et de travaux publics"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Attestation de situation fiscale pour la participation aux marchés publics (P203)\nDescription: Pour la participation aux marchés publics\nAdministration: Ministère de l’Économie et des Finances- Trésorerie générale du Royaume\nFrais: Gratuit\nDélai: 5 jours\nDocuments requis:\n - Demande d'attestation de situation fiscale pour les soumissionnaires aux marchés publics (P203)\n - Attestation délivrée par les services d'assiette fiscale\n - Attestation délivrée par les services d'assiette chargés des impôts locaux\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Attestation de participation aux marchés publics (Invest)\nDescription: Obtention d’une attestation de participation aux marchés publics. Cette décision est soumise aux dispositions du décret n° 2.22.385 fixant la liste des décisions administratives nécessaires à la réalisation des projets d’investissement dont le délai de traitement et de délivrance ne dépasse pas 30 jours.\nAdministration: Caisse Nationale De La Sécurité Sociale\nFrais: Gratuit\nDélai: 2 jours\nDocuments requis:\n - Demande d’attestation portant signature et cachet de l’affilié et indiquant : le nom ou la raison sociale, le numéro de l’Identifiant Commun de l’Entreprise (ICE), l’adresse du siège social et le numéro d’affiliation.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Certificat de qualification et de classification des entreprises de bâtiment et de travaux publics\nDescription: Participation aux marchés publics\nAdministration: Ministère de l’Equipement et de L’Eau\nFrais: Gratuit\nDélai: 45 jours\nDocuments requis:\n - Copie du certificat d'inscription de l'entreprise au registre du commerce\n - Attestation de la masse salariale déclarée par l'entreprise\n - Attestation du chiffre d'affaires réalisé au cours des cinq dernières années\n - Références techniques de l'entreprise, en précisant notamment la nature et le volume des travaux réalisés\n - Liste des équipements de l'entreprise, accompagnée des justificatifs ou de tout document attestant de leur acquisition\n - Liste des agents d'encadrement et de supervision, avec indication de leurs qualifications professionnelles, justifiée par des copies de diplômes et des attestations de déclaration de salaires\n - Formulaire contenant les tableaux à renseigner par l'entreprise, signé et revêtu du cachet de l'entreprise\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 304,
+      "answer": "Pour répondre à un appel d'offres public, vous devez joindre l'**Attestation de situation fiscale pour la participation aux marchés publics (P203)**.\n\nCette attestation est délivrée par le Ministère de l’Économie et des Finances- Trésorerie générale du Royaume.\n\nLes documents requis sont :\n*   Demande d'attestation de situation fiscale pour les soumissionnaires aux marchés publics (P203)\n*   Attestation délivrée par les services d'assiette fiscale\n*   Attestation délivrée par les services d'assiette chargés des impôts locaux\n\nLes frais sont gratuits et le délai est de 5 jours.\n\nSource : Ministère de l’Économie et des Finances- Trésorerie générale du Royaume.",
+      "generation_ms": 11191,
+      "prompt_tokens": 742,
+      "output_tokens": 166,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.875,
+        "answer_relevancy": 0.7892,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    }
+  ]
+}
