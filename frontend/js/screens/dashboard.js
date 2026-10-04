@@ -96,9 +96,13 @@
             icon('braces') + 'Importer un JSON</button>' +
         '</div>' +
       '</div>' +
+      // Hors de #dash-body : la carte se met à jour seule, sans attendre les
+      // statistiques ni être effacée quand elles se rechargent.
+      '<div id="dash-indexing"></div>' +
       '<div id="dash-body">' + renderSkeleton() + '</div>';
 
     var body = view.querySelector('#dash-body');
+    var indexingCard = App.indexing.mountCard(view.querySelector('#dash-indexing'));
 
     function renderSkeleton() {
       var tile = '<div class="skeleton-card" style="height:88px"></div>';
@@ -301,6 +305,8 @@
     return {
       destroy: function () {
         destroyed = true;
+        // Arrête l'interrogation de /admin/indexing/status.
+        indexingCard.destroy();
         // Sans cela les ResizeObserver survivent au changement d'écran.
         App.charts.destroyAll(view);
       }

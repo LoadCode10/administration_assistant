@@ -693,7 +693,9 @@
         // l'extraction y apparait approuvee.
         onApproved: function (message, type) {
           clearDirty();
-          h.toast(message, type);
+          // Nouvelles procédures : le message suit leur indexation jusqu'au bout.
+          if (type === 'success') App.indexing.followApproval(message);
+          else h.toast(message, type);
           App.router.navigate('#/documents');
         }
       });

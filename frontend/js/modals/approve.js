@@ -133,8 +133,7 @@
           .catch(function () { return ''; })
           .then(function (status) {
             if (status === 'approved') {
-              succeed('Procédures enregistrées. Le nombre exact n\'a pas pu être récupéré ; ' +
-                'l\'indexation pour la recherche se termine en arrière-plan.');
+              succeed('Procédures enregistrées. Le nombre exact n\'a pas pu être récupéré.');
             } else if (remaining > 1) {
               return attempt(remaining - 1);
             } else {
@@ -166,7 +165,8 @@
       if (result.skipped > 0) {
         text += ', ' + result.skipped + (result.skipped >= 2 ? ' ignorées (doublons)' : ' ignorée (doublon)');
       }
-      return text + '. L\'indexation pour la recherche se termine en arrière-plan.';
+      // L'avancement de l'indexation s'affiche sous ce message (App.indexing).
+      return text + '.';
     }
 
     function confirm() {

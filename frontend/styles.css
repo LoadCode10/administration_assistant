@@ -472,6 +472,7 @@ select {
 .info-note .icon { margin-top: 1px; }
 .info-note.is-danger { background: var(--bg-danger); color: var(--text-danger); }
 .info-note.is-warning { background: var(--bg-warning); color: var(--text-warning); }
+.info-note.is-success { background: var(--bg-success); color: var(--text-success); }
 .info-note .note-title { font-weight: 500; margin-bottom: 4px; }
 .info-note .note-list { margin: 0; padding-left: 16px; }
 .info-note .note-list li { margin-top: 2px; }
@@ -659,6 +660,23 @@ input.is-invalid, textarea.is-invalid {
 .toast.toast-error { background: #8f1d1d; }
 .toast.toast-success { background: #14603a; }
 
+/* Message d'approbation qui suit l'indexation : il reste affiché jusqu'à la
+   fin du lot, d'où le bouton de fermeture. Barre claire sur fond sombre. */
+.toast-index { width: min(520px, calc(100vw - 32px)); }
+.toast-index-body { flex: 1; min-width: 0; }
+.toast-index-progress { margin-top: 8px; }
+.toast-index-track.track-track { height: 5px; background: rgba(255, 255, 255, .25); }
+.toast-index-track .track-bar,
+.toast-index-track .track-bar.is-complete { background: #ffffff; }
+.toast-index-label {
+  font-size: 12px; opacity: .85; margin-top: 5px; font-variant-numeric: tabular-nums;
+}
+.toast-close {
+  flex: none; background: none; border: 0; padding: 2px; margin: -2px -4px 0 4px;
+  color: inherit; opacity: .75; cursor: pointer;
+}
+.toast-close:hover { opacity: 1; }
+
 /* --- Adaptatif ---------------------------------------------------------- */
 /* Trois colonnes deviennent vite serrées : le délai passe à la ligne. */
 @media (max-width: 900px) {
@@ -774,6 +792,31 @@ input:dir(rtl), textarea:dir(rtl) { line-height: 1.6; }
   gap: 10px; align-items: start;
 }
 .dash-grid .span-2 { grid-column: span 2; }
+
+/* --- Indexation des procédures -------------------------------------------
+   Même barre pleine que l'avancement côté citoyen (.track-track) : elle mesure
+   une quantité ; le spinner seul dit qu'un lot tourne. */
+.index-card { margin-bottom: 10px; }
+.index-card .chart-head .btn-primary { flex: none; }
+.index-track.track-track { height: 8px; }
+.index-count {
+  font-size: 13px; color: var(--text); margin-top: 8px; font-variant-numeric: tabular-nums;
+}
+.index-running {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 4px 9px;
+  font-size: 12px; color: var(--text-secondary); margin-top: 10px;
+}
+.index-batch { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.index-spinner {
+  flex: none; width: 14px; height: 14px; border-radius: 99px;
+  border: 2px solid var(--border); border-top-color: var(--fill-accent);
+  animation: boot-spin .8s linear infinite;
+}
+.index-note { margin-top: 10px; }
+.index-error-detail {
+  font-family: var(--font-mono); font-size: 11px; margin-top: 4px; overflow-wrap: anywhere;
+}
+.index-stale { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
 
 .chart-card { min-width: 0; }
 .chart-head {
@@ -1334,6 +1377,8 @@ input:dir(rtl), textarea:dir(rtl) { line-height: 1.6; }
 @media (prefers-reduced-motion: reduce) {
   .sidebar { transition: none; }
   .progress-bar, .skeleton-line { animation: none; }
+  .index-spinner { animation: none; }
+  .track-bar { transition: none; }
 }
 
 /* ===========================================================================

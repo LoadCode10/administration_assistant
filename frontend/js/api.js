@@ -1133,6 +1133,50 @@
     };
   }
 
+  /* Avancement de l'indexation (embeddings) des procédures, tel que le renvoie
+     GET /admin/indexing/status — et POST /admin/indexing/run, qui ajoute
+     « started » et, quand rien n'a été lancé, « reason » :
+       { total, embedded, pending, percent, running, eta_seconds,
+         run: { started_at, finished_at, done, total, failed, last_error },
+         started?, reason? }
+
+     Les compteurs viennent de la base (justes après un redémarrage) ; « run »
+     décrit le lot en cours ou le dernier, il repart à zéro avec le serveur. */
+  function nonNegative(value) {
+    var number = Number(value);
+    return isFinite(number) && number > 0 ? Math.round(number) : 0;
+  }
+
+  function normalizeIndexingStatus(raw) {
+    raw = raw && typeof raw === 'object' ? raw : {};
+    var run = raw.run && typeof raw.run === 'object' ? raw.run : {};
+    var total = nonNegative(raw.total);
+    var embedded = Math.min(nonNegative(raw.embedded), total);
+    var percent = Number(raw.percent);
+    var eta = raw.eta_seconds === null || raw.eta_seconds === undefined
+      ? NaN : Number(raw.eta_seconds);
+
+    return {
+      total: total,
+      embedded: embedded,
+      pending: raw.pending === undefined ? total - embedded : nonNegative(raw.pending),
+      percent: isFinite(percent) ? percent : (total ? 100 * embedded / total : 100),
+      running: raw.running === true,
+      // null : durée inconnue (début de lot, ou rien ne tourne).
+      etaSeconds: isFinite(eta) && eta >= 0 ? eta : null,
+      run: {
+        startedAt: run.started_at || null,
+        finishedAt: run.finished_at || null,
+        done: nonNegative(run.done),
+        total: nonNegative(run.total),
+        failed: nonNegative(run.failed),
+        lastError: run.last_error ? String(run.last_error) : null
+      },
+      started: raw.started === true,
+      reason: raw.reason ? String(raw.reason) : null
+    };
+  }
+
   App.api = App.api || {};
 
   /* --- Points d'entrée ---------------------------------------------------- */
@@ -1152,6 +1196,7 @@
       normalizeUpdatedPiece: normalizeUpdatedPiece,
       normalizeNearby: normalizeNearby,
       normalizeUserTracked: normalizeUserTracked,
+      normalizeIndexingStatus: normalizeIndexingStatus,
       pickStatLabel: pickStatLabel,
       describeHttpError: describeHttpError,
       validationFields: validationFields
@@ -1239,6 +1284,26 @@
         var status = payload && typeof payload === 'object' ? payload.status : '';
         return String(status || '').toLowerCase().trim();
       });
+    },
+
+    /* Avancement de l'indexation — voir normalizeIndexingStatus. Appelé en
+       boucle par App.indexing : « signal » permet d'abandonner la requête
+       quand l'écran est quitté. */
+    getIndexingStatus: function (options) {
+      var promise = config.USE_MOCK
+        ? App.mock.getIndexingStatus()
+        : request('/admin/indexing/status', { signal: options && options.signal });
+      return promise.then(normalizeIndexingStatus);
+    },
+
+    /* Lance l'indexation des procédures en attente. Ne lève pas d'erreur quand
+       il n'y a rien à faire : la réponse porte alors started=false et
+       reason « already_running » ou « nothing_to_index ». */
+    runIndexing: function () {
+      var promise = config.USE_MOCK
+        ? App.mock.runIndexing()
+        : request('/admin/indexing/run', { method: 'POST' });
+      return promise.then(normalizeIndexingStatus);
     },
 
     /* --- Authentification ------------------------------------------------

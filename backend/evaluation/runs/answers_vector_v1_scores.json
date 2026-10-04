@@ -1,0 +1,979 @@
+{
+  "config": {
+    "experiment_name": "answers_vector_v1",
+    "date": "2026-10-03T14:14:33",
+    "git_commit": null,
+    "dataset": "synthetic_v1.json",
+    "start": 1,
+    "limit": 20,
+    "retrieval_mode": "vector",
+    "top_k": 3,
+    "retrieval_only": false,
+    "llm_model": "gemini-2.5-flash",
+    "embedding_model": "BAAI/bge-m3",
+    "scored_from": "answers_vector_v1.json",
+    "judge": {
+      "model": "deepseek-flash",
+      "base_url": "https://api.deepseek.com",
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "temperature": 0.0,
+      "ragas_version": "0.4.3",
+      "embedding_model": "BAAI/bge-m3"
+    },
+    "metrics": [
+      "answer_relevancy",
+      "context_precision",
+      "context_recall",
+      "faithfulness",
+      "language_match",
+      "refusal"
+    ],
+    "scoring_date": "2026-10-03T23:57:35",
+    "judge_usage_last_session": {
+      "calls": 170,
+      "prompt_tokens": 245928,
+      "completion_tokens": 30435,
+      "reasoning_tokens": 0,
+      "cache_hit_tokens": 120192,
+      "estimated_cost_usd": 0.1103
+    }
+  },
+  "rows": [
+    {
+      "question_id": "s001",
+      "question": "Je veux me présenter aux élections communales, quel document prouve que je suis inscrit sur les listes électorales ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "355c2f76-f142-461e-aba3-9125ca544091"
+      ],
+      "reference": "La procédure concernée est « Attestation d'inscription sur les listes électorales générales » (Ministère de l'Intérieur-Direction des Affaires Electorales). Documents à fournir : Copie de la carte nationale d'identité. Frais : Gratuit. Délai : 3 jours.",
+      "must_include": [
+        "Copie de la carte nationale d'identité",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "81cfb5e0-7ec0-43f6-90ea-ddd6641f5b40",
+        "355c2f76-f142-461e-aba3-9125ca544091",
+        "353abaab-4267-4f1a-9fb8-623d7a814918"
+      ],
+      "retrieved_titles": [
+        "Certificat d'inscription sur les listes électorales des chambres professionnelles",
+        "Attestation d'inscription sur les listes électorales générales",
+        "Carte d'enregistrement des étrangers"
+      ],
+      "rank": 2,
+      "contexts": [
+        "PROCÉDURE: Certificat d'inscription sur les listes électorales des chambres professionnelles\nDescription: Le Ministère de l'Intérieur délivre ce certificat aux professionnels en vue de constituer le dossier de candidature aux élections professionnelles ou aux élections des membres de la Chambre des Conseillers, à condition que le demandeur soit inscrit sur la liste électorale de l'une des chambres professionnelles.\nAdministration: Ministère de l'Intérieur-Direction des Affaires Electorales\nFrais: Gratuit\nDélai: 3 jours\nDocuments requis:\n - Copie de la carte nationale d'identité\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Attestation d'inscription sur les listes électorales générales\nDescription: Le Ministère de l'Intérieur délivre cette attestation aux Marocains résidant au Maroc ou à l'étranger en vue de constituer un dossier de candidature aux élections, à condition que le demandeur soit inscrit sur la liste électorale générale de la commune ou de l'arrondissement.\nAdministration: Ministère de l'Intérieur-Direction des Affaires Electorales\nFrais: Gratuit\nDélai: 3 jours\nDocuments requis:\n - Copie de la carte nationale d'identité\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Carte d'enregistrement des étrangers\nDescription: Obtention de la carte d'enregistrement ou son renouvellement\nAdministration: Administration de la Défense Nationale\nFrais: Droit d'enregistrement et de timbre : 100 dirhams\nDélai: 30 jours\nDocuments requis:\n - Copie des pages du passeport du demandeur\n - Photographie d'identité de l'usager\n - Certificat de propriété ou contrat de location ou tout document attestant de la résidence effective à une adresse fixe au Royaume\n - Document justifiant la nature de l'activité à exercer, le cas échéant\n - Certificat médical\n - Documents justifiant que le demandeur étranger dispose de moyens de subsistance suffisants\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 2716,
+      "answer": "Pour vous présenter aux élections communales et prouver votre inscription sur les listes électorales, vous aurez besoin de l'**Attestation d'inscription sur les listes électorales générales**.\n\nVoici les détails concernant cette attestation :\n\n*   **Description :** Le Ministère de l'Intérieur délivre cette attestation aux Marocains résidant au Maroc ou à l'étranger en vue de constituer un dossier de candidature aux élections, à condition que le demandeur soit inscrit sur la liste électorale générale de la commune ou de l'arrondissement.\n*   **Administration :** Ministère de l'Intérieur-Direction des Affaires Electorales\n*   **Frais :** Gratuit\n*   **Délai :** 3 jours\n*   **Documents requis :** Copie de la carte nationale d'identité.",
+      "generation_ms": 3991,
+      "prompt_tokens": 639,
+      "output_tokens": 179,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.8571,
+        "answer_relevancy": 0.8146,
+        "context_precision": 0.5,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s002",
+      "question": "ما هي الوثائق التي أحتاجها للحصول على ورقة تثبت أنني مسجل في اللوائح الانتخابية؟",
+      "lang": "ar",
+      "category": "documents",
+      "expected_ids": [
+        "355c2f76-f142-461e-aba3-9125ca544091"
+      ],
+      "reference": "الإجراء المعني هو « شهادة التسجيل في اللوائح الانتخابية العامة » (وزارة الداخلية- مديرية الشؤون الانتخابية). الوثائق المطلوبة: نسخة من البطاقة الوطنية للتعريف. الرسوم: بالمجان. الآجال: 3 أيام.",
+      "must_include": [
+        "نسخة من البطاقة الوطنية للتعريف",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "81cfb5e0-7ec0-43f6-90ea-ddd6641f5b40",
+        "355c2f76-f142-461e-aba3-9125ca544091",
+        "0ea0d0c8-bf87-4e41-ac6b-5b3ee3771e0d"
+      ],
+      "retrieved_titles": [
+        "Certificat d'inscription sur les listes électorales des chambres professionnelles",
+        "Attestation d'inscription sur les listes électorales générales",
+        "Obtention du certificat de qualification et de classification des laboratoires de construction et de travaux publics"
+      ],
+      "rank": 2,
+      "contexts": [
+        "PROCÉDURE: شهادة التسجيل في اللوائح الانتخابية الخاصة بالغرف المهنية\nDescription: تسلم وزارة الداخلية هذه الشهادة لفائدة المهنيين بغاية تكوين ملف الترشح للانتخابات المهنية أو لانتخابات أعضاء مجلس المستشارين، وذلك شرط أن يكون طالب الوثيقة مسجلا في اللائحة الانتخابية الخاصة بإحدى الغرف المهنية\nAdministration: وزارة الداخلية- مديرية الشؤون الانتخابية\nFrais: بالمجان\nDélai: 3 أيام\nDocuments requis:\n - نسخة من البطاقة الوطنية\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة التسجيل في اللوائح الانتخابية العامة\nDescription: تسلم وزارة الداخلية هذه الشهادة لفائدة المغاربة المقيمين بالمغرب أو بالخارج بغاية تكوين ملف الترشح للانتخابات، وذلك شرط أن يكون طالب الوثيقة مسجلا في اللائحة الانتخابية العامة للجماعة أو المقاطعة\nAdministration: وزارة الداخلية- مديرية الشؤون الانتخابية\nFrais: بالمجان\nDélai: 3 أيام\nDocuments requis:\n - نسخة من البطاقة الوطنية\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الحصول على شهادة تكييف وتصنيف مختبرات البناء والأشغال العمومية\nDescription: المشاركة في الصفقات العمومية\nAdministration: وزارة التجهيز والماء\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - طلب تكييف و تصنيف مختبرات البناء والأشغال العمومية\n - شهادة الاقامة\n - نسخة مصورة  من الدبلوم المحصل عليه من طرف مسير المختبر\n - الوثائق التي تثبت أن مسير المختبر المترشح سبق أن زاول واحدا أو أكثر من انشطة المختبر المبينة في القائمة المشار اليها في المادة الأولى من  المرسوم رقم  437-01-2 طوال خمس (5) سنوات على الأقل.\n - البطاقة رقم 3 من السجل العدلي لا يتجاوز تاريخها ثلاثة أشهر أو أي وثيقة رسمية أخرى تقوم مقامها\n - مستخرج من شهادة تقييد المختبر في السجل التجاري\n - جدول لا يتجاوز تاريخه سنة واحدة ومؤشر عليه بصفة صحيحة من لدن الصندوق الوطني للضمان الاجتماعي يتضمن قائمة الأشخاص المستخدمين والمنخرطين في هذه الهيئة ويثبت أن المترشح يقدم بانتظام التصاريح بالأجور\n - شهادة مسلمة من مصالح الضرائب المباشرة والرسوم المعتبرة في حكمها يبين فيها رقم الأعمال الذي تم تحقيقه طوال السنوات الثلاث الأخيرة أو منذ إنشاء المختبر إذا كان هذا الأخير قائما منذ أقل من ثلاث سنوات\n - شهادة مسلمة منذ أقل من سنة   من لدن القابض التابع له محل فرض الضريبة تثبت أن الشخص المترشح في وضعية جبائية قانونية لكونه أدلى بتصاريحه ودفع المبالغ المستحقة، أو في حالة عدم الأداء، لكونه قدم ضمانات يرى المحاسب المكلف بالتحصيل أنه كافية. ويجب أن يبين في هذ\n - المراجع التقنية المتعلقة بطبيعة ومبلغ الأعمال المنجزة ومكان وتاريخ إنجازها وكذا أسماء وعناوين أصحاب المشاريع الذين استفادوا من الأعمال المذكورة وعند الاقتضاء تسمياتهم وعناوينهم. ولا  تطبق أحكام هذا المقطع على المختبرات الحديثة العهد.\n - قائمة الوسائل المادية مع مواصفاتها التقنية وبيان تاريخها وقيم  اقتنائها.\n - وثيقة تثبت ربط تجهيزات التجريب والقياس بشبكة المعايرة الوطنية أو الدولية وفقا للنصوص التشريعية والتنظيمية الجاري بها العمل.\n - قائمة مستخدمي الإشراف والتأطير مع بيان مؤهلاتهم المهنية بوجه خاص.\n - نسخة من النظام الأساسي للشخص المعنوي\n - شهادة القيد في جدول الضريبة المهنية (الباتنتا) لا يتجاوز  تاريخها سنة.\n - نسخة من المخطط الهيكلي مفصل يتضمن عند الاقتضاء  كيفية  تموقعه عبر التراب الوطني ومداه.\n - السيرة الذاتية لكل واحد من مسيريه و أطره.\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 804,
+      "answer": "للحصول على ورقة تثبت أنك مسجل في اللوائح الانتخابية (سواء كانت اللوائح الانتخابية العامة أو الخاصة بالغرف المهنية)، تحتاج إلى الوثيقة التالية:\n\n*   نسخة من البطاقة الوطنية.\n\nالمصدر: وزارة الداخلية- مديرية الشؤون الانتخابية.",
+      "generation_ms": 3332,
+      "prompt_tokens": 1166,
+      "output_tokens": 70,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.9501,
+        "context_precision": 0.5,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s003",
+      "question": "أسكن في قرية تابعة لنفوذ الدرك الملكي وأريد تجديد بطاقتي الوطنية، من أين أحصل على شهادة السكنى؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "1c1aa752-d40c-4b2f-a70a-b746ca85561d"
+      ],
+      "reference": "الإجراء المعني هو « شهادة الإقامة المسلمة من طرف مصالح الدرك الملكي » (إدارة الدفاع الوطني). الوثائق المطلوبة: تصريح بالشرف بالإقامة أو آخر فاتورة أداء واجبات استهلاك الماء والكهرباء ؛ صورة فوتوغرافية للمرتفق ؛ شهادة العمل أو شهادة الحضور في الالتزامات بالنسبة للعسكريين. الرسوم: بالمجان. الآجال: يوم واحد.",
+      "must_include": [
+        "تصريح بالشرف بالإقامة أو آخر فاتورة أداء واجبات استهلاك…",
+        "صورة فوتوغرافية للمرتفق",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "1c1aa752-d40c-4b2f-a70a-b746ca85561d",
+        "25177cb4-a840-456d-9f46-0fa0eb43a716",
+        "2ef82081-8630-47ec-bd23-249486c1e28c"
+      ],
+      "retrieved_titles": [
+        "Attestation de résidence délivrée par les services de la Gendarmerie Royale",
+        "Certificat de reconnaissance de la nationalité marocaine (administratif) (Marocains résidant à l’étranger)",
+        "Obtention du passeport biométrique pour les adultes (Marocains résidant à l'étranger)"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: شهادة الإقامة المسلمة من طرف مصالح الدرك الملكي\nDescription: تكوين ملف الحصول على البطاقة الوطنية للتعريف الإلكتروني أو تجديدها\nAdministration: إدارة الدفاع الوطني\nFrais: بالمجان\nDélai: يوم واحد\nDocuments requis:\n - تصريح بالشرف بالإقامة أو آخر فاتورة أداء واجبات استهلاك الماء والكهرباء\n - صورة فوتوغرافية للمرتفق\n - شهادة العمل أو شهادة الحضور في الالتزامات بالنسبة للعسكريين\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة الاعتراف بالجنسية المغربية (إدارية) (المغاربة المقيمون بالخارج)\nDescription: الحصول على شهادة الاعتراف بالجنسية المغربية، ولا يتم إنجازها إلا لتسهيل بعض الإجراءات الإدارية العاجلة للمواطنين المغاربة في الدول المضيفة.\nوهي لا تقوم مقام شهادة الجنسية بأي حال من الأحوال، التي تعتبر من اختصاصات المحاكم المغربية المختصة.\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: 60 درهما:\n-الرسوم القنصلية :50 درهما\nتعرفة على الخدمات (SEGMA):10 دراهم\nDélai: 60 يوما\nDocuments requis:\n - البطاقة الوطنية للتعريف الإلكترونية أو جواز السفر البيومتري\n - الدفتر العائلي أو كناش التعريف والحالة المدنية\n - شهادة الجنسية المغربية للأطفال المولودين من أم مغربية وأب أجنبي\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الحصول على جواز السفر البيومتري بالنسبة للأشخاص الراشدين (المغاربة المقيمون بالخارج)\nDescription: الحصول على جواز السفر البيومتري بالنسبة للأشخاص الراشدين (المغاربة المقيمون بالخارج)\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: الرسوم القنصلية800 درهما\nتعرفة على الخدمات (SEGMA)60 درهما\nDélai: 15 يوما\nDocuments requis:\n - طلب جواز السفر البيوميتري\n - بطاقة التعريف الوطنية سارية الصلاحية  أو  وصل إيداع طلب إصدار أو تجديد البطاقة الوطنية\n - في حالة الإدلاء بوصل طلب الحصول على البطاقة الوطنية ، يتعين على المعني الإدلاء بنسخة من عقد الازدياد أو النسخة الكاملة من شهادة الميلاد لا يتعدى تاريخ إصدارها 6 أشهر\n - صورة شخصية ملونة على خلفية بيضاء أو زرقاء (حجم 35x45 مم)، تظهر بوضوح ملامح وجه صاحب الطلب\n - في حالة التجديد، يجب تسليم جواز السفر القديم\n - وثيقة إثبات الإقامة سارية المفعول (بطاقة الإقامة، بطاقة السكن، تأشيرة طويلة الأمد،  تأشيرة أو تصريح الدراسة، تصريح عمل، بطاقة هوية أجنبية أو جواز سفر أجنبي)، أو أي وثيقة رسمية تتضمن الإشارة إلى مكان وعنوان الشخص المعني\n - إذا كانت وثيقة الإقامة الاعتيادية لا تتضمن العنوان الحالي، فيجب الإدلاء بما يثبت الإقامة في هذا العنوان (شهادة الإقامة، عقد الإيجار، فاتورة الماء ، فاتورة الكهرباء ، أو فاتورة  الهاتف الثابت أو شهادة الإيواء مؤشر عليها من قبل المصالح القنصلية أو السلطات ا\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 718,
+      "answer": "بالنسبة لتجديد بطاقتك الوطنية وأنت تسكن في قرية تابعة لنفوذ الدرك الملكي، يمكنك الحصول على شهادة الإقامة من مصالح الدرك الملكي. هذه الشهادة مطلوبة لتكوين ملف الحصول على البطاقة الوطنية للتعريف الإلكتروني أو تجديدها.\n\nوفقًا لإدارة الدفاع الوطني، الوثائق المطلوبة للحصول على شهادة الإقامة هي:\n*   تصريح بالشرف بالإقامة أو آخر فاتورة أداء واجبات استهلاك الماء والكهرباء\n*   صورة فوتوغرافية للمرتفق\n*   شهادة العمل أو شهادة الحضور في الالتزامات بالنسبة للعسكريين",
+      "generation_ms": 6307,
+      "prompt_tokens": 1045,
+      "output_tokens": 147,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7933,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s004",
+      "question": "attestation residence gendarmerie pour renouveler ma cnie c gratuit ?",
+      "lang": "fr",
+      "category": "user_style",
+      "expected_ids": [
+        "1c1aa752-d40c-4b2f-a70a-b746ca85561d"
+      ],
+      "reference": "La procédure concernée est « Attestation de résidence délivrée par les services de la Gendarmerie Royale » (Administration de la Défense Nationale). Documents à fournir : Déclaration sur l'honneur de résidence ou dernière facture acquittée de consommation d'eau et d'électricité ; Photographie d'identité de l'usager ; Certificat de travail ou attestation de présence dans le cadre des obligations pour les militaires. Frais : Gratuit. Délai : 1 jour.",
+      "must_include": [
+        "Déclaration sur l'honneur de résidence ou dernière facture…",
+        "Photographie d'identité de l'usager",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "1c1aa752-d40c-4b2f-a70a-b746ca85561d",
+        "1eaffe57-04c0-4b78-a8e5-7ce92d3a3675",
+        "d93e8aa7-7d0e-4a22-ac90-79a636ec1310"
+      ],
+      "retrieved_titles": [
+        "Attestation de résidence délivrée par les services de la Gendarmerie Royale",
+        "Mainlevée d'hypothèque ou restitution de la caution bancaire",
+        "Attestation de résidence d’au moins 10 ans à l’étranger pour bénéficier de la réduction de 90 % des droits de douane sur un véhicule (Marocains résidant à l’étranger)"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Attestation de résidence délivrée par les services de la Gendarmerie Royale\nDescription: Constitution du dossier de demande ou de renouvellement de la carte nationale d'identité électronique\nAdministration: Administration de la Défense Nationale\nFrais: Gratuit\nDélai: 1 jour\nDocuments requis:\n - Déclaration sur l'honneur de résidence ou dernière facture acquittée de consommation d'eau et d'électricité\n - Photographie d'identité de l'usager\n - Certificat de travail ou attestation de présence dans le cadre des obligations pour les militaires\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Mainlevée d'hypothèque ou restitution de la caution bancaire\nDescription: Obtention de la mainlevée d'hypothèque ou de la restitution de la caution bancaire\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 2 jours\nDocuments requis:\n - • Demande formulaire n° AAC360 ;\n - Réalisation d'un projet immobilier (opérations d'équipement et de construction) :\n - Copie du contrat d'acquisition\n - Copie de la carte nationale d'identité pour les personnes physiques\n - Copie des autorisations de construire ou d'équiper\n - Copie des plans structurels pour les grands projets de construction et d'équipement\n - Copie du permis d'habiter ou du certificat de conformité ou du certificat de réception provisoire\n - Copie du certificat de propriété délivré par l'Agence Nationale de la Cartographie et du Cadastre\n - Promoteurs immobiliers ayant signé une convention avec l'État pour la réalisation de logements sociaux ou de logements à valeur immobilière réduite :\n - Copie de la convention conclue avec l'État\n - Copie des permis de construire\n - Copie du plan structurel\n - Copie du permis d'habiter ou du certificat de conformité\n - Certificat du coefficient spécifique aux logements à valeur immobilière réduite ou logements sociaux\n - Preuve du dépôt de la demande de permis de construire dans un délai de 6 mois à compter de la date de la convention\n - Certificat de l'architecte déterminant la surface réservée aux logements non sociaux par rapport à la surface du terrain\n - Certificat de conformité du projet de logements sociaux\n - Logements destinés à la classe moyenne :\n - Copie de la carte nationale d'identité portant l'adresse du logement, objet de l'hypothèque\n - Copies des quittances de paiement de la taxe des services communaux\n - Non-respect des conditions de bénéfice de l'exonération ou du taux réduit de l'impôt :\n - Copies des cartes nationales d'identité pour les personnes physiques\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Attestation de résidence d’au moins 10 ans à l’étranger pour bénéficier de la réduction de 90 % des droits de douane sur un véhicule (Marocains résidant à l’étranger)\nDescription: Bénéficier de la réduction douanière\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Droits consulaires : 00 dirhams  \nTarif des services (SEGMA) : 00 dirhams\nDélai: immédiatement\nDocuments requis:\n - Carte nationale d’identité\n - Carte de résidence ou carte d’identité étrangère portant l’adresse à l’étranger, ou tout document attestant d’une résidence de 10 ans à l’étranger\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 423,
+      "answer": "Oui, l'attestation de résidence délivrée par les services de la Gendarmerie Royale pour la constitution du dossier de demande ou de renouvellement de la carte nationale d'identité électronique est gratuite.\n\nSource : Administration de la Défense Nationale.",
+      "generation_ms": 2371,
+      "prompt_tokens": 994,
+      "output_tokens": 52,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7615,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s005",
+      "question": "Je suis étranger et je vis au Maroc depuis un an, comment renouveler mon titre de séjour et combien ça coûte ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "bebb569d-4ec1-40ee-bcb2-e90a69255309"
+      ],
+      "reference": "La procédure concernée est « Carte de séjour pour étrangers ou son renouvellement » (Administration de la Défense Nationale). Documents à fournir : Copie des pages du passeport du demandeur ; Photographie du demandeur ; Certificat de propriété ou contrat de location ou tout document attestant de la résidence effective à une adresse fixe… ; Certificat médical ; Document justifiant la nature de l'activité à exercer, le cas échéant. Frais : Droit d'enregistrement et de timbre : 100 dirhams. Délai : 30 jours.",
+      "must_include": [
+        "Copie des pages du passeport du demandeur",
+        "Photographie du demandeur"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "5d3f64c5-3c52-4505-9c69-1090219f63ba",
+        "bebb569d-4ec1-40ee-bcb2-e90a69255309",
+        "9fa40266-4ef6-413e-be1f-d699f5ebd497"
+      ],
+      "retrieved_titles": [
+        "Obtention d'un laissez-passer (pour les Marocains résidant à l'étranger)",
+        "Carte de séjour pour étrangers ou son renouvellement",
+        "Paiement des frais de séjour et de loyer dans le cadre d’un programme d’échange culturel d’une durée maximale de 6 mois"
+      ],
+      "rank": 2,
+      "contexts": [
+        "PROCÉDURE: Obtention d'un laissez-passer (pour les Marocains résidant à l'étranger)\nDescription: Obtention d'un laissez-passer, qui est un document de voyage de courte durée, valable un mois. Il est délivré dans des circonstances exceptionnelles à une personne ne disposant pas d'un passeport en cours de validité, ou ayant perdu son passeport, pour lui permettre de regagner le Maroc, après vérification de son identité et de sa nationalité marocaine.\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 150 dirhams pour les frais consulaires\n20 dirhams pour le tarif des services (SEGMA)\nDélai: immédiatement\nDocuments requis:\n - Demande de passeport biométrique\n - Tout document (original) prouvant la nationalité marocaine (carte d’identité nationale électronique ou ancien passeport)\n - Pour les mineurs de moins de 18 ans ne disposant pas de carte nationale : copie de l'acte de naissance, fiche individuelle d’état civil délivrée par l’état civil ou livret de famille, ainsi que la présence du représentant légal muni de sa carte d’identité\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - Déclaration de perte ou de vol du passeport, le cas échéant\n - Remise de l'ancien passeport s’il s’agit d’un passeport expiré ou détérioré\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Carte de séjour pour étrangers ou son renouvellement\nDescription: Constitution du dossier de demande de la carte de séjour ou de son renouvellement\nAdministration: Administration de la Défense Nationale\nFrais: Droit d'enregistrement et de timbre : 100 dirhams\nDélai: 30 jours\nDocuments requis:\n - Copie des pages du passeport du demandeur\n - Photographie d'identité de l'usager\n - Certificat de propriété ou contrat de location ou tout document attestant de la résidence effective à une adresse fixe au Royaume\n - Certificat médical\n - Document justifiant la nature de l'activité à exercer, le cas échéant\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Paiement des frais de séjour et de loyer dans le cadre d’un programme d’échange culturel d’une durée maximale de 6 mois\nDescription: L’Office des Changes fournit ce service afin de permettre au bénéficiaire d’effectuer des opérations de change non prévues par les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Contrat de location\n - Copie de la carte d'identité\n - Attestation délivrée par une université ou un établissement d’enseignement marocain indiquant la durée du séjour de l’étudiant à l’étranger, ou invitation de l’établissement d’accueil précisant la durée\n - Formulaire bancaire complété, signé et cacheté\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 555,
+      "answer": "Pour renouveler votre carte de séjour en tant qu'étranger, vous devez constituer un dossier de demande auprès de l'Administration de la Défense Nationale.\n\nLes frais pour cette procédure s'élèvent à :\n*   Droit d'enregistrement et de timbre : 100 dirhams.\n\nLe délai de traitement est de 30 jours.\n\nLes documents requis sont les suivants :\n*   Copie des pages du passeport du demandeur\n*   Photographie d'identité de l'usager\n*   Certificat de propriété ou contrat de location ou tout document attestant de la résidence effective à une adresse fixe au Royaume\n*   Certificat médical\n*   Document justifiant la nature de l'activité à exercer, le cas échéant\n\nSource : Administration de la Défense Nationale.",
+      "generation_ms": 4028,
+      "prompt_tokens": 1021,
+      "output_tokens": 170,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8015,
+        "context_precision": 0.5,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s006",
+      "question": "كم تكلف بطاقة الإقامة للأجانب وكم من الوقت يستغرق الحصول عليها؟",
+      "lang": "ar",
+      "category": "fees_delay",
+      "expected_ids": [
+        "bebb569d-4ec1-40ee-bcb2-e90a69255309"
+      ],
+      "reference": "الإجراء المعني هو « بطاقة الإقامة للأجانب أو تجديدها » (إدارة الدفاع الوطني). الوثائق المطلوبة: نسخة من صفحات جواز السفر للمرتفق ؛ صورة فوتوغرافية للمرتفق ؛ شهادة ملكية أو عقد كراء أو أية وثيقة تثبت الإقامة الفعلية بعنوان قار بالمملكة ؛ شهادة طبية ؛ وثيقة تثبت طبيعة النشاط المراد ممارسته عند الاقتضاء. الرسوم: واجب التسجيل والتنبر100 درهم. الآجال: 30 يوما.",
+      "must_include": [
+        "نسخة من صفحات جواز السفر للمرتفق",
+        "صورة فوتوغرافية للمرتفق",
+        "واجب التسجيل والتنبر100 درهم",
+        "30 يوما"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "bebb569d-4ec1-40ee-bcb2-e90a69255309",
+        "d93e8aa7-7d0e-4a22-ac90-79a636ec1310",
+        "2ef82081-8630-47ec-bd23-249486c1e28c"
+      ],
+      "retrieved_titles": [
+        "Carte de séjour pour étrangers ou son renouvellement",
+        "Attestation de résidence d’au moins 10 ans à l’étranger pour bénéficier de la réduction de 90 % des droits de douane sur un véhicule (Marocains résidant à l’étranger)",
+        "Obtention du passeport biométrique pour les adultes (Marocains résidant à l'étranger)"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: بطاقة الإقامة للأجانب أو تجديدها\nDescription: تكوين ملف الحصول على بطاقة الإقامة أو تجديدها\nAdministration: إدارة الدفاع الوطني\nFrais: واجب التسجيل والتنبر100 درهم\nDélai: 30 يوما\nDocuments requis:\n - نسخة من صفحات جواز السفر للمرتفق\n - صورة فوتوغرافية للمرتفق\n - شهادة ملكية أو عقد كراء أو أية وثيقة تثبت الإقامة الفعلية بعنوان قار بالمملكة\n - شهادة طبية\n - وثيقة تثبت طبيعة النشاط المراد ممارسته عند الاقتضاء\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة تثبت إقامة الشخص ببلد الإقامة لا تقل على 10 سنوات من أجل استفادة من التخفيض الممنوح للتخليص  الجمركي للسيارة والمقدر ب 90%(المغاربة المقيمون بالخارج)\nDescription: الاستفادة من التخفيض الجمركي\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: الرسوم القنصلية00 درهما\nتعرفة على الخدمات (SEGMA)00 دراهم\nDélai: على الفور\nDocuments requis:\n - البطاقة الوطنية للتعريف\n - بطاقة الإقامة أو بطاقة التعريف الأجنبية تحمل العنوان بالخارج، أو ما يثبت الإقامة لمدة 10 سنوات بالخارج\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الحصول على جواز السفر البيومتري بالنسبة للأشخاص الراشدين (المغاربة المقيمون بالخارج)\nDescription: الحصول على جواز السفر البيومتري بالنسبة للأشخاص الراشدين (المغاربة المقيمون بالخارج)\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: الرسوم القنصلية800 درهما\nتعرفة على الخدمات (SEGMA)60 درهما\nDélai: 15 يوما\nDocuments requis:\n - طلب جواز السفر البيوميتري\n - بطاقة التعريف الوطنية سارية الصلاحية  أو  وصل إيداع طلب إصدار أو تجديد البطاقة الوطنية\n - في حالة الإدلاء بوصل طلب الحصول على البطاقة الوطنية ، يتعين على المعني الإدلاء بنسخة من عقد الازدياد أو النسخة الكاملة من شهادة الميلاد لا يتعدى تاريخ إصدارها 6 أشهر\n - صورة شخصية ملونة على خلفية بيضاء أو زرقاء (حجم 35x45 مم)، تظهر بوضوح ملامح وجه صاحب الطلب\n - في حالة التجديد، يجب تسليم جواز السفر القديم\n - وثيقة إثبات الإقامة سارية المفعول (بطاقة الإقامة، بطاقة السكن، تأشيرة طويلة الأمد،  تأشيرة أو تصريح الدراسة، تصريح عمل، بطاقة هوية أجنبية أو جواز سفر أجنبي)، أو أي وثيقة رسمية تتضمن الإشارة إلى مكان وعنوان الشخص المعني\n - إذا كانت وثيقة الإقامة الاعتيادية لا تتضمن العنوان الحالي، فيجب الإدلاء بما يثبت الإقامة في هذا العنوان (شهادة الإقامة، عقد الإيجار، فاتورة الماء ، فاتورة الكهرباء ، أو فاتورة  الهاتف الثابت أو شهادة الإيواء مؤشر عليها من قبل المصالح القنصلية أو السلطات ا\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 601,
+      "answer": "وفقًا للمعلومات الرسمية، تكلف بطاقة الإقامة للأجانب 100 درهم (واجب التسجيل والتنبر)، ويستغرق الحصول عليها 30 يومًا.\n\nالمصدر: إدارة الدفاع الوطني.",
+      "generation_ms": 2061,
+      "prompt_tokens": 998,
+      "output_tokens": 53,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.9957,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s007",
+      "question": "Un ressortissant étranger qui vient s'installer au Maroc doit se faire enregistrer : quels documents doit-il préparer ?",
+      "lang": "fr",
+      "category": "ambiguous",
+      "expected_ids": [
+        "353abaab-4267-4f1a-9fb8-623d7a814918",
+        "bebb569d-4ec1-40ee-bcb2-e90a69255309"
+      ],
+      "reference": "La procédure concernée est « Carte d'enregistrement des étrangers » (Administration de la Défense Nationale). Documents à fournir : Copie des pages du passeport du demandeur ; Photo d'identité du demandeur ; Certificat de propriété, contrat de location ou tout document justifiant la résidence effective à une adresse fixe au… ; Document justifiant la nature de l'activité à exercer, le cas échéant ; Certificat médical ; Documents justifiant que le demandeur étranger dispose de moyens de subsistance suffisants. Frais : Droit d'enregistrement et de timbre : 100 dirhams. Délai : 30 jours. Selon la situation exacte, la procédure « Carte de séjour pour étrangers ou son renouvellement » peut aussi s'appliquer.",
+      "must_include": [
+        "Copie des pages du passeport du demandeur",
+        "Photo d'identité du demandeur"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "6134e860-df6d-4a61-86b1-8f61a51a72e3",
+        "353abaab-4267-4f1a-9fb8-623d7a814918",
+        "a5275eec-3d86-4ec1-8ea0-e4b455efd969"
+      ],
+      "retrieved_titles": [
+        "Récépissé de dépôt du dossier de constitution de coopérative",
+        "Carte d'enregistrement des étrangers",
+        "Obtention de la carte nationale d'identité (pour les Marocains résidant à l'étranger)"
+      ],
+      "rank": 2,
+      "contexts": [
+        "PROCÉDURE: Récépissé de dépôt du dossier de constitution de coopérative\nDescription: Le Ministère de l’Intérieur propose ce service aux Marocains résidant au Maroc ou à l’étranger, aux étrangers résidant au Maroc, aux investisseurs, aux entreprises, aux professionnels et aux coopératives, en vue d’informer l’autorité administrative locale de la procédure de constitution de la coopérative. Le dépôt des documents exigés, énumérés à l’article 11 de la loi n° 112.12 relative à la constitution des coopératives, est requis pour l’obtention de cette décision administrative.\nAdministration: Ministère de l'Intérieur-Direction de l'Administration Territoriale\nFrais: Gratuit\nDélai: immédiatement\nDocuments requis:\n - Demande signée par les fondateurs ou le président du conseil d’administration ou le gérant ou l’un des gérants ou leurs mandataires habilités à signer la demande. Dans ce cas, la procuration doit être obligatoirement jointe à la demande d’enregistrement.\n - Les statuts de la coopérative signés légalement, visés par les autorités compétentes, par les fondateurs ou leurs mandataires habilités à signer à cet effet.\n - Liste des membres coopérateurs, indiquant le nombre de parts souscrites, le capital souscrit et le montant libéré par chacun d’eux.\n - Copie de la carte nationale d’identité électronique pour les membres marocains, de la carte d’immatriculation pour les étrangers résidant au Maroc, du passeport pour les étrangers non-résidents ; copie des inscriptions au registre du commerce pour les soc\n - Copie de la carte nationale d’identité électronique pour les membres marocains des organes d’administration et de gestion, de la carte d’immatriculation pour les étrangers résidant au Maroc, du passeport pour les étrangers non-résidents ; copie des inscri\n - Attestation délivrée par la banque dépositaire attestant le dépôt des fonds issus de la libération du capital.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Carte d'enregistrement des étrangers\nDescription: Obtention de la carte d'enregistrement ou son renouvellement\nAdministration: Administration de la Défense Nationale\nFrais: Droit d'enregistrement et de timbre : 100 dirhams\nDélai: 30 jours\nDocuments requis:\n - Copie des pages du passeport du demandeur\n - Photographie d'identité de l'usager\n - Certificat de propriété ou contrat de location ou tout document attestant de la résidence effective à une adresse fixe au Royaume\n - Document justifiant la nature de l'activité à exercer, le cas échéant\n - Certificat médical\n - Documents justifiant que le demandeur étranger dispose de moyens de subsistance suffisants\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention de la carte nationale d'identité (pour les Marocains résidant à l'étranger)\nDescription: Obtention de la carte nationale d'identité\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 75 dirhams pour les frais consulaires\n30 dirhams pour le tarif des services (SEGMA)\nDélai: 60 jours\nDocuments requis:\n - Copie de la page du livret de famille relative à la personne concernée, avec présentation du livret (ce document doit comporter les nom et prénom de la personne concernée ainsi que les noms de ses parents en langue arabe et en caractères latins ; il est à\n - Certificat d'immatriculation consulaire\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - Présentation de l'original ou d'une copie de l'acte en vertu duquel la nationalité marocaine a été accordée aux étrangers ayant obtenu cette nationalité, et pour les enfants nés d'un père étranger et d'une mère marocaine avant le 2 avril 2007.\n - Pour la rubrique optionnelle figurant dans la demande d'enregistrement relative à « l'épouse » ou « la veuve » ou « le veuf », la personne concernée doit fournir les documents suivants, selon le cas :\n - * Copie de l'acte de mariage ;\n - * Copie de l'acte de naissance du conjoint ;\n - * Copie de l'acte de décès du conjoint ;\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 436,
+      "answer": "Pour l'obtention de la carte d'enregistrement des étrangers au Maroc, un ressortissant étranger doit préparer les documents suivants :\n\n*   Copie des pages du passeport du demandeur\n*   Photographie d'identité de l'usager\n*   Certificat de propriété ou contrat de location ou tout document attestant de la résidence effective à une adresse fixe au Royaume\n*   Document justifiant la nature de l'activité à exercer, le cas échéant\n*   Certificat médical\n*   Documents justifiant que le demandeur étranger dispose de moyens de subsistance suffisants\n\nSource : Administration de la Défense Nationale.",
+      "generation_ms": 2739,
+      "prompt_tokens": 1215,
+      "output_tokens": 134,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8898,
+        "context_precision": 0.5,
+        "context_recall": 0.8,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s008",
+      "question": "أنا مغربي مقيم في فرنسا وأحتاج نسخة مطابقة للأصل من شهادتي الجامعية، هل يمكن ذلك في القنصلية وكم الثمن؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "a63b08ba-1e68-4177-8d69-749ece3e8f0f"
+      ],
+      "reference": "الإجراء المعني هو « التصديق على مطابقة نسخ الوثائق لأصولها (بطلب من المواطن (ة)المغربي(ة) المقيم(ة) بالخارج) » (وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي). الوثائق المطلوبة: البطاقة الوطنية للتعريف الإلكترونية أو جواز السفر البيومتري ؛ الوثيقة المراد التصديق عليها. الرسوم: الرسوم القنصلية: 50 درهما - تعرفة على الخدمات (SEGMA): 10 دراهم. الآجال: على الفور.",
+      "must_include": [
+        "البطاقة الوطنية للتعريف الإلكترونية أو جواز السفر البيومتري",
+        "الوثيقة المراد التصديق عليها"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "a63b08ba-1e68-4177-8d69-749ece3e8f0f",
+        "715efa64-f32c-44f2-b9d6-bf99c70e82f8",
+        "636ad0e5-0c7c-48ed-9ba6-48d3cf407aa8"
+      ],
+      "retrieved_titles": [
+        "Certification de conformité de copies de documents à la demande des Marocains résidant à l'étranger",
+        "Légalisation de signature (sur demande du citoyen marocain résidant à l’étranger)",
+        "Attestation du cours de change des devises étrangères par rapport au dirham marocain"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: التصديق على مطابقة نسخ الوثائق لأصولها (بطلب من المواطن (ة)المغربي(ة) المقيم(ة) بالخارج)\nDescription: التصديق على مطابقة نسخ الوثائق لأصولها  قصد الإدلاء بها عند الاقتضاء (بطلب من المغاربة المقيمين بالخارج)\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: - الرسوم القنصلية: 50 درهما\n- تعرفة على الخدمات (SEGMA): 10 دراهم\nDélai: على الفور\nDocuments requis:\n - البطاقة الوطنية للتعريف الإلكترونية أو جواز السفر البيومتري\n - الوثيقة المراد التصديق عليها\nÉtapes:\nغير محدد",
+        "PROCÉDURE: تصحيح الإمضاء(بطلب من المواطن (ة) المغربي(ة) المقيم(ة) بالخارج)\nDescription: تصحيح الإمضاء على الوثائق التي يحتاجها المواطن المغربي المقيم بدائرة نفوذ القنصلية المعنية للإدلاء بها عند الاقتضاء\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: الرسوم القنصلية  : 50 درهما\nتعرفة على الخدمات (SEGMA) : عشرة (10) دراهم\nDélai: على الفور\nDocuments requis:\n - البطاقة الوطنية للتعريف الإلكترونية أو جواز السفر البيومتري\n - الوثيقة  المراد التصديق عليها\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة سعر صرف العملات الأجنبية مقابل الدرهم المغربي\nDescription: الحصول على شهادة سعر صرف العملات الأجنبية مقابل الدرهم المغربي\nAdministration: بنك المغرب\nFrais: تسعيرة طلب شهادة حول أسعار الصرف :\nالاشخاص الذاتيون والمعنويون  : 110 دراهم مع احتساب الرسوم. \nفي حالة تاريخ سعر الصرف ما قبل 1959أو العملة غير مسعرة تسلم شهادة عدم تقييم الدرهم من طرف بنك المغرب : بالمجان.\nDélai: الحالة 1: تاريخ سعر الصرف قبل1959  أو العملة غير مسعرة: استصدار فوري لشهادة تتضمن عدم تقييم الدرهم ما قبل 1959 أو عدم تحديد سعر صرف العملة من طرف بنك المغرب.\n الحالة 2: تاريخ سعر الصرف بين 1959 و1962:استصدار الشهادة خلال يومين بعد إيداع  الطلب\n الحالة 3: تاريخ سعر الصرف بعد 1962 والعملة مسعرة: استصدار فوري لشهادة سعر الصرف\nDocuments requis:\n - طلب\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 587,
+      "answer": "نعم، يمكنك الحصول على نسخة مطابقة للأصل من شهادتك الجامعية في القنصلية. هذه الخدمة تسمى \"التصديق على مطابقة نسخ الوثائق لأصولها (بطلب من المواطن (ة)المغربي(ة) المقيم(ة) بالخارج)\".\n\nتتم هذه الإجراءات لدى وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي.\n\nالرسوم المطلوبة هي:\n*   الرسوم القنصلية: 50 درهما\n*   تعرفة على الخدمات (SEGMA): 10 دراهم\nليصبح المجموع 60 درهما.",
+      "generation_ms": 3449,
+      "prompt_tokens": 883,
+      "output_tokens": 162,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.6667,
+        "answer_relevancy": 0.8438,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s009",
+      "question": "Je vis en Belgique et j'ai besoin en urgence d'un papier qui prouve que je suis de nationalité marocaine, que faire ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "25177cb4-a840-456d-9f46-0fa0eb43a716"
+      ],
+      "reference": "La procédure concernée est « Certificat de reconnaissance de la nationalité marocaine (administratif) (Marocains résidant à l’étranger) » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Carte nationale d’identité électronique ou passeport biométrique ; Livret de famille ou carnet d’identité et d’état civil ; Certificat de nationalité marocaine pour les enfants nés d’une mère marocaine et d’un père étranger. Frais : 0. Délai : 60 jours.",
+      "must_include": [
+        "Carte nationale d’identité électronique ou passeport…",
+        "Livret de famille ou carnet d’identité et d’état civil",
+        "0"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "25177cb4-a840-456d-9f46-0fa0eb43a716",
+        "a63b08ba-1e68-4177-8d69-749ece3e8f0f",
+        "a5275eec-3d86-4ec1-8ea0-e4b455efd969"
+      ],
+      "retrieved_titles": [
+        "Certificat de reconnaissance de la nationalité marocaine (administratif) (Marocains résidant à l’étranger)",
+        "Certification de conformité de copies de documents à la demande des Marocains résidant à l'étranger",
+        "Obtention de la carte nationale d'identité (pour les Marocains résidant à l'étranger)"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Certificat de reconnaissance de la nationalité marocaine (administratif) (Marocains résidant à l’étranger)\nDescription: Obtention du certificat de reconnaissance de la nationalité marocaine. Ce document n’est délivré que pour faciliter certaines démarches administratives urgentes des citoyens marocains dans les pays d’accueil. Il ne remplace en aucun cas le certificat de nationalité, qui relève de la compétence des juridictions marocaines compétentes.\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 0\nDélai: 60 jours\nDocuments requis:\n - Carte nationale d'identité électronique ou passeport biométrique\n - Livret de famille ou carnet d’identité et d’état civil\n - Certificat de nationalité marocaine pour les enfants nés d’une mère marocaine et d’un père étranger\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Certification de conformité de copies de documents à la demande des Marocains résidant à l'étranger\nDescription: Certification de conformité des copies de documents aux originaux en vue de leur production, le cas échéant, à la demande des Marocains résidant à l'étranger\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Droits consulaires : 50 dirhams  \nTarif des services (SEGMA) : 10 dirhams\nDélai: immédiatement\nDocuments requis:\n - Carte nationale d'identité électronique ou passeport biométrique\n - Document à certifier\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention de la carte nationale d'identité (pour les Marocains résidant à l'étranger)\nDescription: Obtention de la carte nationale d'identité\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 75 dirhams pour les frais consulaires\n30 dirhams pour le tarif des services (SEGMA)\nDélai: 60 jours\nDocuments requis:\n - Copie de la page du livret de famille relative à la personne concernée, avec présentation du livret (ce document doit comporter les nom et prénom de la personne concernée ainsi que les noms de ses parents en langue arabe et en caractères latins ; il est à\n - Certificat d'immatriculation consulaire\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - Présentation de l'original ou d'une copie de l'acte en vertu duquel la nationalité marocaine a été accordée aux étrangers ayant obtenu cette nationalité, et pour les enfants nés d'un père étranger et d'une mère marocaine avant le 2 avril 2007.\n - Pour la rubrique optionnelle figurant dans la demande d'enregistrement relative à « l'épouse » ou « la veuve » ou « le veuf », la personne concernée doit fournir les documents suivants, selon le cas :\n - * Copie de l'acte de mariage ;\n - * Copie de l'acte de naissance du conjoint ;\n - * Copie de l'acte de décès du conjoint ;\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 408,
+      "answer": "Pour obtenir un papier qui prouve votre nationalité marocaine dans le cadre de démarches administratives urgentes en tant que Marocain résidant à l'étranger, vous pouvez demander le **Certificat de reconnaissance de la nationalité marocaine (administratif)**.\n\nCe document est délivré par le Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine. Il est spécifiquement destiné à faciliter certaines démarches administratives urgentes des citoyens marocains dans les pays d’accueil, mais il ne remplace en aucun cas le certificat de nationalité, qui relève de la compétence des juridictions marocaines.\n\nLes frais pour cette procédure sont de 0 dirham.\n\nLe délai de traitement est de 60 jours.\n\nLes documents requis sont :\n*   Carte nationale d'identité électronique ou passeport biométrique\n*   Livret de famille ou carnet d’identité et d’état civil\n*   Certificat de nationalité marocaine pour les enfants nés d’une mère marocaine et d’un père étranger",
+      "generation_ms": 5573,
+      "prompt_tokens": 1010,
+      "output_tokens": 251,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8508,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s010",
+      "question": "Je réside en Espagne, que dois-je apporter au consulat pour faire légaliser ma signature ?",
+      "lang": "fr",
+      "category": "ambiguous",
+      "expected_ids": [
+        "715efa64-f32c-44f2-b9d6-bf99c70e82f8",
+        "bc0ddd65-ca14-4eb6-9507-89298618b282"
+      ],
+      "reference": "La procédure concernée est « Légalisation de signature (sur demande du citoyen marocain résidant à l’étranger) » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Carte nationale d’identité électronique ou passeport biométrique ; Document à légaliser. Frais : Frais consulaires : 50 dirhams Tarif des services (SEGMA) : dix (10) dirhams. Délai : immédiatement. Selon la situation exacte, la procédure « Légalisation de signature sur une procuration autre que celle relative à une transaction immobilière qui doit être établie par les notaires (à la demande du citoyen marocain résidant à l'étranger) » peut aussi s'appliquer.",
+      "must_include": [
+        "Carte nationale d’identité électronique ou passeport…",
+        "Document à légaliser"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "715efa64-f32c-44f2-b9d6-bf99c70e82f8",
+        "bc0ddd65-ca14-4eb6-9507-89298618b282",
+        "a63b08ba-1e68-4177-8d69-749ece3e8f0f"
+      ],
+      "retrieved_titles": [
+        "Légalisation de signature (sur demande du citoyen marocain résidant à l’étranger)",
+        "Légalisation de signature sur une procuration autre que celle relative à une transaction immobilière qui doit être établie par les notaires (à la demande du citoyen marocain résidant à l'étranger)",
+        "Certification de conformité de copies de documents à la demande des Marocains résidant à l'étranger"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Légalisation de signature (sur demande du citoyen marocain résidant à l’étranger)\nDescription: Légalisation de la signature sur les documents requis par le citoyen marocain résidant dans la circonscription consulaire concernée, à produire le cas échéant.\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Frais consulaires : 50 dirhams  \nTarif des services (SEGMA) : dix (10) dirhams\nDélai: immédiatement\nDocuments requis:\n - Carte nationale d'identité électronique ou passeport biométrique\n - Document à légaliser\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Légalisation de signature sur une procuration autre que celle relative à une transaction immobilière qui doit être établie par les notaires (à la demande du citoyen marocain résidant à l'étranger)\nDescription: Légalisation de signature\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Frais consulaires : 50 dirhams  \nTaxe sur les services (SEGMA) : 10 dirhams\nDélai: immédiatement\nDocuments requis:\n - Carte nationale d'identité électronique ou passeport biométrique\n - Procuration, déclaration ou document à légaliser\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Certification de conformité de copies de documents à la demande des Marocains résidant à l'étranger\nDescription: Certification de conformité des copies de documents aux originaux en vue de leur production, le cas échéant, à la demande des Marocains résidant à l'étranger\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Droits consulaires : 50 dirhams  \nTarif des services (SEGMA) : 10 dirhams\nDélai: immédiatement\nDocuments requis:\n - Carte nationale d'identité électronique ou passeport biométrique\n - Document à certifier\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 415,
+      "answer": "Pour faire légaliser votre signature au consulat, vous devez apporter les documents suivants :\n\n*   Votre Carte nationale d'identité électronique ou votre passeport biométrique\n*   Le document à légaliser\n\nSource : Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine.",
+      "generation_ms": 3081,
+      "prompt_tokens": 732,
+      "output_tokens": 91,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8824,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s011",
+      "question": "أريد توكيل أخي في المغرب لسحب وثائق باسمي وأنا مقيم في إيطاليا، كيف أصحح إمضائي على الوكالة في القنصلية؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "bc0ddd65-ca14-4eb6-9507-89298618b282",
+        "715efa64-f32c-44f2-b9d6-bf99c70e82f8"
+      ],
+      "reference": "الإجراء المعني هو « تصحيح الإمضاء على الوكالة بخلاف تلك المتعلقة بصفقة عقارية والتي يجب أن تكون محررة من طرف العدول  (بطلب من المواطن المغربي المقيم بالخارج) » (وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي). الوثائق المطلوبة: البطاقة الوطنية للتعريف الإلكترونية أو جواز السفر البيومتري ؛ الوكالة أو التصريح أو الوثيقة المراد التصديق عليها. الرسوم: الرسوم القنصلية : 50 درهما التعرفة على الخدمات (SEGMA) : 10 دراهم. الآجال: على الفور. وحسب الحالة، قد ينطبق أيضا إجراء « تصحيح الإمضاء(بطلب من المواطن (ة) المغربي(ة) المقيم(ة) بالخارج) ».",
+      "must_include": [
+        "البطاقة الوطنية للتعريف الإلكترونية أو جواز السفر البيومتري",
+        "الوكالة أو التصريح أو الوثيقة المراد التصديق عليها"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "bc0ddd65-ca14-4eb6-9507-89298618b282",
+        "715efa64-f32c-44f2-b9d6-bf99c70e82f8",
+        "62dc92f2-b31b-4f03-a722-c5fa1c4ca43c"
+      ],
+      "retrieved_titles": [
+        "Légalisation de signature sur une procuration autre que celle relative à une transaction immobilière qui doit être établie par les notaires (à la demande du citoyen marocain résidant à l'étranger)",
+        "Légalisation de signature (sur demande du citoyen marocain résidant à l’étranger)",
+        "Révocation de procuration notariée (Marocains résidant à l'étranger)"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: تصحيح الإمضاء على الوكالة بخلاف تلك المتعلقة بصفقة عقارية والتي يجب أن تكون محررة من طرف العدول  (بطلب من المواطن المغربي المقيم بالخارج)\nDescription: تصحيح الإمضاء\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: الرسوم القنصلية : 50 درهما\n\nالتعرفة على الخدمات (SEGMA) : 10 دراهم\nDélai: على الفور\nDocuments requis:\n - البطاقة الوطنية للتعريف الإلكترونية أو جواز السفر البيومتري\n - الوكالة أو التصريح أو الوثيقة المراد التصديق عليها\nÉtapes:\nغير محدد",
+        "PROCÉDURE: تصحيح الإمضاء(بطلب من المواطن (ة) المغربي(ة) المقيم(ة) بالخارج)\nDescription: تصحيح الإمضاء على الوثائق التي يحتاجها المواطن المغربي المقيم بدائرة نفوذ القنصلية المعنية للإدلاء بها عند الاقتضاء\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: الرسوم القنصلية  : 50 درهما\nتعرفة على الخدمات (SEGMA) : عشرة (10) دراهم\nDélai: على الفور\nDocuments requis:\n - البطاقة الوطنية للتعريف الإلكترونية أو جواز السفر البيومتري\n - الوثيقة  المراد التصديق عليها\nÉtapes:\nغير محدد",
+        "PROCÉDURE: إلغاء وكالة عدلية (المغاربة المقيمون بالخارج)\nDescription: إلغاء وكالة عدلية\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: الرسوم القنصلية: 200 درهما\nتعرفة على الخدمات (SEGMA): 20 دراهم\nDélai: 60 يوما\nDocuments requis:\n - طلب المعني بالأمر\n - البطاقة الوطنية للتعريف الموكل\n - وثيقة إثبات الإقامة سارية المفعول (بطاقة الإقامة، بطاقة السكن، تأشيرة طويلة الأمد،  تأشيرة أو تصريح الدراسة، تصريح عمل، بطاقة هوية أجنبية أو جواز سفر أجنبي)، أو أي وثيقة رسمية تتضمن الإشارة إلى مكان وعنوان الشخص المعني\n - إذا كانت وثيقة الإقامة الاعتيادية لا تتضمن العنوان الحالي، فيجب الإدلاء بما يثبت الإقامة في هذا العنوان (شهادة الإقامة، عقد الإيجار، فاتورة الماء ، فاتورة الكهرباء ، أو فاتورة  الهاتف الثابت أو شهادة الإيواء مؤشر عليها من قبل المصالح القنصلية أو السلطات ا\n - نسخة من الوكالة المطلوب إلغاؤها\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 524,
+      "answer": "بناءً على المعلومات المتوفرة من وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي، لتصحيح إمضائك على الوكالة (بخلاف تلك المتعلقة بصفقة عقارية) كفرد مغربي مقيم بالخارج، يجب عليك تقديم الوثائق التالية:\n\n*   البطاقة الوطنية للتعريف الإلكترونية أو جواز السفر البيومتري.\n*   الوكالة المراد التصديق عليها.\n\nالرسوم المطلوبة هي:\n*   الرسوم القنصلية: 50 درهماً.\n*   تعرفة على الخدمات (SEGMA): 10 دراهم.\n\nيتم إنجاز هذه الخدمة على الفور.",
+      "generation_ms": 7074,
+      "prompt_tokens": 908,
+      "output_tokens": 177,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.6991,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s012",
+      "question": "أنا تاجر وأريد الترشح لانتخابات غرفة التجارة والصناعة، ما الشهادة التي يجب أن أحصل عليها؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "81cfb5e0-7ec0-43f6-90ea-ddd6641f5b40"
+      ],
+      "reference": "الإجراء المعني هو « شهادة التسجيل في اللوائح الانتخابية الخاصة بالغرف المهنية » (وزارة الداخلية- مديرية الشؤون الانتخابية). الوثائق المطلوبة: نسخة من البطاقة الوطنية للتعريف. الرسوم: بالمجان. الآجال: 3 أيام.",
+      "must_include": [
+        "نسخة من البطاقة الوطنية للتعريف",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "81cfb5e0-7ec0-43f6-90ea-ddd6641f5b40",
+        "0ea0d0c8-bf87-4e41-ac6b-5b3ee3771e0d",
+        "33e0adf3-de86-40a0-9675-467f1670dc6f"
+      ],
+      "retrieved_titles": [
+        "Certificat d'inscription sur les listes électorales des chambres professionnelles",
+        "Obtention du certificat de qualification et de classification des laboratoires de construction et de travaux publics",
+        "Certificat d’adaptation et de classification des entreprises dans le domaine de l’aménagement agricole"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: شهادة التسجيل في اللوائح الانتخابية الخاصة بالغرف المهنية\nDescription: تسلم وزارة الداخلية هذه الشهادة لفائدة المهنيين بغاية تكوين ملف الترشح للانتخابات المهنية أو لانتخابات أعضاء مجلس المستشارين، وذلك شرط أن يكون طالب الوثيقة مسجلا في اللائحة الانتخابية الخاصة بإحدى الغرف المهنية\nAdministration: وزارة الداخلية- مديرية الشؤون الانتخابية\nFrais: بالمجان\nDélai: 3 أيام\nDocuments requis:\n - نسخة من البطاقة الوطنية\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الحصول على شهادة تكييف وتصنيف مختبرات البناء والأشغال العمومية\nDescription: المشاركة في الصفقات العمومية\nAdministration: وزارة التجهيز والماء\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - طلب تكييف و تصنيف مختبرات البناء والأشغال العمومية\n - شهادة الاقامة\n - نسخة مصورة  من الدبلوم المحصل عليه من طرف مسير المختبر\n - الوثائق التي تثبت أن مسير المختبر المترشح سبق أن زاول واحدا أو أكثر من انشطة المختبر المبينة في القائمة المشار اليها في المادة الأولى من  المرسوم رقم  437-01-2 طوال خمس (5) سنوات على الأقل.\n - البطاقة رقم 3 من السجل العدلي لا يتجاوز تاريخها ثلاثة أشهر أو أي وثيقة رسمية أخرى تقوم مقامها\n - مستخرج من شهادة تقييد المختبر في السجل التجاري\n - جدول لا يتجاوز تاريخه سنة واحدة ومؤشر عليه بصفة صحيحة من لدن الصندوق الوطني للضمان الاجتماعي يتضمن قائمة الأشخاص المستخدمين والمنخرطين في هذه الهيئة ويثبت أن المترشح يقدم بانتظام التصاريح بالأجور\n - شهادة مسلمة من مصالح الضرائب المباشرة والرسوم المعتبرة في حكمها يبين فيها رقم الأعمال الذي تم تحقيقه طوال السنوات الثلاث الأخيرة أو منذ إنشاء المختبر إذا كان هذا الأخير قائما منذ أقل من ثلاث سنوات\n - شهادة مسلمة منذ أقل من سنة   من لدن القابض التابع له محل فرض الضريبة تثبت أن الشخص المترشح في وضعية جبائية قانونية لكونه أدلى بتصاريحه ودفع المبالغ المستحقة، أو في حالة عدم الأداء، لكونه قدم ضمانات يرى المحاسب المكلف بالتحصيل أنه كافية. ويجب أن يبين في هذ\n - المراجع التقنية المتعلقة بطبيعة ومبلغ الأعمال المنجزة ومكان وتاريخ إنجازها وكذا أسماء وعناوين أصحاب المشاريع الذين استفادوا من الأعمال المذكورة وعند الاقتضاء تسمياتهم وعناوينهم. ولا  تطبق أحكام هذا المقطع على المختبرات الحديثة العهد.\n - قائمة الوسائل المادية مع مواصفاتها التقنية وبيان تاريخها وقيم  اقتنائها.\n - وثيقة تثبت ربط تجهيزات التجريب والقياس بشبكة المعايرة الوطنية أو الدولية وفقا للنصوص التشريعية والتنظيمية الجاري بها العمل.\n - قائمة مستخدمي الإشراف والتأطير مع بيان مؤهلاتهم المهنية بوجه خاص.\n - نسخة من النظام الأساسي للشخص المعنوي\n - شهادة القيد في جدول الضريبة المهنية (الباتنتا) لا يتجاوز  تاريخها سنة.\n - نسخة من المخطط الهيكلي مفصل يتضمن عند الاقتضاء  كيفية  تموقعه عبر التراب الوطني ومداه.\n - السيرة الذاتية لكل واحد من مسيريه و أطره.\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة تكييف وتصنيف المقاولات في مجال اعداد المجال الفلاحي\nDescription: الحصول على شهادة تكييف وتصنيف مقاولات البناء في قطاع الري واعداد المجال الفلاحي\nAdministration: وزارة الفلاحة والصيد البحري والتنمية القروية والمياه والغابات-قطاع الفلاحة\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - طلب المقاولات المعنية بطلبات التكييف والتصنيف محرر في مطبوع تسلمه الإدارة يمكن تحميله من موقع الوزارة.\n - نسخة من شهادة قيد المقاولة في السجل التجاري نمو\\ج 7.\n - شهادة يسلمها الصندوق الوطني للضمان الاجتماعي تبين فيها كتلة الأجور التي صرحت بها المقاولة اليه خلال الثلاث سنوات المالية الأخيرة او منذ انشاء المقاولة اذا كانت قائمة منذ اقل من ثلاث سنوات\n - شهادة تسلمها مصالح الضرائب المباشرة والرسوم التي في حكمها يبين فيها رقم المعاملات الذي تم تحقيقه خلال الخمس سنوات الأخيرة او منذ انشاء المقاولة اذا كانت قائمة منذ اقل من خمس سنوات\n - المراجع التقنية للمقاولة  لآخر خمس سنوات مع التنصيص بوجه خاص على طبيعة وحجم الاشغال المنجزة ومكان وتاريخ إنجازها وكذا أسماء وعناوين أصحاب المشاريع الذين استفادوا منها والفنيين الذين اشرفوا عليها، ولا تطبق احكام هذه الفقرة على المقاولات الحديثة العهد المسل\n - شهادات الإنجاز لآخر خمس سنوات صادرة عن أصحاب المشاريع المعترف بهم. في حالة وجود اتحاد ، يجب أن تحدد الشهادة المبلغ المفصل للخدمات التي قام بها كل عضو في الاتحاد.\n - قائمة معدات المقاولة مع بيان تواريخ واثمان شرائها مشفوعة بالمستندات أو أي وثيقة تثبت اقتناءها\n - - فواتير شراء المعدات، وعند الاقتضاء عقود البيع المسجلة لذى المصالح الضريبية أو عقود التأجير بيع/شراء- les contrats de leasing assorti de l’ordre de prélèvement irrévocable de la Banque\n - قائمة أعوان الاشراف والتأطير مع بيان مؤهلاتهم المهنية مرفقة بنسخ من الديبلومات وبشهادات التصريح بالأجور.\n - السيرة الذاتية لأعوان التأطيرابالنسبة لكل صنف مطلوب\n - شهادة إقرار بالراتب صادرة عن CNSS لأعوان التأطير والاشراف  منذ انضمامهم إلى CNSS وتحدد جميع الشركات التي تم توظيفهم فيها\n - شهادة التصنيف والتكثيف الأصلية الصادرة عن الإدارة في حالة تجديد الشهادة.\n - قائمة الوثائق والمستندات المطلوبة لتبرير رقم المعاملات\n - تفصيل رقم الأعمال حسب فرع النشاط والسنة\n - المستندات المحاسبية التي تبرر رقم الأعمال وخاصة الكشوف والفواتير والمرفقات والشهادات من أصحاب المشاريع.\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 383,
+      "answer": "بناءً على المعلومات المتوفرة، إذا كنت ترغب في الترشح لانتخابات غرفة التجارة والصناعة، يجب عليك الحصول على **شهادة التسجيل في اللوائح الانتخابية الخاصة بالغرف المهنية**.\n\nهذه الشهادة تسلمها **وزارة الداخلية- مديرية الشؤون الانتخابية**.\n\nتفاصيل الحصول على الشهادة هي كالتالي:\n*   **الوصف**: تسلم لفائدة المهنيين بغاية تكوين ملف الترشح للانتخابات المهنية، شرط أن يكون طالب الوثيقة مسجلاً في اللائحة الانتخابية الخاصة بإحدى الغرف المهنية.\n*   **الرسوم**: بالمجان.\n*   **المدة الزمنية**: 3 أيام.\n*   **الوثائق المطلوبة**:\n    *   نسخة من البطاقة الوطنية.",
+      "generation_ms": 5100,
+      "prompt_tokens": 1715,
+      "output_tokens": 183,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.8571,
+        "answer_relevancy": 0.8556,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s013",
+      "question": "Mon nom n'est pas écrit pareil sur mon acte étranger et sur mes papiers marocains, comment obtenir un document qui confirme qu'il s'agit de la même personne ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "659a4461-b4c9-4791-a6d5-4220cb35cfda"
+      ],
+      "reference": "La procédure concernée est « Obtention de l'attestation de concordance par les Marocains résidant à l'étranger » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Carte nationale d'identité électronique ou passeport biométrique ; Document justifiant la concordance demandée. Frais : Frais consulaires : 20 dirhams Tarif des services (SEGMA) : 00 dirham. Délai : immédiatement.",
+      "must_include": [
+        "Carte nationale d'identité électronique ou passeport…",
+        "Document justifiant la concordance demandée"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "a63b08ba-1e68-4177-8d69-749ece3e8f0f",
+        "a5275eec-3d86-4ec1-8ea0-e4b455efd969",
+        "659a4461-b4c9-4791-a6d5-4220cb35cfda"
+      ],
+      "retrieved_titles": [
+        "Certification de conformité de copies de documents à la demande des Marocains résidant à l'étranger",
+        "Obtention de la carte nationale d'identité (pour les Marocains résidant à l'étranger)",
+        "Obtention de l'attestation de concordance par les Marocains résidant à l'étranger"
+      ],
+      "rank": 3,
+      "contexts": [
+        "PROCÉDURE: Certification de conformité de copies de documents à la demande des Marocains résidant à l'étranger\nDescription: Certification de conformité des copies de documents aux originaux en vue de leur production, le cas échéant, à la demande des Marocains résidant à l'étranger\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Droits consulaires : 50 dirhams  \nTarif des services (SEGMA) : 10 dirhams\nDélai: immédiatement\nDocuments requis:\n - Carte nationale d'identité électronique ou passeport biométrique\n - Document à certifier\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention de la carte nationale d'identité (pour les Marocains résidant à l'étranger)\nDescription: Obtention de la carte nationale d'identité\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 75 dirhams pour les frais consulaires\n30 dirhams pour le tarif des services (SEGMA)\nDélai: 60 jours\nDocuments requis:\n - Copie de la page du livret de famille relative à la personne concernée, avec présentation du livret (ce document doit comporter les nom et prénom de la personne concernée ainsi que les noms de ses parents en langue arabe et en caractères latins ; il est à\n - Certificat d'immatriculation consulaire\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - Présentation de l'original ou d'une copie de l'acte en vertu duquel la nationalité marocaine a été accordée aux étrangers ayant obtenu cette nationalité, et pour les enfants nés d'un père étranger et d'une mère marocaine avant le 2 avril 2007.\n - Pour la rubrique optionnelle figurant dans la demande d'enregistrement relative à « l'épouse » ou « la veuve » ou « le veuf », la personne concernée doit fournir les documents suivants, selon le cas :\n - * Copie de l'acte de mariage ;\n - * Copie de l'acte de naissance du conjoint ;\n - * Copie de l'acte de décès du conjoint ;\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention de l'attestation de concordance par les Marocains résidant à l'étranger\nDescription: Concordance des données figurant sur les documents présentés aux autorités du pays de résidence avant l'enregistrement à l'état civil\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Frais consulaires : 20 dirhams  \nTarif des services (SEGMA) : 00 dirham\nDélai: immédiatement\nDocuments requis:\n - Carte nationale d'identité électronique ou passeport biométrique\n - Document justifiant la concordance demandée\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 511,
+      "answer": "Pour obtenir un document qui confirme que votre nom est le même sur vos documents marocains et étrangers, vous pouvez demander une attestation de concordance.\n\nVoici les détails de la procédure :\n\n*   **Administration** : Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine.\n*   **Frais** : Les droits consulaires s'élèvent à 20 dirhams, et le tarif des services (SEGMA) est de 00 dirham.\n*   **Délai** : L'attestation est délivrée immédiatement.\n*   **Documents requis** :\n    *   Carte nationale d'identité électronique ou passeport biométrique.\n    *   Document justifiant la concordance demandée (vos papiers marocains et l'acte étranger dans votre cas).",
+      "generation_ms": 3268,
+      "prompt_tokens": 955,
+      "output_tokens": 199,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.8571,
+        "answer_relevancy": 0.92,
+        "context_precision": 0.3333,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s014",
+      "question": "أنا مقيم بالخارج وأريد استخراج البطاقة الوطنية لأول مرة، ما هي الوثائق المطلوبة؟",
+      "lang": "ar",
+      "category": "documents",
+      "expected_ids": [
+        "a5275eec-3d86-4ec1-8ea0-e4b455efd969"
+      ],
+      "reference": "الإجراء المعني هو « الحصول على البطاقة الوطنية للتعريف ( بالنسبة للمغاربة المقيمين بالخارج) » (وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي). الوثائق المطلوبة: نسخة من صفحة الدفتر العائلي الخاصة بالشخص المعني، مع الإدلاء بالدفتر ؛ شهادة التسجيل القنصلي ؛ صورة شخصية ملونة على خلفية بيضاء أو زرقاء ؛ الإدلاء بنظير أو بنسخة من الوثيقة الممنوحة بموجبها الجنسية المغربية للأجانب الذين حصلوا على هذه الجنسية، وبالنسبة… ؛ بالنسبة للخانة الاختيارية المدرجة في طلب التسجيل المتعلقة بـ \"الزوجة\" أو \"الأرملة\" أو \"الأرمل\"، يجب على المعني الإدلاء… ؛ نسخة من عقد الزواج؛. الرسوم: 75 درهما بالنسبة للرسوم القنصلية 30 درهما بالنسبة لتعرفة على الخدمات (SEGMA). الآجال: 60يوما.",
+      "must_include": [
+        "نسخة من صفحة الدفتر العائلي الخاصة بالشخص المعني، مع…",
+        "شهادة التسجيل القنصلي"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "a5275eec-3d86-4ec1-8ea0-e4b455efd969",
+        "2ef82081-8630-47ec-bd23-249486c1e28c",
+        "bebb569d-4ec1-40ee-bcb2-e90a69255309"
+      ],
+      "retrieved_titles": [
+        "Obtention de la carte nationale d'identité (pour les Marocains résidant à l'étranger)",
+        "Obtention du passeport biométrique pour les adultes (Marocains résidant à l'étranger)",
+        "Carte de séjour pour étrangers ou son renouvellement"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: الحصول على البطاقة الوطنية للتعريف ( بالنسبة للمغاربة المقيمين بالخارج)\nDescription: الحصول على البطاقة الوطنية للتعريف\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: 75 درهما بالنسبة للرسوم القنصلية\n30 درهما بالنسبة لتعرفة على الخدمات (SEGMA)\nDélai: 60يوما\nDocuments requis:\n - نسخة من صفحة الدفتر العائلي الخاصة بالشخص المعني، مع الإدلاء بالدفتر(يجب أن تتضمن هذه الوثيقة اسم ولقب الشخص المعني وأسماء والديه باللغة العربية وبالأحرف اللاتينية، علما بأنه لا يقبل \"دفتر الهوية والحالة المدنية\" القديم)، \nأو النسخة الكاملة من شهادة الازد\n - شهادة التسجيل القنصلي\n - صورة شخصية ملونة على خلفية بيضاء أو زرقاء (حجم 35x45 مم)، تظهر بوضوح ملامح وجه صاحب الطلب\n - الإدلاء بنظير أو بنسخة  من الوثيقة الممنوحة بموجبها الجنسية المغربية للأجانب الذين حصلوا على هذه الجنسية، وبالنسبة للأطفال المولودين من أب أجنبي وأم مغربية قبل 2 أبريل 2007.\n - بالنسبة للخانة الاختيارية المدرجة في طلب التسجيل المتعلقة بـ \"الزوجة\" أو \"الأرملة\" أو \"الأرمل\"، يجب على المعني الإدلاء بالوثائق التالية، حسب الاقتضاء:\n - * نسخة من عقد الزواج؛\n - * نسخة من عقد ازدياد الزوج؛\n - * نسخة من شهادة وفاة الزوج,\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الحصول على جواز السفر البيومتري بالنسبة للأشخاص الراشدين (المغاربة المقيمون بالخارج)\nDescription: الحصول على جواز السفر البيومتري بالنسبة للأشخاص الراشدين (المغاربة المقيمون بالخارج)\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: الرسوم القنصلية800 درهما\nتعرفة على الخدمات (SEGMA)60 درهما\nDélai: 15 يوما\nDocuments requis:\n - طلب جواز السفر البيوميتري\n - بطاقة التعريف الوطنية سارية الصلاحية  أو  وصل إيداع طلب إصدار أو تجديد البطاقة الوطنية\n - في حالة الإدلاء بوصل طلب الحصول على البطاقة الوطنية ، يتعين على المعني الإدلاء بنسخة من عقد الازدياد أو النسخة الكاملة من شهادة الميلاد لا يتعدى تاريخ إصدارها 6 أشهر\n - صورة شخصية ملونة على خلفية بيضاء أو زرقاء (حجم 35x45 مم)، تظهر بوضوح ملامح وجه صاحب الطلب\n - في حالة التجديد، يجب تسليم جواز السفر القديم\n - وثيقة إثبات الإقامة سارية المفعول (بطاقة الإقامة، بطاقة السكن، تأشيرة طويلة الأمد،  تأشيرة أو تصريح الدراسة، تصريح عمل، بطاقة هوية أجنبية أو جواز سفر أجنبي)، أو أي وثيقة رسمية تتضمن الإشارة إلى مكان وعنوان الشخص المعني\n - إذا كانت وثيقة الإقامة الاعتيادية لا تتضمن العنوان الحالي، فيجب الإدلاء بما يثبت الإقامة في هذا العنوان (شهادة الإقامة، عقد الإيجار، فاتورة الماء ، فاتورة الكهرباء ، أو فاتورة  الهاتف الثابت أو شهادة الإيواء مؤشر عليها من قبل المصالح القنصلية أو السلطات ا\nÉtapes:\nغير محدد",
+        "PROCÉDURE: بطاقة الإقامة للأجانب أو تجديدها\nDescription: تكوين ملف الحصول على بطاقة الإقامة أو تجديدها\nAdministration: إدارة الدفاع الوطني\nFrais: واجب التسجيل والتنبر100 درهم\nDélai: 30 يوما\nDocuments requis:\n - نسخة من صفحات جواز السفر للمرتفق\n - صورة فوتوغرافية للمرتفق\n - شهادة ملكية أو عقد كراء أو أية وثيقة تثبت الإقامة الفعلية بعنوان قار بالمملكة\n - شهادة طبية\n - وثيقة تثبت طبيعة النشاط المراد ممارسته عند الاقتضاء\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 336,
+      "answer": "لاستخراج البطاقة الوطنية للتعريف بصفتك مغربياً مقيماً بالخارج، الوثائق المطلوبة هي كالتالي:\n\n*   نسخة من صفحة الدفتر العائلي الخاصة بك، مع الإدلاء بالدفتر (يجب أن تتضمن هذه الوثيقة اسمك ولقبك وأسماء والديك باللغة العربية وبالأحرف اللاتينية، علماً بأنه لا يقبل \"دفتر الهوية والحالة المدنية\" القديم)، أو النسخة الكاملة من شهادة الازدياد.\n*   شهادة التسجيل القنصلي.\n*   صورة شخصية ملونة على خلفية بيضاء أو زرقاء (حجم 35x45 مم)، تظهر بوضوح ملامح وجه صاحب الطلب.\n*   الإدلاء بنظير أو بنسخة من الوثيقة الممنوحة بموجبها الجنسية المغربية للأجانب الذين حصلوا على هذه الجنسية، وبالنسبة للأطفال المولودين من أب أجنبي وأم مغربية قبل 2 أبريل 2007.\n*   بالنسبة للخانة الاختيارية المدرجة في طلب التسجيل المتعلقة بـ \"الزوجة\" أو \"الأرملة\" أو \"الأرمل\"، يجب عليك الإدلاء بالوثائق التالية، حسب الاقتضاء:\n    *   نسخة من عقد الزواج؛\n    *   نسخة من عقد ازدياد الزوج؛\n    *   نسخة من شهادة وفاة الزوج.\n\nالمصدر: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي.",
+      "generation_ms": 4925,
+      "prompt_tokens": 1222,
+      "output_tokens": 373,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8298,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s015",
+      "question": "Combien coûte la carte d'identité quand on la demande depuis un consulat à l'étranger, et en combien de temps on la reçoit ?",
+      "lang": "fr",
+      "category": "fees_delay",
+      "expected_ids": [
+        "a5275eec-3d86-4ec1-8ea0-e4b455efd969"
+      ],
+      "reference": "La procédure concernée est « Obtention de la carte nationale d'identité (pour les Marocains résidant à l'étranger) » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Copie de la page du livret de famille relative à la personne concernée, avec présentation du livret ; Certificat d'immatriculation consulaire ; Photographie d'identité en couleur sur fond blanc ou bleu ; Présentation de l'original ou d'une copie de l'acte en vertu duquel la nationalité marocaine a été accordée aux… ; Pour la rubrique optionnelle figurant dans la demande d'enregistrement relative à « l'épouse » ou « la veuve » ou « le… ; Copie de l'acte de mariage. Frais : 75 dirhams pour les frais consulaires 30 dirhams pour le tarif des services (SEGMA). Délai : 60 jours.",
+      "must_include": [
+        "Copie de la page du livret de famille relative à la…",
+        "Certificat d'immatriculation consulaire",
+        "60 jours"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "2ef82081-8630-47ec-bd23-249486c1e28c",
+        "a5275eec-3d86-4ec1-8ea0-e4b455efd969",
+        "f0cfdfaa-901a-4398-ae82-1939de6623f4"
+      ],
+      "retrieved_titles": [
+        "Obtention du passeport biométrique pour les adultes (Marocains résidant à l'étranger)",
+        "Obtention de la carte nationale d'identité (pour les Marocains résidant à l'étranger)",
+        "Obtention du passeport en cas de perte pour les adultes (plus de 18 ans) (Marocains résidant à l'étranger)"
+      ],
+      "rank": 2,
+      "contexts": [
+        "PROCÉDURE: Obtention du passeport biométrique pour les adultes (Marocains résidant à l'étranger)\nDescription: Obtention du passeport biométrique pour les personnes adultes (Marocains résidant à l'étranger)\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Frais consulaires 800 dirhams\nTarif sur services (SEGMA) 60 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Carte nationale d'identité en cours de validité ou récépissé de dépôt de demande de délivrance ou de renouvellement de la carte nationale\n - En cas de présentation du récépissé de demande de la carte nationale, l'intéressé doit fournir une copie de l'acte de naissance ou l'extrait intégral de l'acte de naissance datant de moins de 6 mois\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention de la carte nationale d'identité (pour les Marocains résidant à l'étranger)\nDescription: Obtention de la carte nationale d'identité\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 75 dirhams pour les frais consulaires\n30 dirhams pour le tarif des services (SEGMA)\nDélai: 60 jours\nDocuments requis:\n - Copie de la page du livret de famille relative à la personne concernée, avec présentation du livret (ce document doit comporter les nom et prénom de la personne concernée ainsi que les noms de ses parents en langue arabe et en caractères latins ; il est à\n - Certificat d'immatriculation consulaire\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - Présentation de l'original ou d'une copie de l'acte en vertu duquel la nationalité marocaine a été accordée aux étrangers ayant obtenu cette nationalité, et pour les enfants nés d'un père étranger et d'une mère marocaine avant le 2 avril 2007.\n - Pour la rubrique optionnelle figurant dans la demande d'enregistrement relative à « l'épouse » ou « la veuve » ou « le veuf », la personne concernée doit fournir les documents suivants, selon le cas :\n - * Copie de l'acte de mariage ;\n - * Copie de l'acte de naissance du conjoint ;\n - * Copie de l'acte de décès du conjoint ;\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention du passeport en cas de perte pour les adultes (plus de 18 ans) (Marocains résidant à l'étranger)\nDescription: Obtention du passeport en cas de perte pour les adultes (plus de 18 ans) (Marocains résidant à l'étranger)\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 1080 dirhams\n- Frais consulaires : 1000 dirhams\n- Tarif des services (SEGMA) : 80 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Déclaration sur l'honneur de perte signée par l'intéressé\n - Carte nationale d'identité en cours de validité ou récépissé de dépôt de demande de délivrance ou de renouvellement de la carte nationale\n - En cas de présentation du récépissé de demande de carte nationale, l'intéressé doit fournir une copie de l'acte de naissance ou la copie intégrale de l'acte de naissance datant de moins de 6 mois.\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 434,
+      "answer": "Pour l'obtention de la carte nationale d'identité depuis un consulat à l'étranger, les frais s'élèvent à 75 dirhams pour les frais consulaires et 30 dirhams pour le tarif des services (SEGMA), soit un total de 105 dirhams. Le délai d'obtention est de 60 jours.\n\nSource : Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine.",
+      "generation_ms": 2457,
+      "prompt_tokens": 1445,
+      "output_tokens": 126,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.9346,
+        "context_precision": 0.5,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s016",
+      "question": "Mon fils de 15 ans a perdu son passeport pendant les vacances en France, comment le refaire ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "e561a669-e5e6-47ba-a317-0d72b6b90d1b"
+      ],
+      "reference": "La procédure concernée est « Obtention du passeport biométrique en cas de perte pour les mineurs (de 12 à 18 ans) (Marocains résidant à l'étranger) » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Demande de passeport biométrique ; Déclaration sur l'honneur de perte signée par le tuteur légal de l'intéressé ou son représentant légal ; Copie intégrale de l'acte de naissance ou copie complète du certificat de naissance, datant de moins de 6 mois, ou… ; Photo d'identité couleur sur fond blanc ou bleu ; En cas de renouvellement, l'ancien passeport doit être remis ; Document justificatif de résidence en cours de validité. Frais : 80 dirhams. Délai : 15 jours.",
+      "must_include": [
+        "Demande de passeport biométrique",
+        "Déclaration sur l'honneur de perte signée par le tuteur…",
+        "80 dirhams"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "e561a669-e5e6-47ba-a317-0d72b6b90d1b",
+        "fef069e6-87b5-46b7-95bb-426f4d210309",
+        "f0cfdfaa-901a-4398-ae82-1939de6623f4"
+      ],
+      "retrieved_titles": [
+        "Obtention du passeport biométrique en cas de perte pour les mineurs (de 12 à 18 ans) (Marocains résidant à l'étranger)",
+        "Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)",
+        "Obtention du passeport en cas de perte pour les adultes (plus de 18 ans) (Marocains résidant à l'étranger)"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Obtention du passeport biométrique en cas de perte pour les mineurs (de 12 à 18 ans) (Marocains résidant à l'étranger)\nDescription: Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 80 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Déclaration sur l'honneur de perte signée par le tuteur légal de l'intéressé ou son représentant légal\n - Copie intégrale de l'acte de naissance ou copie complète du certificat de naissance, datant de moins de 6 mois, ou copie du livret de famille (l'ancien carnet d'identité et d'état civil n'est pas accepté). Ce document doit comporter le nom et prénom de l'\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)\nDescription: Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Droits consulaires 00 dirhams\nRedevance sur les services (SEGMA) 80 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Déclaration sur l'honneur de perte signée par le tuteur légal de l'intéressé ou son représentant légal\n - Copie intégrale de l'acte de naissance ou copie complète du certificat de naissance, datant de moins de 6 mois, ou copie du livret de famille (l'ancien carnet d'identité et d'état civil n'est pas accepté). Ce document doit comporter le nom et prénom de l'\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis.\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention du passeport en cas de perte pour les adultes (plus de 18 ans) (Marocains résidant à l'étranger)\nDescription: Obtention du passeport en cas de perte pour les adultes (plus de 18 ans) (Marocains résidant à l'étranger)\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 1080 dirhams\n- Frais consulaires : 1000 dirhams\n- Tarif des services (SEGMA) : 80 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Déclaration sur l'honneur de perte signée par l'intéressé\n - Carte nationale d'identité en cours de validité ou récépissé de dépôt de demande de délivrance ou de renouvellement de la carte nationale\n - En cas de présentation du récépissé de demande de carte nationale, l'intéressé doit fournir une copie de l'acte de naissance ou la copie intégrale de l'acte de naissance datant de moins de 6 mois.\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 394,
+      "answer": "Je n'ai pas d'information officielle concernant la procédure pour refaire le passeport perdu d'un mineur de 15 ans.",
+      "generation_ms": 9139,
+      "prompt_tokens": 1494,
+      "output_tokens": 30,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 1.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s017",
+      "question": "ضاع جواز سفر ابنتي البالغة 8 سنوات ونحن نعيش في هولندا، ما العمل؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "fef069e6-87b5-46b7-95bb-426f4d210309"
+      ],
+      "reference": "الإجراء المعني هو « الحصول على جواز السفر البيومتري في حالة الضياع بالنسبة للقاصرين دون 12 سنة (المغاربة المقيمون بالخارج) » (وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي). الوثائق المطلوبة: طلب جواز السفر البيوميتري ؛ تصريح بالشرف بالضياع موقع من طرف ولي أمر المعني بالامر أو ممثله القانوني ؛ نسخة موجزة من رسم الولادة أو النسخة الكاملة من شهادة الميلاد، لا يتعدى تاريخ إصدارها 6 أشهر، أو نسخة من الدفتر العائلي ؛ صورة شخصية ملونة على خلفية بيضاء أو زرقاء ؛ في حالة التجديد، يجب تسليم جواز السفر القديم. ؛ وثيقة إثبات الإقامة سارية المفعول. الرسوم: الرسوم القنصلية00 درهم تعرفة على الخدمات (SEGMA)80 درهما. الآجال: 15يوما.",
+      "must_include": [
+        "طلب جواز السفر البيوميتري",
+        "تصريح بالشرف بالضياع موقع من طرف ولي أمر المعني بالامر أو…"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "e561a669-e5e6-47ba-a317-0d72b6b90d1b",
+        "fef069e6-87b5-46b7-95bb-426f4d210309",
+        "f0cfdfaa-901a-4398-ae82-1939de6623f4"
+      ],
+      "retrieved_titles": [
+        "Obtention du passeport biométrique en cas de perte pour les mineurs (de 12 à 18 ans) (Marocains résidant à l'étranger)",
+        "Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)",
+        "Obtention du passeport en cas de perte pour les adultes (plus de 18 ans) (Marocains résidant à l'étranger)"
+      ],
+      "rank": 2,
+      "contexts": [
+        "PROCÉDURE: الحصول على جواز السفر البيومتري في حالة الضياع بالنسبة للقاصرين (من 12 إلى 18 سنة)(المغاربة المقيمون بالخارج)\nDescription: الحصول على جواز السفر البيومتري في حالة الضياع بالنسبة للقاصرين دون 12 سنة\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: 80 درهما\nDélai: 15 يوما\nDocuments requis:\n - طلب جواز السفر البيوميتري\n - تصريح بالشرف بالضياع موقع من طرف ولي أمر المعني بالامر أو ممثله القانوني\n - نسخة موجزة من رسم الولادة أو النسخة الكاملة من شهادة الميلاد، لا يتعدى تاريخ إصدارها 6 أشهر، أو نسخة من الدفتر العائلي (كناش التعريف والحالة المدنية القديم غير مقبول) يجب أن تتضمن هذه الوثيقة اسم ولقب المعني وأسماء والديه باللغة العربية واللاتينية\n - صورة شخصية ملونة على خلفية بيضاء أو زرقاء (حجم 35x45 مم)، تظهر بوضوح ملامح وجه صاحب الطلب\n - في حالة التجديد، يجب تسليم جواز السفر القديم\n - وثيقة إثبات الإقامة سارية المفعول (بطاقة الإقامة، بطاقة السكن، تأشيرة طويلة الأمد،  تأشيرة أو تصريح الدراسة، تصريح عمل، بطاقة هوية أجنبية أو جواز سفر أجنبي)، أو أي وثيقة رسمية تتضمن الإشارة إلى مكان وعنوان الشخص المعني\n - إذا كانت وثيقة الإقامة الاعتيادية لا تتضمن العنوان الحالي، فيجب الإدلاء بما يثبت الإقامة في هذا العنوان (شهادة الإقامة، عقد الإيجار، فاتورة الماء ، فاتورة الكهرباء ، أو فاتورة  الهاتف الثابت أو شهادة الإيواء مؤشر عليها من قبل المصالح القنصلية أو السلطات ا\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الحصول على جواز السفر البيومتري في حالة الضياع بالنسبة للقاصرين دون 12 سنة (المغاربة المقيمون بالخارج)\nDescription: الحصول على جواز السفر البيومتري في حالة الضياع بالنسبة للقاصرين\nدون 12 سنة (المغاربة المقيمون بالخارج)\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: الرسوم القنصلية00 درهم\nتعرفة على الخدمات (SEGMA)80 درهما\nDélai: 15يوما\nDocuments requis:\n - طلب جواز السفر البيوميتري\n - تصريح بالشرف بالضياع موقع من طرف ولي أمر المعني بالامر أو ممثله القانوني\n - نسخة موجزة من رسم الولادة أو النسخة الكاملة من شهادة الميلاد، لا يتعدى تاريخ إصدارها 6 أشهر، أو نسخة من الدفتر العائلي (كناش التعريف والحالة المدنية القديم غير مقبول) يجب أن تتضمن هذه الوثيقة اسم ولقب المعني وأسماء والديه باللغة العربية واللاتينية\n - صورة شخصية ملونة على خلفية بيضاء أو زرقاء (حجم 35x45 مم)، تظهر بوضوح ملامح وجه صاحب الطلب\n - في حالة التجديد، يجب تسليم جواز السفر القديم.\n - وثيقة إثبات الإقامة سارية المفعول (بطاقة الإقامة، بطاقة السكن، تأشيرة طويلة الأمد،  تأشيرة أو تصريح الدراسة، تصريح عمل، بطاقة هوية أجنبية أو جواز سفر أجنبي)، أو أي وثيقة رسمية تتضمن الإشارة إلى مكان وعنوان الشخص المعني\n - إذا كانت وثيقة الإقامة الاعتيادية لا تتضمن العنوان الحالي، فيجب الإدلاء بما يثبت الإقامة في هذا العنوان (شهادة الإقامة، عقد الإيجار، فاتورة الماء ، فاتورة الكهرباء ، أو فاتورة  الهاتف الثابت أو شهادة الإيواء مؤشر عليها من قبل المصالح القنصلية أو السلطات ا\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الحصول على جواز السفر في حالة الضياع بالنسبة للراشدين (أكثر من 18 سنة)(المغاربة المقيمون يالخارج)\nDescription: الحصول على جواز السفر في حالة الضياع بالنسبة للراشدين (أكثر من 18 سنة)(المغاربة المقيمون بالخارج)\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: 1080 درهما\n- الرسوم القنصلية1000 درهما\n- تعرفة على الخدمات (SEGMA)80 درهما\nDélai: 15 يوما\nDocuments requis:\n - طلب جواز السفر البيوميتري\n - تصريح بالشرف بالضياع موقع من طرف المعني بالامر\n - بطاقة التعريف الوطنية سارية الصلاحية  أو  وصل إيداع طلب إصدار أو تجديد البطاقة الوطنية\n - في حالة الإدلاء بوصل طلب الحصول على البطاقة الوطنية ، يتعين على المعني بالأمر الإدلاء بنسخة من عقد الازدياد أو النسخة الكاملة من شهادة الميلاد لا يتعدى تاريخ إصدارها 6 أشهر\n - صورة شخصية ملونة على خلفية بيضاء أو زرقاء (حجم 35x45 مم)، تظهر بوضوح ملامح وجه صاحب الطلب\n - في حالة التجديد، يجب تسليم جواز السفر القديم\n - وثيقة إثبات الإقامة سارية المفعول (بطاقة الإقامة، بطاقة السكن، تأشيرة طويلة الأمد،  تأشيرة أو تصريح الدراسة، تصريح عمل، بطاقة هوية أجنبية أو جواز سفر أجنبي)، أو أي وثيقة رسمية تتضمن الإشارة إلى مكان وعنوان الشخص المعني\n - إذا كانت وثيقة الإقامة الاعتيادية لا تتضمن العنوان الحالي، فيجب الإدلاء بما يثبت الإقامة في هذا العنوان (شهادة الإقامة، عقد الإيجار، فاتورة الماء ، فاتورة الكهرباء ، أو فاتورة  الهاتف الثابت أو شهادة الإيواء مؤشر عليها من قبل المصالح القنصلية أو السلطات ا\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 421,
+      "answer": "بالنسبة لابنتك البالغة من العمر 8 سنوات والتي تعيش في هولندا، فإن الإجراء المتبع في حالة ضياع جواز سفرها البيومتري هو كالتالي:\n\n**الخدمة:** الحصول على جواز السفر البيومتري في حالة الضياع بالنسبة للقاصرين دون 12 سنة (المغاربة المقيمون بالخارج).\n\n**الإدارة المسؤولة:** وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج - قطاع الشؤون الخارجية والتعاون الإفريقي.\n\n**الوثائق المطلوبة:**\n*   طلب جواز السفر البيوميتري.\n*   تصريح بالشرف بالضياع موقع من طرف ولي أمر المعني بالأمر أو ممثله القانوني.\n*   نسخة موجزة من رسم الولادة أو النسخة الكاملة من شهادة الميلاد، لا يتعدى تاريخ إصدارها 6 أشهر، أو نسخة من الدفتر العائلي (كناش التعريف والحالة المدنية القديم غير مقبول). يجب أن تتضمن هذه الوثيقة اسم ولقب المعني وأسماء والديه باللغة العربية واللاتينية.\n*   صورة شخصية ملونة على خلفية بيضاء أو زرقاء (حجم 35x45 مم)، تظهر بوضوح ملامح وجه صاحب الطلب.\n*   في حالة التجديد، يجب تسليم جواز السفر القديم.\n*   وثيقة إثبات الإقامة سارية المفعول (بطاقة الإقامة، بطاقة السكن، تأشيرة طويلة الأمد، تأشيرة أو تصريح الدراسة، تصريح عمل، بطاقة هوية أجنبية أو جواز سفر أجنبي)، أو أي وثيقة رسمية تتضمن الإشارة إلى مكان وعنوان الشخص المعني.\n*   إذا كانت وثيقة الإقامة الاعتيادية لا تتضمن العنوان الحالي، فيجب الإدلاء بما يثبت الإقامة في هذا العنوان (شهادة الإقامة، عقد الإيجار، فاتورة الماء، فاتورة الكهرباء، أو فاتورة الهاتف الثابت أو شهادة الإيواء مؤشر عليها من قبل المصالح القنصلية أو السلطات المعنية).\n\n**الرسوم:** 80 درهما (الرسوم القنصلية 00 درهم، وتعرفة على الخدمات (SEGMA) 80 درهما).\n\n**الآجال:** 15 يوما.\n\n**الخطوات:** الخطوات غير محددة في المعلومات المتوفرة.\n\n**المصدر:** وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج - قطاع الشؤون الخارجية والتعاون الإفريقي.",
+      "generation_ms": 8291,
+      "prompt_tokens": 1648,
+      "output_tokens": 581,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.8824,
+        "answer_relevancy": 0.8504,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s018",
+      "question": "ابني عمره 14 سنة ويحتاج جواز سفر بيومتري لأول مرة ونحن نعيش بالخارج، ما هي الوثائق المطلوبة؟",
+      "lang": "ar",
+      "category": "documents",
+      "expected_ids": [
+        "b1dec960-490e-487e-a572-da8d0c295f03"
+      ],
+      "reference": "الإجراء المعني هو « الحصول على جواز السفر البيومتري بالنسبة للأشخاص القاصرين المتراوح عمرهم ما بين 12 و18 سنة(المغاربة المقيمون بالخارج) » (وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي). الوثائق المطلوبة: طلب جواز السفر البيوميتري ؛ بطاقة التعريف الوطنية سارية الصلاحية أو وصل إيداع طلب إصدار أو تجديد البطاقة الوطنية ؛ في حالة الإدلاء بوصل طلب الحصول على البطاقة الوطنية ، يتعين على المعني الإدلاء بنسخة من عقد الازدياد أو النسخة الكاملة… ؛ صورة شخصية ملونة على خلفية بيضاء أو زرقاء ؛ في حالة التجديد، يجب تسليم جواز السفر القديم ؛ وثيقة إثبات الإقامة سارية المفعول. الرسوم: الرسوم القنصلية : 00 درهم تعريفة على الخدمات (SEGMA) : 60 درهما. الآجال: 15 يوما.",
+      "must_include": [
+        "طلب جواز السفر البيوميتري",
+        "بطاقة التعريف الوطنية سارية الصلاحية أو وصل إيداع طلب إصدار…"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "679152c6-1975-424d-9257-67ac30e08231",
+        "b1dec960-490e-487e-a572-da8d0c295f03",
+        "fef069e6-87b5-46b7-95bb-426f4d210309"
+      ],
+      "retrieved_titles": [
+        "Obtention du passeport biométrique pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)",
+        "Obtention du passeport biométrique pour les mineurs âgés de 12 à 18 ans (Marocains résidant à l'étranger)",
+        "Obtention du passeport biométrique en cas de perte pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)"
+      ],
+      "rank": 2,
+      "contexts": [
+        "PROCÉDURE: الحصول على جواز السفر البيومتري بالنسبة للقاصرين  أقل من 12 سنة (المغاربة المقيمون بالخارج)\nDescription: الحصول على جواز السفر البيومتري بالنسبة للقاصرين  أقل من 12 سنة\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: 60 درهما\nDélai: 15 يوما\nDocuments requis:\n - طلب جواز السفر البيوميتري\n - نسخة موجزة من رسم الولادة أو النسخة الكاملة من شهادة الميلاد، لا يتعدى تاريخ إصدارها 6 أشهر، أو نسخة من الدفتر العائلي (كناش التعريف والحالة المدنية القديم غير مقبول) يجب أن تتضمن هذه الوثيقة اسم ولقب المعني وأسماء والديه باللغة العربية واللاتينية\n - صورة شخصية ملونة على خلفية بيضاء أو زرقاء (حجم 35x45 مم)، تظهر بوضوح ملامح وجه صاحب الطلب\n - في حالة التجديد، يجب تسليم جواز السفر القديم\n - وثيقة إثبات الإقامة سارية المفعول (بطاقة الإقامة، بطاقة السكن، تأشيرة طويلة الأمد،  تأشيرة أو تصريح الدراسة، تصريح عمل، بطاقة هوية أجنبية أو جواز سفر أجنبي)، أو أي وثيقة رسمية تتضمن الإشارة إلى مكان وعنوان الشخص المعني\n - إذا كانت وثيقة الإقامة الاعتيادية لا تتضمن العنوان الحالي، فيجب الإدلاء بما يثبت الإقامة في هذا العنوان (شهادة الإقامة، عقد الإيجار، فاتورة الماء ، فاتورة الكهرباء ، أو فاتورة  الهاتف الثابت أو شهادة الإيواء مؤشر عليها من قبل المصالح القنصلية أو السلطات ا\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الحصول على جواز السفر البيومتري بالنسبة للأشخاص القاصرين المتراوح عمرهم ما بين 12 و18 سنة(المغاربة المقيمون بالخارج)\nDescription: الحصول على جواز السفر البيومتري بالنسبة للأشخاص القاصرين المتراوح عمرهم ما بين 12 و18 سنة (المغاربة المقيمون بالخارج)\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: الرسوم القنصلية : 00 درهم\nتعريفة على الخدمات (SEGMA) : 60 درهما\nDélai: 15 يوما\nDocuments requis:\n - طلب جواز السفر البيوميتري\n - بطاقة التعريف الوطنية سارية الصلاحية  أو  وصل إيداع طلب إصدار أو تجديد البطاقة الوطنية\n - في حالة الإدلاء بوصل طلب الحصول على البطاقة الوطنية ، يتعين على المعني الإدلاء بنسخة من عقد الازدياد أو النسخة الكاملة من شهادة الميلاد لا يتعدى تاريخ إصدارها 6 أشهر\n - صورة شخصية ملونة على خلفية بيضاء أو زرقاء (حجم 35x45 مم)، تظهر بوضوح ملامح وجه صاحب الطلب\n - في حالة التجديد، يجب تسليم جواز السفر القديم\n - وثيقة إثبات الإقامة سارية المفعول (بطاقة الإقامة، بطاقة السكن، تأشيرة طويلة الأمد،  تأشيرة أو تصريح الدراسة، تصريح عمل، بطاقة هوية أجنبية أو جواز سفر أجنبي)، أو أي وثيقة رسمية تتضمن الإشارة إلى مكان وعنوان الشخص المعني\n - إذا كانت وثيقة الإقامة الاعتيادية لا تتضمن العنوان الحالي، فيجب الإدلاء بما يثبت الإقامة في هذا العنوان (شهادة الإقامة، عقد الإيجار، فاتورة الماء ، فاتورة الكهرباء ، أو فاتورة  الهاتف الثابت أو شهادة الإيواء مؤشر عليها من قبل المصالح القنصلية أو السلطات ا\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الحصول على جواز السفر البيومتري في حالة الضياع بالنسبة للقاصرين دون 12 سنة (المغاربة المقيمون بالخارج)\nDescription: الحصول على جواز السفر البيومتري في حالة الضياع بالنسبة للقاصرين\nدون 12 سنة (المغاربة المقيمون بالخارج)\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: الرسوم القنصلية00 درهم\nتعرفة على الخدمات (SEGMA)80 درهما\nDélai: 15يوما\nDocuments requis:\n - طلب جواز السفر البيوميتري\n - تصريح بالشرف بالضياع موقع من طرف ولي أمر المعني بالامر أو ممثله القانوني\n - نسخة موجزة من رسم الولادة أو النسخة الكاملة من شهادة الميلاد، لا يتعدى تاريخ إصدارها 6 أشهر، أو نسخة من الدفتر العائلي (كناش التعريف والحالة المدنية القديم غير مقبول) يجب أن تتضمن هذه الوثيقة اسم ولقب المعني وأسماء والديه باللغة العربية واللاتينية\n - صورة شخصية ملونة على خلفية بيضاء أو زرقاء (حجم 35x45 مم)، تظهر بوضوح ملامح وجه صاحب الطلب\n - في حالة التجديد، يجب تسليم جواز السفر القديم.\n - وثيقة إثبات الإقامة سارية المفعول (بطاقة الإقامة، بطاقة السكن، تأشيرة طويلة الأمد،  تأشيرة أو تصريح الدراسة، تصريح عمل، بطاقة هوية أجنبية أو جواز سفر أجنبي)، أو أي وثيقة رسمية تتضمن الإشارة إلى مكان وعنوان الشخص المعني\n - إذا كانت وثيقة الإقامة الاعتيادية لا تتضمن العنوان الحالي، فيجب الإدلاء بما يثبت الإقامة في هذا العنوان (شهادة الإقامة، عقد الإيجار، فاتورة الماء ، فاتورة الكهرباء ، أو فاتورة  الهاتف الثابت أو شهادة الإيواء مؤشر عليها من قبل المصالح القنصلية أو السلطات ا\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 413,
+      "answer": "بالنسبة لابنك الذي يبلغ من العمر 14 سنة ويحتاج جواز سفر بيومتري لأول مرة وأنتم مقيمون بالخارج، إليك الوثائق المطلوبة:\n\nالوثائق المطلوبة هي:\n*   طلب جواز السفر البيومتري.\n*   بطاقة التعريف الوطنية سارية الصلاحية أو وصل إيداع طلب إصدار أو تجديد البطاقة الوطنية.\n*   في حالة الإدلاء بوصل طلب الحصول على البطاقة الوطنية، يتعين على المعني الإدلاء بنسخة من عقد الازدياد أو النسخة الكاملة من شهادة الميلاد لا يتعدى تاريخ إصدارها 6 أشهر.\n*   صورة شخصية ملونة على خلفية بيضاء أو زرقاء (حجم 35x45 مم)، تظهر بوضوح ملامح وجه صاحب الطلب.\n*   في حالة التجديد، يجب تسليم جواز السفر القديم.\n*   وثيقة إثبات الإقامة سارية المفعول (بطاقة الإقامة، بطاقة السكن، تأشيرة طويلة الأمد، تأشيرة أو تصريح الدراسة، تصريح عمل، بطاقة هوية أجنبية أو جواز سفر أجنبي)، أو أي وثيقة رسمية تتضمن الإشارة إلى مكان وعنوان الشخص المعني.\n*   إذا كانت وثيقة الإقامة الاعتيادية لا تتضمن العنوان الحالي، فيجب الإدلاء بما يثبت الإقامة في هذا العنوان (شهادة الإقامة، عقد الإيجار، فاتورة الماء، فاتورة الكهرباء، أو فاتورة الهاتف الثابت أو شهادة الإيواء مؤشر عليها من قبل المصالح القنصلية أو السلطات المختصة).\n\nالمصدر: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي.",
+      "generation_ms": 9044,
+      "prompt_tokens": 1614,
+      "output_tokens": 400,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.7273,
+        "answer_relevancy": 0.9473,
+        "context_precision": 0.5,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s019",
+      "question": "Je suis MRE adulte, combien je vais payer pour un passeport biométrique et quel est le délai ?",
+      "lang": "fr",
+      "category": "fees_delay",
+      "expected_ids": [
+        "2ef82081-8630-47ec-bd23-249486c1e28c"
+      ],
+      "reference": "La procédure concernée est « Obtention du passeport biométrique pour les adultes (Marocains résidant à l'étranger) » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Formulaire de demande de passeport biométrique. ; Carte d'identité nationale en cours de validité ou récépissé de dépôt de demande de délivrance ou de renouvellement de… ; En cas de présentation du récépissé de demande de carte nationale, l'intéressé doit fournir une copie de l'acte de… ; Photo d'identité couleur sur fond blanc ou bleu ; En cas de renouvellement, il faut remettre l'ancien passeport. ; Document de preuve de résidence en cours de validité. Frais : Frais consulaires 800 dirhams Tarif sur services (SEGMA) 60 dirhams. Délai : 15 jours.",
+      "must_include": [
+        "Formulaire de demande de passeport biométrique.",
+        "Carte d'identité nationale en cours de validité ou…",
+        "15 jours"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "b1dec960-490e-487e-a572-da8d0c295f03",
+        "2ef82081-8630-47ec-bd23-249486c1e28c",
+        "679152c6-1975-424d-9257-67ac30e08231"
+      ],
+      "retrieved_titles": [
+        "Obtention du passeport biométrique pour les mineurs âgés de 12 à 18 ans (Marocains résidant à l'étranger)",
+        "Obtention du passeport biométrique pour les adultes (Marocains résidant à l'étranger)",
+        "Obtention du passeport biométrique pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)"
+      ],
+      "rank": 2,
+      "contexts": [
+        "PROCÉDURE: Obtention du passeport biométrique pour les mineurs âgés de 12 à 18 ans (Marocains résidant à l'étranger)\nDescription: Obtention du passeport biométrique pour les mineurs âgés de 12 à 18 ans (Marocains résidant à l'étranger)\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Frais consulaires : 00 dirham\nTarif sur les services (SEGMA) : 60 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Carte nationale d'identité en cours de validité ou récépissé de dépôt de demande de délivrance ou de renouvellement de la carte nationale\n - En cas de présentation du récépissé de demande de la carte nationale, l'intéressé doit fournir une copie de l'acte de naissance ou l'extrait intégral de l'acte de naissance datant de moins de 6 mois\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention du passeport biométrique pour les adultes (Marocains résidant à l'étranger)\nDescription: Obtention du passeport biométrique pour les personnes adultes (Marocains résidant à l'étranger)\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Frais consulaires 800 dirhams\nTarif sur services (SEGMA) 60 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Carte nationale d'identité en cours de validité ou récépissé de dépôt de demande de délivrance ou de renouvellement de la carte nationale\n - En cas de présentation du récépissé de demande de la carte nationale, l'intéressé doit fournir une copie de l'acte de naissance ou l'extrait intégral de l'acte de naissance datant de moins de 6 mois\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention du passeport biométrique pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)\nDescription: Obtention du passeport biométrique pour les mineurs de moins de 12 ans\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 60 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Copie intégrale de l'acte de naissance ou copie complète du certificat de naissance, datant de moins de 6 mois, ou copie du livret de famille (l'ancien carnet d'identité et d'état civil n'est pas accepté). Ce document doit comporter le nom et prénom de l'\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 328,
+      "answer": "Pour l'obtention du passeport biométrique en tant qu'adulte marocain résidant à l'étranger, vous devrez payer :\n*   Frais consulaires : 800 dirhams\n*   Tarif sur services (SEGMA) : 60 dirhams\nSoit un total de **860 dirhams**.\n\nLe délai est de **15 jours**.\n\nSource : Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine.",
+      "generation_ms": 3329,
+      "prompt_tokens": 1388,
+      "output_tokens": 132,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.8,
+        "answer_relevancy": 0.7746,
+        "context_precision": 0.5,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s020",
+      "question": "Quels papiers pour faire le passeport d'un bébé né en Allemagne de parents marocains ?",
+      "lang": "fr",
+      "category": "documents",
+      "expected_ids": [
+        "679152c6-1975-424d-9257-67ac30e08231"
+      ],
+      "reference": "La procédure concernée est « Obtention du passeport biométrique pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger) » (Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine). Documents à fournir : Demande de passeport biométrique ; Copie abrégée de l'acte de naissance ou copie intégrale du certificat de naissance, datant de moins de 6 mois, ou copie… ; Photographie d'identité couleur sur fond blanc ou bleu ; En cas de renouvellement, l'ancien passeport doit être remis ; Document justificatif de résidence en cours de validité ; Si le document de résidence habituel ne comporte pas l'adresse actuelle, il convient de fournir une preuve de résidence…. Frais : 60 dirhams. Délai : 15 jours.",
+      "must_include": [
+        "Demande de passeport biométrique",
+        "Copie abrégée de l'acte de naissance ou copie intégrale du…",
+        "60 dirhams"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "5d3f64c5-3c52-4505-9c69-1090219f63ba",
+        "a5275eec-3d86-4ec1-8ea0-e4b455efd969",
+        "679152c6-1975-424d-9257-67ac30e08231"
+      ],
+      "retrieved_titles": [
+        "Obtention d'un laissez-passer (pour les Marocains résidant à l'étranger)",
+        "Obtention de la carte nationale d'identité (pour les Marocains résidant à l'étranger)",
+        "Obtention du passeport biométrique pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)"
+      ],
+      "rank": 3,
+      "contexts": [
+        "PROCÉDURE: Obtention d'un laissez-passer (pour les Marocains résidant à l'étranger)\nDescription: Obtention d'un laissez-passer, qui est un document de voyage de courte durée, valable un mois. Il est délivré dans des circonstances exceptionnelles à une personne ne disposant pas d'un passeport en cours de validité, ou ayant perdu son passeport, pour lui permettre de regagner le Maroc, après vérification de son identité et de sa nationalité marocaine.\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 150 dirhams pour les frais consulaires\n20 dirhams pour le tarif des services (SEGMA)\nDélai: immédiatement\nDocuments requis:\n - Demande de passeport biométrique\n - Tout document (original) prouvant la nationalité marocaine (carte d’identité nationale électronique ou ancien passeport)\n - Pour les mineurs de moins de 18 ans ne disposant pas de carte nationale : copie de l'acte de naissance, fiche individuelle d’état civil délivrée par l’état civil ou livret de famille, ainsi que la présence du représentant légal muni de sa carte d’identité\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - Déclaration de perte ou de vol du passeport, le cas échéant\n - Remise de l'ancien passeport s’il s’agit d’un passeport expiré ou détérioré\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention de la carte nationale d'identité (pour les Marocains résidant à l'étranger)\nDescription: Obtention de la carte nationale d'identité\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 75 dirhams pour les frais consulaires\n30 dirhams pour le tarif des services (SEGMA)\nDélai: 60 jours\nDocuments requis:\n - Copie de la page du livret de famille relative à la personne concernée, avec présentation du livret (ce document doit comporter les nom et prénom de la personne concernée ainsi que les noms de ses parents en langue arabe et en caractères latins ; il est à\n - Certificat d'immatriculation consulaire\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - Présentation de l'original ou d'une copie de l'acte en vertu duquel la nationalité marocaine a été accordée aux étrangers ayant obtenu cette nationalité, et pour les enfants nés d'un père étranger et d'une mère marocaine avant le 2 avril 2007.\n - Pour la rubrique optionnelle figurant dans la demande d'enregistrement relative à « l'épouse » ou « la veuve » ou « le veuf », la personne concernée doit fournir les documents suivants, selon le cas :\n - * Copie de l'acte de mariage ;\n - * Copie de l'acte de naissance du conjoint ;\n - * Copie de l'acte de décès du conjoint ;\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention du passeport biométrique pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)\nDescription: Obtention du passeport biométrique pour les mineurs de moins de 12 ans\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 60 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Copie intégrale de l'acte de naissance ou copie complète du certificat de naissance, datant de moins de 6 mois, ou copie du livret de famille (l'ancien carnet d'identité et d'état civil n'est pas accepté). Ce document doit comporter le nom et prénom de l'\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 377,
+      "answer": "Pour faire le passeport biométrique d'un bébé né en Allemagne de parents marocains, les documents requis sont les suivants :\n\n*   Demande de passeport biométrique.\n*   Copie intégrale de l'acte de naissance ou copie complète du certificat de naissance, datant de moins de 6 mois, ou copie du livret de famille (l'ancien carnet d'identité et d'état civil n'est pas accepté). Ce document doit comporter le nom et prénom de l'enfant ainsi que ceux de ses parents.\n*   Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur.\n*   Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant la résidence habituelle du demandeur.\n*   Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou abonnement internet).\n\nLes frais s'élèvent à 60 dirhams et le délai est de 15 jours.\n\nSource : Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine.",
+      "generation_ms": 4382,
+      "prompt_tokens": 1449,
+      "output_tokens": 343,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.9618,
+        "context_precision": 0.3333,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    }
+  ]
+}

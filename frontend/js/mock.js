@@ -1032,6 +1032,60 @@
     });
   }
 
+  /* --- Indexation (embeddings) ----------------------------------------------
+
+     Rejoue /admin/indexing/status et /admin/indexing/run : une procedure est
+     « indexee » toutes les INDEX_MS millisecondes tant qu'un lot tourne. Le
+     jeu d'essai demarre avec quelques procedures en attente, pour que le
+     bouton « Lancer l'indexation » soit visible sans rien importer. */
+  var INDEX_MS = 500;
+  var indexing = {
+    total: 48, embedded: 42,
+    run: { started_at: null, finished_at: null, done: 0, total: 0, failed: 0, last_error: null },
+    startedMs: null
+  };
+
+  function advanceIndexing() {
+    if (indexing.startedMs === null) return;
+    var done = Math.min(Math.floor((Date.now() - indexing.startedMs) / INDEX_MS), indexing.run.total);
+    indexing.embedded += done - indexing.run.done;
+    indexing.run.done = done;
+    if (done >= indexing.run.total) {
+      indexing.startedMs = null;
+      indexing.run.finished_at = new Date().toISOString().slice(0, 19);
+    }
+  }
+
+  function startIndexing() {
+    advanceIndexing();
+    if (indexing.startedMs !== null || indexing.embedded >= indexing.total) return false;
+    indexing.startedMs = Date.now();
+    indexing.run = {
+      started_at: new Date().toISOString().slice(0, 19), finished_at: null,
+      done: 0, total: indexing.total - indexing.embedded, failed: 0, last_error: null
+    };
+    return true;
+  }
+
+  function indexingStatus() {
+    advanceIndexing();
+    var running = indexing.startedMs !== null;
+    var run = indexing.run;
+    var eta = null;
+    if (running && run.done) {
+      eta = Math.round((Date.now() - indexing.startedMs) / 1000 / run.done * (run.total - run.done));
+    }
+    return {
+      total: indexing.total,
+      embedded: indexing.embedded,
+      pending: indexing.total - indexing.embedded,
+      percent: indexing.total ? Math.round(1000 * indexing.embedded / indexing.total) / 10 : 100,
+      running: running,
+      eta_seconds: eta,
+      run: JSON.parse(JSON.stringify(run))
+    };
+  }
+
   /* --- Consommation de jetons ----------------------------------------------
 
      Rejoue GET /admin/tokens/daily. Les séries sont fabriquées à partir du
@@ -1399,7 +1453,24 @@
         if (doc.extraction_id === id) doc.status = 'published';
       });
       var count = extractions[id] ? (extractions[id].procedures || []).length : 0;
+      // Comme le backend : l'indexation demarre en tache de fond, apres la reponse.
+      indexing.total += count;
+      setTimeout(startIndexing, 600);
       return delay({ created: count, skipped: 0, embedding: 'en_cours' }, 1400);
+    },
+
+    getIndexingStatus: function () {
+      return delay(indexingStatus(), 200);
+    },
+
+    runIndexing: function () {
+      // Comme le backend, le statut renvoye est celui d'avant le lancement.
+      var status = indexingStatus();
+      status.started = false;
+      if (status.running) status.reason = 'already_running';
+      else if (!status.pending) status.reason = 'nothing_to_index';
+      else status.started = startIndexing();
+      return delay(status, 250);
     },
 
     getExtractionStatus: function (id) {

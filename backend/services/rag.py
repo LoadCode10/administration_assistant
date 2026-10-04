@@ -202,7 +202,7 @@ def build_text_for_embedding(procedure) -> str:
   return " ".join(part for part in parts if part)
 
 
-def embedding_all_procedures(session):
+def embedding_all_procedures(session, on_progress=None):
   pending = session.query(models.Procedure).filter(
     models.Procedure.embedding.is_(None)
   ).all()
@@ -210,52 +210,45 @@ def embedding_all_procedures(session):
   done, failed = 0, []
 
   for i, procedure in enumerate(pending, start=1):
-    pid = inspect(procedure).identity[0]   # no DB access: works even if the row was deleted meanwhile
+    procedure_id = procedure.id_procedure   # read before a possible rollback expires it
     try:
-      procedure.embedding = embed_model.encode(build_text_for_embedding(procedure))
-      session.commit()                     # saved right away: nothing is lost if we stop later
+      procedure.embedding = embed_model.encode(build_text_for_embedding(procedure), show_progress_bar=False)
+      session.commit()                     # saved right away
       done += 1
     except Exception as e:
       session.rollback()                   # cancel only this procedure, keep the others
-      logger.exception("Embedding failed for procedure %s", pid)
-      failed.append((pid, f"{type(e).__name__}: {e}"))
+      failed.append((procedure_id, f"{type(e).__name__}: {e}"))
+      logger.exception("Embedding failed for procedure %s", procedure_id)
+    if on_progress:
+      on_progress(i, total, len(failed))
     if i % 10 == 0 or i == total:
       print(f"Embedding : {i}/{total} ({len(failed)} en erreur)", flush=True)
 
   keyword_search.invalidate()
-  for pid, error in failed:
-    print(f"  ÉCHEC {pid}: {error}")
   return done
 
-# EMBED_BATCH = 32
-
 # def embedding_all_procedures(session):
-#   pending = session.query(models.Procedure).filter(models.Procedure.embedding.is_(None)).all()
-#   done = 0
-#   for start in range(0, len(pending), EMBED_BATCH):
-#     batch = pending[start:start + EMBED_BATCH]
-#     vectors = embed_model.encode([build_text_for_embedding(p) for p in batch],
-#                                  batch_size=16, show_progress_bar=False)
-#     for procedure, vector in zip(batch, vectors):
-#       procedure.embedding = vector
-#     session.commit()                       # saved now: an interruption only loses this batch
-#     done += len(batch)
-#     print(f"Embedding : {done}/{len(pending)} procédures")
-#   keyword_search.invalidate()
-#   return done
-
-# def embedding_all_procedures(session):
-#   all_procedures = session.query(models.Procedure).filter(
+#   pending = session.query(models.Procedure).filter(
 #     models.Procedure.embedding.is_(None)
 #   ).all()
-#   if not all_procedures:
-#     return 0
-#   texts = [build_text_for_embedding(p) for p in all_procedures]
-#   vectors = embed_model.encode(texts, batch_size=16, show_progress_bar=False)
-#   for procedure, vector in zip(all_procedures, vectors):
-#     procedure.embedding = vector
-#   session.commit()
-#   # New procedures must also become searchable by keyword right away
+#   total = len(pending)
+#   done, failed = 0, []
+
+#   for i, procedure in enumerate(pending, start=1):
+#     pid = inspect(procedure).identity[0]   # no DB access: works even if the row was deleted meanwhile
+#     try:
+#       procedure.embedding = embed_model.encode(build_text_for_embedding(procedure))
+#       session.commit()                     # saved right away: nothing is lost if we stop later
+#       done += 1
+#     except Exception as e:
+#       session.rollback()                   # cancel only this procedure, keep the others
+#       logger.exception("Embedding failed for procedure %s", pid)
+#       failed.append((pid, f"{type(e).__name__}: {e}"))
+#     if i % 10 == 0 or i == total:
+#       print(f"Embedding : {i}/{total} ({len(failed)} en erreur)", flush=True)
+
 #   keyword_search.invalidate()
-#   print(f"{len(all_procedures)} procedures embedded and saved.")
-#   return len(all_procedures)
+#   for pid, error in failed:
+#     print(f"  ÉCHEC {pid}: {error}")
+#   return done
+

@@ -12,6 +12,7 @@ from core.security import require_admin
 from core.logging import write_log
 from services.ingestion import handle_procedures
 from services.rag import embedding_all_procedures
+from services import indexing
 
 router = APIRouter(tags=["extractions"])
 
@@ -119,7 +120,7 @@ def approve_extraction(
   )
   db.commit()
 
-  background_tasks.add_task(embed_in_background)
+  background_tasks.add_task(indexing.run_indexing)
   return {**result, "embedding": "en_cours"}
 
 
