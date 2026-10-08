@@ -1,0 +1,939 @@
+{
+  "config": {
+    "experiment_name": "answers_vector_v1_p4",
+    "date": "2026-10-08T12:47:50",
+    "git_commit": null,
+    "dataset": "synthetic_v1.json",
+    "start": 60,
+    "limit": 20,
+    "retrieval_mode": "vector",
+    "top_k": 3,
+    "retrieval_only": false,
+    "llm_model": "gemini-2.5-flash",
+    "embedding_model": "BAAI/bge-m3",
+    "scored_from": "answers_vector_v1_p4.json",
+    "judge": {
+      "model": "deepseek-flash",
+      "base_url": "https://api.deepseek.com",
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "temperature": 0.0,
+      "ragas_version": "0.4.3",
+      "embedding_model": "BAAI/bge-m3"
+    },
+    "metrics": [
+      "answer_relevancy",
+      "context_precision",
+      "context_recall",
+      "faithfulness",
+      "language_match",
+      "refusal"
+    ],
+    "scoring_date": "2026-10-08T12:58:32",
+    "judge_usage_last_session": {
+      "calls": 190,
+      "prompt_tokens": 287708,
+      "completion_tokens": 37011,
+      "reasoning_tokens": 0,
+      "cache_hit_tokens": 136824,
+      "estimated_cost_usd": 0.1307
+    }
+  },
+  "rows": [
+    {
+      "question_id": "s060",
+      "question": "Je veux fermer définitivement mon agence de location de voitures, quels papiers dois-je rendre ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "dbc105b1-2425-4c00-895f-3e1a3dc4327d"
+      ],
+      "reference": "La procédure concernée est « Fermeture définitive d’une agence de location de voitures » (Ministère de l’Equipement, du Transport, de la Logistique et de L’Eau). Documents à fournir : Demande de fermeture définitive de l’établissement ; Original de l’autorisation définitive d’ouverture d’une agence de location de voitures sans chauffeur ; Procès-verbal de l’assemblée générale indiquant l’arrêt définitif de l’activité de location de voitures sans chauffeur ; Attestation de radiation de la taxe professionnelle ; Registre du commerce indiquant la radiation de l’entreprise ; Originaux des documents de circulation des véhicules utilisés pour la location de voitures sans chauffeur. Frais : Gratuit. Délai : 60 jours.",
+      "must_include": [
+        "Demande de fermeture définitive de l’établissement",
+        "Original de l’autorisation définitive d’ouverture d’une…",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "dbc105b1-2425-4c00-895f-3e1a3dc4327d",
+        "de0b23f7-09bc-4a5f-bf74-1c692d92c9e3",
+        "ae739799-44b4-4307-bbba-491915fbb765"
+      ],
+      "retrieved_titles": [
+        "Fermeture définitive d’une agence de location de voitures",
+        "Fermeture définitive d'une succursale d'établissement de location de voitures",
+        "Décision de fermeture définitive d’une agence de voyages"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Fermeture définitive d’une agence de location de voitures\nDescription: Fermeture définitive d’une succursale d’une agence de location de voitures\nAdministration: Ministère de l’Equipement, du Transport, de la Logistique et de L’Eau\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Demande de fermeture définitive de l’établissement\n - Original de l’autorisation définitive d’ouverture d’une agence de location de voitures sans chauffeur ;\n - Procès-verbal de l'assemblée générale indiquant la cessation définitive de l'activité de location de voitures sans chauffeur ;\n - Attestation de radiation de la taxe professionnelle\n - Registre du commerce indiquant la radiation de l’entreprise ;\n - Originaux des documents de circulation des véhicules utilisés pour la location de voitures sans chauffeur\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Fermeture définitive d'une succursale d'établissement de location de voitures\nDescription: Fermeture définitive d'une succursale d'établissement de location de voitures\nAdministration: Ministère de l’Equipement, du Transport, de la Logistique et de L’Eau\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Demande de fermeture définitive de la succursale de l'établissement ;\n - Original de la licence définitive d'ouverture d'une succursale d'agence de location de voitures sans chauffeur ;\n - Procès-verbal de l'assemblée générale indiquant la cessation définitive de l'activité de location de voitures sans chauffeur ;\n - Attestation de radiation de la taxe professionnelle ;\n - Registre de commerce mentionnant la radiation de la succursale de l'entreprise ;\n - Originaux des certificats d'immatriculation des véhicules utilisés pour la location de voitures sans chauffeur.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Décision de fermeture définitive d’une agence de voyages\nDescription: Délivrance d’une autorisation pour la fermeture définitive de l’agence de voyages et de toutes ses succursales\nAdministration: Ministère du Tourisme, de l’Artisanat et de l’Economie sociale et solidaire-Département du Tourisme\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - 1- Procès-verbal de l’assemblée générale indiquant la décision de fermeture et de liquidation de l’agence de voyages et la nomination du liquidateur de l’agence\n - 2- Attestation du numéro de compte bancaire du liquidateur de l’agence\n - 3- Certificat de radiation du registre du commerce, modèle n° 13\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 438,
+      "answer": "Pour fermer définitivement votre agence de location de voitures, vous devrez fournir les documents suivants, selon le Ministère de l’Equipement, du Transport, de la Logistique et de L’Eau :\n\n*   Demande de fermeture définitive de l’établissement\n*   Original de l’autorisation définitive d’ouverture d’une agence de location de voitures sans chauffeur\n*   Procès-verbal de l'assemblée générale indiquant la cessation définitive de l'activité de location de voitures sans chauffeur\n*   Attestation de radiation de la taxe professionnelle\n*   Registre du commerce indiquant la radiation de l’entreprise\n*   Originaux des documents de circulation des véhicules utilisés pour la location de voitures sans chauffeur\n\nCette procédure est gratuite et le délai est de 60 jours.",
+      "generation_ms": 8421,
+      "prompt_tokens": 782,
+      "output_tokens": 163,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.9261,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s061",
+      "question": "أريد إغلاق وكالة كراء السيارات بدون سائق مؤقتا لبضعة أشهر، ما هو الإجراء؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "9e98b913-bd5c-4df9-b73e-20dcc8b24382"
+      ],
+      "reference": "الإجراء المعني هو « الإغلاق المؤقت لمؤسسة لكراء السيارات بدون سائق » (وزارة النقل واللوجيستيك). الوثائق المطلوبة: طلب موقع من أجل الإيقاف المؤقت لوكالة كراء السيارات بدون سائق ؛ أصول أوراق سير السيارات. الرسوم: مجانا. الآجال: 60 يوما.",
+      "must_include": [
+        "طلب موقع من أجل الإيقاف المؤقت لوكالة كراء السيارات بدون…",
+        "أصول أوراق سير السيارات",
+        "مجانا"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "dbc105b1-2425-4c00-895f-3e1a3dc4327d",
+        "de0b23f7-09bc-4a5f-bf74-1c692d92c9e3",
+        "9e98b913-bd5c-4df9-b73e-20dcc8b24382"
+      ],
+      "retrieved_titles": [
+        "Fermeture définitive d’une agence de location de voitures",
+        "Fermeture définitive d'une succursale d'établissement de location de voitures",
+        "Fermeture temporaire d'un établissement de location de voitures sans chauffeur"
+      ],
+      "rank": 3,
+      "contexts": [
+        "PROCÉDURE: الإغلاق النهائي لمؤسسة لكراء السيارات\nDescription: الإغلاق النهائي لفرع مؤسسة لكراء السيارات\nAdministration: وزارة النقل واللوجيستيك\nFrais: مجانا\nDélai: 60 يوما\nDocuments requis:\n - طلب الإغلاق النهائي للمؤسسة\n - أصل الرخصة النهائية لفتح وكالة لكراء السيارات بدون سائق؛\n - محضر الجمع العام الذي يشير إلى  الإيقاف النهائي لنشاط كراء السيارات بدون سائق؛\n - شهادة التشطيب من الضريبة المهنية\n - السجل التجاري الذي يشير إلى التشطيب على المقاولة؛\n - أصول أوراق السير الخاصة بالسيارات المستعملة في كراء السيارات بدون سائق\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الإغلاق النهائي لفرع مؤسسة لكراء السيارات\nDescription: الإغلاق النهائي لفرع مؤسسة لكراء السيارات\nAdministration: وزارة النقل واللوجيستيك\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - طلب الإغلاق النهائي لفرع المؤسسة\n - أصل الرخصة النهائية لفتح  فرع وكالة لكراء السيارات بدون سائق؛\n - محضر الجمع العام الذي يشير إلى  الإيقاف النهائي لنشاط كراء السيارات بدون سائق؛\n - شهادة التشطيب من الضريبة المهنية؛\n - السجل التجاري الذي يشير إلى التشطيب على فرع المقاولة\n - أصول أوراق السير الخاصة بالسيارات المستعملة في كراء السيارات بدون سائق.\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الإغلاق المؤقت لمؤسسة لكراء السيارات بدون سائق\nDescription: الإغلاق المؤقت لمؤسسة لكراء السيارات بدون سائق\nAdministration: وزارة النقل واللوجيستيك\nFrais: مجانا\nDélai: 60 يوما\nDocuments requis:\n - طلب موقع من أجل الإيقاف المؤقت لوكالة كراء السيارات بدون سائق\n - أصول أوراق سير السيارات\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 509,
+      "answer": "بناءً على طلبك لإغلاق وكالة كراء السيارات بدون سائق مؤقتاً، الإجراء المطلوب هو: الإغلاق المؤقت لمؤسسة لكراء السيارات بدون سائق.\n\n**الإدارة المسؤولة:** وزارة النقل واللوجيستيك\n**التكلفة:** مجاناً\n**الأجل:** 60 يوماً\n**الوثائق المطلوبة:**\n*   طلب موقع من أجل الإيقاف المؤقت لوكالة كراء السيارات بدون سائق\n*   أصول أوراق سير السيارات",
+      "generation_ms": 7146,
+      "prompt_tokens": 654,
+      "output_tokens": 116,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.9395,
+        "context_precision": 0.3333,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s062",
+      "question": "Nous avons racheté une agence de voyages et voulons lui donner un nouveau nom, quelle démarche ?",
+      "lang": "fr",
+      "category": "factual",
+      "expected_ids": [
+        "895e1a9b-65b6-42a4-b59f-00e7e73be0ac"
+      ],
+      "reference": "La procédure concernée est « Décision de changement de dénomination d'une agence de voyages » (Ministère du Tourisme, de l’Artisanat et de l’Economie sociale et solidaire-Département du Tourisme). Documents à fournir : Certificat du registre du commerce portant le nouveau nom ; Procès-verbal de l'assemblée générale précisant la décision de changement du nom commercial de l'agence ; Contrat d'assurance contre les conséquences financières de la responsabilité civile professionnelle portant le nouveau… ; Attestation délivrée par la Caisse de Dépôt et de Gestion précisant le changement du nom commercial de l'agence pour la… ; Avenant au contrat de travail conclu entre l'agence et le directeur indiquant le nouveau nom de l'agence. Frais : Gratuit. Délai : 60 jours.",
+      "must_include": [
+        "Certificat du registre du commerce portant le nouveau nom",
+        "Procès-verbal de l'assemblée générale précisant la décision…",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "895e1a9b-65b6-42a4-b59f-00e7e73be0ac",
+        "5afb3d1a-fcac-4983-82b8-11c3c9e1fe07",
+        "688cca6b-b6a8-40ff-ab26-8c580a96fb09"
+      ],
+      "retrieved_titles": [
+        "Décision de changement de dénomination d'une agence de voyages",
+        "Décision de changement de propriété de l'agence de voyages en cas de décès du titulaire de la licence d'agence (Invest)",
+        "Autorisation de changement d'adresse d'une succursale d'agence de voyages (Invest)"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Décision de changement de dénomination d'une agence de voyages\nDescription: Délivrance de la décision de changement de dénomination d’une agence de voyages\nAdministration: Ministère du Tourisme, de l’Artisanat et de l’Economie sociale et solidaire-Département du Tourisme\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Certificat du registre du commerce portant le nouveau nom\n - Procès-verbal de l'assemblée générale précisant la décision de changement du nom commercial de l'agence\n - Contrat d'assurance contre les conséquences financières de la responsabilité civile professionnelle portant le nouveau nom de l'agence\n - Attestation délivrée par la Caisse de Dépôt et de Gestion précisant le changement du nom commercial de l'agence pour la caution déposée\n - Avenant au contrat de travail conclu entre l'agence et le directeur indiquant le nouveau nom de l'agence\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Décision de changement de propriété de l'agence de voyages en cas de décès du titulaire de la licence d'agence (Invest)\nDescription: Permettre aux ayants droit du titulaire défunt de la licence d'agence de voyages de continuer à exploiter la licence d'agence de voyages. Pour bénéficier de cette décision administrative, les héritiers doivent présenter une demande de changement de propriété de la licence d'agence de voyages dans un délai d'un an après le décès du titulaire de la licence. La personne physique souhaitant bénéficier de cette décision doit être âgée d'au moins 23 ans, ne pas avoir fait l'objet d'une procédure de liquidation judiciaire, et être titulaire soit du diplôme du deuxième cycle délivré par les établissements supérieurs de formation des cadres relevant de l'autorité gouvernementale chargée du tourisme, soit d'un diplôme équivalent renforcé par une expérience de deux ans dans une agence de voyages, soit du diplôme du premier cycle desdits établissements « branche techniques de production et de vente » renforcé par une expérience de quatre ans dans une agence de voyages, soit avoir participé à l'exercice des activités de l'agence de voyages pendant une durée d'au moins sept ans en qualité de directeur technique ou commercial ou de chef d'agence de voyages.\nAdministration: Ministère du Tourisme, de l’Artisanat et de l’Economie sociale et solidaire-Département du Tourisme\nFrais: Gratuit\nDélai: 26 jours\nDocuments requis:\n - Pour les personnes physiques, la demande de transfert de propriété de l'agence après le décès de son titulaire doit être accompagnée des documents suivants :\n - 1- Extrait de l'acte d'hérédité\n - 2- Extrait du casier judiciaire ou fiche anthropométrique datant de moins de trois mois pour tous les héritiers\n - 3- En cas de mandatement d'un héritier, il convient de fournir une copie de ladite procuration\n - 4- Certificat d'inscription au registre de commerce\n - Pour les personnes morales, la demande de transfert de propriété de l'agence doit être accompagnée des documents suivants :\n - 1- Copie des statuts de la société\n - 2- Certificat d'inscription au registre de commerce\n - En cas de mandatement d'un héritier, il convient de fournir une copie de ladite procuration\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation de changement d'adresse d'une succursale d'agence de voyages (Invest)\nDescription: Délivrance d'une autorisation de changement d'adresse du siège de la succursale de l'agence\nAdministration: Ministère du Tourisme, de l’Artisanat et de l’Economie sociale et solidaire-Département du Tourisme\nFrais: Gratuit\nDélai: 30 jours\nDocuments requis:\n - 1- Procès-verbal de l'assemblée générale relatif à la décision de changement d'adresse de la succursale\n - 2- Contrat de location ou certificat de propriété relatif au local commercial destiné à l'exercice de l'activité de la succursale de l'agence, indiquant la nouvelle adresse\n - 3- Avenant au contrat de travail liant l'agence au directeur de la succursale, indiquant la nouvelle adresse de la succursale de l'agence\n - 4- Copie du registre de commerce de l'agence\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 265,
+      "answer": "Pour changer la dénomination de votre agence de voyages suite à son rachat, vous devez suivre la procédure de \"Décision de changement de dénomination d'une agence de voyages\".\n\nCette démarche est gérée par le **Ministère du Tourisme, de l’Artisanat et de l’Economie sociale et solidaire-Département du Tourisme**.\n\nVoici les détails de la procédure :\n\n*   **Frais :** Gratuit\n*   **Délai :** 60 jours\n*   **Documents requis :**\n    *   Certificat du registre du commerce portant le nouveau nom\n    *   Procès-verbal de l'assemblée générale précisant la décision de changement du nom commercial de l'agence\n    *   Contrat d'assurance contre les conséquences financières de la responsabilité civile professionnelle portant le nouveau nom de l'agence\n    *   Attestation délivrée par la Caisse de Dépôt et de Gestion précisant le changement du nom commercial de l'agence pour la caution déposée\n    *   Avenant au contrat de travail conclu entre l'agence et le directeur indiquant le nouveau nom de l'agence",
+      "generation_ms": 8292,
+      "prompt_tokens": 1171,
+      "output_tokens": 246,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.8889,
+        "answer_relevancy": 0.8727,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s063",
+      "question": "قررنا إغلاق وكالة الأسفار نهائيا، ما هي الوثائق المطلوبة؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "ae739799-44b4-4307-bbba-491915fbb765"
+      ],
+      "reference": "الإجراء المعني هو « قرار  الاغلاق النهائي لوكالة الأسفار » (وزارة السياحة والصناعة التقليدية والاقتصاد الاجتماعي والتضامني-قطاع السياحة). الوثائق المطلوبة: 1- محضر الجمع العام يوضح اتخاذ قرار الاغلاق و تصفية وكالة الأسفار و تعيين المكلف بتصفية الوكالة ؛ 2- شهادة رقم الحساب البنكي للمكلف بالتصفية الوكالة ؛ 3- شهادة التشطيب من السجل التجاري النموذج رقم 13. الرسوم: بالمجان. الآجال: 60 يوما.",
+      "must_include": [
+        "1- محضر الجمع العام يوضح اتخاذ قرار الاغلاق و تصفية وكالة…",
+        "2- شهادة رقم الحساب البنكي للمكلف بالتصفية الوكالة",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "ae739799-44b4-4307-bbba-491915fbb765",
+        "dbc105b1-2425-4c00-895f-3e1a3dc4327d",
+        "5afb3d1a-fcac-4983-82b8-11c3c9e1fe07"
+      ],
+      "retrieved_titles": [
+        "Décision de fermeture définitive d’une agence de voyages",
+        "Fermeture définitive d’une agence de location de voitures",
+        "Décision de changement de propriété de l'agence de voyages en cas de décès du titulaire de la licence d'agence (Invest)"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: قرار  الاغلاق النهائي لوكالة الأسفار\nDescription: اصدار رخصة للإغلاق النهائي لوكالة الاسفار و كل فروعها\nAdministration: وزارة السياحة والصناعة التقليدية والاقتصاد الاجتماعي والتضامني-قطاع السياحة\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - 1- محضر الجمع العام يوضح اتخاذ قرار الاغلاق و تصفية وكالة الأسفار و تعيين  المكلف بتصفية الوكالة\n - 2-  شهادة رقم الحساب البنكي للمكلف بالتصفية الوكالة\n - 3-  شهادة التشطيب من السجل التجاري  النموذج رقم 13\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الإغلاق النهائي لمؤسسة لكراء السيارات\nDescription: الإغلاق النهائي لفرع مؤسسة لكراء السيارات\nAdministration: وزارة النقل واللوجيستيك\nFrais: مجانا\nDélai: 60 يوما\nDocuments requis:\n - طلب الإغلاق النهائي للمؤسسة\n - أصل الرخصة النهائية لفتح وكالة لكراء السيارات بدون سائق؛\n - محضر الجمع العام الذي يشير إلى  الإيقاف النهائي لنشاط كراء السيارات بدون سائق؛\n - شهادة التشطيب من الضريبة المهنية\n - السجل التجاري الذي يشير إلى التشطيب على المقاولة؛\n - أصول أوراق السير الخاصة بالسيارات المستعملة في كراء السيارات بدون سائق\nÉtapes:\nغير محدد",
+        "PROCÉDURE: قرار بتغيير ملكية وكالة الأسفار في حالة وفاة صاحب رخصة الوكالة (Invest)\nDescription: تمكين ذوي حقوق صاحب رخصة وكالة الأسفار المتوفي من الاستمرار في استغلال رخصة وكالة الأسفار\nمن أجل الاستفادة من هذا القرار الإداري يتعين تقديم طلب تغيير ملكية رخصة وكيل الأسفار للورثة خلال مدة سنة بعد وفاة صاحب الرخصة \nويشترط في الشخص الطبيعي الراغب في الاستفادة من هذا القرار أن يبلغ من العمر 23 سنة على الأقل وألا يكون قد خضع لمسطرة التصفية القضائية وأن يكون حاصلا على شهادة السلك الثاني المسلمة من المؤسسات العليا لتكوين الاطر التابعة للسلطة الحكومية المكلفة بالسياحة أو على شهادة معادلة لها معززة بتجربة سنتين بإحدى وكالات الأسفار أو على شهادة السلك الاول من المؤسسات المذكورة \"فرع تقنيات الانتاج و البيع\" معززة بتجربة أربع سنوات بإحدى وكالات الاسفار أو ان يكون قد شارك في مزاولة أعمال وكالة الاسفار خلال مدة لا تقل عن سبع سنوات بصفة مدير تقني أو تجاري أو رئيس وكالة للأسفار\nAdministration: وزارة السياحة والصناعة التقليدية والاقتصاد الاجتماعي والتضامني-قطاع السياحة\nFrais: بالمجان\nDélai: 26 يوما\nDocuments requis:\n - بالنسبة للأشخاص الطبيعيين طلب تحويل ملكية الوكالة بعد وفاة صاحبها مرفوقا بالوثائق الآتية:\n - 1- مستخرج من عقد الاراثة\n - 2- مستخرج من سجل السوابق العدلية او جدادة القيس الجسماني مسلم مند اقل من ثلاثة اشهر لجميع الورثة\n - 3- في حالة توكيل أحد الورثة يجب الادلاء بنسخة الوكالة المذكورة\n - 4- شهادة بالتقييد في السجل التجاري\n - بالنسبة للأشخاص المعنويين طلب تحويل ملكية الوكالة مرفوقا بالوثائق الآتية:\n - 1- نسخة للنظام الأساسي للشركة\n - 2- شهادة بالتقييد في السجل التجاري\n - في حالة توكيل أحد الورثة يجب الادلاء بنسخة الوكالة المذكورة\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 421,
+      "answer": "لإغلاق وكالة الأسفار نهائيا، الوثائق المطلوبة هي كالتالي:\n\n*   1- محضر الجمع العام يوضح اتخاذ قرار الإغلاق وتصفية وكالة الأسفار وتعيين المكلف بتصفية الوكالة.\n*   2- شهادة رقم الحساب البنكي للمكلف بتصفية الوكالة.\n*   3- شهادة التشطيب من السجل التجاري النموذج رقم 13.\n\nالمصدر: وزارة السياحة والصناعة التقليدية والاقتصاد الاجتماعي والتضامني-قطاع السياحة.",
+      "generation_ms": 7269,
+      "prompt_tokens": 1072,
+      "output_tokens": 128,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.9466,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s064",
+      "question": "Notre salle de cinéma ferme pour de bon, quelle décision faut-il demander ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "640abb58-6ab2-4d00-8c15-d0e0901df4af"
+      ],
+      "reference": "La procédure concernée est « Décision de fermeture définitive d’un complexe ou d’une salle de cinéma » (Centre Cinematographique Marocain). Documents à fournir : Demande adressée au Directeur du Centre Cinématographique Marocain ; Les tickets non utilisés à détruire ; Registre des recettes journalières ; Attestation délivrée par la Chambre Marocaine des Distributeurs de Films certifiant que la salle est en situation… ; Paiement de tous les impôts à compter de la date de fermeture. Frais : Gratuit. Délai : 7 jours.",
+      "must_include": [
+        "Demande adressée au Directeur du Centre Cinématographique…",
+        "Les tickets non utilisés à détruire",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "640abb58-6ab2-4d00-8c15-d0e0901df4af",
+        "c0b48c73-1953-4993-a5bf-5ac166a7d5f5",
+        "dbc105b1-2425-4c00-895f-3e1a3dc4327d"
+      ],
+      "retrieved_titles": [
+        "Décision de fermeture définitive d’un complexe ou d’une salle de cinéma",
+        "Décision de fermeture temporaire du complexe ou de la salle cinématographique",
+        "Fermeture définitive d’une agence de location de voitures"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Décision de fermeture définitive d’un complexe ou d’une salle de cinéma\nDescription: Obtention de la décision de fermeture définitive d’un complexe ou d’une salle de cinéma\nAdministration: Centre Cinematographique Marocain\nFrais: Gratuit\nDélai: 7 jours\nDocuments requis:\n - Demande adressée au directeur du Centre Cinématographique Marocain\n - Les tickets non utilisés à détruire\n - Registre des recettes journalières\n - Attestation délivrée par la Chambre Marocaine des Distributeurs de Films certifiant que la salle est en situation régulière vis-à-vis de tous les distributeurs de films\n - Paiement de tous les impôts à compter de la date de fermeture\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Décision de fermeture temporaire du complexe ou de la salle cinématographique\nDescription: Obtention de la décision de fermeture temporaire du complexe ou de la salle cinématographique\nAdministration: Centre Cinematographique Marocain\nFrais: Gratuit\nDélai: 7 jours\nDocuments requis:\n - Demande adressée au directeur du Centre Cinématographique Marocain\n - Photos récentes de l'état réel de la salle cinématographique\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Fermeture définitive d’une agence de location de voitures\nDescription: Fermeture définitive d’une succursale d’une agence de location de voitures\nAdministration: Ministère de l’Equipement, du Transport, de la Logistique et de L’Eau\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Demande de fermeture définitive de l’établissement\n - Original de l’autorisation définitive d’ouverture d’une agence de location de voitures sans chauffeur ;\n - Procès-verbal de l'assemblée générale indiquant la cessation définitive de l'activité de location de voitures sans chauffeur ;\n - Attestation de radiation de la taxe professionnelle\n - Registre du commerce indiquant la radiation de l’entreprise ;\n - Originaux des documents de circulation des véhicules utilisés pour la location de voitures sans chauffeur\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 260,
+      "answer": "Pour la fermeture définitive de votre salle de cinéma, vous devez demander la **Décision de fermeture définitive d’un complexe ou d’une salle de cinéma**.\n\nCette procédure est gérée par le **Centre Cinématographique Marocain**.\nElle est gratuite et le délai est de 7 jours.\n\nLes documents requis sont :\n*   Demande adressée au directeur du Centre Cinématographique Marocain\n*   Les tickets non utilisés à détruire\n*   Registre des recettes journalières\n*   Attestation délivrée par la Chambre Marocaine des Distributeurs de Films certifiant que la salle est en situation régulière vis-à-vis de tous les distributeurs de films\n*   Paiement de tous les impôts à compter de la date de fermeture",
+      "generation_ms": 8086,
+      "prompt_tokens": 653,
+      "output_tokens": 160,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.735,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s065",
+      "question": "شركتنا توزع قنينات غاز البوتان، كيف نستفيد من دعم صندوق المقاصة؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "a89adf98-fb77-4762-bf9e-519ff04c4383"
+      ],
+      "reference": "الإجراء المعني هو « الاستفادة من دعم توزيع مادة غاز البوطان » (صندوق المقاصة). الوثائق المطلوبة: طلب الدعم لمادة غاز البوطان ؛ فواتير مراكز التعبئة لشركات التوزيع ؛ كشف بالمبيعات الشهرية ؛ كشف بالكميات الغاز بوطان المتوصل بها من طرف المودعين. الرسوم: مجانا. الآجال: 15 يوما.",
+      "must_include": [
+        "طلب الدعم لمادة غاز البوطان",
+        "فواتير مراكز التعبئة لشركات التوزيع",
+        "مجانا"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "a89adf98-fb77-4762-bf9e-519ff04c4383",
+        "c1e07a4c-d1a2-40ee-9cfa-e4d9d6eac294",
+        "7d32ed03-718b-4b38-a128-d8c3afaf83fe"
+      ],
+      "retrieved_titles": [
+        "Bénéfice du soutien à la distribution de gaz butane",
+        "Subvention pour le transport du gaz butane",
+        "Décision octroyant la prime de compensation aux coopératives et associations disposant d'un contrat de jouissance"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: الاستفادة من دعم توزيع مادة غاز البوطان\nDescription: منح الدعم لفائدة شركات توزيع مادة الغاز بوطان\nAdministration: صندوق المقاصة\nFrais: مجانا\nDélai: 15 يوما\nDocuments requis:\n - طلب الدعم لمادة غاز البوطان\n - فواتير مراكز التعبئة لشركات التوزيع\n - كشف بالمبيعات الشهرية\n - كشف بالكميات الغاز بوطان المتوصل بها من طرف المودعين\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الدعم المخصص لفائدة نقل غاز البوطان\nDescription: منح الدعم لفائدة مراكز تعبئة غاز البوطان\nAdministration: صندوق المقاصة\nFrais: بالمجان\nDélai: 15 يوما\nDocuments requis:\n - طلب الاستفادة من دعم نقل مادة غاز البوطان\n - فواتير مراكز التعبئة لشركات التوزيع\n - كشف شهري بكميات غاز البوطان المستخلصة من محطات التموين والشركة المغربية للتخزين\n - فواتير شراء مادة غاز البوطان من محطات التموين\n - فواتير المبيعات ما بين مراكز تعبئة غاز البوطان معززة بكشف بوثائق التزويد مؤشر عليها من طرف الجهات المعنية\n - بيان شهري مفصل لحركية مخزون مادة غاز البوطان خاص بمراكز التعبئة\n - نسخة من التصريح الأحادي للسلع النهائي المعلل للواردات الشهرية لغاز البوطان المبينة على مستوى البيان السابق\n - كشف بالمبيعات الشهرية\nÉtapes:\nغير محدد",
+        "PROCÉDURE: القرار القاضي بمنح منحة المقاصة للتعاونيات والجمعيات المتوفرة على عقدة الاستفادة\nDescription: حماية محيطات التشجير والتخليف إعادة إحياء وتأهيل المنظومات الغابوية عبر منح المقاصة\nAdministration: الوكالة الوطنية للمياه والغابات\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - طلب منحة المقاصة\n - شهادة احترام محمية الرعي المعنية بمنحة المقاصة\n - برنامج صرف المنحة\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 399,
+      "answer": "يمكن لشركتكم الاستفادة من دعم توزيع مادة غاز البوطان من صندوق المقاصة.\n\nللاستفادة من هذا الدعم، يجب تقديم الوثائق التالية:\n*   طلب الدعم لمادة غاز البوطان\n*   فواتير مراكز التعبئة لشركات التوزيع\n*   كشف بالمبيعات الشهرية\n*   كشف بالكميات الغاز بوطان المتوصل بها من طرف المودعين\n\nهذه الخدمة مجانية ويبلغ أجل معالجة الطلب 15 يوماً.\n\n(المصدر: صندوق المقاصة)",
+      "generation_ms": 8673,
+      "prompt_tokens": 712,
+      "output_tokens": 133,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7835,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s066",
+      "question": "Nous raffinons du sucre, comment toucher l'aide de l'État sur nos ventes locales ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "694645dd-3627-4569-ad5c-faf5a6383697"
+      ],
+      "reference": "La procédure concernée est « Soutien forfaitaire pour le sucre » (Caisse De Compensation). Documents à fournir : Demande de bénéfice du soutien pour le sucre sur les ventes locales ; État détaillé des ventes locales bénéficiant du soutien ; Fiche détaillée des ventes mensuelles avec calcul du taux de la TVA pour l'ensemble des ventes ; État du sucre raffiné et du sucre brut ; Déclaration mensuelle de TVA ; Reçu de paiement de la TVA ou récépissé de dépôt. Frais : Gratuit. Délai : 15 jours.",
+      "must_include": [
+        "Demande de bénéfice du soutien pour le sucre sur les ventes…",
+        "État détaillé des ventes locales bénéficiant du soutien",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "694645dd-3627-4569-ad5c-faf5a6383697",
+        "e9d3fe1e-bd34-4ae1-8b1c-7f95c7febeb2",
+        "56c5ac96-5488-4875-8025-6737173a6c61"
+      ],
+      "retrieved_titles": [
+        "Soutien forfaitaire pour le sucre",
+        "Subvention en faveur du sucre brut importé",
+        "Autorisation d’exonération des droits et taxes de douane sur les dons, acquis au moyen d’aides financières non remboursables, importés par l’État, les collectivités locales ou les établissements publics"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Soutien forfaitaire pour le sucre\nDescription: Soutien forfaitaire pour le sucre, conformément à l'arrêté du ministre délégué auprès du Chef du gouvernement chargé des affaires générales et de la gouvernance modifiant l'arrêté instituant le soutien forfaitaire pour le sucre\nAdministration: Caisse De Compensation\nFrais: Gratuit\nDélai: 15 jours\nDocuments requis:\n - Demande de bénéfice du soutien pour le sucre sur les ventes locales\n - État détaillé des ventes locales bénéficiant du soutien\n - Fiche détaillée des ventes mensuelles avec calcul du taux de la TVA pour l'ensemble des ventes\n - État du sucre raffiné et du sucre brut (pour les importateurs)\n - Déclaration mensuelle de TVA\n - Reçu de paiement de la TVA ou récépissé de dépôt\n - Certificat d'achat en exonération de la TVA pour la quantité des ventes exonérées, indiquant la durée de l'exonération et la quantité exonérée\n - Factures des ventes aux clients exonérés de la taxe, cachetées et signées\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Subvention en faveur du sucre brut importé\nDescription: Octroi de la subvention en faveur du sucre brut importé\nAdministration: Caisse De Compensation\nFrais: Gratuit\nDélai: 15 jours\nDocuments requis:\n - État détaillé du calcul du montant de la subvention à récupérer au profit de la société ou de la Caisse de compensation.\n - Copie de la facture du fournisseur\n - Copie de la déclaration unique de marchandise (DUM)\n - Copie du récépissé douanier de paiement des droits d'importation, accompagnée de copies des registres de liquidation y afférents\n - Copie du connaissement\n - Copie du contrat d'achat précisant la quantité importée, le prix d'achat (FOB), le fret et la prime détaillée\n - Tableau comparatif des offres de prime d'achat\n - Tableau du prix spot d'achat du sucre brut\n - Avis bancaires de paiement des sommes dues au fournisseur\n - Certificat douanier relatif à la quantité de sucre brut importé\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation d’exonération des droits et taxes de douane sur les dons, acquis au moyen d’aides financières non remboursables, importés par l’État, les collectivités locales ou les établissements publics\nDescription: La procédure a pour objet de faire bénéficier l’État, les collectivités locales et les établissements publics de l’exonération des droits et taxes de douane à l’importation de marchandises acquises au moyen d’aides financières non remboursables.\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: gratuit\nDélai: 7 jours\nDocuments requis:\n - Factures relatives aux marchandises importées\n - Certificat de don délivré par le donateur justifiant les conditions prévues à l’article 190 du décret\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 479,
+      "answer": "Pour bénéficier de l'aide de l'État sur vos ventes locales de sucre raffiné, vous pouvez vous référer à la procédure de **Soutien forfaitaire pour le sucre**.\n\nL'administration responsable est la **Caisse De Compensation**.\n\nCette démarche est **Gratuit**e et le délai de traitement est de **15 jours**.\n\nLes documents requis sont :\n*   Demande de bénéfice du soutien pour le sucre sur les ventes locales\n*   État détaillé des ventes locales bénéficiant du soutien\n*   Fiche détaillée des ventes mensuelles avec calcul du taux de la TVA pour l'ensemble des ventes\n*   État du sucre raffiné et du sucre brut (pour les importateurs)\n*   Déclaration mensuelle de TVA\n*   Reçu de paiement de la TVA ou récépissé de dépôt\n*   Certificat d'achat en exonération de la TVA pour la quantité des ventes exonérées, indiquant la durée de l'exonération et la quantité exonérée\n*   Factures des ventes aux clients exonérés de la taxe, cachetées et signées\n\n(Source : Caisse De Compensation)",
+      "generation_ms": 8220,
+      "prompt_tokens": 861,
+      "output_tokens": 239,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8954,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s067",
+      "question": "كيف تستفيد الشركات المصنعة للكمامات غير الطبية من دعم الأسعار؟",
+      "lang": "ar",
+      "category": "factual",
+      "expected_ids": [
+        "a9efc8f6-e0d8-462b-87b5-c8c6e73fe302"
+      ],
+      "reference": "الإجراء المعني هو « دعم أثمان الكمامات الواقية المصنوعة من الثوب الغير المنسوج ذات الاستعمال غير الطبي » (صندوق المقاصة). الوثائق المطلوبة: فواتير البيع للموزعين ؛ حالة مخزون الكمامات الشهري ؛ شهادة إنتاج الكمامات من المعهد المغربي للتقييس ؛ شهادة استلام البضاعة من طرف الزبون ؛ بيانات التصفية من طرف الشركة. الرسوم: مجانا. الآجال: 15 يوما.",
+      "must_include": [
+        "فواتير البيع للموزعين",
+        "حالة مخزون الكمامات الشهري",
+        "مجانا"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "a9efc8f6-e0d8-462b-87b5-c8c6e73fe302",
+        "3744681e-ce3e-4bb2-9bca-d75d17e43014",
+        "56c5ac96-5488-4875-8025-6737173a6c61"
+      ],
+      "retrieved_titles": [
+        "Subvention des prix des masques de protection en non-tissé à usage non médical",
+        "Attestation de bénéfice du taux réduit de 7% applicable aux opérations d'achat des produits et matières entrant dans la composition des emballages non consignés pour produits pharmaceutiques",
+        "Autorisation d’exonération des droits et taxes de douane sur les dons, acquis au moyen d’aides financières non remboursables, importés par l’État, les collectivités locales ou les établissements publics"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: دعم أثمان الكمامات الواقية المصنوعة من الثوب الغير المنسوج ذات الاستعمال غير الطبي\nDescription: دعم أثمان الكمامات الواقية المصنوعة من الثوب الغير المنسوج ذات الاستعمال غير الطبي بناء على القرار المشترك الخاص بإنشاء دعم لفائدة أثمان الكمامات الواقية المصنوعة من الثوب الغير المنسوج ذات الاستعمال غير الطبي\nAdministration: صندوق المقاصة\nFrais: مجانا\nDélai: 15 يوما\nDocuments requis:\n - فواتير البيع للموزعين\n - حالة مخزون الكمامات الشهري\n - شهادة   إنتاج الكمامات من المعهد المغربي للتقييس\n - شهادة استلام البضاعة  من طرف الزبون\n - بيانات التصفية من طرف الشركة\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة  الاستفادة من السعر المخفض %7  المطبق على عمليات شراء المنتجات والمواد الداخلة في تركيب اللفائف غير المرجعة للمنتجات الصيدلية\nDescription: الاستفادة من السعر المخفض %7  المطبق على عمليات شراء المنتجات والمواد الداخلة في تركيب اللفائف غير المرجعة للمنتجات الصيدلية\nAdministration: وزارة الاقتصاد والمالية-المديرية العامة للضرائب\nFrais: مجانا\nDélai: 10 أيام\nDocuments requis:\n - طلب إلكتروني أو طلب، نموذج  AAC180\n - بيان وصفي إلكتروني أو بيان وصفي، نموذج AAِC181\n - الفاتورات الشكلية أو أية وثيقة متعلقة بالطلبية\nÉtapes:\nغير محدد",
+        "PROCÉDURE: ترخيص بالإعفاء من الرسوم والمكوس الجمركية على الهبات، المقتناة بواسطة مساعدات مالية غير قابلة للتعويض، المستوردة من طرف الدولة أو الجماعات المحلية أو المؤسسات  العمومية\nDescription: الغاية من المسطرة هي استفادة الدولة والجماعات  المحلية و المؤسسات العمومية من الإعفاء من الرسوم والمكوس الجمركية  عند استيراد سلع مقتناة بواسطة مساعدات مالية غير قابلة للتعويض.\nAdministration: وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة\nFrais: يالمجان\nDélai: 7 أيـــام\nDocuments requis:\n - طلب ترخيص بالإعفاء من الرسوم والمكوس الجمركية لفائدة الهبات المقتناة بواسطة مساعدات مالية غير قابلة للتعويض.\n - شهادة الهبة مسلمة من لدن الجهة المانحة لإثبات الشروط المنصوص عليها في   الفصل 190 من  المرسوم\nالفواتير المتعلقة بالبضائع المستوردة\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 1038,
+      "answer": "للاستفادة من دعم أثمان الكمامات الواقية المصنوعة من الثوب الغير المنسوج ذات الاستعمال غير الطبي، يجب تقديم الوثائق التالية:\n\n*   فواتير البيع للموزعين\n*   حالة مخزون الكمامات الشهري\n*   شهادة إنتاج الكمامات من المعهد المغربي للتقييس\n*   شهادة استلام البضاعة من طرف الزبون\n*   بيانات التصفية من طرف الشركة\n\nهذه الخدمة مجانية ويبلغ أجل معالجتها 15 يوما.\n\nالمصدر: صندوق المقاصة.",
+      "generation_ms": 8104,
+      "prompt_tokens": 810,
+      "output_tokens": 130,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.6204,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s068",
+      "question": "Notre société importe beaucoup et veut des facilités de dédouanement, comment obtenir un statut spécial auprès de la douane ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "fadff82a-f880-4427-8b74-fa8e3c972b7c"
+      ],
+      "reference": "La procédure concernée est « Statut d’opérateur économique agréé – Simplifications douanières » (Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects). Documents à fournir : Demande d’autorisation de statut d’opérateur économique accepté – Simplifications douanières ; Rapport d’audit réalisé par le cabinet d’audit choisi par l’entreprise conformément au référentiel défini par…. Frais : Gratuit. Délai : 60 jours.",
+      "must_include": [
+        "Demande d’autorisation de statut d’opérateur économique…",
+        "Rapport d’audit réalisé par le cabinet d’audit choisi par…",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "1b8fdec7-6d5b-4c11-b00c-ac6b7a9c5ac1",
+        "de46fe9f-8486-4cbc-8486-b0423bdd0557",
+        "66cd666d-1c28-4181-961b-166c4402b1a7"
+      ],
+      "retrieved_titles": [
+        "Autorisation d'exonération du droit d'importation lors du dédouanement de véhicules spécialement équipés pour personnes en situation de handicap",
+        "Autorisation d’exonération des droits et taxes de douane à l’importation de biens et marchandises, y compris les véhicules utilitaires, destinés à être remis à titre de don à l’État, aux collectivités territoriales, aux établissements publics et aux associations reconnues d’utilité publique œuvrant dans les domaines social et sanitaire des personnes à besoins spécifiques ou en situation difficile",
+        "Autorisation d'exonération des droits et taxes de douane pour le dédouanement des fauteuils roulants spécialement conçus pour les personnes en situation de handicap"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: Autorisation d'exonération du droit d'importation lors du dédouanement de véhicules spécialement équipés pour personnes en situation de handicap\nDescription: La procédure vise à exonérer du droit d'importation les véhicules spécialement aménagés pour les personnes en situation de handicap, sous réserve que :\n- la personne soit en situation de handicap physique et titulaire d'un permis de conduire valide de catégorie B indiquant les codes de restrictions qui lui sont propres ;\n- le véhicule objet de la demande soit équipé des aménagements nécessaires pour l'intéressé.\nIl est à noter que ce type de véhicules reste soumis au paiement de la taxe sur la valeur ajoutée.\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: non spécifié\nDocuments requis:\n - Demande visée par l'autorité gouvernementale chargée des personnes en situation de handicap\n - Copie de l'attestation d'homologation à titre isolé délivrée par l'autorité gouvernementale chargée de l'équipement et du transport\n - Certificat de conformité délivré par l'autorité gouvernementale chargée de l'équipement et du transport\n - Certificat médical délivré conformément à la loi n° 05-52 portant Code de la route.\n - Copie de la carte nationale d'identité électronique ou du certificat de résidence pour les étrangers résidant au Maroc\n - Copie du permis de conduire\n - Document de circulation sous le régime de l'admission temporaire des moyens de transport appartenant aux personnes ayant leur résidence normale à l'étranger\n - Facture d'achat originale pour les véhicules de trois mois ou moins d'âge\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation d’exonération des droits et taxes de douane à l’importation de biens et marchandises, y compris les véhicules utilitaires, destinés à être remis à titre de don à l’État, aux collectivités territoriales, aux établissements publics et aux associations reconnues d’utilité publique œuvrant dans les domaines social et sanitaire des personnes à besoins spécifiques ou en situation difficile\nDescription: Exonération des droits et taxes de douane à l’importation de dons en nature destinés à l’État, aux collectivités territoriales, aux établissements publics et aux associations reconnues d’utilité publique s’occupant des conditions sociales et sanitaires des personnes à besoins spécifiques ou en situation difficile\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - Demande de bénéfice de l’exonération des droits et taxes de douane dus sur les marchandises reçues en don\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation d'exonération des droits et taxes de douane pour le dédouanement des fauteuils roulants spécialement conçus pour les personnes en situation de handicap\nDescription: Exonération des droits et taxes de douane pour les fauteuils roulants spécialement conçus pour les personnes en situation de handicap\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - Demande d'autorisation d'exonération des droits et taxes de douane lors du dédouanement d'un fauteuil roulant spécialement conçu pour les personnes en situation de handicap.\n - Certificat médical délivré conformément à la loi n° 05-52 portant Code de la route.\n - Autorisation spéciale délivrée par la Direction du Médicament et de la Pharmacie relevant du Ministère de la Santé\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 226,
+      "answer": "Je n'ai pas d'informations officielles concernant une procédure permettant à une société d'obtenir un statut spécial ou des facilités de dédouanement en raison d'un volume d'importation élevé. Les procédures disponibles sont relatives à des exonérations spécifiques pour les véhicules et fauteuils roulants destinés aux personnes en situation de handicap, ainsi que les dons à certaines entités.",
+      "generation_ms": 8695,
+      "prompt_tokens": 1012,
+      "output_tokens": 79,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "context_recall": 0.0,
+        "refusal": 1.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s069",
+      "question": "أريد استغلال مقلع للرمل، ما هي الوثائق المطلوبة للتصريح بذلك؟",
+      "lang": "ar",
+      "category": "documents",
+      "expected_ids": [
+        "6b86a551-2563-4460-b6ef-2fb97bf18554"
+      ],
+      "reference": "الإجراء المعني هو « منح وصل تصريح باستغلال مقلع » (وزارة التجهيز والماء). الوثائق المطلوبة: 1. التصريح المسبق باستغلال المقلع ؛ 2. وثائق العقار ؛ 3. تصميم موقعي 20.000/1 على شعاع 2 كلم ؛ 4. تصميم أنسوبي 1000/1 ؛ 5. تصميم للمكمن بالوسط المائي 1000/1 ؛ 6. خطة التشوير. الرسوم: بالمجان. الآجال: (30) يوما لمقالع الأشغال العمومية ومقالع أخذ العينات للاستكشاف (60) يوما للمقالع الأخرى.",
+      "must_include": [
+        "1. التصريح المسبق باستغلال المقلع",
+        "2. وثائق العقار",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "6b86a551-2563-4460-b6ef-2fb97bf18554",
+        "134139a2-9b3c-494b-b015-63a7e7c20251",
+        "0ea0d0c8-bf87-4e41-ac6b-5b3ee3771e0d"
+      ],
+      "retrieved_titles": [
+        "Délivrance du récépissé de déclaration d'exploitation de carrière",
+        "Permis d'occupation temporaire du domaine public pour l'accès aux propriétés privées et aux projets d'investissement (SVR) (Invest)",
+        "Obtention du certificat de qualification et de classification des laboratoires de construction et de travaux publics"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: منح وصل تصريح باستغلال مقلع\nDescription: مراقبة وضبط استغلال المقالع\nAdministration: وزارة التجهيز والماء\nFrais: بالمجان\nDélai: (30) يوما لمقالع الأشغال العمومية ومقالع أخذ العينات للاستكشاف \n(60) يوما للمقالع الأخرى\nDocuments requis:\n - 1.   التصريح المسبق باستغلال المقلع\n - 2.   وثائق العقار: رسم الملكية، شهادة عقارية، عقد الإيجار، رخصة استغلال...\n - 3.   تصميم موقعي 20.000/1  على شعاع 2 كلم (موقع المقلع، المباني، الطرق ، مجاري المياه، الغابات، المحميات، الآثار، بالنسبة للمقالع البحرية، الشريط الساحلي، المنشآت البحرية...)\n - 4.   تصميم أنسوبي 1000/1 (حدود المقلع، الإحداثيات والمعلومات المتعلقة به)\n - 5.   تصميم للمكمن بالوسط المائي  1000/1(قياس الأعماق) + تصميم أنسوبي 1000/1(الأحواض التخزينية)\n - 6.   خطة التشوير\n - 7.   قرار الموافقة البيئية ، دراسة التأثير على البيئة، برنامج المراقبة و التتبع البيئي (كناش التحملات البيئي)\n - 8.   دراسة تقنية (طريقة الاستغلال، نوع المواد وخاصيتها والكميات ، عمق الإستغلال، إعادة تهيئة المقلع وكلفتها) وترفق بتصاميم 500/1.\n - بالنسبة لمقالع الأشغال العمومية، تقوم الوثائق التالية مقام الوثائق 7 :\n - -      شهادة مسلمة من صاحب المشروع؛\n - -      دراسة التأثير على البيئة.\n - بالنسبة لمقالع أخد العينات، يتضمن الملف فقط الوثائق 1و 2 و 3\n - 9.   كناش التحملات المتعلق باستغلال المقلع\n - 10.   شهادة الكفالة البنكية\n - 11.   شهادة سنوية للتأمين\n - 12.   القانون الأساسي للشخص الاعتباري المستغل للمقلع يتضمن الإشارة إلى مزاولة نشاط المقالع\n - 13.   محضر الجمع العام الذي يعين فيه الممثل القانوني للشخص الاعتباري\n - 14.   شهادة التقييد في السجل التجاري\n - 15.   شهادة الانخراط في الصندوق الوطني للضمان الاجتماعي\n - 16.   شهادة التعريف الضريبي\n - 17.   بالنسبة لمقالع الأشغال العمومية، قرار مصادقة اللجنة العمالاتية أو الإقليمية للمقالع على دراسة التأثير على البيئة\nÉtapes:\nغير محدد",
+        "PROCÉDURE: رخصة الاحتلال المؤقت للملك العمومي قصد الولوج إلى الملكيات الخاصة والمشاريع الاستثمارية (SVR) (Invest)\nDescription: الحصول على رخصة الاحتلال المؤقت للملك العمومي قصد لولوج إلى الملكيات الخاصة والمشاريع الاستثمارية\nAdministration: وزارة التجهيز والماء\nFrais: مصاريف دراسة الملف:\n- 1000 درهم عن كل طلب إدا كانت المساحة تقل أو تساوي 1000 متر مربع أو متر طولي \n- 1000 درهم عن كل طلب إدا كانت المساحة تقل أو تساوي 1000 متر مربع أو متر طولي مع إضافة 500 درهم عن كل شطر إضافي  يقل أو يساوي  1000 متر مربع أو متر طولي مع تحديد الأقصى في 25000 درهم.\nDélai: 30 يوما\nDocuments requis:\n - 1- طلب رخصة الاحتلال المؤقت للملك العمومي\n - 2- التصاميم :\n - تصميم موقعي يحدد على خريطة مناسبة موقع القطعة الأرضية المراد احتلالها.\n - تصميم القطعة المراد احتلالها مع المنشآت المزمع إنجازها بمقياس ملائم مع توضيح احداثيات لامبير لهذه الأرضية مرتبطة بشبكة المسح الطبوغرافي المغربي.\n - تصميم أنسوبي (Plan coté)\n - تصميم يبين ولوجيات وتفاصيل مجاري المياه (Plan des Accès -Structure des Accès -Détails du Caniveau)\n - تصميم يبين علامات التشوير الأفقي والعمودي  (Plan de Signalisation)\n - تصميم تخطيطي وطولي وعرضي على مدى 500 متر يمين ويسار المشروع  (Tracé en plan, profil en long, profil en Travers)\n - 3- ملف الدراسة التقنية يحدد طبيعة  الولوجيات اللازم تهيئتها من طرف طالب الترخيص\n - 4- وصل أداء مستحقات دراسة الملف\n - 5- شهادة الملكية أو أي وثيقة ثتبت ملكية للعقارات المراد الولوج إليها و كذا عقود الكراء إدا كانت العقارت ليست في ملكية  طالب الترخيص\n - 6-التعهد بأداءالأتاوة السنوية\n - 7-كناش التحملات موقع من طرف المعني بالأمر\n - 8- في حالة شركة يرفق الطلب بالقانون الاساسي و محضر الجمع العام لتعيين المتصرف باسم الشركة و نسخة من السجل التجاري\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الحصول على شهادة تكييف وتصنيف مختبرات البناء والأشغال العمومية\nDescription: المشاركة في الصفقات العمومية\nAdministration: وزارة التجهيز والماء\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - طلب تكييف و تصنيف مختبرات البناء والأشغال العمومية\n - شهادة الاقامة\n - نسخة مصورة  من الدبلوم المحصل عليه من طرف مسير المختبر\n - الوثائق التي تثبت أن مسير المختبر المترشح سبق أن زاول واحدا أو أكثر من انشطة المختبر المبينة في القائمة المشار اليها في المادة الأولى من  المرسوم رقم  437-01-2 طوال خمس (5) سنوات على الأقل.\n - البطاقة رقم 3 من السجل العدلي لا يتجاوز تاريخها ثلاثة أشهر أو أي وثيقة رسمية أخرى تقوم مقامها\n - مستخرج من شهادة تقييد المختبر في السجل التجاري\n - جدول لا يتجاوز تاريخه سنة واحدة ومؤشر عليه بصفة صحيحة من لدن الصندوق الوطني للضمان الاجتماعي يتضمن قائمة الأشخاص المستخدمين والمنخرطين في هذه الهيئة ويثبت أن المترشح يقدم بانتظام التصاريح بالأجور\n - شهادة مسلمة من مصالح الضرائب المباشرة والرسوم المعتبرة في حكمها يبين فيها رقم الأعمال الذي تم تحقيقه طوال السنوات الثلاث الأخيرة أو منذ إنشاء المختبر إذا كان هذا الأخير قائما منذ أقل من ثلاث سنوات\n - شهادة مسلمة منذ أقل من سنة   من لدن القابض التابع له محل فرض الضريبة تثبت أن الشخص المترشح في وضعية جبائية قانونية لكونه أدلى بتصاريحه ودفع المبالغ المستحقة، أو في حالة عدم الأداء، لكونه قدم ضمانات يرى المحاسب المكلف بالتحصيل أنه كافية. ويجب أن يبين في هذ\n - المراجع التقنية المتعلقة بطبيعة ومبلغ الأعمال المنجزة ومكان وتاريخ إنجازها وكذا أسماء وعناوين أصحاب المشاريع الذين استفادوا من الأعمال المذكورة وعند الاقتضاء تسمياتهم وعناوينهم. ولا  تطبق أحكام هذا المقطع على المختبرات الحديثة العهد.\n - قائمة الوسائل المادية مع مواصفاتها التقنية وبيان تاريخها وقيم  اقتنائها.\n - وثيقة تثبت ربط تجهيزات التجريب والقياس بشبكة المعايرة الوطنية أو الدولية وفقا للنصوص التشريعية والتنظيمية الجاري بها العمل.\n - قائمة مستخدمي الإشراف والتأطير مع بيان مؤهلاتهم المهنية بوجه خاص.\n - نسخة من النظام الأساسي للشخص المعنوي\n - شهادة القيد في جدول الضريبة المهنية (الباتنتا) لا يتجاوز  تاريخها سنة.\n - نسخة من المخطط الهيكلي مفصل يتضمن عند الاقتضاء  كيفية  تموقعه عبر التراب الوطني ومداه.\n - السيرة الذاتية لكل واحد من مسيريه و أطره.\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 311,
+      "answer": "للحصول على وصل تصريح باستغلال مقلع، الوثائق المطلوبة هي كالتالي، حسب وزارة التجهيز والماء:\n\n1.  التصريح المسبق باستغلال المقلع.\n2.  وثائق العقار: رسم الملكية، شهادة عقارية، عقد الإيجار، رخصة استغلال...\n3.  تصميم موقعي 20.000/1 على شعاع 2 كلم (موقع المقلع، المباني، الطرق، مجاري المياه، الغابات، المحميات، الآثار، بالنسبة للمقالع البحرية، الشريط الساحلي، المنشآت البحرية...).\n4.  تصميم أنسوبي 1000/1 (حدود المقلع، الإحداثيات والمعلومات المتعلقة به).\n5.  تصميم للمكمن بالوسط المائي 1000/1 (قياس الأعماق) + تصميم أنسوبي 1000/1 (الأحواض التخزينية).\n6.  خطة التشوير.\n7.  قرار الموافقة البيئية، دراسة التأثير على البيئة، برنامج المراقبة والتتبع البيئي (كناش التحملات البيئي).\n    *   بالنسبة لمقالع الأشغال العمومية، تقوم الوثائق التالية مقام الوثائق 7: شهادة مسلمة من صاحب المشروع؛ دراسة التأثير على البيئة.\n    *   بالنسبة لمقالع أخذ العينات، يتضمن الملف فقط الوثائق 1 و 2 و 3.\n8.  دراسة تقنية (طريقة الاستغلال، نوع المواد وخاصيتها والكميات، عمق الاستغلال، إعادة تهيئة المقلع وكلفتها) وترفق بتصاميم 500/1.\n9.  كناش التحملات المتعلق باستغلال المقلع.\n10. شهادة الكفالة البنكية.\n11. شهادة سنوية للتأمين.\n12. القانون الأساسي للشخص الاعتباري المستغل للمقلع يتضمن الإشارة إلى مزاولة نشاط المقالع.\n13. محضر الجمع العام الذي يعين فيه الممثل القانوني للشخص الاعتباري.\n14. شهادة التقييد في السجل التجاري.\n15. شهادة الانخراط في الصندوق الوطني للضمان الاجتماعي.\n16. شهادة التعريف الضريبي.\n17. بالنسبة لمقالع الأشغال العمومية، قرار مصادقة اللجنة العمالاتية أو الإقليمية للمقالع على دراسة التأثير على البيئة.\n\nهذه الخدمة بالمجان ويستغرق إنجازها 30 يوما لمقالع الأشغال العمومية ومقالع أخذ العينات للاستكشاف، و60 يوما للمقالع الأخرى.",
+      "generation_ms": 8399,
+      "prompt_tokens": 2224,
+      "output_tokens": 630,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8294,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s070",
+      "question": "Mon entreprise de BTP veut participer aux marchés publics, comment obtenir sa qualification et sa classification ?",
+      "lang": "fr",
+      "category": "ambiguous",
+      "expected_ids": [
+        "26a88c6f-2187-4732-ada2-84229f829644",
+        "e9c9faab-d2f9-4d22-b32d-47d73d126a48"
+      ],
+      "reference": "La procédure concernée est « Certificat de qualification et de classification des entreprises de bâtiment et de travaux publics » (Ministère de l’Equipement et de L’Eau). Documents à fournir : Copie du certificat d'inscription de l'entreprise au registre du commerce ; Attestation de la masse salariale déclarée par l'entreprise ; Attestation du chiffre d'affaires réalisé au cours des cinq dernières années ; Références techniques de l'entreprise, en précisant notamment la nature et le volume des travaux réalisés ; Liste des équipements de l'entreprise, accompagnée des justificatifs ou de tout document attestant de leur acquisition ; Liste des agents d'encadrement et de supervision, avec indication de leurs qualifications professionnelles, justifiée…. Frais : Gratuit. Délai : 45 jours. Selon la situation exacte, la procédure « Certificat de classification et de classement des entreprises de construction » peut aussi s'appliquer.",
+      "must_include": [
+        "Copie du certificat d'inscription de l'entreprise au…",
+        "Attestation de la masse salariale déclarée par l'entreprise",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "26a88c6f-2187-4732-ada2-84229f829644",
+        "e9c9faab-d2f9-4d22-b32d-47d73d126a48",
+        "0ea0d0c8-bf87-4e41-ac6b-5b3ee3771e0d"
+      ],
+      "retrieved_titles": [
+        "Certificat de qualification et de classification des entreprises de bâtiment et de travaux publics",
+        "Certificat de classification et de classement des entreprises de construction",
+        "Obtention du certificat de qualification et de classification des laboratoires de construction et de travaux publics"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Certificat de qualification et de classification des entreprises de bâtiment et de travaux publics\nDescription: Participation aux marchés publics\nAdministration: Ministère de l’Equipement et de L’Eau\nFrais: Gratuit\nDélai: 45 jours\nDocuments requis:\n - Copie du certificat d'inscription de l'entreprise au registre du commerce\n - Attestation de la masse salariale déclarée par l'entreprise\n - Attestation du chiffre d'affaires réalisé au cours des cinq dernières années\n - Références techniques de l'entreprise, en précisant notamment la nature et le volume des travaux réalisés\n - Liste des équipements de l'entreprise, accompagnée des justificatifs ou de tout document attestant de leur acquisition\n - Liste des agents d'encadrement et de supervision, avec indication de leurs qualifications professionnelles, justifiée par des copies de diplômes et des attestations de déclaration de salaires\n - Formulaire contenant les tableaux à renseigner par l'entreprise, signé et revêtu du cachet de l'entreprise\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Certificat de classification et de classement des entreprises de construction\nDescription: Objectifs du système de classification et de classement des entreprises de construction :\n• Promouvoir l'entreprise nationale et l'inciter à s'organiser, s'encadrer et s'équiper ;\n• Réduire la propagation du secteur informel ;\n• Lutter contre la concurrence illicite ;\n• Améliorer la transparence dans l'attribution des marchés publics ;\n• Vérifier les capacités de l'entreprise ;\n• Évaluer les qualifications techniques des entreprises sur la base de critères objectifs et unifiés ;\n• Assurer une meilleure garantie pour le maître d'ouvrage ;\n• Faciliter la tâche des commissions d'ouverture des plis relatifs aux marchés publics.\nAdministration: Ministère de l’Aménagement du Territoire National, de l’Urbanisme, de l’Habitat et de la Politique de la Ville- Département de  l’Habitat et de la Politique de la Ville\nFrais: Gratuit\nDélai: 45 jours\nDocuments requis:\n - Copie du certificat d'inscription de l'entreprise au registre de commerce.\n - Attestation délivrée par la Caisse Nationale de Sécurité Sociale (CNSS), indiquant la masse salariale déclarée par l'entreprise au cours des cinq dernières années ou depuis sa création si l'entreprise a été créée depuis moins de 5 ans.\n - Attestation délivrée par les services des impôts directs et taxes assimilées, indiquant le chiffre d'affaires réalisé au cours des trois dernières années ou depuis la création de l'entreprise si celle-ci a été créée depuis moins de 5 ans.\n - Références techniques de l'entreprise, indiquant notamment la nature et le montant des travaux réalisés, le lieu d'exécution, la date, les noms et adresses des maîtres d'ouvrage pour lesquels ces travaux ont été exécutés et les superviseurs du projet qui\n - Liste des matériels dont dispose l'entreprise et/ou ceux en location avec option d'achat (annexes 1 et 2).\n - Liste des cadres et techniciens, avec indication de leurs capacités professionnelles, accompagnée des diplômes et du relevé de carrière professionnelle (annexe 3).\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention du certificat de qualification et de classification des laboratoires de construction et de travaux publics\nDescription: Participation aux marchés publics\nAdministration: Ministère de l’Equipement et de L’Eau\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Demande de qualification et de classification des laboratoires de construction et de travaux publics.\n - Certificat de résidence.\n - Copie du diplôme obtenu par le gérant du laboratoire.\n - Les documents attestant que le gérant du laboratoire candidat a exercé une ou plusieurs des activités de laboratoire énumérées dans la liste visée à l'article premier du décret n° 2-01-437 pendant au moins cinq (5) ans.\n - Le bulletin n° 3 du casier judiciaire datant de moins de trois mois ou tout autre document officiel en tenant lieu.\n - Extrait de l'inscription du laboratoire au registre du commerce.\n - Un tableau datant de moins d'un an, dûment visé par la Caisse nationale de sécurité sociale, comportant la liste des personnes employées et affiliées à cet organisme et attestant que le candidat souscrit régulièrement les déclarations de salaires.\n - Attestation délivrée par les services des impôts directs et taxes assimilées indiquant le chiffre d'affaires réalisé au cours des trois dernières années ou depuis la création du laboratoire si celui-ci existe depuis moins de trois ans.\n - Attestation délivrée depuis moins d'un an par le receveur dont relève le lieu d'imposition du candidat, certifiant que la personne candidate est en situation fiscale régulière pour avoir souscrit ses déclarations et payé les sommes dues ou, en cas de non-\n - Les références techniques relatives à la nature et au montant des travaux réalisés, au lieu et à la date de leur réalisation, ainsi qu'aux noms et adresses des maîtres d'ouvrage qui ont bénéficié desdits travaux et, le cas échéant, leurs dénominations et\n - Liste des moyens matériels avec leurs spécifications techniques, leur date et leur valeur d'acquisition.\n - Document attestant du raccordement des équipements d'essai et de mesure au réseau national ou international d'étalonnage, conformément aux textes législatifs et réglementaires en vigueur.\n - Liste du personnel d'encadrement et de supervision avec indication, en particulier, de leurs qualifications professionnelles.\n - Copie des statuts de la personne morale.\n - Attestation d'inscription au rôle de la taxe professionnelle (patente) datant de moins d'un an.\n - Copie du plan d'organisation détaillé comprenant, le cas échéant, la manière dont il est implanté sur le territoire national et son étendue.\n - Le curriculum vitæ de chacun de ses gérants et cadres.\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 444,
+      "answer": "Pour obtenir la qualification et la classification de votre entreprise de BTP afin de participer aux marchés publics, vous devez suivre la procédure de demande de \"Certificat de qualification et de classification des entreprises de bâtiment et de travaux publics\".\n\nVoici les informations officielles concernant cette procédure :\n\n*   **Administration :** Ministère de l’Equipement et de L’Eau\n*   **Frais :** Gratuit\n*   **Délai :** 45 jours\n*   **Documents requis :**\n    *   Copie du certificat d'inscription de l'entreprise au registre du commerce\n    *   Attestation de la masse salariale déclarée par l'entreprise\n    *   Attestation du chiffre d'affaires réalisé au cours des cinq dernières années\n    *   Références techniques de l'entreprise, en précisant notamment la nature et le volume des travaux réalisés\n    *   Liste des équipements de l'entreprise, accompagnée des justificatifs ou de tout document attestant de leur acquisition\n    *   Liste des agents d'encadrement et de supervision, avec indication de leurs qualifications professionnelles, justifiée par des copies de diplômes et des attestations de déclaration de salaires\n    *   Formulaire contenant les tableaux à renseigner par l'entreprise, signé et revêtu du cachet de l'entreprise\n*   **Étapes :** Les étapes ne sont pas spécifiées.\n\nSource : Ministère de l’Equipement et de L’Eau.",
+      "generation_ms": 11127,
+      "prompt_tokens": 1510,
+      "output_tokens": 308,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.941,
+        "context_precision": 1.0,
+        "context_recall": 0.8,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s071",
+      "question": "J'organise des séjours de chasse pour des touristes étrangers, quel agrément dois-je obtenir ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "c58c5126-1638-42c4-8157-e2bc0d4591ff"
+      ],
+      "reference": "La procédure concernée est « Agrément d'organisateur de chasse touristique » (Agence Nationale des Eaux et Forêts). Documents à fournir : Autorisation d'exploitation de la chasse amodiée ; Demande d'agrément d'organisateur de chasse touristique. Frais : Gratuit. Délai : 30 jours.",
+      "must_include": [
+        "Autorisation d'exploitation de la chasse amodiée",
+        "Demande d'agrément d'organisateur de chasse touristique",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "c58c5126-1638-42c4-8157-e2bc0d4591ff",
+        "64c647a7-1d29-46c1-8fb7-de3f3afe57da",
+        "bebb569d-4ec1-40ee-bcb2-e90a69255309"
+      ],
+      "retrieved_titles": [
+        "Agrément d'organisateur de chasse touristique",
+        "Agrément définitif pour l'exercice de l'activité de change manuel – Licence de catégorie « D »",
+        "Carte de séjour pour étrangers ou son renouvellement"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Agrément d'organisateur de chasse touristique\nDescription: Organisation de la chasse touristique dans la ou les parcelles louées\nAdministration: Agence Nationale des Eaux et Forêts\nFrais: Gratuit\nDélai: 30 jours\nDocuments requis:\n - Autorisation d'exploitation de la chasse amodiée\n - Demande d'agrément d'organisateur de chasse touristique\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Agrément définitif pour l'exercice de l'activité de change manuel – Licence de catégorie « D »\nDescription: Agrément définitif pour l'exercice de l'activité de change manuel (licence de catégorie « D »)\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - 1- Annexe n° 4 – Instructions régissant l'exercice de l'activité de change manuel en date du 17 juillet 2018\n - 2- Copie des statuts de la société\n - 3- Copie du registre de commerce (modèle 7)\n - 4- Copie du certificat d'inscription à la taxe professionnelle ou de tout document justifiant le paiement de cette taxe\n - 5- Copie de la licence du ministère du Tourisme pour les agences de voyages\n - 6- Décision de classement pour les hôtels\n - 7- Contrat de gestion, le cas échéant, pour les hôtels\n - 8- Formulaire signé contenant les informations sur l'établissement hôtelier\n - 9- Copie de la carte d'identité du gérant\n - 10- Copie du bulletin du casier judiciaire du gérant (ou du relevé des condamnations privatives de liberté (bulletin n° 3) si le gérant (ou les gérants) est (sont) étranger(s) résident(s))\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Carte de séjour pour étrangers ou son renouvellement\nDescription: Constitution du dossier de demande de la carte de séjour ou de son renouvellement\nAdministration: Administration de la Défense Nationale\nFrais: Droit d'enregistrement et de timbre : 100 dirhams\nDélai: 30 jours\nDocuments requis:\n - Copie des pages du passeport du demandeur\n - Photographie d'identité de l'usager\n - Certificat de propriété ou contrat de location ou tout document attestant de la résidence effective à une adresse fixe au Royaume\n - Certificat médical\n - Document justifiant la nature de l'activité à exercer, le cas échéant\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 286,
+      "answer": "Pour organiser des séjours de chasse pour des touristes, vous devez obtenir l'**Agrément d'organisateur de chasse touristique**.\n\nVoici les informations concernant cette procédure :\n*   **Administration :** Agence Nationale des Eaux et Forêts\n*   **Frais :** Gratuit\n*   **Délai :** 30 jours\n*   **Documents requis :**\n    *   Autorisation d'exploitation de la chasse amodiée\n    *   Demande d'agrément d'organisateur de chasse touristique",
+      "generation_ms": 6801,
+      "prompt_tokens": 779,
+      "output_tokens": 117,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8663,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s072",
+      "question": "كيف تحصل شركة على اعتماد لتقديم خدمات المناولة الأرضية في المطارات؟",
+      "lang": "ar",
+      "category": "factual",
+      "expected_ids": [
+        "54a5fdaa-39ea-4c51-a61f-9e5d3092a4ee"
+      ],
+      "reference": "الإجراء المعني هو « اعتماد تقديم خدمات المناولة الأرضية بالمطارات » (وزارة النقل واللوجيستيك -المديرية العامة للطيران المدني). الوثائق المطلوبة: 5. وصف مفصل لأنشطة المساعدة التي زاولها الطالب، إذا كان الطالب قد زاول نشاطا مهنيا قبل تقديم طلبه ؛ ؛ 3. نسخة من السنة المحاسبية المنصرمة إذا كان الطالب قد زاول نشاطا مهنيا قبل تقديم طلبه ؛ ؛ 4. وصف مفصل للمؤهلات المالية والتقنية والمهنية التي يتوفر عليها الطالب ؛ ؛ 6 نسخة من الانظمة الأساسية للمعني. ؛ 2. التزام وفق النموذج المعد لهذا الغرض من لدن الوزارة المكلفة بالطيران المدني ؛ ؛ 1. طلب الممارسة مقدم وفق النموذج المعد لهذا الغرض من لدن الوزارة المكلفة بالطيران المدني؛. الرسوم: بالمجان. الآجال: 30 يوما.",
+      "must_include": [
+        "5. وصف مفصل لأنشطة المساعدة التي زاولها الطالب، إذا كان…",
+        "3. نسخة من السنة المحاسبية المنصرمة إذا كان الطالب قد زاول…",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "54a5fdaa-39ea-4c51-a61f-9e5d3092a4ee",
+        "64ce5a11-e4f0-44fb-ad34-80c1e4a31b75",
+        "1e7a0235-eabc-4e4d-a551-a76c28195090"
+      ],
+      "retrieved_titles": [
+        "Agrément pour la prestation de services de manutention au sol dans les aéroports",
+        "Décision d’accréditation des organismes habilités à la réception et au contrôle des ascenseurs et monte-charges accompagnés",
+        "Agrément des sociétés d'assurance pour la régularisation de la situation des voitures placées sous le régime de l'admission temporaire"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: اعتماد تقديم خدمات المناولة الأرضية بالمطارات\nDescription: منح اعتماد تقديم خدمات المناولة الأرضية بالمطارات للمرتفقين الذين يستجيبون لمقتضيات المراجع القانونية الجاري بها العمل.\nAdministration: وزارة النقل واللوجيستيك -المديرية العامة للطيران المدني\nFrais: بالمجان\nDélai: 30 يوما\nDocuments requis:\n - 5.   وصف مفصل لأنشطة المساعدة التي زاولها  الطالب، إذا كان  الطالب قد زاول نشاطا مهنيا قبل تقديم طلبه ؛\n - 3.   نسخة من السنة المحاسبية المنصرمة  إذا كان  الطالب قد زاول نشاطا مهنيا قبل تقديم طلبه ؛\n - 4.   وصف مفصل للمؤهلات المالية والتقنية والمهنية التي يتوفر عليها الطالب ؛\n - 6 نسخة من الانظمة الأساسية للمعني.\n - 2.   التزام وفق النموذج المعد لهذا الغرض من لدن الوزارة المكلفة بالطيران المدني ؛\n - 1.   طلب الممارسة مقدم وفق النموذج المعد لهذا الغرض من لدن الوزارة المكلفة بالطيران المدني؛\nÉtapes:\nغير محدد",
+        "PROCÉDURE: مقرر اعتماد المؤسسات المؤهلة لاستلام ومراقبة المصاعد وحاملات الأثقال المكلف شخص بمرافقتها\nDescription: منح اعتماد المؤسسات المؤهلة لاستلام ومراقبة المصاعد وحاملات الأثقال المكلف شخص بمرافقتها\nAdministration: وزارة التجهيز والماء\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - طلب اعتماد\n - مذكرة فنية تتعلق بالشخص أو المؤسسة المؤهلة لاستلام ومراقبة المصاعد وحاملات الأثقال المكلف شخص بمرافقتها.\n - نسخة من النظام الأساسي للشركة\n - نسخة من محضر الجمع العام الأخير للشركة\n - قائمة بأسماء الأشخاص المسند اليهم القيام ماديا باستلام ومراقبة المصاعد وحاملات الأثقال المكلف شخص بمرافقتها موقعة من  مسير الشركة\n - السيرة الذاتية للأشخاص المسند اليهم القيام ماديا باستلام ومراقبة المصاعد وحاملات الأثقال المكلف شخص بمرافقتها، والمؤهلات الفنية التي تثبت قدرتهم على تنفيذ الأعمال المتعلقة بفحص ومراقبة المصاعد\n - نسخ من شهادات وديبلومات الأشخاص المسند اليهم القيام ماديا باستلام ومراقبة المصاعد وحاملات الأثقال المكلف شخص بمرافقتها\n - نسخة من عقود العمل للأشخاص المسند اليهم القيام ماديا باستلام ومراقبة المصاعد وحاملات الأثقال المكلف شخص بمرافقتها\n - بيانات المساهمات في الصندوق الوطني للضمان الاجتماعي CNSS خلال الأشهر الستة (6) الأخيرة التي سبقت تقديم طلب الاعتماد أو تجديد الاعتماد ، لكل شخص مسند اليه القيام ماديا باستلام ومراقبة المصاعد وحاملات الأثقال المكلف شخص بمرافقتها\n - قائمة المعدات المستعملة في مراقبة المصاعد وحاملات الأثقال المكلف شخص بمرافقتها، موقعة من قبل مدير الشركة\n - نسخة من فواتير شراء المعدات\n - قائمة بتعريفة الأتعاب التي تقبض عن انجاز عمليات استلام ومراقبة المصاعد وحاملات الأثقال المكلف شخص بمرافقتها\n - التزام الطالب في حال اعتماده، التقيد بأحكام قرار وزير الأشغال العمومية والتكوين المهني وتكوين الأطر رقم 1210.90 الصادر بتاريخ 23 يوليوز 1990 والمغير لقرار 9 أبريل 1953 بشأن الموافقة على النظام المتعلق بتركيب وتسيير وتعهد المصاعد وحاملات الأثقال المكلف شخص\n - نسخة حديثة من السجل التجاري (نموذج9 )\n - بالنسبة لطلبات الحصول على اعتماد جديد ، مسطرة إجراءات تفصيلية لاستلام ومراقبة المصاعد وحاملات الأثقال المكلف شخص بمرافقتها\n - بالنسبة لطلبات الاعتماد الجديدة ، نموذج تقرير لاستلام ومراقبة المصاعد وحاملات الأثقال المكلف شخص بمرافقتها\n - بالنسبة لطلبات تجديد الاعتماد ، تقديم تقريرين منجزين خلال فترة الاثني عشر شهرًا السابقة لتاريخ تقديم الطلب ، أحدهما يتعلق بفحص أولي ، والآخر يتعلق بفحص دوري\n - بالنسبة لطلبات التجديد ، تقرير عام سنوي حول نشاطه في هذا الميدان عن العامين السابقين\nÉtapes:\nغير محدد",
+        "PROCÉDURE: ترخيص اعتماد شركات الإنجاد  لتسوية وضعية للسيارات الموقت تحت نظام القبول المؤقت\nDescription: تمكن هذه المسطرة شركات الإنجاد المغربية من الحصول على ترخيص اعتماد إدارة الجمارك من أجل تسوية وضعية للسيارات الموضوعة تحت نظام القبول المؤقت. و للحصول على هذا الاعتماد يتعين أن تكون شركة الإنجاد المغربية تمثل شركة إنجاد أجنبية لتقديم خدماتها في المغرب.\nAdministration: وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - طلب الحصول على  رخصة اعتماد شركات الإنجاد  لتسوية وضعية للسيارات الموضوعة تحت نظام القبول المؤقت\n - نسخة من السجل التجاري للشركة\n - نسخة من النظام الأساسي للشركة\n - نسخة من وثيقة تثبت هوية مسير الشركة -البطاقة الوطنية...إلخ\n - شهادة من الشركة الإنجاد  الأجنبية تثبت أن شركة الإنجاد  المغربية تمثلها في المغرب لتقديم خدماتها\n - نسخة من شهادة التسجيل في الضريبة المهنية\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 268,
+      "answer": "للحصول على اعتماد لتقديم خدمات المناولة الأرضية بالمطارات، يجب على الشركة تقديم طلب لـ \"اعتماد تقديم خدمات المناولة الأرضية بالمطارات\".\n\n**الإدارة المسؤولة:**\nوزارة النقل واللوجيستيك -المديرية العامة للطيران المدني.\n\n**التكلفة:**\nالخدمة بالمجان.\n\n**المدة الزمنية:**\n30 يوما.\n\n**الوثائق المطلوبة:**\n*   طلب الممارسة مقدم وفق النموذج المعد لهذا الغرض من لدن الوزارة المكلفة بالطيران المدني.\n*   التزام وفق النموذج المعد لهذا الغرض من لدن الوزارة المكلفة بالطيران المدني.\n*   نسخة من السنة المحاسبية المنصرمة إذا كان الطالب قد زاول نشاطا مهنيا قبل تقديم طلبه.\n*   وصف مفصل للمؤهلات المالية والتقنية والمهنية التي يتوفر عليها الطالب.\n*   وصف مفصل لأنشطة المساعدة التي زاولها الطالب، إذا كان الطالب قد زاول نشاطا مهنيا قبل تقديم طلبه.\n*   نسخة من الأنظمة الأساسية للمعني.\n\n**الخطوات:**\nالخطوات غير محددة في المعلومات المتوفرة.",
+      "generation_ms": 7103,
+      "prompt_tokens": 1481,
+      "output_tokens": 266,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.9174,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s073",
+      "question": "Comment faire agréer une école qui forme des pilotes ou du personnel de l'aviation ?",
+      "lang": "fr",
+      "category": "factual",
+      "expected_ids": [
+        "0e0d5994-0a91-42e1-948e-db5a78a84538"
+      ],
+      "reference": "La procédure concernée est « Certificat d'agrément d'un établissement de formation dans le domaine de l'aviation civile » (Ministère de  Transport et de la Logistique-Direction Générale de l'Aviation Civile). Documents à fournir : Documents justifiant que le centre remplit toutes les conditions stipulées ; Documents attestant de la réponse aux observations figurant dans le rapport de mission d'audit ; Manuels de procédures requis ; Demande portant la signature et le cachet du centre. Frais : CHOF dirham 1000 dirham 1000 x Nombre inspecteur x Nombre heure. Délai : 60 jours.",
+      "must_include": [
+        "Documents justifiant que le centre remplit toutes les…",
+        "Documents attestant de la réponse aux observations figurant…"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "0e0d5994-0a91-42e1-948e-db5a78a84538",
+        "f8521a51-918f-4f12-a3a1-abb710f3f02b",
+        "b8b0cc38-b7db-4d30-a661-e1e4d073c363"
+      ],
+      "retrieved_titles": [
+        "Certificat d'agrément d'un établissement de formation dans le domaine de l'aviation civile",
+        "Autorisation de gestion d'un établissement d'enseignement privé",
+        "Décision de régularisation de la situation d'un établissement d'enseignement de la conduite suite à la renonciation à la licence"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Certificat d'agrément d'un établissement de formation dans le domaine de l'aviation civile\nDescription: Simplification et explication des conditions énoncées dans la référence légale de la décision administrative\nAdministration: Ministère de  Transport et de la Logistique-Direction Générale de l'Aviation Civile\nFrais: CHOF dirham 1000 dirham 1000 x Nombre inspecteur x Nombre heure\nDélai: 60 jours\nDocuments requis:\n - Documents justifiant que le centre remplit toutes les conditions stipulées\n - Documents attestant de la réponse aux observations figurant dans le rapport de mission d'audit\n - Manuels de procédures requis\n - Demande portant la signature et le cachet du centre\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation de gestion d'un établissement d'enseignement privé\nDescription: Obtention de l'autorisation de gestion d'un établissement privé d'enseignement\nAdministration: Ministère de l’Education Nationale, du Préscolaire et du Sport-Académies Régionales d'Education et de Formation\nFrais: Gratuit\nDélai: 30 jours\nDocuments requis:\n - Demande d'autorisation d'exercer la mission de directeur(trice) pédagogique, établie par l'intéressé(e) / le(la) gestionnaire ;\n - Fiche de renseignements concernant le(la) directeur(trice) candidat(e) ;\n - Copie de la carte nationale d'identité électronique ;\n - Copie du certificat de propriété du bâtiment ou du contrat de location précisant son usage comme établissement d'enseignement privé ;\n - Copie du diplôme de licence ou d'un titre équivalent ou tenant lieu pour l'enseignement scolaire privé ;\nCopie du diplôme du baccalauréat ou d'un titre équivalent ou tenant lieu pour l'enseignement préscolaire ;\n - État des services attestant d'une pratique d'enseignement d'au moins trois (03) ans dans l'enseignement public ou privé, et de deux (02) ans pour l'enseignement préscolaire, accompagné du certificat de travail ;\n - Copie du contrat de travail conclu entre le(la) propriétaire de l'établissement et le(la) directeur(trice) pédagogique, respectant le salaire minimum légal ;\n - Engagement à se consacrer exclusivement à la gestion de l'établissement, à demeurer en poste jusqu'à la fin de l'année scolaire et à remplacer tout(e) enseignant(e) qui abandonnerait ses fonctions en cours d'année scolaire ;\n - Photographie récente ;\n - Certificat médical attestant l'aptitude physique de l'intéressé(e) ;\n - Attestation de démission ou de révocation du(de la) directeur(trice) précédent(e) ou du(de la) directeur(trice) candidat(e) de son poste antérieur ;\n - Permis de construire ;\n - Certificat de conformité ;\n - Spécimen de signature ;\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Décision de régularisation de la situation d'un établissement d'enseignement de la conduite suite à la renonciation à la licence\nDescription: Octroi d'une licence d'ouverture et d'exploitation d'un établissement d'enseignement de la conduite au nom d'une personne physique ou morale après renonciation à celle-ci par le titulaire initial de la licence\nAdministration: Agence Nationale De La Sécurité Routiere\nFrais: Gratuit\nDélai: 30 jours\nDocuments requis:\n - 1- Déclaration conjointe entre la personne renonçant à sa licence d'ouverture et d'exploitation d'un établissement d'enseignement de la conduite et le bénéficiaire de la renonciation\n - Si la personne proposée est une personne physique :\n - a- Photocopie de la pièce d'identité en cours de validité\n - b- Extrait du bulletin n° 3 du casier judiciaire datant de moins de 3 mois\n - c- Fiche d'antécédents judiciaires datant de moins de 3 mois\n - d- Cahier des charges paraphé sur toutes les pages et signé à la dernière page. La signature doit être légalisée et précédée de la mention « Lu et approuvé, je m'engage à respecter les clauses du présent cahier des charges »\n - Si la personne proposée est une personne morale :\n - a- Copie de la pièce d'identité en cours de validité du gérant de la personne morale ou de la personne habilitée à engager la personne morale\n - b- Photo d'identité récente du gérant de la personne morale ou de la personne habilitée à engager la personne morale\n - c- Extrait du bulletin n° 3 du casier judiciaire datant de moins de 3 mois pour le gérant de la personne morale ou la personne habilitée à engager la personne morale\n - d- Fiche d'antécédents judiciaires datant de moins de 3 mois pour le gérant de la personne morale ou la personne habilitée à engager la personne morale\n - e- Copie des statuts dont l'objet est spécifiquement l'enseignement de la conduite\n - f- Copie du procès-verbal portant nomination du gérant de la personne morale ou de la personne habilitée à l'engager\n - Acte de renonciation établi par un notaire ou un adoul\n - Certificat de propriété ou contrat de bail dûment légalisé précisant l'usage du local pour l'enseignement de la conduite\n - Attestation d'inscription au registre du commerce\n - Attestation d'inscription à la taxe professionnelle\n - Attestation d'assurance en cours de validité couvrant les employés et les candidats contre les risques et dommages auxquels ils peuvent être exposés au sein de l'établissement\n - Document d'abonnement à Internet et au téléphone\n - Copie du certificat d'immatriculation du véhicule destiné à l'enseignement de la conduite portant la mention « voiture-école »\n - Copie du certificat de contrôle technique périodique en cours de validité, si l'âge du véhicule dépasse un an\n - Copie du contrat d'assurance en cours de validité contre les risques et accidents que peut causer le véhicule aux candidats, examinateurs, moniteurs ou autres personnes ainsi qu'aux biens, à l'occasion de la formation pratique à la conduite ou du passage\n - Copie du contrat de travail conclu entre l'établissement et le directeur, dûment légalisé quant aux signatures des parties, ou déclaration sur l'honneur par laquelle le propriétaire de l'établissement d'enseignement de la conduite s'engage à gérer lui-mêm\n - Déclaration sur l'honneur par laquelle le directeur de l'établissement s'engage à se consacrer entièrement à la gestion de l'établissement\n - Copie de la pièce d'identité en cours de validité, propre au directeur\n - Extrait du bulletin n° 3 du casier judiciaire datant de moins de 3 mois, propre au directeur\n - Copie du permis de conduire de catégorie « B » en cours de validité, propre au directeur\n - Attestation prouvant un niveau au moins de deuxième année du baccalauréat pour le directeur\n - Copie du contrat de travail conclu entre l'établissement et le moniteur, dûment légalisé quant aux signatures des parties, ou déclaration sur l'honneur par laquelle le propriétaire de l'établissement d'enseignement de la conduite s'engage à exercer la pro\n - Copie du permis de moniteur d'enseignement de la conduite en cours de validité, propre au moniteur\n - Copie de la pièce d'identité en cours de validité, propre au moniteur\n - Extrait du bulletin n° 3 du casier judiciaire datant de moins de 3 mois, propre au moniteur\n - Copie du permis de conduire en cours de validité, propre au moniteur\n - Liste des supports pédagogiques et didactiques proposés pour l'enseignement de la conduite\n - Liste des équipements dont dispose l'établissement, tels que prévus dans le cahier des charges\n - Note technique du système informatique utilisé par l'établissement pour : \n- la gestion administrative des dossiers des candidats inscrits à l'établissement ;\n- la conservation des informations relatives à la formation des candidats, y compris les résulta\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 230,
+      "answer": "Pour faire agréer une école qui forme des pilotes ou du personnel de l'aviation, vous devez obtenir un \"Certificat d'agrément d'un établissement de formation dans le domaine de l'aviation civile\".\n\nVoici les informations disponibles concernant cette procédure, selon le Ministère de Transport et de la Logistique-Direction Générale de l'Aviation Civile :\n\n*   **Frais :** 1000 dirhams x Nombre d'inspecteurs x Nombre d'heures\n*   **Délai :** 60 jours\n*   **Documents requis :**\n    *   Documents justifiant que le centre remplit toutes les conditions stipulées\n    *   Documents attestant de la réponse aux observations figurant dans le rapport de mission d'audit\n    *   Manuels de procédures requis\n    *   Demande portant la signature et le cachet du centre\n\nLes étapes de la procédure ne sont pas spécifiées dans les informations fournies par le Ministère de Transport et de la Logistique-Direction Générale de l'Aviation Civile.",
+      "generation_ms": 7217,
+      "prompt_tokens": 2016,
+      "output_tokens": 225,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.957,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s074",
+      "question": "أحتاج وثيقة من المكتب المغربي للملكية الصناعية تثبت أن شركتي مسجلة، كم ثمنها؟",
+      "lang": "ar",
+      "category": "fees_delay",
+      "expected_ids": [
+        "64730f0e-7fd0-4565-9ebe-5b3c041f61e2",
+        "fd7a5788-1941-4c3a-ab96-e761fc3ea007"
+      ],
+      "reference": "الإجراء المعني هو « شهادة التسجيل بالسجل التجاري المحلي التي يسلمها السجل التجاري المركزي » (المكتب المغربي للملكية الصناعية والتجارية). الوثائق المطلوبة: استمارة طلب شهادة التسجيل بالسجل التجاريC1 ؛ إثبات استفاء الرسوم المستحقة.. الرسوم: الرسوم المستحقة : 180 درهم. الآجال: يومان (2). وحسب الحالة، قد ينطبق أيضا إجراء « نسخة التقييدات التي تسلمها مصلحة السجل التجاري المركزي ».",
+      "must_include": [
+        "استمارة طلب شهادة التسجيل بالسجل التجاريC1",
+        "إثبات استفاء الرسوم المستحقة.",
+        "الرسوم المستحقة : 180 درهم",
+        "يومان (2)"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "0587b11b-d24e-4e52-bada-d4c1d46f0fc1",
+        "b5d950ec-f1f2-4ce9-9dd1-b8b5070aea9e",
+        "bf5773fa-d73e-4fc5-9b1c-c1bdf1e47213"
+      ],
+      "retrieved_titles": [
+        "Immatriculation d'une société en commandite simple au registre du commerce",
+        "Immatriculation de la société en commandite par actions au registre du commerce",
+        "Immatriculation d'une société en nom collectif au registre du commerce"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: تسجيل شركة التوصية البسيطة بالسجل التجاري\nDescription: التسجيل بالسجل التجاري وفق المقتضيات المنصوص عليها قانونا، لكون المشرع ووفق المادة 37 من مدونة التجارة جعل التسجيل بالسجل التجاري أمرا إلزاميا على جميع التجار الذاتيين والاعتباريين مغاربة كانوا أو أجانب الذين يمارسون نشاطا تجاريا في تراب المملكة.\nهذا بالإضافة إلى أن  الشخصية الاعتبارية للشركات لا تكتسب إلا منذ تاريخ التسجيل في السجل التجاري ـــ مع الأخذ بعين الاعتبار أن شركات المحاصة لا تسجل بالسجل التجاري ولا تتمتع بالشخصية الاعتبارية ـــ\nفي إطار المراقبة التي يجريها كاتب الضبط للوثائق والمستندات المقدمة إليه-في غير الحالات التي يجب فيها قانونا الاحتفاظ بأصول الوثائق- يتعين على المرتفق الإدلاء بأصل الوثيقة ويتولى كاتب الضبط أمر نسخها وإرجاعها فورا إلى المعني بالأمر.\nوبالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء يجب أن يتم أمام كاتب الضبط الذي يشير بنفس الوثيقة  إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيع كاتب الضبط\nAdministration: وزارة العدل\nFrais: رسوم التسجيل بالسجل التجاري\n150 درهما عن التقييد\n200 درهما عن الإيداع\nDélai: (2) يومان\nDocuments requis:\n - وثائق الإيداع\n - أصل النظام الأساسي للشركة موقع من طرف جميع الشركاء أو من طرف وكيل مزود بوكالة كتابية و مسجل لدى إدارة التسجيل، أو نظير منه  .\n - نسخة من العقد الموقع والمسجل، الذي تم بمقتضاه تعيين المسير إذا تم هذا التعيين بمقتضى عقد منفصل .\n - أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما.\n - وثائق التسجيل\n - شهادة أصلية للتسجيل بالرسم المهني\n - صورة من عقد الكراء موقع ومسجل بإدارة التسجيل أو عقد التوطين موقع  أو أي وثيقة تثبت تواجد المحل .\n - صورة من الإذن و /أو الدبلوم أو الشهادة اللازمة لمزاولة النشاط المشروع فيه عند الاقتضاء. \" وفق ما تقضي به بعض النصوص الخاصة المتعلقة بممارسة بعض الأنشطة المنظمة\"\n - مستخرج للعقد المتضمن بيان نظام الزوجية بالنسبة للشريك المتضامن الأجنبي عند الاقتضاء.\n - نسخة من البطاقة الوطنية للتعريف الإلكترونية لجميع الشركاء المتضامنين والمسيرين المغاربة أو صورة لبطاقة التسجيل بالنسبة للأجانب المقيمين أو من جواز السفر بالنسبة للأجانب غير المقيمين أو ما يقوم مقامه لإثبات الهوية.\n - التصريح نموذج 2 محرر  وموقع  من طرف الملزم أو وكيله المزود بوكالة كتابية\n - وكالة كتابية في حالة التسجيل بواسطة وكيل  (ملاحظة: يجب أن تكون مسجلة بإدارة التسجيل) .\n - صورة من وثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل.\nÉtapes:\nغير محدد",
+        "PROCÉDURE: تسجيل شركة التوصية بالأسهم بالسجل التجاري\nDescription: التسجيل بالسجل التجاري وفق المقتضيات المنصوص عليها قانونا، لكون المشرع ووفق المادة 37 من مدونة التجارة جعل التسجيل بالسجل التجاري أمرا إلزاميا على جميع التجار الذاتيين والاعتباريين مغاربة كانوا أو أجانب الذين يمارسون نشاطا تجاريا في تراب المملكة.\nهذا بالإضافة إلى أن  الشخصية المعنوية للشركات لا تكتسب إلا منذ تاريخ التسجيل في السجل التجاري ـــ مع الأخذ بعين الاعتبار أن شركات المحاصة لا تسجل بالسجل التجاري ولا تتمتع بالشخصية المعنويةـــ\nفي إطار المراقبة التي يجريها كاتب الضبط للوثائق والمستندات المقدمة إليه-في غير الحالات التي يجب فيها قانونا الاحتفاظ بأصول الوثائق- يتعين على المرتفق الإدلاء بأصل الوثيقة ويتولى كاتب الضبط أمر نسخها وإرجاعها فورا إلى المعني بالأمر.\nوبالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء يجب أن يتم أمام كاتب الضبط الذي يشير بنفس الوثيقة  إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيع كاتب الضبط\nAdministration: وزارة العدل\nFrais: رسوم التسجيل بالسجل التجاري\n200درهما عن الإيداع, \n150 درهما عن التقييد\nDélai: (2) يومان\nDocuments requis:\n - وثائق الإيداع\n - أصل النظام الأساسي للشركة موقع من طرف جميع الشركاء أو من طرف وكيل مزود بوكالة كتابية و مسجل لدى إدارة التسجيل، أو نظير منه  .\n - نسخة من العقد الموقع والمسجل، الذي تم بمقتضاه تعيين المسير إذا تم هذا التعيين بمقتضى عقد منفصل\n - أوراق الاكتتاب بالنسبة للعقود الغير الموثقة\n - أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما\n - نظير من شهادة  الاكتتاب والدفع  تبين الاكتتابات في رأس المال وكذا حصة الأسهم المحررة من طرف كل مساهم\n - قائمة المكتتبين تتضمن الأسماء الشخصية والعائلية وعناوين وجنسيات المكتتبين بالإضافة إلى صفاتهم ومهنهم وعدد الأسهم المكتتبة ومبلغ الدفعات التي قام بها كل واحد منهم .\n - وثائق التسجيل\n - شهادة أصلية للتسجيل بالرسم المهني\n - شهادة التسجيل أو ما يقوم مقامها  إذا كان أحد الشركاء شخصا اعتباريا.\n - صورة من الإذن و /أو الدبلوم أو الشهادة اللازمة لمزاولة النشاط المشروع فيه عند الاقتضاء. \" وفق ما تقضي به بعض النصوص الخاصة المتعلقة بممارسة بعض الأنشطة المنظمة\"\n - صورة من عقد الكراء موقع  ومسجل بإدارة التسجيل أو عقد التوطين موقع  أو أي وثيقة تثبت تواجد المحل .\n - مستخرج للعقد المتضمن بيان نظام الزوجية بالنسبة للشريك المتضامن الأجنبي عند الاقتضاء وصورة منه.\n - صورة من بطاقة التعريف الوطنية لجميع الشركاء المتضامنين والمسيرين المغاربة أو من بطاقة التسجيل بالنسبة للأجانب المقيمين أو من جواز السفر بالنسبة للأجانب غير المقيمين أو ما يقوم مقامه لإثبات الهوية.\n - التصريح نموذج 2 محرر  وموقع  من طرف الملزم أو وكيله المزود بوكالة كتابية\n - وكالة كتابية في حالة التسجيل بواسطة وكيل \n(ملاحظة: يجب أن تكون الوكالة مسجلة بإدارة التسجيل)\n - صورة لوثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل.\nÉtapes:\nغير محدد",
+        "PROCÉDURE: تسجيل شركة التضامن بالسجل التجاري\nDescription: التسجيل بالسجل التجاري وفق المقتضيات المنصوص عليها قانونا، لكون المشرع ووفق المادة 37 من مدونة التجارة جعل التسجيل بالسجل التجاري أمرا إلزاميا على جميع التجار الذاتيين والاعتباريين مغاربة كانوا أو أجانب الذين يمارسون نشاطا تجاريا في تراب المملكة.\nهذا بالإضافة إلى أن  الشخصية الاعتبارية للشركات لا تكتسب إلا منذ تاريخ التسجيل في السجل التجاري ـــ مع الأخذ بعين الاعتبار أن شركات المحاصة لا تسجل بالسجل التجاري ولا تتمتع بالشخصية الاعتبارية ـــ\nوفي إطار المراقبة التي يجريها كاتب الضبط للوثائق والمستندات المقدمة إليه-في غير الحالات التي يجب فيها قانونا الاحتفاظ بأصول الوثائق- يتعين على المرتفق الإدلاء بأصل الوثيقة ويتولى كاتب الضبط أمر نسخها وإرجاعها فورا إلى المعني بالأمر.\nوبالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء يجب أن يتم أمام كاتب الضبط الذي يشير بنفس الوثيقة  إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيع كاتب الضبط\nAdministration: وزارة العدل\nFrais: رسوم التسجيل بالسجل التجاري:350 درهما\n200 درهما عن الإيداع  \n150 درهما عن التقييد\nDélai: يومان\nDocuments requis:\n - وثائق الإيداع\n - أصل النظام الأساسي للشركة موقع  من طرف جميع الشركاء أو من طرف وكيل مزود بوكالة كتابية و مسجل  لدى إدارة التسجيل، أو نظير منه\n - نسخة من العقد الموقع والمسجل، الذي تم بمقتضاه تعيين المسير إذا تم هذا التعيين بمقتضى عقد منفصل\n - أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما\n - وثائق التسجيل\n - شهادة أصلية للتسجيل بالرسم المهني\n - شهادة التسجيل أو ما يقوم مقامها  إذا كان أحد الشركاء شخصا اعتباريا\n - صورة من عقد الكراء موقع ومسجل بإدارة التسجيل أو عقد التوطين موقع  أو أي وثيقة تثبت تواجد المحل\n - مستخرج للعقد المتضمن بيان نظام الزوجية بالنسبة للشريك الأجنبي، إن اقتضى الحال\n - صورة  من بطاقة التعريف الوطنية لجميع الشركاء والمسيرين أو صورة لبطاقة التسجيل بالنسبة للأجانب المقيمين أو صورة لجواز السفر بالنسبة للأجانب غير المقيمين أو ما يقوم مقامه لإثبات الهوية\n - التصريح نموذج 2 محرر وموقع  من طرف الملزم أو وكيله المزود بوكالة كتابية\n - صورة من الإذن و /أو الدبلوم أو الشهادة اللازمة لمزاولة النشاط المشروع فيه عند الاقتضاء. \" وفق ما تقضي به بعض النصوص الخاصة المتعلقة بممارسة بعض الأنشطة المنظمة\"\n - وكالة كتابية في حالة التسجيل بواسطة وكيل  (ملاحظة: يجب أن تكون مسجلة بإدارة التسجيل)\n - صورة لوثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 342,
+      "answer": "عذرا، ليس لدي معلومات حول تكلفة وثيقة من المكتب المغربي للملكية الصناعية تثبت أن شركتك مسجلة. المعلومات المتوفرة لدي تتعلق فقط بإجراءات ورسوم التسجيل بالسجل التجاري لدى وزارة العدل.",
+      "generation_ms": 7269,
+      "prompt_tokens": 2585,
+      "output_tokens": 55,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.5,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "context_recall": 0.2,
+        "refusal": 1.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s075",
+      "question": "J'ai besoin d'une copie des inscriptions d'une société au registre central du commerce, combien ça coûte ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "fd7a5788-1941-4c3a-ab96-e761fc3ea007"
+      ],
+      "reference": "La procédure concernée est « Copie des inscriptions délivrée par le service du registre central du commerce » (Office Marocain De La Propriété Industrielle Et Commerciale). Documents à fournir : Formulaire de demande de copie des inscriptions au registre du commerce C4 ; Justificatif de paiement de la redevance due. Frais : Frais dus 300 dirhams. Délai : 3 jours.",
+      "must_include": [
+        "Formulaire de demande de copie des inscriptions au registre…",
+        "Justificatif de paiement de la redevance due",
+        "Frais dus 300 dirhams"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "fd7a5788-1941-4c3a-ab96-e761fc3ea007",
+        "0587b11b-d24e-4e52-bada-d4c1d46f0fc1",
+        "5a8c92ef-c867-4d9b-8421-834f7b965b8d"
+      ],
+      "retrieved_titles": [
+        "Copie des inscriptions délivrée par le service du registre central du commerce",
+        "Immatriculation d'une société en commandite simple au registre du commerce",
+        "Immatriculation d'une personne physique au registre du commerce"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Copie des inscriptions délivrée par le service du registre central du commerce\nDescription: Obtention de copie des inscriptions portées au registre central du commerce\nAdministration: Office Marocain De La Propriété Industrielle Et Commerciale\nFrais: Frais dus 300 dirhams\nDélai: 3 jours\nDocuments requis:\n - Formulaire de demande de copie des inscriptions au registre du commerce C4\n - Justificatif de paiement des droits dus\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Immatriculation d'une société en commandite simple au registre du commerce\nDescription: Immatriculation au registre du commerce conformément aux prescriptions légales. En vertu de l'article 37 du Code de commerce, le législateur a rendu obligatoire l'immatriculation au registre du commerce pour tous les commerçants, personnes physiques ou morales, marocains ou étrangers, exerçant une activité commerciale sur le territoire du Royaume.\nPar ailleurs, la personnalité morale des sociétés n'est acquise qu'à compter de la date d'immatriculation au registre du commerce – étant rappelé que les sociétés en participation ne sont pas immatriculées au registre du commerce et ne jouissent pas de la personnalité morale.\nDans le cadre du contrôle opéré par le greffier sur les documents et pièces qui lui sont présentés – sauf dans les cas où la loi exige la conservation des originaux – l'usager doit présenter l'original du document ; le greffier en fait une copie et restitue immédiatement l'original à l'intéressé.\nLa signature des déclarations, contrats et documents soumis à cette procédure doit être apposée en présence du greffier qui indique sur le même document le nom du signataire, le numéro de sa carte nationale, sa qualité, y appose le timbre du tribunal et sa propre signature.\nAdministration: Ministère de la Justice\nFrais: Droits d'enregistrement au registre du commerce\n150 dirhams pour l'inscription\n200 dirhams pour le dépôt\nDélai: (2) 2 jours\nDocuments requis:\n - Documents de dépôt\n - Original des statuts de la société signés par tous les associés ou par un mandataire muni d'une procuration écrite et enregistrés auprès de l'administration de l'enregistrement, ou une copie conforme.\n - Copie du contrat signé et enregistré, par lequel a été nommé le gérant si cette nomination a été faite par contrat séparé.\n - Original du certificat négatif datant de moins de 90 jours.\n - Documents d'inscription\n - Certificat original d’inscription à la taxe professionnelle.\n - Copie du contrat de bail signé et enregistré auprès de l'administration de l'enregistrement, ou contrat de domiciliation signé, ou tout document prouvant l'existence du local.\n - Copie de l'autorisation et/ou du diplôme ou du certificat nécessaire à l'exercice de l'activité projetée, le cas échéant, conformément aux dispositions de certains textes spéciaux relatifs à l'exercice de certaines activités réglementées.\n - Extrait du contrat comportant l'indication du régime matrimonial pour l'associé commandité étranger, le cas échéant.\n - Copie de la carte nationale d'identité électronique pour tous les associés commandités et gérants marocains, ou copie de la carte d'immatriculation pour les étrangers résidents, ou du passeport pour les étrangers non-résidents, ou tout document équivalent\n - Déclaration modèle 2 rédigée et signée par le déclarant ou son mandataire muni d'une procuration écrite\n - Procuration écrite en cas d'immatriculation par mandataire (note : elle doit être enregistrée auprès de l'administration de l'enregistrement).\n - Photocopie du document d'identité du mandataire en cas d'inscription par mandataire.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Immatriculation d'une personne physique au registre du commerce\nDescription: L'immatriculation au registre du commerce conformément aux dispositions légales, étant donné que le législateur, en vertu de l'article 37 du Code de commerce, a rendu l'immatriculation au registre du commerce obligatoire pour tous les commerçants personnes physiques ou morales, marocains ou étrangers, exerçant une activité commerciale sur le territoire du Royaume.\nDans le cadre du contrôle effectué par le greffier des documents et pièces qui lui sont présentés – sauf dans les cas où la loi exige la conservation des originaux – l'usager doit présenter l'original du document et le greffier se charge de le copier et de le restituer immédiatement à l'intéressé.\nQuant à la signature des déclarations, contrats et documents soumis à cette procédure, elle doit avoir lieu devant le greffier qui indique sur le même document le nom du signataire, le numéro de sa carte nationale, sa qualité, avec apposition du cachet du tribunal et la signature du greffier.\nAdministration: Ministère de la Justice\nFrais: Frais d'inscription au registre du commerce 150 dirhams\nDélai: 2 jours\nDocuments requis:\n - Certificat original d’inscription à la taxe professionnelle.\n - Copie de la carte d'identité nationale pour le commerçant, ou copie de la carte d'enregistrement pour les étrangers résidents, ou copie du passeport ou de tout document en tenant lieu pour justifier l'identité pour les étrangers non-résidents\n - Autorisation prévue à l'article 42 (4) du Code de commerce s'il s'agit d'un mineur, d'un tuteur ou d'un représentant légal qui exploite les biens du mineur dans le commerce\n - Original du certificat négatif datant de moins de 90 jours en cas de choix d'une enseigne ou d'un nom commercial\n - Copie de l'autorisation et/ou du diplôme ou du certificat nécessaire à l'exercice de l'activité réglementée, le cas échéant\n - Extrait de l'acte indiquant le régime matrimonial pour les commerçants étrangers, le cas échéant\n - Autorisation du président du tribunal prévue à l'article 16 du Code de commerce si le commerçant étranger est mineur au regard de la loi marocaine\n - En cas de création d'un fonds de commerce, copie du certificat de propriété, du contrat de bail, du contrat de domiciliation ou de tout autre document attestant de l'existence du local. En cas de déclaration de l'adresse du domicile pour l'exercice de l'a\n - Certificat attestant la radiation de l'ancien propriétaire ou la radiation du fonds de commerce en cas d'acquisition du fonds de commerce par achat, partage, adjudication, donation ou indivision\n - Déclaration modèle 1 établie et signée par l'assujetti ou son mandataire muni d'une procuration écrite\n - Procuration écrite en cas d'immatriculation par mandataire (Note : la procuration doit être enregistrée auprès de l'administration de l'enregistrement)\n - Photocopie du document d'identité du mandataire en cas d'inscription par mandataire.\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 400,
+      "answer": "Pour obtenir une copie des inscriptions délivrée par le service du registre central du commerce, les frais s'élèvent à 300 dirhams.\n\nSource : Office Marocain De La Propriété Industrielle Et Commerciale.",
+      "generation_ms": 6267,
+      "prompt_tokens": 1737,
+      "output_tokens": 48,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8958,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s076",
+      "question": "Une société française veut ouvrir une succursale à Casablanca, comment l'immatriculer ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "a545aa1d-ec13-434b-9d23-ee788d54f233"
+      ],
+      "reference": "La procédure concernée est « Immatriculation d'une succursale d'une société située à l'étranger » (Ministère de la Justice). Documents à fournir : Documents de dépôt ; Copie de la décision de création de la succursale ou de l'agence avec nomination du gérant, signée et enregistrée… ; Original du certificat négatif datant de moins de 90 jours. ; Documents d'immatriculation ; Certificat original d'inscription à la taxe professionnelle. ; Certificat d'immatriculation de la société mère ou document équivalent.. Frais : Frais d'immatriculation au registre du commerce 50 dirhams pour le dépôt, 50 dirhams pour l'inscription.. Délai : (2) 2 jours.",
+      "must_include": [
+        "Documents de dépôt",
+        "Copie de la décision de création de la succursale ou de…"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "a545aa1d-ec13-434b-9d23-ee788d54f233",
+        "b93cd482-2ed9-4c65-b7de-d8755b8c20cc",
+        "b5d950ec-f1f2-4ce9-9dd1-b8b5070aea9e"
+      ],
+      "retrieved_titles": [
+        "Immatriculation d'une succursale d'une société située à l'étranger",
+        "Enregistrement de succursale dans le ressort du tribunal d'immatriculation de la société mère",
+        "Immatriculation de la société en commandite par actions au registre du commerce"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Immatriculation d'une succursale d'une société située à l'étranger\nDescription: Immatriculation au registre du commerce conformément aux dispositions légales prévues, le législateur, en vertu de l'article 37 du Code de commerce, ayant rendu obligatoire l'immatriculation des succursales et agences des entreprises marocaines ou étrangères au registre du commerce.\nDans le cadre du contrôle effectué par le greffier sur les documents et pièces qui lui sont remis – sauf dans les cas où la conservation des originaux est légalement requise – le demandeur doit présenter l'original du document, et le greffier se charge de le copier et de le restituer immédiatement à l'intéressé.\nConcernant la signature des déclarations, contrats et documents soumis à cette procédure, elle doit être effectuée devant le greffier qui mentionne sur le même document le nom du signataire, le numéro de sa carte nationale, sa qualité, avec apposition du cachet du tribunal et la signature du greffier.\nAdministration: Ministère de la Justice\nFrais: Frais d'immatriculation au registre du commerce\n50 dirhams pour le dépôt,\n50 dirhams pour l'inscription.\nDélai: (2) 2 jours\nDocuments requis:\n - Documents de dépôt\n - Copie de la décision de création de la succursale ou de l’agence avec désignation du gérant, signée et enregistrée auprès de l’administration de l’enregistrement.\n - Original du certificat négatif datant de moins de 90 jours\n - Documents d'inscription\n - Certificat original d’inscription à la taxe professionnelle.\n - Certificat d'immatriculation de la société mère ou document équivalent.\n - Copie des statuts de la société mère ou document équivalent.\n - Copie du contrat de location ou de domiciliation ou tout autre document prouvant l'existence du local.\n - Copie de la carte d'identité nationale pour le gérant, ou copie de la carte d'immatriculation pour les étrangers résidents, ou copie du passeport ou document équivalent prouvant l'identité pour les étrangers non-résidents.\n - Déclaration modèle n° 3 établie et signée par le déclarant ou son mandataire muni d'une procuration écrite.\n - Procuration écrite en cas de dépôt par mandataire\n - Copie du document d'identité du mandataire en cas de dépôt par mandataire\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Enregistrement de succursale dans le ressort du tribunal d'immatriculation de la société mère\nDescription: L’inscription au registre du commerce est effectuée conformément aux dispositions légales, le législateur ayant, en vertu de l’article 37 du Code de commerce, rendu obligatoire l’inscription des succursales et agences des entreprises marocaines ou étrangères au registre du commerce.\nDans le cadre du contrôle exercé par le greffier sur les documents et pièces qui lui sont présentés — sauf dans les cas où la loi impose la conservation des originaux — le requérant est tenu de présenter l’original du document ; le greffier en fait une copie et le restitue immédiatement à l’intéressé.\nQuant à la signature des déclarations, contrats et documents soumis à cette procédure, elle doit être apposée en présence du greffier, qui mentionne sur le même document le nom du signataire, son numéro de carte nationale d’identité, sa qualité, et y appose le cachet du tribunal ainsi que sa propre signature.\nAdministration: Ministère de la Justice\nFrais: Frais d'immatriculation au registre du commerce\n50 dirhams pour le dépôt,\n50 dirhams pour l'inscription.\nDélai: (2) 2 jours\nDocuments requis:\n - Documents de dépôt\n - Copie de la décision de création de la succursale ou de l’agence avec désignation du gérant, signée et enregistrée auprès de l’administration de l’enregistrement.\n - Original du certificat négatif, le cas échéant, n’excédant pas 90 jours à compter de sa date.\n - Licence ou diplôme ou les deux, le cas échéant.\n - Documents d'inscription\n - Certificat original d’inscription à la taxe professionnelle.\n - Copie du contrat de bail ou du contrat de domiciliation - en tenant compte des dispositions du second alinéa de l'article 544-3 du Code de commerce - ou de tout autre document établissant l'existence du local.\n - Copie de la carte d’identité nationale pour le gérant de la succursale, ou copie de la carte d’immatriculation pour les étrangers résidant au Maroc, ou du passeport ou de tout document en tenant lieu attestant de l’identité pour les étrangers non résident\n - Déclaration du modèle n° 1-4, rédigée et signée par le déclarant ou son mandataire muni d’une procuration écrite.\n - Procuration écrite en cas d’inscription par mandataire\n(Note : elle doit être enregistrée auprès du service de l’enregistrement).\n - Copie du document d'identité du mandataire en cas de dépôt par mandataire\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Immatriculation de la société en commandite par actions au registre du commerce\nDescription: L'immatriculation au registre du commerce conformément aux dispositions légales, le législateur ayant, en vertu de l'article 37 du Code de commerce, rendu l'immatriculation au registre du commerce obligatoire pour tous les commerçants personnes physiques ou morales, marocains ou étrangers, exerçant une activité commerciale sur le territoire du Royaume.\nEn outre, la personnalité morale des sociétés n'est acquise qu'à compter de la date d'immatriculation au registre du commerce – à l'exception des sociétés en participation qui ne sont pas immatriculées au registre du commerce et ne jouissent pas de la personnalité morale.\nDans le cadre du contrôle effectué par le greffier sur les documents et pièces qui lui sont présentés – sauf dans les cas où la loi impose la conservation des originaux – le requérant doit produire l'original du document, le greffier se charge de le copier et de le restituer immédiatement à l'intéressé.\nS'agissant de la signature des déclarations, contrats et documents soumis à cette procédure, elle doit intervenir devant le greffier qui mentionne sur le même document le nom du signataire, le numéro de sa carte nationale, sa qualité, avec apposition du cachet du tribunal et la signature du greffier.\nAdministration: Ministère de la Justice\nFrais: Frais d'inscription au registre de commerce\n200 dirhams pour le dépôt,\n150 dirhams pour l'immatriculation\nDélai: (2) 2 jours\nDocuments requis:\n - Documents de dépôt\n - Original des statuts de la société signés par tous les associés ou par un mandataire muni d'une procuration écrite et enregistrés auprès de l'administration de l'enregistrement, ou une copie conforme.\n - Copie du contrat signé et enregistré en vertu duquel le gérant a été désigné, si cette désignation a été faite par un contrat séparé\n - Bulletins de souscription pour les contrats non notariés\n - Original du certificat négatif datant de moins de 90 jours\n - Copie conforme du certificat de souscription et de versement indiquant les souscriptions au capital et la part des actions libérées par chaque actionnaire.\n - Liste des souscripteurs comprenant les noms et prénoms, adresses et nationalités des souscripteurs, ainsi que leurs qualités et professions, le nombre d'actions souscrites et le montant des versements effectués par chacun d'eux.\n - Documents d'inscription\n - Certificat original d’inscription à la taxe professionnelle.\n - Certificat d'immatriculation ou document en tenant lieu si l'un des associés est une personne morale.\n - Copie de l'autorisation et/ou du diplôme ou du certificat nécessaire à l'exercice de l'activité projetée, le cas échéant, conformément aux dispositions de certains textes spéciaux relatifs à l'exercice de certaines activités réglementées.\n - Copie du contrat de bail signé et enregistré auprès de l'administration de l'enregistrement, ou du contrat de domiciliation signé, ou de tout document prouvant l'existence du local.\n - Extrait de l'acte contenant l'indication du régime matrimonial pour l'associé commandité étranger, le cas échéant, et une copie de celui-ci.\n - Copie de la carte d'identité nationale de tous les associés commandités et gérants marocains, ou de la carte d'immatriculation pour les étrangers résidents, ou du passeport pour les étrangers non résidents, ou de tout document en tenant lieu justifiant l'\n - Déclaration modèle 2 rédigée et signée par le déclarant ou son mandataire muni d'une procuration écrite\n - Procuration écrite en cas d'inscription par mandataire \n(Note : la procuration doit être enregistrée auprès de l'administration de l'enregistrement).\n - Copie du document d'identité du mandataire en cas de dépôt par mandataire\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 298,
+      "answer": "Pour immatriculer une succursale d'une société située à l'étranger (comme une société française) à Casablanca, voici les informations officielles disponibles :\n\n**Procédure : Immatriculation d'une succursale d'une société située à l'étranger**\n\nL'immatriculation au registre du commerce est obligatoire pour les succursales et agences des entreprises marocaines ou étrangères.\n\n**Administration :** Ministère de la Justice\n\n**Frais :**\n*   Frais d'immatriculation au registre du commerce :\n    *   50 dirhams pour le dépôt.\n    *   50 dirhams pour l'inscription.\n\n**Délai :**\n*   2 jours\n\n**Documents requis :**\n\n*   **Documents de dépôt :**\n    *   Copie de la décision de création de la succursale ou de l’agence avec désignation du gérant, signée et enregistrée auprès de l’administration de l’enregistrement.\n    *   Original du certificat négatif datant de moins de 90 jours.\n\n*   **Documents d'inscription :**\n    *   Certificat original d’inscription à la taxe professionnelle.\n    *   Certificat d'immatriculation de la société mère ou document équivalent.\n    *   Copie des statuts de la société mère ou document équivalent.\n    *   Copie du contrat de location ou de domiciliation ou tout autre document prouvant l'existence du local.\n    *   Copie de la carte d'identité nationale pour le gérant, ou copie de la carte d'immatriculation pour les étrangers résidents, ou copie du passeport ou document équivalent prouvant l'identité pour les étrangers non-résidents.\n    *   Déclaration modèle n° 3 établie et signée par le déclarant ou son mandataire muni d'une procuration écrite.\n    *   Procuration écrite en cas de dépôt par mandataire.\n    *   Copie du document d'identité du mandataire en cas de dépôt par mandataire.\n\n**Points importants :**\n*   Lors du dépôt, le demandeur doit présenter l'original du document. Le greffier en fera une copie et le restituera immédiatement.\n*   La signature des déclarations, contrats et documents soumis à cette procédure doit être effectuée devant le greffier, qui mentionnera sur le document le nom du signataire, le numéro de sa carte nationale, sa qualité, avec apposition du cachet du tribunal et sa propre signature.\n\nSource : Ministère de la Justice",
+      "generation_ms": 11156,
+      "prompt_tokens": 2212,
+      "output_tokens": 548,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.9545,
+        "answer_relevancy": 0.9013,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s077",
+      "question": "شركتنا في الرباط وتريد فتح فرع داخل نفس دائرة المحكمة، كيف نسجل هذا الفرع؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "b93cd482-2ed9-4c65-b7de-d8755b8c20cc"
+      ],
+      "reference": "الإجراء المعني هو « تسجيل فرع داخل الدائرة القضائية للمحكمة المسجلة بها الشركة الأم » (وزارة العدل). الوثائق المطلوبة: وثائق الإيداع ؛ نسخة من قرار إحداث الفرع أو الوكالة مع تعيين المسير موقع ومسجل بإدارة التسجيل. ؛ أصل الشهادة السلبية عند الاقتضاء، لا يتجاوز تاريخها 90 يوما ؛ الإذن أو الدبلوم أو هما معا عند الاقتضاء. ؛ وثائق التسجيل ؛ شهادة أصلية للتسجيل بالرسم المهني. الرسوم: رسوم التسجيل بالسجل التجاري 50درهما عن الإيداع, 50 درهما عن التقييد. الآجال: (2) يومان.",
+      "must_include": [
+        "وثائق الإيداع",
+        "نسخة من قرار إحداث الفرع أو الوكالة مع تعيين المسير موقع…"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "dbc36e6b-9272-4918-abcb-a78d9b3f9056",
+        "8cd02142-227b-4174-bd35-6afbacea1004",
+        "b93cd482-2ed9-4c65-b7de-d8755b8c20cc"
+      ],
+      "retrieved_titles": [
+        "Création d’une succursale hors du ressort du tribunal où se trouve le siège de la société mère \n1- Procédure devant le tribunal dans le ressort duquel la succursale ou l’agence est créée",
+        "Création d’une succursale hors du ressort du tribunal du siège de la société mère – 2. Procédure devant le tribunal d’immatriculation de la société mère",
+        "Enregistrement de succursale dans le ressort du tribunal d'immatriculation de la société mère"
+      ],
+      "rank": 3,
+      "contexts": [
+        "PROCÉDURE: إنشاء فرع خارج دائرة المحكمة المتواجد بها مقر الشركة الأم \n1- الإجراءات أمام المحكمة المحدث بدائرة نفوذها الفرع أو الوكالة\nDescription: التسجيل بالسجل التجاري وفق المقتضيات المنصوص عليها قانونا، لكون المشرع ووفق المادة 37 من مدونة التجارة ألزم تسجيل فروع ووكالات المقاولات المغربية أو الأجنبية بالسجل التجاري..\nفي إطار المراقبة التي يجريها كاتب الضبط للوثائق والمستندات المقدمة إليه-في غير الحالات التي يجب فيها قانونا الاحتفاظ بأصول الوثائق- يتعين على المرتفق الإدلاء بأصل الوثيقة ويتولى كاتب الضبط أمر نسخها وإرجاعها فورا إلى المعني بالأمر.\nوبالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء يجب أن يتم أمام كاتب الضبط الذي يشير بنفس الوثيقة  إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيع كاتب الضبط\nAdministration: وزارة العدل\nFrais: رسوم التسجيل بالسجل التجاري\n50درهما عن الإيداع, \n50 درهما عن التقييد\nDélai: (2) يومان\nDocuments requis:\n - وثائق الإيداع\n - نسخة  من قرار إحداث الفرع أو الوكالة مع تعيين المسير موقع ومسجل بإدارة التسجيل.\n - أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما عند الاقتضاء\n - وثائق التسجيل\n - شهادة أصلية للتسجيل بالرسم المهني\n - صورة من الإذن أو الدبلوم أو هما معا إذا كان النشاط منظما،\n - نسخة من عقد الكراء أو عقد التوطين أو أي وثيقة أخرى تثبت تواجد المحل.\n - صورة من بطاقة التعريف الوطنية بالنسبة للمسير أو صورة لبطاقة التسجيل بالنسبة للأجانب المقيمين أو صورة لجواز السفر أو ما يقوم مقامه لإثبات الهوية بالنسبة للأجانب غير المقيمين.\n - التصريح نموذج 3.1 محرر  وموقع  من طرف الملزم أو وكيله المزود بوكالة كتابية\n - وكالة كتابية في حالة التسجيل بواسطة وكيل (ملاحظة: يجب أن تكون الوكالة مسجلة بإدارة التسجيل)\n - صورة لوثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل.\nÉtapes:\nغير محدد",
+        "PROCÉDURE: إنشاء فرع خارج دائرة المحكمة المتواجد بها مقر الشركة الأم 2- الإجراءات أمام المحكمة المسجلة بها الشركة الأم\nDescription: تطبيقا لمقتضيات المادة 50 من مدونة التجارة \" يجب أن يكون كل تغيير أو تعديل يتعلق بالبيانات الواجب تقييدها بالسجل التجاري طبقا للمواد من 42 إلى 48 محل طلب تقييد من أجل التعديل.\nفي إطار المراقبة التي يجريها كاتب الضبط للوثائق والمستندات المقدمة إليه-في غير الحالات التي يجب فيها قانونا الاحتفاظ بأصول الوثائق- يتعين على المرتفق الإدلاء بأصل الوثيقة ويتولى كاتب الضبط أمر نسخها وإرجاعها فورا إلى المعني بالأمر.\nوبالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء يجب أن يتم أمام كاتب الضبط الذي يشير بنفس الوثيقة  إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيع كاتب الضبط\nAdministration: وزارة العدل\nFrais: رسوم التسجيل بالسجل التجاري\n50درهما عن الإيداع, \n50 درهما عن التقييد\nDélai: (2) يومان\nDocuments requis:\n - وثائق الإيداع\n - نسخة من قرار إحداث الفرع أو الوكالة مع تعيين المسير موقع ومسجل بإدارة التسجيل.\n - مستخرج من السجل التجاري للفرع المستحدث يسلم من طرف كتابة ضبط المحكمة المسجل بها الفرع أو الوكالة.\n - وثائق التقييد\n - التصريح نموذج 1/ 4 محرر وموقع  من طرف الملزم أو وكيله المزود بوكالة كتابية\n - وكالة كتابية في حالة التسجيل بواسطة وكيل \n(ملاحظة: يجب أن تكون الوكالة مسجلة بإدارة التسجيل)\n - صورة لوثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل.\nÉtapes:\nغير محدد",
+        "PROCÉDURE: تسجيل فرع داخل الدائرة القضائية للمحكمة المسجلة بها الشركة الأم\nDescription: التسجيل بالسجل التجاري وفق المقتضيات المنصوص عليها قانونا، لكون المشرع ووفق المادة 37 من مدونة التجارة ألزم تسجيل فروع ووكالات  المقاولات المغربية أو الأجنبية بالسجل التجاري.\nفي إطار المراقبة التي يجريها كاتب الضبط للوثائق والمستندات المقدمة إليه-في غير الحالات التي يجب فيها قانونا الاحتفاظ بأصول الوثائق- يتعين على المرتفق الإدلاء بأصل الوثيقة ويتولى كاتب الضبط أمر نسخها وإرجاعها فورا إلى المعني بالأمر.\nوبالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء يجب أن يتم أمام كاتب الضبط الذي يشير بنفس الوثيقة  إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيع كاتب الضبط\nAdministration: وزارة العدل\nFrais: رسوم التسجيل بالسجل التجاري\n50درهما عن الإيداع, \n50 درهما عن التقييد\nDélai: (2) يومان\nDocuments requis:\n - وثائق الإيداع\n - نسخة من قرار إحداث الفرع أو الوكالة مع تعيين المسير موقع ومسجل بإدارة التسجيل.\n - أصل الشهادة السلبية عند الاقتضاء، لا يتجاوز تاريخها 90 يوما\n - الإذن أو الدبلوم أو هما معا عند الاقتضاء.\n - وثائق التسجيل\n - شهادة أصلية للتسجيل بالرسم المهني\n - صورة من عقد الكراء أو عقد التوطين  -مع الأخذ بعين الاعتبار مقتضيات الفقرة الثانية من المادة 544 -3 من مدونة التجارة - أو أي وثيقة أخرى تثبت تواجد المحل.\n - صورة من بطاقة التعريف الوطنية بالنسبة لمسيرالفرع أو صورة لبطاقة التسجيل بالنسبة للأجانب المقيمين أو لجواز السفر بالنسبة أو ما يقوم مقامه لإثبات الهوية بالنسبة للأجانب غير المقيمين.\n - التصريح نموذج رقم 1-4 محرر وموقع  من طرف الملزم أو وكيله المزود بوكالة كتابية\n - وكالة كتابية في حالة التسجيل بواسطة وكيل \n(ملاحظة: يجب أن تكون مسجلة بإدارة التسجيل)\n - صورة لوثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل.\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 331,
+      "answer": "لتسجيل فرع شركتكم داخل نفس الدائرة القضائية للمحكمة المسجلة بها الشركة الأم، إليك الإجراءات والمعلومات اللازمة حسب وزارة العدل:\n\n**الوصف:**\nيتطلب الأمر التسجيل بالسجل التجاري وفق المقتضيات المنصوص عليها قانونا، حيث ألزمت المادة 37 من مدونة التجارة تسجيل فروع ووكالات المقاولات المغربية أو الأجنبية بالسجل التجاري.\nعند تقديم الوثائق، يجب الإدلاء بأصل الوثيقة لكاتب الضبط ليقوم بنسخها وإرجاعها فوراً إليكم (في غير الحالات التي يجب فيها قانونا الاحتفاظ بأصول الوثائق).\nبالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء، يجب أن يتم أمام كاتب الضبط الذي يشير في نفس الوثيقة إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيعه.\n\n**الإدارة:** وزارة العدل\n\n**الرسوم:**\n*   50 درهما عن الإيداع.\n*   50 درهما عن التقييد.\n\n**الآجال:** يومان.\n\n**الوثائق المطلوبة:**\n\n**وثائق الإيداع:**\n*   نسخة من قرار إحداث الفرع أو الوكالة مع تعيين المسير موقع ومسجل بإدارة التسجيل.\n*   أصل الشهادة السلبية عند الاقتضاء، لا يتجاوز تاريخها 90 يوما.\n*   الإذن أو الدبلوم أو هما معا عند الاقتضاء.\n\n**وثائق التسجيل:**\n*   شهادة أصلية للتسجيل بالرسم المهني.\n*   صورة من عقد الكراء أو عقد التوطين (مع الأخذ بعين الاعتبار مقتضيات الفقرة الثانية من المادة 544 -3 من مدونة التجارة) أو أي وثيقة أخرى تثبت تواجد المحل.\n*   صورة من بطاقة التعريف الوطنية بالنسبة لمسير الفرع أو صورة لبطاقة التسجيل بالنسبة للأجانب المقيمين أو لجواز السفر أو ما يقوم مقامه لإثبات الهوية بالنسبة للأجانب غير المقيمين.\n*   التصريح نموذج رقم 1-4 محرر وموقع من طرف الملزم أو وكيله المزود بوكالة كتابية.\n*   وكالة كتابية في حالة التسجيل بواسطة وكيل (ملاحظة: يجب أن تكون مسجلة بإدارة التسجيل).\n*   صورة لوثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل.\n\n**الخطوات:**\nغير محددة.",
+      "generation_ms": 9177,
+      "prompt_tokens": 1807,
+      "output_tokens": 581,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.9583,
+        "answer_relevancy": 0.7692,
+        "context_precision": 0.8333,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s078",
+      "question": "Plusieurs PME veulent mettre des moyens en commun dans une structure juridique partagée, comment l'enregistrer ?",
+      "lang": "fr",
+      "category": "factual",
+      "expected_ids": [
+        "354a7b61-e5a5-4d14-a8fe-cc3bc72b333e"
+      ],
+      "reference": "La procédure concernée est « Immatriculation des groupements d'intérêt économique au registre du commerce » (Ministère de la Justice). Documents à fournir : Documents de dépôt ; Contrat de groupement signé par tous les membres ou par un mandataire muni d'une procuration écrite et enregistré… ; Copie du procès-verbal de l'assemblée des membres qui décide la nomination du ou des gérants et détermine leurs… ; Journal d'annonces légales dans lequel le contrat de groupement a été publié. ; Références du Bulletin officiel dans lequel le contrat de groupement a été publié ; Original du certificat négatif datant de moins de 90 jours.. Frais : 200 dirhams pour le dépôt 150 dirhams pour l'enregistrement. Délai : 2 jours.",
+      "must_include": [
+        "Documents de dépôt",
+        "Contrat de groupement signé par tous les membres ou par un…"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "68cf9a7c-dcd6-493c-a018-c25214041bee",
+        "c41112b4-7cb7-4260-a43e-f63e0eb50b26",
+        "bf5773fa-d73e-4fc5-9b1c-c1bdf1e47213"
+      ],
+      "retrieved_titles": [
+        "Certificat d'inscription à la taxe professionnelle",
+        "Transformation d'une société anonyme en société en nom collectif",
+        "Immatriculation d'une société en nom collectif au registre du commerce"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: Certificat d'inscription à la taxe professionnelle\nDescription: Inscription à la taxe professionnelle\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 2 jours\nDocuments requis:\n - Personne physique ou morale déjà créée :\n - Demande électronique ou formulaire AAC050\n - Transfert du domicile fiscal, du siège social ou de l'établissement principal :\n - -N° de commande AAC050\n - - Copie du procès-verbal de transfert du siège (pour les personnes morales) ;\n - - Une copie du contrat de location enregistré.\n - ou une copie de la quittance de location\n - - Une copie de tout titre de propriété (propriété, bail ou bien commercial).\n - - Ou une copie du contrat de localisation.\n - Création d'une personne physique\n - Référence AAC50\n - - ou copie du contrat de domiciliation ;\n - - Copie de la carte nationale d'identité ou de la carte de séjour ;\n - - Copie de l'autorisation nécessaire pour l'exercice de l'activité (pour les activités réglementées).\n - Création d'une nouvelle personne morale : sociétés anonymes ; sociétés à responsabilité limitée ; sociétés en nom collectif et sociétés en commandite :\n - - Une copie des statuts de la société.\n - - Copie de la carte nationale d'identité, ou de la carte de séjour, ou du passeport, ou du registre de commerce du gérant, ou de l'équivalent du registre de commerce traduit pour les personnes morales non résidentes ;\n - - Copie de l'autorisation nécessaire pour l'exercice de l'activité (pour les activités réglementées) ;\n - - Copie du procès-verbal de nomination du gérant s'il n'est pas désigné dans les statuts (pour les sociétés à responsabilité limitée).\n - Coopératives :\n - - Copie de la décision d'autorisation publiée au Bulletin Officiel ;\n - - Copie de la carte nationale d'identité du président de la coopérative ;\n - ou copie de la quittance de loyer ;\n - Organismes de placement collectif en valeurs mobilières :\n - - Copie du règlement de gestion (pour les OPCVM) ou copie des statuts de la société enregistrés (pour les sociétés d'investissement à capital variable) ;\n - - Copie de l'autorisation délivrée par l'Autorité Marocaine du Marché des Capitaux ;\n - Sociétés mutualistes :\n - - Copie de l'arrêté conjoint du ministre de l'emploi et des affaires sociales et du ministre des finances ;\n - Copie de la carte nationale d'identité du président du conseil d'administration de la société.\n - Groupements d'intérêt économique :\n - - Copie du contrat de groupement ;\n - - Copie de la carte nationale d'identité du gérant du groupe ;\n - Établissements stables :\n - - Copie du contrat de bail ou d'achat enregistré ;\n - - Copie des statuts de la société mère, traduits si nécessaire ;\n - - Copie du procès-verbal de constitution de l'établissement stable ;\n - - Copie du marché ;\n - Copie de la carte nationale d'identité, ou du passeport, ou de la carte de séjour du représentant de l'établissement stable.\n - Sociétés concessionnaires de gestion d'un service public :\n - - Copie du contrat de concession ;\n - Fonds créés par un texte législatif ou réglementaire :\n - Copie de la décision de création du fonds.\n - Centres de gestion comptable agréés :\n - Copie de l'agrément.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Transformation d'une société anonyme en société en nom collectif\nDescription: En application des dispositions de l’article 50 du Code de commerce : « Tout changement ou modification concernant les mentions devant être inscrites au registre du commerce conformément aux articles 42 à 48 doit faire l’objet d’une demande d’inscription modificative.\nDans le cadre du contrôle effectué par le greffier des documents et pièces qui lui sont présentés – sauf les cas où la conservation des originaux est légalement exigée – l’usager est tenu de présenter l’original du document et le greffier se charge de le copier et de le restituer immédiatement à l’intéressé.\nPour ce qui est de la signature des déclarations, contrats et documents soumis à cette procédure, elle doit être faite devant le greffier qui indique sur le même document le nom du signataire, son numéro de carte nationale, sa qualité, avec apposition du cachet du tribunal et signature du greffier. »\nAdministration: Ministère de la Justice\nFrais: Frais d'inscription au registre du commerce : 100 dirhams\n\n50 dirhams pour le dépôt\n50 dirhams pour l'enregistrement\nDélai: 2 jours\nDocuments requis:\n - Documents de dépôt\n - Copie du procès-verbal de l’assemblée générale ayant décidé la transformation de la forme juridique de la société, signé et enregistré auprès de l’administration de l’enregistrement, en tenant compte des dispositions prévues à l’article 220 de la loi sur\n - Rapport du ou des commissaires aux comptes de la société, attestant que la situation nette de la société n’est pas inférieure à son capital, en tenant compte des dispositions prévues à l’article 220 de la loi sur les sociétés anonymes\n - Original des statuts révisés de la société signé par tous les associés ou par un mandataire muni d’une procuration écrite et enregistré auprès de l’administration de l’enregistrement, ou une copie conforme\n - Documents d’inscription\n - Copie de la carte nationale d’identité pour les dirigeants de la société et les associés, ou copie de la carte d’immatriculation pour les étrangers résidant au Maroc, ou du passeport pour les étrangers non-résidents au Maroc, ou tout document en tenant li\n - Extrait du contrat indiquant le régime matrimonial pour les associés étrangers, le cas échéant\n - Certificat original d'inscription à la patente comportant la nouvelle forme de la société.\n - Déclaration modèle 1/4, établie et signée par l'assujetti ou son mandataire muni d'une procuration écrite.\n - Procuration écrite en cas d’inscription par mandataire (article 38 du Code de commerce). (Note : la procuration doit être enregistrée auprès de l’administration de l’enregistrement)\n - Copie du document d'identité du mandataire en cas de dépôt par mandataire\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Immatriculation d'une société en nom collectif au registre du commerce\nDescription: Immatriculation au registre du commerce conformément aux dispositions légales, le législateur ayant, en vertu de l'article 37 du Code de commerce, rendu l'immatriculation au registre du commerce obligatoire pour tous les commerçants, personnes physiques ou morales, marocains ou étrangers, exerçant une activité commerciale sur le territoire du Royaume.\nEn outre, la personnalité morale des sociétés n'est acquise qu'à compter de la date d'immatriculation au registre du commerce – étant entendu que les sociétés en participation ne sont pas immatriculées au registre du commerce et ne jouissent pas de la personnalité morale –\nDans le cadre du contrôle effectué par le greffier sur les documents et pièces qui lui sont présentés – sauf dans les cas où la loi impose la conservation des originaux – le déclarant doit produire l'original du document et le greffier se charge de le photocopier et de le restituer immédiatement à l'intéressé.\nEn ce qui concerne la signature des déclarations, contrats et documents soumis à la présente procédure, elle doit être apposée devant le greffier qui mentionne sur le même document le nom du signataire, le numéro de sa carte nationale, sa qualité, et appose le cachet du tribunal ainsi que sa propre signature.\nAdministration: Ministère de la Justice\nFrais: Frais d'enregistrement au registre de commerce : 350 dirhams  \n200 dirhams pour le dépôt  \n150 dirhams pour l'inscription\nDélai: 2 jours\nDocuments requis:\n - Documents de dépôt\n - Original des statuts de la société signés par tous les associés ou par un mandataire muni d'une procuration écrite et enregistrés auprès de l'administration de l'enregistrement, ou une copie conforme\n - Copie du contrat signé et enregistré en vertu duquel le gérant a été désigné, si cette désignation a été faite par un contrat séparé\n - Original du certificat négatif datant de moins de 90 jours\n - Documents d'inscription\n - Certificat original d’inscription à la taxe professionnelle.\n - Certificat d'immatriculation ou document en tenant lieu si l'un des associés est une personne morale\n - Photocopie du contrat de bail signé et enregistré auprès de l'administration de l'enregistrement ou contrat de domiciliation signé ou tout document justifiant l'existence du local\n - Extrait de l'acte comportant l'indication du régime matrimonial pour l'associé étranger, le cas échéant\n - Photocopie de la carte d'identité nationale de tous les associés et gérants ou photocopie de la carte d'immatriculation pour les étrangers résidents ou photocopie du passeport pour les étrangers non-résidents ou tout document en tenant lieu pour justifier\n - Déclaration (formulaire n° 2) établie et signée par le déclarant ou son mandataire muni d'une procuration écrite.\n - Copie de l'autorisation et/ou du diplôme ou du certificat nécessaire à l'exercice de l'activité projetée, le cas échéant, conformément aux dispositions de certains textes spéciaux relatifs à l'exercice de certaines activités réglementées.\n - Procuration écrite en cas de dépôt par mandataire (Remarque : elle doit être enregistrée auprès de l'administration de l'enregistrement)\n - Photocopie du document d'identité du mandataire en cas d'inscription par mandataire\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 561,
+      "answer": "Pour enregistrer une structure juridique partagée telle qu'une Société en Nom Collectif (SNC), vous pouvez suivre la procédure d'Immatriculation d'une société en nom collectif au registre du commerce.\n\n**Administration responsable :** Ministère de la Justice\n\n**Frais :**\n*   Frais d'enregistrement au registre de commerce : 350 dirhams\n    *   200 dirhams pour le dépôt\n    *   150 dirhams pour l'inscription\n\n**Délai :** 2 jours\n\n**Documents requis :**\n\n*   **Documents de dépôt :**\n    *   Original des statuts de la société signés par tous les associés ou par un mandataire muni d'une procuration écrite et enregistrés auprès de l'administration de l'enregistrement, ou une copie conforme.\n    *   Copie du contrat signé et enregistré en vertu duquel le gérant a été désigné, si cette désignation a été faite par un contrat séparé.\n    *   Original du certificat négatif datant de moins de 90 jours.\n\n*   **Documents d'inscription :**\n    *   Certificat original d’inscription à la taxe professionnelle.\n    *   Certificat d'immatriculation ou document en tenant lieu si l'un des associés est une personne morale.\n    *   Photocopie du contrat de bail signé et enregistré auprès de l'administration de l'enregistrement ou contrat de domiciliation signé ou tout document justifiant l'existence du local.\n    *   Extrait de l'acte comportant l'indication du régime matrimonial pour l'associé étranger, le cas échéant.\n    *   Photocopie de la carte d'identité nationale de tous les associés et gérants ou photocopie de la carte d'immatriculation pour les étrangers résidents ou photocopie du passeport pour les étrangers non-résidents ou tout document en tenant lieu pour justifier.\n    *   Déclaration (formulaire n° 2) établie et signée par le déclarant ou son mandataire muni d'une procuration écrite.\n    *   Copie de l'autorisation et/ou du diplôme ou du certificat nécessaire à l'exercice de l'activité projetée, le cas échéant, conformément aux dispositions de certains textes spéciaux relatifs à l'exercice de certaines activités réglementées.\n    *   Procuration écrite en cas de dépôt par mandataire (Remarque : elle doit être enregistrée auprès de l'administration de l'enregistrement).\n    *   Photocopie du document d'identité du mandataire en cas d'inscription par mandataire.\n\n**Étapes :** Non spécifié.\n\nSource : Ministère de la Justice",
+      "generation_ms": 10481,
+      "prompt_tokens": 2407,
+      "output_tokens": 576,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.5781,
+        "context_precision": 1.0,
+        "context_recall": 0.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    }
+  ]
+}
