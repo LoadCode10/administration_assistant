@@ -1,0 +1,778 @@
+{
+  "config": {
+    "experiment_name": "answers_vector_v1_p7",
+    "date": "2026-10-16T20:46:01",
+    "git_commit": null,
+    "dataset": "synthetic_v1.json",
+    "start": 117,
+    "limit": 20,
+    "retrieval_mode": "vector",
+    "top_k": 3,
+    "retrieval_only": false,
+    "llm_model": "gemini-2.5-flash",
+    "embedding_model": "BAAI/bge-m3"
+  },
+  "rows": [
+    {
+      "question_id": "s117",
+      "question": "opposition sur ma voiture a cause des impots, comment l'enlever pour la vendre",
+      "lang": "fr",
+      "category": "user_style",
+      "expected_ids": [
+        "01682b89-ee4d-4623-bc3f-6daaa67f94c8"
+      ],
+      "reference": "La procédure concernée est « Certificat de mainlevée d'opposition sur véhicules au centre d'immatriculation des véhicules » (Ministère de l’Économie et des Finances- Trésorerie générale du Royaume). Documents à fournir : Demande d'obtention du certificat de mainlevée d'opposition sur véhicules auprès du centre d'immatriculation des…. Frais : Gratuit. Délai : 5 jours.",
+      "must_include": [
+        "Demande d'obtention du certificat de mainlevée d'opposition…",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "01682b89-ee4d-4623-bc3f-6daaa67f94c8",
+        "1b8fdec7-6d5b-4c11-b00c-ac6b7a9c5ac1",
+        "c24da220-e8e1-49d0-b517-94dc3e7c0855"
+      ],
+      "retrieved_titles": [
+        "Certificat de mainlevée d'opposition sur véhicules au centre d'immatriculation des véhicules",
+        "Autorisation d'exonération du droit d'importation lors du dédouanement de véhicules spécialement équipés pour personnes en situation de handicap",
+        "Autorisation d’exonération des droits et taxes exigibles à l’importation des bagages et biens meubles usagés provenant d’une succession"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Certificat de mainlevée d'opposition sur véhicules au centre d'immatriculation des véhicules\nDescription: Recouvrement des arriérés d'impôts\nAdministration: Ministère de l’Économie et des Finances- Trésorerie générale du Royaume\nFrais: Gratuit\nDélai: 5 jours\nDocuments requis:\n - Demande d'obtention du certificat de mainlevée d'opposition sur véhicules auprès du centre d'immatriculation des véhicules\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation d'exonération du droit d'importation lors du dédouanement de véhicules spécialement équipés pour personnes en situation de handicap\nDescription: La procédure vise à exonérer du droit d'importation les véhicules spécialement aménagés pour les personnes en situation de handicap, sous réserve que :\n- la personne soit en situation de handicap physique et titulaire d'un permis de conduire valide de catégorie B indiquant les codes de restrictions qui lui sont propres ;\n- le véhicule objet de la demande soit équipé des aménagements nécessaires pour l'intéressé.\nIl est à noter que ce type de véhicules reste soumis au paiement de la taxe sur la valeur ajoutée.\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: non spécifié\nDocuments requis:\n - Demande visée par l'autorité gouvernementale chargée des personnes en situation de handicap\n - Copie de l'attestation d'homologation à titre isolé délivrée par l'autorité gouvernementale chargée de l'équipement et du transport\n - Certificat de conformité délivré par l'autorité gouvernementale chargée de l'équipement et du transport\n - Certificat médical délivré conformément à la loi n° 05-52 portant Code de la route.\n - Copie de la carte nationale d'identité électronique ou du certificat de résidence pour les étrangers résidant au Maroc\n - Copie du permis de conduire\n - Document de circulation sous le régime de l'admission temporaire des moyens de transport appartenant aux personnes ayant leur résidence normale à l'étranger\n - Facture d'achat originale pour les véhicules de trois mois ou moins d'âge\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation d’exonération des droits et taxes exigibles à l’importation des bagages et biens meubles usagés provenant d’une succession\nDescription: La procédure vise à exonérer des droits et taxes exigibles à l’importation, les bagages et biens meubles usagés provenant d’une succession.\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - Demande d’autorisation d’exonération des droits et taxes exigibles à l’importation des bagages et biens meubles usagés provenant d’une succession.\n - Certificat de résidence des héritiers\n - Certificat d’hérédité délivré par les autorités du lieu de provenance des bagages et biens meubles ou par un notaire, comportant un inventaire détaillé des objets à importer et la date du décès du défunt.\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 1894,
+      "answer": "Pour enlever une opposition sur votre voiture à cause des impôts, vous pouvez suivre la procédure d'obtention du Certificat de mainlevée d'opposition sur véhicules au centre d'immatriculation des véhicules.\n\nCette procédure concerne le recouvrement des arriérés d'impôts.\n\n**Administration:** Ministère de l’Économie et des Finances- Trésorerie générale du Royaume\n**Frais:** Gratuit\n**Délai:** 5 jours\n**Documents requis:**\n*   Demande d'obtention du certificat de mainlevée d'opposition sur véhicules auprès du centre d'immatriculation des véhicules.",
+      "generation_ms": 7216,
+      "prompt_tokens": 895,
+      "output_tokens": 135,
+      "attempts": 1
+    },
+    {
+      "question_id": "s118",
+      "question": "أكري محلا لشركة وهي تقتطع الضريبة من مبلغ الكراء، كيف أحصل على ما يثبت أداء هذه الضريبة؟",
+      "lang": "ar",
+      "category": "factual",
+      "expected_ids": [
+        "ab679756-3942-4e06-a3cd-8d31b32cbfef"
+      ],
+      "reference": "الإجراء المعني هو « شهادة أداء الضريبة على الدخل المحجوزة في المنبع برسم الدخول العقارية المدفوعة » (وزارة الاقتصاد والمالية-المديرية العامة للضرائب). الوثائق المطلوبة: طلب إلكتروني ؛ طلب عادي. الرسوم: بالمجان. الآجال: على الفور: بالنسبة للطلبات الإلكترونية • يومان: بالنسبة للطلبات التى لم تودع بطريقة الكترونية.",
+      "must_include": [
+        "طلب إلكتروني",
+        "طلب عادي",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "4dbe6234-bf80-4a76-be0f-93d594d1910f",
+        "89067fb1-ba32-49b6-90ee-eb2f938a8841",
+        "17786404-87be-4b41-8364-bc1fe51e1b27"
+      ],
+      "retrieved_titles": [
+        "Certificat d'acquittement des impôts et taxes grevant l'immeuble (P480)",
+        "Rapatriement de revenus d'investissement (revenus locatifs)",
+        "Certificat de radiation de la taxe professionnelle"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: شهادة أداء الضرائب و الرسوم المثقل بها العقار (P480)\nDescription: حماية المشتري بتطهير العقار من الديون الضريبية  \n(أداء جميع الضرائب والرسوم المثقل بها العقار سواء الصادرة من طرف إدارة الضرائب أو من طرف الجماعة التى يوجد فيها العقار وكذا الضرائب و الرسوم الواجب أداؤها )\nAdministration: وزارة الاقتصاد والمالية-الخزينة العامة للمملكة\nFrais: بالمجان\nDélai: 5 أيام\nDocuments requis:\n - طلب الحصول شهادة أداء الضرائب و الرسوم المثقل بها العقار (P480)\n - نسخة من عقد البيع أو أي وثيقة تثبت المعاملة\nÉtapes:\nغير محدد",
+        "PROCÉDURE: دفع دخول الاستثمارات ( مداخيل الكراء)\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - بيان يوضح المبالغ المحصلة عن كل كراء والتكاليف الناتجة عنه، بما في ذلك الضرائب والرسوم المدفوعة. يتم إعداد هذا البيان من طرف المنشأة المكلفة بالتسيير أو من طرف المالك في الحالة التي لا يكون فيها العقار موضوع تسيير حر\n - نسخة من عقد الكراء أو أي وثيقة تحل محله، تبين مبلغ الكراء\n - نسخة من كشف الحساب المفتوح باسم صاحب الطلب\n - وثائق إثبات دفع الضرائب و الرسوم\n - نسخة لمستخرج السجل التجاري (نموذج 7) و / أو شهادة التعريف الموحد\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة التشطيب من الرسم المهني\nDescription: إثبات التشطيب من الرسم المهني\nAdministration: وزارة الاقتصاد والمالية-المديرية العامة للضرائب\nFrais: بالمجان\nDélai: - فورا  بالنسبة للطلبات الإلكترونية؛ \n- يومان  بالنسبة للطلبات التى لم تودع بطريقة الكترونية؛\nDocuments requis:\n - بالنسبة للطلبات الإلكترونية:\n - • طلب إلكتروني\n - بالنسبة للطلبات التى لم تودع بطريقة الكترونية بالنسبة لشخص ذاتي :\n - حالة تحويل الموطن الضريبي أو المؤسسة الرئيسية\n - •طلب نموذج رقم  AAC350؛\n - • إقرار بتحويل الموطن الضريبي أو المؤسسة الرئيسية (نموذج ADC140 ) ؛\n - • فسخ عقد الكراء السابق أو إلغاء التوطين، تفويت الحق في الإيجار أو الأصل التجاري أو العقار أو تصريح بالشرف يفيد إخلاء المحل؛\n - • شهادة التسجيل في جدول الرسم المهني بالعنوان الجديد.\n - حالة التوقف عن مزاولة النشاط\n - • نسخة من شهادة التشطيب من السجل التجاري أو شهادة عدم التسجيل في السجل التجاري  ؛\n - بيان الأداءات و /أو مستخرج الجداول يسلمه القابض.\n - حالة البيع\n - نسخة من شهادة التشطيب من السجل التجاري أو شهادة عدم التسجيل في السجل التجاري  ؛\n - • نسخة من عقد تفويت الحق في الإيجار أو الأصل التجاري أو العقار ؛\n - • بيان الأداءات و /أو مستخرج الجداول يسلمه القابض.\n - بالنسبة لشخص اعتباري :\n - حالة تحويل المقر الاجتماعي\n - • طلب نموذج رقم  AAC350؛\n - • نسخة من محضر الجمع العام الاستثنائي مسجل؛\n - • إقرار بتحويل المقر الاجتماعي (نموذج ADC140 )  ؛\n - حالة إغلاق الفرع\n - • نسخة من محضر يثبت إغلاق الفرع مسجل؛\n - • فسخ عقد الكراء السابق أو إلغاء التوطين، تفويت الحق في الإيجار أو الأصل التجاري أو العقار أو تصريح بالشرف يفيد إخلاء المحل.\n - حالة التصفية\n - • نسخة من محضر حل الشركة المسجل؛\n - • نسخة من حكم التصفية القضائية إن اقضى الحال؛\n - • نسخة من محضر انتهاء عملية التصفية مسجل؛\n - • نسخة من تقرير المصفي؛\n - • نسخة من شهادة التشطيب من السجل التجاري؛\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 506,
+      "answer": "أنا آسف، ولكن المعلومات الرسمية المتوفرة لدي لا تتضمن إجراءً محدداً حول كيفية الحصول على وثيقة تثبت أداء الضريبة المقتطعة من مبلغ الكراء من طرف شركة.",
+      "generation_ms": 7305,
+      "prompt_tokens": 1201,
+      "output_tokens": 44,
+      "attempts": 1
+    },
+    {
+      "question_id": "s119",
+      "question": "Ma voiture devrait être exonérée de la vignette, comment obtenir le certificat d'exonération ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "ee967148-a1ea-4ac7-a6fa-c49477bdc606"
+      ],
+      "reference": "La procédure concernée est « Certificat d'exonération de la taxe spéciale annuelle sur les véhicules » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : Demande ordinaire présentée par le redevable pour le certificat d'exonération de la taxe spéciale annuelle sur les… ; Pièces justificatives de l'exonération selon le cas. Frais : Gratuit. Délai : 10 jours.",
+      "must_include": [
+        "Demande ordinaire présentée par le redevable pour le…",
+        "Pièces justificatives de l'exonération selon le cas",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "ee967148-a1ea-4ac7-a6fa-c49477bdc606",
+        "34a45861-7d3c-4060-b7d5-8d25b64e388e",
+        "1b56fc99-97cb-4225-bf64-09013d5edcf4"
+      ],
+      "retrieved_titles": [
+        "Certificat d'exonération de la taxe spéciale annuelle sur les véhicules",
+        "Certificat d'achat exonéré de la taxe sur la valeur ajoutée d'un véhicule neuf destiné à l'exploitation exclusive comme taxi",
+        "Certificat d’exonération de la TVA à l’achat de biens d’équipement destinés à l’enseignement privé ou à la formation professionnelle"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Certificat d'exonération de la taxe spéciale annuelle sur les véhicules\nDescription: Justificatif d'exonération de la taxe spéciale annuelle sur les véhicules\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - Demande ordinaire présentée par le redevable pour le certificat d'exonération de la taxe spéciale annuelle sur les véhicules\n - Pièces justificatives de l'exonération selon le cas\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Certificat d'achat exonéré de la taxe sur la valeur ajoutée d'un véhicule neuf destiné à l'exploitation exclusive comme taxi\nDescription: Achat exonéré de la taxe sur la valeur ajoutée d'un véhicule neuf destiné à être exploité exclusivement comme taxi\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - Demande électronique ou formulaire de demande (modèle AAP111)\n - Facture pro forma ou devis\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Certificat d’exonération de la TVA à l’achat de biens d’équipement destinés à l’enseignement privé ou à la formation professionnelle\nDescription: Achat exonéré de la taxe sur la valeur ajoutée de biens d’équipement destinés à l’enseignement privé ou à la formation professionnelle\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - Demande électronique ou formulaire de demande AAC131\n - État descriptif électronique ou état descriptif selon le modèle AAC132\n - Factures pro forma ou devis des travaux\n - Copie de la convention signée avec l'État, à fournir une seule fois (le cas échéant)\n - Permis de construire pour les établissements qui construisent des locaux d’enseignement ou de formation\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 308,
+      "answer": "Pour obtenir le certificat d'exonération de la taxe spéciale annuelle sur les véhicules, vous devez vous adresser au Ministère de l’Économie et des Finances- Direction Générale des Impôts.\n\nCette procédure est gratuite et le délai de traitement est de 10 jours.\n\nLes documents requis sont :\n*   Demande ordinaire présentée par le redevable pour le certificat d'exonération de la taxe spéciale annuelle sur les véhicules\n*   Pièces justificatives de l'exonération selon le cas\n\n(Source : Ministère de l’Économie et des Finances- Direction Générale des Impôts)",
+      "generation_ms": 8284,
+      "prompt_tokens": 650,
+      "output_tokens": 128,
+      "attempts": 1
+    },
+    {
+      "question_id": "s120",
+      "question": "لا أستطيع أداء ضرائبي المتأخرة دفعة واحدة، هل يمكن الحصول على تسهيلات في الأداء؟",
+      "lang": "ar",
+      "category": "ambiguous",
+      "expected_ids": [
+        "c20736b5-ccb9-45ec-8c6f-1c36174ba2a2",
+        "98f22e66-51c3-473c-bc93-16ea52e5d4f2"
+      ],
+      "reference": "الإجراء المعني هو « قرار بخصوص منح أو عدم منح التسهيلات في الأداء. » (وزارة الاقتصاد والمالية-الخزينة العامة للمملكة). الوثائق المطلوبة: طلب الحصول على التسهيلات في الأداء. الرسوم: بالمجان. الآجال: 15 يوما. وحسب الحالة، قد ينطبق أيضا إجراء « تقسيم أداء الدين الضريبي على دفعات مشمولة بضمان يقبله القابض ».",
+      "must_include": [
+        "طلب الحصول على التسهيلات في الأداء",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "e942eecf-c0cf-4d9f-97c0-e1df897c18a3",
+        "5b316a83-6ecd-40df-86c0-ae70d9bec434",
+        "c20736b5-ccb9-45ec-8c6f-1c36174ba2a2"
+      ],
+      "retrieved_titles": [
+        "Paiement de la pénalité de retard",
+        "Paiement des intérêts de retard sur les factures d'assistance technique",
+        "Décision relative à l’octroi ou au refus des facilités de paiement"
+      ],
+      "rank": 3,
+      "contexts": [
+        "PROCÉDURE: أداء ذعيرة التأخير عن الأداء\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوم\nDocuments requis:\n - رسالة توضيحية\n - التزام استيراد متضمن للتقييدات الجمركية\n - ملحق بنكي معبأ وموقع ومختوم\n - بيان يوضح مواعيد حلول أجل الأداء المتعاقد بشأنها وسعر فائدة التأخير وتفاصيل حساب هذه الفوائد\nÉtapes:\nغير محدد",
+        "PROCÉDURE: أداء فوائد التأخير على فواتير المساعدة التقنية\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - ملحق بنكي معبأ وموقع ومختوم\n - نسخة من الفواتير\n - كيفية حساب فوائد التأخير\n - عقد ينص على أداء فوائد التأخير\n - نسخة من مستخرج السجل التجاري (نموذج 7 و/ أو شهادة التعريف الموحد للمقاولة)\nÉtapes:\nغير محدد",
+        "PROCÉDURE: قرار بخصوص منح أو عدم منح التسهيلات في الأداء.\nDescription: استخلاص المتأخرات الضريبية\nAdministration: وزارة الاقتصاد والمالية-الخزينة العامة للمملكة\nFrais: بالمجان\nDélai: 15 يوما\nDocuments requis:\n - طلب الحصول على التسهيلات في الأداء\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 347,
+      "answer": "نعم، يمكنك الحصول على تسهيلات في الأداء بخصوص المتأخرات الضريبية.\nتوجد خدمة تسمى \"قرار بخصوص منح أو عدم منح التسهيلات في الأداء\" مخصصة لاستخلاص المتأخرات الضريبية.\n\n*   **الإدارة المعنية:** وزارة الاقتصاد والمالية-الخزينة العامة للمملكة.\n*   **التكلفة:** بالمجان.\n*   **المدة الزمنية:** 15 يوما.\n*   **الوثائق المطلوبة:** طلب الحصول على التسهيلات في الأداء.\n\n**المصدر:** وزارة الاقتصاد والمالية-الخزينة العامة للمملكة.",
+      "generation_ms": 8991,
+      "prompt_tokens": 599,
+      "output_tokens": 146,
+      "attempts": 1
+    },
+    {
+      "question_id": "s121",
+      "question": "Peut-on payer sa dette fiscale en plusieurs fois avec une garantie, et en combien de temps la demande est traitée ?",
+      "lang": "fr",
+      "category": "fees_delay",
+      "expected_ids": [
+        "98f22e66-51c3-473c-bc93-16ea52e5d4f2",
+        "c20736b5-ccb9-45ec-8c6f-1c36174ba2a2"
+      ],
+      "reference": "La procédure concernée est « Fractionnement du paiement de la dette fiscale en tranches assorties d'une garantie acceptée par le receveur » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : Demande présentée par le redevable accompagnée de la garantie proposée. Frais : Gratuit. Délai : 10 jours. Selon la situation exacte, la procédure « Décision relative à l’octroi ou au refus des facilités de paiement » peut aussi s'appliquer.",
+      "must_include": [
+        "Demande présentée par le redevable accompagnée de la…",
+        "Gratuit",
+        "10 jours"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "98f22e66-51c3-473c-bc93-16ea52e5d4f2",
+        "8f171b8f-8bc7-46ad-98a7-05685ac6402c",
+        "4eec8a2d-afae-471e-98d2-9d8dc163b3c8"
+      ],
+      "retrieved_titles": [
+        "Fractionnement du paiement de la dette fiscale en tranches assorties d'une garantie acceptée par le receveur",
+        "Demande de restitution de la garantie définitive par virement bancaire",
+        "Attestation de résidence fiscale"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Fractionnement du paiement de la dette fiscale en tranches assorties d'une garantie acceptée par le receveur\nDescription: Fractionnement de la dette due en tranches assorties d'une garantie acceptée par le receveur\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - Demande présentée par le redevable accompagnée de la garantie proposée\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Demande de restitution de la garantie définitive par virement bancaire\nDescription: Demande de restitution de la garantie définitive par virement bancaire\nAdministration: Caisse De Depot Et De Gestion\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Récupération de la caution provisoire par le soumissionnaire / enchérisseur :\n - Attestation de mainlevée délivrée par le maître d'ouvrage\n - L'original du récépissé de dépôt\n - Demande du soumissionnaire / enchérisseur\n - Attestation d'identité bancaire du soumissionnaire/enchérisseur\n - Cas de perte du récépissé de paiement\n - Attestation de perte établie par le soumissionnaire / enchérisseur devant les autorités compétentes + copie des statuts de la société\n - Cas de perte du récépissé de paiement et de présentation de la caution provisoire auprès de la Caisse de Dépôt et de Gestion deux ans après sa constitution auprès de la Trésorerie Générale\n - Attestation de non-paiement délivrée par le comptable de la Trésorerie auprès duquel la caution a été constituée\n - Cas d'envoi du récépissé de paiement par le maître d'ouvrage avec documents de paiement :\n - Attestation délivrée par le maître d'ouvrage attestant cela\n - Cas de groupement d'entreprises\n - Récépissé de dépôt original\n - Certificat de compte bancaire commun\n - Cas de non-participation du soumissionnaire / enchérisseur\n - Attestation de non-participation à l'appel d'offres / la mise aux enchères délivrée par le maître d'ouvrage\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Attestation de résidence fiscale\nDescription: Justificatif de la résidence fiscale en vue d'éviter la double imposition\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 2 jours\nDocuments requis:\n - • Demande électronique\n - Pour les demandes non déposées par voie électronique :\n - Pour les personnes physiques :\n - • Demande sur formulaire n° AAC310.\n - • Tout document prouvant que le demandeur a un domicile permanent au Maroc, ou le centre de ses intérêts économiques ;\n - • Copies des passeports ou des documents justifiant que la durée de séjour continue ou discontinue au Maroc dépasse 183 jours sur une période de 365 jours.\n - Pour les personnes morales :\n - • Demande sur formulaire n° AAC310 ;\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 317,
+      "answer": "Oui, il est possible de fractionner le paiement de votre dette fiscale en tranches, à condition de fournir une garantie acceptée par le receveur. Votre demande sera traitée dans un délai de 10 jours.\n\nSource : Ministère de l’Économie et des Finances- Direction Générale des Impôts.",
+      "generation_ms": 6635,
+      "prompt_tokens": 888,
+      "output_tokens": 67,
+      "attempts": 1
+    },
+    {
+      "question_id": "s122",
+      "question": "Comment obtenir un duplicata d'une autorisation délivrée par l'Office des changes ?",
+      "lang": "fr",
+      "category": "factual",
+      "expected_ids": [
+        "8a963d44-177f-4632-abeb-95dab09d9808"
+      ],
+      "reference": "La procédure concernée est « Délivrance de duplicata par l'Office des Changes » (Office Des Changes). Documents à fournir : Lettre explicative ; Attestation bancaire attestant de la non-réception de l'original, le cas échéant ; Copie de la carte d'identité ; Copie de l'extrait du registre de commerce. Frais : Gratuit. Délai : 60.",
+      "must_include": [
+        "Lettre explicative",
+        "Attestation bancaire attestant de la non-réception de…",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "8a963d44-177f-4632-abeb-95dab09d9808",
+        "60a3d0f3-6e63-478d-b20b-bda6c2efb12a",
+        "a8ca0a75-bda4-444b-9f98-b6b01ed9a707"
+      ],
+      "retrieved_titles": [
+        "Délivrance de duplicata par l'Office des Changes",
+        "Renouvellement d'une autorisation précédemment accordée",
+        "Autorisation de double paiement pour une importation suite à une fraude"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Délivrance de duplicata par l'Office des Changes\nDescription: Autorisation accordée au bénéficiaire d'effectuer des opérations de change non prévues par l’Instruction Générale des Opérations de Change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60\nDocuments requis:\n - Lettre explicative\n - Attestation bancaire attestant de la non-réception de l'original, le cas échéant\n - Copie de la carte d'identité (si personne physique)\n - Copie de l'extrait du registre de commerce (modèle 7) et/ou du certificat d'identification unifiée\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Renouvellement d'une autorisation précédemment accordée\nDescription: L'Office des Changes propose ce service afin de permettre au bénéficiaire d'effectuer des opérations de change non prévues par les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Lettre explicative\n - Rapport sur les opérations réalisées en vertu de l'autorisation précédente\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation de double paiement pour une importation suite à une fraude\nDescription: L'Office des Changes fournit ce service afin de permettre au bénéficiaire d'effectuer des opérations de change non prévues par les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Attestation bancaire confirmant les paiements effectués\n - Copie des documents justifiant le recours à la procédure judiciaire pour le recouvrement du montant payé\n - Copie de l'extrait du registre de commerce (modèle 7 et/ou attestation d'identification unique de l'entreprise)\n - Formulaire bancaire complété, signé et cacheté\n - Lettre explicative\n - Copie de l'engagement d'importation comportant les restrictions douanières, le cas échéant\n - Copie des documents justifiant la procédure suivie par la banque pour le recouvrement du montant payé\n - Copie de la facture\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 302,
+      "answer": "Pour obtenir un duplicata d'une autorisation délivrée par l'Office des Changes, voici la procédure telle que fournie par l'Office Des Changes :\n\n**Procédure : Délivrance de duplicata par l'Office des Changes**\n*   **Description** : Autorisation accordée au bénéficiaire d'effectuer des opérations de change non prévues par l’Instruction Générale des Opérations de Change.\n*   **Administration** : Office Des Changes\n*   **Frais** : Gratuit\n*   **Délai** : 60\n*   **Documents requis** :\n    *   Lettre explicative\n    *   Attestation bancaire attestant de la non-réception de l'original, le cas échéant\n    *   Copie de la carte d'identité (si personne physique)\n    *   Copie de l'extrait du registre de commerce (modèle 7) et/ou du certificat d'identification unifiée",
+      "generation_ms": 9488,
+      "prompt_tokens": 673,
+      "output_tokens": 207,
+      "attempts": 1
+    },
+    {
+      "question_id": "s123",
+      "question": "توفي زوجي وكان موظفا، كيف نسترجع المبالغ المودعة باسمه لدى صندوق الإيداع والتدبير؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "92c245f2-c450-4529-8a2e-5d16f66bb4b2"
+      ],
+      "reference": "الإجراء المعني هو « طلب استخلاص المبالغ المتعلقة بالموظفين المتوفين » (صندوق الإيداع والتدبير). الوثائق المطلوبة: طلب ذوي الحقوق ؛ رسم اراثة وفريضة الهالك ؛ نسخة من مقرر الايداع ؛ نسخ من بطائق التعريف الوطنية للورثة ؛ في حالة أداء عن طريق تحويل بنكي ؛ في حالة التوكيل وكالة خاصة على أن لا يتعدى تاريخ صدورها 3 أشهر أو تعزيزها بشواهد الحياة. الرسوم: بالمجان. الآجال: 60 يوما.",
+      "must_include": [
+        "طلب ذوي الحقوق",
+        "رسم اراثة وفريضة الهالك",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "92c245f2-c450-4529-8a2e-5d16f66bb4b2",
+        "05a62cd6-4721-44d1-8b44-af29d51e7ef2",
+        "46d3038e-7fe6-4c92-965a-be5a5ac97f85"
+      ],
+      "retrieved_titles": [
+        "Demande de recouvrement des montants relatifs aux fonctionnaires décédés",
+        "Demande de restitution des fonds déposés par les établissements de crédit et organismes assimilés",
+        "Remboursement des cotisations salariales pour les ayants droit (veuve ou veuf) (Expertise)"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: طلب استخلاص المبالغ المتعلقة بالموظفين المتوفين\nDescription: استخلاص المبالغ المتعلقة بالموظفين المتوفين\nAdministration: صندوق الإيداع والتدبير\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - طلب ذوي الحقوق\n - رسم اراثة وفريضة الهالك (أصلية مع إمكانية المصادقة عليه بشباك الصندوق وارجاع الاصلي لصاحبه عند الاقتضاء)\n - نسخة من مقرر الايداع\n - نسخ من بطائق التعريف الوطنية للورثة\n - في حالة أداء عن طريق تحويل بنكي: شهادة بنكية +نسخة من بطائق التعريف الوطنية\n - في حالة التوكيل وكالة خاصة على أن لا يتعدى تاريخ صدورها 3 أشهر أو تعزيزها بشواهد الحياة\nÉtapes:\nغير محدد",
+        "PROCÉDURE: طلب استخلاص مبالغ مودعة من قبل مؤسسات الائتمان والهيئات المعتبرة في حكمها\nDescription: استخلاص مبالغ مودعة من قبل مؤسسات الائتمان والهيئات المعتبرة في حكمها\nAdministration: صندوق الإيداع والتدبير\nFrais: مجانا\nDélai: 60 يوما\nDocuments requis:\n - شهادة رفع اليد مسلمة من قبل البنك الذي قام بايداع الاموال تحمل صفة واسم موقعها\n - نسخة من بطاقة التعريف الوطنية الخاصة بالمستفيد\n - شهادة التعريف البنكي الخاصة بالمستفيد تحمل صفة واسم موقعها\n - رسم اراثة وفريضة صاحب الحساب المتوفي (أصلي مع امكانية المصادقة عليه بشباك الصندوق وارجاع الرسم الاصلي لصاحبه عند الاقتضاء) في حالة وفاة صاحب الحساب\n - طلب المعني بالأمر أوالورثة\nÉtapes:\nغير محدد",
+        "PROCÉDURE: استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (الأرملة أو الأرمل) (Expertise)\nDescription: الغاية : الاستفادة من استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (الأرملة أو الأرمل).\nيخضع هذا القرار لمقتضيات المرسوم رقم 2.22.386 بتحديد لائحة القرارات الإدارية التي تقتضي معالجة الطلبات المتعلقة بها تمديد الأجل القانوني المحدد لتسليمها، لإنجاز خبرة تقنية أو بحث عمومي.\nAdministration: الصندوق الوطني للضمان الاجتماعي\nFrais: بالمجان\nDélai: 3 أشهر ونصف\nDocuments requis:\n - طلب استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (310-1-33)\n - نسخة من بطاقة التسجيل بالصندوق الوطني للضمان الاجتماعي خاصة بالمؤمن له المتوفى\n - نسخة من البطاقة الوطنية للتعريف الإلكترونية (أو سند الإقامة  بالنسبة للأجانب (بطاقة الإقامة أو بطاقة التسجيل)) خاصة بالمؤمن له المتوفى\n - شهادة الوفاة للمؤمن له\n - بالنسبة لعمال المناجم، شهادة تثبت الاشتغال في باطن الأرض مدة خمس سنوات على الأقل للاستفادة من التعويض ابتداء من سن 55 سنة\n - نسخة من البطاقة الوطنية للتعريف الإلكترونية (أو سند الإقامة  بالنسبة للأجانب (بطاقة الإقامة أو بطاقة التسجيل)) خاصة بالأرمل(ة)\n - نسخة من عقد الزواج\n - عقد الإراثة أو تصريح بالشرف بالزوجة الوحيدة / تعدد الزوجات/ عدم الطلاق\n - شهادة بنكية شخصية أو نموذج شيك (إذا لم يتم الإدلاء بها سابقا للصندوق الوطني للضمان الاجتماعي)\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 352,
+      "answer": "بناءً على طلبك المتعلق باسترجاع المبالغ المودعة باسم زوجك المتوفى لدى صندوق الإيداع والتدبير، إليك الإجراءات والمعلومات المتوفرة:\n\n**الإجراء:** طلب استخلاص المبالغ المتعلقة بالموظفين المتوفين\n**الإدارة:** صندوق الإيداع والتدبير\n**الوصف:** استخلاص المبالغ المتعلقة بالموظفين المتوفين.\n**الرسوم:** بالمجان.\n**الأجل:** 60 يوماً.\n\n**الوثائق المطلوبة:**\n*   طلب ذوي الحقوق.\n*   رسم إراثة وفريضة الهالك (أصلية مع إمكانية المصادقة عليه بشباك الصندوق وإرجاع الأصلي لصاحبه عند الاقتضاء).\n*   نسخة من مقرر الإيداع.\n*   نسخ من بطائق التعريف الوطنية للورثة.\n*   في حالة الأداء عن طريق تحويل بنكي: شهادة بنكية + نسخة من بطائق التعريف الوطنية.\n*   في حالة التوكيل: وكالة خاصة على أن لا يتعدى تاريخ صدورها 3 أشهر أو تعزيزها بشواهد الحياة.\n\n**الخطوات:** غير محددة.",
+      "generation_ms": 8841,
+      "prompt_tokens": 1049,
+      "output_tokens": 274,
+      "attempts": 1
+    },
+    {
+      "question_id": "s124",
+      "question": "La conservation foncière m'a fait payer deux fois les mêmes droits, comment me faire rembourser ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "0196e8ff-7850-40d9-9c7f-aa5788676097"
+      ],
+      "reference": "La procédure concernée est « Demande de restitution des droits perçus par erreur ou omission » (Agence Nationale De La Conservation Foncière, Du Cadastre Et De La Cartographie). Documents à fournir : Demande de restitution des droits perçus par erreur ou omission ; Copie de la carte nationale d'identité ; Chèque annulé. Frais : Gratuit. Délai : 60 jours.",
+      "must_include": [
+        "Demande de restitution des droits perçus par erreur ou…",
+        "Copie de la carte nationale d'identité",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "72fdad59-47ba-49ca-8d1e-3529082995f3",
+        "f11828cf-75e0-4334-bf62-3db17da8f7f2",
+        "7d32ed03-718b-4b38-a128-d8c3afaf83fe"
+      ],
+      "retrieved_titles": [
+        "Remboursement des cotisations salariales pour les ayants droit (personne divorcée ayant la charge d’enfants) (Expertise)",
+        "Certificat de mainlevée des indemnités relatives aux terres expropriées pour des projets d'utilité publique",
+        "Décision octroyant la prime de compensation aux coopératives et associations disposant d'un contrat de jouissance"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: Remboursement des cotisations salariales pour les ayants droit (personne divorcée ayant la charge d’enfants) (Expertise)\nDescription: Objet : Bénéficier du remboursement du montant des cotisations salariales pour les ayants droit (personne divorcée ayant la charge d’enfants).\nCette décision est soumise aux dispositions du décret n° 2.22.386 fixant la liste des décisions administratives pour lesquelles le traitement des demandes nécessite la prorogation du délai légal de délivrance, en raison de la réalisation d’une expertise technique ou d’une enquête publique.\nAdministration: Caisse Nationale De La Sécurité Sociale\nFrais: Gratuit\nDélai: 3 mois et demi\nDocuments requis:\n - Demande de remboursement des cotisations salariales pour ayants droit (formulaire 33-1-310)\n - Copie de la carte d’immatriculation à la Caisse Nationale de Sécurité Sociale de l’assuré décédé.\n - Copie de la carte d’identité nationale électronique (ou du titre de séjour pour les étrangers (carte de séjour ou carte d’immatriculation)) de l’assuré décédé.\n - Certificat de décès de l’assuré.\n - Pour les travailleurs des mines, attestation justifiant d’un travail souterrain d’une durée d’au moins cinq ans, pour bénéficier de l’indemnité à partir de 55 ans.\n - Acte de naissance.\n - Certificat de scolarité pour les enfants âgés de 16 à 21 ans.\n - Attestation de formation professionnelle pour les enfants âgés de 16 à 18 ans.\n - Certificat médical délivré par un médecin spécialiste attestant de l’incapacité de l’enfant à poursuivre ses études ou à suivre une formation professionnelle, pour l’enfant malade ou en situation de handicap âgé de 16 à 21 ans.\n - Certificat médical délivré par un médecin spécialiste et validé par la commission médicale régionale, pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans.\n - Déclaration sur l’honneur des parents attestant de l’absence de revenus suffisants (formulaire 310-1-42) pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans\n - Copie de l’acte de divorce\n - Attestation de garde d’enfants si la garde n’est pas mentionnée dans l’acte de divorce\n - Relevé d’identité bancaire personnel ou spécimen de chèque (si non fourni antérieurement à la Caisse Nationale de Sécurité Sociale)\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Certificat de mainlevée des indemnités relatives aux terres expropriées pour des projets d'utilité publique\nDescription: Dans le cadre de l'opération de remembrement, les directions provinciales de l'agriculture versent des indemnités relatives aux terres expropriées pour des projets d'utilité publique.\nAdministration: Ministère de l’Agriculture, de la Pêche Maritime, du Développement Rural et des Eaux et Forêts-Département de l’Agriculture\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Demande d'indemnisation\n - Certificat de propriété délivré par la Conservation foncière\n - Copie de la carte d'identité nationale du demandeur du certificat.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Décision octroyant la prime de compensation aux coopératives et associations disposant d'un contrat de jouissance\nDescription: Protection des périmètres de reboisement et de régénération, réhabilitation et restauration des écosystèmes forestiers par l'octroi de la prime de compensation\nAdministration: Agence Nationale des Eaux et Forêts\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Demande de prime de compensation\n - Attestation de respect de la réserve de pâturage concernée par la prime de compensation\n - Programme de décaissement de la prime\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 252,
+      "answer": "Je n'ai pas d'information sur la procédure de remboursement suite à un double paiement de droits à la conservation foncière parmi les procédures officielles dont je dispose.",
+      "generation_ms": 6701,
+      "prompt_tokens": 1103,
+      "output_tokens": 34,
+      "attempts": 1
+    },
+    {
+      "question_id": "s125",
+      "question": "بغيت نشوف شنو خلصت من الضرائب، واش كاينة شي ورقة فيها كاع الأداءات؟",
+      "lang": "ar",
+      "category": "user_style",
+      "expected_ids": [
+        "fabd38b2-5d57-4de4-a1c3-4f53e1fef6b4"
+      ],
+      "reference": "الإجراء المعني هو « بيـــــــــــــــــــــــــــــــان  الأداءات » (وزارة الاقتصاد والمالية-الخزينة العامة للمملكة). الوثائق المطلوبة: طلب الحصول على بيــــــــان الأداءات. الرسوم: بالمجان. الآجال: على الفور.",
+      "must_include": [
+        "طلب الحصول على بيــــــــان الأداءات",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "4dbe6234-bf80-4a76-be0f-93d594d1910f",
+        "8a6a14c8-3a6d-4044-a280-99667570f9f3",
+        "ee967148-a1ea-4ac7-a6fa-c49477bdc606"
+      ],
+      "retrieved_titles": [
+        "Certificat d'acquittement des impôts et taxes grevant l'immeuble (P480)",
+        "Certificat d'achat exonéré de la taxe sur la valeur ajoutée pour les biens, marchandises, travaux et services destinés à être livrés ou financés par don",
+        "Certificat d'exonération de la taxe spéciale annuelle sur les véhicules"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: شهادة أداء الضرائب و الرسوم المثقل بها العقار (P480)\nDescription: حماية المشتري بتطهير العقار من الديون الضريبية  \n(أداء جميع الضرائب والرسوم المثقل بها العقار سواء الصادرة من طرف إدارة الضرائب أو من طرف الجماعة التى يوجد فيها العقار وكذا الضرائب و الرسوم الواجب أداؤها )\nAdministration: وزارة الاقتصاد والمالية-الخزينة العامة للمملكة\nFrais: بالمجان\nDélai: 5 أيام\nDocuments requis:\n - طلب الحصول شهادة أداء الضرائب و الرسوم المثقل بها العقار (P480)\n - نسخة من عقد البيع أو أي وثيقة تثبت المعاملة\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة شراء معفى من الضريبة على القيمة المضافة للسلع والبضائع والأشغال والخدمات المراد تسليمها أو تمويلها عن طريق الهبة\nDescription: شراء معفى من الضريبة على القيمة المضافة للسلع والبضائع والأشغال والخدمات المراد تسليمها أو تمويلها عن طريق الهبة\nAdministration: وزارة الاقتصاد والمالية-المديرية العامة للضرائب\nFrais: مجانا\nDélai: 10 أيام\nDocuments requis:\n - طلب إلكتروني أو طلب، نموذج AAC220\n - بيان وصفي إلكتروني أو بيان وصفي وفق نموذج AAC221\n - الفاتورات الشكلية أو المقايسات\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة الاعفاء من الضريبة الخصوصية السنوية على المركبات\nDescription: إثبات الاعفاء من الضريبة الخصوصية السنوية على المركبات\nAdministration: وزارة الاقتصاد والمالية-المديرية العامة للضرائب\nFrais: بالمجان\nDélai: 10 أيام\nDocuments requis:\n - طلب عادي يقدمه الملزم لشهادة الاعفاء من الضريبة الخصوصية السنوية على المركبات\n - الوثائق المثبثة للاعفاء حسب الحالة\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 407,
+      "answer": "عزيزي المواطن، بناءً على المعلومات الرسمية المتوفرة لدي، ليس لدي أي إجراء يخص \"ورقة فيها كاع الأداءات\" أو بيان يجمع جميع الضرائب التي دفعتها.",
+      "generation_ms": 6836,
+      "prompt_tokens": 667,
+      "output_tokens": 44,
+      "attempts": 1
+    },
+    {
+      "question_id": "s126",
+      "question": "J'ai payé la taxe de services communaux en retard, puis-je demander l'annulation des pénalités ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "1e7a39ed-74d1-4d70-8547-c56f58816365"
+      ],
+      "reference": "La procédure concernée est « Exonération ou réduction des pénalités relatives aux taxes locales gérées par les collectivités territoriales » (Ministère de l'Intérieur-Direction des Finances des Collectivités Territoriales). Documents à fournir : Extrait du rôle des taxes concernées par la réclamation, ayant donné lieu à un titre de recouvrement ; Demande d'exonération ou de réduction des pénalités relatives aux taxes locales gérées par les collectivités…. Frais : Gratuit. Délai : 60 jours, selon le montant de l'exonération ou de la réduction, selon le montant de l'exonération ou de la réduction.",
+      "must_include": [
+        "Extrait du rôle des taxes concernées par la réclamation,…",
+        "Demande d'exonération ou de réduction des pénalités…",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "7de96113-de11-4824-bf87-ca9e4f825d10",
+        "1e7a39ed-74d1-4d70-8547-c56f58816365",
+        "e942eecf-c0cf-4d9f-97c0-e1df897c18a3"
+      ],
+      "retrieved_titles": [
+        "Exonération totale ou partielle des majorations de retard, des amendes et des frais de recouvrement par décision ministérielle",
+        "Exonération ou réduction des pénalités relatives aux taxes locales gérées par les collectivités territoriales",
+        "Paiement de la pénalité de retard"
+      ],
+      "rank": 2,
+      "contexts": [
+        "PROCÉDURE: Exonération totale ou partielle des majorations de retard, des amendes et des frais de recouvrement par décision ministérielle\nDescription: Objet : bénéficier d'une exonération totale ou partielle des majorations de retard, amendes et frais de recouvrement pour une période déterminée en vertu d'une décision ministérielle\nAdministration: Caisse Nationale De La Sécurité Sociale\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Demande\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Exonération ou réduction des pénalités relatives aux taxes locales gérées par les collectivités territoriales\nDescription: Le Ministère de l'Intérieur offre ce service à l'usager, sous réserve d'être assujetti aux taxes locales gérées par les collectivités territoriales et d'adresser une demande à l'administration compétente.\nAdministration: Ministère de l'Intérieur-Direction des Finances des Collectivités Territoriales\nFrais: Gratuit\nDélai: 60 jours, selon le montant de l'exonération ou de la réduction, selon le montant de l'exonération ou de la réduction\nDocuments requis:\n - Extrait du rôle des taxes concernées par la réclamation, ayant donné lieu à un titre de recouvrement\n - Demande d'exonération ou de réduction des pénalités relatives aux taxes locales gérées par les collectivités territoriales, établie par l'intéressé\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Paiement de la pénalité de retard\nDescription: L'Office des Changes propose ce service afin de permettre au bénéficiaire d'effectuer des opérations de change non prévues par les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Lettre explicative\n - Engagement d'importation mentionnant les restrictions douanières\n - Formulaire bancaire complété, signé et cacheté\n - Déclaration précisant les échéances de paiement convenues, le taux d'intérêt de retard et le détail du calcul de ces intérêts\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 327,
+      "answer": "Oui, il est possible de demander l'exonération ou la réduction des pénalités relatives aux taxes locales.\n\nPour cela, vous pouvez suivre la procédure d'**Exonération ou réduction des pénalités relatives aux taxes locales gérées par les collectivités territoriales**.\n\n*   **Administration :** Ministère de l'Intérieur-Direction des Finances des Collectivités Territoriales\n*   **Frais :** Gratuit\n*   **Délai :** 60 jours, selon le montant de l'exonération ou de la réduction\n*   **Documents requis :**\n    *   Extrait du rôle des taxes concernées par la réclamation, ayant donné lieu à un titre de recouvrement\n    *   Demande d'exonération ou de réduction des pénalités relatives aux taxes locales gérées par les collectivités territoriales, établie par l'intéressé.",
+      "generation_ms": 8147,
+      "prompt_tokens": 667,
+      "output_tokens": 187,
+      "attempts": 1
+    },
+    {
+      "question_id": "s127",
+      "question": "تأخرت في أداء اشتراكات أجرائي لدى الضمان الاجتماعي، هل يمكن إعفائي من غرامات التأخير؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "7de96113-de11-4824-bf87-ca9e4f825d10"
+      ],
+      "reference": "الإجراء المعني هو « الإعفاء الكلي أو الجزئي من ذعائر التأخير، الغرامات ومصاريف التحصيل بموجب قرار وزاري » (الصندوق الوطني للضمان الاجتماعي). الوثائق المطلوبة: طلب. الرسوم: بالمجان. الآجال: 60 يوما.",
+      "must_include": [
+        "طلب",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "7de96113-de11-4824-bf87-ca9e4f825d10",
+        "c2103624-016c-4f68-9de0-2d96c48df3c2",
+        "5b316a83-6ecd-40df-86c0-ae70d9bec434"
+      ],
+      "retrieved_titles": [
+        "Exonération totale ou partielle des majorations de retard, des amendes et des frais de recouvrement par décision ministérielle",
+        "Paiement des arriérés au titre de l'épargne sur salaire pour une durée de plus de 12 mois",
+        "Paiement des intérêts de retard sur les factures d'assistance technique"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: الإعفاء الكلي أو الجزئي من ذعائر التأخير، الغرامات ومصاريف التحصيل بموجب قرار وزاري\nDescription: الغاية : الاستفادة من إعفاء كلي أو جزئي من ذعائر التأخير، والغرامات ومصاريف التحصيل عن فترة محددة بمقتضى قرار وزاري\nAdministration: الصندوق الوطني للضمان الاجتماعي\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - طلب\nÉtapes:\nغير محدد",
+        "PROCÉDURE: دفع المتأخرات برسم المدخرات على الأجرة ، لمدة تتجاوز12 شهراً\nDescription: الترخيص للمرتفق للقيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - ملحق بنكي معبئ وموقع ومختوم\n - عقد العمل مؤشر عليه من طرف وزارة الشغل والإدماج المهني\n - شهادة الأجرة\n - بيان الراتب\n - شهادة بنكية تثبت عدم القيام بأي تحويل مالي خلال الفترة المعنية\n - كشف حساب مفصّل يبين الرصيد المحيّن\n - نسخة من بطاقة الهوية\nÉtapes:\nغير محدد",
+        "PROCÉDURE: أداء فوائد التأخير على فواتير المساعدة التقنية\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - ملحق بنكي معبأ وموقع ومختوم\n - نسخة من الفواتير\n - كيفية حساب فوائد التأخير\n - عقد ينص على أداء فوائد التأخير\n - نسخة من مستخرج السجل التجاري (نموذج 7 و/ أو شهادة التعريف الموحد للمقاولة)\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 356,
+      "answer": "نعم، يمكنك الاستفادة من إعفاء كلي أو جزئي من ذعائر التأخير والغرامات ومصاريف التحصيل عن فترة محددة بمقتضى قرار وزاري.\n\nالإدارة: الصندوق الوطني للضمان الاجتماعي\nالمصاريف: بالمجان\nالأجل: 60 يوما\nالوثائق المطلوبة: طلب",
+      "generation_ms": 6538,
+      "prompt_tokens": 658,
+      "output_tokens": 78,
+      "attempts": 1
+    },
+    {
+      "question_id": "s128",
+      "question": "Faut-il une autorisation pour sortir temporairement des billets et des pièces de monnaie marocains du pays ?",
+      "lang": "fr",
+      "category": "factual",
+      "expected_ids": [
+        "b6469037-31f7-4c7e-8601-43f98eed3245"
+      ],
+      "reference": "La procédure concernée est « Exportation temporaire de monnaie métallique et de billets de banque marocains » (Office Des Changes). Documents à fournir : Lettre explicative ; Détail des types de monnaie concernés par l'exportation ; Copie de l'extrait du registre de commerce. Frais : Gratuit. Délai : 60 jours.",
+      "must_include": [
+        "Lettre explicative",
+        "Détail des types de monnaie concernés par l'exportation",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "b6469037-31f7-4c7e-8601-43f98eed3245",
+        "63b19a9a-3b85-409a-a94a-61800f49c572",
+        "32c94b61-73b4-4dcf-9ac1-279fbd292006"
+      ],
+      "retrieved_titles": [
+        "Exportation temporaire de monnaie métallique et de billets de banque marocains",
+        "Autorisation d'exonération des droits et taxes exigibles à l'importation des billets de banque étrangers ainsi que des matières et marchandises destinés à Bank Al-Maghrib conformément à ses missions",
+        "Remplacement des billets de banque marocains mutilés, détériorés ou altérés"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Exportation temporaire de monnaie métallique et de billets de banque marocains\nDescription: Ce service est proposé par l'Office des Changes pour permettre au bénéficiaire d'effectuer des opérations de change non prévues par les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Lettre explicative\n - Détail des types de monnaie concernés par l'exportation\n - Copie de l'extrait du registre de commerce (modèle 7 et/ou attestation d'identification unique de l'entreprise)\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation d'exonération des droits et taxes exigibles à l'importation des billets de banque étrangers ainsi que des matières et marchandises destinés à Bank Al-Maghrib conformément à ses missions\nDescription: L'objet de la procédure est l'exonération des droits et taxes exigibles à l'importation des billets de banque étrangers ainsi que des matières et marchandises destinés à Bank Al-Maghrib conformément à ses missions.\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: non spécifié\nDocuments requis:\n - Demande d'autorisation d'exonération des droits et taxes exigibles à l'importation des billets de banque étrangers ainsi que des matières et marchandises destinés à Bank Al-Maghrib conformément à ses missions\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Remplacement des billets de banque marocains mutilés, détériorés ou altérés\nDescription: Remplacement des billets de banque marocains mutilés, détériorés ou altérés.\nAdministration: Bank Al-Maghrib\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Copie de la pièce d'identité du demandeur (carte nationale d'identité électronique ou récépissé de dépôt de renouvellement de la carte nationale d'identité électronique pour les Marocains, carte de résidence pour les étrangers, ou passeport pour les étran\n - Déclaration sur l'honneur\n - En cas d'incendie, d'inondation, etc. : rapport des autorités compétentes décrivant les circonstances de l'incident\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 297,
+      "answer": "Oui, une autorisation est requise pour l'exportation temporaire de monnaie métallique et de billets de banque marocains.\n\nCe service est proposé par l'**Office Des Changes**.\nLe service est gratuit et le délai est de 60 jours.\n\nLes documents requis sont :\n*   Lettre explicative\n*   Détail des types de monnaie concernés par l'exportation\n*   Copie de l'extrait du registre de commerce (modèle 7 et/ou attestation d'identification unique de l'entreprise)\n\nSource : Office Des Changes.",
+      "generation_ms": 7044,
+      "prompt_tokens": 706,
+      "output_tokens": 124,
+      "attempts": 1
+    },
+    {
+      "question_id": "s129",
+      "question": "كيف أحول مصاريف دراسة أبنائي في الخارج بالعملة الصعبة؟",
+      "lang": "ar",
+      "category": "ambiguous",
+      "expected_ids": [
+        "d88a0737-73a8-40b5-a752-a6e84600e40d",
+        "61903fc3-bdff-4012-bd8d-733c8abb6bd2"
+      ],
+      "reference": "الإجراء المعني هو « تكاليف التمدرس » (مكتب الصرف). الوثائق المطلوبة: إثبات أداء تكاليف التمدرس ؛ نسخة من وثيقة تثبت الهوية ؛ إشهاد بنكي يثبت عدم تحويل التكاليف المعنية ؛ ملحق بنكي معبأ وموقع ومختوم ؛ نسخة من الفواتير ؛ شهادة التسجيل. الرسوم: بالمجان. الآجال: 60 يوما. وحسب الحالة، قد ينطبق أيضا إجراء « أداء مصاريف التمدرس: الابتدائي والإعدادي والثانوي ».",
+      "must_include": [
+        "إثبات أداء تكاليف التمدرس",
+        "نسخة من وثيقة تثبت الهوية",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "bdc95ffb-2ba3-4b02-8b5a-a51c43348011",
+        "d88a0737-73a8-40b5-a752-a6e84600e40d",
+        "61903fc3-bdff-4012-bd8d-733c8abb6bd2"
+      ],
+      "retrieved_titles": [
+        "Paiement des frais de séjour sur un compte bancaire dédié par l'université",
+        "Frais de scolarité",
+        "Paiement des frais de scolarité : primaire, collège et secondaire"
+      ],
+      "rank": 2,
+      "contexts": [
+        "PROCÉDURE: أداء مصاريف الإقامة في حساب بنكي مخصص من طرف الجامعة\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - نسخة من بطاقة الهوية\n - شهادة التسجيل أو التسجيل الأولي\n - ملحق بنكي معبأ وموقع ومختوم\n - أي وثيقة صادرة عن السلطة الأجنبية تثبت وجوب تحويل مصاريف الإقامة إلى الحساب البنكي المخصص من طرف الجامعة\nÉtapes:\nغير محدد",
+        "PROCÉDURE: تكاليف التمدرس\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - إثبات أداء تكاليف التمدرس (عندما يتعلق الأمر باسترجاع المصاريف التي تم أداؤها مسبقا)\n - نسخة من وثيقة تثبت الهوية\n - إشهاد بنكي يثبت عدم تحويل التكاليف المعنية\n - ملحق بنكي معبأ وموقع ومختوم\n - نسخة من الفواتير\n - شهادة التسجيل\nÉtapes:\nغير محدد",
+        "PROCÉDURE: أداء مصاريف التمدرس: الابتدائي والإعدادي والثانوي\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - ملحق بنكي\n - رسالة توضيحية\n - شهادة التسجيل\n - فواتير مصاريف التمدرس\n - عقد الكراء\n - وثائق الإثبات الخاصة بالوصي\n - بطاقة الهوية\n - التأشيرة أو شهادة الإقامة الخاصة بالتلميذ\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 279,
+      "answer": "لتحويل مصاريف دراسة أبنائك في الخارج، يمكنك الاستفادة من خدمة \"أداء مصاريف التمدرس: الابتدائي والإعدادي والثانوي\" التي يقدمها مكتب الصرف.\n\n**الإدارة المسؤولة:** مكتب الصرف\n\n**الوثائق المطلوبة:**\n*   ملحق بنكي\n*   رسالة توضيحية\n*   شهادة التسجيل\n*   فواتير مصاريف التمدرس\n*   عقد الكراء\n*   وثائق الإثبات الخاصة بالوصي\n*   بطاقة الهوية\n*   التأشيرة أو شهادة الإقامة الخاصة بالتلميذ\n\n**الرسوم:** بالمجان\n\n**المدة الزمنية:** 60 يوما\n\n**الخطوات:** غير محددة ضمن المعلومات المتوفرة.",
+      "generation_ms": 12180,
+      "prompt_tokens": 674,
+      "output_tokens": 177,
+      "attempts": 1
+    },
+    {
+      "question_id": "s130",
+      "question": "Mon fils est au collège en France, quels documents pour transférer ses frais de scolarité ?",
+      "lang": "fr",
+      "category": "documents",
+      "expected_ids": [
+        "61903fc3-bdff-4012-bd8d-733c8abb6bd2",
+        "d88a0737-73a8-40b5-a752-a6e84600e40d"
+      ],
+      "reference": "La procédure concernée est « Paiement des frais de scolarité : primaire, collège et secondaire » (Office Des Changes). Documents à fournir : Relevé d'identité bancaire ; Lettre explicative ; Certificat d'inscription ; Factures des frais de scolarité ; Contrat de location ; Documents justificatifs du tuteur. Frais : Gratuit. Délai : 60 jours. Selon la situation exacte, la procédure « Frais de scolarité » peut aussi s'appliquer.",
+      "must_include": [
+        "Relevé d'identité bancaire",
+        "Lettre explicative",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "61903fc3-bdff-4012-bd8d-733c8abb6bd2",
+        "7e55b390-f147-4a61-b883-41652e1578b0",
+        "d88a0737-73a8-40b5-a752-a6e84600e40d"
+      ],
+      "retrieved_titles": [
+        "Paiement des frais de scolarité : primaire, collège et secondaire",
+        "Contribution financière des lycées, écoles ou institutions étrangères au profit d’organismes - établissements étrangers",
+        "Frais de scolarité"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Paiement des frais de scolarité : primaire, collège et secondaire\nDescription: Ce service, offert par l'Office des Changes, permet au bénéficiaire d'effectuer des opérations de change non prévues par les instructions générales relatives aux opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Relevé d'identité bancaire (RIB)\n - Lettre explicative\n - Attestation d’inscription\n - Factures des frais de scolarité\n - Contrat de location\n - Documents justificatifs du tuteur\n - Carte d'identité\n - Visa ou certificat de résidence de l'élève\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Contribution financière des lycées, écoles ou institutions étrangères au profit d’organismes - établissements étrangers\nDescription: L’Office des Changes fournit ce service afin de permettre au bénéficiaire d’effectuer des opérations de change non prévues par les instructions générales des opérations de change\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Formulaire bancaire complété, signé et cacheté\n - Lettre explicative\n - Tout document officiel attestant du montant à transférer\n - Copie de l'extrait du registre de commerce (modèle 7) et/ou du certificat d'identification unique\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Frais de scolarité\nDescription: L’Office des Changes propose ce service afin de permettre au bénéficiaire d’effectuer des opérations de change non couvertes par les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Justificatif de paiement des frais de scolarité (lorsqu’il s’agit du remboursement des frais déjà payés)\n - Copie d'un document d'identité\n - Attestation bancaire confirmant le non-transfert des frais concernés\n - Formulaire bancaire complété, signé et cacheté\n - Copie des factures\n - Attestation d’inscription\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 328,
+      "answer": "Pour transférer les frais de scolarité de votre fils qui est au collège en France, vous aurez besoin des documents suivants, selon l'Office Des Changes :\n\n*   Relevé d'identité bancaire (RIB)\n*   Lettre explicative\n*   Attestation d’inscription\n*   Factures des frais de scolarité\n*   Contrat de location\n*   Documents justificatifs du tuteur\n*   Carte d'identité\n*   Visa ou certificat de résidence de l'élève\n\nCe service est offert par l'Office Des Changes.",
+      "generation_ms": 7723,
+      "prompt_tokens": 665,
+      "output_tokens": 120,
+      "attempts": 1
+    },
+    {
+      "question_id": "s131",
+      "question": "Promoteur immobilier, j'ai terminé mon projet, comment récupérer ma caution bancaire ou lever l'hypothèque prise par les impôts ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "1eaffe57-04c0-4b78-a8e5-7ce92d3a3675"
+      ],
+      "reference": "La procédure concernée est « Mainlevée d'hypothèque ou restitution de la caution bancaire » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : Demande formulaire n° AAC360 ; Réalisation d'un projet immobilier ; Copie du contrat d'acquisition ; Copie de la carte nationale d'identité pour les personnes physiques ; Copie des autorisations de construire ou d'équiper ; Copie des plans structurels pour les grands projets de construction et d'équipement. Frais : Gratuit. Délai : 2 jours.",
+      "must_include": [
+        "Demande formulaire n° AAC360",
+        "Réalisation d'un projet immobilier",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "1eaffe57-04c0-4b78-a8e5-7ce92d3a3675",
+        "edf7b893-79c9-46b7-b2b1-1c45c63575c2",
+        "4771d211-92b6-461d-890b-d5606d1eb699"
+      ],
+      "retrieved_titles": [
+        "Mainlevée d'hypothèque ou restitution de la caution bancaire",
+        "Demande de restitution de garantie de la société de gestion des résidences immobilières de promotion touristique",
+        "Demande de restitution de la caution définitive auprès de l'agence de la succursale de Rabat pour les personnes physiques ne disposant pas de compte bancaire"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Mainlevée d'hypothèque ou restitution de la caution bancaire\nDescription: Obtention de la mainlevée d'hypothèque ou de la restitution de la caution bancaire\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 2 jours\nDocuments requis:\n - • Demande formulaire n° AAC360 ;\n - Réalisation d'un projet immobilier (opérations d'équipement et de construction) :\n - Copie du contrat d'acquisition\n - Copie de la carte nationale d'identité pour les personnes physiques\n - Copie des autorisations de construire ou d'équiper\n - Copie des plans structurels pour les grands projets de construction et d'équipement\n - Copie du permis d'habiter ou du certificat de conformité ou du certificat de réception provisoire\n - Copie du certificat de propriété délivré par l'Agence Nationale de la Cartographie et du Cadastre\n - Promoteurs immobiliers ayant signé une convention avec l'État pour la réalisation de logements sociaux ou de logements à valeur immobilière réduite :\n - Copie de la convention conclue avec l'État\n - Copie des permis de construire\n - Copie du plan structurel\n - Copie du permis d'habiter ou du certificat de conformité\n - Certificat du coefficient spécifique aux logements à valeur immobilière réduite ou logements sociaux\n - Preuve du dépôt de la demande de permis de construire dans un délai de 6 mois à compter de la date de la convention\n - Certificat de l'architecte déterminant la surface réservée aux logements non sociaux par rapport à la surface du terrain\n - Certificat de conformité du projet de logements sociaux\n - Logements destinés à la classe moyenne :\n - Copie de la carte nationale d'identité portant l'adresse du logement, objet de l'hypothèque\n - Copies des quittances de paiement de la taxe des services communaux\n - Non-respect des conditions de bénéfice de l'exonération ou du taux réduit de l'impôt :\n - Copies des cartes nationales d'identité pour les personnes physiques\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Demande de restitution de garantie de la société de gestion des résidences immobilières de promotion touristique\nDescription: Demande de restitution de garantie de la société de gestion des résidences immobilières de promotion touristique\nAdministration: Caisse De Depot Et De Gestion\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Phase de restitution de la garantie :\n - * Attestation de mainlevée délivrée par le Ministère du Tourisme, originale\n - * Reçu de dépôt original\n - * Attestation de radiation de l'agence du registre du commerce\n - * Attestation d'identité bancaire du liquidateur de l'agence, originale\n - * Carte nationale d'identité électronique du liquidateur.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Demande de restitution de la caution définitive auprès de l'agence de la succursale de Rabat pour les personnes physiques ne disposant pas de compte bancaire\nDescription: Demande de restitution de la caution définitive auprès de l'agence de la succursale de Rabat pour les personnes physiques ne disposant pas de compte bancaire\nAdministration: Caisse De Depot Et De Gestion\nFrais: Gratuit\nDélai: 1 jour\nDocuments requis:\n - Récupération de la caution provisoire par le soumissionnaire / enchérisseur :\n - Attestation de mainlevée délivrée par le maître d'ouvrage\n - L'original du récépissé de dépôt\n - Demande du soumissionnaire / enchérisseur\n - Attestation d'identité bancaire du soumissionnaire/enchérisseur\n - Cas de perte du récépissé de paiement\n - Attestation de perte établie par le soumissionnaire / enchérisseur devant les autorités compétentes + copie des statuts de la société\n - Cas de perte du récépissé de paiement et de présentation de la caution provisoire auprès de la Caisse de Dépôt et de Gestion deux ans après sa constitution auprès de la Trésorerie Générale\n - Attestation de non-paiement délivrée par le comptable de la Trésorerie auprès duquel la caution a été constituée\n - Cas d'envoi du récépissé de paiement par le maître d'ouvrage avec documents de paiement :\n - Attestation délivrée par le maître d'ouvrage attestant cela\n - Cas de groupement d'entreprises\n - Récépissé de dépôt original\n - Certificat de compte bancaire commun\n - Cas de non-participation du soumissionnaire / enchérisseur\n - Attestation de non-participation à l'appel d'offres / la mise aux enchères délivrée par le maître d'ouvrage\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 286,
+      "answer": "Pour récupérer votre caution bancaire ou obtenir la mainlevée d'hypothèque, vous devez suivre la procédure de \"Mainlevée d'hypothèque ou restitution de la caution bancaire\" auprès du Ministère de l’Économie et des Finances- Direction Générale des Impôts.\n\nVoici les informations et documents requis pour cette démarche, selon la Direction Générale des Impôts :\n\n**Frais :** Gratuit\n**Délai :** 2 jours\n\n**Documents requis :**\n\n*   Demande formulaire n° AAC360.\n\n**Si votre projet est une réalisation d'un projet immobilier (opérations d'équipement et de construction) :**\n*   Copie du contrat d'acquisition\n*   Copie de la carte nationale d'identité pour les personnes physiques\n*   Copie des autorisations de construire ou d'équiper\n*   Copie des plans structurels pour les grands projets de construction et d'équipement\n*   Copie du permis d'habiter ou du certificat de conformité ou du certificat de réception provisoire\n*   Copie du certificat de propriété délivré par l'Agence Nationale de la Cartographie et du Cadastre\n\n**Si vous êtes un promoteur immobilier ayant signé une convention avec l'État pour la réalisation de logements sociaux ou de logements à valeur immobilière réduite, les documents additionnels requis sont :**\n*   Copie de la convention conclue avec l'État\n*   Copie des permis de construire\n*   Copie du plan structurel\n*   Copie du permis d'habiter ou du certificat de conformité\n*   Certificat du coefficient spécifique aux logements à valeur immobilière réduite ou logements sociaux\n*   Preuve du dépôt de la demande de permis de construire dans un délai de 6 mois à compter de la date de la convention\n*   Certificat de l'architecte déterminant la surface réservée aux logements non sociaux par rapport à la surface du terrain\n*   Certificat de conformité du projet de logements sociaux\n\nLes étapes de la procédure ne sont pas spécifiées.",
+      "generation_ms": 11543,
+      "prompt_tokens": 1249,
+      "output_tokens": 437,
+      "attempts": 1
+    },
+    {
+      "question_id": "s132",
+      "question": "أنا متقاعد لدى الصندوق المغربي للتقاعد وأحتاج شهادة الضريبة على الدخل عن السنوات الماضية، كيف أحصل عليها؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "2f2e2d67-4d6e-45e1-8431-e848a1ead6e5"
+      ],
+      "reference": "الإجراء المعني هو « الحصول على شهادة للضريبة على الدخل برسم السنوات السابقة » (الصندوق المغربي للتقاعد). الوثائق المطلوبة: نسخة من البطاقة الوطنية ؛ وكالة في حالة عدم حضور المعني بالأمر. الرسوم: بالمجان. الآجال: فورا: عند حضور المعني بالأمر يومان (2): عند التوصل بالطلب عبر مختلف قنوات التواصل المتاحة (البوابة الإلكترونية للصندوق المغربي للتقاعد، البريد العادي...).",
+      "must_include": [
+        "نسخة من البطاقة الوطنية",
+        "وكالة في حالة عدم حضور المعني بالأمر",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "2f2e2d67-4d6e-45e1-8431-e848a1ead6e5",
+        "d4ace086-32bb-427f-89db-9776e72edefb",
+        "4eec8a2d-afae-471e-98d2-9d8dc163b3c8"
+      ],
+      "retrieved_titles": [
+        "Obtention d'une attestation d'impôt sur le revenu au titre des années antérieures",
+        "Attestation de retenue à la source de l'impôt sur le revenu",
+        "Attestation de résidence fiscale"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: الحصول على شهادة للضريبة على الدخل برسم السنوات السابقة\nDescription: الحق في الحصول على المعلومات وفق القانون رقم 31.13\nAdministration: الصندوق المغربي للتقاعد\nFrais: بالمجان\nDélai: فورا: عند حضور المعني بالأمر\nيومان (2): عند التوصل بالطلب عبر مختلف قنوات التواصل المتاحة (البوابة الإلكترونية للصندوق المغربي للتقاعد، البريد العادي...)\nDocuments requis:\n - نسخة من البطاقة الوطنية\n - وكالة في حالة عدم حضور المعني بالأمر\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة اقتطاع الضريبة على الدخل\nDescription: سحب شهادة اقتطاع الضريبة على الدخل\nAdministration: النظام الجماعي لمنح رواتب التقاعد\nFrais: بالمجان\nDélai: على الفور\nDocuments requis:\n - البطاقة الوطنية أو وكالة\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة الإقامة الجبائية\nDescription: إثبات الإقامة الجبائية لتجنب الازدواج الضريبي\nAdministration: وزارة الاقتصاد والمالية-المديرية العامة للضرائب\nFrais: بالمجان\nDélai: • على الفور :  بالنسبة للطلبات الإلكترونية\n\n • يومان: بالنسبة للطلبات التى لم تودع بطريقة الكترونية\nDocuments requis:\n - • طلب إلكتروني\n - بالنسبة للطلبات التى لم تودع بطريقة الكترونية:\n - بالنسبة للأشخاص الذاتيين:\n - • طلب نموذج رقم  AAC310.\n - • أية وثيقة تثبت أن مقدم الطلب لديه موطن دائم في المغرب، أو مركز مصالحه الاقتصادية؛\n - • نسخ من جوازات السفر أو الوثائق التي تبرر أن مدة الإقامة المستمرة أو المتقطعة في المغرب تتجاوز 183 يومًا لمدة 365 يومًا.\n - بالنسبة لشخص اعتباري :\n - • طلب نموذج رقم  AAC310 ؛\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 303,
+      "answer": "للحصول على شهادة الضريبة على الدخل برسم السنوات السابقة بصفتك متقاعداً لدى الصندوق المغربي للتقاعد، إليك الإجراءات الرسمية:\n\n*   **اسم الشهادة:** شهادة للضريبة على الدخل برسم السنوات السابقة\n*   **الإدارة:** الصندوق المغربي للتقاعد\n*   **التكلفة:** بالمجان\n*   **الوثائق المطلوبة:**\n    *   نسخة من البطاقة الوطنية.\n    *   وكالة في حالة عدم حضور المعني بالأمر.\n*   **الآجال:**\n    *   فورا: عند حضور المعني بالأمر.\n    *   يومان (2): عند التوصل بالطلب عبر مختلف قنوات التواصل المتاحة (البوابة الإلكترونية للصندوق المغربي للتقاعد، البريد العادي...).\n\n(المصدر: الصندوق المغربي للتقاعد)",
+      "generation_ms": 8944,
+      "prompt_tokens": 665,
+      "output_tokens": 197,
+      "attempts": 1
+    },
+    {
+      "question_id": "s133",
+      "question": "Comment ouvrir un compte en devises au Maroc pour mon entreprise ?",
+      "lang": "fr",
+      "category": "factual",
+      "expected_ids": [
+        "e3103129-5a01-4d26-8d53-17cae5d9e08c"
+      ],
+      "reference": "La procédure concernée est « Ouverture de compte en devises ou en dirham convertible » (Office Des Changes). Documents à fournir : Annexe bancaire dûment remplie, signée et cachetée ; Lettre explicative précisant la banque domiciliataire et le mode de fonctionnement du compte ; Documents justifiant le remboursement des prêts ou dons, accompagnés du contrat de partenariat ; Copie de l'extrait du registre de commerce. Frais : Gratuit. Délai : 60 jours.",
+      "must_include": [
+        "Annexe bancaire dûment remplie, signée et cachetée",
+        "Lettre explicative précisant la banque domiciliataire et le…",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "e3103129-5a01-4d26-8d53-17cae5d9e08c",
+        "f6507197-db0e-46e8-8f2c-3ee5983c7bce",
+        "54e9c765-fc63-45f5-b1d3-65f27442cfe8"
+      ],
+      "retrieved_titles": [
+        "Ouverture de compte en devises ou en dirham convertible",
+        "Ouverture d'un compte de garantie dans le cadre du financement d'un investissement marocain à l'étranger",
+        "Financement de compte en devise ou en dirham convertible"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Ouverture de compte en devises ou en dirham convertible\nDescription: L'Office des Changes propose ce service afin de permettre au bénéficiaire d'effectuer des opérations de change non prévues par les instructions générales de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Formulaire bancaire complété, signé et cacheté\n - Lettre explicative précisant la banque domiciliataire et le mode de fonctionnement du compte (opérations créditrices et débitrices)\n - Documents justifiant le remboursement des prêts ou dons, accompagnés du contrat de partenariat\n - Copie de l'extrait du registre de commerce (modèle 7) et/ou du certificat d'identification unique\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Ouverture d'un compte de garantie dans le cadre du financement d'un investissement marocain à l'étranger\nDescription: Autorisation accordée au bénéficiaire pour effectuer des opérations de change non prévues par les instructions générales des opérations de change\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Contrat d'achat d'actions\n - États financiers de l'entreprise concernée\n - États financiers du demandeur\n - Copie de l'extrait du registre du commerce (modèle 7) et/ou du certificat d'identification unifié\n - Statuts constitutifs de l'entreprise concernée\n - Lettre explicative décrivant le mode de fonctionnement du compte\n - Étude de faisabilité\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Financement de compte en devise ou en dirham convertible\nDescription: L’Office des Changes propose ce service afin de permettre au bénéficiaire d’effectuer des opérations de change non prévues par les instructions générales des opérations de change\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Formulaire bancaire complété, signé et cacheté\n - Lettre explicative\n - Relevé actualisé des comptes concernés par le financement\n - Formulaire bancaire de cession de devises étrangères\n - Copie de l'extrait du registre de commerce (modèle 7 et/ou attestation d'identification unique de l'entreprise)\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 211,
+      "answer": "Pour ouvrir un compte en devises ou en dirham convertible pour votre entreprise au Maroc, vous devez suivre la procédure de l'Office Des Changes.\n\n**Administration:** Office Des Changes\n**Frais:** Gratuit\n**Délai:** 60 jours\n\n**Documents requis:**\n*   Formulaire bancaire complété, signé et cacheté\n*   Lettre explicative précisant la banque domiciliataire et le mode de fonctionnement du compte (opérations créditrices et débitrices)\n*   Documents justifiant le remboursement des prêts ou dons, accompagnés du contrat de partenariat\n*   Copie de l'extrait du registre de commerce (modèle 7) et/ou du certificat d'identification unique\n\nLes étapes spécifiques ne sont pas précisées dans les informations fournies par l'Office Des Changes.",
+      "generation_ms": 8403,
+      "prompt_tokens": 693,
+      "output_tokens": 170,
+      "attempts": 1
+    },
+    {
+      "question_id": "s134",
+      "question": "كيف أفتح اعتمادا مستنديا لاستيراد بضائع من الخارج؟",
+      "lang": "ar",
+      "category": "factual",
+      "expected_ids": [
+        "7aa263ce-f406-4c6a-b586-8ca338f6b8f3"
+      ],
+      "reference": "الإجراء المعني هو « فتح اعتماد مستندي » (مكتب الصرف). الوثائق المطلوبة: ملحق بنكي معبأ وموقع ومختوم ؛ طلب فتح اعتماد مستندي لدى البنك ؛ نسخة من الفواتير و/ أو عقد تجاري ؛ نسخة من مستخرج السجل التجاري ؛ التزام استيراد موطن ؛ وثيقة تثبت شحن البضاعة نحو المغرب. الرسوم: بالمجان. الآجال: 60 يوما.",
+      "must_include": [
+        "ملحق بنكي معبأ وموقع ومختوم",
+        "طلب فتح اعتماد مستندي لدى البنك",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "7aa263ce-f406-4c6a-b586-8ca338f6b8f3",
+        "f6507197-db0e-46e8-8f2c-3ee5983c7bce",
+        "2e9a5c59-3279-4716-91ca-057b50d0912a"
+      ],
+      "retrieved_titles": [
+        "Ouverture de crédit documentaire",
+        "Ouverture d'un compte de garantie dans le cadre du financement d'un investissement marocain à l'étranger",
+        "Ouverture de compte à l'étranger dans le cadre d'un financement étranger"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: فتح اعتماد مستندي\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - ملحق بنكي معبأ وموقع ومختوم\n - طلب فتح اعتماد مستندي لدى البنك\n - نسخة من الفواتير و/ أو عقد تجاري\n - نسخة من مستخرج السجل التجاري (نموذج 7 و/ أو شهادة التعريف الموحد للمقاولة)\n - التزام استيراد موطن\n - وثيقة تثبت شحن البضاعة نحو المغرب\nÉtapes:\nغير محدد",
+        "PROCÉDURE: فتح حساب ضمان في إطار تمويل استثمار مغربي بالخارج\nDescription: الترخيص للمستفيد القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - عقد شراء الأسهم\n - القوائم المالية  للمنشاة  المعنية\n - القوائم المالية لمقدم الطلب\n - نسخة لمستخرج السجل التجاري (نموذج 7) و / أو شهادة التعريف الموحد\n - النظام الأساسي التأسيسي  للمنشاة  المعنية\n - رسالة توضيحية تبرز طريقة اشتغال الحساب\n - دراسة الجدوى\nÉtapes:\nغير محدد",
+        "PROCÉDURE: فتح حساب بالخارج في إطار تمويل أجنبي\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - عقد القرض ينص على إلزامية فتح حساب من طرف المستفيد\n - نسخة لمستخرج السجل التجاري (نموذج 7) و / أو شهادة التعريف الموحد\n - رسالة توضيحية تبرز طريقة اشتغال الحساب\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 312,
+      "answer": "لفتح اعتماد مستندي، يجب عليك تقديم الوثائق التالية:\n*   ملحق بنكي معبأ وموقع ومختوم\n*   طلب فتح اعتماد مستندي لدى البنك\n*   نسخة من الفواتير و/ أو عقد تجاري\n*   نسخة من مستخرج السجل التجاري (نموذج 7 و/ أو شهادة التعريف الموحد للمقاولة)\n*   التزام استيراد موطن\n*   وثيقة تثبت شحن البضاعة نحو المغرب\n\nهذه الخدمة مقدمة من طرف **مكتب الصرف**.\nالرسوم: بالمجان.\nالمدة الزمنية: 60 يوما.\nالخطوات: غير محددة.",
+      "generation_ms": 7605,
+      "prompt_tokens": 679,
+      "output_tokens": 155,
+      "attempts": 1
+    },
+    {
+      "question_id": "s135",
+      "question": "Mon fournisseur chinois exige d'être payé avant l'expédition, puis-je payer d'avance une importation ?",
+      "lang": "fr",
+      "category": "ambiguous",
+      "expected_ids": [
+        "95847f3f-af9e-4da8-8ad6-37117637776d",
+        "ce14c280-aeea-4cff-a8d2-20e6a68fda8c"
+      ],
+      "reference": "La procédure concernée est « Paiement anticipé à l'importation » (Office Des Changes). Documents à fournir : Copie du contrat de marché, en cas d’importation réalisée dans le cadre d’un marché ; Annexe bancaire dûment remplie, signée et cachetée ; Copie de l’extrait du registre de commerce ; Copie des factures et/ou d’un contrat commercial précisant les conditions de paiement. Frais : Gratuit. Délai : 60 jours. Selon la situation exacte, la procédure « Paiement d’une avance au titre d’une opération d’importation » peut aussi s'appliquer.",
+      "must_include": [
+        "Copie du contrat de marché, en cas d’importation réalisée…",
+        "Annexe bancaire dûment remplie, signée et cachetée",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "95847f3f-af9e-4da8-8ad6-37117637776d",
+        "d50a0f0a-7eb6-485b-893b-2e047e6cab93",
+        "ce14c280-aeea-4cff-a8d2-20e6a68fda8c"
+      ],
+      "retrieved_titles": [
+        "Paiement anticipé à l'importation",
+        "Paiement anticipé des droits de transport maritime",
+        "Paiement d’une avance au titre d’une opération d’importation"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Paiement anticipé à l'importation\nDescription: L'Office des Changes fournit ce service afin de permettre au bénéficiaire d'effectuer des opérations de change non prévues par les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Copie du contrat de marché, en cas d’importation réalisée dans le cadre d’un marché\n - Formulaire bancaire complété, signé et cacheté\n - Copie de l'extrait du registre de commerce (modèle 7 et/ou attestation d'identification unique de l'entreprise)\n - Copie des factures et/ou d’un contrat commercial précisant les conditions de paiement\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Paiement anticipé des droits de transport maritime\nDescription: L'Office des Changes offre ce service afin de permettre au bénéficiaire d'effectuer des opérations de change non prévues dans les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Copie de l'extrait du registre de commerce (modèle 7 et/ou attestation d'identification unique de l'entreprise)\n - Copie des factures relatives aux frais de transport maritime indiquant le paiement anticipé\n - Formulaire bancaire complété, signé et cacheté\n - Engagement d'importation comportant les conditions douanières\n - Copie des factures d'importation\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Paiement d’une avance au titre d’une opération d’importation\nDescription: L’Office des Changes propose ce service afin de permettre au bénéficiaire d’effectuer des opérations de change non prévues par les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Formulaire bancaire complété, signé et cacheté\n - Copie de l'extrait du registre de commerce (modèle 7 et/ou attestation d'identification unique de l'entreprise)\n - Copie des factures et/ou d’un contrat commercial précisant les conditions de paiement\n - Engagement d’importation domicilié (en cas d’importation de marchandises)\n - Attestation bancaire indiquant les montants payés au titre de l’opération d’importation\n - Copie du contrat du marché (en cas d’importation effectuée dans le cadre d’un marché)\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 250,
+      "answer": "Oui, il est possible de payer d'avance une importation. L'Office des Changes propose des services pour cela.\n\nDeux procédures peuvent s'appliquer :\n\n1.  **Paiement anticipé à l'importation**\n    *   **Description**: Ce service permet au bénéficiaire d'effectuer des opérations de change non prévues par les instructions générales des opérations de change.\n    *   **Administration**: Office Des Changes\n    *   **Frais**: Gratuit\n    *   **Délai**: 60 jours\n    *   **Documents requis**:\n        *   Copie du contrat de marché, en cas d’importation réalisée dans le cadre d’un marché\n        *   Formulaire bancaire complété, signé et cacheté\n        *   Copie de l'extrait du registre de commerce (modèle 7 et/ou attestation d'identification unique de l'entreprise)\n        *   Copie des factures et/ou d’un contrat commercial précisant les conditions de paiement\n\n2.  **Paiement d’une avance au titre d’une opération d’importation**\n    *   **Description**: Ce service permet au bénéficiaire d’effectuer des opérations de change non prévues par les instructions générales des opérations de change.\n    *   **Administration**: Office Des Changes\n    *   **Frais**: Gratuit\n    *   **Délai**: 60 jours\n    *   **Documents requis**:\n        *   Formulaire bancaire complété, signé et cacheté\n        *   Copie de l'extrait du registre de commerce (modèle 7 et/ou attestation d'identification unique de l'entreprise)\n        *   Copie des factures et/ou d’un contrat commercial précisant les conditions de paiement\n        *   Engagement d’importation domicilié (en cas d’importation de marchandises)\n        *   Attestation bancaire indiquant les montants payés au titre de l’opération d’importation\n        *   Copie du contrat du marché (en cas d’importation effectuée dans le cadre d’un marché)\n\nSource: Office Des Changes",
+      "generation_ms": 15785,
+      "prompt_tokens": 760,
+      "output_tokens": 462,
+      "attempts": 1
+    },
+    {
+      "question_id": "s136",
+      "question": "أنا أجنبي وسأغادر المغرب نهائيا، كيف أحول ثمن بيع شقتي إلى الخارج؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "4445de69-0798-49c7-a890-7f9c52db0a27"
+      ],
+      "reference": "الإجراء المعني هو « الأداء في إطار المغادرة النهائية » (مكتب الصرف). الوثائق المطلوبة: ملحق بنكي معبئ وموقع ومختوم ؛ وثائق إثبات مصدر الأموال ؛ عقد شراء العقار ؛ عقد بيع العقار ؛ وثائق إثبات دفع الضرائب و الرسوم ؛ كشف حساب مفصل يبين الرصيد المحيّن. الرسوم: بالمجان. الآجال: 60 يوما.",
+      "must_include": [
+        "ملحق بنكي معبئ وموقع ومختوم",
+        "وثائق إثبات مصدر الأموال",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "0eaac7c2-1454-44e3-8341-106e66801fce",
+        "9a369037-a4f8-4106-954b-555ec53b22a9",
+        "1822ac7b-cb88-4d73-9ae6-cbcdb0384174"
+      ],
+      "retrieved_titles": [
+        "Attestation de l'accomplissement de la déclaration relative aux biens et avoirs constitués à l'étranger par les Marocains résidant à l'étranger ayant transféré leur résidence fiscale au Maroc",
+        "Paiement dans le cadre de marchés à l'étranger",
+        "Allocations pour le paiement des dépenses d'exploitation d'aéronefs à l'étranger"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: إشهاد على استفاء التصريح المتعلق بالممتلكات و الموجودات المنشأة بالخارج من لدن المغاربة المقيمين بالخارج والذين قاموا بتحويل إقامتهم الجبائية إلى المغرب\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد (في هذه الحالة: المغاربة المقيمون بالخارج والذين نقلوا إقامتهم الجبائية للمغرب) من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - وثائق تثبت قيمة الملكيات الفكرية و الثقافية و الفنية : كل وثيقة قانونية تثبت تاريخ ملكيتها وكذا قيمتها قبل تاريخ تحويل الإقامة الجبائية إلى المغرب\n - وثائق تثبت فائض  القيمة  عن العقارات: عقود البيع والشراء\n - وثائق تثبت فائض القيمة عن الأصول المالية :  كشف حسابات الأصول المالية أو الوثائق الثبوتية لعمليات بيع وشراء هذه الأصول\n - وثائق تثبت فائض  القيمة  عن الودائع النقدية في حدود قيمة الفوائد\n - المطبوع النموذجي للتصريح بالممتلكات والموجودات المنشأة بالخارج من لدن المغاربة المقيمين بالخارج الذين يقومون بتحويل إقامتهم الجبائية إلى المغرب، طبقا لمقتضيات القانون 63.14 الصادر بتنفيذه الظهير الشريف رقم 1.15.25 بتاريخ 29 من ربيع الآخر 1436 (19فبراير 20\n - شهادة السكنى بالخارج، سند الإقامة، شهادة الشطب من سجلات القنصليات، او البعثات والتمثيليات الديبلوماسية المغربية بالخارج او كل وثيقة تقوم مقامها\n - وثائق تثبت ممارسة نشاط مهني خلال مدة الإقامة بالخارج  على غرار: التصاريح الضريبية، عقد عمل،  بيان الراتب، او كل وثيقة تقوم مقامها\n - وثائق تثبت قيمة الأملاك العقارية: شهادة  تثبت  اقتناء العقار وقيمته او امتلاكه عن طريق الإرث او الهبة قبل تاريخ نقل الإقامة الجبائية إلى المغرب\n - وثائق تثبت قيمة الأصول المالية: كل وثيقة تثبت تاريخ حيازة هذه  الأصول، وقيمة اكتتابها أو شرائها قبل تاريخ تحويل الإ قامة الجبائية إلى المغرب\n - وثائق تثبت مبالغ الودائع النقدية: كشف الحساب البنكي للشهر السابق  لتاريخ تحويل الإ قامة الجبائية إلى المغرب و كشف الحساب البنكي برسم اخر شهر يسبق تاريخ التصريح\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الأداء في إطار الصفقات بالخارج\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - ملحق بنكي معبأ وموقع ومختوم\n - نسخة من الفواتير أو كشف حساب تقديري\n - بيان تقديري للمصاريف\n - الاستمارات البنكية التي تثبت التحويلات المنجزة نحو الخارج، عند الاقتضاء\n - الاستمارات البنكية التي تثبت تحويل المبالغ نحو المغرب، عند الاقتضاء\n - نسخة من عقد الصفقة\n - نسخة من مستخرج السجل التجاري (نموذج 7 و/ أو شهادة التعريف الموحد للمقاولة)\nÉtapes:\nغير محدد",
+        "PROCÉDURE: مخصصات لأجل أداء نفقات استغلال الطائرات في الخارج\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - بيان رقم المعاملات المحقق بالدرهم المغربي وبالعملة الأجنبية\n - ما يثبت تحويل المبالغ نحو المغرب\n - بيان للنفقات المتوقع تحملها في الخارج مقسمة حسب النوع\n - ملحق بنكي معبأ وموقع ومختوم\n - تقرير عن استخدام المبالغ المخصصة السابقة\n - نسخة من مستخرج السجل التجاري (نموذج 7 و/ أو شهادة التعريف الموحد للمقاولة)\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 189,
+      "answer": "عذراً، ليس لدي معلومات حول الإجراءات الرسمية المتعلقة بتحويل ثمن بيع شقة إلى الخارج بالنسبة للأجانب الذين يغادرون المغرب بشكل نهائي، بناءً على الإجراءات المتوفرة لدي.",
+      "generation_ms": 7705,
+      "prompt_tokens": 1244,
+      "output_tokens": 50,
+      "attempts": 1
+    }
+  ]
+}

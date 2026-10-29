@@ -1,5 +1,5 @@
 import uuid
-from sqlalchemy import String, DateTime, Integer, Boolean, ForeignKey, Table, Column
+from sqlalchemy import String, DateTime, Integer, Boolean, ForeignKey, Table, Column, UniqueConstraint, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.dialects.postgresql import JSONB
 from database import Base
@@ -704,3 +704,34 @@ class TokenUsage(Base):
   )
   
   user: Mapped["User | None"] = relationship()
+
+class AgencyCache(Base):
+  __tablename__ = "agency_cache"
+  __table_args__ = (
+    UniqueConstraint("id_administration","city_key", name="uq_agency_cache_admin_city"))
+
+  id_cache = Mapped[str] = mapped_column(
+    String(36),
+    primary_key=True,
+    default=lambda: str(uuid.uuid4())
+  )
+
+  id_administration: Mapped[str] = mapped_column(
+    ForeignKey("administrations.id_administration", ondelete="CASCADE")
+  )
+
+  city_key: Mapped[str] = mapped_column(
+    String(120),index=True
+  )
+
+  city_label: Mapped[str] = mapped_column(
+    String(120)
+  )
+
+  result: Mapped[dict] = mapped_column(JSONB)
+
+  created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+  expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
+  hits: Mapped[int] = mapped_column(Integer, default=0)

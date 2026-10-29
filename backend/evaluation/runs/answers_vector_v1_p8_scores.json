@@ -1,0 +1,919 @@
+{
+  "config": {
+    "experiment_name": "answers_vector_v1_p8",
+    "date": "2026-10-17T19:33:45",
+    "git_commit": null,
+    "dataset": "synthetic_v1.json",
+    "start": 137,
+    "limit": 20,
+    "retrieval_mode": "vector",
+    "top_k": 3,
+    "retrieval_only": false,
+    "llm_model": "gemini-2.5-flash",
+    "embedding_model": "BAAI/bge-m3",
+    "scored_from": "answers_vector_v1_p8.json",
+    "judge": {
+      "model": "deepseek-flash",
+      "base_url": "https://api.deepseek.com",
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "temperature": 0.0,
+      "ragas_version": "0.4.3",
+      "embedding_model": "BAAI/bge-m3"
+    },
+    "metrics": [
+      "answer_relevancy",
+      "context_precision",
+      "context_recall",
+      "faithfulness",
+      "language_match",
+      "refusal"
+    ],
+    "scoring_date": "2026-10-17T19:56:54",
+    "judge_usage_last_session": {
+      "calls": 137,
+      "prompt_tokens": 190662,
+      "completion_tokens": 27694,
+      "reasoning_tokens": 0,
+      "cache_hit_tokens": 88960,
+      "estimated_cost_usd": 0.0904
+    }
+  },
+  "rows": [
+    {
+      "question_id": "s137",
+      "question": "Suite à un litige avec un fournisseur étranger, nous devons lui payer une indemnité, quelle autorisation faut-il ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "80c7af06-e250-41f1-8a93-71e946094009"
+      ],
+      "reference": "La procédure concernée est « Paiement découlant d’un litige commercial » (Office Des Changes). Documents à fournir : Tous les documents relatifs au litige ; Annexe bancaire dûment remplie, signée et cachetée ; Engagement d’importation incluant les restrictions douanières ; Copie des factures et/ou du contrat commercial ; Copie de l’extrait du registre de commerce. Frais : Gratuit. Délai : 60 jours.",
+      "must_include": [
+        "Tous les documents relatifs au litige",
+        "Annexe bancaire dûment remplie, signée et cachetée",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "7a0d7977-4c9a-4b25-b495-98a863b04e9c",
+        "80c7af06-e250-41f1-8a93-71e946094009",
+        "dfdb0654-ec4b-46c0-b119-9f117fda9aff"
+      ],
+      "retrieved_titles": [
+        "Paiement d'indemnités pour dommages causés à un quai portuaire à l'étranger",
+        "Paiement découlant d’un litige commercial",
+        "Paiement des indemnités dues aux participants étrangers par les associations ou clubs sportifs"
+      ],
+      "rank": 2,
+      "contexts": [
+        "PROCÉDURE: Paiement d'indemnités pour dommages causés à un quai portuaire à l'étranger\nDescription: Autorisation accordée à l'usager pour effectuer des opérations de change non prévues dans les instructions générales des opérations de change\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Annexe bancaire remplie, signée et cachetée\n - Copie du jugement ou de l'acte de conciliation, le cas échéant\n - Rapport d'expertise\n - Copie de l'extrait du registre de commerce (modèle 7 et/ou attestation d'identification unique de l'entreprise)\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Paiement découlant d’un litige commercial\nDescription: Ce service permet au bénéficiaire de réaliser des opérations de change non couvertes par les instructions générales relatives aux opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Tous les documents relatifs au litige\n - Formulaire bancaire complété, signé et cacheté\n - Engagement d'importation mentionnant les restrictions douanières\n - Copie des factures et/ou du contrat commercial\n - Copie de l'extrait du registre de commerce (modèle 7 et/ou attestation d'identification unique de l'entreprise)\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Paiement des indemnités dues aux participants étrangers par les associations ou clubs sportifs\nDescription: L'Office des Changes fournit ce service afin de permettre au bénéficiaire d'effectuer des opérations de change non prévues par les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Formulaire bancaire complété, signé et cacheté\n - Copie des factures et/ou du contrat\n - Copie de l'extrait du registre de commerce (modèle 7 et/ou attestation d'identification unique de l'entreprise)\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 2278,
+      "answer": "Pour le paiement d'une indemnité suite à un litige avec un fournisseur étranger, la procédure correspondante est le **Paiement découlant d’un litige commercial**.\n\nCette autorisation est délivrée par l'**Office Des Changes**.\n\n*   **Frais :** Gratuit\n*   **Délai :** 60 jours\n\n**Documents requis :**\n*   Tous les documents relatifs au litige\n*   Formulaire bancaire complété, signé et cacheté\n*   Engagement d'importation mentionnant les restrictions douanières\n*   Copie des factures et/ou du contrat commercial\n*   Copie de l'extrait du registre de commerce (modèle 7 et/ou attestation d'identification unique de l'entreprise)\n\nSource : Office Des Changes",
+      "generation_ms": 8944,
+      "prompt_tokens": 661,
+      "output_tokens": 173,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8572,
+        "context_precision": 0.5,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s138",
+      "question": "شركتنا تنظم مهرجانا وتريد أداء أجور فنانين أجانب، ما هو الإجراء؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "630adca4-a77e-4cb3-adf4-38d72f6ad75c"
+      ],
+      "reference": "الإجراء المعني هو « أداء أجور الفنانين من طرف جهات خاصة » (مكتب الصرف). الوثائق المطلوبة: ملحق بنكي معبأ وموقع ومختوم ؛ نسخة من الفواتير و/ أو العقد ؛ نسخة من مستخرج السجل التجاري. الرسوم: بالمجان. الآجال: 60 يوما.",
+      "must_include": [
+        "ملحق بنكي معبأ وموقع ومختوم",
+        "نسخة من الفواتير و/ أو العقد",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "630adca4-a77e-4cb3-adf4-38d72f6ad75c",
+        "dfdb0654-ec4b-46c0-b119-9f117fda9aff",
+        "46a9655f-1786-4cb1-8d88-0e8d9bff22c1"
+      ],
+      "retrieved_titles": [
+        "Paiement des cachets des artistes par des entités privées",
+        "Paiement des indemnités dues aux participants étrangers par les associations ou clubs sportifs",
+        "Paiement au titre du remboursement des frais de voyage des salariés étrangers au Maroc"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: أداء أجور الفنانين من طرف جهات خاصة\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - ملحق بنكي معبأ وموقع ومختوم\n - نسخة من الفواتير و/أو العقد\n - نسخة من مستخرج السجل التجاري (نموذج 7 و/ أو شهادة التعريف الموحد للمقاولة)\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الأداء من قبل الجمعيات أو الأندية الرياضية للتعويضات المستحقة للمشاركين الأجانب\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - ملحق بنكي معبأ وموقع ومختوم\n - نسخة من الفواتير و/أو العقد\n - نسخة من مستخرج السجل التجاري (نموذج 7 و/ أو شهادة التعريف الموحد للمقاولة)\nÉtapes:\nغير محدد",
+        "PROCÉDURE: أداء برسم استرجاع مصاريف السفر للأجانب المستخدمين بالمغرب في إطار عقد شغل\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - ملحق بنكي معبأ وموقع ومختوم\n - فاتورة منجزة من طرف الشركة الأجنبية (المشغل الأصلي)\n - فاتورة منجزة من طرف الشركة الأجنبية باسم الشركة المغربية برسم الاسترجاع\n - نسخة من تذاكر الطائرة أو أي وثيقة تقوم مقامها\n - عقد شغل ينص على أن مصاريف السفر تتحملها الشركة المغربية أو شهادة تحمل هذه المصاريف\n - إتباث أداء هذه المصاريف من طرف الشركة المشغلة الأصلية أو من طرف الأجير الأجنبي\n - نسخة من مستخرج السجل التجاري (نموذج 7 و/ أو شهادة التعريف الموحد للمقاولة)\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 383,
+      "answer": "للشركتك التي تنظم مهرجانا وترغب في أداء أجور فنانين، يمكنك الاطلاع على الإجراء التالي الذي يقدمه مكتب الصرف:\n\n**الإجراء:** أداء أجور الفنانين من طرف جهات خاصة\n\n**الوصف:** يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف.\n\n**الإدارة:** مكتب الصرف\n\n**الرسوم:** بالمجان\n\n**المدة الزمنية:** 60 يوما\n\n**الوثائق المطلوبة:**\n*   ملحق بنكي معبأ وموقع ومختوم.\n*   نسخة من الفواتير و/أو العقد.\n*   نسخة من مستخرج السجل التجاري (نموذج 7 و/ أو شهادة التعريف الموحد للمقاولة).\n\n**ملاحظة:** الخطوات غير محددة ضمن المعلومات المتوفرة.",
+      "generation_ms": 8820,
+      "prompt_tokens": 749,
+      "output_tokens": 206,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.8462,
+        "answer_relevancy": 0.6953,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s139",
+      "question": "Nos ingénieurs partent en mission à l'étranger, comment leur transférer les frais de mission ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "be01aa1e-6dc7-4ec2-8838-6d8855d2d365"
+      ],
+      "reference": "La procédure concernée est « Paiement des frais de mission à l'étranger pour les employés marocains » (Office Des Changes). Documents à fournir : Imprimé bancaire dûment rempli, signé et cacheté ; Contrat de travail ; Documents justificatifs des frais de mission à l'étranger ; Copie de la carte d'identité. Frais : Gratuit. Délai : 60 jours.",
+      "must_include": [
+        "Imprimé bancaire dûment rempli, signé et cacheté",
+        "Contrat de travail",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "be01aa1e-6dc7-4ec2-8838-6d8855d2d365",
+        "1822ac7b-cb88-4d73-9ae6-cbcdb0384174",
+        "46a9655f-1786-4cb1-8d88-0e8d9bff22c1"
+      ],
+      "retrieved_titles": [
+        "Paiement des frais de mission à l'étranger pour les employés marocains",
+        "Allocations pour le paiement des dépenses d'exploitation d'aéronefs à l'étranger",
+        "Paiement au titre du remboursement des frais de voyage des salariés étrangers au Maroc"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Paiement des frais de mission à l'étranger pour les employés marocains\nDescription: L'Office des Changes propose ce service afin de permettre au bénéficiaire de réaliser des opérations de change non prévues par les instructions générales relatives aux opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Imprimé bancaire dûment rempli, signé et cacheté\n - Contrat de travail\n - Documents justificatifs des frais de mission à l'étranger\n - Copie de la carte d'identité\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Allocations pour le paiement des dépenses d'exploitation d'aéronefs à l'étranger\nDescription: L'Office des Changes propose ce service afin de permettre au bénéficiaire d'effectuer des opérations de change non prévues par les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - État du chiffre d'affaires réalisé en dirhams marocains et en devises\n - Justificatif de transfert des montants vers le Maroc\n - État des dépenses prévisionnelles à supporter à l'étranger, ventilé par nature\n - Formulaire bancaire complété, signé et cacheté\n - Rapport sur l'utilisation des allocations précédentes\n - Copie de l'extrait du registre de commerce (modèle 7 et/ou attestation d'identification unique de l'entreprise)\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Paiement au titre du remboursement des frais de voyage des salariés étrangers au Maroc\nDescription: L'Office des Changes fournit ce service afin de permettre au bénéficiaire d'effectuer des opérations de change non prévues par les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Formulaire bancaire complété, signé et cacheté\n - Facture établie par la société étrangère (employeur d'origine)\n - Facture établie par la société étrangère au nom de la société marocaine pour le remboursement\n - Copie des billets d'avion ou de tout document en tenant lieu\n - Contrat de travail stipulant que les frais de voyage sont à la charge de la société marocaine ou une attestation de prise en charge de ces frais\n - Justificatif du paiement de ces frais par la société employeuse d'origine ou par le salarié étranger\n - Copie de l'extrait du registre de commerce (modèle 7 et/ou attestation d'identification unique de l'entreprise)\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 612,
+      "answer": "Pour transférer les frais de mission de vos ingénieurs partant à l'étranger, vous pouvez suivre la procédure de \"Paiement des frais de mission à l'étranger pour les employés marocains\".\n\nCette procédure est proposée par l'**Office Des Changes**.\n\nVoici les détails :\n*   **Frais :** Gratuit\n*   **Délai :** 60 jours\n\n**Documents requis :**\n*   Imprimé bancaire dûment rempli, signé et cacheté\n*   Contrat de travail\n*   Documents justificatifs des frais de mission à l'étranger\n*   Copie de la carte d'identité\n\nLes étapes spécifiques ne sont pas précisées dans les informations fournies.",
+      "generation_ms": 6996,
+      "prompt_tokens": 774,
+      "output_tokens": 154,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8685,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s140",
+      "question": "ابني طالب في كندا ويسكن مع زملائه في شقة مشتركة، كيف أحول له مصاريف الكراء؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "5829800b-9d38-4c12-a671-38b2182f67d9"
+      ],
+      "reference": "الإجراء المعني هو « أداء مصاريف إيجار الطلبة في إطار عقود الكراء المشترك » (مكتب الصرف). الوثائق المطلوبة: نسخة من عقد السكن المشترك ؛ ملحق بنكي معبأ وموقع ومختوم ؛ شهادة التسجيل ؛ نسخة من بطاقة الهوية. الرسوم: بالمجان. الآجال: 60 يوما.",
+      "must_include": [
+        "نسخة من عقد السكن المشترك",
+        "ملحق بنكي معبأ وموقع ومختوم",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "5829800b-9d38-4c12-a671-38b2182f67d9",
+        "9fa40266-4ef6-413e-be1f-d699f5ebd497",
+        "bdc95ffb-2ba3-4b02-8b5a-a51c43348011"
+      ],
+      "retrieved_titles": [
+        "Paiement des frais de loyer des étudiants dans le cadre de contrats de colocation",
+        "Paiement des frais de séjour et de loyer dans le cadre d’un programme d’échange culturel d’une durée maximale de 6 mois",
+        "Paiement des frais de séjour sur un compte bancaire dédié par l'université"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: أداء مصاريف إيجار الطلبة في إطار عقود الكراء المشترك\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - نسخة من عقد السكن المشترك\n - ملحق بنكي معبأ وموقع ومختوم\n - شهادة التسجيل\n - نسخة من بطاقة الهوية\nÉtapes:\nغير محدد",
+        "PROCÉDURE: أداء مصاريف الإقامة والكراء في إطار برنامج تبادل ثقافي لمدة أقصاها 6 أشهر\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - عقد الكراء\n - نسخة من بطاقة الهوية\n - شهادة مسلمة من طرف جامعة أو مؤسسة تعليمية مغربية تشير إلى مدة إقامة الطالب بالخارج أو دعوة من طرف المؤسسة المضيفة تحدد المدة\n - ملحق بنكي معبأ وموقع ومختوم\nÉtapes:\nغير محدد",
+        "PROCÉDURE: أداء مصاريف الإقامة في حساب بنكي مخصص من طرف الجامعة\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - نسخة من بطاقة الهوية\n - شهادة التسجيل أو التسجيل الأولي\n - ملحق بنكي معبأ وموقع ومختوم\n - أي وثيقة صادرة عن السلطة الأجنبية تثبت وجوب تحويل مصاريف الإقامة إلى الحساب البنكي المخصص من طرف الجامعة\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 860,
+      "answer": "لتحويل مصاريف الكراء لابنك الذي يدرس بالخارج ويسكن في شقة مشتركة، يمكنك الاستفادة من خدمة \"أداء مصاريف إيجار الطلبة في إطار عقود الكراء المشترك\" التي يقدمها مكتب الصرف.\n\nالوثائق المطلوبة هي:\n*   نسخة من عقد السكن المشترك\n*   ملحق بنكي معبأ وموقع ومختوم\n*   شهادة التسجيل\n*   نسخة من بطاقة الهوية\n\nهذه الخدمة بالمجان، ويبلغ أجل إنجازها 60 يوماً.\nالخطوات غير محددة في المعلومات المتوفرة.\n\nالمصدر: مكتب الصرف.",
+      "generation_ms": 9715,
+      "prompt_tokens": 658,
+      "output_tokens": 155,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.9091,
+        "answer_relevancy": 0.8691,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s141",
+      "question": "Comment une compagnie aérienne marocaine paie-t-elle ses quotas d'émissions de CO2 à l'étranger ?",
+      "lang": "fr",
+      "category": "factual",
+      "expected_ids": [
+        "5aba86a4-3808-4e81-b9ea-78652927bdcc"
+      ],
+      "reference": "La procédure concernée est « Paiement du quota d'émissions de gaz à effet de serre des compagnies aériennes » (Office Des Changes). Documents à fournir : Copie de l'extrait du registre de commerce ; Annexe bancaire dûment remplie, signée et cachetée ; Copie des factures. Frais : Gratuit. Délai : 60 jours.",
+      "must_include": [
+        "Copie de l'extrait du registre de commerce",
+        "Annexe bancaire dûment remplie, signée et cachetée",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "46a9655f-1786-4cb1-8d88-0e8d9bff22c1",
+        "1822ac7b-cb88-4d73-9ae6-cbcdb0384174",
+        "9b2ec96e-69d5-4a32-b525-9e87ddfa2d8e"
+      ],
+      "retrieved_titles": [
+        "Paiement au titre du remboursement des frais de voyage des salariés étrangers au Maroc",
+        "Allocations pour le paiement des dépenses d'exploitation d'aéronefs à l'étranger",
+        "Paiement de services fournis à l'étranger par une société marocaine au profit de sociétés marocaines de transport routier"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: Paiement au titre du remboursement des frais de voyage des salariés étrangers au Maroc\nDescription: L'Office des Changes fournit ce service afin de permettre au bénéficiaire d'effectuer des opérations de change non prévues par les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Formulaire bancaire complété, signé et cacheté\n - Facture établie par la société étrangère (employeur d'origine)\n - Facture établie par la société étrangère au nom de la société marocaine pour le remboursement\n - Copie des billets d'avion ou de tout document en tenant lieu\n - Contrat de travail stipulant que les frais de voyage sont à la charge de la société marocaine ou une attestation de prise en charge de ces frais\n - Justificatif du paiement de ces frais par la société employeuse d'origine ou par le salarié étranger\n - Copie de l'extrait du registre de commerce (modèle 7 et/ou attestation d'identification unique de l'entreprise)\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Allocations pour le paiement des dépenses d'exploitation d'aéronefs à l'étranger\nDescription: L'Office des Changes propose ce service afin de permettre au bénéficiaire d'effectuer des opérations de change non prévues par les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - État du chiffre d'affaires réalisé en dirhams marocains et en devises\n - Justificatif de transfert des montants vers le Maroc\n - État des dépenses prévisionnelles à supporter à l'étranger, ventilé par nature\n - Formulaire bancaire complété, signé et cacheté\n - Rapport sur l'utilisation des allocations précédentes\n - Copie de l'extrait du registre de commerce (modèle 7 et/ou attestation d'identification unique de l'entreprise)\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Paiement de services fournis à l'étranger par une société marocaine au profit de sociétés marocaines de transport routier\nDescription: L'Office des changes fournit ce service afin de permettre au bénéficiaire d'effectuer des opérations de change non prévues par les instructions générales des opérations de change\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Copie d'un extrait du registre de commerce (modèle 7) et/ou du certificat d'identification unifié de l'entreprise\n - Formulaire bancaire complété, signé et cacheté\n - Détail des rémunérations\n - Contrat\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 475,
+      "answer": "Je n'ai pas d'information sur la procédure spécifique concernant le paiement des quotas d'émissions de CO2 par une compagnie aérienne marocaine à l'étranger parmi les procédures officielles dont je dispose.",
+      "generation_ms": 6918,
+      "prompt_tokens": 798,
+      "output_tokens": 43,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "context_recall": 0.5,
+        "refusal": 1.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s142",
+      "question": "أنا مستثمر أجنبي أملك عقارا مؤجرا في المغرب، كيف أحول مداخيل الكراء إلى الخارج؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "89067fb1-ba32-49b6-90ee-eb2f938a8841"
+      ],
+      "reference": "الإجراء المعني هو « دفع دخول الاستثمارات ( مداخيل الكراء) » (مكتب الصرف). الوثائق المطلوبة: بيان يوضح المبالغ المحصلة عن كل كراء والتكاليف الناتجة عنه، بما في ذلك الضرائب والرسوم المدفوعة. يتم إعداد هذا البيان… ؛ نسخة من عقد الكراء أو أي وثيقة تحل محله، تبين مبلغ الكراء ؛ نسخة من كشف الحساب المفتوح باسم الطالب ؛ وثائق إثبات دفع الضرائب و الرسوم ؛ نسخة لمستخرج السجل التجاري. الرسوم: بالمجان. الآجال: 60 يوما.",
+      "must_include": [
+        "بيان يوضح المبالغ المحصلة عن كل كراء والتكاليف الناتجة عنه،…",
+        "نسخة من عقد الكراء أو أي وثيقة تحل محله، تبين مبلغ الكراء",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "89067fb1-ba32-49b6-90ee-eb2f938a8841",
+        "1822ac7b-cb88-4d73-9ae6-cbcdb0384174",
+        "0eaac7c2-1454-44e3-8341-106e66801fce"
+      ],
+      "retrieved_titles": [
+        "Rapatriement de revenus d'investissement (revenus locatifs)",
+        "Allocations pour le paiement des dépenses d'exploitation d'aéronefs à l'étranger",
+        "Attestation de l'accomplissement de la déclaration relative aux biens et avoirs constitués à l'étranger par les Marocains résidant à l'étranger ayant transféré leur résidence fiscale au Maroc"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: دفع دخول الاستثمارات ( مداخيل الكراء)\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - بيان يوضح المبالغ المحصلة عن كل كراء والتكاليف الناتجة عنه، بما في ذلك الضرائب والرسوم المدفوعة. يتم إعداد هذا البيان من طرف المنشأة المكلفة بالتسيير أو من طرف المالك في الحالة التي لا يكون فيها العقار موضوع تسيير حر\n - نسخة من عقد الكراء أو أي وثيقة تحل محله، تبين مبلغ الكراء\n - نسخة من كشف الحساب المفتوح باسم صاحب الطلب\n - وثائق إثبات دفع الضرائب و الرسوم\n - نسخة لمستخرج السجل التجاري (نموذج 7) و / أو شهادة التعريف الموحد\nÉtapes:\nغير محدد",
+        "PROCÉDURE: مخصصات لأجل أداء نفقات استغلال الطائرات في الخارج\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - بيان رقم المعاملات المحقق بالدرهم المغربي وبالعملة الأجنبية\n - ما يثبت تحويل المبالغ نحو المغرب\n - بيان للنفقات المتوقع تحملها في الخارج مقسمة حسب النوع\n - ملحق بنكي معبأ وموقع ومختوم\n - تقرير عن استخدام المبالغ المخصصة السابقة\n - نسخة من مستخرج السجل التجاري (نموذج 7 و/ أو شهادة التعريف الموحد للمقاولة)\nÉtapes:\nغير محدد",
+        "PROCÉDURE: إشهاد على استفاء التصريح المتعلق بالممتلكات و الموجودات المنشأة بالخارج من لدن المغاربة المقيمين بالخارج والذين قاموا بتحويل إقامتهم الجبائية إلى المغرب\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد (في هذه الحالة: المغاربة المقيمون بالخارج والذين نقلوا إقامتهم الجبائية للمغرب) من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - وثائق تثبت قيمة الملكيات الفكرية و الثقافية و الفنية : كل وثيقة قانونية تثبت تاريخ ملكيتها وكذا قيمتها قبل تاريخ تحويل الإقامة الجبائية إلى المغرب\n - وثائق تثبت فائض  القيمة  عن العقارات: عقود البيع والشراء\n - وثائق تثبت فائض القيمة عن الأصول المالية :  كشف حسابات الأصول المالية أو الوثائق الثبوتية لعمليات بيع وشراء هذه الأصول\n - وثائق تثبت فائض  القيمة  عن الودائع النقدية في حدود قيمة الفوائد\n - المطبوع النموذجي للتصريح بالممتلكات والموجودات المنشأة بالخارج من لدن المغاربة المقيمين بالخارج الذين يقومون بتحويل إقامتهم الجبائية إلى المغرب، طبقا لمقتضيات القانون 63.14 الصادر بتنفيذه الظهير الشريف رقم 1.15.25 بتاريخ 29 من ربيع الآخر 1436 (19فبراير 20\n - شهادة السكنى بالخارج، سند الإقامة، شهادة الشطب من سجلات القنصليات، او البعثات والتمثيليات الديبلوماسية المغربية بالخارج او كل وثيقة تقوم مقامها\n - وثائق تثبت ممارسة نشاط مهني خلال مدة الإقامة بالخارج  على غرار: التصاريح الضريبية، عقد عمل،  بيان الراتب، او كل وثيقة تقوم مقامها\n - وثائق تثبت قيمة الأملاك العقارية: شهادة  تثبت  اقتناء العقار وقيمته او امتلاكه عن طريق الإرث او الهبة قبل تاريخ نقل الإقامة الجبائية إلى المغرب\n - وثائق تثبت قيمة الأصول المالية: كل وثيقة تثبت تاريخ حيازة هذه  الأصول، وقيمة اكتتابها أو شرائها قبل تاريخ تحويل الإ قامة الجبائية إلى المغرب\n - وثائق تثبت مبالغ الودائع النقدية: كشف الحساب البنكي للشهر السابق  لتاريخ تحويل الإ قامة الجبائية إلى المغرب و كشف الحساب البنكي برسم اخر شهر يسبق تاريخ التصريح\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 478,
+      "answer": "لتحويل مداخيل الكراء إلى الخارج بصفتك مستثمراً أجنبياً، يمكنك الاستفادة من خدمة \"دفع دخول الاستثمارات (مداخيل الكراء)\" التي يقدمها مكتب الصرف.\n\n**الإدارة المسؤولة:** مكتب الصرف\n**التكلفة:** بالمجان\n**المدة الزمنية:** 60 يوماً\n\n**الوثائق المطلوبة هي:**\n*   بيان يوضح المبالغ المحصلة عن كل كراء والتكاليف الناتجة عنه، بما في ذلك الضرائب والرسوم المدفوعة. يتم إعداد هذا البيان من طرف المنشأة المكلفة بالتسيير أو من طرف المالك في الحالة التي لا يكون فيها العقار موضوع تسيير حر.\n*   نسخة من عقد الكراء أو أي وثيقة تحل محله، تبين مبلغ الكراء.\n*   نسخة من كشف الحساب المفتوح باسم صاحب الطلب.\n*   وثائق إثبات دفع الضرائب والرسوم.\n*   نسخة لمستخرج السجل التجاري (نموذج 7) و / أو شهادة التعريف الموحد.\n\nمكتب الصرف لا يوفر معلومات محددة حول خطوات هذه العملية.\n\n(المصدر: مكتب الصرف)",
+      "generation_ms": 7980,
+      "prompt_tokens": 1275,
+      "output_tokens": 274,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.9231,
+        "answer_relevancy": 0.9313,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s143",
+      "question": "Notre filiale marocaine veut verser des dividendes à sa maison mère en Espagne, quelles démarches ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "c8871095-2ec7-47b9-8600-5d01d7177750"
+      ],
+      "reference": "La procédure concernée est « Transfert des revenus d'investissement : dividendes distribués ou parts de bénéfices » (Office Des Changes). Documents à fournir : Annexe bancaire dûment remplie, signée et cachetée ; Bilan et compte de produits et charges, visés par l'administration fiscale, ainsi que les documents annexes relatifs à… ; Procès-verbal de l'assemblée générale ordinaire ayant statué sur les résultats de la société, indiquant l'affectation… ; Liste des actionnaires et des administrateurs étrangers ou marocains résidant à l'étranger, mentionnant leur identité,… ; Copie du relevé de compte ouvert au nom du demandeur ; Copie de l'extrait du registre de commerce. Frais : Gratuit. Délai : 60 jours.",
+      "must_include": [
+        "Annexe bancaire dûment remplie, signée et cachetée",
+        "Bilan et compte de produits et charges, visés par…",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "c8871095-2ec7-47b9-8600-5d01d7177750",
+        "dbc36e6b-9272-4918-abcb-a78d9b3f9056",
+        "415003a4-d2a8-43d6-9da1-38aba76d56ae"
+      ],
+      "retrieved_titles": [
+        "Transfert des revenus d'investissement : dividendes distribués ou parts de bénéfices",
+        "Création d’une succursale hors du ressort du tribunal où se trouve le siège de la société mère \n1- Procédure devant le tribunal dans le ressort duquel la succursale ou l’agence est créée",
+        "Participation des employés des filiales et succursales marocaines au capital des sociétés mères étrangères"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Transfert des revenus d'investissement : dividendes distribués ou parts de bénéfices\nDescription: Ce service est destiné à permettre au bénéficiaire de réaliser des opérations de change non prévues par les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Formulaire bancaire complété, signé et cacheté\n - Bilan et compte de produits et charges, visés par l'administration fiscale, ainsi que les documents annexes relatifs à l'exercice concerné par la demande de transfert\n - Procès-verbal de l'assemblée générale ordinaire ayant statué sur les résultats de la société, indiquant l'affectation des bénéfices distribués et le montant des dividendes attribués\n - Liste des actionnaires et des administrateurs étrangers ou marocains résidant à l'étranger, mentionnant leur identité, nationalité, adresse et le nombre de titres détenus par chacun\n - Copie du relevé de compte ouvert au nom du demandeur\n - Copie de l'extrait du registre de commerce (modèle 7) et/ou du certificat d'identification unique\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Création d’une succursale hors du ressort du tribunal où se trouve le siège de la société mère \n1- Procédure devant le tribunal dans le ressort duquel la succursale ou l’agence est créée\nDescription: Immatriculation au registre du commerce conformément aux dispositions légales, le législateur ayant, en vertu de l’article 37 du Code de commerce, obligé l’immatriculation des succursales et agences des entreprises marocaines ou étrangères au registre du commerce.\nDans le cadre du contrôle effectué par le greffier sur les documents et pièces qui lui sont présentés – sauf dans les cas où la conservation des originaux est légalement requise –, le demandeur doit présenter l’original du document, et le greffier se charge de le copier et de le restituer immédiatement à l’intéressé.\nPour ce qui est de la signature des déclarations, contrats et documents soumis à cette procédure, elle doit être faite devant le greffier, lequel indique sur le même document le nom du signataire, le numéro de sa carte nationale et sa qualité, en apposant le sceau du tribunal et la signature du greffier.\nAdministration: Ministère de la Justice\nFrais: Frais d'immatriculation au registre du commerce\n50 dirhams pour le dépôt,\n50 dirhams pour l'inscription.\nDélai: (2) 2 jours\nDocuments requis:\n - Documents de dépôt\n - Copie de la décision de création de la succursale ou de l’agence portant nomination du gérant, signée et enregistrée auprès de l’administration de l’enregistrement.\n - Original du certificat négatif (datant de moins de 90 jours), le cas échéant.\n - Documents d'inscription\n - Certificat original d’inscription à la taxe professionnelle.\n - Copie de l’autorisation ou du diplôme, ou des deux, si l’activité est réglementée.\n - Copie du contrat de bail, du contrat de domiciliation ou de tout autre document justifiant l’existence du local.\n - Copie de la carte d’identité nationale pour le gérant, ou copie de la carte d’immatriculation pour les étrangers résidents, ou copie du passeport ou de tout document en tenant lieu justifiant de l’identité pour les étrangers non-résidents.\n - Déclaration (modèle 3.1) rédigée et signée par le déclarant ou son mandataire muni d’une procuration écrite.\n - Procuration écrite en cas d’inscription par mandataire (Note : la procuration doit être enregistrée auprès de l’administration de l’enregistrement).\n - Copie du document d'identité du mandataire en cas de dépôt par mandataire\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Participation des employés des filiales et succursales marocaines au capital des sociétés mères étrangères\nDescription: L'Office des Changes propose ce service afin de permettre au bénéficiaire d'effectuer des opérations de change non prévues par les instructions générales relatives aux opérations de change\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Copie de l'extrait du registre de commerce (modèle 7) et/ou du certificat d'identification unique\n - Engagement signé et dûment légalisé de la société et des souscripteurs\n - Formulaire bancaire complété, signé et cacheté\n - Déclaration de répartition du capital\n - Liste des employés souscripteurs indiquant leur identité, âge, numéro de carte d'identité nationale, salaire net annuel et montant de la participation\n - Rapport sur les opérations de participation antérieures autorisées\n - Note de présentation du plan de participation\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 390,
+      "answer": "Pour le versement de dividendes de votre filiale marocaine à sa maison mère en Espagne, la procédure applicable est le \"Transfert des revenus d'investissement : dividendes distribués ou parts de bénéfices\".\n\nCe service est destiné à permettre au bénéficiaire de réaliser des opérations de change non prévues par les instructions générales des opérations de change.\n\n**Administration compétente :** Office Des Changes\n**Frais :** Gratuit\n**Délai :** 60 jours\n\n**Documents requis :**\n*   Formulaire bancaire complété, signé et cacheté\n*   Bilan et compte de produits et charges, visés par l'administration fiscale, ainsi que les documents annexes relatifs à l'exercice concerné par la demande de transfert\n*   Procès-verbal de l'assemblée générale ordinaire ayant statué sur les résultats de la société, indiquant l'affectation des bénéfices distribués et le montant des dividendes attribués\n*   Liste des actionnaires et des administrateurs étrangers ou marocains résidant à l'étranger, mentionnant leur identité, nationalité, adresse et le nombre de titres détenus par chacun\n*   Copie du relevé de compte ouvert au nom du demandeur\n*   Copie de l'extrait du registre de commerce (modèle 7) et/ou du certificat d'identification unique\n\nLes étapes de cette procédure ne sont pas spécifiées dans les informations disponibles.\n\n**Source :** Office Des Changes",
+      "generation_ms": 7135,
+      "prompt_tokens": 1270,
+      "output_tokens": 312,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 0.9231,
+        "answer_relevancy": 0.9344,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s144",
+      "question": "Mon mari, assuré à la CNSS, est décédé et je suis la représentante légale de nos enfants, comment récupérer ses cotisations ?",
+      "lang": "fr",
+      "category": "ambiguous",
+      "expected_ids": [
+        "2f63b0d6-ec89-4aeb-99fd-2b79e5a8dcd2",
+        "46d3038e-7fe6-4c92-965a-be5a5ac97f85"
+      ],
+      "reference": "La procédure concernée est « Remboursement des cotisations salariales des ayants droit (représentant légal des enfants) – Expertise » (Caisse Nationale De La Sécurité Sociale). Documents à fournir : Demande de remboursement des cotisations salariales des ayants droit ; Copie de la carte d’immatriculation à la Caisse Nationale de Sécurité Sociale de l’assuré décédé. ; Copie de la carte d’identité nationale électronique ; Certificat de décès de l’assuré. ; Pour les travailleurs des mines, attestation justifiant d’un travail souterrain d’une durée d’au moins cinq ans, pour… ; Acte de naissance.. Frais : Gratuit. Délai : 3 mois et demi. Selon la situation exacte, la procédure « Remboursement des cotisations salariales pour les ayants droit (veuve ou veuf) (Expertise) » peut aussi s'appliquer.",
+      "must_include": [
+        "Demande de remboursement des cotisations salariales des…",
+        "Copie de la carte d’immatriculation à la Caisse Nationale…",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "72fdad59-47ba-49ca-8d1e-3529082995f3",
+        "2f63b0d6-ec89-4aeb-99fd-2b79e5a8dcd2",
+        "1abad8a6-2510-48a7-8606-3c257c0b45cd"
+      ],
+      "retrieved_titles": [
+        "Remboursement des cotisations salariales pour les ayants droit (personne divorcée ayant la charge d’enfants) (Expertise)",
+        "Remboursement des cotisations salariales des ayants droit (représentant légal des enfants) – Expertise",
+        "Remboursement des cotisations salariales pour ayants droit (enfants majeurs) (Expertise)"
+      ],
+      "rank": 2,
+      "contexts": [
+        "PROCÉDURE: Remboursement des cotisations salariales pour les ayants droit (personne divorcée ayant la charge d’enfants) (Expertise)\nDescription: Objet : Bénéficier du remboursement du montant des cotisations salariales pour les ayants droit (personne divorcée ayant la charge d’enfants).\nCette décision est soumise aux dispositions du décret n° 2.22.386 fixant la liste des décisions administratives pour lesquelles le traitement des demandes nécessite la prorogation du délai légal de délivrance, en raison de la réalisation d’une expertise technique ou d’une enquête publique.\nAdministration: Caisse Nationale De La Sécurité Sociale\nFrais: Gratuit\nDélai: 3 mois et demi\nDocuments requis:\n - Demande de remboursement des cotisations salariales pour ayants droit (formulaire 33-1-310)\n - Copie de la carte d’immatriculation à la Caisse Nationale de Sécurité Sociale de l’assuré décédé.\n - Copie de la carte d’identité nationale électronique (ou du titre de séjour pour les étrangers (carte de séjour ou carte d’immatriculation)) de l’assuré décédé.\n - Certificat de décès de l’assuré.\n - Pour les travailleurs des mines, attestation justifiant d’un travail souterrain d’une durée d’au moins cinq ans, pour bénéficier de l’indemnité à partir de 55 ans.\n - Acte de naissance.\n - Certificat de scolarité pour les enfants âgés de 16 à 21 ans.\n - Attestation de formation professionnelle pour les enfants âgés de 16 à 18 ans.\n - Certificat médical délivré par un médecin spécialiste attestant de l’incapacité de l’enfant à poursuivre ses études ou à suivre une formation professionnelle, pour l’enfant malade ou en situation de handicap âgé de 16 à 21 ans.\n - Certificat médical délivré par un médecin spécialiste et validé par la commission médicale régionale, pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans.\n - Déclaration sur l’honneur des parents attestant de l’absence de revenus suffisants (formulaire 310-1-42) pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans\n - Copie de l’acte de divorce\n - Attestation de garde d’enfants si la garde n’est pas mentionnée dans l’acte de divorce\n - Relevé d’identité bancaire personnel ou spécimen de chèque (si non fourni antérieurement à la Caisse Nationale de Sécurité Sociale)\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Remboursement des cotisations salariales des ayants droit (représentant légal des enfants) – Expertise\nDescription: Finalité : Bénéficier du remboursement des cotisations salariales des ayants droit (représentant légal des enfants).\nCette décision est soumise aux dispositions du décret n° 2.22.386 fixant la liste des décisions administratives pour lesquelles le traitement des demandes y afférentes nécessite une prorogation du délai légal de délivrance, en raison de la réalisation d’une expertise technique ou d’une enquête publique.\nAdministration: Caisse Nationale De La Sécurité Sociale\nFrais: Gratuit\nDélai: 3 mois et demi\nDocuments requis:\n - Demande de remboursement des cotisations salariales des ayants droit (formulaire 310-1-33).\n - Copie de la carte d’immatriculation à la Caisse Nationale de Sécurité Sociale de l’assuré décédé.\n - Copie de la carte d’identité nationale électronique (ou du titre de séjour pour les étrangers (carte de séjour ou carte d’immatriculation)) de l’assuré décédé.\n - Certificat de décès de l’assuré.\n - Pour les travailleurs des mines, attestation justifiant d’un travail souterrain d’une durée d’au moins cinq ans, pour bénéficier de l’indemnité à partir de 55 ans.\n - Acte de naissance.\n - Certificat de scolarité pour les enfants âgés de 16 à 21 ans.\n - Attestation de formation professionnelle pour les enfants âgés de 16 à 18 ans.\n - Certificat médical délivré par un médecin spécialiste attestant de l’incapacité de l’enfant à poursuivre ses études ou à suivre une formation professionnelle, pour l’enfant malade ou en situation de handicap âgé de 16 à 21 ans.\n - Certificat médical délivré par un médecin spécialiste et validé par la commission médicale régionale, pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans.\n - Déclaration sur l’honneur attestant que le demandeur ne dispose pas de revenus suffisants (formulaire 310-1-42), pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans.\n - Certificat de décès du père ou de la mère.\n - Copie de la carte d’identité nationale électronique (ou du titre de séjour pour les étrangers (carte de séjour ou carte d’immatriculation)) du représentant légal des enfants.\n - Demande de tutelle des mineurs.\n - Attestation bancaire personnelle ou spécimen de chèque au nom du demandeur.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Remboursement des cotisations salariales pour ayants droit (enfants majeurs) (Expertise)\nDescription: Objectif : bénéficier du remboursement du montant des cotisations salariales pour les ayants droit (enfants majeurs).\nCette décision est soumise aux dispositions du décret n° 2.22.386 fixant la liste des décisions administratives nécessitant, pour le traitement des demandes y afférentes, la prorogation du délai légal de délivrance pour réaliser une expertise technique ou une enquête publique.\nAdministration: Caisse Nationale De La Sécurité Sociale\nFrais: Gratuit\nDélai: 3 mois et demi\nDocuments requis:\n - Demande de remboursement du montant des cotisations salariales pour ayants droit (310-1-33)\n - Copie de la carte d’immatriculation à la Caisse Nationale de Sécurité Sociale de l’assuré décédé.\n - Copie de la carte d’identité nationale électronique (ou du titre de séjour pour les étrangers (carte de séjour ou carte d’immatriculation)) de l’assuré décédé.\n - Certificat de décès de l’assuré.\n - Pour les travailleurs des mines, attestation justifiant d’un travail souterrain d’une durée d’au moins cinq ans, pour bénéficier de l’indemnité à partir de 55 ans.\n - Acte de naissance.\n - Certificat de scolarité pour les enfants âgés de 16 à 21 ans.\n - Attestation de formation professionnelle pour les enfants âgés de 16 à 18 ans.\n - Certificat médical délivré par un médecin spécialiste attestant de l’incapacité de l’enfant à poursuivre ses études ou à suivre une formation professionnelle, pour l’enfant malade ou en situation de handicap âgé de 16 à 21 ans.\n - Certificat médical délivré par un médecin spécialiste et validé par la commission médicale régionale, pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans.\n - Déclaration sur l’honneur des parents attestant de l’absence de revenus suffisants (formulaire 310-1-42) pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans\n - Attestation bancaire personnelle ou spécimen de chèque au nom du demandeur.\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 488,
+      "answer": "Pour récupérer les cotisations de votre mari en tant que représentante légale de vos enfants, vous pouvez bénéficier du remboursement des cotisations salariales des ayants droit (représentant légal des enfants).\n\nCette procédure est gérée par la **Caisse Nationale De La Sécurité Sociale**.\n\n*   **Frais :** Gratuit\n*   **Délai :** 3 mois et demi\n\nVoici les documents requis pour cette démarche :\n*   Demande de remboursement des cotisations salariales des ayants droit (formulaire 310-1-33).\n*   Copie de la carte d’immatriculation à la Caisse Nationale de Sécurité Sociale de l’assuré décédé.\n*   Copie de la carte d’identité nationale électronique (ou du titre de séjour pour les étrangers (carte de séjour ou carte d’immatriculation)) de l’assuré décédé.\n*   Certificat de décès de l’assuré.\n*   Pour les travailleurs des mines, attestation justifiant d’un travail souterrain d’une durée d’au moins cinq ans, pour bénéficier de l’indemnité à partir de 55 ans.\n*   Acte de naissance.\n*   Certificat de scolarité pour les enfants âgés de 16 à 21 ans.\n*   Attestation de formation professionnelle pour les enfants âgés de 16 à 18 ans.\n*   Certificat médical délivré par un médecin spécialiste attestant de l’incapacité de l’enfant à poursuivre ses études ou à suivre une formation professionnelle, pour l’enfant malade ou en situation de handicap âgé de 16 à 21 ans.\n*   Certificat médical délivré par un médecin spécialiste et validé par la commission médicale régionale, pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans.\n*   Déclaration sur l’honneur attestant que le demandeur ne dispose pas de revenus suffisants (formulaire 310-1-42), pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans.\n*   Certificat de décès du père ou de la mère (dans votre cas, cela ferait référence à l'autre parent si applicable, ou au parent si vous êtes le représentant légal suite à son décès).\n*   Copie de la carte d’identité nationale électronique (ou du titre de séjour pour les étrangers (carte de séjour ou carte d’immatriculation)) du représentant légal des enfants.\n*   Demande de tutelle des mineurs.\n*   Attestation bancaire personnelle ou spécimen de chèque au nom du demandeur.\n\nLes étapes de cette procédure ne sont pas spécifiées.\n\nSource : Caisse Nationale De La Sécurité Sociale.",
+      "generation_ms": 9722,
+      "prompt_tokens": 1930,
+      "output_tokens": 603,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7785,
+        "context_precision": 1.0,
+        "context_recall": 0.8,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s145",
+      "question": "أنا مطلقة وأتكفل بأطفالي، توفي طليقي وكان مؤمنا لدى الضمان الاجتماعي، كيف أسترجع اشتراكاته لأطفالي؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "72fdad59-47ba-49ca-8d1e-3529082995f3"
+      ],
+      "reference": "الإجراء المعني هو « استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (المطلق(ة) المتكفل بأطفال) (Expertise) » (الصندوق الوطني للضمان الاجتماعي). الوثائق المطلوبة: طلب استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق ؛ نسخة من بطاقة التسجيل بالصندوق الوطني للضمان الاجتماعي خاصة بالمؤمن له المتوفى ؛ نسخة من البطاقة الوطنية للتعريف الإلكترونية ؛ شهادة الوفاة للمؤمن له ؛ بالنسبة لعمال المناجم، شهادة تثبت الاشتغال في باطن الأرض مدة خمس سنوات على الأقل للاستفادة من التعويض ابتداء من سن 55… ؛ عقد الازدياد. الرسوم: بالمجان. الآجال: 3 أشهر ونصف.",
+      "must_include": [
+        "طلب استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق",
+        "نسخة من بطاقة التسجيل بالصندوق الوطني للضمان الاجتماعي خاصة…",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "72fdad59-47ba-49ca-8d1e-3529082995f3",
+        "2f63b0d6-ec89-4aeb-99fd-2b79e5a8dcd2",
+        "1abad8a6-2510-48a7-8606-3c257c0b45cd"
+      ],
+      "retrieved_titles": [
+        "Remboursement des cotisations salariales pour les ayants droit (personne divorcée ayant la charge d’enfants) (Expertise)",
+        "Remboursement des cotisations salariales des ayants droit (représentant légal des enfants) – Expertise",
+        "Remboursement des cotisations salariales pour ayants droit (enfants majeurs) (Expertise)"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (المطلق(ة) المتكفل بأطفال) (Expertise)\nDescription: الغاية : الاستفادة من استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (المطلق(ة) المتكفل بأطفال).\nيخضع هذا القرار لمقتضيات المرسوم رقم   2.22.386 بتحديد لائحة القرارات الإدارية التي تقتضي معالجة الطلبات المتعلقة بها تمديد الأجل القانوني المحدد لتسليمها، لإنجاز خبرة تقنية أو بحث عمومي.\nAdministration: الصندوق الوطني للضمان الاجتماعي\nFrais: بالمجان\nDélai: 3 أشهر ونصف\nDocuments requis:\n - طلب استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (33-1-310)\n - نسخة من بطاقة التسجيل بالصندوق الوطني للضمان الاجتماعي خاصة بالمؤمن له المتوفى\n - نسخة من البطاقة الوطنية للتعريف الإلكترونية (أو سند الإقامة  بالنسبة للأجانب (بطاقة الإقامة أو بطاقة التسجيل)) خاصة بالمؤمن له المتوفى\n - شهادة الوفاة للمؤمن له\n - بالنسبة لعمال المناجم، شهادة تثبت الاشتغال في باطن الأرض مدة خمس سنوات على الأقل للاستفادة من التعويض ابتداء من سن 55 سنة\n - عقد الازدياد\n - شهادة مدرسية بالنسبة للأطفال الذين يتراوح عمرهم بين 16و21 سنة\n - شهادة التكوين المهني بالنسبة للأطفال الذين يتراوح عمرهم بين16و 18سنة\n - شهادة طبية مسلمة من طرف طبيب مختص تثبت عدم قدرة الطفل على متابعة الدراسة أو الالتحاق بتكوين مهني بالنسبة للطفل المريض أو ذو الاحتياجات الخاصة و البالغ من العمر ما بين  16 سنة  و 21 سنة\n - شهادة طبية مسلمة من طرف طبيب مختص مصادق عليها من طرف اللجنة الطبية الإقليمية بالنسبة للطفل المريض أو  ذو الاحتياجات الخاصة و البالغ من العمر أكثر من 21 سنة\n - تصريح بالشرف للآباء بعدم التوفر على دخل كاف( استمارة 310-1-42 ) بالنسبة للطفل المريض أو  ذو الاحتياجات الخاصة و البالغ من العمر أكثر من 21 سنة\n - نسخة من عقد الطلاق\n - شهادة حضانة الأطفال إذا لم يتم ذكر الحضانة في عقد الطلاق\n - شهادة بنكية شخصية أو نموذج شيك (إذا لم يتم الإدلاء بها سابقا للصندوق الوطني للضمان الاجتماعي)\nÉtapes:\nغير محدد",
+        "PROCÉDURE: استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (المقدم على الأطفال) (Expertise)\nDescription: الغاية : الاستفادة من استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (المقدم على الأطفال).\nيخضع هذا القرار لمقتضيات المرسوم رقم   2.22.386 بتحديد لائحة القرارات الإدارية التي تقتضي معالجة الطلبات المتعلقة بها تمديد الأجل القانوني المحدد لتسليمها، لإنجاز خبرة تقنية أو بحث عمومي.\nAdministration: الصندوق الوطني للضمان الاجتماعي\nFrais: بالمجان\nDélai: 3 أشهر ونصف\nDocuments requis:\n - طلب استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (310-1-33)\n - نسخة من بطاقة التسجيل بالصندوق الوطني للضمان الاجتماعي خاصة بالمؤمن له المتوفى\n - نسخة من البطاقة الوطنية للتعريف الإلكترونية (أو سند الإقامة  بالنسبة للأجانب (بطاقة الإقامة أو بطاقة التسجيل)) خاصة بالمؤمن له المتوفى\n - شهادة الوفاة للمؤمن له\n - بالنسبة لعمال المناجم، شهادة تثبت الاشتغال في باطن الأرض مدة خمس سنوات على الأقل للاستفادة من التعويض ابتداء من سن 55 سنة\n - عقد الازدياد\n - شهادة مدرسية بالنسبة للأطفال الذين يتراوح عمرهم بين 16و21 سنة\n - شهادة التكوين المهني بالنسبة للأطفال الذين يتراوح عمرهم بين16و 18سنة\n - شهادة طبية مسلمة من طرف طبيب مختص تثبت عدم قدرة الطفل على متابعة الدراسة أو الالتحاق بتكوين مهني بالنسبة للطفل المريض أو ذو الاحتياجات الخاصة و البالغ من العمر ما بين  16 سنة  و 21 سنة\n - شهادة طبية مسلمة من طرف طبيب مختص مصادق عليها من طرف اللجنة الطبية الإقليمية بالنسبة للطفل المريض أو  ذو الاحتياجات الخاصة و البالغ من العمر أكثر من 21 سنة\n - تصريح بالشرف بعدم توفر صاحب الطلب على دخل كاف( استمارة310-1-42 ) بالنسبة للطفل المريض أو  ذو الاحتياجات الخاصة و البالغ من العمر أكثر من 21 سنة\n - شهادة وفاة الأب أو الأم\n - نسخة من البطاقة الوطنية للتعريف الإلكترونية (أو سند الإقامة بالنسبة للأجانب (بطاقة الإقامة أو بطاقة التسجيل)) للمقدم على الأطفال\n - التقديم على القاصرين\n - شهادة بنكية شخصية أو نموذج شيك لصاحب الطلب\nÉtapes:\nغير محدد",
+        "PROCÉDURE: استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (الاطفال البالغين) (Expertise)\nDescription: الغاية : الاستفادة من استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (الاطفال البالغين).\nيخضع هذا القرار لمقتضيات المرسوم رقم 2.22.386 بتحديد لائحة القرارات الإدارية التي تقتضي معالجة الطلبات المتعلقة بها تمديد الأجل القانوني المحدد لتسليمها، لإنجاز خبرة تقنية أو بحث عمومي.\nAdministration: الصندوق الوطني للضمان الاجتماعي\nFrais: بالمجان\nDélai: 3 أشهر ونصف\nDocuments requis:\n - طلب استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق(310-1-33)\n - نسخة من بطاقة التسجيل بالصندوق الوطني للضمان الاجتماعي خاصة بالمؤمن له المتوفى\n - نسخة من البطاقة الوطنية للتعريف الإلكترونية (أو سند الإقامة  بالنسبة للأجانب (بطاقة الإقامة أو بطاقة التسجيل)) خاصة بالمؤمن له المتوفى\n - شهادة الوفاة للمؤمن له\n - بالنسبة لعمال المناجم، شهادة تثبت الاشتغال في باطن الأرض مدة خمس سنوات على الأقل للاستفادة من التعويض ابتداء من سن 55 سنة\n - عقد الازدياد\n - شهادة مدرسية بالنسبة للأطفال الذين يتراوح عمرهم بين 16و21 سنة\n - شهادة التكوين المهني بالنسبة للأطفال الذين يتراوح عمرهم بين16و 18سنة\n - شهادة طبية مسلمة من طرف طبيب مختص تثبت عدم قدرة الطفل على متابعة الدراسة أو الالتحاق بتكوين مهني بالنسبة للطفل المريض أو ذو الاحتياجات الخاصة و البالغ من العمر ما بين  16 سنة  و 21 سنة\n - شهادة طبية مسلمة من طرف طبيب مختص مصادق عليها من طرف اللجنة الطبية الإقليمية بالنسبة للطفل المريض أو  ذو الاحتياجات الخاصة و البالغ من العمر أكثر من 21 سنة\n - تصريح بالشرف للآباء بعدم التوفر على دخل كاف( استمارة 310-1-42 ) بالنسبة للطفل المريض أو  ذو الاحتياجات الخاصة و البالغ من العمر أكثر من 21 سنة\n - شهادة بنكية شخصية أو نموذج شيك لصاحب الطلب\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 427,
+      "answer": "بناءً على المعلومات المتوفرة، يمكنك الاستفادة من استرجاع مبلغ الاشتراكات الأجرية الخاص بذوي الحقوق (المطلقة المتكفلة بأطفال) من خلال الإجراء التالي:\n\n**الغرض:** الاستفادة من استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (المطلق(ة) المتكفل بأطفال).\n\n**الإدارة:** الصندوق الوطني للضمان الاجتماعي.\n\n**التكلفة:** بالمجان.\n\n**الأجل:** 3 أشهر ونصف.\n\n**الوثائق المطلوبة:**\n*   طلب استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (النموذج 33-1-310).\n*   نسخة من بطاقة التسجيل بالصندوق الوطني للضمان الاجتماعي الخاصة بالمؤمن له المتوفى.\n*   نسخة من البطاقة الوطنية للتعريف الإلكترونية (أو سند الإقامة بالنسبة للأجانب (بطاقة الإقامة أو بطاقة التسجيل)) الخاصة بالمؤمن له المتوفى.\n*   شهادة الوفاة للمؤمن له.\n*   بالنسبة لعمال المناجم، شهادة تثبت الاشتغال في باطن الأرض مدة خمس سنوات على الأقل للاستفادة من التعويض ابتداء من سن 55 سنة.\n*   عقد الازدياد.\n*   شهادة مدرسية بالنسبة للأطفال الذين يتراوح عمرهم بين 16 و21 سنة.\n*   شهادة التكوين المهني بالنسبة للأطفال الذين يتراوح عمرهم بين 16 و18 سنة.\n*   شهادة طبية مسلمة من طرف طبيب مختص تثبت عدم قدرة الطفل على متابعة الدراسة أو الالتحاق بتكوين مهني بالنسبة للطفل المريض أو ذي الاحتياجات الخاصة والبالغ من العمر ما بين 16 سنة و21 سنة.\n*   شهادة طبية مسلمة من طرف طبيب مختص مصادق عليها من طرف اللجنة الطبية الإقليمية بالنسبة للطفل المريض أو ذي الاحتياجات الخاصة والبالغ من العمر أكثر من 21 سنة.\n*   تصريح بالشرف للآباء بعدم التوفر على دخل كاف (استمارة 310-1-42) بالنسبة للطفل المريض أو ذي الاحتياجات الخاصة والبالغ من العمر أكثر من 21 سنة.\n*   نسخة من عقد الطلاق.\n*   شهادة حضانة الأطفال إذا لم يتم ذكر الحضانة في عقد الطلاق.\n*   شهادة بنكية شخصية أو نموذج شيك (إذا لم يتم الإدلاء بها سابقا للصندوق الوطني للضمان الاجتماعي).\n\n**الخطوات:** غير محددة.\n\n**المصدر:** الصندوق الوطني للضمان الاجتماعي.",
+      "generation_ms": 9597,
+      "prompt_tokens": 1995,
+      "output_tokens": 605,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.6818,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s146",
+      "question": "Notre père, assuré à la CNSS, est décédé ; nous sommes ses enfants majeurs, pouvons-nous récupérer ses cotisations salariales ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "1abad8a6-2510-48a7-8606-3c257c0b45cd"
+      ],
+      "reference": "La procédure concernée est « Remboursement des cotisations salariales pour ayants droit (enfants majeurs) (Expertise) » (Caisse Nationale De La Sécurité Sociale). Documents à fournir : Demande de remboursement du montant des cotisations salariales pour ayants droit ; Copie de la carte d'immatriculation à la Caisse Nationale de Sécurité Sociale ; Copie de la carte d'identité nationale électronique ; Certificat de décès de l'assuré ; Pour les travailleurs des mines, une attestation justifiant le travail dans le sous-sol pendant une durée d'au moins… ; Acte de naissance. Frais : Gratuit. Délai : 3 mois et demi.",
+      "must_include": [
+        "Demande de remboursement du montant des cotisations…",
+        "Copie de la carte d'immatriculation à la Caisse Nationale…",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "1abad8a6-2510-48a7-8606-3c257c0b45cd",
+        "72fdad59-47ba-49ca-8d1e-3529082995f3",
+        "2f63b0d6-ec89-4aeb-99fd-2b79e5a8dcd2"
+      ],
+      "retrieved_titles": [
+        "Remboursement des cotisations salariales pour ayants droit (enfants majeurs) (Expertise)",
+        "Remboursement des cotisations salariales pour les ayants droit (personne divorcée ayant la charge d’enfants) (Expertise)",
+        "Remboursement des cotisations salariales des ayants droit (représentant légal des enfants) – Expertise"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Remboursement des cotisations salariales pour ayants droit (enfants majeurs) (Expertise)\nDescription: Objectif : bénéficier du remboursement du montant des cotisations salariales pour les ayants droit (enfants majeurs).\nCette décision est soumise aux dispositions du décret n° 2.22.386 fixant la liste des décisions administratives nécessitant, pour le traitement des demandes y afférentes, la prorogation du délai légal de délivrance pour réaliser une expertise technique ou une enquête publique.\nAdministration: Caisse Nationale De La Sécurité Sociale\nFrais: Gratuit\nDélai: 3 mois et demi\nDocuments requis:\n - Demande de remboursement du montant des cotisations salariales pour ayants droit (310-1-33)\n - Copie de la carte d’immatriculation à la Caisse Nationale de Sécurité Sociale de l’assuré décédé.\n - Copie de la carte d’identité nationale électronique (ou du titre de séjour pour les étrangers (carte de séjour ou carte d’immatriculation)) de l’assuré décédé.\n - Certificat de décès de l’assuré.\n - Pour les travailleurs des mines, attestation justifiant d’un travail souterrain d’une durée d’au moins cinq ans, pour bénéficier de l’indemnité à partir de 55 ans.\n - Acte de naissance.\n - Certificat de scolarité pour les enfants âgés de 16 à 21 ans.\n - Attestation de formation professionnelle pour les enfants âgés de 16 à 18 ans.\n - Certificat médical délivré par un médecin spécialiste attestant de l’incapacité de l’enfant à poursuivre ses études ou à suivre une formation professionnelle, pour l’enfant malade ou en situation de handicap âgé de 16 à 21 ans.\n - Certificat médical délivré par un médecin spécialiste et validé par la commission médicale régionale, pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans.\n - Déclaration sur l’honneur des parents attestant de l’absence de revenus suffisants (formulaire 310-1-42) pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans\n - Attestation bancaire personnelle ou spécimen de chèque au nom du demandeur.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Remboursement des cotisations salariales pour les ayants droit (personne divorcée ayant la charge d’enfants) (Expertise)\nDescription: Objet : Bénéficier du remboursement du montant des cotisations salariales pour les ayants droit (personne divorcée ayant la charge d’enfants).\nCette décision est soumise aux dispositions du décret n° 2.22.386 fixant la liste des décisions administratives pour lesquelles le traitement des demandes nécessite la prorogation du délai légal de délivrance, en raison de la réalisation d’une expertise technique ou d’une enquête publique.\nAdministration: Caisse Nationale De La Sécurité Sociale\nFrais: Gratuit\nDélai: 3 mois et demi\nDocuments requis:\n - Demande de remboursement des cotisations salariales pour ayants droit (formulaire 33-1-310)\n - Copie de la carte d’immatriculation à la Caisse Nationale de Sécurité Sociale de l’assuré décédé.\n - Copie de la carte d’identité nationale électronique (ou du titre de séjour pour les étrangers (carte de séjour ou carte d’immatriculation)) de l’assuré décédé.\n - Certificat de décès de l’assuré.\n - Pour les travailleurs des mines, attestation justifiant d’un travail souterrain d’une durée d’au moins cinq ans, pour bénéficier de l’indemnité à partir de 55 ans.\n - Acte de naissance.\n - Certificat de scolarité pour les enfants âgés de 16 à 21 ans.\n - Attestation de formation professionnelle pour les enfants âgés de 16 à 18 ans.\n - Certificat médical délivré par un médecin spécialiste attestant de l’incapacité de l’enfant à poursuivre ses études ou à suivre une formation professionnelle, pour l’enfant malade ou en situation de handicap âgé de 16 à 21 ans.\n - Certificat médical délivré par un médecin spécialiste et validé par la commission médicale régionale, pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans.\n - Déclaration sur l’honneur des parents attestant de l’absence de revenus suffisants (formulaire 310-1-42) pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans\n - Copie de l’acte de divorce\n - Attestation de garde d’enfants si la garde n’est pas mentionnée dans l’acte de divorce\n - Relevé d’identité bancaire personnel ou spécimen de chèque (si non fourni antérieurement à la Caisse Nationale de Sécurité Sociale)\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Remboursement des cotisations salariales des ayants droit (représentant légal des enfants) – Expertise\nDescription: Finalité : Bénéficier du remboursement des cotisations salariales des ayants droit (représentant légal des enfants).\nCette décision est soumise aux dispositions du décret n° 2.22.386 fixant la liste des décisions administratives pour lesquelles le traitement des demandes y afférentes nécessite une prorogation du délai légal de délivrance, en raison de la réalisation d’une expertise technique ou d’une enquête publique.\nAdministration: Caisse Nationale De La Sécurité Sociale\nFrais: Gratuit\nDélai: 3 mois et demi\nDocuments requis:\n - Demande de remboursement des cotisations salariales des ayants droit (formulaire 310-1-33).\n - Copie de la carte d’immatriculation à la Caisse Nationale de Sécurité Sociale de l’assuré décédé.\n - Copie de la carte d’identité nationale électronique (ou du titre de séjour pour les étrangers (carte de séjour ou carte d’immatriculation)) de l’assuré décédé.\n - Certificat de décès de l’assuré.\n - Pour les travailleurs des mines, attestation justifiant d’un travail souterrain d’une durée d’au moins cinq ans, pour bénéficier de l’indemnité à partir de 55 ans.\n - Acte de naissance.\n - Certificat de scolarité pour les enfants âgés de 16 à 21 ans.\n - Attestation de formation professionnelle pour les enfants âgés de 16 à 18 ans.\n - Certificat médical délivré par un médecin spécialiste attestant de l’incapacité de l’enfant à poursuivre ses études ou à suivre une formation professionnelle, pour l’enfant malade ou en situation de handicap âgé de 16 à 21 ans.\n - Certificat médical délivré par un médecin spécialiste et validé par la commission médicale régionale, pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans.\n - Déclaration sur l’honneur attestant que le demandeur ne dispose pas de revenus suffisants (formulaire 310-1-42), pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans.\n - Certificat de décès du père ou de la mère.\n - Copie de la carte d’identité nationale électronique (ou du titre de séjour pour les étrangers (carte de séjour ou carte d’immatriculation)) du représentant légal des enfants.\n - Demande de tutelle des mineurs.\n - Attestation bancaire personnelle ou spécimen de chèque au nom du demandeur.\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 496,
+      "answer": "Oui, en tant qu'enfants majeurs d'un père assuré décédé, vous pouvez bénéficier du remboursement du montant des cotisations salariales.\n\nCette procédure est gérée par la Caisse Nationale De La Sécurité Sociale et est gratuite. Le délai de traitement est de 3 mois et demi.\n\nVoici les documents requis pour cette démarche :\n\n*   Demande de remboursement du montant des cotisations salariales pour ayants droit (formulaire 310-1-33).\n*   Copie de la carte d’immatriculation à la Caisse Nationale de Sécurité Sociale de l’assuré décédé.\n*   Copie de la carte d’identité nationale électronique (ou du titre de séjour pour les étrangers (carte de séjour ou carte d’immatriculation)) de l’assuré décédé.\n*   Certificat de décès de l’assuré.\n*   Pour les travailleurs des mines, attestation justifiant d’un travail souterrain d’une durée d’au moins cinq ans, pour bénéficier de l’indemnité à partir de 55 ans.\n*   Acte de naissance.\n*   Certificat de scolarité pour les enfants âgés de 16 à 21 ans.\n*   Attestation de formation professionnelle pour les enfants âgés de 16 à 18 ans.\n*   Certificat médical délivré par un médecin spécialiste attestant de l’incapacité de l’enfant à poursuivre ses études ou à suivre une formation professionnelle, pour l’enfant malade ou en situation de handicap âgé de 16 à 21 ans.\n*   Certificat médical délivré par un médecin spécialiste et validé par la commission médicale régionale, pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans.\n*   Déclaration sur l’honneur des parents attestant de l’absence de revenus suffisants (formulaire 310-1-42) pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans.\n*   Attestation bancaire personnelle ou spécimen de chèque au nom du demandeur.\n\nLes étapes de la procédure ne sont pas spécifiées.\n\nSource : Caisse Nationale De La Sécurité Sociale.",
+      "generation_ms": 10844,
+      "prompt_tokens": 1930,
+      "output_tokens": 483,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7169,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s147",
+      "question": "توفي زوجي المؤمن لدى الضمان الاجتماعي، كم تستغرق معالجة طلب استرجاع اشتراكاته بصفتي أرملة؟",
+      "lang": "ar",
+      "category": "fees_delay",
+      "expected_ids": [
+        "46d3038e-7fe6-4c92-965a-be5a5ac97f85"
+      ],
+      "reference": "الإجراء المعني هو « استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (الأرملة أو الأرمل) (Expertise) » (الصندوق الوطني للضمان الاجتماعي). الوثائق المطلوبة: طلب استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق ؛ نسخة من بطاقة التسجيل بالصندوق الوطني للضمان الاجتماعي خاصة بالمؤمن له المتوفى ؛ نسخة من البطاقة الوطنية للتعريف الإلكترونية ؛ شهادة الوفاة للمؤمن له ؛ بالنسبة لعمال المناجم، شهادة تثبت الاشتغال في باطن الأرض مدة خمس سنوات على الأقل للاستفادة من التعويض ابتداء من سن 55… ؛ نسخة من البطاقة الوطنية للتعريف الإلكترونية. الرسوم: بالمجان. الآجال: 3 أشهر ونصف.",
+      "must_include": [
+        "طلب استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق",
+        "نسخة من بطاقة التسجيل بالصندوق الوطني للضمان الاجتماعي خاصة…",
+        "بالمجان",
+        "3 أشهر ونصف"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "46d3038e-7fe6-4c92-965a-be5a5ac97f85",
+        "72fdad59-47ba-49ca-8d1e-3529082995f3",
+        "2f63b0d6-ec89-4aeb-99fd-2b79e5a8dcd2"
+      ],
+      "retrieved_titles": [
+        "Remboursement des cotisations salariales pour les ayants droit (veuve ou veuf) (Expertise)",
+        "Remboursement des cotisations salariales pour les ayants droit (personne divorcée ayant la charge d’enfants) (Expertise)",
+        "Remboursement des cotisations salariales des ayants droit (représentant légal des enfants) – Expertise"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (الأرملة أو الأرمل) (Expertise)\nDescription: الغاية : الاستفادة من استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (الأرملة أو الأرمل).\nيخضع هذا القرار لمقتضيات المرسوم رقم 2.22.386 بتحديد لائحة القرارات الإدارية التي تقتضي معالجة الطلبات المتعلقة بها تمديد الأجل القانوني المحدد لتسليمها، لإنجاز خبرة تقنية أو بحث عمومي.\nAdministration: الصندوق الوطني للضمان الاجتماعي\nFrais: بالمجان\nDélai: 3 أشهر ونصف\nDocuments requis:\n - طلب استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (310-1-33)\n - نسخة من بطاقة التسجيل بالصندوق الوطني للضمان الاجتماعي خاصة بالمؤمن له المتوفى\n - نسخة من البطاقة الوطنية للتعريف الإلكترونية (أو سند الإقامة  بالنسبة للأجانب (بطاقة الإقامة أو بطاقة التسجيل)) خاصة بالمؤمن له المتوفى\n - شهادة الوفاة للمؤمن له\n - بالنسبة لعمال المناجم، شهادة تثبت الاشتغال في باطن الأرض مدة خمس سنوات على الأقل للاستفادة من التعويض ابتداء من سن 55 سنة\n - نسخة من البطاقة الوطنية للتعريف الإلكترونية (أو سند الإقامة  بالنسبة للأجانب (بطاقة الإقامة أو بطاقة التسجيل)) خاصة بالأرمل(ة)\n - نسخة من عقد الزواج\n - عقد الإراثة أو تصريح بالشرف بالزوجة الوحيدة / تعدد الزوجات/ عدم الطلاق\n - شهادة بنكية شخصية أو نموذج شيك (إذا لم يتم الإدلاء بها سابقا للصندوق الوطني للضمان الاجتماعي)\nÉtapes:\nغير محدد",
+        "PROCÉDURE: استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (المطلق(ة) المتكفل بأطفال) (Expertise)\nDescription: الغاية : الاستفادة من استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (المطلق(ة) المتكفل بأطفال).\nيخضع هذا القرار لمقتضيات المرسوم رقم   2.22.386 بتحديد لائحة القرارات الإدارية التي تقتضي معالجة الطلبات المتعلقة بها تمديد الأجل القانوني المحدد لتسليمها، لإنجاز خبرة تقنية أو بحث عمومي.\nAdministration: الصندوق الوطني للضمان الاجتماعي\nFrais: بالمجان\nDélai: 3 أشهر ونصف\nDocuments requis:\n - طلب استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (33-1-310)\n - نسخة من بطاقة التسجيل بالصندوق الوطني للضمان الاجتماعي خاصة بالمؤمن له المتوفى\n - نسخة من البطاقة الوطنية للتعريف الإلكترونية (أو سند الإقامة  بالنسبة للأجانب (بطاقة الإقامة أو بطاقة التسجيل)) خاصة بالمؤمن له المتوفى\n - شهادة الوفاة للمؤمن له\n - بالنسبة لعمال المناجم، شهادة تثبت الاشتغال في باطن الأرض مدة خمس سنوات على الأقل للاستفادة من التعويض ابتداء من سن 55 سنة\n - عقد الازدياد\n - شهادة مدرسية بالنسبة للأطفال الذين يتراوح عمرهم بين 16و21 سنة\n - شهادة التكوين المهني بالنسبة للأطفال الذين يتراوح عمرهم بين16و 18سنة\n - شهادة طبية مسلمة من طرف طبيب مختص تثبت عدم قدرة الطفل على متابعة الدراسة أو الالتحاق بتكوين مهني بالنسبة للطفل المريض أو ذو الاحتياجات الخاصة و البالغ من العمر ما بين  16 سنة  و 21 سنة\n - شهادة طبية مسلمة من طرف طبيب مختص مصادق عليها من طرف اللجنة الطبية الإقليمية بالنسبة للطفل المريض أو  ذو الاحتياجات الخاصة و البالغ من العمر أكثر من 21 سنة\n - تصريح بالشرف للآباء بعدم التوفر على دخل كاف( استمارة 310-1-42 ) بالنسبة للطفل المريض أو  ذو الاحتياجات الخاصة و البالغ من العمر أكثر من 21 سنة\n - نسخة من عقد الطلاق\n - شهادة حضانة الأطفال إذا لم يتم ذكر الحضانة في عقد الطلاق\n - شهادة بنكية شخصية أو نموذج شيك (إذا لم يتم الإدلاء بها سابقا للصندوق الوطني للضمان الاجتماعي)\nÉtapes:\nغير محدد",
+        "PROCÉDURE: استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (المقدم على الأطفال) (Expertise)\nDescription: الغاية : الاستفادة من استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (المقدم على الأطفال).\nيخضع هذا القرار لمقتضيات المرسوم رقم   2.22.386 بتحديد لائحة القرارات الإدارية التي تقتضي معالجة الطلبات المتعلقة بها تمديد الأجل القانوني المحدد لتسليمها، لإنجاز خبرة تقنية أو بحث عمومي.\nAdministration: الصندوق الوطني للضمان الاجتماعي\nFrais: بالمجان\nDélai: 3 أشهر ونصف\nDocuments requis:\n - طلب استرجاع مبلغ الاشتراكات الأجرية خاص بذوي الحقوق (310-1-33)\n - نسخة من بطاقة التسجيل بالصندوق الوطني للضمان الاجتماعي خاصة بالمؤمن له المتوفى\n - نسخة من البطاقة الوطنية للتعريف الإلكترونية (أو سند الإقامة  بالنسبة للأجانب (بطاقة الإقامة أو بطاقة التسجيل)) خاصة بالمؤمن له المتوفى\n - شهادة الوفاة للمؤمن له\n - بالنسبة لعمال المناجم، شهادة تثبت الاشتغال في باطن الأرض مدة خمس سنوات على الأقل للاستفادة من التعويض ابتداء من سن 55 سنة\n - عقد الازدياد\n - شهادة مدرسية بالنسبة للأطفال الذين يتراوح عمرهم بين 16و21 سنة\n - شهادة التكوين المهني بالنسبة للأطفال الذين يتراوح عمرهم بين16و 18سنة\n - شهادة طبية مسلمة من طرف طبيب مختص تثبت عدم قدرة الطفل على متابعة الدراسة أو الالتحاق بتكوين مهني بالنسبة للطفل المريض أو ذو الاحتياجات الخاصة و البالغ من العمر ما بين  16 سنة  و 21 سنة\n - شهادة طبية مسلمة من طرف طبيب مختص مصادق عليها من طرف اللجنة الطبية الإقليمية بالنسبة للطفل المريض أو  ذو الاحتياجات الخاصة و البالغ من العمر أكثر من 21 سنة\n - تصريح بالشرف بعدم توفر صاحب الطلب على دخل كاف( استمارة310-1-42 ) بالنسبة للطفل المريض أو  ذو الاحتياجات الخاصة و البالغ من العمر أكثر من 21 سنة\n - شهادة وفاة الأب أو الأم\n - نسخة من البطاقة الوطنية للتعريف الإلكترونية (أو سند الإقامة بالنسبة للأجانب (بطاقة الإقامة أو بطاقة التسجيل)) للمقدم على الأطفال\n - التقديم على القاصرين\n - شهادة بنكية شخصية أو نموذج شيك لصاحب الطلب\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 321,
+      "answer": "تستغرق معالجة طلب استرجاع مبلغ الاشتراكات الأجرية الخاص بذوي الحقوق (الأرملة أو الأرمل) مدة 3 أشهر ونصف.\n\n(المصدر: الصندوق الوطني للضمان الاجتماعي)",
+      "generation_ms": 7161,
+      "prompt_tokens": 1852,
+      "output_tokens": 54,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8144,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s148",
+      "question": "Mes billets ont été abîmés dans un incendie, Bank Al-Maghrib peut-elle les remplacer ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "32c94b61-73b4-4dcf-9ac1-279fbd292006"
+      ],
+      "reference": "La procédure concernée est « Remplacement des billets de banque marocains mutilés, détériorés ou altérés » (Bank Al-Maghrib). Documents à fournir : Copie de la pièce d'identité du demandeur ; Déclaration sur l'honneur ; En cas d'incendie, d'inondation, etc.. Frais : Gratuit. Délai : 60 jours.",
+      "must_include": [
+        "Copie de la pièce d'identité du demandeur",
+        "Déclaration sur l'honneur",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "32c94b61-73b4-4dcf-9ac1-279fbd292006",
+        "63b19a9a-3b85-409a-a94a-61800f49c572",
+        "7c448e44-1fb0-4e3e-8d5f-8ff18c2f05a8"
+      ],
+      "retrieved_titles": [
+        "Remplacement des billets de banque marocains mutilés, détériorés ou altérés",
+        "Autorisation d'exonération des droits et taxes exigibles à l'importation des billets de banque étrangers ainsi que des matières et marchandises destinés à Bank Al-Maghrib conformément à ses missions",
+        "Résultat des tests des équipements de traitement des billets de banque marocains"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Remplacement des billets de banque marocains mutilés, détériorés ou altérés\nDescription: Remplacement des billets de banque marocains mutilés, détériorés ou altérés.\nAdministration: Bank Al-Maghrib\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Copie de la pièce d'identité du demandeur (carte nationale d'identité électronique ou récépissé de dépôt de renouvellement de la carte nationale d'identité électronique pour les Marocains, carte de résidence pour les étrangers, ou passeport pour les étran\n - Déclaration sur l'honneur\n - En cas d'incendie, d'inondation, etc. : rapport des autorités compétentes décrivant les circonstances de l'incident\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation d'exonération des droits et taxes exigibles à l'importation des billets de banque étrangers ainsi que des matières et marchandises destinés à Bank Al-Maghrib conformément à ses missions\nDescription: L'objet de la procédure est l'exonération des droits et taxes exigibles à l'importation des billets de banque étrangers ainsi que des matières et marchandises destinés à Bank Al-Maghrib conformément à ses missions.\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: non spécifié\nDocuments requis:\n - Demande d'autorisation d'exonération des droits et taxes exigibles à l'importation des billets de banque étrangers ainsi que des matières et marchandises destinés à Bank Al-Maghrib conformément à ses missions\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Résultat des tests des équipements de traitement des billets de banque marocains\nDescription: Vérification de la conformité des machines et équipements de traitement des billets de banque marocains aux normes de Bank Al-Maghrib\nAdministration: Bank Al-Maghrib\nFrais: Gratuit\nDélai: 30 jours\nDocuments requis:\n - Demande de rendez-vous pour l'évaluation des machines et équipements de traitement des billets de banque marocains\n - Attestation de représentation sur le territoire national\n - Brochure détaillée sur les matériels et équipements de traitement des billets de banque marocains\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 622,
+      "answer": "Oui, Bank Al-Maghrib peut remplacer vos billets de banque marocains abîmés suite à un incendie.\n\nSelon Bank Al-Maghrib, les documents requis pour cette procédure sont les suivants :\n*   Une copie de la pièce d'identité du demandeur (carte nationale d'identité électronique ou récépissé de dépôt de renouvellement de la carte nationale d'identité électronique pour les Marocains, carte de résidence pour les étrangers, ou passeport pour les étrangers).\n*   Une déclaration sur l'honneur.\n*   En cas d'incendie, un rapport des autorités compétentes décrivant les circonstances de l'incident.\n\nLa procédure est gratuite et le délai de traitement est de 60 jours.\n\nSource : Bank Al-Maghrib",
+      "generation_ms": 6807,
+      "prompt_tokens": 702,
+      "output_tokens": 165,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8519,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s149",
+      "question": "سأسافر للعلاج في مستشفى بإسبانيا، كيف أحصل على العملة الصعبة لتكاليف العلاج؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "0999bb6b-96b2-45ab-adcd-bb85a3f9ea4f"
+      ],
+      "reference": "الإجراء المعني هو « خدمات الرعاية الطبية » (مكتب الصرف). الوثائق المطلوبة: ملحق بنكي معبأ وموقع ومختوم ؛ رسالة توضيحية ؛ شهادة طبية ؛ وثيقة حجز الموعد ؛ أي وثيقة تثبت مدة الإقامة ؛ نسخة من الفواتير، بيان الأثمنة …. الرسوم: بالمجان. الآجال: 60 يوما.",
+      "must_include": [
+        "ملحق بنكي معبأ وموقع ومختوم",
+        "رسالة توضيحية",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "497ca7f0-c452-4feb-838f-d59afde466a6",
+        "0999bb6b-96b2-45ab-adcd-bb85a3f9ea4f",
+        "46a9655f-1786-4cb1-8d88-0e8d9bff22c1"
+      ],
+      "retrieved_titles": [
+        "Allocation ou prise en charge des frais de séjour de l'accompagnant du patient à l'étranger",
+        "Services de soins médicaux",
+        "Paiement au titre du remboursement des frais de voyage des salariés étrangers au Maroc"
+      ],
+      "rank": 2,
+      "contexts": [
+        "PROCÉDURE: منحة أو أداء مصاريف إقامة مرافق المريض بالخارج\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - ملحق بنكي معبأ وموقع ومختوم\n - رسالة توضيحية تحدد صلة القرابة\n - شهادة صادرة عن المستشفى الأجنبي، تحدد مدة إقامة المريض\n - الميزانية التوقعية للنفقات\n - نسخة من بطاقة الهوية\nÉtapes:\nغير محدد",
+        "PROCÉDURE: خدمات الرعاية الطبية\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - ملحق بنكي معبأ وموقع ومختوم\n - رسالة توضيحية\n - شهادة طبية\n - وثيقة حجز الموعد\n - أي وثيقة تثبت مدة الإقامة\n - نسخة من الفواتير، بيان الأثمنة … (في حالة تحويل)\n - نسخة من بطاقة الهوية\nÉtapes:\nغير محدد",
+        "PROCÉDURE: أداء برسم استرجاع مصاريف السفر للأجانب المستخدمين بالمغرب في إطار عقد شغل\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - ملحق بنكي معبأ وموقع ومختوم\n - فاتورة منجزة من طرف الشركة الأجنبية (المشغل الأصلي)\n - فاتورة منجزة من طرف الشركة الأجنبية باسم الشركة المغربية برسم الاسترجاع\n - نسخة من تذاكر الطائرة أو أي وثيقة تقوم مقامها\n - عقد شغل ينص على أن مصاريف السفر تتحملها الشركة المغربية أو شهادة تحمل هذه المصاريف\n - إتباث أداء هذه المصاريف من طرف الشركة المشغلة الأصلية أو من طرف الأجير الأجنبي\n - نسخة من مستخرج السجل التجاري (نموذج 7 و/ أو شهادة التعريف الموحد للمقاولة)\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 487,
+      "answer": "بناءً على المعلومات المتوفرة، للحصول على العملة الصعبة لتكاليف العلاج في الخارج، يمكنك الاستفادة من خدمة \"خدمات الرعاية الطبية\" التي يقدمها مكتب الصرف.\n\n**الإدارة المسؤولة:** مكتب الصرف\n**الفترة الزمنية للإجراء:** 60 يوما\n**التكلفة:** بالمجان\n\n**الوثائق المطلوبة:**\n*   ملحق بنكي معبأ وموقع ومختوم\n*   رسالة توضيحية\n*   شهادة طبية\n*   وثيقة حجز الموعد\n*   أي وثيقة تثبت مدة الإقامة\n*   نسخة من الفواتير، بيان الأثمنة … (في حالة تحويل)\n*   نسخة من بطاقة الهوية\n\n(المصدر: مكتب الصرف)",
+      "generation_ms": 8501,
+      "prompt_tokens": 768,
+      "output_tokens": 181,
+      "attempts": 1,
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8706,
+        "context_precision": 0.5,
+        "context_recall": 1.0,
+        "refusal": 0.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s150",
+      "question": "Comment renouveler mon permis de conduire ?",
+      "lang": "fr",
+      "category": "no_answer",
+      "expected_ids": [],
+      "reference": "Les procédures disponibles ne contiennent pas d'information sur cette démarche : l'assistant doit le dire clairement, sans inventer de réponse.",
+      "must_include": [],
+      "error": null,
+      "retrieved_ids": [
+        "b8b0cc38-b7db-4d30-a661-e1e4d073c363",
+        "5d3f64c5-3c52-4505-9c69-1090219f63ba",
+        "f0cfdfaa-901a-4398-ae82-1939de6623f4"
+      ],
+      "retrieved_titles": [
+        "Décision de régularisation de la situation d'un établissement d'enseignement de la conduite suite à la renonciation à la licence",
+        "Obtention d'un laissez-passer (pour les Marocains résidant à l'étranger)",
+        "Obtention du passeport en cas de perte pour les adultes (plus de 18 ans) (Marocains résidant à l'étranger)"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: Décision de régularisation de la situation d'un établissement d'enseignement de la conduite suite à la renonciation à la licence\nDescription: Octroi d'une licence d'ouverture et d'exploitation d'un établissement d'enseignement de la conduite au nom d'une personne physique ou morale après renonciation à celle-ci par le titulaire initial de la licence\nAdministration: Agence Nationale De La Sécurité Routiere\nFrais: Gratuit\nDélai: 30 jours\nDocuments requis:\n - 1- Déclaration conjointe entre la personne renonçant à sa licence d'ouverture et d'exploitation d'un établissement d'enseignement de la conduite et le bénéficiaire de la renonciation\n - Si la personne proposée est une personne physique :\n - a- Photocopie de la pièce d'identité en cours de validité\n - b- Extrait du bulletin n° 3 du casier judiciaire datant de moins de 3 mois\n - c- Fiche d'antécédents judiciaires datant de moins de 3 mois\n - d- Cahier des charges paraphé sur toutes les pages et signé à la dernière page. La signature doit être légalisée et précédée de la mention « Lu et approuvé, je m'engage à respecter les clauses du présent cahier des charges »\n - Si la personne proposée est une personne morale :\n - a- Copie de la pièce d'identité en cours de validité du gérant de la personne morale ou de la personne habilitée à engager la personne morale\n - b- Photo d'identité récente du gérant de la personne morale ou de la personne habilitée à engager la personne morale\n - c- Extrait du bulletin n° 3 du casier judiciaire datant de moins de 3 mois pour le gérant de la personne morale ou la personne habilitée à engager la personne morale\n - d- Fiche d'antécédents judiciaires datant de moins de 3 mois pour le gérant de la personne morale ou la personne habilitée à engager la personne morale\n - e- Copie des statuts dont l'objet est spécifiquement l'enseignement de la conduite\n - f- Copie du procès-verbal portant nomination du gérant de la personne morale ou de la personne habilitée à l'engager\n - Acte de renonciation établi par un notaire ou un adoul\n - Certificat de propriété ou contrat de bail dûment légalisé précisant l'usage du local pour l'enseignement de la conduite\n - Attestation d'inscription au registre du commerce\n - Attestation d'inscription à la taxe professionnelle\n - Attestation d'assurance en cours de validité couvrant les employés et les candidats contre les risques et dommages auxquels ils peuvent être exposés au sein de l'établissement\n - Document d'abonnement à Internet et au téléphone\n - Copie du certificat d'immatriculation du véhicule destiné à l'enseignement de la conduite portant la mention « voiture-école »\n - Copie du certificat de contrôle technique périodique en cours de validité, si l'âge du véhicule dépasse un an\n - Copie du contrat d'assurance en cours de validité contre les risques et accidents que peut causer le véhicule aux candidats, examinateurs, moniteurs ou autres personnes ainsi qu'aux biens, à l'occasion de la formation pratique à la conduite ou du passage\n - Copie du contrat de travail conclu entre l'établissement et le directeur, dûment légalisé quant aux signatures des parties, ou déclaration sur l'honneur par laquelle le propriétaire de l'établissement d'enseignement de la conduite s'engage à gérer lui-mêm\n - Déclaration sur l'honneur par laquelle le directeur de l'établissement s'engage à se consacrer entièrement à la gestion de l'établissement\n - Copie de la pièce d'identité en cours de validité, propre au directeur\n - Extrait du bulletin n° 3 du casier judiciaire datant de moins de 3 mois, propre au directeur\n - Copie du permis de conduire de catégorie « B » en cours de validité, propre au directeur\n - Attestation prouvant un niveau au moins de deuxième année du baccalauréat pour le directeur\n - Copie du contrat de travail conclu entre l'établissement et le moniteur, dûment légalisé quant aux signatures des parties, ou déclaration sur l'honneur par laquelle le propriétaire de l'établissement d'enseignement de la conduite s'engage à exercer la pro\n - Copie du permis de moniteur d'enseignement de la conduite en cours de validité, propre au moniteur\n - Copie de la pièce d'identité en cours de validité, propre au moniteur\n - Extrait du bulletin n° 3 du casier judiciaire datant de moins de 3 mois, propre au moniteur\n - Copie du permis de conduire en cours de validité, propre au moniteur\n - Liste des supports pédagogiques et didactiques proposés pour l'enseignement de la conduite\n - Liste des équipements dont dispose l'établissement, tels que prévus dans le cahier des charges\n - Note technique du système informatique utilisé par l'établissement pour : \n- la gestion administrative des dossiers des candidats inscrits à l'établissement ;\n- la conservation des informations relatives à la formation des candidats, y compris les résulta\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention d'un laissez-passer (pour les Marocains résidant à l'étranger)\nDescription: Obtention d'un laissez-passer, qui est un document de voyage de courte durée, valable un mois. Il est délivré dans des circonstances exceptionnelles à une personne ne disposant pas d'un passeport en cours de validité, ou ayant perdu son passeport, pour lui permettre de regagner le Maroc, après vérification de son identité et de sa nationalité marocaine.\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 150 dirhams pour les frais consulaires\n20 dirhams pour le tarif des services (SEGMA)\nDélai: immédiatement\nDocuments requis:\n - Demande de passeport biométrique\n - Tout document (original) prouvant la nationalité marocaine (carte d’identité nationale électronique ou ancien passeport)\n - Pour les mineurs de moins de 18 ans ne disposant pas de carte nationale : copie de l'acte de naissance, fiche individuelle d’état civil délivrée par l’état civil ou livret de famille, ainsi que la présence du représentant légal muni de sa carte d’identité\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - Déclaration de perte ou de vol du passeport, le cas échéant\n - Remise de l'ancien passeport s’il s’agit d’un passeport expiré ou détérioré\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention du passeport en cas de perte pour les adultes (plus de 18 ans) (Marocains résidant à l'étranger)\nDescription: Obtention du passeport en cas de perte pour les adultes (plus de 18 ans) (Marocains résidant à l'étranger)\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 1080 dirhams\n- Frais consulaires : 1000 dirhams\n- Tarif des services (SEGMA) : 80 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Déclaration sur l'honneur de perte signée par l'intéressé\n - Carte nationale d'identité en cours de validité ou récépissé de dépôt de demande de délivrance ou de renouvellement de la carte nationale\n - En cas de présentation du récépissé de demande de carte nationale, l'intéressé doit fournir une copie de l'acte de naissance ou la copie intégrale de l'acte de naissance datant de moins de 6 mois.\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 321,
+      "answer": "Je n'ai pas d'informations sur la procédure de renouvellement du permis de conduire.",
+      "generation_ms": 6206,
+      "prompt_tokens": 2277,
+      "output_tokens": 19,
+      "attempts": 1,
+      "scores": {
+        "refusal": 1.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s151",
+      "question": "Comment déclarer la naissance de mon enfant à l'état civil ?",
+      "lang": "fr",
+      "category": "no_answer",
+      "expected_ids": [],
+      "reference": "Les procédures disponibles ne contiennent pas d'information sur cette démarche : l'assistant doit le dire clairement, sans inventer de réponse.",
+      "must_include": [],
+      "error": null,
+      "retrieved_ids": [
+        "679152c6-1975-424d-9257-67ac30e08231",
+        "b1dec960-490e-487e-a572-da8d0c295f03",
+        "0b153969-dec7-467e-8667-b784645bad5e"
+      ],
+      "retrieved_titles": [
+        "Obtention du passeport biométrique pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)",
+        "Obtention du passeport biométrique pour les mineurs âgés de 12 à 18 ans (Marocains résidant à l'étranger)",
+        "Copie du casier judiciaire pour les Marocains résidant à l'étranger"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: Obtention du passeport biométrique pour les mineurs de moins de 12 ans (Marocains résidant à l'étranger)\nDescription: Obtention du passeport biométrique pour les mineurs de moins de 12 ans\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: 60 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Copie intégrale de l'acte de naissance ou copie complète du certificat de naissance, datant de moins de 6 mois, ou copie du livret de famille (l'ancien carnet d'identité et d'état civil n'est pas accepté). Ce document doit comporter le nom et prénom de l'\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention du passeport biométrique pour les mineurs âgés de 12 à 18 ans (Marocains résidant à l'étranger)\nDescription: Obtention du passeport biométrique pour les mineurs âgés de 12 à 18 ans (Marocains résidant à l'étranger)\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Frais consulaires : 00 dirham\nTarif sur les services (SEGMA) : 60 dirhams\nDélai: 15 jours\nDocuments requis:\n - Demande de passeport biométrique\n - Carte nationale d'identité en cours de validité ou récépissé de dépôt de demande de délivrance ou de renouvellement de la carte nationale\n - En cas de présentation du récépissé de demande de la carte nationale, l'intéressé doit fournir une copie de l'acte de naissance ou l'extrait intégral de l'acte de naissance datant de moins de 6 mois\n - Photographie d'identité en couleur sur fond blanc ou bleu (format 35x45 mm), faisant apparaître clairement les traits du visage du demandeur\n - En cas de renouvellement, l'ancien passeport doit être remis\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Copie du casier judiciaire pour les Marocains résidant à l'étranger\nDescription: Obtention d'une copie du casier judiciaire\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Frais consulaires : 10 dirhams\nTarif des services (SEGMA) : 00 dirham\nDélai: 60 jours\nDocuments requis:\n - Demande de l'intéressé.\n - Copie de la carte nationale d'identité\n - Extrait d'acte de naissance, pour les personnes ne disposant pas de la carte nationale d'identité\n - Procuration spéciale si la demande est présentée par une personne autre que l'intéressé\n - Document justificatif de résidence en cours de validité (carte de séjour, titre de séjour, visa long séjour, visa ou autorisation d'études, autorisation de travail, carte d'identité étrangère ou passeport étranger), ou tout document officiel indiquant le\n - Si le document de résidence habituelle ne comporte pas l'adresse actuelle, il faut fournir un justificatif de résidence à cette adresse (attestation de résidence, contrat de location, facture d'eau, facture d'électricité, ou facture de téléphone fixe ou a\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 342,
+      "answer": "Je n'ai pas d'information sur la procédure de déclaration de naissance à l'état civil dans les procédures officielles dont je dispose.",
+      "generation_ms": 6472,
+      "prompt_tokens": 1288,
+      "output_tokens": 28,
+      "attempts": 1,
+      "scores": {
+        "refusal": 1.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s152",
+      "question": "Comment demander une bourse pour mes études à l'université ?",
+      "lang": "fr",
+      "category": "no_answer",
+      "expected_ids": [],
+      "reference": "Les procédures disponibles ne contiennent pas d'information sur cette démarche : l'assistant doit le dire clairement, sans inventer de réponse.",
+      "must_include": [],
+      "error": null,
+      "retrieved_ids": [
+        "b643e5cd-c7e4-4169-a8b7-245293dc5a08",
+        "bdc95ffb-2ba3-4b02-8b5a-a51c43348011",
+        "9a410c27-475b-4441-b2ea-64fdec674db9"
+      ],
+      "retrieved_titles": [
+        "Autorisation d'exemption des droits et taxes de douane au profit des biens et équipements sportifs destinés à être remis à titre de don aux fédérations sportives ou à la Fédération nationale du sport scolaire ou à la Fédération nationale des sports universitaires, régies par la loi n° 87-06 relative à l'éducation physique et aux sports",
+        "Paiement des frais de séjour sur un compte bancaire dédié par l'université",
+        "Convention relative aux exonérations et avantages accordés aux promoteurs immobiliers pour la réalisation de projets de construction de résidences universitaires privées destinées aux étudiants inscrits dans l'enseignement supérieur"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: Autorisation d'exemption des droits et taxes de douane au profit des biens et équipements sportifs destinés à être remis à titre de don aux fédérations sportives ou à la Fédération nationale du sport scolaire ou à la Fédération nationale des sports universitaires, régies par la loi n° 87-06 relative à l'éducation physique et aux sports\nDescription: L'objectif de la procédure est l'exemption des droits et taxes de douane pour les biens et équipements sportifs remis à titre de don aux fédérations sportives,\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - Le formulaire « Demande de bénéfice de l'exemption douanière lors de l'importation des biens reçus à titre de don », dûment rempli et signé par l'entité bénéficiaire du don.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Paiement des frais de séjour sur un compte bancaire dédié par l'université\nDescription: L'Office des Changes propose ce service afin de permettre au bénéficiaire d'effectuer des opérations de change non prévues par les instructions générales relatives aux opérations de change\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Copie de la carte d'identité\n - Attestation d'inscription ou d'inscription initiale\n - Formulaire bancaire complété, signé et cacheté\n - Tout document émanant de l'autorité étrangère attestant l'obligation de transférer les frais de séjour sur le compte bancaire dédié par l'université\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Convention relative aux exonérations et avantages accordés aux promoteurs immobiliers pour la réalisation de projets de construction de résidences universitaires privées destinées aux étudiants inscrits dans l'enseignement supérieur\nDescription: Augmentation de la capacité d'accueil des établissements destinés à l'hébergement des étudiants inscrits dans l'enseignement supérieur\nAdministration: Office National Des Oeuvres Universitaires Sociales Et Culturelles\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Convention de partenariat accompagnée de la description technique et de la description du projet (annexes 1 et 2) en 5 exemplaires signés\n - Engagement du promoteur immobilier signé conformément à l'annexe n° 3\n - Plans et maquettes du projet\n - Plan topographique du terrain\n - Copie du registre de commerce de la société\n - Copie des statuts de la société\n - Certificat de propriété du terrain\n - Copie de la carte nationale du promoteur immobilier\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 379,
+      "answer": "Je n'ai pas d'information concernant la procédure pour demander une bourse pour les études à l'université.",
+      "generation_ms": 5484,
+      "prompt_tokens": 782,
+      "output_tokens": 23,
+      "attempts": 1,
+      "scores": {
+        "refusal": 1.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s153",
+      "question": "Quels documents faut-il pour établir un acte de mariage chez les adouls ?",
+      "lang": "fr",
+      "category": "no_answer",
+      "expected_ids": [],
+      "reference": "Les procédures disponibles ne contiennent pas d'information sur cette démarche : l'assistant doit le dire clairement, sans inventer de réponse.",
+      "must_include": [],
+      "error": null,
+      "retrieved_ids": [
+        "1c1aa752-d40c-4b2f-a70a-b746ca85561d",
+        "b6c7c108-fc96-4e46-aa37-816ebb56ab44",
+        "b55b0017-f64e-4c4b-af72-bc57cbcbb616"
+      ],
+      "retrieved_titles": [
+        "Attestation de résidence délivrée par les services de la Gendarmerie Royale",
+        "Autorisation d'acquisition de biens meubles ou immeubles",
+        "Attestation de quitus de la contribution directe ou des dettes d'exploitation des eaux d'irrigation de l'Office Régional de Mise en Valeur Agricole de Tadla"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: Attestation de résidence délivrée par les services de la Gendarmerie Royale\nDescription: Constitution du dossier de demande ou de renouvellement de la carte nationale d'identité électronique\nAdministration: Administration de la Défense Nationale\nFrais: Gratuit\nDélai: 1 jour\nDocuments requis:\n - Déclaration sur l'honneur de résidence ou dernière facture acquittée de consommation d'eau et d'électricité\n - Photographie d'identité de l'usager\n - Certificat de travail ou attestation de présence dans le cadre des obligations pour les militaires\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation d'acquisition de biens meubles ou immeubles\nDescription: Autorisation accordée à l'association pour l'acquisition de biens meubles ou immeubles nécessaires à la réalisation de ses objectifs.\nAdministration: Secrétariat Général du Gouvernement\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Demande adressée au Secrétaire Général du Gouvernement.\n - Procès-verbal de l'organe compétent de l'association ayant décidé l'acquisition des biens meubles ou immeubles.\n - Copie des statuts et du règlement intérieur de l'association, mis à jour.\n - Copie de la liste des membres responsables de la gestion de l'association, avec indication de leur nationalité, profession et domicile.\n - Copie du récépissé du dernier renouvellement du bureau de l'association.\n - Les documents et informations relatifs au bien meuble ou immeuble.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Attestation de quitus de la contribution directe ou des dettes d'exploitation des eaux d'irrigation de l'Office Régional de Mise en Valeur Agricole de Tadla\nDescription: Formulaire de demande de quitus relatif aux opérations foncières sur les terres agricoles\nAdministration: Office Régional De Mise En Valeur Agricole du Tadla\nFrais: 68,76 dirhams\nDélai: 60 jours\nDocuments requis:\n - Demande écrite sollicitant l'attestation\n - Certificat de propriété ou certificat de demande d'immatriculation foncière\n - Procuration, le cas échéant\n - Copie de la carte d'identité nationale\n - Reçu de paiement des frais de l'attestation\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 278,
+      "answer": "Je n'ai pas d'informations sur les documents nécessaires pour établir un acte de mariage chez les adouls parmi les procédures officielles qui me sont fournies.",
+      "generation_ms": 6218,
+      "prompt_tokens": 705,
+      "output_tokens": 33,
+      "attempts": 1,
+      "scores": {
+        "refusal": 1.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s154",
+      "question": "Comment payer une amende de stationnement en ligne ?",
+      "lang": "fr",
+      "category": "no_answer",
+      "expected_ids": [],
+      "reference": "Les procédures disponibles ne contiennent pas d'information sur cette démarche : l'assistant doit le dire clairement, sans inventer de réponse.",
+      "must_include": [],
+      "error": null,
+      "retrieved_ids": [
+        "7de96113-de11-4824-bf87-ca9e4f825d10",
+        "c2103624-016c-4f68-9de0-2d96c48df3c2",
+        "391f6d41-3df3-49bd-8164-8d593c069827"
+      ],
+      "retrieved_titles": [
+        "Exonération totale ou partielle des majorations de retard, des amendes et des frais de recouvrement par décision ministérielle",
+        "Paiement des arriérés au titre de l'épargne sur salaire pour une durée de plus de 12 mois",
+        "Autorisation pour l'installation de panneaux publicitaires"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: Exonération totale ou partielle des majorations de retard, des amendes et des frais de recouvrement par décision ministérielle\nDescription: Objet : bénéficier d'une exonération totale ou partielle des majorations de retard, amendes et frais de recouvrement pour une période déterminée en vertu d'une décision ministérielle\nAdministration: Caisse Nationale De La Sécurité Sociale\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Demande\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Paiement des arriérés au titre de l'épargne sur salaire pour une durée de plus de 12 mois\nDescription: Autorisation accordée à l'usager d'effectuer des opérations de change non prévues par les instructions générales relatives aux opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Annexe bancaire remplie, signée et cachetée\n - Contrat de travail visé par le Ministère du Travail et de l'Insertion Professionnelle.\n - Certificat de salaire.\n - Bulletin de salaire.\n - Attestation bancaire certifiant qu'aucun transfert financier n'a été effectué pendant la période concernée.\n - Relevé de compte détaillé indiquant le solde actualisé.\n - Copie de la carte d'identité\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation pour l'installation de panneaux publicitaires\nDescription: Obtention de l'autorisation pour l'installation de panneaux publicitaires\nAdministration: Ministère de l’Equipement et de L’Eau\nFrais: Frais d'étude du dossier :\n- 1000 dirhams par demande si la superficie est inférieure ou égale à 1000 mètres carrés ou mètre linéaire ;\n- 1000 dirhams par demande si la superficie est inférieure ou égale à 1000 mètres carrés ou mètre linéaire, avec un supplément de 500 dirhams par tranche supplémentaire inférieure ou égale à 1000 mètres carrés ou mètre linéaire, avec un plafond de 25000 dirhams ;\n- Redevance : 500 dirhams par mètre carré selon la superficie du panneau publicitaire (conformément à l'annexe n° 1 de la décision n° 3371.14) Journal officiel n° 6330 500 dirhams par mètre carré selon la superficie du panneau publicitaire  \nEt toute fraction de mètre est comptée comme un mètre carré entier.\nDélai: 60 jours\nDocuments requis:\n - 1- Demande d'autorisation d'occupation temporaire du domaine public\n - 2 plans :\n - Plan de situation indiquant sur une carte appropriée l'emplacement du panneau à installer.\n - Plan du panneau à installer, à l'échelle, indiquant ses dimensions.\n - 3- Reçu de paiement des frais d'étude du dossier\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 342,
+      "answer": "Je n'ai pas d'information sur la procédure de paiement d'une amende de stationnement en ligne.",
+      "generation_ms": 5835,
+      "prompt_tokens": 845,
+      "output_tokens": 24,
+      "attempts": 1,
+      "scores": {
+        "refusal": 1.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s155",
+      "question": "Comment inscrire mon fils en première année dans une école publique ?",
+      "lang": "fr",
+      "category": "no_answer",
+      "expected_ids": [],
+      "reference": "Les procédures disponibles ne contiennent pas d'information sur cette démarche : l'assistant doit le dire clairement, sans inventer de réponse.",
+      "must_include": [],
+      "error": null,
+      "retrieved_ids": [
+        "f8521a51-918f-4f12-a3a1-abb710f3f02b",
+        "699a712f-edd1-42ab-831f-59cc5008fcc9",
+        "b8b0cc38-b7db-4d30-a661-e1e4d073c363"
+      ],
+      "retrieved_titles": [
+        "Autorisation de gestion d'un établissement d'enseignement privé",
+        "Attestation de bénéfice du taux réduit de 7 % applicable aux achats de produits et matières entrant dans la composition des fournitures scolaires",
+        "Décision de régularisation de la situation d'un établissement d'enseignement de la conduite suite à la renonciation à la licence"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: Autorisation de gestion d'un établissement d'enseignement privé\nDescription: Obtention de l'autorisation de gestion d'un établissement privé d'enseignement\nAdministration: Ministère de l’Education Nationale, du Préscolaire et du Sport-Académies Régionales d'Education et de Formation\nFrais: Gratuit\nDélai: 30 jours\nDocuments requis:\n - Demande d'autorisation d'exercer la mission de directeur(trice) pédagogique, établie par l'intéressé(e) / le(la) gestionnaire ;\n - Fiche de renseignements concernant le(la) directeur(trice) candidat(e) ;\n - Copie de la carte nationale d'identité électronique ;\n - Copie du certificat de propriété du bâtiment ou du contrat de location précisant son usage comme établissement d'enseignement privé ;\n - Copie du diplôme de licence ou d'un titre équivalent ou tenant lieu pour l'enseignement scolaire privé ;\nCopie du diplôme du baccalauréat ou d'un titre équivalent ou tenant lieu pour l'enseignement préscolaire ;\n - État des services attestant d'une pratique d'enseignement d'au moins trois (03) ans dans l'enseignement public ou privé, et de deux (02) ans pour l'enseignement préscolaire, accompagné du certificat de travail ;\n - Copie du contrat de travail conclu entre le(la) propriétaire de l'établissement et le(la) directeur(trice) pédagogique, respectant le salaire minimum légal ;\n - Engagement à se consacrer exclusivement à la gestion de l'établissement, à demeurer en poste jusqu'à la fin de l'année scolaire et à remplacer tout(e) enseignant(e) qui abandonnerait ses fonctions en cours d'année scolaire ;\n - Photographie récente ;\n - Certificat médical attestant l'aptitude physique de l'intéressé(e) ;\n - Attestation de démission ou de révocation du(de la) directeur(trice) précédent(e) ou du(de la) directeur(trice) candidat(e) de son poste antérieur ;\n - Permis de construire ;\n - Certificat de conformité ;\n - Spécimen de signature ;\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Attestation de bénéfice du taux réduit de 7 % applicable aux achats de produits et matières entrant dans la composition des fournitures scolaires\nDescription: Bénéfice du taux réduit de 7 % applicable aux achats de produits et matières entrant dans la composition des fournitures scolaires\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - En cas de première demande déposée au cours de l'année :\n - - Demande, formulaire AAC170\n - En cas de demandes ultérieures au cours de l'année :\n - - Demande électronique ou demande, formulaire AAC170\n - - Bordereau descriptif électronique ou bordereau descriptif, formulaire AAC171\n - - Factures pro forma ou tout document relatif à la commande\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Décision de régularisation de la situation d'un établissement d'enseignement de la conduite suite à la renonciation à la licence\nDescription: Octroi d'une licence d'ouverture et d'exploitation d'un établissement d'enseignement de la conduite au nom d'une personne physique ou morale après renonciation à celle-ci par le titulaire initial de la licence\nAdministration: Agence Nationale De La Sécurité Routiere\nFrais: Gratuit\nDélai: 30 jours\nDocuments requis:\n - 1- Déclaration conjointe entre la personne renonçant à sa licence d'ouverture et d'exploitation d'un établissement d'enseignement de la conduite et le bénéficiaire de la renonciation\n - Si la personne proposée est une personne physique :\n - a- Photocopie de la pièce d'identité en cours de validité\n - b- Extrait du bulletin n° 3 du casier judiciaire datant de moins de 3 mois\n - c- Fiche d'antécédents judiciaires datant de moins de 3 mois\n - d- Cahier des charges paraphé sur toutes les pages et signé à la dernière page. La signature doit être légalisée et précédée de la mention « Lu et approuvé, je m'engage à respecter les clauses du présent cahier des charges »\n - Si la personne proposée est une personne morale :\n - a- Copie de la pièce d'identité en cours de validité du gérant de la personne morale ou de la personne habilitée à engager la personne morale\n - b- Photo d'identité récente du gérant de la personne morale ou de la personne habilitée à engager la personne morale\n - c- Extrait du bulletin n° 3 du casier judiciaire datant de moins de 3 mois pour le gérant de la personne morale ou la personne habilitée à engager la personne morale\n - d- Fiche d'antécédents judiciaires datant de moins de 3 mois pour le gérant de la personne morale ou la personne habilitée à engager la personne morale\n - e- Copie des statuts dont l'objet est spécifiquement l'enseignement de la conduite\n - f- Copie du procès-verbal portant nomination du gérant de la personne morale ou de la personne habilitée à l'engager\n - Acte de renonciation établi par un notaire ou un adoul\n - Certificat de propriété ou contrat de bail dûment légalisé précisant l'usage du local pour l'enseignement de la conduite\n - Attestation d'inscription au registre du commerce\n - Attestation d'inscription à la taxe professionnelle\n - Attestation d'assurance en cours de validité couvrant les employés et les candidats contre les risques et dommages auxquels ils peuvent être exposés au sein de l'établissement\n - Document d'abonnement à Internet et au téléphone\n - Copie du certificat d'immatriculation du véhicule destiné à l'enseignement de la conduite portant la mention « voiture-école »\n - Copie du certificat de contrôle technique périodique en cours de validité, si l'âge du véhicule dépasse un an\n - Copie du contrat d'assurance en cours de validité contre les risques et accidents que peut causer le véhicule aux candidats, examinateurs, moniteurs ou autres personnes ainsi qu'aux biens, à l'occasion de la formation pratique à la conduite ou du passage\n - Copie du contrat de travail conclu entre l'établissement et le directeur, dûment légalisé quant aux signatures des parties, ou déclaration sur l'honneur par laquelle le propriétaire de l'établissement d'enseignement de la conduite s'engage à gérer lui-mêm\n - Déclaration sur l'honneur par laquelle le directeur de l'établissement s'engage à se consacrer entièrement à la gestion de l'établissement\n - Copie de la pièce d'identité en cours de validité, propre au directeur\n - Extrait du bulletin n° 3 du casier judiciaire datant de moins de 3 mois, propre au directeur\n - Copie du permis de conduire de catégorie « B » en cours de validité, propre au directeur\n - Attestation prouvant un niveau au moins de deuxième année du baccalauréat pour le directeur\n - Copie du contrat de travail conclu entre l'établissement et le moniteur, dûment légalisé quant aux signatures des parties, ou déclaration sur l'honneur par laquelle le propriétaire de l'établissement d'enseignement de la conduite s'engage à exercer la pro\n - Copie du permis de moniteur d'enseignement de la conduite en cours de validité, propre au moniteur\n - Copie de la pièce d'identité en cours de validité, propre au moniteur\n - Extrait du bulletin n° 3 du casier judiciaire datant de moins de 3 mois, propre au moniteur\n - Copie du permis de conduire en cours de validité, propre au moniteur\n - Liste des supports pédagogiques et didactiques proposés pour l'enseignement de la conduite\n - Liste des équipements dont dispose l'établissement, tels que prévus dans le cahier des charges\n - Note technique du système informatique utilisé par l'établissement pour : \n- la gestion administrative des dossiers des candidats inscrits à l'établissement ;\n- la conservation des informations relatives à la formation des candidats, y compris les résulta\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 238,
+      "answer": "Je n'ai pas d'information concernant la procédure d'inscription d'un enfant en première année dans une école publique. Les procédures officielles dont je dispose ne traitent pas de ce sujet.",
+      "generation_ms": 5836,
+      "prompt_tokens": 2038,
+      "output_tokens": 40,
+      "attempts": 1,
+      "scores": {
+        "refusal": 1.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    },
+    {
+      "question_id": "s156",
+      "question": "Comment obtenir le permis de construire pour une maison individuelle ?",
+      "lang": "fr",
+      "category": "no_answer",
+      "expected_ids": [],
+      "reference": "Les procédures disponibles ne contiennent pas d'information sur cette démarche : l'assistant doit le dire clairement, sans inventer de réponse.",
+      "must_include": [],
+      "error": null,
+      "retrieved_ids": [
+        "67c629df-d219-49bd-a6f9-99851643c797",
+        "f8521a51-918f-4f12-a3a1-abb710f3f02b",
+        "134139a2-9b3c-494b-b015-63a7e7c20251"
+      ],
+      "retrieved_titles": [
+        "Inscription au régime de l’auto-entrepreneur",
+        "Autorisation de gestion d'un établissement d'enseignement privé",
+        "Permis d'occupation temporaire du domaine public pour l'accès aux propriétés privées et aux projets d'investissement (SVR) (Invest)"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: Inscription au régime de l’auto-entrepreneur\nDescription: Détermination des modalités d’inscription au registre national de l’auto-entrepreneur en vue de l’obtention du statut d’auto-entrepreneur.\nAdministration: Barid Al-Maghrib Sa\nFrais: Pour la Poste, Banque Gratuit\nAttijari Wafa Bank : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service.\nBanque Populaire : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service.\nAttijari Wafa Bank Dar Assafaa : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service.\nFondation Banque Populaire pour le micro-crédit : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service.\nBanque Marocaine du Commerce Extérieur : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service.\nCrédit Agricole : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service.\nCrédit Immobilier et Touristique : varie d'une banque à l'autre. Poste Maroc a mandaté ces banques pour recevoir la demande de décision administrative moyennant une commission déterminée qui varie d'une banque à l'autre selon le type de service.\nDélai: 15 jours\nDocuments requis:\n - Photo d’identité\n - Copie de la carte d’identité nationale\n - Demande d’inscription\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation de gestion d'un établissement d'enseignement privé\nDescription: Obtention de l'autorisation de gestion d'un établissement privé d'enseignement\nAdministration: Ministère de l’Education Nationale, du Préscolaire et du Sport-Académies Régionales d'Education et de Formation\nFrais: Gratuit\nDélai: 30 jours\nDocuments requis:\n - Demande d'autorisation d'exercer la mission de directeur(trice) pédagogique, établie par l'intéressé(e) / le(la) gestionnaire ;\n - Fiche de renseignements concernant le(la) directeur(trice) candidat(e) ;\n - Copie de la carte nationale d'identité électronique ;\n - Copie du certificat de propriété du bâtiment ou du contrat de location précisant son usage comme établissement d'enseignement privé ;\n - Copie du diplôme de licence ou d'un titre équivalent ou tenant lieu pour l'enseignement scolaire privé ;\nCopie du diplôme du baccalauréat ou d'un titre équivalent ou tenant lieu pour l'enseignement préscolaire ;\n - État des services attestant d'une pratique d'enseignement d'au moins trois (03) ans dans l'enseignement public ou privé, et de deux (02) ans pour l'enseignement préscolaire, accompagné du certificat de travail ;\n - Copie du contrat de travail conclu entre le(la) propriétaire de l'établissement et le(la) directeur(trice) pédagogique, respectant le salaire minimum légal ;\n - Engagement à se consacrer exclusivement à la gestion de l'établissement, à demeurer en poste jusqu'à la fin de l'année scolaire et à remplacer tout(e) enseignant(e) qui abandonnerait ses fonctions en cours d'année scolaire ;\n - Photographie récente ;\n - Certificat médical attestant l'aptitude physique de l'intéressé(e) ;\n - Attestation de démission ou de révocation du(de la) directeur(trice) précédent(e) ou du(de la) directeur(trice) candidat(e) de son poste antérieur ;\n - Permis de construire ;\n - Certificat de conformité ;\n - Spécimen de signature ;\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Permis d'occupation temporaire du domaine public pour l'accès aux propriétés privées et aux projets d'investissement (SVR) (Invest)\nDescription: Obtention du permis d'occupation temporaire du domaine public pour l'accès aux propriétés privées et aux projets d'investissement\nAdministration: Ministère de l’Equipement et de L’Eau\nFrais: 0\nDélai: 30 jours\nDocuments requis:\n - 1- Demande de permis d'occupation temporaire du domaine public\n - 2- Les plans :\n - Plan de situation indiquant sur une carte appropriée l'emplacement de la parcelle à occuper.\n - Plan de la parcelle à occuper avec les installations projetées à une échelle appropriée, indiquant les coordonnées Lambert de ce terrain rattachées au réseau de la triangulation topographique marocaine.\n - Plan altimétrique (Plan coté)\n - Plan montrant les accès et détails des caniveaux (Plan des Accès - Structure des Accès - Détails du Caniveau)\n - Plan indiquant les signaux de signalisation horizontale et verticale (Plan de Signalisation)\n - Plan de tracé, profil en long et profil en travers sur 500 mètres à droite et à gauche du projet (Tracé en plan, profil en long, profil en travers)\n - 3- Dossier d'étude technique définissant la nature des accès à aménager par le demandeur de l'autorisation\n - 4- Reçu de paiement des frais d'étude du dossier\n - 5- Certificat de propriété ou tout document attestant la propriété des biens immobiliers auxquels l'accès est demandé, ainsi que les contrats de location si les biens ne sont pas la propriété du demandeur de l'autorisation\n - 6- Engagement de paiement de la redevance annuelle\n - 7- Cahier des charges signé par le concerné\n - 8- Dans le cas d'une société, joindre à la demande les statuts, le procès-verbal de l'assemblée générale désignant le gérant au nom de la société et une copie du registre de commerce\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 449,
+      "answer": "Je n'ai pas d'information sur la procédure pour obtenir le permis de construire pour une maison individuelle parmi les procédures officielles qui me sont fournies.",
+      "generation_ms": 7593,
+      "prompt_tokens": 1665,
+      "output_tokens": 31,
+      "attempts": 2,
+      "scores": {
+        "refusal": 1.0,
+        "language_match": 1.0
+      },
+      "score_errors": {}
+    }
+  ]
+}

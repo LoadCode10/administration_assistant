@@ -1,0 +1,730 @@
+{
+  "config": {
+    "experiment_name": "answers_vector_v1_p6",
+    "date": "2026-10-15T13:07:41",
+    "git_commit": null,
+    "dataset": "synthetic_v1.json",
+    "start": 98,
+    "limit": 20,
+    "retrieval_mode": "vector",
+    "top_k": 3,
+    "retrieval_only": false,
+    "llm_model": "gemini-2.5-flash",
+    "embedding_model": "BAAI/bge-m3"
+  },
+  "rows": [
+    {
+      "question_id": "s099",
+      "question": "عشت 12 سنة في ألمانيا وأريد إدخال سيارتي إلى المغرب مع تخفيض 90% من الرسوم الجمركية، ما هي الشهادة المطلوبة؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "d93e8aa7-7d0e-4a22-ac90-79a636ec1310"
+      ],
+      "reference": "الإجراء المعني هو « شهادة تثبت إقامة الشخص ببلد الإقامة لا تقل على 10 سنوات من أجل استفادة من التخفيض الممنوح للتخليص  الجمركي للسيارة والمقدر ب 90%(المغاربة المقيمون بالخارج) » (وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي). الوثائق المطلوبة: البطاقة الوطنية للتعريف ؛ بطاقة الإقامة أو بطاقة التعريف الأجنبية تحمل العنوان بالخارج، أو ما يثبت الإقامة لمدة 10 سنوات بالخارج. الرسوم: الرسوم القنصلية00 درهما تعرفة على الخدمات (SEGMA)00 دراهم. الآجال: على الفور.",
+      "must_include": [
+        "البطاقة الوطنية للتعريف",
+        "بطاقة الإقامة أو بطاقة التعريف الأجنبية تحمل العنوان…"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "d93e8aa7-7d0e-4a22-ac90-79a636ec1310",
+        "1b8fdec7-6d5b-4c11-b00c-ac6b7a9c5ac1",
+        "af2ed3bc-5149-450c-be6b-44e91a608168"
+      ],
+      "retrieved_titles": [
+        "Attestation de résidence d’au moins 10 ans à l’étranger pour bénéficier de la réduction de 90 % des droits de douane sur un véhicule (Marocains résidant à l’étranger)",
+        "Autorisation d'exonération du droit d'importation lors du dédouanement de véhicules spécialement équipés pour personnes en situation de handicap",
+        "Autorisation d'exonération des droits et taxes de douane pour les Marocains de retour et les étrangers s'installant au Maroc, à l'importation de leurs bagages et effets personnels"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: شهادة تثبت إقامة الشخص ببلد الإقامة لا تقل على 10 سنوات من أجل استفادة من التخفيض الممنوح للتخليص  الجمركي للسيارة والمقدر ب 90%(المغاربة المقيمون بالخارج)\nDescription: الاستفادة من التخفيض الجمركي\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: الرسوم القنصلية00 درهما\nتعرفة على الخدمات (SEGMA)00 دراهم\nDélai: على الفور\nDocuments requis:\n - البطاقة الوطنية للتعريف\n - بطاقة الإقامة أو بطاقة التعريف الأجنبية تحمل العنوان بالخارج، أو ما يثبت الإقامة لمدة 10 سنوات بالخارج\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الترخيص  بالإعفاء من رسم الاستيراد عند تعشير السيارات المعدة خصيصا للأشخاص في وضعية إعاقة\nDescription: الغاية من المسطرة هي إعفاء السيارات المعدة خصيصا للأشخاص في وضعية إعاقة من رسم الاستيراد شريطة ان:\n-\tيكون الشخص في وضعية إعاقة بدنية وحائزا لرخصة السياقة صالحة لصنف ب (B) تشير\"إلى الرموز التي تبين التقييدات الخاصة به.\n-\tأن تكون السيارة موضوع الطلب تتوفر على التجهيزات اللازمة للمعني بالأمر. \n  هذا وتجدر الإشارة إلى أن هذا النوع من السيارات يبقى خاضعا لأداء الضريبة على القيمة المضافة.\nAdministration: وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة\nFrais: مجانا\nDélai: غير محدد\nDocuments requis:\n - طلب مؤشر عليه من طرف السلطة الحكومية المكلفة بالأشخاص في وضعية اعاقة\n - نسخة من شهادة المصادقة بصفة منعزلة مسلمة من طرف السلطة الحكومية المكلفة بالتجهيز و النقل\n - شهادة التعريف مسلمة من طرف السلطة الحكومية المكلفة بالتجهيز و النقل\n - شهادة طبية مسلمة وفق القانون رقم 05-52 بمثابة مدونة السير.\n - نسخة من البطاقة الوطنية للتعريف الإلكترونية أو من شهادة الإقامة بالنسبة للأجانب المقيمين بالمغرب\n - نسخة من رخصة السياقة\n - وثيقة الجولان تحت نظام القبول المؤقت لوسائل النقل التي يمتلكها الأشخاص الذين لهم محل إقامة اعتيادي في الخارج\n - فاتورة الشراء الأصلية بالنسبة للسيارات ذات ثلاثة أشهر أو أقل من العمر\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الترخيص بالإعفاء من الرسوم والمكوس الجمركية لفائدة  المواطنين العائدين للمغرب أو الأجانب القادمين للاستقرار في المغرب عند استيراد أمتعتهم وأغراضهم الشخصية\nDescription: الغاية من المسطرة هي الاستفادة من الإعفاء من الرسوم والمكوس الجمركية عند استيراد الأمتعة الشخصية،\nAdministration: وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة\nFrais: مجانا\nDélai: 10 أيام\nDocuments requis:\n - طلب الحصول على  ترخيص الاستفادة من الإعفاء من الرسوم والمكوس الجمركية عند استيراد الأمتعة الشخصية\n - شهادة تغيير الإقامة المسلمة من طرف السلطة المحلية لمكان الذهاب أو من طرف قنصل المغرب الداخل مكان الإقامة السابق في دائرة نفوذه\n - جرد مفصل للأشياء المستوردة\n - جرد مفصل للمعدات والأدوات المستعملة\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 1196,
+      "answer": "بناءً على المعلومات المتوفرة، للاستفادة من التخفيض الجمركي بنسبة 90% لإدخال سيارتك بعد إقامتك لمدة 12 سنة في ألمانيا، فإن الشهادة المطلوبة هي **\"شهادة تثبت إقامة الشخص ببلد الإقامة لا تقل عن 10 سنوات\"**.\n\nللحصول على هذه الشهادة، ستحتاج إلى الوثائق التالية:\n*   البطاقة الوطنية للتعريف\n*   بطاقة الإقامة أو بطاقة التعريف الأجنبية تحمل العنوان بالخارج، أو ما يثبت الإقامة لمدة 10 سنوات بالخارج\n\nتُقدّم هذه الخدمة من طرف **وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج - قطاع الشؤون الخارجية والتعاون الإفريقي**.\n\nالرسوم القنصلية وتعرفة الخدمات هي 00 درهماً لكل منهما، ويتم إنجاز الخدمة **على الفور**.",
+      "generation_ms": 8412,
+      "prompt_tokens": 1066,
+      "output_tokens": 218,
+      "attempts": 1
+    },
+    {
+      "question_id": "s100",
+      "question": "Je dois prouver à un client étranger que je suis résident fiscal au Maroc pour éviter d'être imposé deux fois, quel document ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "4eec8a2d-afae-471e-98d2-9d8dc163b3c8"
+      ],
+      "reference": "La procédure concernée est « Attestation de résidence fiscale » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : Demande électronique ; Pour les demandes non déposées par voie électronique ; Pour les personnes physiques ; Demande sur formulaire n° AAC310. ; Tout document prouvant que le demandeur a un domicile permanent au Maroc, ou le centre de ses intérêts économiques ; Copies des passeports ou des documents justifiant que la durée de séjour continue ou discontinue au Maroc dépasse 183…. Frais : Gratuit. Délai : 2 jours.",
+      "must_include": [
+        "Demande électronique",
+        "Pour les demandes non déposées par voie électronique",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "4eec8a2d-afae-471e-98d2-9d8dc163b3c8",
+        "a63b08ba-1e68-4177-8d69-749ece3e8f0f",
+        "0eaac7c2-1454-44e3-8341-106e66801fce"
+      ],
+      "retrieved_titles": [
+        "Attestation de résidence fiscale",
+        "Certification de conformité de copies de documents à la demande des Marocains résidant à l'étranger",
+        "Attestation de l'accomplissement de la déclaration relative aux biens et avoirs constitués à l'étranger par les Marocains résidant à l'étranger ayant transféré leur résidence fiscale au Maroc"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Attestation de résidence fiscale\nDescription: Justificatif de la résidence fiscale en vue d'éviter la double imposition\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 2 jours\nDocuments requis:\n - • Demande électronique\n - Pour les demandes non déposées par voie électronique :\n - Pour les personnes physiques :\n - • Demande sur formulaire n° AAC310.\n - • Tout document prouvant que le demandeur a un domicile permanent au Maroc, ou le centre de ses intérêts économiques ;\n - • Copies des passeports ou des documents justifiant que la durée de séjour continue ou discontinue au Maroc dépasse 183 jours sur une période de 365 jours.\n - Pour les personnes morales :\n - • Demande sur formulaire n° AAC310 ;\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Certification de conformité de copies de documents à la demande des Marocains résidant à l'étranger\nDescription: Certification de conformité des copies de documents aux originaux en vue de leur production, le cas échéant, à la demande des Marocains résidant à l'étranger\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Droits consulaires : 50 dirhams  \nTarif des services (SEGMA) : 10 dirhams\nDélai: immédiatement\nDocuments requis:\n - Carte nationale d'identité électronique ou passeport biométrique\n - Document à certifier\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Attestation de l'accomplissement de la déclaration relative aux biens et avoirs constitués à l'étranger par les Marocains résidant à l'étranger ayant transféré leur résidence fiscale au Maroc\nDescription: L'Office des Changes offre ce service afin de permettre au bénéficiaire (en l'occurrence : les Marocains résidant à l'étranger ayant transféré leur résidence fiscale au Maroc) de réaliser des opérations de change non prévues par les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Documents justifiant la valeur des propriétés intellectuelles, culturelles et artistiques : tout document légal attestant leur date de propriété et leur valeur avant la date de transfert de la résidence fiscale au Maroc.\n - Documents justifiant la plus-value sur les biens immobiliers : contrats de vente et d'achat.\n - Documents justifiant la plus-value sur les actifs financiers : relevé des comptes d'actifs financiers ou documents justificatifs des opérations d'achat et de vente de ces actifs.\n - Documents justifiant la plus-value sur les dépôts en espèces dans la limite de la valeur des intérêts.\n - Formulaire type de déclaration des biens et avoirs constitués à l'étranger par les Marocains résidant à l'étranger qui transfèrent leur résidence fiscale au Maroc, conformément aux dispositions de la loi 63.14 promulguée par le Dahir n° 1.15.25 du 29 Rabi\n - Certificat de résidence à l'étranger, titre de séjour, certificat de radiation des registres consulaires ou des missions et représentations diplomatiques marocaines à l'étranger, ou tout document en tenant lieu.\n - Documents justifiant l'exercice d'une activité professionnelle durant la période de résidence à l'étranger, tels que : déclarations fiscales, contrat de travail, bulletin de salaire, ou tout document en tenant lieu.\n - Documents justifiant la valeur des biens immobiliers : certificat attestant l'acquisition du bien et sa valeur, ou sa possession par voie de succession ou de donation avant la date de transfert de la résidence fiscale au Maroc.\n - Documents justifiant la valeur des actifs financiers : tout document attestant la date de détention de ces actifs, ainsi que leur valeur de souscription ou d'achat avant la date de transfert de la résidence fiscale au Maroc.\n - Documents justifiant les montants des dépôts en espèces : relevé du compte bancaire du mois précédant la date de transfert de la résidence fiscale au Maroc et relevé du compte bancaire du dernier mois précédant la date de la déclaration.\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 1022,
+      "answer": "Pour prouver votre résidence fiscale au Maroc afin d'éviter la double imposition, vous devez obtenir une **Attestation de résidence fiscale**.\n\nCette procédure est gérée par le **Ministère de l’Économie et des Finances - Direction Générale des Impôts**.\n\n*   **Frais :** Gratuit\n*   **Délai :** 2 jours\n\n**Documents requis :**\n*   Demande électronique\n*   Pour les demandes non déposées par voie électronique :\n    *   Pour les personnes physiques :\n        *   Demande sur formulaire n° AAC310.\n        *   Tout document prouvant que le demandeur a un domicile permanent au Maroc, ou le centre de ses intérêts économiques.\n        *   Copies des passeports ou des documents justifiant que la durée de séjour continue ou discontinue au Maroc dépasse 183 jours sur une période de 365 jours.\n    *   Pour les personnes morales :\n        *   Demande sur formulaire n° AAC310.\n\nSource : Ministère de l’Économie et des Finances - Direction Générale des Impôts.",
+      "generation_ms": 8186,
+      "prompt_tokens": 1153,
+      "output_tokens": 237,
+      "attempts": 1
+    },
+    {
+      "question_id": "s101",
+      "question": "شحال كياخد الوقت باش نحصل على شهادة الإقامة الجبائية؟",
+      "lang": "ar",
+      "category": "user_style",
+      "expected_ids": [
+        "4eec8a2d-afae-471e-98d2-9d8dc163b3c8"
+      ],
+      "reference": "الإجراء المعني هو « شهادة الإقامة الجبائية » (وزارة الاقتصاد والمالية-المديرية العامة للضرائب). الوثائق المطلوبة: طلب إلكتروني ؛ بالنسبة للطلبات التى لم تودع بطريقة الكترونية ؛ بالنسبة للأشخاص الذاتيين ؛ طلب نموذج رقم AAC310. ؛ أية وثيقة تثبت أن مقدم الطلب لديه موطن دائم في المغرب، أو مركز مصالحه الاقتصادية؛ ؛ نسخ من جوازات السفر أو الوثائق التي تبرر أن مدة الإقامة المستمرة أو المتقطعة في المغرب تتجاوز 183 يومًا لمدة 365 يومًا.. الرسوم: بالمجان. الآجال: على الفور : بالنسبة للطلبات الإلكترونية • يومان: بالنسبة للطلبات التى لم تودع بطريقة الكترونية.",
+      "must_include": [
+        "طلب إلكتروني",
+        "بالنسبة للطلبات التى لم تودع بطريقة الكترونية",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "4eec8a2d-afae-471e-98d2-9d8dc163b3c8",
+        "0ea0d0c8-bf87-4e41-ac6b-5b3ee3771e0d",
+        "d93e8aa7-7d0e-4a22-ac90-79a636ec1310"
+      ],
+      "retrieved_titles": [
+        "Attestation de résidence fiscale",
+        "Obtention du certificat de qualification et de classification des laboratoires de construction et de travaux publics",
+        "Attestation de résidence d’au moins 10 ans à l’étranger pour bénéficier de la réduction de 90 % des droits de douane sur un véhicule (Marocains résidant à l’étranger)"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: شهادة الإقامة الجبائية\nDescription: إثبات الإقامة الجبائية لتجنب الازدواج الضريبي\nAdministration: وزارة الاقتصاد والمالية-المديرية العامة للضرائب\nFrais: بالمجان\nDélai: • على الفور :  بالنسبة للطلبات الإلكترونية\n\n • يومان: بالنسبة للطلبات التى لم تودع بطريقة الكترونية\nDocuments requis:\n - • طلب إلكتروني\n - بالنسبة للطلبات التى لم تودع بطريقة الكترونية:\n - بالنسبة للأشخاص الذاتيين:\n - • طلب نموذج رقم  AAC310.\n - • أية وثيقة تثبت أن مقدم الطلب لديه موطن دائم في المغرب، أو مركز مصالحه الاقتصادية؛\n - • نسخ من جوازات السفر أو الوثائق التي تبرر أن مدة الإقامة المستمرة أو المتقطعة في المغرب تتجاوز 183 يومًا لمدة 365 يومًا.\n - بالنسبة لشخص اعتباري :\n - • طلب نموذج رقم  AAC310 ؛\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الحصول على شهادة تكييف وتصنيف مختبرات البناء والأشغال العمومية\nDescription: المشاركة في الصفقات العمومية\nAdministration: وزارة التجهيز والماء\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - طلب تكييف و تصنيف مختبرات البناء والأشغال العمومية\n - شهادة الاقامة\n - نسخة مصورة  من الدبلوم المحصل عليه من طرف مسير المختبر\n - الوثائق التي تثبت أن مسير المختبر المترشح سبق أن زاول واحدا أو أكثر من انشطة المختبر المبينة في القائمة المشار اليها في المادة الأولى من  المرسوم رقم  437-01-2 طوال خمس (5) سنوات على الأقل.\n - البطاقة رقم 3 من السجل العدلي لا يتجاوز تاريخها ثلاثة أشهر أو أي وثيقة رسمية أخرى تقوم مقامها\n - مستخرج من شهادة تقييد المختبر في السجل التجاري\n - جدول لا يتجاوز تاريخه سنة واحدة ومؤشر عليه بصفة صحيحة من لدن الصندوق الوطني للضمان الاجتماعي يتضمن قائمة الأشخاص المستخدمين والمنخرطين في هذه الهيئة ويثبت أن المترشح يقدم بانتظام التصاريح بالأجور\n - شهادة مسلمة من مصالح الضرائب المباشرة والرسوم المعتبرة في حكمها يبين فيها رقم الأعمال الذي تم تحقيقه طوال السنوات الثلاث الأخيرة أو منذ إنشاء المختبر إذا كان هذا الأخير قائما منذ أقل من ثلاث سنوات\n - شهادة مسلمة منذ أقل من سنة   من لدن القابض التابع له محل فرض الضريبة تثبت أن الشخص المترشح في وضعية جبائية قانونية لكونه أدلى بتصاريحه ودفع المبالغ المستحقة، أو في حالة عدم الأداء، لكونه قدم ضمانات يرى المحاسب المكلف بالتحصيل أنه كافية. ويجب أن يبين في هذ\n - المراجع التقنية المتعلقة بطبيعة ومبلغ الأعمال المنجزة ومكان وتاريخ إنجازها وكذا أسماء وعناوين أصحاب المشاريع الذين استفادوا من الأعمال المذكورة وعند الاقتضاء تسمياتهم وعناوينهم. ولا  تطبق أحكام هذا المقطع على المختبرات الحديثة العهد.\n - قائمة الوسائل المادية مع مواصفاتها التقنية وبيان تاريخها وقيم  اقتنائها.\n - وثيقة تثبت ربط تجهيزات التجريب والقياس بشبكة المعايرة الوطنية أو الدولية وفقا للنصوص التشريعية والتنظيمية الجاري بها العمل.\n - قائمة مستخدمي الإشراف والتأطير مع بيان مؤهلاتهم المهنية بوجه خاص.\n - نسخة من النظام الأساسي للشخص المعنوي\n - شهادة القيد في جدول الضريبة المهنية (الباتنتا) لا يتجاوز  تاريخها سنة.\n - نسخة من المخطط الهيكلي مفصل يتضمن عند الاقتضاء  كيفية  تموقعه عبر التراب الوطني ومداه.\n - السيرة الذاتية لكل واحد من مسيريه و أطره.\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة تثبت إقامة الشخص ببلد الإقامة لا تقل على 10 سنوات من أجل استفادة من التخفيض الممنوح للتخليص  الجمركي للسيارة والمقدر ب 90%(المغاربة المقيمون بالخارج)\nDescription: الاستفادة من التخفيض الجمركي\nAdministration: وزارة الشؤون الخارجية والتعاون الإفريقي والمغاربة المقيمين بالخارج-قطاع الشؤون الخارجية والتعاون الإفريقي\nFrais: الرسوم القنصلية00 درهما\nتعرفة على الخدمات (SEGMA)00 دراهم\nDélai: على الفور\nDocuments requis:\n - البطاقة الوطنية للتعريف\n - بطاقة الإقامة أو بطاقة التعريف الأجنبية تحمل العنوان بالخارج، أو ما يثبت الإقامة لمدة 10 سنوات بالخارج\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 660,
+      "answer": "بالنسبة لشهادة الإقامة الجبائية، إذا كان الطلب إلكترونياً، فيتم الحصول عليها على الفور. أما بالنسبة للطلبات التي لم تودع بطريقة إلكترونية، فمدة الإنجاز هي يومان.\n\nالمصدر: وزارة الاقتصاد والمالية-المديرية العامة للضرائب.",
+      "generation_ms": 6928,
+      "prompt_tokens": 1348,
+      "output_tokens": 72,
+      "attempts": 1
+    },
+    {
+      "question_id": "s102",
+      "question": "أنا متقاعد لدى النظام الجماعي لمنح رواتب التقاعد وأحتاج شهادة الاقتطاع من المنبع للضريبة على الدخل، كيف أحصل عليها؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "d4ace086-32bb-427f-89db-9776e72edefb"
+      ],
+      "reference": "الإجراء المعني هو « شهادة اقتطاع الضريبة على الدخل » (النظام الجماعي لمنح رواتب التقاعد). الوثائق المطلوبة: البطاقة الوطنية أو وكالة. الرسوم: بالمجان. الآجال: على الفور.",
+      "must_include": [
+        "البطاقة الوطنية أو وكالة",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "d4ace086-32bb-427f-89db-9776e72edefb",
+        "ab679756-3942-4e06-a3cd-8d31b32cbfef",
+        "34ccde1e-b7b2-4f0c-8696-26c46af40a24"
+      ],
+      "retrieved_titles": [
+        "Attestation de retenue à la source de l'impôt sur le revenu",
+        "Certificat de paiement de l'impôt sur le revenu retenu à la source au titre des revenus fonciers versés",
+        "Attestation de quitus"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: شهادة اقتطاع الضريبة على الدخل\nDescription: سحب شهادة اقتطاع الضريبة على الدخل\nAdministration: النظام الجماعي لمنح رواتب التقاعد\nFrais: بالمجان\nDélai: على الفور\nDocuments requis:\n - البطاقة الوطنية أو وكالة\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة أداء الضريبة على الدخل المحجوزة في المنبع برسم الدخول العقارية المدفوعة\nDescription: إثبات أداء الضريبة على الدخل المحجوزة في المنبع برسم الدخول العقارية المدفوعة\nAdministration: وزارة الاقتصاد والمالية-المديرية العامة للضرائب\nFrais: بالمجان\nDélai: • على الفور:  بالنسبة للطلبات الإلكترونية \n• يومان: بالنسبة للطلبات التى لم تودع بطريقة الكترونية\nDocuments requis:\n - طلب إلكتروني\n - طلب عادي\nÉtapes:\nغير محدد",
+        "PROCÉDURE: إبراء الذمة\nDescription: الحصول على ابراء للذمة يتبث عدم مديونية المنخرط تجاه الصندوق الوطني للضمان الاجتماعي\nAdministration: الصندوق الوطني للضمان الاجتماعي\nFrais: بالمجان\nDélai: 30 يوما\nDocuments requis:\n - طلب شهادة إبراء الذمة\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 661,
+      "answer": "يمكنك الحصول على شهادة اقتطاع الضريبة على الدخل.\n\n*   **الإدارة المسؤولة**: النظام الجماعي لمنح رواتب التقاعد\n*   **الوصف**: سحب شهادة اقتطاع الضريبة على الدخل\n*   **الرسوم**: بالمجان\n*   **المدة الزمنية**: على الفور\n*   **الوثائق المطلوبة**: البطاقة الوطنية أو وكالة",
+      "generation_ms": 7007,
+      "prompt_tokens": 516,
+      "output_tokens": 90,
+      "attempts": 1
+    },
+    {
+      "question_id": "s103",
+      "question": "Je suis promoteur et le notaire me demande l'attestation d'exonération de la taxe d'habitation pour les logements neufs, comment l'obtenir ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "14f32915-b287-4df5-a166-027cd562da19"
+      ],
+      "reference": "La procédure concernée est « Attestation d'exonération de la taxe d'habitation et de la taxe des services communaux » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : Formulaire de demande n° AAC090 ; Contrat d'acquisition du terrain ; Règlement de copropriété ; Contrats de vente ; Permis d'habiter ou certificat de conformité ; Permis de construire. Frais : Gratuit. Délai : 2 jours.",
+      "must_include": [
+        "Formulaire de demande n° AAC090",
+        "Contrat d'acquisition du terrain",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "d2667ae4-f65d-44a9-b9a2-26ccd37ae34a",
+        "9a410c27-475b-4441-b2ea-64fdec674db9",
+        "14f32915-b287-4df5-a166-027cd562da19"
+      ],
+      "retrieved_titles": [
+        "Certificat d'achat exonéré de la taxe sur la valeur ajoutée pour la construction de quartiers, de résidences ou de bâtiments universitaires",
+        "Convention relative aux exonérations et avantages accordés aux promoteurs immobiliers pour la réalisation de projets de construction de résidences universitaires privées destinées aux étudiants inscrits dans l'enseignement supérieur",
+        "Attestation d'exonération de la taxe d'habitation et de la taxe des services communaux"
+      ],
+      "rank": 3,
+      "contexts": [
+        "PROCÉDURE: Certificat d'achat exonéré de la taxe sur la valeur ajoutée pour la construction de quartiers, de résidences ou de bâtiments universitaires\nDescription: Achat exonéré de la taxe sur la valeur ajoutée relatif à la construction de quartiers, de résidences ou de bâtiments universitaires\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - Demande électronique ou demande, modèle AAC260\n - A - Pour les promoteurs immobiliers qui concluent un marché avec un entrepreneur :\n - Copie du permis de construire et du plan de construction\n - Copie de la convention conclue entre l'investisseur immobilier et le Ministère de l'Enseignement supérieur\n - Copie du marché de travaux mentionnant le montant total et le montant de la TVA objet de la demande d'exonération\n - B - Pour les promoteurs immobiliers qui réalisent eux-mêmes les ouvrages objet de la demande :\n - Les factures ou les relevés de compte justifiant le coût de la construction\n - Déclaration descriptive électronique ou déclaration descriptive selon le modèle AAC261\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Convention relative aux exonérations et avantages accordés aux promoteurs immobiliers pour la réalisation de projets de construction de résidences universitaires privées destinées aux étudiants inscrits dans l'enseignement supérieur\nDescription: Augmentation de la capacité d'accueil des établissements destinés à l'hébergement des étudiants inscrits dans l'enseignement supérieur\nAdministration: Office National Des Oeuvres Universitaires Sociales Et Culturelles\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Convention de partenariat accompagnée de la description technique et de la description du projet (annexes 1 et 2) en 5 exemplaires signés\n - Engagement du promoteur immobilier signé conformément à l'annexe n° 3\n - Plans et maquettes du projet\n - Plan topographique du terrain\n - Copie du registre de commerce de la société\n - Copie des statuts de la société\n - Certificat de propriété du terrain\n - Copie de la carte nationale du promoteur immobilier\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Attestation d'exonération de la taxe d'habitation et de la taxe des services communaux\nDescription: Attestation de l'exonération de la taxe d'habitation et de la taxe des services communaux auprès des notaires\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 2 jours\nDocuments requis:\n - Formulaire de demande n° AAC090\n - Contrat d'acquisition du terrain\n - Règlement de copropriété\n - Contrats de vente\n - Permis d'habiter ou certificat de conformité\n - Permis de construire ;\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 1114,
+      "answer": "Pour obtenir l'attestation d'exonération de la taxe d'habitation, vous devez suivre la procédure d'Attestation d'exonération de la taxe d'habitation et de la taxe des services communaux.\n\nVoici les détails de cette procédure :\n\n*   **Administration :** Ministère de l’Économie et des Finances - Direction Générale des Impôts\n*   **Frais :** Gratuit\n*   **Délai :** 2 jours\n*   **Documents requis :**\n    *   Formulaire de demande n° AAC090\n    *   Contrat d'acquisition du terrain\n    *   Règlement de copropriété\n    *   Contrats de vente\n    *   Permis d'habiter ou certificat de conformité\n    *   Permis de construire\n\nLes étapes spécifiques de cette procédure ne sont pas spécifiées.\n\nSource : Ministère de l’Économie et des Finances - Direction Générale des Impôts.",
+      "generation_ms": 6651,
+      "prompt_tokens": 846,
+      "output_tokens": 208,
+      "attempts": 1
+    },
+    {
+      "question_id": "s104",
+      "question": "أحتاج وثيقة رسمية تبين كم كان يساوي الأورو مقابل الدرهم في تاريخ معين، كم ثمنها؟",
+      "lang": "ar",
+      "category": "fees_delay",
+      "expected_ids": [
+        "636ad0e5-0c7c-48ed-9ba6-48d3cf407aa8"
+      ],
+      "reference": "الإجراء المعني هو « شهادة سعر صرف العملات الأجنبية مقابل الدرهم المغربي » (بنك المغرب). الوثائق المطلوبة: طلب. الرسوم: تسعيرة طلب شهادة حول أسعار الصرف : الاشخاص الذاتيون والمعنويون : 110 دراهم مع احتساب الرسوم. في حالة تاريخ سعر الصرف ما قبل 1959أو العملة غير مسعرة تسلم شهادة عدم تقييم الدرهم من طرف بنك المغرب : بالمجان.. الآجال: الحالة 1: تاريخ سعر الصرف قبل1959 أو العملة غير مسعرة: استصدار فوري لشهادة تتضمن عدم تقييم الدرهم ما قبل 1959 أو عدم تحديد سعر صرف العملة من طرف بنك المغرب. الحالة 2: تاريخ سعر الصرف بين 1959 و1962:استصدار الشهادة خلال يومين بعد إيداع الطلب الحالة 3: تاريخ سعر الصرف بعد 1962 والعملة مسعرة: استصدار فوري لشهادة سعر الصرف.",
+      "must_include": [
+        "طلب",
+        "الحالة 1: تاريخ سعر الصرف قبل1959 أو العملة غير مسعرة: استصدار فوري لشهادة تتضمن عدم تقييم الدرهم ما قبل 1959 أو عدم تحديد سعر صرف العملة من طرف بنك المغرب. الحالة 2: تاريخ سعر الصرف بين 1959 و1962:استصدار الشهادة خلال يومين بعد إيداع الطلب الحالة 3: تاريخ سعر الصرف بعد 1962 والعملة مسعرة: استصدار فوري لشهادة سعر الصرف"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "636ad0e5-0c7c-48ed-9ba6-48d3cf407aa8",
+        "e3103129-5a01-4d26-8d53-17cae5d9e08c",
+        "0eaac7c2-1454-44e3-8341-106e66801fce"
+      ],
+      "retrieved_titles": [
+        "Attestation du cours de change des devises étrangères par rapport au dirham marocain",
+        "Ouverture de compte en devises ou en dirham convertible",
+        "Attestation de l'accomplissement de la déclaration relative aux biens et avoirs constitués à l'étranger par les Marocains résidant à l'étranger ayant transféré leur résidence fiscale au Maroc"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: شهادة سعر صرف العملات الأجنبية مقابل الدرهم المغربي\nDescription: الحصول على شهادة سعر صرف العملات الأجنبية مقابل الدرهم المغربي\nAdministration: بنك المغرب\nFrais: تسعيرة طلب شهادة حول أسعار الصرف :\nالاشخاص الذاتيون والمعنويون  : 110 دراهم مع احتساب الرسوم. \nفي حالة تاريخ سعر الصرف ما قبل 1959أو العملة غير مسعرة تسلم شهادة عدم تقييم الدرهم من طرف بنك المغرب : بالمجان.\nDélai: الحالة 1: تاريخ سعر الصرف قبل1959  أو العملة غير مسعرة: استصدار فوري لشهادة تتضمن عدم تقييم الدرهم ما قبل 1959 أو عدم تحديد سعر صرف العملة من طرف بنك المغرب.\n الحالة 2: تاريخ سعر الصرف بين 1959 و1962:استصدار الشهادة خلال يومين بعد إيداع  الطلب\n الحالة 3: تاريخ سعر الصرف بعد 1962 والعملة مسعرة: استصدار فوري لشهادة سعر الصرف\nDocuments requis:\n - طلب\nÉtapes:\nغير محدد",
+        "PROCÉDURE: فتح حساب بالعملة الأجنبية أو بالدرهم القابل للتحويل\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - ملحق بنكي معبأ وموقع ومختوم\n - رسالة توضيحية تحدد بنك الموطن وكيفية اشتغال الحساب (العمليات الدائنة والمدينة)\n - وثائق إثبات إرجاع مبالغ القروض أو الهبات، مرفقة  بعقد الشراكة\n - نسخة لمستخرج السجل التجاري (نموذج 7) و/ أو شهادة التعريف الموحد\nÉtapes:\nغير محدد",
+        "PROCÉDURE: إشهاد على استفاء التصريح المتعلق بالممتلكات و الموجودات المنشأة بالخارج من لدن المغاربة المقيمين بالخارج والذين قاموا بتحويل إقامتهم الجبائية إلى المغرب\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد (في هذه الحالة: المغاربة المقيمون بالخارج والذين نقلوا إقامتهم الجبائية للمغرب) من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - وثائق تثبت قيمة الملكيات الفكرية و الثقافية و الفنية : كل وثيقة قانونية تثبت تاريخ ملكيتها وكذا قيمتها قبل تاريخ تحويل الإقامة الجبائية إلى المغرب\n - وثائق تثبت فائض  القيمة  عن العقارات: عقود البيع والشراء\n - وثائق تثبت فائض القيمة عن الأصول المالية :  كشف حسابات الأصول المالية أو الوثائق الثبوتية لعمليات بيع وشراء هذه الأصول\n - وثائق تثبت فائض  القيمة  عن الودائع النقدية في حدود قيمة الفوائد\n - المطبوع النموذجي للتصريح بالممتلكات والموجودات المنشأة بالخارج من لدن المغاربة المقيمين بالخارج الذين يقومون بتحويل إقامتهم الجبائية إلى المغرب، طبقا لمقتضيات القانون 63.14 الصادر بتنفيذه الظهير الشريف رقم 1.15.25 بتاريخ 29 من ربيع الآخر 1436 (19فبراير 20\n - شهادة السكنى بالخارج، سند الإقامة، شهادة الشطب من سجلات القنصليات، او البعثات والتمثيليات الديبلوماسية المغربية بالخارج او كل وثيقة تقوم مقامها\n - وثائق تثبت ممارسة نشاط مهني خلال مدة الإقامة بالخارج  على غرار: التصاريح الضريبية، عقد عمل،  بيان الراتب، او كل وثيقة تقوم مقامها\n - وثائق تثبت قيمة الأملاك العقارية: شهادة  تثبت  اقتناء العقار وقيمته او امتلاكه عن طريق الإرث او الهبة قبل تاريخ نقل الإقامة الجبائية إلى المغرب\n - وثائق تثبت قيمة الأصول المالية: كل وثيقة تثبت تاريخ حيازة هذه  الأصول، وقيمة اكتتابها أو شرائها قبل تاريخ تحويل الإ قامة الجبائية إلى المغرب\n - وثائق تثبت مبالغ الودائع النقدية: كشف الحساب البنكي للشهر السابق  لتاريخ تحويل الإ قامة الجبائية إلى المغرب و كشف الحساب البنكي برسم اخر شهر يسبق تاريخ التصريح\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 536,
+      "answer": "للحصول على شهادة سعر صرف العملات الأجنبية مقابل الدرهم المغربي، والتي تبين سعر صرف الأورو مقابل الدرهم في تاريخ معين، فإن تكلفتها هي 110 دراهم مع احتساب الرسوم.\n\nالمصدر: بنك المغرب",
+      "generation_ms": 9947,
+      "prompt_tokens": 1310,
+      "output_tokens": 59,
+      "attempts": 1
+    },
+    {
+      "question_id": "s105",
+      "question": "Mon père est décédé en France et nous voulons rapatrier ses meubles au Maroc sans payer la douane, est-ce possible ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "c24da220-e8e1-49d0-b517-94dc3e7c0855"
+      ],
+      "reference": "La procédure concernée est « Autorisation d’exonération des droits et taxes exigibles à l’importation des bagages et biens meubles usagés provenant d’une succession » (Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects). Documents à fournir : Demande d’autorisation d’exonération des droits et taxes exigibles à l’importation des bagages et biens meubles usagés… ; Certificat de résidence des héritiers ; Certificat d’hérédité délivré par les autorités du lieu de provenance des bagages et biens meubles ou par un notaire,…. Frais : Gratuit. Délai : 10 jours.",
+      "must_include": [
+        "Demande d’autorisation d’exonération des droits et taxes…",
+        "Certificat de résidence des héritiers",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "af2ed3bc-5149-450c-be6b-44e91a608168",
+        "cca97852-be66-4459-afa4-63408d294452",
+        "95760b15-762a-41d0-adee-f4731a71e4a3"
+      ],
+      "retrieved_titles": [
+        "Autorisation d'exonération des droits et taxes de douane pour les Marocains de retour et les étrangers s'installant au Maroc, à l'importation de leurs bagages et effets personnels",
+        "Autorisation d'exonération des droits et taxes de douane pour les cercueils et caisses contenant les corps ou restes mortels",
+        "Autorisation d'exonération des droits et taxes de douane au profit des envois destinés aux ambassadeurs, aux services diplomatiques et consulaires et aux membres étrangers de certaines organisations internationales ayant leur siège au Maroc"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: Autorisation d'exonération des droits et taxes de douane pour les Marocains de retour et les étrangers s'installant au Maroc, à l'importation de leurs bagages et effets personnels\nDescription: L'objectif de la procédure est de bénéficier de l'exonération des droits et taxes de douane lors de l'importation des bagages personnels.\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - Demande d'obtention de l'autorisation de bénéficier de l'exonération des droits et taxes de douane lors de l'importation des bagages personnels\n - Certificat de changement de résidence délivré par l'autorité locale du lieu de destination ou par le consul du Maroc dont relève le lieu de l'ancienne résidence\n - Inventaire détaillé des objets importés\n - Inventaire détaillé du matériel et des outils usagés\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation d'exonération des droits et taxes de douane pour les cercueils et caisses contenant les corps ou restes mortels\nDescription: L'objet de cette procédure est d'exonérer les cercueils et caisses contenant les corps ou restes mortels des droits et taxes de douane.\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: immédiatement\nDocuments requis:\n - Dossier sanitaire délivré dans le pays d'origine et au Maroc\n - Déclaration de transport au Maroc délivrée par les autorités compétentes (le Wali)\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation d'exonération des droits et taxes de douane au profit des envois destinés aux ambassadeurs, aux services diplomatiques et consulaires et aux membres étrangers de certaines organisations internationales ayant leur siège au Maroc\nDescription: Exonération des droits et taxes de douane sur les envois destinés aux ambassadeurs, aux services diplomatiques et consulaires et aux membres étrangers de certaines organisations internationales ayant leur siège au Maroc.\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: immédiatement\nDocuments requis:\n - Demande de bénéfice de l'exonération des droits et taxes de douane sur les envois destinés aux ambassadeurs, aux services diplomatiques et consulaires et aux membres étrangers de certaines organisations internationales ayant leur siège au Maroc\n - Autorisation d'exonération délivrée par le service compétent du ministère des Affaires étrangères\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 473,
+      "answer": "Basé sur les informations officielles dont je dispose, je n'ai pas de procédure qui correspond spécifiquement à l'exonération des droits et taxes de douane pour le rapatriement des meubles d'une personne décédée.\n\nLa procédure \"Autorisation d'exonération des droits et taxes de douane pour les Marocains de retour et les étrangers s'installant au Maroc, à l'importation de leurs bagages et effets personnels\" concerne les bagages et effets personnels des Marocains de retour ou des étrangers s'installant, et demande un \"Certificat de changement de résidence\", ce qui ne semble pas applicable dans le cas d'une personne décédée.\n\nJe n'ai donc pas cette information précise.",
+      "generation_ms": 7789,
+      "prompt_tokens": 788,
+      "output_tokens": 154,
+      "attempts": 4
+    },
+    {
+      "question_id": "s106",
+      "question": "استوردت كرسيا متحركا خاصا لابني المعاق، كيف أعفيه من الرسوم الجمركية؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "66cd666d-1c28-4181-961b-166c4402b1a7"
+      ],
+      "reference": "الإجراء المعني هو « الترخيص بالإعفاء من الرسوم والمكوس الجمركية عند تعشير  الكراسي المعدة خصيصا للأشخاص في وضعية إعاقة » (وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة). الوثائق المطلوبة: طلب الترخيص بالإعفاء من الرسوم والمكوس الجمركية عند تعشير كرسي معد خصيصا للأشخاص في وضعية إعاقة. ؛ شهادة طبية مسلمة وفق القانون رقم 05-52 بمثابة مدونة السير. ؛ ترخيص خاص مسلم من لدن مديرية الأدوية والصيدلة التابعة لوزارة الصحة. الرسوم: بالمجان. الآجال: 10 أيام.",
+      "must_include": [
+        "طلب الترخيص بالإعفاء من الرسوم والمكوس الجمركية عند تعشير…",
+        "شهادة طبية مسلمة وفق القانون رقم 05-52 بمثابة مدونة السير.",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "66cd666d-1c28-4181-961b-166c4402b1a7",
+        "1b8fdec7-6d5b-4c11-b00c-ac6b7a9c5ac1",
+        "56c5ac96-5488-4875-8025-6737173a6c61"
+      ],
+      "retrieved_titles": [
+        "Autorisation d'exonération des droits et taxes de douane pour le dédouanement des fauteuils roulants spécialement conçus pour les personnes en situation de handicap",
+        "Autorisation d'exonération du droit d'importation lors du dédouanement de véhicules spécialement équipés pour personnes en situation de handicap",
+        "Autorisation d’exonération des droits et taxes de douane sur les dons, acquis au moyen d’aides financières non remboursables, importés par l’État, les collectivités locales ou les établissements publics"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: الترخيص بالإعفاء من الرسوم والمكوس الجمركية عند تعشير  الكراسي المعدة خصيصا للأشخاص في وضعية إعاقة\nDescription: إعفاء الكراسي المعدة خصيصا للأشخاص في وضعية إعاقة من الرسوم والمكوس الجمركية\nAdministration: وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة\nFrais: بالمجان\nDélai: 10 أيام\nDocuments requis:\n - طلب  الترخيص  بالإعفاء من  الرسوم والمكوس الجمركية عند تعشير كرسي معد خصيصا للأشخاص في وضعية إعاقة.\n - شهادة طبية مسلمة وفق القانون رقم 05-52 بمثابة مدونة السير.\n - ترخيص خاص  مسلم من لدن مديرية الأدوية والصيدلة التابعة لوزارة الصحة\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الترخيص  بالإعفاء من رسم الاستيراد عند تعشير السيارات المعدة خصيصا للأشخاص في وضعية إعاقة\nDescription: الغاية من المسطرة هي إعفاء السيارات المعدة خصيصا للأشخاص في وضعية إعاقة من رسم الاستيراد شريطة ان:\n-\tيكون الشخص في وضعية إعاقة بدنية وحائزا لرخصة السياقة صالحة لصنف ب (B) تشير\"إلى الرموز التي تبين التقييدات الخاصة به.\n-\tأن تكون السيارة موضوع الطلب تتوفر على التجهيزات اللازمة للمعني بالأمر. \n  هذا وتجدر الإشارة إلى أن هذا النوع من السيارات يبقى خاضعا لأداء الضريبة على القيمة المضافة.\nAdministration: وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة\nFrais: مجانا\nDélai: غير محدد\nDocuments requis:\n - طلب مؤشر عليه من طرف السلطة الحكومية المكلفة بالأشخاص في وضعية اعاقة\n - نسخة من شهادة المصادقة بصفة منعزلة مسلمة من طرف السلطة الحكومية المكلفة بالتجهيز و النقل\n - شهادة التعريف مسلمة من طرف السلطة الحكومية المكلفة بالتجهيز و النقل\n - شهادة طبية مسلمة وفق القانون رقم 05-52 بمثابة مدونة السير.\n - نسخة من البطاقة الوطنية للتعريف الإلكترونية أو من شهادة الإقامة بالنسبة للأجانب المقيمين بالمغرب\n - نسخة من رخصة السياقة\n - وثيقة الجولان تحت نظام القبول المؤقت لوسائل النقل التي يمتلكها الأشخاص الذين لهم محل إقامة اعتيادي في الخارج\n - فاتورة الشراء الأصلية بالنسبة للسيارات ذات ثلاثة أشهر أو أقل من العمر\nÉtapes:\nغير محدد",
+        "PROCÉDURE: ترخيص بالإعفاء من الرسوم والمكوس الجمركية على الهبات، المقتناة بواسطة مساعدات مالية غير قابلة للتعويض، المستوردة من طرف الدولة أو الجماعات المحلية أو المؤسسات  العمومية\nDescription: الغاية من المسطرة هي استفادة الدولة والجماعات  المحلية و المؤسسات العمومية من الإعفاء من الرسوم والمكوس الجمركية  عند استيراد سلع مقتناة بواسطة مساعدات مالية غير قابلة للتعويض.\nAdministration: وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة\nFrais: يالمجان\nDélai: 7 أيـــام\nDocuments requis:\n - طلب ترخيص بالإعفاء من الرسوم والمكوس الجمركية لفائدة الهبات المقتناة بواسطة مساعدات مالية غير قابلة للتعويض.\n - شهادة الهبة مسلمة من لدن الجهة المانحة لإثبات الشروط المنصوص عليها في   الفصل 190 من  المرسوم\nالفواتير المتعلقة بالبضائع المستوردة\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 745,
+      "answer": "لإعفاء كرسي متحرك مخصص لابنك من الرسوم الجمركية، يمكنك الاستفادة من خدمة الترخيص بالإعفاء من الرسوم والمكوس الجمركية عند تعشير الكراسي المعدة خصيصا للأشخاص في وضعية إعاقة.\n\nهذه الخدمة مقدمة من طرف **وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة**.\n\n**التكاليف**: الخدمة مجانية (بالمجان).\n**المدة الزمنية**: 10 أيام.\n\n**الوثائق المطلوبة**:\n*   طلب الترخيص بالإعفاء من الرسوم والمكوس الجمركية عند تعشير كرسي معد خصيصا للأشخاص في وضعية إعاقة.\n*   شهادة طبية مسلمة وفق القانون رقم 05-52 بمثابة مدونة السير.\n*   ترخيص خاص مسلم من لدن مديرية الأدوية والصيدلة التابعة لوزارة الصحة.",
+      "generation_ms": 8850,
+      "prompt_tokens": 1080,
+      "output_tokens": 217,
+      "attempts": 1
+    },
+    {
+      "question_id": "s107",
+      "question": "Nous rapatrions le corps d'un proche décédé à l'étranger, faut-il payer des droits de douane sur le cercueil ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "cca97852-be66-4459-afa4-63408d294452"
+      ],
+      "reference": "La procédure concernée est « Autorisation d'exonération des droits et taxes de douane pour les cercueils et caisses contenant les corps ou restes mortels » (Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects). Documents à fournir : Dossier sanitaire délivré dans le pays d'origine et au Maroc ; Déclaration de transport au Maroc délivrée par les autorités compétentes. Frais : Gratuit. Délai : immédiatement.",
+      "must_include": [
+        "Dossier sanitaire délivré dans le pays d'origine et au Maroc",
+        "Déclaration de transport au Maroc délivrée par les…",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "cca97852-be66-4459-afa4-63408d294452",
+        "95760b15-762a-41d0-adee-f4731a71e4a3",
+        "c24da220-e8e1-49d0-b517-94dc3e7c0855"
+      ],
+      "retrieved_titles": [
+        "Autorisation d'exonération des droits et taxes de douane pour les cercueils et caisses contenant les corps ou restes mortels",
+        "Autorisation d'exonération des droits et taxes de douane au profit des envois destinés aux ambassadeurs, aux services diplomatiques et consulaires et aux membres étrangers de certaines organisations internationales ayant leur siège au Maroc",
+        "Autorisation d’exonération des droits et taxes exigibles à l’importation des bagages et biens meubles usagés provenant d’une succession"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Autorisation d'exonération des droits et taxes de douane pour les cercueils et caisses contenant les corps ou restes mortels\nDescription: L'objet de cette procédure est d'exonérer les cercueils et caisses contenant les corps ou restes mortels des droits et taxes de douane.\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: immédiatement\nDocuments requis:\n - Dossier sanitaire délivré dans le pays d'origine et au Maroc\n - Déclaration de transport au Maroc délivrée par les autorités compétentes (le Wali)\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation d'exonération des droits et taxes de douane au profit des envois destinés aux ambassadeurs, aux services diplomatiques et consulaires et aux membres étrangers de certaines organisations internationales ayant leur siège au Maroc\nDescription: Exonération des droits et taxes de douane sur les envois destinés aux ambassadeurs, aux services diplomatiques et consulaires et aux membres étrangers de certaines organisations internationales ayant leur siège au Maroc.\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: immédiatement\nDocuments requis:\n - Demande de bénéfice de l'exonération des droits et taxes de douane sur les envois destinés aux ambassadeurs, aux services diplomatiques et consulaires et aux membres étrangers de certaines organisations internationales ayant leur siège au Maroc\n - Autorisation d'exonération délivrée par le service compétent du ministère des Affaires étrangères\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation d’exonération des droits et taxes exigibles à l’importation des bagages et biens meubles usagés provenant d’une succession\nDescription: La procédure vise à exonérer des droits et taxes exigibles à l’importation, les bagages et biens meubles usagés provenant d’une succession.\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - Demande d’autorisation d’exonération des droits et taxes exigibles à l’importation des bagages et biens meubles usagés provenant d’une succession.\n - Certificat de résidence des héritiers\n - Certificat d’hérédité délivré par les autorités du lieu de provenance des bagages et biens meubles ou par un notaire, comportant un inventaire détaillé des objets à importer et la date du décès du défunt.\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 530,
+      "answer": "Non, les cercueils et caisses contenant les corps ou restes mortels sont exonérés des droits et taxes de douane. Cette procédure est gratuite et le délai est immédiat.\n\nPour en bénéficier, vous devrez fournir les documents suivants :\n*   Un dossier sanitaire délivré dans le pays d'origine et au Maroc.\n*   Une déclaration de transport au Maroc délivrée par les autorités compétentes (le Wali).\n\nSource : Ministère de l’Économie et des Finances - Administration des Douanes et Impôts Indirects.",
+      "generation_ms": 6544,
+      "prompt_tokens": 782,
+      "output_tokens": 113,
+      "attempts": 1
+    },
+    {
+      "question_id": "s108",
+      "question": "قررت العودة نهائيا إلى المغرب بعد سنوات في الخارج، كيف أدخل أثاثي دون أداء الرسوم الجمركية؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "af2ed3bc-5149-450c-be6b-44e91a608168"
+      ],
+      "reference": "الإجراء المعني هو « الترخيص بالإعفاء من الرسوم والمكوس الجمركية لفائدة  المواطنين العائدين للمغرب أو الأجانب القادمين للاستقرار في المغرب عند استيراد أمتعتهم وأغراضهم الشخصية » (وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة). الوثائق المطلوبة: طلب الحصول على ترخيص الاستفادة من الإعفاء من الرسوم والمكوس الجمركية عند استيراد الأمتعة الشخصية ؛ شهادة تغيير الإقامة المسلمة من طرف السلطة المحلية لمكان الذهاب أو من طرف قنصل المغرب الداخل مكان الإقامة السابق في… ؛ جرد مفصل للأشياء المستوردة ؛ جرد مفصل للمعدات والأدوات المستعملة. الرسوم: مجانا. الآجال: 10 أيام.",
+      "must_include": [
+        "طلب الحصول على ترخيص الاستفادة من الإعفاء من الرسوم والمكوس…",
+        "شهادة تغيير الإقامة المسلمة من طرف السلطة المحلية لمكان…",
+        "مجانا"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "af2ed3bc-5149-450c-be6b-44e91a608168",
+        "9861d401-fce9-46eb-b016-f8344e52a5d2",
+        "667ca7e9-4b8a-488a-9c3b-7a4a95be4f56"
+      ],
+      "retrieved_titles": [
+        "Autorisation d'exonération des droits et taxes de douane pour les Marocains de retour et les étrangers s'installant au Maroc, à l'importation de leurs bagages et effets personnels",
+        "Autorisation d'exonération des droits et taxes exigibles à l'importation des trousseaux scolaires des élèves résidant à l'étranger venant poursuivre leurs études au Maroc ou des trousseaux de mariage des personnes venant s'établir au Maroc à la suite de leur mariage avec une personne y résidant",
+        "Autorisation d'exonération des droits et taxes de douane pour les marchandises nationalisées acquittées et réintroduites sur le territoire assujetti"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: الترخيص بالإعفاء من الرسوم والمكوس الجمركية لفائدة  المواطنين العائدين للمغرب أو الأجانب القادمين للاستقرار في المغرب عند استيراد أمتعتهم وأغراضهم الشخصية\nDescription: الغاية من المسطرة هي الاستفادة من الإعفاء من الرسوم والمكوس الجمركية عند استيراد الأمتعة الشخصية،\nAdministration: وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة\nFrais: مجانا\nDélai: 10 أيام\nDocuments requis:\n - طلب الحصول على  ترخيص الاستفادة من الإعفاء من الرسوم والمكوس الجمركية عند استيراد الأمتعة الشخصية\n - شهادة تغيير الإقامة المسلمة من طرف السلطة المحلية لمكان الذهاب أو من طرف قنصل المغرب الداخل مكان الإقامة السابق في دائرة نفوذه\n - جرد مفصل للأشياء المستوردة\n - جرد مفصل للمعدات والأدوات المستعملة\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الترخيص بالإعفاء من الضرائب والرسوم المستحقة عند استيراد مجموعات لوازم التلاميذ المقيمين بالخارج القادمين إلى المغرب للدراسة به أو مجموعات لوازم الأشخاص  القادمين إلى المغرب للإقامة به بمناسبة زواجهم بشخص مقيم  بالمغرب\nDescription: الغاية من المسطرة هي إعفاء من الضرائب والرسوم المستحقة عند الاستيراد لمجموعات لوازم التلاميذ المقيمين بالخارج القادمين إلى المغرب للدراسة به و لوازم الأشخاص القادمين إلى المغرب للإقامة به بمناسبة زواجهم بشخص مقيم  بالمغرب\nAdministration: وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة\nFrais: بالمجان\nDélai: 10 أيام\nDocuments requis:\n - فيما يخص مجموعات لوازم التلاميذ:\n - 1- طلب الترخيص بالإعفاء من الضرائب والرسوم المستحقة عند استيراد مجموعات لوازم التلاميذ\n - 2- شهادة مدرسية يحررها مدير المؤسسة  التعليمية\n - 3- جرد لمجموعة اللوازم\n - فيما يخص مجموعات لوازم الزواج:\n - 1- طلب الترخيص بالإعفاء من الضرائب والرسوم المستحقة عند استيراد مجموعات لوازم الزواج\n - 2-  وثيقة رسمية تثبت إقامة أحد الزوجين بالمغرب\n - 3- شهادة لتغيير محل إقامة الزوج الآخر\n - 4- نسخة موجزة من عقد صحيح يثبت إبرام الزواج\n - 5- جرد لمجموعة لوازم الزواج\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الترخيص بالإعفاء من الرسوم والمكوس الجمركية لفائدة البضائع الممغربة بأدائها للرسوم والتي تم إرجاعها إلى التراب الخاضع\nDescription: الغاية من المسطرة هي الترخيص بالإعفاء من الرسوم والمكوس الجمركية لفائدة البضائع الممغربة بأدائها للرسوم والتي تم إرجاعها إلى التراب الخاضع.\nAdministration: وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة\nFrais: 0\nDélai: 10 أيام\nDocuments requis:\n - طلب الاستفادة من الإعفاء الجمركي لفائدة البضائع الممغربة بأدائها للرسوم والتي تم إرجاعها إلى التراب الخاضع\n - الوثائق لتبرير الشروط المنصوص عليها في الفصل 176 من  المرسوم كفاتورة الشراء أو غيرها\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 1115,
+      "answer": "للاستفادة من الإعفاء من الرسوم والمكوس الجمركية عند استيراد أمتعتك الشخصية (بما في ذلك الأثاث) بمناسبة عودتك النهائية إلى المغرب، يمكنك اتباع المسطرة المتعلقة بـ \"الترخيص بالإعفاء من الرسوم والمكوس الجمركية لفائدة المواطنين العائدين للمغرب أو الأجانب القادمين للاستقرار في المغرب عند استيراد أمتعتهم وأغراضهم الشخصية\".\n\nهذه المسطرة تُدار من طرف **وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة**.\n\n**الوثائق المطلوبة هي:**\n*   طلب الحصول على ترخيص الاستفادة من الإعفاء من الرسوم والمكوس الجمركية عند استيراد الأمتعة الشخصية.\n*   شهادة تغيير الإقامة المسلمة من طرف السلطة المحلية لمكان الذهاب أو من طرف قنصل المغرب الداخل مكان الإقامة السابق في دائرة نفوذه.\n*   جرد مفصل للأشياء المستوردة.\n*   جرد مفصل للمعدات والأدوات المستعملة.\n\n**المصاريف:** مجاناً.\n**المدة الزمنية للمعالجة:** 10 أيام.",
+      "generation_ms": 9211,
+      "prompt_tokens": 1033,
+      "output_tokens": 276,
+      "attempts": 1
+    },
+    {
+      "question_id": "s109",
+      "question": "Ma fille étudie à l'étranger et revient avec son trousseau scolaire, est-il exonéré de douane ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "9861d401-fce9-46eb-b016-f8344e52a5d2"
+      ],
+      "reference": "La procédure concernée est « Autorisation d'exonération des droits et taxes exigibles à l'importation des trousseaux scolaires des élèves résidant à l'étranger venant poursuivre leurs études au Maroc ou des trousseaux de mariage des personnes venant s'établir au Maroc à la suite de leur mariage avec une personne y résidant » (Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects). Documents à fournir : Concernant les trousseaux scolaires ; 1- Demande d'autorisation d'exonération des droits et taxes exigibles à l'importation des trousseaux scolaires ; 2- Certificat de scolarité délivré par le directeur de l'établissement d'enseignement ; 3- Inventaire du trousseau ; Concernant les trousseaux de mariage ; 1- Demande d'autorisation d'exonération des droits et taxes exigibles à l'importation des trousseaux de mariage. Frais : Gratuit. Délai : 10 jours.",
+      "must_include": [
+        "Concernant les trousseaux scolaires",
+        "1- Demande d'autorisation d'exonération des droits et taxes…",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "9861d401-fce9-46eb-b016-f8344e52a5d2",
+        "b643e5cd-c7e4-4169-a8b7-245293dc5a08",
+        "af2ed3bc-5149-450c-be6b-44e91a608168"
+      ],
+      "retrieved_titles": [
+        "Autorisation d'exonération des droits et taxes exigibles à l'importation des trousseaux scolaires des élèves résidant à l'étranger venant poursuivre leurs études au Maroc ou des trousseaux de mariage des personnes venant s'établir au Maroc à la suite de leur mariage avec une personne y résidant",
+        "Autorisation d'exemption des droits et taxes de douane au profit des biens et équipements sportifs destinés à être remis à titre de don aux fédérations sportives ou à la Fédération nationale du sport scolaire ou à la Fédération nationale des sports universitaires, régies par la loi n° 87-06 relative à l'éducation physique et aux sports",
+        "Autorisation d'exonération des droits et taxes de douane pour les Marocains de retour et les étrangers s'installant au Maroc, à l'importation de leurs bagages et effets personnels"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Autorisation d'exonération des droits et taxes exigibles à l'importation des trousseaux scolaires des élèves résidant à l'étranger venant poursuivre leurs études au Maroc ou des trousseaux de mariage des personnes venant s'établir au Maroc à la suite de leur mariage avec une personne y résidant\nDescription: La présente procédure vise à exonérer des droits et taxes exigibles à l'importation les trousseaux des élèves résidant à l'étranger venant étudier au Maroc ainsi que les effets personnels des personnes venant s'installer au Maroc à l'occasion de leur mariage avec une personne y résidant.\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - Concernant les trousseaux scolaires :\n - 1- Demande d'autorisation d'exonération des droits et taxes exigibles à l'importation des trousseaux scolaires\n - 2- Certificat de scolarité délivré par le directeur de l'établissement d'enseignement\n - 3- Inventaire du trousseau\n - Concernant les trousseaux de mariage :\n - 1- Demande d'autorisation d'exonération des droits et taxes exigibles à l'importation des trousseaux de mariage\n - 2- Document officiel attestant la résidence de l'un des conjoints au Maroc\n - 3- Attestation de changement de résidence de l'autre conjoint\n - 4- Copie sommaire d'un acte authentique établissant la célébration du mariage\n - 5- Inventaire du trousseau de mariage\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation d'exemption des droits et taxes de douane au profit des biens et équipements sportifs destinés à être remis à titre de don aux fédérations sportives ou à la Fédération nationale du sport scolaire ou à la Fédération nationale des sports universitaires, régies par la loi n° 87-06 relative à l'éducation physique et aux sports\nDescription: L'objectif de la procédure est l'exemption des droits et taxes de douane pour les biens et équipements sportifs remis à titre de don aux fédérations sportives,\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - Le formulaire « Demande de bénéfice de l'exemption douanière lors de l'importation des biens reçus à titre de don », dûment rempli et signé par l'entité bénéficiaire du don.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation d'exonération des droits et taxes de douane pour les Marocains de retour et les étrangers s'installant au Maroc, à l'importation de leurs bagages et effets personnels\nDescription: L'objectif de la procédure est de bénéficier de l'exonération des droits et taxes de douane lors de l'importation des bagages personnels.\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - Demande d'obtention de l'autorisation de bénéficier de l'exonération des droits et taxes de douane lors de l'importation des bagages personnels\n - Certificat de changement de résidence délivré par l'autorité locale du lieu de destination ou par le consul du Maroc dont relève le lieu de l'ancienne résidence\n - Inventaire détaillé des objets importés\n - Inventaire détaillé du matériel et des outils usagés\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 716,
+      "answer": "Oui, l'exonération des droits et taxes exigibles à l'importation des trousseaux scolaires des élèves résidant à l'étranger et venant poursuivre leurs études au Maroc est possible.\n\nPour bénéficier de cette autorisation, votre fille devra présenter les documents suivants :\n*   Demande d'autorisation d'exonération des droits et taxes exigibles à l'importation des trousseaux scolaires.\n*   Certificat de scolarité délivré par le directeur de l'établissement d'enseignement.\n*   Inventaire du trousseau.\n\nCette procédure est gratuite et son délai de traitement est de 10 jours.\n\nSource : Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects.",
+      "generation_ms": 8594,
+      "prompt_tokens": 1016,
+      "output_tokens": 160,
+      "attempts": 1
+    },
+    {
+      "question_id": "s110",
+      "question": "هل يوجد إعفاء من رسوم الاستيراد لسيارة مجهزة خصيصا لشخص في وضعية إعاقة؟",
+      "lang": "ar",
+      "category": "factual",
+      "expected_ids": [
+        "1b8fdec7-6d5b-4c11-b00c-ac6b7a9c5ac1"
+      ],
+      "reference": "الإجراء المعني هو « الترخيص  بالإعفاء من رسم الاستيراد عند تعشير السيارات المعدة خصيصا للأشخاص في وضعية إعاقة » (وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة). الوثائق المطلوبة: طلب مؤشر عليه من طرف السلطة الحكومية المكلفة بالأشخاص في وضعية اعاقة ؛ نسخة من شهادة المصادقة بصفة منعزلة مسلمة من طرف السلطة الحكومية المكلفة بالتجهيز و النقل ؛ شهادة التعريف مسلمة من طرف السلطة الحكومية المكلفة بالتجهيز و النقل ؛ شهادة طبية مسلمة وفق القانون رقم 05-52 بمثابة مدونة السير. ؛ نسخة من البطاقة الوطنية للتعريف الإلكترونية أو من شهادة الإقامة بالنسبة للأجانب المقيمين بالمغرب ؛ نسخة من رخصة السياقة. الرسوم: مجانا.",
+      "must_include": [
+        "طلب مؤشر عليه من طرف السلطة الحكومية المكلفة بالأشخاص في…",
+        "نسخة من شهادة المصادقة بصفة منعزلة مسلمة من طرف السلطة…",
+        "مجانا"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "1b8fdec7-6d5b-4c11-b00c-ac6b7a9c5ac1",
+        "66cd666d-1c28-4181-961b-166c4402b1a7",
+        "3eaa27b4-226a-464a-8f51-523cd65de973"
+      ],
+      "retrieved_titles": [
+        "Autorisation d'exonération du droit d'importation lors du dédouanement de véhicules spécialement équipés pour personnes en situation de handicap",
+        "Autorisation d'exonération des droits et taxes de douane pour le dédouanement des fauteuils roulants spécialement conçus pour les personnes en situation de handicap",
+        "Décision relative au visa de la demande de bénéfice de l'exonération prévue à l'article 164-1-A du Code des douanes et impôts indirects sur les véhicules spécialement aménagés pour les personnes en situation de handicap"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: الترخيص  بالإعفاء من رسم الاستيراد عند تعشير السيارات المعدة خصيصا للأشخاص في وضعية إعاقة\nDescription: الغاية من المسطرة هي إعفاء السيارات المعدة خصيصا للأشخاص في وضعية إعاقة من رسم الاستيراد شريطة ان:\n-\tيكون الشخص في وضعية إعاقة بدنية وحائزا لرخصة السياقة صالحة لصنف ب (B) تشير\"إلى الرموز التي تبين التقييدات الخاصة به.\n-\tأن تكون السيارة موضوع الطلب تتوفر على التجهيزات اللازمة للمعني بالأمر. \n  هذا وتجدر الإشارة إلى أن هذا النوع من السيارات يبقى خاضعا لأداء الضريبة على القيمة المضافة.\nAdministration: وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة\nFrais: مجانا\nDélai: غير محدد\nDocuments requis:\n - طلب مؤشر عليه من طرف السلطة الحكومية المكلفة بالأشخاص في وضعية اعاقة\n - نسخة من شهادة المصادقة بصفة منعزلة مسلمة من طرف السلطة الحكومية المكلفة بالتجهيز و النقل\n - شهادة التعريف مسلمة من طرف السلطة الحكومية المكلفة بالتجهيز و النقل\n - شهادة طبية مسلمة وفق القانون رقم 05-52 بمثابة مدونة السير.\n - نسخة من البطاقة الوطنية للتعريف الإلكترونية أو من شهادة الإقامة بالنسبة للأجانب المقيمين بالمغرب\n - نسخة من رخصة السياقة\n - وثيقة الجولان تحت نظام القبول المؤقت لوسائل النقل التي يمتلكها الأشخاص الذين لهم محل إقامة اعتيادي في الخارج\n - فاتورة الشراء الأصلية بالنسبة للسيارات ذات ثلاثة أشهر أو أقل من العمر\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الترخيص بالإعفاء من الرسوم والمكوس الجمركية عند تعشير  الكراسي المعدة خصيصا للأشخاص في وضعية إعاقة\nDescription: إعفاء الكراسي المعدة خصيصا للأشخاص في وضعية إعاقة من الرسوم والمكوس الجمركية\nAdministration: وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة\nFrais: بالمجان\nDélai: 10 أيام\nDocuments requis:\n - طلب  الترخيص  بالإعفاء من  الرسوم والمكوس الجمركية عند تعشير كرسي معد خصيصا للأشخاص في وضعية إعاقة.\n - شهادة طبية مسلمة وفق القانون رقم 05-52 بمثابة مدونة السير.\n - ترخيص خاص  مسلم من لدن مديرية الأدوية والصيدلة التابعة لوزارة الصحة\nÉtapes:\nغير محدد",
+        "PROCÉDURE: قرار بشأن التأشير على طلب الاستفادة من الإعفاء المنصوص عليه في الفصل 164-1-ع من مدونة الجمارك والضرائب غير المباشرة على السيارات المعدة خصيصا للأشخاص في وضعية إعاقة\nDescription: الاستفادة من الإعفاء الجمركي على السيارات المعدة خصيصا للأشخاص في وضعية إعاقة\nAdministration: وزارة التضامن والإدماج الاجتماعي والأسرة\nFrais: مجانا\nDélai: 7 أيام\nDocuments requis:\n - شهادة طبية أصلية مسلمة من طرف مصالح وزارة الصحة تثبت الإصابة بإحدى الإعاقات الجسدية الواردة بالجدول المحدد للمعايير الطبية والتقنية الملحق بالقرار\n - نسخة من رخصة السياقة\n - نسخة من البطاقة الوطنية\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 1095,
+      "answer": "نعم، يوجد إعفاء من رسم الاستيراد للسيارات المعدة خصيصا للأشخاص في وضعية إعاقة، شريطة أن:\n*   يكون الشخص في وضعية إعاقة بدنية وحائزا لرخصة السياقة صالحة لصنف ب (B) تشير إلى الرموز التي تبين التقييدات الخاصة به.\n*   تكون السيارة موضوع الطلب تتوفر على التجهيزات اللازمة للمعني بالأمر.\n\nتجدر الإشارة إلى أن هذا النوع من السيارات يبقى خاضعا لأداء الضريبة على القيمة المضافة.\n\nهذه المسطرة مجانية وتقدمها وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة.",
+      "generation_ms": 8615,
+      "prompt_tokens": 1028,
+      "output_tokens": 158,
+      "attempts": 1
+    },
+    {
+      "question_id": "s111",
+      "question": "Comment une entreprise exportatrice peut-elle acheter sans payer la TVA sur ses achats ?",
+      "lang": "fr",
+      "category": "factual",
+      "expected_ids": [
+        "effcafdf-eb1a-422f-84ef-ba12ca570f9d"
+      ],
+      "reference": "La procédure concernée est « Certificat d'achat en suspension de la taxe sur la valeur ajoutée » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : En cas de première demande déposée au cours de l'année ; Demande, modèle AAC101 ; Liste des fournisseurs ; Certificat de classification ; Justificatifs du chiffre d'affaires réalisé au cours de l'année écoulée au titre des opérations d'exportation ; Pour l'exportation de produits. Frais : Gratuit. Délai : 10 jours.",
+      "must_include": [
+        "En cas de première demande déposée au cours de l'année",
+        "Demande, modèle AAC101",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "051f1f70-e714-42ff-8dfa-c0a5df26c97d",
+        "8a6a14c8-3a6d-4044-a280-99667570f9f3",
+        "ca86524d-cf65-4e80-a8b7-e8a8662866de"
+      ],
+      "retrieved_titles": [
+        "Certificat d'achat exonéré de la TVA pour les biens d'équipement, les matériels, les outillages, les matières et les services achetés par certaines associations et établissements",
+        "Certificat d'achat exonéré de la taxe sur la valeur ajoutée pour les biens, marchandises, travaux et services destinés à être livrés ou financés par don",
+        "Certificat d’achat exonéré de la taxe sur la valeur ajoutée pour les opérations d’acquisition, de réparation et de transformation de navires"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: Certificat d'achat exonéré de la TVA pour les biens d'équipement, les matériels, les outillages, les matières et les services achetés par certaines associations et établissements\nDescription: Achat exonéré de la TVA pour les biens d'équipement, les matériels, les outillages, les matières et les services achetés par certaines associations et établissements\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - Demande électronique ou demande, modèle AAM101.\n - Déclaration descriptive électronique ou déclaration descriptive selon le modèle AAM102.\n - Factures pro forma ou devis.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Certificat d'achat exonéré de la taxe sur la valeur ajoutée pour les biens, marchandises, travaux et services destinés à être livrés ou financés par don\nDescription: Achat exonéré de la taxe sur la valeur ajoutée pour les biens, marchandises, travaux et services destinés à être livrés ou financés par don\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - Demande électronique ou demande, modèle AAC220\n - Déclaration descriptive électronique ou déclaration descriptive selon le modèle AAC221\n - Factures pro forma ou devis\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Certificat d’achat exonéré de la taxe sur la valeur ajoutée pour les opérations d’acquisition, de réparation et de transformation de navires\nDescription: Achat exonéré de la taxe sur la valeur ajoutée concernant les opérations d’acquisition, de réparation et de transformation de navires\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - Demande électronique ou demande, formulaire AAC150\n - Facture pro forma ou devis émanant du fournisseur, précisant la nature des biens ou services fournis ainsi que le nom et le numéro d’immatriculation du navire auquel ils sont destinés. Cette facture pro forma est visée par le service d’immatriculation de\n - Déclaration descriptive électronique ou déclaration descriptive selon le modèle AAC151\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 814,
+      "answer": "Je n'ai pas d'information officielle sur une procédure permettant à une entreprise exportatrice d'acheter sans payer la TVA sur ses achats dans les documents que je possède.",
+      "generation_ms": 6219,
+      "prompt_tokens": 721,
+      "output_tokens": 35,
+      "attempts": 1
+    },
+    {
+      "question_id": "s112",
+      "question": "اشتريت سيارة جديدة لأستغلها كطاكسي، كيف أستفيد من الإعفاء من الضريبة على القيمة المضافة؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "34a45861-7d3c-4060-b7d5-8d25b64e388e"
+      ],
+      "reference": "الإجراء المعني هو « شهادة شراء معفى من الضريبة على القيمة المضافة لعربة جديدة بغرض استغلالها خصيصا كسيارة أجرة » (وزارة الاقتصاد والمالية-المديرية العامة للضرائب). الوثائق المطلوبة: طلب إلكتروني أو طلب، نموذج AAP111 ؛ فاتورة شكلية أو مقايسة. الرسوم: مجانا. الآجال: 10 أيام.",
+      "must_include": [
+        "طلب إلكتروني أو طلب، نموذج AAP111",
+        "فاتورة شكلية أو مقايسة",
+        "مجانا"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "34a45861-7d3c-4060-b7d5-8d25b64e388e",
+        "5d39c0f3-e25d-42f7-9e14-32857b55539a",
+        "ec0df66e-5b0f-4109-a912-6854363b1fed"
+      ],
+      "retrieved_titles": [
+        "Certificat d'achat exonéré de la taxe sur la valeur ajoutée d'un véhicule neuf destiné à l'exploitation exclusive comme taxi",
+        "Attestation d'exonération de la taxe sur la valeur ajoutée pour l'achat de biens et services nécessaires à l'activité de recherche et d'exploitation de gisements d'hydrocarbures",
+        "Autorisation d'exonération des droits et taxes à l'importation des véhicules de tourisme offerts en don à l'État"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: شهادة شراء معفى من الضريبة على القيمة المضافة لعربة جديدة بغرض استغلالها خصيصا كسيارة أجرة\nDescription: شراء معفى من الضريبة على القيمة المضافة لعربة جديدة بغرض استغلالها خصيصا كسيارة أجرة\nAdministration: وزارة الاقتصاد والمالية-المديرية العامة للضرائب\nFrais: مجانا\nDélai: 10 أيام\nDocuments requis:\n - طلب إلكتروني أو طلب، نموذج  AAP111\n - الفاتورة الشكلية أو المقايسة\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة شراء معفى من الضريبة على القيمة المضافة للسلع والخدمات اللازمة في نشاط البحث عن حقول الهيدروكاربورات واستغلالها\nDescription: شراء معفى من الضريبة على القيمة المضافة للسلع والخدمات اللازمة في نشاط البحث عن حقول الهيدروكاربورات واستغلالها\nAdministration: وزارة الاقتصاد والمالية-المديرية العامة للضرائب\nFrais: مجانا\nDélai: 10 أيام\nDocuments requis:\n - طلب إلكتروني أو طلب، نموذج AAC190\n - الفاتورات الشكلية أو مقايسات الأشغال\n - بيان وصفي إلكتروني أو بيان وصفي، نموذج AAِC191\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الترخيص بالإعفاء من الضرائب والرسوم المستحقة عند استيراد المركبات السياحية المعدة لتسليمها على سبيل الهبة إلى الدولة\nDescription: الغاية من المسطرة هي إعفاء المركبات السياحية ، المتوصل بها على سبيل الهبة إلى الدولة ، من الضرائب والرسوم المستحقة عند الاستيراد.\nAdministration: وزارة الاقتصاد والمالية-إدارة الجمارك والضرائب غير المباشرة\nFrais: مجانا\nDélai: 10 أيام\nDocuments requis:\n - طلب الاستفادة من الإعفاء من الرسوم والمكوس الجمركية المستحقة على السلع المتوصل بها كهبة\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 802,
+      "answer": "بناءً على المعلومات المتوفرة، للاستفادة من الإعفاء من الضريبة على القيمة المضافة عند شراء عربة جديدة بغرض استغلالها خصيصا كسيارة أجرة، يمكنك اتباع الإجراء التالي:\n\n**الإجراء:** شهادة شراء معفى من الضريبة على القيمة المضافة لعربة جديدة بغرض استغلالها خصيصا كسيارة أجرة.\n\n**الإدارة:** وزارة الاقتصاد والمالية-المديرية العامة للضرائب.\n\n**الوثائق المطلوبة:**\n*   طلب إلكتروني أو طلب، نموذج AAP111.\n*   الفاتورة الشكلية أو المقايسة.\n\n**التكلفة:** مجاناً.\n\n**المدة:** 10 أيام.",
+      "generation_ms": 7149,
+      "prompt_tokens": 677,
+      "output_tokens": 166,
+      "attempts": 1
+    },
+    {
+      "question_id": "s113",
+      "question": "J'achète un appartement, comment vérifier que les impôts sur le bien sont payés avant de signer ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "4dbe6234-bf80-4a76-be0f-93d594d1910f"
+      ],
+      "reference": "La procédure concernée est « Certificat d'acquittement des impôts et taxes grevant l'immeuble (P480) » (Ministère de l’Économie et des Finances- Trésorerie générale du Royaume). Documents à fournir : Demande d'obtention du certificat d'acquittement des impôts et taxes grevant l'immeuble ; Copie du contrat de vente ou tout document justificatif de la transaction. Frais : Gratuit. Délai : 5 jours.",
+      "must_include": [
+        "Demande d'obtention du certificat d'acquittement des impôts…",
+        "Copie du contrat de vente ou tout document justificatif de…",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "4dbe6234-bf80-4a76-be0f-93d594d1910f",
+        "0eaac7c2-1454-44e3-8341-106e66801fce",
+        "c2103624-016c-4f68-9de0-2d96c48df3c2"
+      ],
+      "retrieved_titles": [
+        "Certificat d'acquittement des impôts et taxes grevant l'immeuble (P480)",
+        "Attestation de l'accomplissement de la déclaration relative aux biens et avoirs constitués à l'étranger par les Marocains résidant à l'étranger ayant transféré leur résidence fiscale au Maroc",
+        "Paiement des arriérés au titre de l'épargne sur salaire pour une durée de plus de 12 mois"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Certificat d'acquittement des impôts et taxes grevant l'immeuble (P480)\nDescription: Protection de l'acheteur par la purge de l'immeuble des dettes fiscales (acquittement de tous les impôts et taxes grevant l'immeuble, qu'ils soient émis par l'administration fiscale ou par la commune de situation de l'immeuble, ainsi que les impôts et taxes exigibles)\nAdministration: Ministère de l’Économie et des Finances- Trésorerie générale du Royaume\nFrais: Gratuit\nDélai: 5 jours\nDocuments requis:\n - Demande d'obtention du certificat d'acquittement des impôts et taxes grevant l'immeuble (P480)\n - Copie du contrat de vente ou tout document justificatif de la transaction\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Attestation de l'accomplissement de la déclaration relative aux biens et avoirs constitués à l'étranger par les Marocains résidant à l'étranger ayant transféré leur résidence fiscale au Maroc\nDescription: L'Office des Changes offre ce service afin de permettre au bénéficiaire (en l'occurrence : les Marocains résidant à l'étranger ayant transféré leur résidence fiscale au Maroc) de réaliser des opérations de change non prévues par les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Documents justifiant la valeur des propriétés intellectuelles, culturelles et artistiques : tout document légal attestant leur date de propriété et leur valeur avant la date de transfert de la résidence fiscale au Maroc.\n - Documents justifiant la plus-value sur les biens immobiliers : contrats de vente et d'achat.\n - Documents justifiant la plus-value sur les actifs financiers : relevé des comptes d'actifs financiers ou documents justificatifs des opérations d'achat et de vente de ces actifs.\n - Documents justifiant la plus-value sur les dépôts en espèces dans la limite de la valeur des intérêts.\n - Formulaire type de déclaration des biens et avoirs constitués à l'étranger par les Marocains résidant à l'étranger qui transfèrent leur résidence fiscale au Maroc, conformément aux dispositions de la loi 63.14 promulguée par le Dahir n° 1.15.25 du 29 Rabi\n - Certificat de résidence à l'étranger, titre de séjour, certificat de radiation des registres consulaires ou des missions et représentations diplomatiques marocaines à l'étranger, ou tout document en tenant lieu.\n - Documents justifiant l'exercice d'une activité professionnelle durant la période de résidence à l'étranger, tels que : déclarations fiscales, contrat de travail, bulletin de salaire, ou tout document en tenant lieu.\n - Documents justifiant la valeur des biens immobiliers : certificat attestant l'acquisition du bien et sa valeur, ou sa possession par voie de succession ou de donation avant la date de transfert de la résidence fiscale au Maroc.\n - Documents justifiant la valeur des actifs financiers : tout document attestant la date de détention de ces actifs, ainsi que leur valeur de souscription ou d'achat avant la date de transfert de la résidence fiscale au Maroc.\n - Documents justifiant les montants des dépôts en espèces : relevé du compte bancaire du mois précédant la date de transfert de la résidence fiscale au Maroc et relevé du compte bancaire du dernier mois précédant la date de la déclaration.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Paiement des arriérés au titre de l'épargne sur salaire pour une durée de plus de 12 mois\nDescription: Autorisation accordée à l'usager d'effectuer des opérations de change non prévues par les instructions générales relatives aux opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Annexe bancaire remplie, signée et cachetée\n - Contrat de travail visé par le Ministère du Travail et de l'Insertion Professionnelle.\n - Certificat de salaire.\n - Bulletin de salaire.\n - Attestation bancaire certifiant qu'aucun transfert financier n'a été effectué pendant la période concernée.\n - Relevé de compte détaillé indiquant le solde actualisé.\n - Copie de la carte d'identité\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 878,
+      "answer": "Pour vérifier que les impôts sur le bien sont payés avant de signer l'achat de votre appartement, vous pouvez demander le \"Certificat d'acquittement des impôts et taxes grevant l'immeuble (P480)\".\n\nCe certificat a pour but la protection de l'acheteur par la purge de l'immeuble des dettes fiscales (acquittement de tous les impôts et taxes grevant l'immeuble, qu'ils soient émis par l'administration fiscale ou par la commune de situation de l'immeuble, ainsi que les impôts et taxes exigibles).\n\nVoici les informations relatives à cette procédure :\n\n*   **Administration :** Ministère de l’Économie et des Finances- Trésorerie générale du Royaume\n*   **Frais :** Gratuit\n*   **Délai :** 5 jours\n*   **Documents requis :**\n    *   Demande d'obtention du certificat d'acquittement des impôts et taxes grevant l'immeuble (P480)\n    *   Copie du contrat de vente ou tout document justificatif de la transaction\n\n(Source : Ministère de l’Économie et des Finances- Trésorerie générale du Royaume)",
+      "generation_ms": 8186,
+      "prompt_tokens": 1162,
+      "output_tokens": 265,
+      "attempts": 1
+    },
+    {
+      "question_id": "s114",
+      "question": "شركتنا ملتزمة ضريبيا ونريد أن تعترف إدارة الضرائب بأنها مقاولة ذات وضعية سليمة، كيف؟",
+      "lang": "ar",
+      "category": "factual",
+      "expected_ids": [
+        "49655871-b369-48c9-a139-a76fcbbf826b"
+      ],
+      "reference": "الإجراء المعني هو « شهادة التصنيف مسلمة من المديرية العامة للضرائب » (وزارة الاقتصاد والمالية-المديرية العامة للضرائب). الوثائق المطلوبة: طلب نموذج رقم AAC280 ؛ بيان معلومات خاص بالملزم يسلم من طرف القابض. الرسوم: بالمجان. الآجال: يومان.",
+      "must_include": [
+        "طلب نموذج رقم AAC280",
+        "بيان معلومات خاص بالملزم يسلم من طرف القابض",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "e9c9faab-d2f9-4d22-b32d-47d73d126a48",
+        "49655871-b369-48c9-a139-a76fcbbf826b",
+        "b5d950ec-f1f2-4ce9-9dd1-b8b5070aea9e"
+      ],
+      "retrieved_titles": [
+        "Certificat de classification et de classement des entreprises de construction",
+        "Certificat de classement délivré par la Direction Générale des Impôts",
+        "Immatriculation de la société en commandite par actions au registre du commerce"
+      ],
+      "rank": 2,
+      "contexts": [
+        "PROCÉDURE: شهادة تصنيف وترتيب مقاولات البناء\nDescription: • أهداف نظام تصنيف وترتيب مقاولات البناء\n- النهوض بالمقاولة الوطنية وحثها على التنظيم والتأطير والتجهيز ؛ \n- الحد من انتشار القطاع غير النظامي ؛ \n- محاربة التنافسية غير المشروعة ؛\n- تحسين الشفافية في منح الصفقات العمومية ؛\n- التأكد من قدرات المقاولة ؛\n- تقدير المؤهلات التقنية للمقاولات بناء على معايير موضوعية وموحدة ؛\n- تأمين ضمان أفضل لصاحب المشروع ؛\n- تسهيل مهمة لجن فتح الأظرفة المتعلقة بالصفقات العمومية ؛\nAdministration: وزارة إعداد التراب الوطني والتعمير والإسكان وسياسة المدينة-قطاع الإسكان وسياسة المدينة\nFrais: بالمجان\nDélai: 45 يوما\nDocuments requis:\n - نسخة من شهادة تسجيل المقاولة في السجل التجاري\n - شهادة مسلمة من طرف الصندوق الوطني للضمان الاجتماعي، مع الإشارة إلى كتلة الأجور التي صرحت بها المقاولة خلال السنوات الخمس الأخيرة أو منذ إنشائها إذا أنشئت المقاولة منذ أقل من 5 سنوات\n - شهادة مسلمة من طرف مصالح الضرائب المباشرة والمماثلة لها مع بيان رقم الأعمال المحصل عليه خلال السنوات الثالث الأخيرة أو منذ إنشائها إذا أنشئت المقاولة منذ أقل من 5 سنوات\n - المراجع التقنية للمقاولة مع الإشارة خصوصا إلى طبيعة وقيمة الأشغال المنجزة مع مكان تنفيذها وتاريخها وذكر أسمائها وعناوين أصحاب المشاريع التي أنجزت لصالحها هذه الأعمال والمشرفين على المشروع الذين قاموا بتتبع إنجازها (تلخيص المرجع في المرفق 4) ارفق الحسابات\n - قائمتا الآليات التي تتوفر عليها المقاولة و/أو تلك التي بالإيجار المفضي الى التملك ( المرفقين 1 و 2).\n - قائمة المؤطرين والتقنيين مع الإشارة إلى قدراتهم المهنية  وارفقاها بالشواهد  و كذا كشف التاريخ المهني  (المرفق3).\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة التصنيف مسلمة من المديرية العامة للضرائب\nDescription: الحصول على شهادة التصنيف التي تمنح للمقاولات ذات الوضعية الضريبية السليمة التي تتم إدارتها بشفافية وتتمتع بسلوك ضريبي جيّد.\nAdministration: وزارة الاقتصاد والمالية-المديرية العامة للضرائب\nFrais: بالمجان\nDélai: يومان\nDocuments requis:\n - طلب نموذج رقم  AAC280\n - بيان معلومات خاص بالملزم يسلم من طرف القابض\nÉtapes:\nغير محدد",
+        "PROCÉDURE: تسجيل شركة التوصية بالأسهم بالسجل التجاري\nDescription: التسجيل بالسجل التجاري وفق المقتضيات المنصوص عليها قانونا، لكون المشرع ووفق المادة 37 من مدونة التجارة جعل التسجيل بالسجل التجاري أمرا إلزاميا على جميع التجار الذاتيين والاعتباريين مغاربة كانوا أو أجانب الذين يمارسون نشاطا تجاريا في تراب المملكة.\nهذا بالإضافة إلى أن  الشخصية المعنوية للشركات لا تكتسب إلا منذ تاريخ التسجيل في السجل التجاري ـــ مع الأخذ بعين الاعتبار أن شركات المحاصة لا تسجل بالسجل التجاري ولا تتمتع بالشخصية المعنويةـــ\nفي إطار المراقبة التي يجريها كاتب الضبط للوثائق والمستندات المقدمة إليه-في غير الحالات التي يجب فيها قانونا الاحتفاظ بأصول الوثائق- يتعين على المرتفق الإدلاء بأصل الوثيقة ويتولى كاتب الضبط أمر نسخها وإرجاعها فورا إلى المعني بالأمر.\nوبالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء يجب أن يتم أمام كاتب الضبط الذي يشير بنفس الوثيقة  إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيع كاتب الضبط\nAdministration: وزارة العدل\nFrais: رسوم التسجيل بالسجل التجاري\n200درهما عن الإيداع, \n150 درهما عن التقييد\nDélai: (2) يومان\nDocuments requis:\n - وثائق الإيداع\n - أصل النظام الأساسي للشركة موقع من طرف جميع الشركاء أو من طرف وكيل مزود بوكالة كتابية و مسجل لدى إدارة التسجيل، أو نظير منه  .\n - نسخة من العقد الموقع والمسجل، الذي تم بمقتضاه تعيين المسير إذا تم هذا التعيين بمقتضى عقد منفصل\n - أوراق الاكتتاب بالنسبة للعقود الغير الموثقة\n - أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما\n - نظير من شهادة  الاكتتاب والدفع  تبين الاكتتابات في رأس المال وكذا حصة الأسهم المحررة من طرف كل مساهم\n - قائمة المكتتبين تتضمن الأسماء الشخصية والعائلية وعناوين وجنسيات المكتتبين بالإضافة إلى صفاتهم ومهنهم وعدد الأسهم المكتتبة ومبلغ الدفعات التي قام بها كل واحد منهم .\n - وثائق التسجيل\n - شهادة أصلية للتسجيل بالرسم المهني\n - شهادة التسجيل أو ما يقوم مقامها  إذا كان أحد الشركاء شخصا اعتباريا.\n - صورة من الإذن و /أو الدبلوم أو الشهادة اللازمة لمزاولة النشاط المشروع فيه عند الاقتضاء. \" وفق ما تقضي به بعض النصوص الخاصة المتعلقة بممارسة بعض الأنشطة المنظمة\"\n - صورة من عقد الكراء موقع  ومسجل بإدارة التسجيل أو عقد التوطين موقع  أو أي وثيقة تثبت تواجد المحل .\n - مستخرج للعقد المتضمن بيان نظام الزوجية بالنسبة للشريك المتضامن الأجنبي عند الاقتضاء وصورة منه.\n - صورة من بطاقة التعريف الوطنية لجميع الشركاء المتضامنين والمسيرين المغاربة أو من بطاقة التسجيل بالنسبة للأجانب المقيمين أو من جواز السفر بالنسبة للأجانب غير المقيمين أو ما يقوم مقامه لإثبات الهوية.\n - التصريح نموذج 2 محرر  وموقع  من طرف الملزم أو وكيله المزود بوكالة كتابية\n - وكالة كتابية في حالة التسجيل بواسطة وكيل \n(ملاحظة: يجب أن تكون الوكالة مسجلة بإدارة التسجيل)\n - صورة لوثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل.\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 1252,
+      "answer": "للحصول على اعتراف إدارة الضرائب بأن شركتكم مقاولة ذات وضعية ضريبية سليمة، يمكنكم التقدم بطلب للحصول على **شهادة التصنيف مسلمة من المديرية العامة للضرائب**.\n\nتُمنح هذه الشهادة للمقاولات ذات الوضعية الضريبية السليمة التي تتم إدارتها بشفافية وتتمتع بسلوك ضريبي جيد.\n\n**الوثائق المطلوبة هي:**\n*   طلب نموذج رقم AAC280.\n*   بيان معلومات خاص بالملزم يسلم من طرف القابض.\n\n**الرسوم:** بالمجان.\n**المدة الزمنية:** يومان.\n\n**المصدر:** وزارة الاقتصاد والمالية-المديرية العامة للضرائب.",
+      "generation_ms": 8265,
+      "prompt_tokens": 1712,
+      "output_tokens": 163,
+      "attempts": 1
+    },
+    {
+      "question_id": "s115",
+      "question": "Le fisc a inscrit une hypothèque légale sur mon terrain et j'ai tout payé, comment la lever ?",
+      "lang": "fr",
+      "category": "ambiguous",
+      "expected_ids": [
+        "c18990ac-f6ef-4e6d-9c8e-6ddc95f5c407",
+        "697f01e3-0990-421e-bd22-85e9ac7ac5e9"
+      ],
+      "reference": "La procédure concernée est « Certificat de mainlevée de l'hypothèque légale forcée » (Ministère de l’Économie et des Finances- Trésorerie générale du Royaume). Documents à fournir : Demande de certificat de mainlevée de l’hypothèque légale forcée. Frais : Gratuit. Délai : 05 jours. Selon la situation exacte, la procédure « Mainlevée d'hypothèque ou de procédure d'exécution diligentée par le percepteur » peut aussi s'appliquer.",
+      "must_include": [
+        "Demande de certificat de mainlevée de l’hypothèque légale…",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "1eaffe57-04c0-4b78-a8e5-7ce92d3a3675",
+        "1a7979c6-cae0-4dfb-8efc-b2756dafb7dd",
+        "697f01e3-0990-421e-bd22-85e9ac7ac5e9"
+      ],
+      "retrieved_titles": [
+        "Mainlevée d'hypothèque ou restitution de la caution bancaire",
+        "Décision de mainlevée de l'hypothèque de l'Office Régional de l'Investissement Agricole de Tadla",
+        "Mainlevée d'hypothèque ou de procédure d'exécution diligentée par le percepteur"
+      ],
+      "rank": 3,
+      "contexts": [
+        "PROCÉDURE: Mainlevée d'hypothèque ou restitution de la caution bancaire\nDescription: Obtention de la mainlevée d'hypothèque ou de la restitution de la caution bancaire\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 2 jours\nDocuments requis:\n - • Demande formulaire n° AAC360 ;\n - Réalisation d'un projet immobilier (opérations d'équipement et de construction) :\n - Copie du contrat d'acquisition\n - Copie de la carte nationale d'identité pour les personnes physiques\n - Copie des autorisations de construire ou d'équiper\n - Copie des plans structurels pour les grands projets de construction et d'équipement\n - Copie du permis d'habiter ou du certificat de conformité ou du certificat de réception provisoire\n - Copie du certificat de propriété délivré par l'Agence Nationale de la Cartographie et du Cadastre\n - Promoteurs immobiliers ayant signé une convention avec l'État pour la réalisation de logements sociaux ou de logements à valeur immobilière réduite :\n - Copie de la convention conclue avec l'État\n - Copie des permis de construire\n - Copie du plan structurel\n - Copie du permis d'habiter ou du certificat de conformité\n - Certificat du coefficient spécifique aux logements à valeur immobilière réduite ou logements sociaux\n - Preuve du dépôt de la demande de permis de construire dans un délai de 6 mois à compter de la date de la convention\n - Certificat de l'architecte déterminant la surface réservée aux logements non sociaux par rapport à la surface du terrain\n - Certificat de conformité du projet de logements sociaux\n - Logements destinés à la classe moyenne :\n - Copie de la carte nationale d'identité portant l'adresse du logement, objet de l'hypothèque\n - Copies des quittances de paiement de la taxe des services communaux\n - Non-respect des conditions de bénéfice de l'exonération ou du taux réduit de l'impôt :\n - Copies des cartes nationales d'identité pour les personnes physiques\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Décision de mainlevée de l'hypothèque de l'Office Régional de l'Investissement Agricole de Tadla\nDescription: Mainlevée de l'hypothèque\nAdministration: Office Régional De Mise En Valeur Agricole du Tadla\nFrais: 68,76 dirhams\nDélai: 30 jours\nDocuments requis:\n - Demande adressée à Monsieur le Directeur\n - Copie de la carte d'identité nationale\n - Document attestant la propriété\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Mainlevée d'hypothèque ou de procédure d'exécution diligentée par le percepteur\nDescription: Mainlevée d'hypothèque ou de procédure d'exécution diligentée par le percepteur\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - Demande présentée par le contribuable\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 545,
+      "answer": "Pour lever l'hypothèque inscrite par le fisc après avoir effectué tous vos paiements, vous devez suivre la procédure de \"Mainlevée d'hypothèque ou de procédure d'exécution diligentée par le percepteur\".\n\nVoici les informations officielles concernant cette procédure :\n\n*   **Administration :** Ministère de l’Économie et des Finances- Direction Générale des Impôts\n*   **Frais :** Gratuit\n*   **Délai :** 10 jours\n*   **Documents requis :** Demande présentée par le contribuable",
+      "generation_ms": 9719,
+      "prompt_tokens": 888,
+      "output_tokens": 117,
+      "attempts": 1
+    },
+    {
+      "question_id": "s116",
+      "question": "سددت ديوني الضريبية وأريد رفع الرهن عن أصلي التجاري، ما العمل؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "f2f01f06-cd4e-4278-a037-74dde6545449"
+      ],
+      "reference": "الإجراء المعني هو « شهادة رفع اليد عن رهن الأصل التجاري » (وزارة الاقتصاد والمالية-الخزينة العامة للمملكة). الوثائق المطلوبة: طلب الحصول على شهادة رفع اليد عن رهن الأصل التجاري. الرسوم: بالمجان. الآجال: 5 أيام.",
+      "must_include": [
+        "طلب الحصول على شهادة رفع اليد عن رهن الأصل التجاري",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "f2f01f06-cd4e-4278-a037-74dde6545449",
+        "1eaffe57-04c0-4b78-a8e5-7ce92d3a3675",
+        "c18990ac-f6ef-4e6d-9c8e-6ddc95f5c407"
+      ],
+      "retrieved_titles": [
+        "Certificat de mainlevée du nantissement du fonds de commerce",
+        "Mainlevée d'hypothèque ou restitution de la caution bancaire",
+        "Certificat de mainlevée de l'hypothèque légale forcée"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: شهادة رفع اليد عن رهن الأصل التجاري\nDescription: استخلاص المتأخرات الضريبية\nAdministration: وزارة الاقتصاد والمالية-الخزينة العامة للمملكة\nFrais: بالمجان\nDélai: 5 أيام\nDocuments requis:\n - طلب الحصول على شهادة رفع اليد عن رهن الأصل التجاري\nÉtapes:\nغير محدد",
+        "PROCÉDURE: رفع الرهن أو إسترداد الكفالة البنكية\nDescription: الحصول على رفع الرهن أو إسترداد الكفالة البنكية\nAdministration: وزارة الاقتصاد والمالية-المديرية العامة للضرائب\nFrais: بالمجان\nDélai: يومان\nDocuments requis:\n - • طلب نموذج رقم   AAC360؛\n - إنجاز مشروع عقاري (عمليات التجهيز والبناء):\n - نسخة من عقد الاقتناء\n - نسخة من البطاقة الوطنية للتعريف بالنسبة للأشخاص الذاتيين\n - نسخة من رخص البناء أو التجهيز\n - نسخة من التصاميم الهيكلية بالنسبة لمشاريع البناء والتجهيز الكبرى\n - نسخة من رخصة السكن أو شهادة المطابقة أو شهادة الاستلام المؤقت\n - نسخة من شهادة الملكية مسلمة من طرف الوكالة الوطنية للخرائطية والمحافظة العقارية\n - المنعشون العقاريون الذين وقعوا اتفاقية مع الدولة من أجل إنجاز مساكن اجتماعية أو مساكن ذات قيمة عقارية مخفضة:\n - نسخة من الاتفاقية المبرمة مع الدولة\n - نسخة من رخص البناء\n - نسخة من التصميم الهيكلي\n - نسخة من رخصة السكن أو شهادة المطابقة\n - شهادة المعامل الخاص بالمساكن ذات قيمة عقارية مخفضة أو  مساكن اجتماعية\n - إثبات إيداع طلب رخصة البناء في أجل 6 أشهر من تاريخ الاتفاقية\n - شهادة المهندس المعماري تحدد المساحة المخصصة للمساكن غبر الاجتماعية بالمقارنة مع مساحة الأرض\n - شهادة المطابقة لمشروع المساكن الاجتماعية\n - المساكن المخصصة للطبقة الوسطى:\n - نسخة من البطاقة الوطنية للتعريف تتضمن عنوان المسكن ، موضوع الرهن\n - نسخ من مخالصات أداء رسم الخدمات الجماعية\n - عدم احترام شروط الاستفادة من الاعفاء أو السعر المخفض للضريبة:\n - نسخ من البطاقات الوطنية للتعريف بالنسبة للأشخاص الذاتيين\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة رفع اليد عن الرهن الرسمي الجبري\nDescription: استخلاص المتأخرات الضريبية\nAdministration: وزارة الاقتصاد والمالية-الخزينة العامة للمملكة\nFrais: بالمجان\nDélai: 05 أيام\nDocuments requis:\n - طلب الحصول على شهادة رفع اليد عن الرهن االرسمي\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 1516,
+      "answer": "لرفع اليد عن الرهن على أصلك التجاري بعد تسديد ديونك الضريبية، يمكنك طلب \"شهادة رفع اليد عن رهن الأصل التجاري\".\n\n*   **الوثائق المطلوبة:**\n    *   طلب الحصول على شهادة رفع اليد عن رهن الأصل التجاري.\n*   **الإدارة المعنية:** وزارة الاقتصاد والمالية-الخزينة العامة للمملكة.\n*   **الرسوم:** بالمجان.\n*   **الآجال:** 5 أيام.\n*   **الخطوات:** غير محددة.\n\nالمصدر: وزارة الاقتصاد والمالية-الخزينة العامة للمملكة.",
+      "generation_ms": 10586,
+      "prompt_tokens": 844,
+      "output_tokens": 148,
+      "attempts": 1
+    },
+    {
+      "question_id": "s117",
+      "question": "opposition sur ma voiture a cause des impots, comment l'enlever pour la vendre",
+      "lang": "fr",
+      "category": "user_style",
+      "expected_ids": [
+        "01682b89-ee4d-4623-bc3f-6daaa67f94c8"
+      ],
+      "reference": "La procédure concernée est « Certificat de mainlevée d'opposition sur véhicules au centre d'immatriculation des véhicules » (Ministère de l’Économie et des Finances- Trésorerie générale du Royaume). Documents à fournir : Demande d'obtention du certificat de mainlevée d'opposition sur véhicules auprès du centre d'immatriculation des…. Frais : Gratuit. Délai : 5 jours.",
+      "must_include": [
+        "Demande d'obtention du certificat de mainlevée d'opposition…",
+        "Gratuit"
+      ],
+      "error": "generation: ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 10h41m38.070295899s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '38498s'}]}}",
+      "retrieved_ids": [
+        "01682b89-ee4d-4623-bc3f-6daaa67f94c8",
+        "1b8fdec7-6d5b-4c11-b00c-ac6b7a9c5ac1",
+        "c24da220-e8e1-49d0-b517-94dc3e7c0855"
+      ],
+      "retrieved_titles": [
+        "Certificat de mainlevée d'opposition sur véhicules au centre d'immatriculation des véhicules",
+        "Autorisation d'exonération du droit d'importation lors du dédouanement de véhicules spécialement équipés pour personnes en situation de handicap",
+        "Autorisation d’exonération des droits et taxes exigibles à l’importation des bagages et biens meubles usagés provenant d’une succession"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Certificat de mainlevée d'opposition sur véhicules au centre d'immatriculation des véhicules\nDescription: Recouvrement des arriérés d'impôts\nAdministration: Ministère de l’Économie et des Finances- Trésorerie générale du Royaume\nFrais: Gratuit\nDélai: 5 jours\nDocuments requis:\n - Demande d'obtention du certificat de mainlevée d'opposition sur véhicules auprès du centre d'immatriculation des véhicules\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation d'exonération du droit d'importation lors du dédouanement de véhicules spécialement équipés pour personnes en situation de handicap\nDescription: La procédure vise à exonérer du droit d'importation les véhicules spécialement aménagés pour les personnes en situation de handicap, sous réserve que :\n- la personne soit en situation de handicap physique et titulaire d'un permis de conduire valide de catégorie B indiquant les codes de restrictions qui lui sont propres ;\n- le véhicule objet de la demande soit équipé des aménagements nécessaires pour l'intéressé.\nIl est à noter que ce type de véhicules reste soumis au paiement de la taxe sur la valeur ajoutée.\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: non spécifié\nDocuments requis:\n - Demande visée par l'autorité gouvernementale chargée des personnes en situation de handicap\n - Copie de l'attestation d'homologation à titre isolé délivrée par l'autorité gouvernementale chargée de l'équipement et du transport\n - Certificat de conformité délivré par l'autorité gouvernementale chargée de l'équipement et du transport\n - Certificat médical délivré conformément à la loi n° 05-52 portant Code de la route.\n - Copie de la carte nationale d'identité électronique ou du certificat de résidence pour les étrangers résidant au Maroc\n - Copie du permis de conduire\n - Document de circulation sous le régime de l'admission temporaire des moyens de transport appartenant aux personnes ayant leur résidence normale à l'étranger\n - Facture d'achat originale pour les véhicules de trois mois ou moins d'âge\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation d’exonération des droits et taxes exigibles à l’importation des bagages et biens meubles usagés provenant d’une succession\nDescription: La procédure vise à exonérer des droits et taxes exigibles à l’importation, les bagages et biens meubles usagés provenant d’une succession.\nAdministration: Ministère de l’Économie et des Finances- Administration des Douanes et Impôts Indirects\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - Demande d’autorisation d’exonération des droits et taxes exigibles à l’importation des bagages et biens meubles usagés provenant d’une succession.\n - Certificat de résidence des héritiers\n - Certificat d’hérédité délivré par les autorités du lieu de provenance des bagages et biens meubles ou par un notaire, comportant un inventaire détaillé des objets à importer et la date du décès du défunt.\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 1058,
+      "attempts": 4
+    }
+  ]
+}

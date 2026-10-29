@@ -1,0 +1,777 @@
+{
+  "config": {
+    "experiment_name": "answers_vector_v1_p5",
+    "date": "2026-10-09T20:26:49",
+    "git_commit": null,
+    "dataset": "synthetic_v1.json",
+    "start": 79,
+    "limit": 20,
+    "retrieval_mode": "vector",
+    "top_k": 3,
+    "retrieval_only": false,
+    "llm_model": "gemini-2.5-flash",
+    "embedding_model": "BAAI/bge-m3"
+  },
+  "rows": [
+    {
+      "question_id": "s079",
+      "question": "أحتاج ممرا عبر الملك العمومي للوصول إلى أرضي ومشروعي الاستثماري، ما هي الرخصة المطلوبة؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "134139a2-9b3c-494b-b015-63a7e7c20251"
+      ],
+      "reference": "الإجراء المعني هو « رخصة الاحتلال المؤقت للملك العمومي قصد الولوج إلى الملكيات الخاصة والمشاريع الاستثمارية (SVR) (Invest) » (وزارة التجهيز والماء). الوثائق المطلوبة: 1- طلب رخصة الاحتلال المؤقت للملك العمومي ؛ 2- التصاميم ؛ تصميم موقعي يحدد على خريطة مناسبة موقع القطعة الأرضية المراد احتلالها. ؛ تصميم القطعة المراد احتلالها مع المنشآت المزمع إنجازها بمقياس ملائم مع توضيح احداثيات لامبير لهذه الأرضية مرتبطة بشبكة… ؛ تصميم أنسوبي ؛ تصميم يبين ولوجيات وتفاصيل مجاري المياه. الرسوم: مصاريف دراسة الملف: - 1000 درهم عن كل طلب إدا كانت المساحة تقل أو تساوي 1000 متر مربع أو متر طولي - 1000 درهم عن كل طلب إدا كانت المساحة تقل أو تساوي 1000 متر مربع أو متر طولي مع إضافة 500 درهم عن كل شطر إضافي يقل أو يساوي 1000 متر مربع أو متر طولي مع تحديد الأقصى في 25000 درهم.. الآجال: 30 يوما.",
+      "must_include": [
+        "1- طلب رخصة الاحتلال المؤقت للملك العمومي",
+        "2- التصاميم"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "134139a2-9b3c-494b-b015-63a7e7c20251",
+        "ff0acc71-27a8-44fb-8da0-62be07694b70",
+        "68cf9a7c-dcd6-493c-a018-c25214041bee"
+      ],
+      "retrieved_titles": [
+        "Permis d'occupation temporaire du domaine public pour l'accès aux propriétés privées et aux projets d'investissement (SVR) (Invest)",
+        "Attestation de participation aux marchés publics (Invest)",
+        "Certificat d'inscription à la taxe professionnelle"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: رخصة الاحتلال المؤقت للملك العمومي قصد الولوج إلى الملكيات الخاصة والمشاريع الاستثمارية (SVR) (Invest)\nDescription: الحصول على رخصة الاحتلال المؤقت للملك العمومي قصد لولوج إلى الملكيات الخاصة والمشاريع الاستثمارية\nAdministration: وزارة التجهيز والماء\nFrais: مصاريف دراسة الملف:\n- 1000 درهم عن كل طلب إدا كانت المساحة تقل أو تساوي 1000 متر مربع أو متر طولي \n- 1000 درهم عن كل طلب إدا كانت المساحة تقل أو تساوي 1000 متر مربع أو متر طولي مع إضافة 500 درهم عن كل شطر إضافي  يقل أو يساوي  1000 متر مربع أو متر طولي مع تحديد الأقصى في 25000 درهم.\nDélai: 30 يوما\nDocuments requis:\n - 1- طلب رخصة الاحتلال المؤقت للملك العمومي\n - 2- التصاميم :\n - تصميم موقعي يحدد على خريطة مناسبة موقع القطعة الأرضية المراد احتلالها.\n - تصميم القطعة المراد احتلالها مع المنشآت المزمع إنجازها بمقياس ملائم مع توضيح احداثيات لامبير لهذه الأرضية مرتبطة بشبكة المسح الطبوغرافي المغربي.\n - تصميم أنسوبي (Plan coté)\n - تصميم يبين ولوجيات وتفاصيل مجاري المياه (Plan des Accès -Structure des Accès -Détails du Caniveau)\n - تصميم يبين علامات التشوير الأفقي والعمودي  (Plan de Signalisation)\n - تصميم تخطيطي وطولي وعرضي على مدى 500 متر يمين ويسار المشروع  (Tracé en plan, profil en long, profil en Travers)\n - 3- ملف الدراسة التقنية يحدد طبيعة  الولوجيات اللازم تهيئتها من طرف طالب الترخيص\n - 4- وصل أداء مستحقات دراسة الملف\n - 5- شهادة الملكية أو أي وثيقة ثتبت ملكية للعقارات المراد الولوج إليها و كذا عقود الكراء إدا كانت العقارت ليست في ملكية  طالب الترخيص\n - 6-التعهد بأداءالأتاوة السنوية\n - 7-كناش التحملات موقع من طرف المعني بالأمر\n - 8- في حالة شركة يرفق الطلب بالقانون الاساسي و محضر الجمع العام لتعيين المتصرف باسم الشركة و نسخة من السجل التجاري\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة للمشاركة في الصفقات العمومية (Invest)\nDescription: الحصول على شهادة للمشاركة في الصفقات العمومية\nيخضع هذا القرار لمقتضيات المرسوم رقم 2.22.385 بتحديد لائحة القرارات الإدارية اللازمة لإنجاز مشاريع الإستثمار التي لا يتجاوز أجل معالجة الطلبات المتعلقة بها وتسليمها 30 يوما\nAdministration: الصندوق الوطني للضمان الاجتماعي\nFrais: بالمجان\nDélai: يومان\nDocuments requis:\n - طلب الشهادة يحمل إمضاء و خاتم المنخرط و يبين :الاسم أو الاسم التجاري , رمز شهادة التعريف الموحد , عنوان المقر الاجتماعي و رقم الانخراط\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة التسجيل في الرسم المهني\nDescription: التسجيل في الرسم المهني\nAdministration: وزارة الاقتصاد والمالية-المديرية العامة للضرائب\nFrais: بالمجان\nDélai: يومان\nDocuments requis:\n - شخص ذاتي أو اعتباري سبق إحداثه :\n - طلب إلكتروني أو طلب رقم AAC050\n - تحويل الموطن الضريبي المقر الاجتماعي أو المؤسسة الرئيسية :\n - -طلب رقم AAC050\n - - نسخة من محضر تحويل المقر (بالنسبة للأشخاص الاعتباريين)؛\n - - نسخة من عقد الكراء المسجل ؛\n - أو نسخة من توصيل الكراء\n - - أو نسخة من أي سند ملكية (عقار، حق في الإيجار، أو أصل تجاري)؛\n - - أو نسخة من عقد التوطين .\n - إحداث شخص ذاتي\n - طلب رقم AAC50\n - - أو نسخة من عقد التوطين ؛\n - - نسخة من البطاقة الوطنية للتعريف أو من بطاقة الإقامة؛\n - - نسخة من الترخيص اللازم لمزاولة النشاط (بالنسبة للأنشطة المنظمة).\n - إحداث شخص اعتباري جديد الشركات المجهولة الإسم   ؛    الشركات ذات المسؤولية المحدودة ؛     شركات التضامن و شركات التوصية :\n - - نسخة من النظام الأساسي للشركة مسجل؛\n - - نسخة من البطاقة الوطنية للتعريف أو من بطاقة الإقامة أو من جواز السفر أو من السجل التجاري للمتصرف أو ما يعادل السجل التجاري مترجم بالنسبة للأشخاص الاعتباريين غير المقيمين؛\n - - نسخة من الترخيص اللازم لمزاولة النشاط (بالنسبة للأنشطة المنظمة)؛\n - - نسخة من محضر تعيين المسير إذا لم يعين في النظام الأساسي (بالنسبة للشركات ذات المسؤولية المحدودة).\n - التعاونيات :\n - - نسخة من قرار الترخيص المنشور بالجريدة الرسمية؛\n - - نسخة من البطاقة الوطنية لرئيس التعاونية؛\n - أو نسخة من توصيل الكراء؛\n - الهيئات المكلفة بالتوظيف الجماعي للقيم المنقولة :\n - - نسخة من نظام التسيير (بالنسبة لصناديق التوظيف المشتركة) أو نسخة من النظام الأساسي للشركة مسجل (بالنسبة لشركات الاستثمار ذات رأس المال المتغير)؛\n - - نسخة من الترخيص المسلم من طرف الهيئة المغربية لسوق الرساميل؛\n - الشركات التعاضدية :\n - - نسخة من القرار المشترك لوزير التشغيل والشؤون الاجتماعية ووزير المالية؛\n - نسخة من البطاقة الوطنية للتعريف لرئيس المجلس الإداري للشركة.\n - المجموعات ذات النفع الاقتصادي :\n - - نسخة من عقد المجموعة؛\n - - نسخة من البطاقة الوطنية للتعريف المتعلقة بمتصرف المجموعة؛\n - المؤسسات القارة :\n - - نسخة من عقد الكراء أو الشراء مسجل ؛\n - - نسخة من النظام الأساسي للشركة الأم، مترجم إذا اقتضى الحال؛\n - - نسخة من محضر تأسيس المؤسسة القارة؛\n - - نسخة من الصفقة؛\n - نسخة من البطاقة الوطنية للتعريف, أو من جواز السفر, أو من بطاقة إقامة ممثل المؤسسة القارة.\n - الشركات الحاصلة على امتياز لإدارة مرفق عام :\n - - نسخة من عقد الامتياز؛\n - الصناديق المحدثة بنص تشريعي أو تنظيمي :\n - نسخة من قرار إنشاء الصندوق.\n - مراكز تدبير الحسابات المعتمدة :\n - نسخة من الاعتماد.\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 2772,
+      "answer": "للحصول على ممر عبر الملك العمومي للوصول إلى أرضك ومشروعك الاستثماري، تحتاج إلى رخصة \"الاحتلال المؤقت للملك العمومي قصد الولوج إلى الملكيات الخاصة والمشاريع الاستثمارية (SVR)\".\n\n**الإدارة المسؤولة:**\nوزارة التجهيز والماء\n\n**التكاليف:**\nمصاريف دراسة الملف:\n*   1000 درهم عن كل طلب إذا كانت المساحة تقل أو تساوي 1000 متر مربع أو متر طولي.\n*   1000 درهم عن كل طلب إذا كانت المساحة تقل أو تساوي 1000 متر مربع أو متر طولي مع إضافة 500 درهم عن كل شطر إضافي يقل أو يساوي 1000 متر مربع أو متر طولي، مع تحديد الأقصى في 25000 درهم.\n\n**المدة الزمنية:**\n30 يوماً\n\n**الوثائق المطلوبة:**\n1.  طلب رخصة الاحتلال المؤقت للملك العمومي.\n2.  التصاميم:\n    *   تصميم موقعي يحدد على خريطة مناسبة موقع القطعة الأرضية المراد احتلالها.\n    *   تصميم القطعة المراد احتلالها مع المنشآت المزمع إنجازها بمقياس ملائم مع توضيح إحداثيات لامبير لهذه الأرضية مرتبطة بشبكة المسح الطبوغرافي المغربي.\n    *   تصميم أنسوبي (Plan coté).\n    *   تصميم يبين الولوجيات وتفاصيل مجاري المياه (Plan des Accès -Structure des Accès -Détails du Caniveau).\n    *   تصميم يبين علامات التشوير الأفقي والعمودي (Plan de Signalisation).\n    *   تصميم تخطيطي وطولي وعرضي على مدى 500 متر يمين ويسار المشروع (Tracé en plan, profil en long, profil en Travers).\n3.  ملف الدراسة التقنية يحدد طبيعة الولوجيات اللازم تهيئتها من طرف طالب الترخيص.\n4.  وصل أداء مستحقات دراسة الملف.\n5.  شهادة الملكية أو أي وثيقة تثبت ملكية العقارات المراد الولوج إليها، وكذا عقود الكراء إذا كانت العقارات ليست في ملكية طالب الترخيص.\n6.  التعهد بأداء الأتاوة السنوية.\n7.  كناش التحملات موقع من طرف المعني بالأمر.\n8.  في حالة شركة، يرفق الطلب بالقانون الأساسي ومحضر الجمع العام لتعيين المتصرف باسم الشركة ونسخة من السجل التجاري.\n\nالمصدر: وزارة التجهيز والماء.",
+      "generation_ms": 8678,
+      "prompt_tokens": 1784,
+      "output_tokens": 603,
+      "attempts": 1
+    },
+    {
+      "question_id": "s080",
+      "question": "Notre association de pêcheurs veut louer un lot de pêche dans un lac, comment participer à l'appel d'offres ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "3f52bfd8-13fa-402d-bd17-1ddd787e9592"
+      ],
+      "reference": "La procédure concernée est « Participation aux appels d'offres pour la location du droit de pêche dans les eaux continentales » (Agence Nationale des Eaux et Forêts). Documents à fournir : Demande de location ; Pour les associations ; Copie des statuts de l'association ; Copie du procès-verbal de l'assemblée générale constitutive ; Récépissé de dépôt des statuts auprès des autorités locales ; Liste des membres du bureau et liste des adhérents. Frais : Gratuit. Délai : 30 jours.",
+      "must_include": [
+        "Demande de location",
+        "Pour les associations",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "3f52bfd8-13fa-402d-bd17-1ddd787e9592",
+        "c58c5126-1638-42c4-8157-e2bc0d4591ff",
+        "4979301b-3d27-4ca4-a60a-221a0fe31dd0"
+      ],
+      "retrieved_titles": [
+        "Participation aux appels d'offres pour la location du droit de pêche dans les eaux continentales",
+        "Agrément d'organisateur de chasse touristique",
+        "Autorisation de relever la valeur maximale des biens pouvant être possédés par l'association"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Participation aux appels d'offres pour la location du droit de pêche dans les eaux continentales\nDescription: Participation aux appels d'offres\nAdministration: Agence Nationale des Eaux et Forêts\nFrais: Gratuit\nDélai: 30 jours\nDocuments requis:\n - Demande de location\n - Pour les associations :\n - Copie des statuts de l'association\n - Copie du procès-verbal de l'assemblée générale constitutive\n - Récépissé de dépôt des statuts auprès des autorités locales\n - Liste des membres du bureau et liste des adhérents\n - Pour les coopératives de pêche :\n - Copie des statuts\n - Copie du règlement intérieur de la coopérative\n - Copie de l'inscription au registre local des coopératives\n - Copie du procès-verbal de la dernière assemblée générale constitutive\n - Pour les sociétés de pêche :\n - Copie des statuts de la société (l'objet social doit concerner l'exercice de la pêche, l'aquaculture ou une activité similaire)\n - Attestation d'inscription au registre du commerce\n - Attestation datant de moins d'un an délivrée par la Caisse nationale de sécurité sociale certifiant que le concurrent est en situation régulière vis-à-vis de cette caisse\n - Attestation datant de moins d'un an délivrée par le receveur du lieu d'imposition certifiant que le concurrent est en situation fiscale régulière\n - Récépissé de dépôt du cautionnement provisoire\n - Cahier des charges spécial et visa de toutes les pages avec signature de la dernière portant la mention \"Lu et accepté\"\n - Offre technique précisant le budget alloué au programme d'aménagement des pêcheries proposé par le concurrent\n - Note précisant les travaux proposés pour une exploitation durable de la ressource halieutique, notamment par l'engagement du concurrent à la valorisation piscicole des pêcheries à travers des opérations d'aménagement ou d'alevinage, ou les deux à la fois\n - Note précisant le nombre de postes d'emploi à créer ainsi que les mesures prises pour l'encadrement des pêcheurs, notamment dans le domaine de la pêche responsable\n - Offre financière indiquant le montant du loyer annuel pour la location du droit de pêche\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Agrément d'organisateur de chasse touristique\nDescription: Organisation de la chasse touristique dans la ou les parcelles louées\nAdministration: Agence Nationale des Eaux et Forêts\nFrais: Gratuit\nDélai: 30 jours\nDocuments requis:\n - Autorisation d'exploitation de la chasse amodiée\n - Demande d'agrément d'organisateur de chasse touristique\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation de relever la valeur maximale des biens pouvant être possédés par l'association\nDescription: Relèvement de la valeur maximale des biens (meubles et immeubles) que l'association peut posséder pour la réalisation de ses objectifs.\nAdministration: Secrétariat Général du Gouvernement\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Demande adressée au Secrétaire Général du Gouvernement.\n - Procès-verbal de l'assemblée générale ayant décidé de demander l'autorisation de relever la valeur maximale des biens pouvant être possédés par l'association.\n - Copie des statuts et du règlement intérieur de l'association, mis à jour.\n - Copie de la liste des membres responsables de la gestion de l'association, avec indication de leur nationalité, profession et domicile.\n - Copie du récépissé du dernier renouvellement du bureau de l'association.\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 802,
+      "answer": "Pour participer à l'appel d'offres pour la location d'un lot de pêche dans un lac, votre association de pêcheurs doit fournir les documents suivants :\n\n*   Une demande de location.\n*   Copie des statuts de l'association.\n*   Copie du procès-verbal de l'assemblée générale constitutive.\n*   Récépissé de dépôt des statuts auprès des autorités locales.\n*   Liste des membres du bureau et liste des adhérents.\n\nCette procédure est gratuite et le délai est de 30 jours.\n\nSource : Agence Nationale des Eaux et Forêts.",
+      "generation_ms": 6651,
+      "prompt_tokens": 1014,
+      "output_tokens": 131,
+      "attempts": 1
+    },
+    {
+      "question_id": "s081",
+      "question": "كيف يتم تصنيف مؤسسة مضرة بالصحة أو مزعجة أو خطيرة؟",
+      "lang": "ar",
+      "category": "factual",
+      "expected_ids": [
+        "2b39302a-dda8-4f56-ad9f-c503d22ac499"
+      ],
+      "reference": "الإجراء المعني هو « ترتيب المؤسسات المصنفة (المضرة وغير الملائمة أو الخطيرة) » (وزارة التجهيز والماء). الوثائق المطلوبة: طلب ترتيب المؤسسة ؛ بطاقة تقنية تبين الإسم الشخصي والعائلي لصاحب الطلب أو صفة الشركة ومركزها وإسم مندوبها، نوعية ومحتوى المؤسسة المقرر…. الرسوم: بالمجان. الآجال: 10 أيام.",
+      "must_include": [
+        "طلب ترتيب المؤسسة",
+        "بطاقة تقنية تبين الإسم الشخصي والعائلي لصاحب الطلب أو صفة…",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "2b39302a-dda8-4f56-ad9f-c503d22ac499",
+        "e9c9faab-d2f9-4d22-b32d-47d73d126a48",
+        "56587744-3939-43fb-803c-66e0ef3ab46c"
+      ],
+      "retrieved_titles": [
+        "Classement des établissements classés (insalubres, incommodes ou dangereux)",
+        "Certificat de classification et de classement des entreprises de construction",
+        "Liste des oppositions : déclaration positive ou déclaration négative (salaires des fonctionnaires et agents de l'État)"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: ترتيب المؤسسات المصنفة (المضرة وغير الملائمة أو الخطيرة)\nDescription: ترتيب المؤسسات اعتمادا على جدول المسماة (nomenclature)  الدي جاء به القرار الوزيري الصادر بتاريخ 13 أكتوبر 1933 المتعلق بترتيب المؤسسات المضرة والغير الملائمة أو الخطيرة.\nAdministration: وزارة التجهيز والماء\nFrais: بالمجان\nDélai: 10 أيام\nDocuments requis:\n - طلب ترتيب المؤسسة\n - بطاقة تقنية تبين الإسم الشخصي والعائلي لصاحب الطلب أو صفة الشركة ومركزها وإسم مندوبها، نوعية ومحتوى المؤسسة المقرر إنجازها مع تحديد :\n- طبيعة وصفة المواد المستخدمة\n- سعة وحجم  المواد الأولية والمنتوجات المصنعة\n- نوعية التخزين\n- سيرورة ( processus)  التصني\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة تصنيف وترتيب مقاولات البناء\nDescription: • أهداف نظام تصنيف وترتيب مقاولات البناء\n- النهوض بالمقاولة الوطنية وحثها على التنظيم والتأطير والتجهيز ؛ \n- الحد من انتشار القطاع غير النظامي ؛ \n- محاربة التنافسية غير المشروعة ؛\n- تحسين الشفافية في منح الصفقات العمومية ؛\n- التأكد من قدرات المقاولة ؛\n- تقدير المؤهلات التقنية للمقاولات بناء على معايير موضوعية وموحدة ؛\n- تأمين ضمان أفضل لصاحب المشروع ؛\n- تسهيل مهمة لجن فتح الأظرفة المتعلقة بالصفقات العمومية ؛\nAdministration: وزارة إعداد التراب الوطني والتعمير والإسكان وسياسة المدينة-قطاع الإسكان وسياسة المدينة\nFrais: بالمجان\nDélai: 45 يوما\nDocuments requis:\n - نسخة من شهادة تسجيل المقاولة في السجل التجاري\n - شهادة مسلمة من طرف الصندوق الوطني للضمان الاجتماعي، مع الإشارة إلى كتلة الأجور التي صرحت بها المقاولة خلال السنوات الخمس الأخيرة أو منذ إنشائها إذا أنشئت المقاولة منذ أقل من 5 سنوات\n - شهادة مسلمة من طرف مصالح الضرائب المباشرة والمماثلة لها مع بيان رقم الأعمال المحصل عليه خلال السنوات الثالث الأخيرة أو منذ إنشائها إذا أنشئت المقاولة منذ أقل من 5 سنوات\n - المراجع التقنية للمقاولة مع الإشارة خصوصا إلى طبيعة وقيمة الأشغال المنجزة مع مكان تنفيذها وتاريخها وذكر أسمائها وعناوين أصحاب المشاريع التي أنجزت لصالحها هذه الأعمال والمشرفين على المشروع الذين قاموا بتتبع إنجازها (تلخيص المرجع في المرفق 4) ارفق الحسابات\n - قائمتا الآليات التي تتوفر عليها المقاولة و/أو تلك التي بالإيجار المفضي الى التملك ( المرفقين 1 و 2).\n - قائمة المؤطرين والتقنيين مع الإشارة إلى قدراتهم المهنية  وارفقاها بالشواهد  و كذا كشف التاريخ المهني  (المرفق3).\nÉtapes:\nغير محدد",
+        "PROCÉDURE: قائمة التعرضات : التصريح الإيجابي أو التصريح السلبي (أجور موظفي وأعوان الدولة)\nDescription: التصريح الايجابي أو السلبي حول قائمة التعرضات قصد إصدار أحكام برفع الحجز على الرواتب أو بالتأشير عليه.\nAdministration: وزارة الاقتصاد والمالية-الخزينة العامة للمملكة\nFrais: مجانا.\nDélai: خمسة عشر (15) يوما .\nDocuments requis:\n - الطلب\n - استدعاء الأطراف لجلسة التوزيع الودي\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 675,
+      "answer": "لتصنيف مؤسسة مضرة بالصحة أو مزعجة أو خطيرة، يجب اتباع الإجراء التالي:\n\n**إجراء: ترتيب المؤسسات المصنفة (المضرة وغير الملائمة أو الخطيرة)**\n\n**الإدارة المسؤولة:** وزارة التجهيز والماء\n\n**الوثائق المطلوبة:**\n*   طلب ترتيب المؤسسة\n*   بطاقة تقنية تبين الإسم الشخصي والعائلي لصاحب الطلب أو صفة الشركة ومركزها وإسم مندوبها، نوعية ومحتوى المؤسسة المقرر إنجازها مع تحديد:\n    *   طبيعة وصفة المواد المستخدمة\n    *   سعة وحجم المواد الأولية والمنتوجات المصنعة\n    *   نوعية التخزين\n    *   سيرورة (processus) التصنيع\n\n**الرسوم:** بالمجان\n\n**المدة الزمنية للإنجاز:** 10 أيام\n\n**ملاحظة:** خطوات الإجراء غير محددة في المعلومات المتوفرة.\n\n(المصدر: وزارة التجهيز والماء)",
+      "generation_ms": 7880,
+      "prompt_tokens": 1041,
+      "output_tokens": 230,
+      "attempts": 1
+    },
+    {
+      "question_id": "s082",
+      "question": "Un armateur marocain veut assurer son navire auprès d'un assureur étranger, est-ce autorisé ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "5cd9cc8c-89fa-4ef0-895f-fe4c6dcb2b34"
+      ],
+      "reference": "La procédure concernée est « Autorisation de souscrire un contrat d'assurance maritime à l'étranger » (Autorité De Controle Des Assurances Et De La Prevoyance Sociale). Documents à fournir : Demande préalable signée par l'intéressé ou la personne mandatée par lui à cet effet, précisant l'objet de… ; Copie des conditions générales d'assurance en version papier ou électronique ; Copie de la proposition d'assurance ou du projet de contrat d'assurance indiquant le nom du navire et la durée de la… ; Certificat de la Direction de la Marine Marchande ou du Département de la Pêche Maritime, selon l'usage, attestant que… ; Acte de nationalité indiquant que le navire est la propriété du demandeur de l'autorisation ou, en cas de navire… ; Pour les navires effectuant des voyages déterminés pendant des périodes données. Frais : Gratuit. Délai : 30 jours.",
+      "must_include": [
+        "Demande préalable signée par l'intéressé ou la personne…",
+        "Copie des conditions générales d'assurance en version…",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "4c466630-3daa-4d91-8619-56657fc195d1",
+        "35b524f1-d7a0-4043-9a9a-a394d606c139",
+        "5cd9cc8c-89fa-4ef0-895f-fe4c6dcb2b34"
+      ],
+      "retrieved_titles": [
+        "Autorisation de souscription d'un contrat d'assurance de personnes auprès d'une entreprise d'assurance étrangère",
+        "Autorisation de souscription d'un contrat d'assurance à l'étranger (hors assurances maritimes et assurances de personnes)",
+        "Autorisation de souscrire un contrat d'assurance maritime à l'étranger"
+      ],
+      "rank": 3,
+      "contexts": [
+        "PROCÉDURE: Autorisation de souscription d'un contrat d'assurance de personnes auprès d'une entreprise d'assurance étrangère\nDescription: Autorisation de souscription de contrats d'assurance de personnes auprès d'une entreprise d'assurance étrangère\nAdministration: Autorité De Controle Des Assurances Et De La Prevoyance Sociale\nFrais: Gratuit\nDélai: 30 jours\nDocuments requis:\n - Demande préalable signée par la personne concernée ou par la personne mandatée par elle à cet effet, précisant l'objet de l'autorisation sollicitée\n - Copie de la proposition d'assurance ou du projet de contrat d'assurance objet de la demande, indiquant le nom de l'assuré, les garanties accordées et la période de garantie\n - Copie d'une pièce d'identité indiquant la nationalité de l'assuré demandeur\n - Copie de la carte de séjour au Maroc de l'assuré demandeur\n - Copie d'un contrat d'assurance incluant les garanties objet de la demande, souscrit antérieurement à l'étranger par le demandeur ou à son profit\n - Copie de la carte d'identité nationale ou de la page d'information du passeport marocain de l'assuré demandeur\n - Document attestant que l'assuré est salarié d'une personne morale étrangère et est chargé, en vertu d'un contrat de travail, d'exercer une activité rémunérée pendant une durée déterminée au sein d'une personne morale de droit marocain\n - En cas de demande portant sur une couverture non disponible auprès des entreprises d'assurance et de réassurance agréées au Maroc : copie des correspondances de ces entreprises ou d'organismes agréés pour la présentation d'opérations d'assurance au Maroc\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation de souscription d'un contrat d'assurance à l'étranger (hors assurances maritimes et assurances de personnes)\nDescription: La présente procédure a pour objet d'autoriser la souscription d'un contrat d'assurance, à l'exception des assurances maritimes et des assurances de personnes, auprès d'une entreprise d'assurance étrangère.\nAdministration: Autorité De Controle Des Assurances Et De La Prevoyance Sociale\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Demande préalable signée par la personne concernée ou par la personne mandatée par elle à cet effet, précisant l'objet de l'autorisation sollicitée\n - Copie des conditions générales d'assurance en format papier ou électronique\n - Copie de la proposition d'assurance ou du projet de contrat d'assurance indiquant la durée de garantie\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation de souscrire un contrat d'assurance maritime à l'étranger\nDescription: Autorisation de souscrire un contrat d'assurance maritime couvrant les risques liés à l'exploitation des navires auprès d'une entreprise d'assurance étrangère\nAdministration: Autorité De Controle Des Assurances Et De La Prevoyance Sociale\nFrais: Gratuit\nDélai: 30 jours\nDocuments requis:\n - Demande préalable signée par la personne concernée ou par la personne mandatée par elle à cet effet, précisant l'objet de l'autorisation sollicitée\n - Copie des conditions générales d'assurance en format papier ou électronique\n - Copie de la proposition d'assurance ou du projet de contrat d'assurance indiquant le nom du navire et la durée de la garantie\n - Certificat de la Direction de la Marine Marchande ou du Département de la Pêche Maritime, selon l'usage, attestant que le navire concerné n'est pas immobilisé et qu'il exerce son activité régulièrement. Le cas échéant, ce certificat peut être remplacé par\n - Acte de nationalité indiquant que le navire est la propriété du demandeur de l'autorisation ou, en cas de navire affrété et si la durée de garantie ne dépasse pas un an, copie du contrat d'affrètement du navire ou déclaration sur l'honneur du demandeur pr\n - Pour les navires effectuant des voyages déterminés pendant des périodes données (prime d'assurance individuelle par voyage), en plus des documents ci-dessus : - Copie du contrat d'assurance de base pour la durée de la garantie incluant la période de couve\n - En cas de groupe de navires affrétés couverts par un contrat d'assurance unique (prime d'assurance forfaitaire), seuls les documents suivants sont exigés : - Demande préalable signée par l'intéressé ou la personne mandatée par lui à cet effet, précisant l\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 546,
+      "answer": "Oui, un armateur marocain peut souscrire un contrat d'assurance maritime auprès d'un assureur étranger, à condition d'obtenir une autorisation préalable.\n\nVoici les détails de la procédure \"Autorisation de souscrire un contrat d'assurance maritime à l'étranger\" :\n\n*   **Administration :** Autorité De Controle Des Assurances Et De La Prevoyance Sociale\n*   **Frais :** Gratuit\n*   **Délai :** 30 jours\n*   **Documents requis (liste non exhaustive) :**\n    *   Demande préalable signée par la personne concernée ou par la personne mandatée, précisant l'objet de l'autorisation sollicitée.\n    *   Copie des conditions générales d'assurance en format papier ou électronique.\n    *   Copie de la proposition d'assurance ou du projet de contrat d'assurance indiquant le nom du navire et la durée de la garantie.\n    *   Certificat de la Direction de la Marine Marchande ou du Département de la Pêche Maritime, selon l'usage, attestant que le navire concerné n'est pas immobilisé et qu'il exerce son activité régulièrement.\n    *   Acte de nationalité indiquant que le navire est la propriété du demandeur de l'autorisation ou, en cas de navire affrété et si la durée de garantie ne dépasse pas un an, copie du contrat d'affrètement du navire ou déclaration sur l'honneur du demandeur.\n\nLes étapes de la procédure ne sont pas spécifiées.\n\nSource : Autorité De Controle Des Assurances Et De La Prevoyance Sociale",
+      "generation_ms": 7971,
+      "prompt_tokens": 1222,
+      "output_tokens": 354,
+      "attempts": 1
+    },
+    {
+      "question_id": "s083",
+      "question": "أريد أن أصبح وسيط تأمين، ما هي الوثائق المطلوبة للحصول على الاعتماد؟",
+      "lang": "ar",
+      "category": "documents",
+      "expected_ids": [
+        "e5e861ad-ca5d-4279-8d58-bb1d43b55f86"
+      ],
+      "reference": "الإجراء المعني هو « قرار متعلق بمنح الإعتماد لوسيط التأمين » (هيئة مراقبة التأمينات والاحتياط الاجتماعي). الوثائق المطلوبة: من أجل الحصول على الاعتماد، يجب إكمال ملف المرشح الذي اجتاز بنجاح الامتحان المهني بالوثائق التالية ؛ أ) بالنسبة للشخص الذاتي ؛ تصريح بالشرف طبقا للنموذج الملحق بمنشور رئيس الهيئة ؛ نسخة من عقد تأمين المسؤولية المدنية المهنية؛ ؛ شهادة تثبت تقييد الشعار في السجل التجاري عند الاقتضاء؛ ؛ نسخة من اتفاق التعيين بالنسبة لوكلاء التأمين؛. الرسوم: بالمجان. الآجال: 60 يوما.",
+      "must_include": [
+        "من أجل الحصول على الاعتماد، يجب إكمال ملف المرشح الذي اجتاز…",
+        "أ) بالنسبة للشخص الذاتي",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "e5e861ad-ca5d-4279-8d58-bb1d43b55f86",
+        "fa4bfffa-bdf5-41b6-9af0-b54922b6a3a1",
+        "cec62e28-3fe9-46a3-890b-552247d11a36"
+      ],
+      "retrieved_titles": [
+        "Décision relative à l'octroi de l'agrément d'intermédiaire d'assurance",
+        "Décision d’octroi d’agrément aux banques ou associations de microcrédit pour la présentation d’opérations d’assurance",
+        "Décision d’octroi d’autorisation aux établissements de crédit pour la présentation d’opérations d’assurance"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: قرار متعلق بمنح الإعتماد لوسيط التأمين\nDescription: منح الإعتماد لوسيط التأمين\nAdministration: هيئة مراقبة التأمينات والاحتياط الاجتماعي\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - من أجل الحصول على الاعتماد، يجب إكمال ملف المرشح الذي اجتاز بنجاح الامتحان المهني بالوثائق التالية\n - أ) بالنسبة للشخص الذاتي:\n - تصريح بالشرف طبقا للنموذج الملحق بمنشور رئيس الهيئة\n - نسخة من عقد تأمين المسؤولية المدنية المهنية؛\n - شهادة تثبت تقييد الشعار في السجل التجاري عند الاقتضاء؛\n - نسخة من اتفاق التعيين بالنسبة لوكلاء التأمين؛\n - ب) بالنسبة للشخص الاعتباري:\n - تصريح بالشرف للممثل المسؤول طبقا للنموذج الملحق بمنشور رئيس الهيئة\n - نسخة من النظام الأساسي؛\n - قائمة المساهمين أو الشركاء تحدد مبلغ وتوزيع رأسمال الشركة؛\n - شهادة تثبت تسجيل الشخص الاعتباري في السجل التجاري.\nÉtapes:\nغير محدد",
+        "PROCÉDURE: قرار منح الإعتماد للأبناك أو لجمعيات السلفات الصغيرة لعرض عمليات التأمين\nDescription: منح الإعتماد للأبناك أو لجمعيات السلفات الصغيرة لمزاولة عمليات التأمين\nAdministration: هيئة مراقبة التأمينات والاحتياط الاجتماعي\nFrais: مجانا\nDélai: 60 يوما\nDocuments requis:\n - مدكرة يتبت من خلالها المرتفق على وجود بنيات على مستوى المصالح  المخصصة لعرض عمليات التأمين\n - طلب الاعتماد مرفوقا بالوثائق التالية:\n - لائحة الوكالات المقترحة لعرض عمليات التأمين على الزبناء\n - وثيقة تبين اسم، شهادة وصفة الأجير المسؤول المعين لهذا الغرض في كل وكالة\n - مستخرج من السجل العدلي أو بطاقة السوابق العدلية للاجير المسؤول لا يتجاوز تاريخ تسليمها ثلاثة أشهر\n - لائحة المستفيدين الفعليين\nÉtapes:\nغير محدد",
+        "PROCÉDURE: قرار منح ترخيص لمؤسسات الائتمان لعرض عمليات التأمين\nDescription: منح ترخيص لمؤسسات الائتمان لعرض عمليات التأمين\nAdministration: هيئة مراقبة التأمينات والاحتياط الاجتماعي\nFrais: مجانا\nDélai: 60 يوما\nDocuments requis:\n - مدكرة يتبت من خلالها المرتفق على وجود بنيات على مستوى المصالح  المخصصة لعرض عمليات التأمين\n - طلب الترخيص مرفوقا بالوثائق التالية:\n - لائحة الوكالات المقترحة لعرض عمليات التأمين على الزبناء\n - وثيقة تبين اسم، شهادة وصفة الأجير المسؤول المعين لهذا الغرض في كل وكالة\n - مستخرج من السجل العدلي أو بطاقة السوابق العدلية للاجير المسؤول لا يتجاوز تاريخ تسليمها ثلاثة أشهر\n - لائحة المستفيدين الفعليين\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 985,
+      "answer": "للحصول على اعتماد وسيط تأمين، يجب على المرشح الذي اجتاز بنجاح الامتحان المهني إكمال ملفه بالوثائق التالية، وذلك حسب ما ورد عن **هيئة مراقبة التأمينات والاحتياط الاجتماعي**:\n\n**أ) بالنسبة للشخص الذاتي:**\n*   تصريح بالشرف طبقا للنموذج الملحق بمنشور رئيس الهيئة.\n*   نسخة من عقد تأمين المسؤولية المدنية المهنية.\n*   شهادة تثبت تقييد الشعار في السجل التجاري عند الاقتضاء.\n*   نسخة من اتفاق التعيين بالنسبة لوكلاء التأمين.\n\n**ب) بالنسبة للشخص الاعتباري:**\n*   تصريح بالشرف للممثل المسؤول طبقا للنموذج الملحق بمنشور رئيس الهيئة.\n*   نسخة من النظام الأساسي.\n*   قائمة المساهمين أو الشركاء تحدد مبلغ وتوزيع رأسمال الشركة.\n*   شهادة تثبت تسجيل الشخص الاعتباري في السجل التجاري.",
+      "generation_ms": 7969,
+      "prompt_tokens": 891,
+      "output_tokens": 226,
+      "attempts": 1
+    },
+    {
+      "question_id": "s084",
+      "question": "Je n'ai pas remporté l'appel d'offres, comment récupérer ma caution provisoire par virement ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "9aa2634b-3671-47d2-ae30-93200257070f"
+      ],
+      "reference": "La procédure concernée est « Demande de remboursement de la caution provisoire par virement bancaire » (Caisse De Depot Et De Gestion). Documents à fournir : Attestation de mainlevée délivrée par le maître d'ouvrage ; L'original du récépissé de dépôt ; Demande du soumissionnaire/enchérisseur ; Attestation d'identité bancaire du soumissionnaire/enchérisseur ; En cas de perte du reçu de paiement ; En cas d'envoi du reçu de paiement par le maître d'ouvrage avec les documents de paiement. Frais : Gratuit. Délai : 60 jours.",
+      "must_include": [
+        "Attestation de mainlevée délivrée par le maître d'ouvrage",
+        "L'original du récépissé de dépôt",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "9aa2634b-3671-47d2-ae30-93200257070f",
+        "2351ef51-3a2b-4b4a-b739-90de3c1898d8",
+        "825f9ba4-11bd-4c48-983b-184ff8aaa15e"
+      ],
+      "retrieved_titles": [
+        "Demande de remboursement de la caution provisoire par virement bancaire",
+        "Demande de restitution de la garantie provisoire auprès de l'agence de la succursale de Rabat pour les personnes physiques ne disposant pas de compte bancaire",
+        "Obtention du récépissé de constitution de la garantie provisoire pour les soumissionnaires aux enchères et appels d'offres"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Demande de remboursement de la caution provisoire par virement bancaire\nDescription: Demande de remboursement de la caution provisoire par virement bancaire\nAdministration: Caisse De Depot Et De Gestion\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Attestation de mainlevée délivrée par le maître d'ouvrage\n - L'original du récépissé de dépôt\n - Demande du soumissionnaire/enchérisseur\n - Attestation d'identité bancaire du soumissionnaire/enchérisseur\n - En cas de perte du reçu de paiement : déclaration de perte établie par le soumissionnaire/enchérisseur devant les autorités compétentes + copie des statuts de la société\n - En cas d'envoi du reçu de paiement par le maître d'ouvrage avec les documents de paiement : attestation délivrée par le maître d'ouvrage confirmant cette situation\n - En cas de groupement d'entreprises : attestation de compte bancaire commun\n - En cas de non-participation du soumissionnaire/enchérisseur : attestation de non-participation à l'appel d'offres / enchère délivrée par le maître d'ouvrage\n - En cas de dépôt de la caution provisoire auprès de la Caisse de Dépôt et de Gestion après deux ans de sa constitution à la Trésorerie Générale : attestation de non-paiement délivrée par le comptable de la trésorerie auprès duquel la caution a été constitu\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Demande de restitution de la garantie provisoire auprès de l'agence de la succursale de Rabat pour les personnes physiques ne disposant pas de compte bancaire\nDescription: Demande de restitution de la garantie provisoire auprès de l'agence de la succursale de Rabat pour les personnes physiques ne disposant pas de compte bancaire\nAdministration: Caisse De Depot Et De Gestion\nFrais: Gratuit\nDélai: 1 jour\nDocuments requis:\n - Récupération de la caution provisoire par le soumissionnaire / enchérisseur :\n - Attestation de mainlevée délivrée par le maître d'ouvrage\n - Récépissé de dépôt original\n - Demande du soumissionnaire / enchérisseur\n - Attestation d'identité bancaire du soumissionnaire/enchérisseur\n - Cas de perte du reçu de paiement :\n - Attestation de perte établie par le soumissionnaire / enchérisseur devant les autorités compétentes + copie des statuts de la société\n - Cas de perte du reçu de paiement et de présentation de la garantie provisoire auprès de la Caisse de Dépôt et de Gestion deux ans après sa constitution à la Trésorerie Générale :\n - Attestation de non-paiement délivrée par le comptable de la Trésorerie auprès duquel la caution a été constituée\n - Cas d'envoi du récépissé de paiement par le maître d'ouvrage avec documents de paiement :\n - Attestation délivrée par le maître d'ouvrage attestant cela\n - Cas de groupement d'entreprises :\n - L'original du récépissé de dépôt\n - Certificat de compte bancaire commun\n - Cas de non-participation du soumissionnaire / de l'enchérisseur :\n - Attestation de non-participation à l'appel d'offres / la mise aux enchères délivrée par le maître d'ouvrage\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention du récépissé de constitution de la garantie provisoire pour les soumissionnaires aux enchères et appels d'offres\nDescription: Constitution de la garantie provisoire pour les soumissionnaires aux enchères ou aux appels d'offres\nAdministration: Caisse De Depot Et De Gestion\nFrais: Droit de timbre 0,025% du montant de la caution\nDélai: 2 jours\nDocuments requis:\n - Formulaire de garantie provisoire dûment rempli et signé\n - Chèque certifié par la banque pour le montant de la caution\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 937,
+      "answer": "Pour récupérer votre caution provisoire par virement après ne pas avoir remporté l'appel d'offres, vous pouvez effectuer une Demande de remboursement de la caution provisoire par virement bancaire auprès de la Caisse De Depot Et De Gestion.\n\nLes documents requis sont :\n*   Attestation de mainlevée délivrée par le maître d'ouvrage\n*   L'original du récépissé de dépôt\n*   Demande du soumissionnaire/enchérisseur\n*   Attestation d'identité bancaire du soumissionnaire/enchérisseur\n\nDes documents supplémentaires peuvent être requis selon des situations spécifiques :\n*   En cas de perte du reçu de paiement : déclaration de perte établie par le soumissionnaire/enchérisseur devant les autorités compétentes + copie des statuts de la société.\n*   En cas d'envoi du reçu de paiement par le maître d'ouvrage avec les documents de paiement : attestation délivrée par le maître d'ouvrage confirmant cette situation.\n*   En cas de groupement d'entreprises : attestation de compte bancaire commun.\n*   En cas de non-participation du soumissionnaire/enchérisseur : attestation de non-participation à l'appel d'offres / enchère délivrée par le maître d'ouvrage.\n*   En cas de dépôt de la caution provisoire auprès de la Caisse de Dépôt et de Gestion après deux ans de sa constitution à la Trésorerie Générale : attestation de non-paiement délivrée par le comptable de la trésorerie auprès duquel la caution a été constituée.\n\nCette procédure est gratuite et le délai de traitement est de 60 jours.\n\nSource : Caisse De Depot Et De Gestion",
+      "generation_ms": 13236,
+      "prompt_tokens": 1075,
+      "output_tokens": 366,
+      "attempts": 1
+    },
+    {
+      "question_id": "s085",
+      "question": "طلبت مني إدارة وضع ضمانة مالية لدى صندوق الإيداع والتدبير، كم يكلف الوصل وكم يستغرق؟",
+      "lang": "ar",
+      "category": "fees_delay",
+      "expected_ids": [
+        "4f628574-9205-47eb-b5c1-2ab870a1c70c"
+      ],
+      "reference": "الإجراء المعني هو « الحصول على وصل تأسيس الضمانة الادارية » (صندوق الإيداع والتدبير). الوثائق المطلوبة: المطبوع الخاص بالضمانة معبأ وموقع ؛ شِيكٌ مُصَدَّق عَلَيْهِ من قبل البنك بمبلغ الضمانة. الرسوم: رسم التنبر0,025% من مبلغ الكفالة. الآجال: يومان.",
+      "must_include": [
+        "المطبوع الخاص بالضمانة معبأ وموقع",
+        "شِيكٌ مُصَدَّق عَلَيْهِ من قبل البنك بمبلغ الضمانة",
+        "رسم التنبر0,025% من مبلغ الكفالة",
+        "يومان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "2eb14b46-f4f1-4992-9cbc-9d41642a06b5",
+        "4f628574-9205-47eb-b5c1-2ab870a1c70c",
+        "4b6bbd1f-26f8-43bd-8f0a-18115ed50b7c"
+      ],
+      "retrieved_titles": [
+        "Décision portant octroi d’autorisation de mainlevée de la garantie financière déposée à la Caisse de Dépôt et de Gestion",
+        "Obtention du reçu de cautionnement administratif",
+        "Délivrance du récépissé de cautionnement de l'agence de placement privée"
+      ],
+      "rank": 2,
+      "contexts": [
+        "PROCÉDURE: قرار منح ترخيص برفع اليد عن الكفالة المالية المودعة بصندوق الايداع والتدبير\nDescription: إصدار ترخيص برفع اليد عن الكفالة المالية المودعة بصندوق الايداع والتدبير\nويشترط على الراغبين في الاستفادة من هذا القرار الإداري التوفر على قرار الاغلاق النهائي للوكالة \n ومرور مدة 3 أشهر على شطب وكالة الأسفار من السجل التجاري\nAdministration: وزارة السياحة والصناعة التقليدية والاقتصاد الاجتماعي والتضامني-قطاع السياحة\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - 1- طلب رفع اليد عن الكفالة\n - 2- شهادة التشطيب من السجل التجاري  النموذج رقم 13\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الحصول على وصل تأسيس الضمانة الادارية\nDescription: الحصول على وصل تأسيس الضمانة الادارية\nAdministration: صندوق الإيداع والتدبير\nFrais: رسم التنبر0,025% من مبلغ الكفالة\nDélai: يومان\nDocuments requis:\n - المطبوع الخاص بالضمانة معبأ وموقع\n - شِيكٌ مُصَدَّق عَلَيْهِ من قبل البنك بمبلغ الضمانة\nÉtapes:\nغير محدد",
+        "PROCÉDURE: الحصول على وصل ضمان وكالة التشغيل الخاصة\nDescription: تأسيس ضمانة وكالة التشغيل الخاصة\nAdministration: صندوق الإيداع والتدبير\nFrais: رسم التنبر0,025% من مبلغ الكفالة\nDélai: يومان\nDocuments requis:\n - المطبوع الخاص بوكالة التشغيل معبأ وموقع\n - شِيكٌ مُصَدَّق عَلَيْهِ من قبل البنك بمبلغ الكفالة\n - رسالة وزارة الشغل موجهة الى وكالة التشغيل قصد تكوين الكفالة أصلية\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 645,
+      "answer": "للحصول على وصل تأسيس الضمانة الإدارية لدى صندوق الإيداع والتدبير، تبلغ الرسوم 0,025% من مبلغ الكفالة كرسم تنبر، ويستغرق الأمر يومين.\n\nالمصدر: صندوق الإيداع والتدبير",
+      "generation_ms": 7908,
+      "prompt_tokens": 647,
+      "output_tokens": 62,
+      "attempts": 1
+    },
+    {
+      "question_id": "s086",
+      "question": "Notre association porte un projet de développement local, comment demander un financement à l'Agence de développement social ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "28ae12d2-bac7-4e11-8115-4c9516d59ca0"
+      ],
+      "reference": "La procédure concernée est « Traitement de la demande de financement de projets et programmes de développement au profit des acteurs de développement » (Agence de Développement Social). Documents à fournir : Le formulaire de demande « Demande de financement de projets et programmes de développement au profit des acteurs de… ; Récépissé de dépôt légal pour les associations, ou certificat d'enregistrement au tribunal pour les coopératives ; Les statuts du porteur de la demande de financement ; La liste des membres du bureau exécutif du porteur de la demande de financement ; Les rapports moral et financier des deux dernières années du porteur de la demande de financement ; Le procès-verbal de la réunion de l'organe responsable du porteur de la demande de financement, comportant la décision…. Frais : Gratuit. Délai : 60 jours.",
+      "must_include": [
+        "Le formulaire de demande « Demande de financement de…",
+        "Récépissé de dépôt légal pour les associations, ou…",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "28ae12d2-bac7-4e11-8115-4c9516d59ca0",
+        "18f18673-4120-443f-9f14-30509477ea56",
+        "1e4aeb0e-0f15-4842-bb01-fb838d40c2cf"
+      ],
+      "retrieved_titles": [
+        "Traitement de la demande de financement de projets et programmes de développement au profit des acteurs de développement",
+        "Autorisation de sollicitation de la charité publique",
+        "Autorisation pour l'association de solliciter automatiquement la générosité publique une fois par an"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Traitement de la demande de financement de projets et programmes de développement au profit des acteurs de développement\nDescription: Octroi d'un soutien financier et technique aux porteurs de projets de développement dans les domaines suivants :\n- Activités de développement social dans les domaines prioritaires, notamment l'approvisionnement en eau potable, l'électrification des villages, la lutte contre l'analphabétisme, l'éducation de base, l'accès aux soins de santé primaires et le développement des voies de communication ;\n- Projets collectifs et individuels visant à fournir des avantages et services permettant d'accroître les ressources des populations à revenu limité et d'améliorer leurs conditions de vie ;\n- Microprojets créateurs d'emplois et facilitant l'accès à des ressources, ciblant les populations économiquement défavorisées rencontrant des difficultés d'insertion dans la vie active ;\n- Projets visant la protection et la préservation de l'environnement ;\n- Projets visant la promotion des activités culturelles et sportives au profit des jeunes issus de milieux défavorisés ;\n- Renforcement des capacités institutionnelles des organisations non gouvernementales et des organismes publics poursuivant les objectifs assignés à l'Agence, par le biais de conventions que l'Agence peut conclure avec lesdits organismes.\nAdministration: Agence de Développement Social\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Le formulaire de demande « Demande de financement de projets et programmes de développement au profit des acteurs de développement » élaboré par l'Agence, dûment rempli et signé par le responsable légal du demandeur\n - Récépissé de dépôt légal pour les associations, ou certificat d'enregistrement au tribunal pour les coopératives\n - Les statuts du porteur de la demande de financement\n - La liste des membres du bureau exécutif du porteur de la demande de financement\n - Les rapports moral et financier des deux dernières années du porteur de la demande de financement\n - Le procès-verbal de la réunion de l'organe responsable du porteur de la demande de financement, comportant la décision de présenter la demande à l'Agence\n - Étude technique si nécessaire, conformément aux dispositions du manuel de procédures en vigueur au sein de l'Agence\n - 3 devis\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation de sollicitation de la charité publique\nDescription: Autorisation accordée à l'association pour solliciter la charité publique (collecte de dons en espèces ou en nature auprès du public) afin de les destiner au(x) but(s) autorisé(s), relevant de son champ d'action conformément à ses statuts.\nAdministration: Secrétariat Général du Gouvernement\nFrais: Gratuit\nDélai: 15 jours\nDocuments requis:\n - Demande adressée au Secrétaire Général du Gouvernement.\n - Copie des statuts de l'association.\n - Copie de la liste des membres responsables de la gestion de l'association, avec indication de leur nationalité, profession et domicile.\n - Récépissé de constitution de l'association ou récépissé du dernier renouvellement de ses organes.\n - Copie des états financiers de l'association.\n - Programme de la manifestation.\n - Identité et qualité des personnes physiques chargées de la collecte des dons.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Autorisation pour l'association de solliciter automatiquement la générosité publique une fois par an\nDescription: Autorisation pour l'association de faire appel à la générosité publique une fois par an, sans autorisation préalable, sous réserve d'en informer le Secrétaire Général du Gouvernement au moins quinze jours avant la date de la manifestation prévue.\nAdministration: Secrétariat Général du Gouvernement\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Demande adressée au Secrétaire Général du Gouvernement.\n - Procès-verbal de l'assemblée générale au cours de laquelle a été prise la décision de demander l'autorisation pour l'association de solliciter automatiquement la générosité publique une fois par an.\n - Copie des statuts et du règlement intérieur de l'association, mis à jour.\n - Copie de la liste des membres responsables de la gestion de l'association, avec indication de leur nationalité, profession et domicile.\n - Copie du récépissé du dernier renouvellement du bureau de l'association.\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 594,
+      "answer": "Pour demander un financement pour votre projet de développement local auprès de l'Agence de Développement Social, voici la procédure officielle :\n\n**Procédure : Traitement de la demande de financement de projets et programmes de développement au profit des acteurs de développement**\n\n**Administration :** Agence de Développement Social\n**Frais :** Gratuit\n**Délai :** 60 jours\n\n**Documents requis :**\n*   Le formulaire de demande « Demande de financement de projets et programmes de développement au profit des acteurs de développement » élaboré par l'Agence, dûment rempli et signé par le responsable légal du demandeur\n*   Récépissé de dépôt légal pour les associations, ou certificat d'enregistrement au tribunal pour les coopératives\n*   Les statuts du porteur de la demande de financement\n*   La liste des membres du bureau exécutif du porteur de la demande de financement\n*   Les rapports moral et financier des deux dernières années du porteur de la demande de financement\n*   Le procès-verbal de la réunion de l'organe responsable du porteur de la demande de financement, comportant la décision de présenter la demande à l'Agence\n*   Étude technique si nécessaire, conformément aux dispositions du manuel de procédures en vigueur au sein de l'Agence\n*   3 devis\n\n**Étapes :** non spécifié\n\nSource : Agence de Développement Social",
+      "generation_ms": 6666,
+      "prompt_tokens": 1160,
+      "output_tokens": 294,
+      "attempts": 1
+    },
+    {
+      "question_id": "s087",
+      "question": "كيف تحصل مؤسسة على اعتماد لإنجاز التدقيق الطاقي؟",
+      "lang": "ar",
+      "category": "factual",
+      "expected_ids": [
+        "50049ab3-25f2-4b24-9e3c-c18e20f41a27"
+      ],
+      "reference": "الإجراء المعني هو « اعتماد هيئات الافتحاص الطاقي » (وزارة الانتقال الطاقي والتنمية المستدامة-قطاع الانتقال الطاقي). الوثائق المطلوبة: طلب موقع من قبل الممثل القانوني للهيأة صاحبة الطلب يوضح وضعها القانوني ومقرها الاجتماعي ويبين القطاع أو القطاعات المراد… ؛ نسخة من السجل التجاري ؛ نسخة من النظام الأساسي لهيأة الافتحاص صاحبة الطلب. ؛ قائمة بأسماء المساهمين أو الشركاء، حسب الحالة، أو قائمة بأسماء أعضاء الجهاز التداولي أو هما معا مع الإشارة إلى هوية… ؛ شهادة الانخراط في صناديق الضمان الاجتماعي. ؛ لائحة بأسماء الأشخاص الذين يزاولون مهنة مفتحص طاقي والأشخاص الذين يعملون تحت إشرافهم داخل هيأة الافتحاص، حسب الشروط…. الرسوم: بالمجان. الآجال: 60 يوما.",
+      "must_include": [
+        "طلب موقع من قبل الممثل القانوني للهيأة صاحبة الطلب يوضح…",
+        "نسخة من السجل التجاري",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "50049ab3-25f2-4b24-9e3c-c18e20f41a27",
+        "b2b49f88-0691-4fe3-9998-191a1820b7fd",
+        "4fac6ad5-b2df-4a30-b187-321b53676c59"
+      ],
+      "retrieved_titles": [
+        "Agrément des organismes d'audit énergétique",
+        "Renouvellement de l'accréditation des organismes d'audit énergétique",
+        "Accréditation des organismes chargés des opérations de contrôle"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: اعتماد هيئات الافتحاص الطاقي\nDescription: الحصول على قرار الاعتماد لإنجاز الافتحاص الطاقي الإلزامي\nAdministration: وزارة الانتقال الطاقي والتنمية المستدامة-قطاع الانتقال الطاقي\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - طلب موقع من قبل الممثل القانوني للهيأة صاحبة الطلب يوضح وضعها القانوني ومقرها الاجتماعي ويبين القطاع أو القطاعات المراد ممارسة عمليات الافتحاص فيها.\n - نسخة من السجل التجاري (نموذج7).\n - نسخة من النظام الأساسي لهيأة الافتحاص صاحبة الطلب.\n - قائمة بأسماء المساهمين أو الشركاء، حسب الحالة، أو قائمة بأسماء أعضاء الجهاز التداولي أو هما معا مع الإشارة إلى هوية ومهنة وإقامة مديري الشركة ومسيريها أو المديرين الشركاء ذوي سلطة التوقيع.\n - شهادة الانخراط في صناديق الضمان الاجتماعي.\n - لائحة بأسماء الأشخاص الذين يزاولون مهنة مفتحص طاقي والأشخاص الذين يعملون تحت إشرافهم داخل هيأة الافتحاص، حسب الشروط المنصوص عليها في المادة 17 من المرسوم رقم 2.17.746 المتعلق بالافتحاص الطاقي الإلزامي وهيئات الافتحاص الطاقي، مصحوبة بسيرهم الذاتية.\n - نسخة من الدبلومات والشهادات والشهادات المهنية بالنسبة إلى كل مفتحص طاقي أو كل شخص يعمل تحت إشرافه داخل هيأة الافتحاص.\n - المراجع التقنية للأعمال المماثلة والمنجزة من قبل مفتحصي الطاقة داخل هيأة الافتحاص، مدعمة بنسخ من الشهادات الإسمية الصادرة عن المستفيدين من هذه الأعمال.\n - تقارير لثلاث عمليات افتحاص طاقي أجراها مفتحصو الطاقة بهيأة افتحاص خلال الثلاث سنوات السابقة لتاريخ إيداع الطلب.\n - قائمة الوسائل المادية المخصصة لممارسة النشاط، ولاسيما أدوات القياس والتحليل، مرفقة بشهادات المعايرة. و يجب أن تكون هذه المعايرة مطابقة للمواصفات القياسية المغربية عملا بأحكام القانون رقم 12.06.\n - دليل الإجراءات لإنجاز الافتحاصات الطاقية مصادق عليه من طرف السلطة الحكومية المكلفة بالطاقة.\n - مخطط التكوين الذي يهدف إلى تقوية القدرات التقنية لمستخدمي هيأة الافتحاص الطاقي المقررة للسنوات الخمس المقبلة.\nÉtapes:\nغير محدد",
+        "PROCÉDURE: تجديد اعتماد هيئات الافتحاص الطاقي\nDescription: تجديد الاعتماد لإنجاز الافتحاص الطاقي الإلزامي\nAdministration: وزارة الانتقال الطاقي والتنمية المستدامة-قطاع الانتقال الطاقي\nFrais: مجانا\nDélai: 60 يوما\nDocuments requis:\n - طلب موقع من قبل الممثل القانوني لهيأة الافتحاص صاحبة طلب تجديد الاعتماد يوضح وضعها القانوني ومقرها الاجتماعي ومراجع الاعتماد موضوع طلب التجديد كما يبين القطاع أو القطاعات المراد ممارسة عمليات الافتحاص فيها.\n - تقرير عن أنشطة هيأة الافتحاص خلال الفترة المنصرمة، تحدد فيه على وجه الخصوص، عمليات الافتحاص وتواريخها ومواقعها وهوية المفتحصين الطاقيين الذين أنجزوها.\n - قائمة محينة للموارد البشرية والمادية المتوفرة لدى الهيأة، مرفقة بالمستندات المثبتة لذلك.\n - دليل الإجراءات  محين و مصادق عليه من طرف السلطة الحكومية المكلفة بالطاقة\n - بيان عن الإنجازات المتعلقة بالتكوين التقني والاقتصادي للمستخدمين في مجال الافتحاص الطاقي خلال الفترة المنصرمة، مرفقا بالوثائق المثبتة، وكذا مخطط التكوين المتوقع خلال فترة التجديد المطلوبة.\nÉtapes:\nغير محدد",
+        "PROCÉDURE: اعتماد الهيئات المكلفة بعمليات المراقبة\nDescription: الحصول على اعتماد الهيئات المكلفة بعمليات المراقبة\nAdministration: وزارة الصناعة والتجارة\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - 1- استمارة طلب الرخصة الإدارية\n - 2- الهيكل التنظيمي بالأسماء\n - 3- قائمة بأسماء المفتشين المكلفين بالمراقبة\n - 4- قائمة لمعدات القياس، الاختبارات والمراقبة، المستعملة في عمليات المراقبة\n - 5- الإصدار الحالي من دليل الجودة ووثائق الجودة\n - 6- التدابير التي تضمن الحياد والسرية والاستقلالية\n - 7- مساطرتأهيل الموظفين والحفاظ على الكفاءة\n - 8- الوثائق والمستندات التقنية الداخلية لصاحب الطلب لإجراء عمليات المراقبة موضوع\n - 9- نسخة من الوضع القانوني\n - 10- قرار لاعتماد الاداري (في حالة الصانع أو المركب لأجهزة القياس)\n - 11- قرارات الموافقة على النماذج موضوع التصنيع الداخلي (في حالة الشركة المصنعة لأجهزة القياس)\n - 12- استبيان التقييم الذاتي المتعلق بالمعيار ISO / IEC 17020: 2012\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 469,
+      "answer": "للحصول على اعتماد لإنجاز الافتحاص الطاقي الإلزامي، يجب على المؤسسة اتباع الإجراءات التالية:\n\n**الإدارة المسؤولة:**\nوزارة الانتقال الطاقي والتنمية المستدامة-قطاع الانتقال الطاقي.\n\n**الوثائق المطلوبة:**\n1.  طلب موقع من قبل الممثل القانوني للهيأة صاحبة الطلب يوضح وضعها القانوني ومقرها الاجتماعي ويبين القطاع أو القطاعات المراد ممارسة عمليات الافتحاص فيها.\n2.  نسخة من السجل التجاري (نموذج7).\n3.  نسخة من النظام الأساسي لهيأة الافتحاص صاحبة الطلب.\n4.  قائمة بأسماء المساهمين أو الشركاء، حسب الحالة، أو قائمة بأسماء أعضاء الجهاز التداولي أو هما معا مع الإشارة إلى هوية ومهنة وإقامة مديري الشركة ومسيريها أو المديرين الشركاء ذوي سلطة التوقيع.\n5.  شهادة الانخراط في صناديق الضمان الاجتماعي.\n6.  لائحة بأسماء الأشخاص الذين يزاولون مهنة مفتحص طاقي والأشخاص الذين يعملون تحت إشرافهم داخل هيأة الافتحاص، حسب الشروط المنصوص عليها في المادة 17 من المرسوم رقم 2.17.746 المتعلق بالافتحاص الطاقي الإلزامي وهيئات الافتحاص الطاقي، مصحوبة بسيرهم الذاتية.\n7.  نسخة من الدبلومات والشهادات والشهادات المهنية بالنسبة إلى كل مفتحص طاقي أو كل شخص يعمل تحت إشرافه داخل هيأة الافتحاص.\n8.  المراجع التقنية للأعمال المماثلة والمنجزة من قبل مفتحصي الطاقة داخل هيأة الافتحاص، مدعمة بنسخ من الشهادات الإسمية الصادرة عن المستفيدين من هذه الأعمال.\n9.  تقارير لثلاث عمليات افتحاص طاقي أجراها مفتحصو الطاقة بهيأة افتحاص خلال الثلاث سنوات السابقة لتاريخ إيداع الطلب.\n10. قائمة الوسائل المادية المخصصة لممارسة النشاط، ولاسيما أدوات القياس والتحليل، مرفقة بشهادات المعايرة. و يجب أن تكون هذه المعايرة مطابقة للمواصفات القياسية المغربية عملا بأحكام القانون رقم 12.06.\n11. دليل الإجراءات لإنجاز الافتحاصات الطاقية مصادق عليه من طرف السلطة الحكومية المكلفة بالطاقة.\n12. مخطط التكوين الذي يهدف إلى تقوية القدرات التقنية لمستخدمي هيأة الافتحاص الطاقي المقررة للسنوات الخمس المقبلة.\n\n**الرسوم:**\nبالمجان.\n\n**الآجال:**\n60 يوما.\n\n**مراحل الإجراء:**\nغير محددة.\n\n**المصدر:** وزارة الانتقال الطاقي والتنمية المستدامة-قطاع الانتقال الطاقي.",
+      "generation_ms": 9055,
+      "prompt_tokens": 1428,
+      "output_tokens": 675,
+      "attempts": 1
+    },
+    {
+      "question_id": "s088",
+      "question": "Je suis étudiant et je n'ai pas pris mon allocation de devises au moment de partir étudier à l'étranger, puis-je encore l'obtenir ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "5ee73050-f12e-4765-8a17-1d9ca5e25d77"
+      ],
+      "reference": "La procédure concernée est « Allocation de départ à l'étranger non perçue par l'étudiant lors de son départ » (Office Des Changes). Documents à fournir : Lettre explicative ; Copie d'un document d'identité ; Certificat d'inscription ou de réinscription. Frais : Gratuit. Délai : 60 jours.",
+      "must_include": [
+        "Lettre explicative",
+        "Copie d'un document d'identité",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "5ee73050-f12e-4765-8a17-1d9ca5e25d77",
+        "9fa40266-4ef6-413e-be1f-d699f5ebd497",
+        "bdc95ffb-2ba3-4b02-8b5a-a51c43348011"
+      ],
+      "retrieved_titles": [
+        "Allocation de départ à l'étranger non perçue par l'étudiant lors de son départ",
+        "Paiement des frais de séjour et de loyer dans le cadre d’un programme d’échange culturel d’une durée maximale de 6 mois",
+        "Paiement des frais de séjour sur un compte bancaire dédié par l'université"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Allocation de départ à l'étranger non perçue par l'étudiant lors de son départ\nDescription: L'Office des Changes offre ce service afin de permettre au bénéficiaire d'effectuer des opérations de change non prévues par les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Lettre explicative\n - Copie d'un document d'identité\n - Certificat d'inscription ou de réinscription\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Paiement des frais de séjour et de loyer dans le cadre d’un programme d’échange culturel d’une durée maximale de 6 mois\nDescription: L’Office des Changes fournit ce service afin de permettre au bénéficiaire d’effectuer des opérations de change non prévues par les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Contrat de location\n - Copie de la carte d'identité\n - Attestation délivrée par une université ou un établissement d’enseignement marocain indiquant la durée du séjour de l’étudiant à l’étranger, ou invitation de l’établissement d’accueil précisant la durée\n - Formulaire bancaire complété, signé et cacheté\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Paiement des frais de séjour sur un compte bancaire dédié par l'université\nDescription: L'Office des Changes propose ce service afin de permettre au bénéficiaire d'effectuer des opérations de change non prévues par les instructions générales relatives aux opérations de change\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Copie de la carte d'identité\n - Attestation d'inscription ou d'inscription initiale\n - Formulaire bancaire complété, signé et cacheté\n - Tout document émanant de l'autorité étrangère attestant l'obligation de transférer les frais de séjour sur le compte bancaire dédié par l'université\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 542,
+      "answer": "Oui, en tant qu'étudiant, vous pouvez encore obtenir votre allocation de départ à l'étranger si vous ne l'avez pas perçue au moment de votre départ. Ce service est proposé par l'Office Des Changes.\n\nVoici les informations relatives à cette procédure :\n\n*   **Administration :** Office Des Changes\n*   **Frais :** Gratuit\n*   **Délai :** 60 jours\n*   **Documents requis :**\n    *   Lettre explicative\n    *   Copie d'un document d'identité\n    *   Certificat d'inscription ou de réinscription",
+      "generation_ms": 7452,
+      "prompt_tokens": 667,
+      "output_tokens": 132,
+      "attempts": 1
+    },
+    {
+      "question_id": "s089",
+      "question": "أشتري خدمات ومنتجات من مواقع أجنبية على الإنترنت، كيف أحصل على مخصص من العملة الصعبة للتجارة الإلكترونية؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "f400f06c-f765-4d54-a79c-ad9e10cdbcad"
+      ],
+      "reference": "الإجراء المعني هو « منح التجارة الإلكترونية » (مكتب الصرف). الوثائق المطلوبة: نسخة من بطاقة الهوية بالنسبة للأشخاص الذاتيين ؛ الميزانية التوقعية للنفقات المتعلقة بالمنح المطلوبة ؛ تقرير عن استعمال المنح السابقة، عند الاقتضاء ؛ ملحق بنكي معبأ وموقع ومختوم ؛ نسخة لمستخرج السجل التجاري. الرسوم: بالمجان. الآجال: 60 يوما.",
+      "must_include": [
+        "نسخة من بطاقة الهوية بالنسبة للأشخاص الذاتيين",
+        "الميزانية التوقعية للنفقات المتعلقة بالمنح المطلوبة",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "f400f06c-f765-4d54-a79c-ad9e10cdbcad",
+        "cc3cba69-0658-4e9a-8f79-1060acc3657f",
+        "54e9c765-fc63-45f5-b1d3-65f27442cfe8"
+      ],
+      "retrieved_titles": [
+        "Allocation de devises pour le commerce électronique",
+        "Octroi d'une remise commerciale supérieure à 5% ou restitution de sommes à l'étranger préalablement transférées au Maroc dans le cadre d'une exportation de marchandises",
+        "Financement de compte en devise ou en dirham convertible"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: منح التجارة الإلكترونية\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - نسخة من بطاقة الهوية بالنسبة للأشخاص الذاتيين\n - الميزانية التوقعية للنفقات المتعلقة بالمنح المطلوبة\n - تقرير عن استعمال المنح السابقة، عند الاقتضاء\n - ملحق بنكي معبأ وموقع ومختوم\n - نسخة لمستخرج السجل التجاري (نموذج 7) و/ أو شهادة التعريف الموحد\nÉtapes:\nغير محدد",
+        "PROCÉDURE: منح خصم تجاري يفوق نسبة 5% أو إرجاع مبالغ نحو الخارج التي تم تحويلها مسبقا نحو المغرب في إطار عملية تصدير للسلع\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - ملحق بنكي معبأ وموقع ومختوم\n - إثبات تحويل محصول التصدير نحو المغرب، عند الاقتضاء\n - نسخة من مطالبة الزبون مصحوبة بجميع الوثائق الثبوتية (تقرير الخبرة، ومراسلات السلطات المكلفة بالموانئ وتلك المكلفة بالصحة)\n - التصريح الموحد للبضائع برسم التصدير\n - نسخة من الفواتير و/أو العقد\n - نسخة من مستخرج السجل التجاري (نموذج 7 و/ أو شهادة التعريف الموحد للمقاولة)\nÉtapes:\nغير محدد",
+        "PROCÉDURE: تمويل حساب بالعملة الأجنبية أو بالدرهم القابل للتحويل\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - ملحق بنكي معبأ وموقع ومختوم\n - رسالة توضيحية\n - كشف محين للحسابات المعنية بالتمويل\n - استمارة بنكية لتفويت العملة الأجنبية\n - نسخة من مستخرج السجل التجاري (نموذج 7 و/ أو شهادة التعريف الموحد للمقاولة)\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 488,
+      "answer": "بناءً على المعلومات المتوفرة، للحصول على مخصص من العملة الصعبة للتجارة الإلكترونية، يمكنك الاستفادة من خدمة \"منح التجارة الإلكترونية\" التي يقدمها مكتب الصرف.\n\n**الإدارة:** مكتب الصرف\n**التكلفة:** بالمجان\n**المدة الزمنية:** 60 يوما\n\n**الوثائق المطلوبة:**\n*   نسخة من بطاقة الهوية بالنسبة للأشخاص الذاتيين\n*   الميزانية التوقعية للنفقات المتعلقة بالمنح المطلوبة\n*   تقرير عن استعمال المنح السابقة، عند الاقتضاء\n*   ملحق بنكي معبأ وموقع ومختوم\n*   نسخة لمستخرج السجل التجاري (نموذج 7) و/ أو شهادة التعريف الموحد\n\n**الخطوات:** غير محددة.\n\nالمصدر: مكتب الصرف.",
+      "generation_ms": 9831,
+      "prompt_tokens": 791,
+      "output_tokens": 196,
+      "attempts": 1
+    },
+    {
+      "question_id": "s090",
+      "question": "Comment obtenir la licence définitive pour ouvrir un bureau de change ?",
+      "lang": "fr",
+      "category": "factual",
+      "expected_ids": [
+        "64c647a7-1d29-46c1-8fb7-de3f3afe57da"
+      ],
+      "reference": "La procédure concernée est « Agrément définitif pour l'exercice de l'activité de change manuel – Licence de catégorie « D » » (Office Des Changes). Documents à fournir : 1- Annexe n° 4 – Instructions régissant l'exercice de l'activité de change manuel en date du 17 juillet 2018 ; 2- Copie des statuts de la société ; 3- Copie du registre de commerce ; 4- Copie du certificat d'inscription à la taxe professionnelle ou de tout document justifiant le paiement de cette taxe ; 5- Copie de la licence du ministère du Tourisme pour les agences de voyages ; 6- Décision de classement pour les hôtels. Frais : Gratuit. Délai : 60 jours.",
+      "must_include": [
+        "1- Annexe n° 4 – Instructions régissant l'exercice de…",
+        "2- Copie des statuts de la société",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "64c647a7-1d29-46c1-8fb7-de3f3afe57da",
+        "9b350538-5aeb-4c88-b33f-ad3e0d48aec0",
+        "ef9050e5-3ca7-49eb-816a-2edd616a4d9b"
+      ],
+      "retrieved_titles": [
+        "Agrément définitif pour l'exercice de l'activité de change manuel – Licence de catégorie « D »",
+        "Approbation de changement d'affiliation d'une agence à l'établissement de paiement délégant (licence de catégorie « S »)",
+        "Approbation des modifications des conditions d'octroi de l'autorisation d'exercer le change manuel"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Agrément définitif pour l'exercice de l'activité de change manuel – Licence de catégorie « D »\nDescription: Agrément définitif pour l'exercice de l'activité de change manuel (licence de catégorie « D »)\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - 1- Annexe n° 4 – Instructions régissant l'exercice de l'activité de change manuel en date du 17 juillet 2018\n - 2- Copie des statuts de la société\n - 3- Copie du registre de commerce (modèle 7)\n - 4- Copie du certificat d'inscription à la taxe professionnelle ou de tout document justifiant le paiement de cette taxe\n - 5- Copie de la licence du ministère du Tourisme pour les agences de voyages\n - 6- Décision de classement pour les hôtels\n - 7- Contrat de gestion, le cas échéant, pour les hôtels\n - 8- Formulaire signé contenant les informations sur l'établissement hôtelier\n - 9- Copie de la carte d'identité du gérant\n - 10- Copie du bulletin du casier judiciaire du gérant (ou du relevé des condamnations privatives de liberté (bulletin n° 3) si le gérant (ou les gérants) est (sont) étranger(s) résident(s))\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Approbation de changement d'affiliation d'une agence à l'établissement de paiement délégant (licence de catégorie « S »)\nDescription: Obtention de l'approbation pour une agence de changer son affiliation à l'établissement de paiement accordant la délégation (licence de catégorie « S »)\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - 1- Annexe n° 3 - Instructions régissant l'exercice de l'activité de change manuel en date du 17 juillet 2018\n - Licence originale d'exercice de l'activité de change manuel\n - 3- Contrat d'agence conclu avec l'agence du nouvel établissement de paiement\n - 4- Copie des statuts de la société\n - 5- Copie du registre de commerce (modèle 7)\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Approbation des modifications des conditions d'octroi de l'autorisation d'exercer le change manuel\nDescription: L'Office des Changes offre ce service afin de permettre au bénéficiaire (en l'occurrence : les agences agréées d'établissements de paiement, les sociétés de change, les agences relevant d'établissements de paiement, les intermédiaires de proximité délégués) d'effectuer des opérations de change non prévues dans les instructions générales des opérations de change\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Demande préalable précisant les détails et les motivations de l'opération\n - Documents justifiant les détails et les motivations de l'opération\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 298,
+      "answer": "Pour obtenir la licence définitive pour ouvrir un bureau de change, vous devez suivre la procédure d'**Agrément définitif pour l'exercice de l'activité de change manuel – Licence de catégorie « D »**.\n\nVoici les détails de cette procédure, fournis par l'**Office Des Changes**:\n\n*   **Frais**: Gratuit\n*   **Délai**: 60 jours\n*   **Documents requis**:\n    *   1- Annexe n° 4 – Instructions régissant l'exercice de l'activité de change manuel en date du 17 juillet 2018\n    *   2- Copie des statuts de la société\n    *   3- Copie du registre de commerce (modèle 7)\n    *   4- Copie du certificat d'inscription à la taxe professionnelle ou de tout document justifiant le paiement de cette taxe\n    *   5- Copie de la licence du ministère du Tourisme pour les agences de voyages\n    *   6- Décision de classement pour les hôtels\n    *   7- Contrat de gestion, le cas échéant, pour les hôtels\n    *   8- Formulaire signé contenant les informations sur l'établissement hôtelier\n    *   9- Copie de la carte d'identité du gérant\n    *   10- Copie du bulletin du casier judiciaire du gérant (ou du relevé des condamnations privatives de liberté (bulletin n° 3) si le gérant (ou les gérants) est (sont) étranger(s) résident(s))\n\nLes étapes spécifiques de cette procédure ne sont pas spécifiées dans les informations disponibles.",
+      "generation_ms": 8011,
+      "prompt_tokens": 889,
+      "output_tokens": 357,
+      "attempts": 1
+    },
+    {
+      "question_id": "s091",
+      "question": "سأرافق والدتي للعلاج في الخارج، هل يمكنني الحصول على العملة الصعبة لمصاريف إقامتي؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "497ca7f0-c452-4feb-838f-d59afde466a6"
+      ],
+      "reference": "الإجراء المعني هو « منحة أو أداء مصاريف إقامة مرافق المريض بالخارج » (مكتب الصرف). الوثائق المطلوبة: ملحق بنكي معبأ وموقع ومختوم ؛ رسالة توضيحية تحدد صلة القرابة ؛ شهادة صادرة عن المستشفى الأجنبي، تحدد مدة إقامة المريض ؛ الميزانية التوقعية للنفقات ؛ نسخة من بطاقة الهوية. الرسوم: بالمجان. الآجال: 60 يوما.",
+      "must_include": [
+        "ملحق بنكي معبأ وموقع ومختوم",
+        "رسالة توضيحية تحدد صلة القرابة",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "497ca7f0-c452-4feb-838f-d59afde466a6",
+        "bdc95ffb-2ba3-4b02-8b5a-a51c43348011",
+        "e3103129-5a01-4d26-8d53-17cae5d9e08c"
+      ],
+      "retrieved_titles": [
+        "Allocation ou prise en charge des frais de séjour de l'accompagnant du patient à l'étranger",
+        "Paiement des frais de séjour sur un compte bancaire dédié par l'université",
+        "Ouverture de compte en devises ou en dirham convertible"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: منحة أو أداء مصاريف إقامة مرافق المريض بالخارج\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - ملحق بنكي معبأ وموقع ومختوم\n - رسالة توضيحية تحدد صلة القرابة\n - شهادة صادرة عن المستشفى الأجنبي، تحدد مدة إقامة المريض\n - الميزانية التوقعية للنفقات\n - نسخة من بطاقة الهوية\nÉtapes:\nغير محدد",
+        "PROCÉDURE: أداء مصاريف الإقامة في حساب بنكي مخصص من طرف الجامعة\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - نسخة من بطاقة الهوية\n - شهادة التسجيل أو التسجيل الأولي\n - ملحق بنكي معبأ وموقع ومختوم\n - أي وثيقة صادرة عن السلطة الأجنبية تثبت وجوب تحويل مصاريف الإقامة إلى الحساب البنكي المخصص من طرف الجامعة\nÉtapes:\nغير محدد",
+        "PROCÉDURE: فتح حساب بالعملة الأجنبية أو بالدرهم القابل للتحويل\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - ملحق بنكي معبأ وموقع ومختوم\n - رسالة توضيحية تحدد بنك الموطن وكيفية اشتغال الحساب (العمليات الدائنة والمدينة)\n - وثائق إثبات إرجاع مبالغ القروض أو الهبات، مرفقة  بعقد الشراكة\n - نسخة لمستخرج السجل التجاري (نموذج 7) و/ أو شهادة التعريف الموحد\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 407,
+      "answer": "نعم، يمكنك تقديم طلب للحصول على منحة أو أداء مصاريف إقامة مرافق المريض بالخارج لدى مكتب الصرف.\n\n**الإدارة:** مكتب الصرف\n**الرسوم:** بالمجان\n**المدة:** 60 يوما\n\n**الوثائق المطلوبة:**\n*   ملحق بنكي معبأ وموقع ومختوم.\n*   رسالة توضيحية تحدد صلة القرابة.\n*   شهادة صادرة عن المستشفى الأجنبي، تحدد مدة إقامة المريض.\n*   الميزانية التوقعية للنفقات.\n*   نسخة من بطاقة الهوية.\n\n**المصدر:** مكتب الصرف",
+      "generation_ms": 7383,
+      "prompt_tokens": 708,
+      "output_tokens": 152,
+      "attempts": 1
+    },
+    {
+      "question_id": "s092",
+      "question": "Quels justificatifs pour obtenir une dotation en devises pour un voyage d'affaires ?",
+      "lang": "fr",
+      "category": "documents",
+      "expected_ids": [
+        "3cdc5381-a38c-4b0e-bb14-bfebd9a361d8"
+      ],
+      "reference": "La procédure concernée est « Allocations pour voyages d'affaires » (Office Des Changes). Documents à fournir : Relevé bancaire des montants alloués aux voyages d'affaires pour l'exercice en cours, pour les entités remplissant les… ; Budget prévisionnel des dépenses estimatives au titre des allocations demandées. ; Rapport sur l'utilisation des allocations antérieures, visé et cacheté par la banque domiciliataire. ; Annexe bancaire dûment remplie, signée et cachetée. ; Quittance de paiement de l'impôt sur les sociétés ; Ordre de mission ou invitation pour les allocations spécifiques. Frais : Gratuit. Délai : 60 jours.",
+      "must_include": [
+        "Relevé bancaire des montants alloués aux voyages d'affaires…",
+        "Budget prévisionnel des dépenses estimatives au titre des…",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "4b7d0f6a-be5b-433f-97bd-b3e2aa1fef84",
+        "54e9c765-fc63-45f5-b1d3-65f27442cfe8",
+        "87a9f873-8692-48a8-b080-7acd1d15ea67"
+      ],
+      "retrieved_titles": [
+        "Dépôt de garantie pour les agences de voyages : frais de visa...",
+        "Financement de compte en devise ou en dirham convertible",
+        "Demande de restitution de la caution d'agence de voyages"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: Dépôt de garantie pour les agences de voyages : frais de visa...\nDescription: L'Office des Changes fournit ce service afin de permettre au bénéficiaire d'effectuer des opérations de change non prévues dans les instructions générales des opérations de change\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Formulaire bancaire complété, signé et cacheté\n - Lettre de notification ou document officiel émanant d'une représentation diplomatique\n - Lettre explicative indiquant les dépenses à payer pour chaque demandeur\n - Rapport sur l'utilisation de la caution précédemment accordée, le cas échéant\n - Copie de l'extrait du registre du commerce (modèle 7) et/ou du certificat d'identification unifié\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Financement de compte en devise ou en dirham convertible\nDescription: L’Office des Changes propose ce service afin de permettre au bénéficiaire d’effectuer des opérations de change non prévues par les instructions générales des opérations de change\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Formulaire bancaire complété, signé et cacheté\n - Lettre explicative\n - Relevé actualisé des comptes concernés par le financement\n - Formulaire bancaire de cession de devises étrangères\n - Copie de l'extrait du registre de commerce (modèle 7 et/ou attestation d'identification unique de l'entreprise)\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Demande de restitution de la caution d'agence de voyages\nDescription: Demande de restitution de la caution d'agence de voyages par virement bancaire\nAdministration: Caisse De Depot Et De Gestion\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Restitution de la caution :\n - * Attestation de mainlevée délivrée par le Ministère du Tourisme, originale\n - * Reçu de dépôt original\n - * Attestation de radiation de l'agence du registre du commerce\n - *Attestation d'identité bancaire du liquidateur de l'agence\n - * Carte nationale d'identité électronique du liquidateur.\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 337,
+      "answer": "Je n'ai pas d'information sur les justificatifs requis pour obtenir une dotation en devises pour un voyage d'affaires parmi les procédures officielles disponibles.",
+      "generation_ms": 7172,
+      "prompt_tokens": 688,
+      "output_tokens": 33,
+      "attempts": 1
+    },
+    {
+      "question_id": "s093",
+      "question": "زبون أجنبي طلب مني وثيقة رسمية تبين مداخيل شركتي السنوية، من أين أحصل عليها؟",
+      "lang": "ar",
+      "category": "factual",
+      "expected_ids": [
+        "1da11ad2-74b7-417a-bea3-f18a9034b079"
+      ],
+      "reference": "الإجراء المعني هو « شهادة رقم الأعمال » (وزارة الاقتصاد والمالية-المديرية العامة للضرائب). الوثائق المطلوبة: طلب إلكتروني ؛ أو طلب نموذج رقم AAC240. الرسوم: مجانا. الآجال: على الفور: بالنسبة للطلبات الإلكترونية •يومان: بالنسبة للطلبات التى لم تودع بطريقة الكترونية.",
+      "must_include": [
+        "طلب إلكتروني",
+        "أو طلب نموذج رقم AAC240",
+        "مجانا"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "0450cb14-5872-4465-9f4e-f6d09d0fe6cd",
+        "4099bfa4-08cb-48eb-8ee7-ace233130f61",
+        "a545aa1d-ec13-434b-9d23-ee788d54f233"
+      ],
+      "retrieved_titles": [
+        "Agrément pour la création de sociétés gestionnaires de centres de traitement privés (SVR) (invest)",
+        "Contribution ou création à l'étranger par des personnes morales résidentes de sociétés, succursales, filiales ou bureaux de représentation",
+        "Immatriculation d'une succursale d'une société située à l'étranger"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: اعتماد لإنشاء الشركات المسيرة لمراكز المعالجة الخاصة (SVR) (invest)\nDescription: الحصول على الاعتماد لإنشاء الشركات المسيرة لمراكز المعالجة الخاصة\nAdministration: بنك المغرب\nFrais: بالمجان\nDélai: 30 يوما\nDocuments requis:\n - طلب من أجل التحصيل على الاعتماد حسب النموذج (الأصلي مع ختم الشركة )\n - استمارة طلب اعتماد لإنشاء الشركات المسيرة لمراكز المعالجة الخاصة\n - الشق الإداري والمالي\n - نسخة أو مسودة أصلية من النظام الأساسي للشخص المعنوي مقدم الطلب مع ختم الشركة\n - الهيكل التنظيمي مفصل\n - إذا كانت الشركة مؤسسة، مستخرج أصلي من السجل التجاري\n - شهادات القدرة المالية الصادرة عن مؤسسة ائتمانية أصلية\n - آخر 3 بيانات حسابية للشركة وحسابات تشغيل معتمدة و  أصلية إذا كان الشخص المعنوي مؤسسة، أو ثلاثة بيانات حسابية توقيعية أصلية\n - وثائق أصلية تفيد تعيين خبراء تدقيق الحسابات\n - إذا كان مزود رأس المال هو شخص ذاتي\n - نسخة من وثيقة إثبات الهوية\n سارية الصلاحية\n - بالنسبة للمغاربة، مقتطف أصلي من السجل العدلي أو بطاقة السوابق أصلية\n - بالنسبة للأجانب، مقتطف أصلي من السجل العدلي، من السلطة المختصة في البلد الأصلي بما في ذلك توقيع السلطة المعنية\n - إذا كان مزود رأس المال هو شخص معنوي\n - بيانات أصلية لحسابات الشركة والحسابات المدمجة لآخر ثلاث سنوات\n - الوثيقة الأصلية التي تنص على الالتزام النهائي و لا مشروط من الشركة الأم بضمان جميع الالتزامات المالية والإدارية الحالية والمستقبلية التي قدمتها الشركة المترشحة من أجل ممارسة نشاط معالجة وإعادة تدوير النقود الورقية مع  ختم الشركة الأم\n - بخصوص المدراء\n - نسخة من وثيقة إثبات الهوية  سارية الصلاحية لكل مدير\n - نسخة أصلية للسيرة الذاتية باللغة الفرنسية، محينه ومؤرخة وموقعة لكل مدير مع  ختم الشركة\n - نسخة أصلية من وثيقة تعيين المدير مع  ختم الشركة\n - مقتطف أصلي من محضر يذكر فيه نطاق صلاحيات المدير في حالة عدم كونه الممثل القانوني مع  ختم الشركة\n - بالنسبة للمديرين الأجانب، مقتطف أصلي من السجل العدلي، من السلطة المختصة في البلد الأصلي بما في ذلك توقيع السلطة المعنية\n - فيما يتعلق بأعضاء الهيئات الاجتماعية\n - نسخة أصلية للسيرة الذاتية باللغة الفرنسية لأعضاء الهيئات الاجتماعية، محينه ومؤرخة وموقعة  مع  ختم الشركة\n - بالنسبة للأعضاء الأجانب ,مقتطف أصلي من السجل العدلي، من السلطة المختصة في البلد الأصلي بما في ذلك توقيع السلطة المعنية\n - بالنسبة للمسؤولين على المركز (المراكز) الأول\n - نسخة أصلية للسيرة الذاتية باللغة الفرنسية، محينه ومؤرخة وموقعة  مع  ختم الشركة\n - مقتطف أصلي من السجل العدلي أو بطاقة السوابق\n - الشق الاقتصادي\n - نسخة أصلية لخطة العمل المالية ” Business Plan”  مع  ختم الشركة\n - بيانات أصلية للحسابات المرتقبة الخاصة أصلية للسنوات الأولى مع  ختم الشركة\n - نسخة أصلية للبرنامج الاستثماري يسلط الضوء بشكل خاص على دراسة السوق، وبرنامج بناء المراكز، وخطة التمويل وعدد الوظائف التي سيتم إنشاؤها مع  ختم الشركة\n - الشق التقني\n - نسخة أصلية للوثيقة التي تصف المعدات المقدمة للمراقبة الداخلية والخارجية لمباني المركز، للحفاظ على الأموال والمعالجة الألية للعملة الائتمانية مع  ختم الشركة\nÉtapes:\nغير محدد",
+        "PROCÉDURE: مساهمة أو انشاء بالخارج من طرف الأشخاص الاعتباريين المقيمين لشركات، ،و فروع، وشركات تابعة أو مكاتب تمثيل بالخارج\nDescription: يقدم مكتب الصرف هذه الخدمة بغاية تمكين المستفيد من القيام بعمليات صرف غير منصوص عليها في التعليمات العامة لعمليات الصرف\nAdministration: مكتب الصرف\nFrais: بالمجان\nDélai: 60 يوما\nDocuments requis:\n - تقرير مراقب الحسابات، إذا تطلب الأمر ذلك\n - ميزانية نفقات إقامة و  تسير المنشآت\n - نسخة لمستخرج السجل التجاري (نموذج 7) و \\ أو شهادة التعريف الموحد\n - نسخة من موافقة سلطة الوصاية، إذا تطلب الأمر ذلك\n - ملحق بنكي  معبأ وموقع ومختوم\n - \"التزام موجودات بالخارج\" موقع و مصادق عليه من طرف السلطات المختصة\n - بيان توزيع رأس المال\n - النظام الأساسي و القوائم  المالية للشركة الأجنبية للسنتين الأخيرتين\n - دراسة الجدوى أو حساب الاستغلال  التوقعي  للشركة المُراد إنشاؤها\nÉtapes:\nغير محدد",
+        "PROCÉDURE: تسجيل فرع لشركة توجد بالخارج\nDescription: التسجيل بالسجل التجاري وفق المقتضيات المنصوص عليها قانونا، لكون المشرع ووفق المادة 37 من مدونة التجارة ألزم تسجيل فروع ووكالات المقاولات المغربية أو الأجنبية بالسجل التجاري.\nفي إطار المراقبة التي يجريها كاتب الضبط للوثائق والمستندات المقدمة إليه-في غير الحالات التي يجب فيها قانونا الاحتفاظ بأصول الوثائق- يتعين على المرتفق الإدلاء بأصل الوثيقة ويتولى كاتب الضبط أمر نسخها وإرجاعها فورا إلى المعني بالأمر.\nوبالنسبة للتوقيع على التصاريح والعقود والوثائق الخاضعة لهذا الإجراء يجب أن يتم أمام كاتب الضبط الذي يشير بنفس الوثيقة  إلى اسم الموقع ورقم بطاقته الوطنية وصفته مع وضع طابع المحكمة وتوقيع كاتب الضبط\nAdministration: وزارة العدل\nFrais: رسوم التسجيل بالسجل التجاري\n50درهما عن الإيداع, \n50 درهما عن التقييد\nDélai: (2) يومان\nDocuments requis:\n - وثائق الإيداع\n - نسخة من قرار إحداث الفرع أو الوكالة مع تعيين المسير موقع ومسجل بإدارة التسجيل.\n - أصل الشهادة السلبية لا يتجاوز تاريخها 90 يوما\n - وثائق التسجيل\n - شهادة أصلية للتسجيل بالرسم المهني\n - شهادة تسجيل الشركة الأم  أو ما يقوم مقامها.\n - نظير من النظام الأساسي للشركة الأم أو ما يقوم مقامه.\n - صورة من عقد الكراء أو عقد التوطين أو أي وثيقة أخرى تثبت تواجد المحل.\n - صورة من بطاقة التعريف الوطنية بالنسبة للمسير أو صورة لبطاقة التسجيل بالنسبة للأجانب المقيمين أو صورة لجواز السفر بالنسبة أو ما يقوم مقامه لإثبات الهوية بالنسبة للأجانب غير المقيمين.\n - التصريح نموذج رقم 3 محرر وموقع  من طرف الملزم أو وكيله المزود بوكالة كتابية\n - وكالة كتابية في حالة التسجيل بواسطة وكيل\n - صورة لوثيقة إثبات الهوية للوكيل في حالة التسجيل بواسطة وكيل.\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 418,
+      "answer": "بصفتي مساعدًا إداريًا مغربيًا، وبناءً على المعلومات الرسمية المتوفرة لدي، ليس لدي معلومات حول إجراء رسمي للحصول على وثيقة تبين مداخيل شركتك السنوية لتقديمها لعميل أجنبي.\n\nلم يتم ذكر هذا الإجراء في الإجراءات الرسمية المقدمة لي.",
+      "generation_ms": 7584,
+      "prompt_tokens": 1938,
+      "output_tokens": 74,
+      "attempts": 1
+    },
+    {
+      "question_id": "s094",
+      "question": "La banque me demande un document qui prouve que je suis en règle avec les impôts, lequel demander ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "ea8f743a-cb4d-4adc-a912-0a269091abb3"
+      ],
+      "reference": "La procédure concernée est « Attestation de la situation fiscale légale » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : Demande électronique ; ou formulaire n° AAC270. Frais : Gratuit. Délai : 2 jours.",
+      "must_include": [
+        "Demande électronique",
+        "ou formulaire n° AAC270",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "4dbe6234-bf80-4a76-be0f-93d594d1910f",
+        "ed84f97e-fc6b-4835-844b-c2747553a789",
+        "2f2e2d67-4d6e-45e1-8431-e848a1ead6e5"
+      ],
+      "retrieved_titles": [
+        "Certificat d'acquittement des impôts et taxes grevant l'immeuble (P480)",
+        "Attestation de mainlevée relative à une saisie administrative (rémunérations des fonctionnaires et agents de l'État)",
+        "Obtention d'une attestation d'impôt sur le revenu au titre des années antérieures"
+      ],
+      "rank": null,
+      "contexts": [
+        "PROCÉDURE: Certificat d'acquittement des impôts et taxes grevant l'immeuble (P480)\nDescription: Protection de l'acheteur par la purge de l'immeuble des dettes fiscales (acquittement de tous les impôts et taxes grevant l'immeuble, qu'ils soient émis par l'administration fiscale ou par la commune de situation de l'immeuble, ainsi que les impôts et taxes exigibles)\nAdministration: Ministère de l’Économie et des Finances- Trésorerie générale du Royaume\nFrais: Gratuit\nDélai: 5 jours\nDocuments requis:\n - Demande d'obtention du certificat d'acquittement des impôts et taxes grevant l'immeuble (P480)\n - Copie du contrat de vente ou tout document justificatif de la transaction\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Attestation de mainlevée relative à une saisie administrative (rémunérations des fonctionnaires et agents de l'État)\nDescription: Attestation portant octroi de mainlevée sur le compte bancaire de l'intéressé, suite à une saisie administrative effectuée pour le recouvrement d'une dette publique, sous réserve du paiement de la dette ayant motivé la saisie, et destinée à être présentée à des fins administratives ou utilisée conformément aux dispositions légales.\nAdministration: Ministère de l’Économie et des Finances- Trésorerie générale du Royaume\nFrais: Gratuit\nDélai: 5 jours\nDocuments requis:\n - Carte nationale d'identité électronique ou tout document en tenant lieu (à des fins de contrôle d'identité.)\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention d'une attestation d'impôt sur le revenu au titre des années antérieures\nDescription: Droit d'accès à l'information conformément à la loi n° 31.13\nAdministration: Caisse Marocaine Des Retraites\nFrais: Gratuit\nDélai: Immédiatement en présence de l'intéressé; 2 jours à compter de la réception de la demande par les différents canaux disponibles\nDocuments requis:\n - Copie de la carte nationale d'identité\n - Procuration en cas d'absence de l'intéressé\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 411,
+      "answer": "Je n'ai pas d'information sur une procédure qui fournit un document général prouvant que vous êtes en règle avec les impôts pour une banque. Les procédures disponibles sont spécifiques :\n\n*   Le Certificat d'acquittement des impôts et taxes grevant l'immeuble (P480) concerne les impôts liés à un bien immobilier (source : Ministère de l’Économie et des Finances- Trésorerie générale du Royaume).\n*   L'Attestation de mainlevée relative à une saisie administrative concerne la levée d'une saisie administrative (source : Ministère de l’Économie et des Finances- Trésorerie générale du Royaume).\n*   L'Obtention d'une attestation d'impôt sur le revenu au titre des années antérieures est un accès à l'information sur votre impôt sur le revenu pour les années passées (source : Caisse Marocaine Des Retraites).",
+      "generation_ms": 7855,
+      "prompt_tokens": 704,
+      "output_tokens": 202,
+      "attempts": 1
+    },
+    {
+      "question_id": "s095",
+      "question": "combien coute attestation situation fiscale et ca prend combien de jours",
+      "lang": "fr",
+      "category": "user_style",
+      "expected_ids": [
+        "ea8f743a-cb4d-4adc-a912-0a269091abb3",
+        "f18bd12a-280b-465e-8cb0-a63f7d1c323d"
+      ],
+      "reference": "La procédure concernée est « Attestation de la situation fiscale légale » (Ministère de l’Économie et des Finances- Direction Générale des Impôts). Documents à fournir : Demande électronique ; ou formulaire n° AAC270. Frais : Gratuit. Délai : 2 jours. Selon la situation exacte, la procédure « Attestation de situation fiscale pour la participation aux marchés publics (P203) » peut aussi s'appliquer.",
+      "must_include": [
+        "Demande électronique",
+        "ou formulaire n° AAC270",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "4eec8a2d-afae-471e-98d2-9d8dc163b3c8",
+        "ea8f743a-cb4d-4adc-a912-0a269091abb3",
+        "effcafdf-eb1a-422f-84ef-ba12ca570f9d"
+      ],
+      "retrieved_titles": [
+        "Attestation de résidence fiscale",
+        "Attestation de la situation fiscale légale",
+        "Certificat d'achat en suspension de la taxe sur la valeur ajoutée"
+      ],
+      "rank": 2,
+      "contexts": [
+        "PROCÉDURE: Attestation de résidence fiscale\nDescription: Justificatif de la résidence fiscale en vue d'éviter la double imposition\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 2 jours\nDocuments requis:\n - • Demande électronique\n - Pour les demandes non déposées par voie électronique :\n - Pour les personnes physiques :\n - • Demande sur formulaire n° AAC310.\n - • Tout document prouvant que le demandeur a un domicile permanent au Maroc, ou le centre de ses intérêts économiques ;\n - • Copies des passeports ou des documents justifiant que la durée de séjour continue ou discontinue au Maroc dépasse 183 jours sur une période de 365 jours.\n - Pour les personnes morales :\n - • Demande sur formulaire n° AAC310 ;\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Attestation de la situation fiscale légale\nDescription: Preuve de la situation fiscale légale\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 2 jours\nDocuments requis:\n - Demande électronique\n - ou formulaire n° AAC270\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Certificat d'achat en suspension de la taxe sur la valeur ajoutée\nDescription: Achat en suspension de la taxe sur la valeur ajoutée\nAdministration: Ministère de l’Économie et des Finances- Direction Générale des Impôts\nFrais: Gratuit\nDélai: 10 jours\nDocuments requis:\n - En cas de première demande déposée au cours de l'année :\n - Demande, modèle AAC101\n - Liste des fournisseurs\n - Certificat de classification\n - Justificatifs du chiffre d'affaires réalisé au cours de l'année écoulée au titre des opérations d'exportation\n - Pour l'exportation de produits : factures et déclarations d'exportation accompagnées de relevés récapitulatifs de ces factures et déclarations\n - Pour l'exportation de services : copies des contrats conclus avec les clients étrangers, factures et justificatifs de paiement en devises visés par l'autorité compétente (Office des changes ou établissement bancaire)\n - En cas de demandes ultérieures au cours de l'année :\n - Demande électronique ou demande modèle AAC101\n - Déclaration descriptive électronique ou déclaration descriptive modèle AAC102\n - Factures pro forma ou tout document relatif à la commande\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 318,
+      "answer": "L'attestation de la situation fiscale légale est gratuite et le délai de son obtention est de 2 jours.\n\nSource: Ministère de l’Économie et des Finances - Direction Générale des Impôts.",
+      "generation_ms": 6363,
+      "prompt_tokens": 752,
+      "output_tokens": 46,
+      "attempts": 1
+    },
+    {
+      "question_id": "s096",
+      "question": "Je suis MRE et je dois déclarer à l'Office des changes les biens que je possède à l'étranger, comment obtenir l'attestation ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "0eaac7c2-1454-44e3-8341-106e66801fce"
+      ],
+      "reference": "La procédure concernée est « Attestation de l'accomplissement de la déclaration relative aux biens et avoirs constitués à l'étranger par les Marocains résidant à l'étranger ayant transféré leur résidence fiscale au Maroc » (Office Des Changes). Documents à fournir : Formulaire type de déclaration des biens et avoirs constitués à l'étranger par les Marocains résidant à l'étranger qui… ; Certificat de résidence à l'étranger, titre de séjour, certificat de radiation des registres consulaires ou des… ; Documents justifiant l'exercice d'une activité professionnelle durant la période de résidence à l'étranger, tels que ; Documents justifiant la valeur des biens immobiliers ; Documents justifiant la valeur des actifs financiers ; Documents justifiant les montants des dépôts en espèces. Frais : Gratuit. Délai : 60 jours.",
+      "must_include": [
+        "Formulaire type de déclaration des biens et avoirs…",
+        "Certificat de résidence à l'étranger, titre de séjour,…",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "0eaac7c2-1454-44e3-8341-106e66801fce",
+        "d93e8aa7-7d0e-4a22-ac90-79a636ec1310",
+        "659a4461-b4c9-4791-a6d5-4220cb35cfda"
+      ],
+      "retrieved_titles": [
+        "Attestation de l'accomplissement de la déclaration relative aux biens et avoirs constitués à l'étranger par les Marocains résidant à l'étranger ayant transféré leur résidence fiscale au Maroc",
+        "Attestation de résidence d’au moins 10 ans à l’étranger pour bénéficier de la réduction de 90 % des droits de douane sur un véhicule (Marocains résidant à l’étranger)",
+        "Obtention de l'attestation de concordance par les Marocains résidant à l'étranger"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Attestation de l'accomplissement de la déclaration relative aux biens et avoirs constitués à l'étranger par les Marocains résidant à l'étranger ayant transféré leur résidence fiscale au Maroc\nDescription: L'Office des Changes offre ce service afin de permettre au bénéficiaire (en l'occurrence : les Marocains résidant à l'étranger ayant transféré leur résidence fiscale au Maroc) de réaliser des opérations de change non prévues par les instructions générales des opérations de change.\nAdministration: Office Des Changes\nFrais: Gratuit\nDélai: 60 jours\nDocuments requis:\n - Documents justifiant la valeur des propriétés intellectuelles, culturelles et artistiques : tout document légal attestant leur date de propriété et leur valeur avant la date de transfert de la résidence fiscale au Maroc.\n - Documents justifiant la plus-value sur les biens immobiliers : contrats de vente et d'achat.\n - Documents justifiant la plus-value sur les actifs financiers : relevé des comptes d'actifs financiers ou documents justificatifs des opérations d'achat et de vente de ces actifs.\n - Documents justifiant la plus-value sur les dépôts en espèces dans la limite de la valeur des intérêts.\n - Formulaire type de déclaration des biens et avoirs constitués à l'étranger par les Marocains résidant à l'étranger qui transfèrent leur résidence fiscale au Maroc, conformément aux dispositions de la loi 63.14 promulguée par le Dahir n° 1.15.25 du 29 Rabi\n - Certificat de résidence à l'étranger, titre de séjour, certificat de radiation des registres consulaires ou des missions et représentations diplomatiques marocaines à l'étranger, ou tout document en tenant lieu.\n - Documents justifiant l'exercice d'une activité professionnelle durant la période de résidence à l'étranger, tels que : déclarations fiscales, contrat de travail, bulletin de salaire, ou tout document en tenant lieu.\n - Documents justifiant la valeur des biens immobiliers : certificat attestant l'acquisition du bien et sa valeur, ou sa possession par voie de succession ou de donation avant la date de transfert de la résidence fiscale au Maroc.\n - Documents justifiant la valeur des actifs financiers : tout document attestant la date de détention de ces actifs, ainsi que leur valeur de souscription ou d'achat avant la date de transfert de la résidence fiscale au Maroc.\n - Documents justifiant les montants des dépôts en espèces : relevé du compte bancaire du mois précédant la date de transfert de la résidence fiscale au Maroc et relevé du compte bancaire du dernier mois précédant la date de la déclaration.\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Attestation de résidence d’au moins 10 ans à l’étranger pour bénéficier de la réduction de 90 % des droits de douane sur un véhicule (Marocains résidant à l’étranger)\nDescription: Bénéficier de la réduction douanière\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Droits consulaires : 00 dirhams  \nTarif des services (SEGMA) : 00 dirhams\nDélai: immédiatement\nDocuments requis:\n - Carte nationale d’identité\n - Carte de résidence ou carte d’identité étrangère portant l’adresse à l’étranger, ou tout document attestant d’une résidence de 10 ans à l’étranger\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Obtention de l'attestation de concordance par les Marocains résidant à l'étranger\nDescription: Concordance des données figurant sur les documents présentés aux autorités du pays de résidence avant l'enregistrement à l'état civil\nAdministration: Ministère des Affaires Etrangères, de la Coopération Africaine et des Marocains Résidant à l’Étranger-Département des Affaires Etrangères et de la Coopération Africaine\nFrais: Frais consulaires : 20 dirhams  \nTarif des services (SEGMA) : 00 dirham\nDélai: immédiatement\nDocuments requis:\n - Carte nationale d'identité électronique ou passeport biométrique\n - Document justifiant la concordance demandée\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 477,
+      "answer": "Pour obtenir l'Attestation de l'accomplissement de la déclaration relative aux biens et avoirs constitués à l'étranger, si vous êtes un Marocain résidant à l'étranger ayant transféré votre résidence fiscale au Maroc, voici les informations disponibles :\n\n**Administration compétente :** Office Des Changes\n\n**Description :** Ce service est offert afin de permettre au bénéficiaire (les Marocains résidant à l'étranger ayant transféré leur résidence fiscale au Maroc) de réaliser des opérations de change non prévues par les instructions générales des opérations de change.\n\n**Frais :** Gratuit\n\n**Délai :** 60 jours\n\n**Documents requis :**\n*   Documents justifiant la valeur des propriétés intellectuelles, culturelles et artistiques : tout document légal attestant leur date de propriété et leur valeur avant la date de transfert de la résidence fiscale au Maroc.\n*   Documents justifiant la plus-value sur les biens immobiliers : contrats de vente et d'achat.\n*   Documents justifiant la plus-value sur les actifs financiers : relevé des comptes d'actifs financiers ou documents justificatifs des opérations d'achat et de vente de ces actifs.\n*   Documents justifiant la plus-value sur les dépôts en espèces dans la limite de la valeur des intérêts.\n*   Formulaire type de déclaration des biens et avoirs constitués à l'étranger par les Marocains résidant à l'étranger qui transfèrent leur résidence fiscale au Maroc, conformément aux dispositions de la loi 63.14 promulguée par le Dahir n° 1.15.25 du 29 Rabi.\n*   Certificat de résidence à l'étranger, titre de séjour, certificat de radiation des registres consulaires ou des missions et représentations diplomatiques marocaines à l'étranger, ou tout document en tenant lieu.\n*   Documents justifiant l'exercice d'une activité professionnelle durant la période de résidence à l'étranger, tels que : déclarations fiscales, contrat de travail, bulletin de salaire, ou tout document en tenant lieu.\n*   Documents justifiant la valeur des biens immobiliers : certificat attestant l'acquisition du bien et sa valeur, ou sa possession par voie de succession ou de donation avant la date de transfert de la résidence fiscale au Maroc.\n*   Documents justifiant la valeur des actifs financiers : tout document attestant la date de détention de ces actifs, ainsi que leur valeur de souscription ou d'achat avant la date de transfert de la résidence fiscale au Maroc.\n*   Documents justifiant les montants des dépôts en espèces : relevé du compte bancaire du mois précédant la date de transfert de la résidence fiscale au Maroc et relevé du compte bancaire du dernier mois précédant la date de la déclaration.\n\n**Étapes :** Les étapes spécifiques ne sont pas spécifiées.\n\nSource : Office Des Changes",
+      "generation_ms": 12237,
+      "prompt_tokens": 1155,
+      "output_tokens": 609,
+      "attempts": 1
+    },
+    {
+      "question_id": "s097",
+      "question": "انتهيت من سداد قرض السيارة لدى النظام الجماعي لمنح رواتب التقاعد، كيف أحصل على رفع اليد؟",
+      "lang": "ar",
+      "category": "situation",
+      "expected_ids": [
+        "89e573bc-6514-4c85-880c-c1a1cd84fb49"
+      ],
+      "reference": "الإجراء المعني هو « شهادة رفع اليد (قرض السيارة) » (النظام الجماعي لمنح رواتب التقاعد). الوثائق المطلوبة: طلب ؛ نسخة من البطاقة الرمادية المشطبة. الرسوم: بالمجان. الآجال: 15 يوما.",
+      "must_include": [
+        "طلب",
+        "نسخة من البطاقة الرمادية المشطبة",
+        "بالمجان"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "89e573bc-6514-4c85-880c-c1a1cd84fb49",
+        "2d7d06b7-b265-4a32-9b00-3649bc25e551",
+        "1eaffe57-04c0-4b78-a8e5-7ce92d3a3675"
+      ],
+      "retrieved_titles": [
+        "Attestation de mainlevée (prêt automobile)",
+        "Certificat de mainlevée de la garantie bancaire pour le paiement des dettes publiques",
+        "Mainlevée d'hypothèque ou restitution de la caution bancaire"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: شهادة رفع اليد (قرض السيارة)\nDescription: اجراءات رفع اليد على اثر انتهاء مدة القرض\nAdministration: النظام الجماعي لمنح رواتب التقاعد\nFrais: بالمجان\nDélai: 15 يوما\nDocuments requis:\n - طلب\n - نسخة  من البطاقة الرمادية المشطبة\nÉtapes:\nغير محدد",
+        "PROCÉDURE: شهادة رفع اليد عن الضمانة البنكية من أجل أداء الديون العمومية\nDescription: استخلاص المتأخرات الضريبية\nAdministration: وزارة الاقتصاد والمالية-الخزينة العامة للمملكة\nFrais: بالمجان\nDélai: 5 أيام\nDocuments requis:\n - طلب الحصول على شهادة رفع اليد  عن الضمانة البنكية\nÉtapes:\nغير محدد",
+        "PROCÉDURE: رفع الرهن أو إسترداد الكفالة البنكية\nDescription: الحصول على رفع الرهن أو إسترداد الكفالة البنكية\nAdministration: وزارة الاقتصاد والمالية-المديرية العامة للضرائب\nFrais: بالمجان\nDélai: يومان\nDocuments requis:\n - • طلب نموذج رقم   AAC360؛\n - إنجاز مشروع عقاري (عمليات التجهيز والبناء):\n - نسخة من عقد الاقتناء\n - نسخة من البطاقة الوطنية للتعريف بالنسبة للأشخاص الذاتيين\n - نسخة من رخص البناء أو التجهيز\n - نسخة من التصاميم الهيكلية بالنسبة لمشاريع البناء والتجهيز الكبرى\n - نسخة من رخصة السكن أو شهادة المطابقة أو شهادة الاستلام المؤقت\n - نسخة من شهادة الملكية مسلمة من طرف الوكالة الوطنية للخرائطية والمحافظة العقارية\n - المنعشون العقاريون الذين وقعوا اتفاقية مع الدولة من أجل إنجاز مساكن اجتماعية أو مساكن ذات قيمة عقارية مخفضة:\n - نسخة من الاتفاقية المبرمة مع الدولة\n - نسخة من رخص البناء\n - نسخة من التصميم الهيكلي\n - نسخة من رخصة السكن أو شهادة المطابقة\n - شهادة المعامل الخاص بالمساكن ذات قيمة عقارية مخفضة أو  مساكن اجتماعية\n - إثبات إيداع طلب رخصة البناء في أجل 6 أشهر من تاريخ الاتفاقية\n - شهادة المهندس المعماري تحدد المساحة المخصصة للمساكن غبر الاجتماعية بالمقارنة مع مساحة الأرض\n - شهادة المطابقة لمشروع المساكن الاجتماعية\n - المساكن المخصصة للطبقة الوسطى:\n - نسخة من البطاقة الوطنية للتعريف تتضمن عنوان المسكن ، موضوع الرهن\n - نسخ من مخالصات أداء رسم الخدمات الجماعية\n - عدم احترام شروط الاستفادة من الاعفاء أو السعر المخفض للضريبة:\n - نسخ من البطاقات الوطنية للتعريف بالنسبة للأشخاص الذاتيين\nÉtapes:\nغير محدد"
+      ],
+      "retrieval_ms": 389,
+      "answer": "بناءً على المعلومات الرسمية المتوفرة، للحصول على شهادة رفع اليد بعد انتهائك من سداد قرض السيارة لدى النظام الجماعي لمنح رواتب التقاعد، يجب عليك تقديم الوثائق التالية:\n*   طلب\n*   نسخة من البطاقة الرمادية المشطبة\n\nهذه الخدمة بالمجان ويستغرق إنجازها 15 يوماً.\n\nالمصدر: النظام الجماعي لمنح رواتب التقاعد.",
+      "generation_ms": 6882,
+      "prompt_tokens": 855,
+      "output_tokens": 101,
+      "attempts": 1
+    },
+    {
+      "question_id": "s098",
+      "question": "La CNSS peut-elle me donner un document prouvant que je n'ai aucune dette envers elle ?",
+      "lang": "fr",
+      "category": "situation",
+      "expected_ids": [
+        "34ccde1e-b7b2-4f0c-8696-26c46af40a24"
+      ],
+      "reference": "La procédure concernée est « Attestation de quitus » (Caisse Nationale De La Sécurité Sociale). Documents à fournir : Demande d'attestation de quitus. Frais : Gratuit. Délai : 30 jours.",
+      "must_include": [
+        "Demande d'attestation de quitus",
+        "Gratuit"
+      ],
+      "error": null,
+      "retrieved_ids": [
+        "34ccde1e-b7b2-4f0c-8696-26c46af40a24",
+        "ed84f97e-fc6b-4835-844b-c2747553a789",
+        "72fdad59-47ba-49ca-8d1e-3529082995f3"
+      ],
+      "retrieved_titles": [
+        "Attestation de quitus",
+        "Attestation de mainlevée relative à une saisie administrative (rémunérations des fonctionnaires et agents de l'État)",
+        "Remboursement des cotisations salariales pour les ayants droit (personne divorcée ayant la charge d’enfants) (Expertise)"
+      ],
+      "rank": 1,
+      "contexts": [
+        "PROCÉDURE: Attestation de quitus\nDescription: Obtention d'une attestation de quitus attestant l'absence de dettes de l'affilié envers la Caisse Nationale de Sécurité Sociale.\nAdministration: Caisse Nationale De La Sécurité Sociale\nFrais: Gratuit\nDélai: 30 jours\nDocuments requis:\n - Demande d'attestation de quitus\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Attestation de mainlevée relative à une saisie administrative (rémunérations des fonctionnaires et agents de l'État)\nDescription: Attestation portant octroi de mainlevée sur le compte bancaire de l'intéressé, suite à une saisie administrative effectuée pour le recouvrement d'une dette publique, sous réserve du paiement de la dette ayant motivé la saisie, et destinée à être présentée à des fins administratives ou utilisée conformément aux dispositions légales.\nAdministration: Ministère de l’Économie et des Finances- Trésorerie générale du Royaume\nFrais: Gratuit\nDélai: 5 jours\nDocuments requis:\n - Carte nationale d'identité électronique ou tout document en tenant lieu (à des fins de contrôle d'identité.)\nÉtapes:\nnon spécifié",
+        "PROCÉDURE: Remboursement des cotisations salariales pour les ayants droit (personne divorcée ayant la charge d’enfants) (Expertise)\nDescription: Objet : Bénéficier du remboursement du montant des cotisations salariales pour les ayants droit (personne divorcée ayant la charge d’enfants).\nCette décision est soumise aux dispositions du décret n° 2.22.386 fixant la liste des décisions administratives pour lesquelles le traitement des demandes nécessite la prorogation du délai légal de délivrance, en raison de la réalisation d’une expertise technique ou d’une enquête publique.\nAdministration: Caisse Nationale De La Sécurité Sociale\nFrais: Gratuit\nDélai: 3 mois et demi\nDocuments requis:\n - Demande de remboursement des cotisations salariales pour ayants droit (formulaire 33-1-310)\n - Copie de la carte d’immatriculation à la Caisse Nationale de Sécurité Sociale de l’assuré décédé.\n - Copie de la carte d’identité nationale électronique (ou du titre de séjour pour les étrangers (carte de séjour ou carte d’immatriculation)) de l’assuré décédé.\n - Certificat de décès de l’assuré.\n - Pour les travailleurs des mines, attestation justifiant d’un travail souterrain d’une durée d’au moins cinq ans, pour bénéficier de l’indemnité à partir de 55 ans.\n - Acte de naissance.\n - Certificat de scolarité pour les enfants âgés de 16 à 21 ans.\n - Attestation de formation professionnelle pour les enfants âgés de 16 à 18 ans.\n - Certificat médical délivré par un médecin spécialiste attestant de l’incapacité de l’enfant à poursuivre ses études ou à suivre une formation professionnelle, pour l’enfant malade ou en situation de handicap âgé de 16 à 21 ans.\n - Certificat médical délivré par un médecin spécialiste et validé par la commission médicale régionale, pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans.\n - Déclaration sur l’honneur des parents attestant de l’absence de revenus suffisants (formulaire 310-1-42) pour l’enfant malade ou en situation de handicap âgé de plus de 21 ans\n - Copie de l’acte de divorce\n - Attestation de garde d’enfants si la garde n’est pas mentionnée dans l’acte de divorce\n - Relevé d’identité bancaire personnel ou spécimen de chèque (si non fourni antérieurement à la Caisse Nationale de Sécurité Sociale)\nÉtapes:\nnon spécifié"
+      ],
+      "retrieval_ms": 367,
+      "answer": "Oui, la Caisse Nationale De La Sécurité Sociale (CNSS) peut vous délivrer un document prouvant que vous n'avez aucune dette envers elle.\n\nIl s'agit de la procédure d'**Attestation de quitus**.\n\n*   **Description :** Cette attestation certifie l'absence de dettes de l'affilié envers la Caisse Nationale de Sécurité Sociale.\n*   **Administration :** Caisse Nationale De La Sécurité Sociale\n*   **Frais :** Gratuit\n*   **Délai :** 30 jours\n*   **Documents requis :** Demande d'attestation de quitus\n\n*(Source : Caisse Nationale De La Sécurité Sociale)*",
+      "generation_ms": 6806,
+      "prompt_tokens": 1064,
+      "output_tokens": 156,
+      "attempts": 1
+    }
+  ]
+}
