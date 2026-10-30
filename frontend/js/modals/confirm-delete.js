@@ -28,6 +28,7 @@
        confirmLabel,    libellé du bouton, « Supprimer » par défaut
        confirmIcon,     icône du bouton, « trash » par défaut
        busyLabel,       libellé pendant l'appel, « Suppression… » par défaut
+       cancelLabel,     libellé du bouton d'abandon, « Annuler » par défaut
        run,             function () -> Promise, l'action elle-même
        onDeleted        appelée après succès, avec la valeur renvoyée par run
      } */
@@ -56,7 +57,8 @@
         '</div>' +
       '</div>' +
       '<div class="dialog-actions">' +
-        '<button type="button" data-action="cancel">Annuler</button>' +
+        '<button type="button" data-action="cancel">' +
+          esc(options.cancelLabel || 'Annuler') + '</button>' +
         '<button type="button" class="' + (warning ? 'btn-warning' : 'btn-danger') + '" ' +
           'data-action="confirm">' +
           icon(confirmIcon) + esc(confirmLabel) + '</button>' +

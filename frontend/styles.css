@@ -786,6 +786,18 @@ input:dir(rtl), textarea:dir(rtl) { line-height: 1.6; }
 .stat-hint { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
 .spark { flex: none; margin-bottom: 4px; }
 
+/* Sixième tuile (« Recherches IA évitées ») : la ligne passe à six colonnes.
+   La tuile est un lien vers #/agency-cache — même habillage, le survol seul
+   dit qu'on peut cliquer. */
+.kpi-row.is-wide { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+@media (max-width: 900px) {
+  .kpi-row.is-wide { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+a.stat-link { display: block; color: inherit; text-decoration: none; }
+a.stat-link:hover { border-color: var(--border-accent); }
+a.stat-link:hover .stat-hint { color: var(--text-accent); text-decoration: underline; }
+.stat-tile.is-expired .stat-value { color: var(--text-warning); }
+
 /* --- Grille des cartes --------------------------------------------------- */
 .dash-grid {
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1730,6 +1742,15 @@ input.piece-note:focus { background: var(--surface-2); border-color: var(--borde
 .nearby-panel-head .icon-btn { flex: none; }
 .nearby-panel-foot { margin-top: 12px; }
 
+/* Origine du résultat : sorti du cache (daté) ou recherché à l'instant. */
+.nearby-city > .nearby-cache-note {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 11.5px; font-weight: 400; color: var(--text-muted); margin-top: 3px;
+}
+.nearby-cache-note .icon { flex: none; }
+.nearby-refresh { flex: none; display: inline-flex; align-items: center; gap: 6px; }
+.nearby-refresh .nearby-spinner { width: 12px; height: 12px; }
+
 /* --- Avertissement --------------------------------------------------------
    Au-dessus du résultat, pleine largeur, dans la teinte d'alerte : quand rien
    n'a pu être recoupé sur un site officiel, l'adresse affichée peut être
@@ -1923,4 +1944,47 @@ body.is-standalone .screen-root { padding: 0; max-width: none; }
   /* L'anneau ne tourne plus, mais il reste visible : c'est la phrase à côté
      qui porte l'attente, elle suffit. */
   .nearby-spinner { animation: none; }
+}
+
+/* ===========================================================================
+   CACHE DES AGENCES (#/agency-cache)
+
+   Un tableau plutôt que des cartes : on compare des lignes entre elles
+   (utilisations, dates d'expiration). Alignements en propriétés logiques —
+   « start » et non « left » — pour que l'écran se retourne en arabe.
+   =========================================================================== */
+/* `display:flex` de .header-actions l'emporte sur [hidden] : les actions restent
+   masquees tant que le cache n'est pas charge, et apres un 403. */
+.header-actions[hidden] { display: none; }
+.cache-card { padding: 0; overflow: hidden; }
+.cache-table-wrap { overflow-x: auto; }
+.cache-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.cache-table th {
+  text-align: start; font-weight: 600; color: var(--text-secondary);
+  padding: 9px 12px; border-bottom: 0.5px solid var(--border);
+  background: var(--surface-1); white-space: nowrap;
+}
+.cache-table td {
+  padding: 8px 12px; border-bottom: 0.5px solid var(--surface-1);
+  vertical-align: middle; text-align: start;
+}
+.cache-table tbody tr:last-child td { border-bottom: none; }
+.cache-table .num {
+  text-align: end; font-variant-numeric: tabular-nums; white-space: nowrap; width: 1%;
+}
+.cache-admin { display: block; overflow-wrap: anywhere; }
+.cache-admin-alt { display: block; font-size: 11.5px; color: var(--text-muted); margin-top: 1px; }
+.cache-date { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.cache-muted { color: var(--text-muted); }
+.cache-actions { text-align: end; white-space: nowrap; width: 1%; }
+.cache-table td .pill { margin-inline-start: 4px; vertical-align: middle; }
+
+/* Entrée expirée : encore en base, plus servie. Fond ambre léger et texte
+   atténué, doublés de la pastille « Expirée » — la couleur ne porte pas
+   seule le sens. */
+.cache-table tr.is-expired td { background: var(--bg-warning); color: var(--text-secondary); }
+.cache-table tr.is-expired .cache-admin { color: var(--text-secondary); }
+
+@media (max-width: 620px) {
+  .cache-table th, .cache-table td { padding: 7px 8px; }
 }

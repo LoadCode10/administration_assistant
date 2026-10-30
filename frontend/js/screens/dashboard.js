@@ -81,6 +81,11 @@
     var today = new Date();
     var calendar = { year: today.getFullYear(), month: today.getMonth() };
     var stats = null;
+    /* Tuile « Recherches IA évitées » : chargée à part, depuis
+       /admin/agency-cache — elle n'a pas à attendre /admin/stats ni à tomber
+       avec lui. { loading } tant que l'appel est en vol, { value } ensuite,
+       { error } en cas d'échec ; null après un 403, et la tuile disparaît. */
+    var cacheTile = { loading: true };
 
     view.innerHTML =
       '<div class="screen-header">' +
@@ -115,6 +120,50 @@
 
     /* --- Rendu ------------------------------------------------------------ */
 
+    /* Lien vers l'écran du cache : la tuile entière est cliquable, comme une
+       entrée de menu. */
+    function renderCacheTile() {
+      var labels = h.labelsFor();
+      var value = cacheTile.loading || cacheTile.error
+        ? '<span class="stat-na">—</span>'
+        : charts.fmt(cacheTile.value);
+      return '<a class="stat-tile stat-link" href="#/agency-cache" data-cache-tile>' +
+        '<div class="stat-label">' + esc(labels.cacheStatSaved) + '</div>' +
+        '<div class="stat-row"><div class="stat-value">' + value + '</div></div>' +
+        '<div class="stat-hint"' +
+          (cacheTile.detail ? ' title="' + esc(cacheTile.detail) + '"' : '') + '>' +
+          esc(cacheTile.error ? cacheTile.error : labels.cacheTileLink) + '</div>' +
+        '</a>';
+    }
+
+    // Repeint la seule tuile : redessiner l'écran relancerait les graphiques.
+    function paintCacheTile() {
+      var node = body.querySelector('[data-cache-tile]');
+      if (!node) return;
+      if (!cacheTile) {
+        var row = node.parentNode;
+        row.removeChild(node);
+        row.classList.remove('is-wide');
+        return;
+      }
+      node.parentNode.replaceChild(h.fromHTML(renderCacheTile()), node);
+    }
+
+    function loadCacheTile() {
+      App.api.getAgencyCache().then(function (payload) {
+        if (destroyed) return;
+        cacheTile = { value: payload.stats.searchesSaved };
+        paintCacheTile();
+      }).catch(function (error) {
+        if (destroyed) return;
+        // 403 : pas d'accès au cache, la tuile n'a rien à proposer.
+        cacheTile = error && error.status === 403
+          ? null
+          : { error: h.labelsFor().cacheUnavailable, detail: h.errorText(error) };
+        paintCacheTile();
+      });
+    }
+
     function render() {
       var totals = stats.totals || {};
       var weekly = stats.weekly || [];
@@ -127,7 +176,7 @@
 
       /* -- Ligne d'indicateurs -- */
       var kpis =
-        '<div class="kpi-row">' +
+        '<div class="kpi-row' + (cacheTile ? ' is-wide' : '') + '">' +
           statTile({
             label: 'Documents traités', value: totals.documents,
             spark: charts.sparkline(weekly.map(function (w) { return w.value; })),
@@ -146,6 +195,7 @@
             label: 'Étapes décrites', value: totals.steps,
             hint: totals.steps === null ? 'Indisponible sans /admin/stats' : 'Tous fichiers confondus'
           }) +
+          (cacheTile ? renderCacheTile() : '') +
         '</div>';
 
       /* -- Répartition par statut : liste + jauges, pas un camembert --
@@ -301,6 +351,7 @@
     }
 
     load();
+    loadCacheTile();
 
     return {
       destroy: function () {

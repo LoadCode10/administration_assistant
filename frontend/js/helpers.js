@@ -141,7 +141,79 @@
       unverifiedTitle: 'Informations non vérifiées',
       unverifiedText: 'Ces informations proviennent de sources non officielles et ' +
         'n\'ont pas été vérifiées. Confirmez-les auprès de l\'administration ' +
-        'avant de vous déplacer.'
+        'avant de vous déplacer.',
+      // Réponse servie depuis le cache serveur, ou recherche qui vient d'avoir lieu.
+      nearbyCachedNote: function (date, city) {
+        return 'Résultat enregistré le ' + date + (city ? ' · ' + city : '');
+      },
+      nearbyFreshNote: function (city) {
+        return 'Recherche effectuée à l\'instant' + (city ? ' · ' + city : '');
+      },
+      nearbyRefresh: 'Actualiser la recherche',
+      nearbyRefreshing: 'Actualisation…',
+      nearbyNotFound: 'Administration introuvable.',
+      nearbyUnknownLocation: 'Localisation non reconnue. Choisissez une autre ville.',
+      nearbySearchFailed: 'La recherche des bureaux a échoué. Réessayez plus tard.',
+
+      // Erreurs communes
+      networkError: 'Impossible de joindre le serveur. Vérifiez votre connexion et réessayez.',
+      forbidden: 'Accès réservé aux administrateurs.',
+
+      // Console : cache des bureaux à proximité (#/agency-cache)
+      cacheTitle: 'Cache des agences',
+      cacheSubtitle: function (entries, ttl) {
+        return h.plural(entries, 'entrée') + ' · conservées ' + h.plural(ttl, 'jour');
+      },
+      cacheLoading: 'Chargement…',
+      cacheStatEntries: 'Entrées',
+      cacheStatActive: 'Actives',
+      cacheStatExpired: 'Expirées',
+      cacheStatSaved: 'Recherches IA évitées',
+      cacheStatSavedHint: 'Réponses servies depuis le cache',
+      cacheStatTtl: 'Durée de conservation',
+      cacheStatTtlHint: 'jours',
+      cacheColAdministration: 'Administration',
+      cacheColCity: 'Ville',
+      cacheColHits: 'Utilisations',
+      cacheColCreated: 'Enregistrée le',
+      cacheColExpires: 'Expire le',
+      cacheColLastHit: 'Dernière utilisation',
+      cacheColActions: 'Actions',
+      cacheExpired: 'Expirée',
+      cacheNever: 'Jamais',
+      cacheDelete: 'Supprimer',
+      cacheDeleteAria: function (target) { return 'Supprimer l\'entrée ' + target; },
+      cachePurge: 'Purger les expirées',
+      cacheClear: 'Vider tout le cache',
+      cacheReload: 'Actualiser',
+      retry: 'Réessayer',
+      cancel: 'Annuler',
+      cacheEmptyTitle: 'Cache vide',
+      cacheEmptyText: 'Les recherches de bureaux à proximité apparaîtront ici après ' +
+        'leur premier passage.',
+      cacheLoadFailed: 'Impossible de charger le cache',
+      cacheForbiddenTitle: 'Accès refusé',
+      cacheConfirmNote: 'Cette action est définitive.',
+      cacheBusy: 'Suppression…',
+      cacheDeleteTitle: 'Supprimer cette entrée',
+      cacheDeleteIntro: 'Confirmez la suppression de',
+      cacheDeleteConsequence: 'La prochaine recherche pour cette administration dans ' +
+        'cette ville relancera l\'IA.',
+      cachePurgeTitle: 'Purger les entrées expirées',
+      cachePurgeTarget: function (n) { return h.plural(n, 'entrée expirée', 'entrées expirées'); },
+      cachePurgeConsequence: 'Les entrées encore valides sont conservées.',
+      cachePurgeConfirm: 'Purger',
+      cacheClearTitle: 'Vider tout le cache',
+      cacheClearTarget: function (n) { return 'toutes les entrées (' + n + ')'; },
+      cacheClearConsequence: 'Chaque prochaine recherche relancera l\'IA et consommera ' +
+        'des tokens.',
+      cacheClearConfirm: 'Vider le cache',
+      cacheDeleted: function (n) {
+        return n ? h.plural(n, 'entrée supprimée', 'entrées supprimées')
+          : 'Aucune entrée supprimée.';
+      },
+      cacheTileLink: 'Voir le cache des agences',
+      cacheUnavailable: 'Indisponible'
     },
     ar: {
       untitled: 'مسطرة بدون عنوان',
@@ -192,8 +264,111 @@
       unofficial: 'غير رسمي',
       unverifiedTitle: 'معلومات غير مؤكدة',
       unverifiedText: 'هذه المعلومات مصدرها مواقع غير رسمية ولم يتم التحقق منها. ' +
-        'تأكد منها لدى الإدارة قبل التنقل.'
+        'تأكد منها لدى الإدارة قبل التنقل.',
+      // La date et la ville sont isolées : des chiffres et un nom latin dans
+      // une phrase arabe se réordonneraient sinon.
+      nearbyCachedNote: function (date, city) {
+        return 'نتيجة محفوظة بتاريخ ' + h.isolate(date) + (city ? ' · ' + h.isolate(city) : '');
+      },
+      nearbyFreshNote: function (city) {
+        return 'تم البحث الآن' + (city ? ' · ' + h.isolate(city) : '');
+      },
+      nearbyRefresh: 'تحديث البحث',
+      nearbyRefreshing: 'جارٍ التحديث…',
+      nearbyNotFound: 'الإدارة غير موجودة.',
+      nearbyUnknownLocation: 'لم يتم التعرف على الموقع. اختر مدينة أخرى.',
+      nearbySearchFailed: 'فشل البحث عن المكاتب. حاول مرة أخرى لاحقا.',
+
+      networkError: 'تعذر الاتصال بالخادم. تحقق من اتصالك وحاول مرة أخرى.',
+      forbidden: 'الولوج مخصص للمسؤولين.',
+
+      cacheTitle: 'ذاكرة الوكالات المؤقتة',
+      cacheSubtitle: function (entries, ttl) {
+        return 'عدد الإدخالات: ' + h.isolate(entries) +
+          ' · مدة الاحتفاظ: ' + h.isolate(ttl) + ' يوما';
+      },
+      cacheLoading: 'جارٍ التحميل…',
+      cacheStatEntries: 'الإدخالات',
+      cacheStatActive: 'الصالحة',
+      cacheStatExpired: 'المنتهية الصلاحية',
+      cacheStatSaved: 'عمليات بحث بالذكاء الاصطناعي تم تفاديها',
+      cacheStatSavedHint: 'إجابات قُدمت من الذاكرة المؤقتة',
+      cacheStatTtl: 'مدة الاحتفاظ',
+      cacheStatTtlHint: 'أيام',
+      cacheColAdministration: 'الإدارة',
+      cacheColCity: 'المدينة',
+      cacheColHits: 'مرات الاستعمال',
+      cacheColCreated: 'تاريخ الحفظ',
+      cacheColExpires: 'تاريخ الانتهاء',
+      cacheColLastHit: 'آخر استعمال',
+      cacheColActions: 'إجراءات',
+      cacheExpired: 'منتهية',
+      cacheNever: 'أبدا',
+      cacheDelete: 'حذف',
+      cacheDeleteAria: function (target) { return 'حذف الإدخال ' + target; },
+      cachePurge: 'حذف الإدخالات المنتهية',
+      cacheClear: 'إفراغ الذاكرة المؤقتة بالكامل',
+      cacheReload: 'تحديث',
+      retry: 'إعادة المحاولة',
+      cancel: 'إلغاء',
+      cacheEmptyTitle: 'الذاكرة المؤقتة فارغة',
+      cacheEmptyText: 'ستظهر هنا عمليات البحث عن المكاتب القريبة بعد أول تنفيذ لها.',
+      cacheLoadFailed: 'تعذر تحميل الذاكرة المؤقتة',
+      cacheForbiddenTitle: 'تم رفض الولوج',
+      cacheConfirmNote: 'هذا الإجراء نهائي.',
+      cacheBusy: 'جارٍ الحذف…',
+      cacheDeleteTitle: 'حذف هذا الإدخال',
+      cacheDeleteIntro: 'أكد حذف',
+      cacheDeleteConsequence: 'البحث القادم عن هذه الإدارة في هذه المدينة ' +
+        'سيعيد تشغيل الذكاء الاصطناعي.',
+      cachePurgeTitle: 'حذف الإدخالات المنتهية الصلاحية',
+      cachePurgeTarget: function (n) { return 'الإدخالات المنتهية (' + n + ')'; },
+      cachePurgeConsequence: 'الإدخالات التي لا تزال صالحة تبقى محفوظة.',
+      cachePurgeConfirm: 'حذف',
+      cacheClearTitle: 'إفراغ الذاكرة المؤقتة بالكامل',
+      cacheClearTarget: function (n) { return 'جميع الإدخالات (' + n + ')'; },
+      cacheClearConsequence: 'كل بحث قادم سيعيد تشغيل الذكاء الاصطناعي ويستهلك رموزا.',
+      cacheClearConfirm: 'إفراغ الذاكرة',
+      cacheDeleted: function (n) {
+        return n ? 'عدد الإدخالات المحذوفة: ' + h.isolate(n) : 'لم يتم حذف أي إدخال.';
+      },
+      cacheTileLink: 'عرض ذاكرة الوكالات المؤقتة',
+      cacheUnavailable: 'غير متاح'
     }
+  };
+
+  /* Locale d'affichage des dates pour une langue de contenu. */
+  h.locale = function (lang) {
+    return h.contentLang(lang) === 'ar' ? 'ar-MA' : 'fr-FR';
+  };
+
+  /* Date (et heure si withTime) dans la langue demandée, via Intl. Contrairement
+     à h.formatDate, qui n'écrit que le français, elle sert aux écrans
+     bilingues. Une valeur absente ou illisible donne la chaîne vide :
+     l'appelant décide quoi afficher à la place. */
+  h.formatLocaleDate = function (value, lang, withTime) {
+    if (!value) return '';
+    var date = new Date(value);
+    if (isNaN(date.getTime())) return '';
+    var locale = h.locale(lang);
+    return withTime
+      ? date.toLocaleDateString(locale) + ' ' +
+        date.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' })
+      : date.toLocaleDateString(locale);
+  };
+
+  /* Message à afficher pour une erreur d'API, dans la langue demandée. Le
+     texte de request() est en français : on ne le garde que quand il n'existe
+     rien de plus précis à dire. « overrides » : { 404: 'cle', 502: 'cle' }
+     pour un sens propre à l'écran. */
+  h.errorText = function (error, lang, overrides) {
+    var labels = h.labelsFor(lang);
+    if (!error) return '';
+    if (error.network) return labels.networkError;
+    var key = overrides && error.status ? overrides[error.status] : null;
+    if (key && labels[key]) return labels[key];
+    if (error.status === 403) return labels.forbidden;
+    return error.message || '';
   };
 
   // Les libellés fixes d'un contenu, dans sa langue.

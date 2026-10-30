@@ -47,6 +47,9 @@
             match: function (p) { return p[0] === 'procedures' && p[1] === 'pieces'; } },
           { hash: '#/administrations', label: 'Administrations', icon: 'building',
             match: function (p) { return p[0] === 'administrations'; } },
+          // Libellé bilingue : l'écran suit la langue de l'interface.
+          { hash: '#/agency-cache', label: h.labelsFor().cacheTitle, icon: 'archive',
+            match: function (p) { return p[0] === 'agency-cache'; } },
           { hash: '#/users', label: 'Utilisateurs', icon: 'users',
             // La fiche d'un compte reste rattachee a la liste : #/users/:id.
             match: function (p) { return p[0] === 'users'; } }

@@ -708,30 +708,38 @@ class TokenUsage(Base):
 class AgencyCache(Base):
   __tablename__ = "agency_cache"
   __table_args__ = (
-    UniqueConstraint("id_administration","city_key", name="uq_agency_cache_admin_city"))
+    UniqueConstraint("id_administration","city_key", name="uq_agency_cache_admin_city"),)
 
-  id_cache = Mapped[str] = mapped_column(
+  id_cache : Mapped[str] = mapped_column(
     String(36),
     primary_key=True,
     default=lambda: str(uuid.uuid4())
   )
 
   id_administration: Mapped[str] = mapped_column(
-    ForeignKey("administrations.id_administration", ondelete="CASCADE")
+    ForeignKey("administrations.id_administration", ondelete="CASCADE"),
+    nullable=False, 
+    index=True,
   )
 
   city_key: Mapped[str] = mapped_column(
-    String(120),index=True
+    String(120),
+    nullable=False
   )
 
   city_label: Mapped[str] = mapped_column(
-    String(120)
+    String(120),
+    nullable=False
   )
 
-  result: Mapped[dict] = mapped_column(JSONB)
+  result: Mapped[dict] = mapped_column(JSONB,nullable=False)
 
-  created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+  created_at: Mapped[datetime] = mapped_column(DateTime, nullable=False, default=datetime.now)
 
-  expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+  expires_at: Mapped[datetime] = mapped_column(DateTime, nullable=False, index=True)
 
-  hits: Mapped[int] = mapped_column(Integer, default=0)
+  last_hit_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+
+  hits: Mapped[int] = mapped_column(Integer,nullable=False, default=0)
+
+  administration: Mapped["Administration"] = relationship()

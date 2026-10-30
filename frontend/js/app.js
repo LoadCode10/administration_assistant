@@ -60,6 +60,11 @@
     return App.screens.administrations.mount(root);
   }, ADMIN);
 
+  // Cache des recherches de bureaux à proximité : statistiques et purge.
+  App.router.add('/agency-cache', function (root) {
+    return App.screens.agencyCache.mount(root);
+  }, ADMIN);
+
   App.router.add('/users', function (root) {
     return App.screens.users.mount(root);
   }, ADMIN);

@@ -266,9 +266,45 @@
       '</div>';
     }
 
+    /* La réponse peut sortir du cache serveur : elle date alors du jour où la
+       recherche a vraiment eu lieu, et le panneau le dit. Une adresse vieille
+       de trois semaines n'a pas la même valeur qu'une adresse trouvée à
+       l'instant — la note la date sans la disqualifier. */
+    function renderNearbyCacheNote(item, result) {
+      var labels = labelsOf(item);
+      var text = result.cached
+        ? labels.nearbyCachedNote(
+            h.formatLocaleDate(result.cachedAt, langOf(item)) || '—', result.city)
+        : labels.nearbyFreshNote(result.city);
+      return '<span class="nearby-cache-note' + (result.cached ? ' is-cached' : '') + '">' +
+        icon(result.cached ? 'archive' : 'clock', 'icon-sm') +
+        '<span>' + esc(text) + '</span></span>';
+    }
+
+    /* Forcer une nouvelle recherche n'est offert qu'aux administrateurs : le
+       serveur ignore « refresh » pour un citoyen, un bouton qui ne ferait rien
+       n'a pas à exister. */
+    function canRefreshNearby() {
+      return !!(App.auth && App.auth.getRole() === 'admin');
+    }
+
+    function renderNearbyRefresh(item, current) {
+      if (!canRefreshNearby()) return '';
+      var labels = labelsOf(item);
+      return '<button type="button" class="btn-tiny nearby-refresh" ' +
+          'data-nearby-refresh="' + esc(item.id) + '"' +
+          (current.refreshing ? ' disabled aria-busy="true"' : '') + '>' +
+        (current.refreshing
+          ? '<span class="nearby-spinner" aria-hidden="true"></span>' +
+            esc(labels.nearbyRefreshing)
+          : icon('refresh', 'icon-sm') + esc(labels.nearbyRefresh)) +
+      '</button>';
+    }
+
     /* Le nom de l'administration est repris dans la langue de la carte ; le
        texte de la recherche, lui, est affiché tel que le serveur l'a écrit. */
-    function renderNearbyResult(item, result) {
+    function renderNearbyResult(item, current) {
+      var result = current.result;
       var labels = labelsOf(item);
       var administration = h.pick(result, 'administration', langOf(item)) ||
         result.administration;
@@ -280,10 +316,16 @@
             (administration
               ? '<span class="nearby-admin" dir="auto">' + esc(administration) + '</span>'
               : '') +
+            renderNearbyCacheNote(item, result) +
           '</div>' +
+          renderNearbyRefresh(item, current) +
           '<button type="button" class="icon-btn" data-nearby-close="' + esc(item.id) + '" ' +
             'aria-label="' + esc(labels.closeResults) + '">' + icon('x') + '</button>' +
         '</div>' +
+        (current.refreshError
+          ? '<div class="inline-error nearby-error" role="alert">' +
+              icon('alert', 'icon-sm') + '<span>' + esc(current.refreshError) + '</span></div>'
+          : '') +
         (result.verified ? '' : renderNearbyWarning(item)) +
         renderNearbyText(result.text) +
         renderNearbySources(item, result.sources) +
@@ -312,7 +354,7 @@
       } else if (current.phase === 'error') {
         inner = renderNearbyButton(item, current.message);
       } else {
-        inner = renderNearbyResult(item, current.result);
+        inner = renderNearbyResult(item, current);
       }
 
       return '<div class="track-nearby" data-nearby="' + esc(item.id) + '">' + inner + '</div>';
@@ -604,6 +646,25 @@
       setNearby(id, null);
     }
 
+    /* L'erreur est dite dans la langue de la carte. Le serveur répond 502 dans
+       deux cas qu'il ne faut pas confondre — une position qu'il ne sait pas
+       nommer, et une recherche qui a échoué — et seul son message les
+       distingue. Un 502 du proxy (pas de « Localisation » dedans) est une
+       panne : il rejoint le second cas. */
+    function nearbyErrorText(item, error) {
+      var labels = labelsOf(item);
+      if (error && error.status === 502) {
+        return /localisation/i.test(error.message || '')
+          ? labels.nearbyUnknownLocation : labels.nearbySearchFailed;
+      }
+      return h.errorText(error, langOf(item), { 404: 'nearbyNotFound' });
+    }
+
+    /* La première recherche garde l'état d'attente habituel. Une réponse
+       servie par le cache arrive presque aussitôt : on ne la retient pas pour
+       faire durer l'attente, elle s'affiche dès qu'elle est là. Les
+       coordonnées sont gardées avec le résultat — l'actualisation repart du
+       même point. */
     function searchNearby(id, lat, lon) {
       var item = find(id);
       if (!item) return;
@@ -612,13 +673,38 @@
 
       App.api.findNearbyOffices(item.administrationId, lat, lon).then(function (result) {
         if (isStale(id, token)) return;
-        setNearby(id, { phase: 'result', result: result });
+        setNearby(id, { phase: 'result', result: result, lat: lat, lon: lon });
       }, function (error) {
         if (isStale(id, token)) return;
-        // Le message du serveur est plus précis que ce qu'on inventerait :
-        // « Localisation non reconnue » ne se confond pas avec une panne. Le
-        // bouton revient avec lui, la recherche reste relançable.
-        setNearby(id, { phase: 'error', message: error.message });
+        // Le bouton revient avec le message, la recherche reste relançable.
+        setNearby(id, { phase: 'error', message: nearbyErrorText(item, error) });
+      });
+    }
+
+    /* Nouvelle recherche forcée (administrateurs) : le résultat en place reste
+       affiché pendant l'appel, seul le bouton passe en attente. En cas d'échec
+       on garde l'ancien résultat, l'erreur s'affiche au-dessus. */
+    function refreshNearby(id) {
+      var item = find(id);
+      var current = state.nearby[id];
+      if (!item || !current || current.phase !== 'result' || current.refreshing) return;
+      if (!canRefreshNearby()) return;
+
+      var token = nextToken(id);
+      var base = { phase: 'result', result: current.result, lat: current.lat, lon: current.lon };
+      setNearby(id, {
+        phase: 'result', result: current.result, lat: current.lat, lon: current.lon,
+        refreshing: true
+      });
+
+      App.api.findNearbyOffices(item.administrationId, current.lat, current.lon,
+        { refresh: true }).then(function (result) {
+        if (isStale(id, token)) return;
+        setNearby(id, { phase: 'result', result: result, lat: base.lat, lon: base.lon });
+      }, function (error) {
+        if (isStale(id, token)) return;
+        base.refreshError = nearbyErrorText(item, error);
+        setNearby(id, base);
       });
     }
 
@@ -693,6 +779,10 @@
 
     h.on(view, 'click', '[data-nearby-city-go]', function (event, target) {
       searchFromCity(target.getAttribute('data-nearby-city-go'));
+    });
+
+    h.on(view, 'click', '[data-nearby-refresh]', function (event, target) {
+      refreshNearby(target.getAttribute('data-nearby-refresh'));
     });
 
     h.on(view, 'click', '[data-nearby-close]', function (event, target) {

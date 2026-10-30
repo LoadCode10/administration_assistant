@@ -7,7 +7,9 @@ from database import get_db
 import models, schemas
 
 from core.security import get_current_user
-from services.search_agent import search_agencies, reverse_geocode
+from core.logging import record_usage
+from services import agency_cache
+from services.search_agent import search_agencies, reverse_geocode_cached
 
 router = APIRouter(tags=["tracking"])
 
@@ -170,12 +172,26 @@ def untrack_procedure(id_user_procedure: str,current_user : models.User = Depend
   db.delete(tracked_proc)
   db.commit()
 
+def _nearby_response(administration, ville: str, result: dict, cached: bool, cached_at):
+  return {
+    "administration": {
+      "nom_administration_fr": administration.nom_administration_fr,
+      "nom_administration_ar": administration.nom_administration_ar,
+    },
+    "ville": ville,
+    "texte": result.get("texte", ""),
+    "sources": result.get("sources", []),
+    "verifie": result.get("source_officielle_trouvee", False),
+    "cached": cached,                 # True: answer served from the cache, no tokens used
+    "cached_at": cached_at,           # when the search was really done
+  }
 
 @router.get("/citizen/administrations/{admin_id}/nearby")
 def find_nearby_agencies(
   admin_id: str,
   lat: float,
   lon: float,
+  refresh: bool = False,              # admin only: force a new search
   current_user: models.User = Depends(get_current_user),
   db: Session = Depends(get_db),
 ):
@@ -185,23 +201,36 @@ def find_nearby_agencies(
   if administration is None:
     raise HTTPException(status_code=404, detail="Administration introuvable")
 
-  ville = reverse_geocode(lat, lon)
+  # 1. Coordinates -> city (cached in memory, rounded to ~1 km)
+  ville = reverse_geocode_cached(lat, lon)
   if ville is None:
     raise HTTPException(status_code=502, detail="Localisation non reconnue")
+  key = agency_cache.city_key(ville)
 
-  result = search_agencies(
-    administration.nom_administration_fr,
-    administration.url_administration or "",
-    ville,
-  )
+  # 2. Cache hit: same administration + same city -> stored answer, no Gemini call
+  force_refresh = refresh and current_user.role == "admin"
+  if not force_refresh:
+    hit = agency_cache.get_cached(db, admin_id, key)
+    if hit is not None:
+      db.commit()                     # saves the hits counter
+      return _nearby_response(administration, hit.city_label, hit.result, True, hit.created_at)
 
-  return {
-    "administration": {
-      "nom_administration_fr": administration.nom_administration_fr,
-      "nom_administration_ar": administration.nom_administration_ar,
-    },
-    "ville": ville,
-    "texte": result["texte"],
-    "sources": result["sources"],
-    "verifie": result["source_officielle_trouvee"],
-  } 
+  # 3. Cache miss: real search with the AI agent
+  try:
+    result = search_agencies(
+      administration.nom_administration_fr,
+      administration.url_administration or "",
+      ville,
+    )
+  except Exception:
+    raise HTTPException(status_code=502, detail="La recherche des agences a échoué. Réessayez plus tard.")
+
+  tokens = result.pop("tokens", {})   # not stored in the cache
+  record_usage(db, current_user, feature="agencies", model="gemini-2.5-flash", tokens=tokens)
+
+  # 4. Store only a real answer (an empty one would be served for 30 days)
+  if result.get("texte"):
+    agency_cache.save(db, admin_id, key, ville, result)
+
+  db.commit()
+  return _nearby_response(administration, ville, result, False, datetime.now()) 

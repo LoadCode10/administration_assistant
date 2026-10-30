@@ -133,10 +133,14 @@
         });
     }, function (networkError) {
       if (networkError && networkError.name === 'AbortError') throw networkError;
-      throw new Error(
+      var unreachable = new Error(
         'Impossible de joindre le serveur (' + config.API_BASE_URL + '). ' +
         'Vérifiez que le backend est démarré et qu\'il autorise cette origine (CORS).'
       );
+      // Pas de code HTTP : les écrans bilingues s'en servent pour dire
+      // « serveur injoignable » dans leur langue plutôt que cette phrase.
+      unreachable.network = true;
+      throw unreachable;
     });
   }
 
@@ -835,9 +839,15 @@
 
   /* --- Bureaux à proximité ------------------------------------------------
 
-     GET /citizen/administrations/{id}/nearby?lat=&lon=
+     GET /citizen/administrations/{id}/nearby?lat=&lon=[&refresh=true]
        -> { administration, ville, texte, sources: [ { title, uri, officielle } ],
-            verifie }
+            verifie, cached, cached_at }
+
+     La réponse est mise en cache côté serveur par (administration, ville) :
+     « cached » vaut true quand elle en sort — aucun appel au modèle, réponse
+     immédiate — et « cached_at » date la recherche réellement effectuée.
+     « refresh=true » force une nouvelle recherche, pour les administrateurs
+     seulement ; le serveur l'ignore pour un citoyen.
 
      « texte » est de la prose Markdown libre, écrite par un modèle : elle n'a
      pas de structure sur laquelle s'appuyer, et elle n'entre dans la page
@@ -879,7 +889,63 @@
       city: String(firstDefined(raw, ['ville', 'city'], '')),
       text: String(firstDefined(raw, ['texte', 'text', 'reponse'], '') || ''),
       sources: sources.map(normalizeNearbySource),
-      verified: firstDefined(raw, ['verifie', 'verified'], false) === true
+      verified: firstDefined(raw, ['verifie', 'verified'], false) === true,
+      cached: firstDefined(raw, ['cached', 'from_cache'], false) === true,
+      cachedAt: firstDefined(raw, ['cached_at', 'cachedAt'], null)
+    };
+  }
+
+  /* --- Cache des bureaux à proximité (console) ----------------------------
+
+     GET    /admin/agency-cache
+              -> { stats: { entries, active, expired, searches_saved, ttl_days },
+                   entries: [ entrée ] }
+     DELETE /admin/agency-cache[?admin_id=&city=|?expired_only=true]
+              -> { deleted: n }
+
+       entrée = { id_cache, id_administration, administration_fr,
+                  administration_ar, ville, hits, created_at, expires_at,
+                  last_hit_at }
+
+     « searches_saved » est la somme des « hits » : chaque réponse servie
+     depuis le cache est une recherche IA qui n'a pas eu lieu. Une entrée
+     expirée reste en base jusqu'à la purge ; « expired » est calculé ici à
+     partir de expires_at, le serveur ne le dit pas ligne par ligne. */
+  function normalizeAgencyCacheEntry(raw) {
+    raw = raw || {};
+    var expiresAt = firstDefined(raw, ['expires_at', 'expiresAt'], null);
+    var expiry = expiresAt ? new Date(expiresAt).getTime() : NaN;
+    return {
+      id: String(firstDefined(raw, ['id_cache', 'id'], '')),
+      administrationId: firstDefined(raw, ['id_administration', 'administration_id'], null),
+      administration_fr: String(raw.administration_fr || ''),
+      administration_ar: String(raw.administration_ar || ''),
+      city: String(firstDefined(raw, ['ville', 'city', 'city_label'], '')),
+      hits: Number(raw.hits) || 0,
+      createdAt: firstDefined(raw, ['created_at', 'createdAt'], null),
+      expiresAt: expiresAt,
+      lastHitAt: firstDefined(raw, ['last_hit_at', 'lastHitAt'], null),
+      expired: !isNaN(expiry) && expiry <= Date.now()
+    };
+  }
+
+  function normalizeAgencyCache(raw) {
+    raw = raw && typeof raw === 'object' ? raw : {};
+    var stats = raw.stats && typeof raw.stats === 'object' ? raw.stats : {};
+    var entries = Array.isArray(raw.entries) ? raw.entries : [];
+    return {
+      stats: {
+        entries: nonNegative(stats.entries),
+        active: nonNegative(stats.active),
+        expired: nonNegative(stats.expired),
+        searchesSaved: nonNegative(stats.searches_saved),
+        ttlDays: nonNegative(stats.ttl_days)
+      },
+      // Le plus servi en tête : c'est lui qui économise le plus d'appels.
+      entries: entries.map(normalizeAgencyCacheEntry).sort(function (a, b) {
+        return (b.hits - a.hits) ||
+          (new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+      })
     };
   }
 
@@ -1195,6 +1261,7 @@
       normalizeTracked: normalizeTracked,
       normalizeUpdatedPiece: normalizeUpdatedPiece,
       normalizeNearby: normalizeNearby,
+      normalizeAgencyCache: normalizeAgencyCache,
       normalizeUserTracked: normalizeUserTracked,
       normalizeIndexingStatus: normalizeIndexingStatus,
       pickStatLabel: pickStatLabel,
@@ -1545,6 +1612,31 @@
       });
     },
 
+    /* --- Cache des bureaux à proximité ------------------------------------
+       Voir le contrat au-dessus de normalizeAgencyCache. Réservé aux
+       administrateurs : 403 pour les autres. */
+    getAgencyCache: function () {
+      var promise = config.USE_MOCK ? App.mock.getAgencyCache() : request('/admin/agency-cache');
+      return promise.then(normalizeAgencyCache);
+    },
+
+    /* filters : {} vide tout le cache ; { adminId } une administration ;
+       { adminId, city } une administration dans une ville ;
+       { expiredOnly: true } les seules entrées expirées.
+       Renvoie le nombre d'entrées supprimées. */
+    clearAgencyCache: function (filters) {
+      filters = filters || {};
+      var params = filters.expiredOnly
+        ? { expired_only: 'true' }
+        : { admin_id: filters.adminId, city: filters.adminId ? filters.city : '' };
+      var promise = config.USE_MOCK
+        ? App.mock.clearAgencyCache(params)
+        : request('/admin/agency-cache' + queryString(params), { method: 'DELETE' });
+      return promise.then(function (payload) {
+        return nonNegative(payload && payload.deleted);
+      });
+    },
+
     /* --- Journal d'activité ------------------------------------------------
        GET /admin/logs, réservé aux administrateurs. Les filtres sont
        facultatifs : « action » et « user_id » sont des égalités strictes,
@@ -1689,10 +1781,12 @@
        quinze secondes. L'écran appelant doit donc dire l'attente, pas seulement
        la faire tourner.
 
-       404 administration inconnue, 502 localisation non reconnue : les deux
-       remontent avec le message du serveur, il est plus précis que ce qu'on
-       inventerait ici. */
-    findNearbyOffices: function (adminId, lat, lon) {
+       404 administration inconnue, 502 localisation non reconnue ou recherche
+       échouée : les erreurs remontent avec leur code, l'écran les traduit.
+
+       options.refresh : force une nouvelle recherche au lieu de la réponse en
+       cache. Réservé aux administrateurs ; le serveur l'ignore pour les autres. */
+    findNearbyOffices: function (adminId, lat, lon, options) {
       if (adminId === null || adminId === undefined || adminId === '') {
         return Promise.reject(new Error(
           'Cette procédure n\'indique aucune administration : impossible de ' +
@@ -1704,10 +1798,11 @@
         return Promise.reject(new Error('Coordonnées manquantes ou invalides.'));
       }
 
+      var refresh = !!(options && options.refresh);
       var promise = config.USE_MOCK
-        ? App.mock.findNearbyOffices(adminId, lat, lon)
-        : request('/citizen/administrations/' + encodeURIComponent(adminId) +
-            '/nearby' + queryString({ lat: lat, lon: lon }));
+        ? App.mock.findNearbyOffices(adminId, lat, lon, refresh)
+        : request('/citizen/administrations/' + encodeURIComponent(adminId) + '/nearby' +
+            queryString({ lat: lat, lon: lon, refresh: refresh ? 'true' : '' }));
       return promise.then(normalizeNearby);
     },
 

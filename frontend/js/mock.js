@@ -941,6 +941,42 @@
     return bestDistance <= 120 ? best : null;
   }
 
+  /* --- Cache des bureaux a proximite -----------------------------------------
+
+     Rejoue le cache serveur : une reponse par (administration, ville),
+     gardee AGENCY_TTL_DAYS jours, et un compteur d'utilisations incremente a
+     chaque reponse servie depuis le cache. Deux entrees sont amorcees — dont
+     une expiree — pour que l'ecran « Cache des agences » ait de quoi montrer
+     la purge sans avoir lance de recherche. */
+  var AGENCY_TTL_DAYS = 30;
+  var DAY_MS = 24 * 60 * 60 * 1000;
+  var agencyCacheSeq = 3;
+  var agencyCache = [
+    {
+      id_cache: 'c1', id_administration: 'a1', ville: 'Rabat', hits: 14,
+      created_at: new Date(Date.now() - 6 * DAY_MS).toISOString(),
+      expires_at: new Date(Date.now() + 24 * DAY_MS).toISOString(),
+      last_hit_at: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+      response: null
+    },
+    {
+      id_cache: 'c2', id_administration: 'a2', ville: 'Casablanca', hits: 3,
+      created_at: new Date(Date.now() - 34 * DAY_MS).toISOString(),
+      expires_at: new Date(Date.now() - 4 * DAY_MS).toISOString(),
+      last_hit_at: new Date(Date.now() - 12 * DAY_MS).toISOString(),
+      response: null
+    }
+  ];
+
+  function isAgencyExpired(entry) {
+    return new Date(entry.expires_at).getTime() <= Date.now();
+  }
+
+  function agencyCityKey(city) {
+    return String(city || '').trim().toLowerCase()
+      .normalize('NFKD').replace(/[\u0300-\u036f]/g, '');
+  }
+
   /* Rattache le nom d'administration porte par une procedure a une entree de
      la liste des administrations. Les noms du jeu d'essai ne se recoupent
      presque jamais (« Bureau d'etat civil » n'est pas dans la liste) : a
@@ -1890,9 +1926,106 @@
        a ete trouvee — et c'est ce qui permet de relire l'avertissement de
        l'ecran sans toucher au code.
 
-       L'attente est longue (5 a 15 s en vrai) : on en garde trois secondes
-       ici, sinon l'etat de chargement passe trop vite pour etre relu. */
-    findNearbyOffices: function (adminId, lat, lon) {
+       Le cache passe devant : une reponse deja gardee pour la meme
+       administration et la meme ville revient tout de suite, marquee
+       « cached ». « refresh » ne le contourne que pour un administrateur,
+       comme le serveur. */
+    findNearbyOffices: function (adminId, lat, lon, refresh) {
+      var ville = nearestCity(lat, lon);
+      var forced = !!refresh && !!session && session.role === 'admin';
+      var hit = ville && !forced ? agencyCache.filter(function (entry) {
+        return String(entry.id_administration) === String(adminId) &&
+          agencyCityKey(entry.ville) === agencyCityKey(ville) &&
+          entry.response && !isAgencyExpired(entry);
+      })[0] : null;
+
+      if (hit) {
+        hit.hits += 1;
+        hit.last_hit_at = new Date().toISOString();
+        var copy = JSON.parse(JSON.stringify(hit.response));
+        copy.cached = true;
+        copy.cached_at = hit.created_at;
+        return delay(copy, 120);
+      }
+
+      return App.mock.searchNearbyFresh(adminId, lat, lon).then(function (response) {
+        var now = new Date();
+        agencyCache = agencyCache.filter(function (entry) {
+          return !(String(entry.id_administration) === String(adminId) &&
+            agencyCityKey(entry.ville) === agencyCityKey(response.ville));
+        });
+        agencyCache.push({
+          id_cache: 'c' + (agencyCacheSeq++),
+          id_administration: adminId,
+          ville: response.ville,
+          hits: 0,
+          created_at: now.toISOString(),
+          expires_at: new Date(now.getTime() + AGENCY_TTL_DAYS * DAY_MS).toISOString(),
+          last_hit_at: null,
+          response: JSON.parse(JSON.stringify(response))
+        });
+        response.cached = false;
+        response.cached_at = now.toISOString();
+        return response;
+      });
+    },
+
+    /* GET /admin/agency-cache : statistiques et entrees, la plus servie en
+       tete. */
+    getAgencyCache: function () {
+      var expired = agencyCache.filter(isAgencyExpired).length;
+      var saved = agencyCache.reduce(function (sum, entry) { return sum + entry.hits; }, 0);
+      var entries = agencyCache.slice().sort(function (a, b) {
+        return b.hits - a.hits;
+      }).map(function (entry) {
+        var admin = administrations.filter(function (item) {
+          return String(item.id_administration) === String(entry.id_administration);
+        })[0];
+        return {
+          id_cache: entry.id_cache,
+          id_administration: entry.id_administration,
+          administration_fr: admin ? admin.nom_administration_fr : null,
+          administration_ar: admin ? admin.nom_administration_ar : null,
+          ville: entry.ville,
+          hits: entry.hits,
+          created_at: entry.created_at,
+          expires_at: entry.expires_at,
+          last_hit_at: entry.last_hit_at
+        };
+      });
+      return delay({
+        stats: {
+          entries: agencyCache.length,
+          active: agencyCache.length - expired,
+          expired: expired,
+          searches_saved: saved,
+          ttl_days: AGENCY_TTL_DAYS
+        },
+        entries: entries
+      }, 300);
+    },
+
+    // DELETE /admin/agency-cache — params : { admin_id, city, expired_only }.
+    clearAgencyCache: function (params) {
+      params = params || {};
+      var before = agencyCache.length;
+      agencyCache = agencyCache.filter(function (entry) {
+        if (params.expired_only) return !isAgencyExpired(entry);
+        if (params.admin_id && String(entry.id_administration) !== String(params.admin_id)) {
+          return true;
+        }
+        if (params.city && agencyCityKey(entry.ville) !== agencyCityKey(params.city)) {
+          return true;
+        }
+        return false;
+      });
+      return delay({ deleted: before - agencyCache.length }, 350);
+    },
+
+    /* Recherche reelle, hors cache. L'attente est longue (5 a 15 s en vrai) :
+       on en garde trois secondes ici, sinon l'etat de chargement passe trop
+       vite pour etre relu. */
+    searchNearbyFresh: function (adminId, lat, lon) {
       var admin = administrations.filter(function (entry) {
         return String(entry.id_administration) === String(adminId);
       })[0];
