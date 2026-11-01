@@ -9,6 +9,9 @@ from core.security import get_current_user
 from core.logging import write_log, record_usage
 from services.rag import my_retriever, build_facts, generate_answer, detect_lang
 
+from core.quota import check_quota,evaluate_alerts
+from services.notifier import dispatch_alerts
+
 router = APIRouter(tags=["chat"])
 
 def serialize_conversation(conv) -> dict:
@@ -37,6 +40,7 @@ def ask_question(
   current_user : models.User = Depends(get_current_user),
   db: Session = Depends(get_db)
 ):
+  check_quota(db,current_user)
   user_id = current_user.id_user
   if payload.conversation_id:
     conv = db.query(models.Conversation).filter_by(
@@ -90,9 +94,14 @@ def ask_question(
     model="gemini-2.5-flash",
     tokens= tokens,
   )
+
+  db.flush()
+  alert_ids = evaluate_alerts(db, current_user.id_user, current_user.role == "admin")
   
   db.commit()
   db.refresh(reponse)
+
+  dispatch_alerts(alert_ids)
 
   return {
     "id_question": question.id_question,

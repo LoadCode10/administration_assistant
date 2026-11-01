@@ -8,6 +8,9 @@ from database import SessionLocal
 import models
 from services.rag import llm_client
 
+from core.quota import evaluate_alerts
+from services.notifier import dispatch_alerts
+
 EXTRACTIONS_DIR = "extractions"
 os.makedirs(EXTRACTIONS_DIR, exist_ok=True)
 

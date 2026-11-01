@@ -9,7 +9,7 @@ from slowapi.errors import RateLimitExceeded
 
 from core.limiter import limiter
 from api import (
-  auth, users, tracking, logs, administrations, procedures, chat, documents, stats, extractions, indexing, agency_cache
+  auth, users, tracking, logs, administrations, procedures, chat, documents, stats, extractions, indexing, agency_cache, alerts,
 )
 from services import indexing as indexing_service
 
@@ -53,6 +53,7 @@ app.include_router(documents.router)
 app.include_router(stats.router)
 app.include_router(indexing.router)
 app.include_router(agency_cache.router)
+app.include_router(alerts.router)
 
 
 

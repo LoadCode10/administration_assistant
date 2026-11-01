@@ -32,7 +32,10 @@
           // Le journal surveille, il ne gere pas : sa place est ici, a cote du
           // tableau de bord, et non dans le groupe « Gestion ».
           { hash: '#/logs', label: 'Journal', icon: 'clock',
-            match: function (p) { return p[0] === 'logs'; } }
+            match: function (p) { return p[0] === 'logs'; } },
+          // Surveillance elle aussi : la consommation du jour et les alertes.
+          { hash: '#/alerts', label: 'Alertes', icon: 'alert',
+            match: function (p) { return p[0] === 'alerts'; } }
         ]
       },
       {

@@ -1,9 +1,9 @@
 import uuid
-from sqlalchemy import String, DateTime, Integer, Boolean, ForeignKey, Table, Column, UniqueConstraint, func
+from sqlalchemy import String, DateTime, Integer, Boolean, ForeignKey, Table, Column, UniqueConstraint, func, Date,Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.dialects.postgresql import JSONB
 from database import Base
-from datetime import datetime
+from datetime import datetime, date
 from pgvector.sqlalchemy import Vector
 
 document_procedure = Table(
@@ -743,3 +743,46 @@ class AgencyCache(Base):
   hits: Mapped[int] = mapped_column(Integer,nullable=False, default=0)
 
   administration: Mapped["Administration"] = relationship()
+
+class Alert(Base):
+  __tablename__ = "alerts"
+  __table_args__ = (
+    UniqueConstraint("kind", "scope_id", "period", "threshold", name="uq_alert_once"),
+  )
+
+  id_alert: Mapped[str] = mapped_column(
+    String, primary_key=True, default=lambda: str(uuid.uuid4())
+  )
+
+  # type of alert: always "token_user" (daily limit per user)
+  kind: Mapped[str] = mapped_column(String(30), nullable=False, default="token_user")
+
+  # the user concerned (used by the unique constraint)
+  scope_id: Mapped[str] = mapped_column(String, nullable=False)
+
+  id_user: Mapped[str | None] = mapped_column(
+    ForeignKey("users.id_user", ondelete="SET NULL"), nullable=True, index=True
+  )
+
+  # the day concerned (Morocco time)
+  period: Mapped[date] = mapped_column(Date, nullable=False, index=True)
+
+  # threshold crossed: 80 or 100 (%)
+  threshold: Mapped[int] = mapped_column(Integer, nullable=False)
+
+  # tokens used when the alert was created, and the limit at that moment
+  used: Mapped[int] = mapped_column(Integer, nullable=False)
+  limit_value: Mapped[int] = mapped_column(Integer, nullable=False)
+
+  # pending -> sent / failed, or skipped (replaced by a higher threshold)
+  status: Mapped[str] = mapped_column(String(20), nullable=False, default="pending")
+
+  sent_email: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+
+  # error message if the email could not be sent
+  error: Mapped[str | None] = mapped_column(Text, nullable=True)
+
+  created_at: Mapped[datetime] = mapped_column(DateTime, nullable=False, default=datetime.now)
+  sent_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+
+  user: Mapped["User | None"] = relationship()

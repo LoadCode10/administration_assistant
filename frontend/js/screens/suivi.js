@@ -35,7 +35,7 @@
       pending: {},   // « suiviId:pieceId » -> true tant que l'appel est en vol
       /* Recherche des bureaux à proximité, par carte dépliée :
            suiviId -> { phase, message, result }
-         phase : 'locating' | 'searching' | 'fallback' | 'result' | 'error'.
+         phase : 'locating' | 'searching' | 'fallback' | 'result' | 'error' | 'quota'.
          Pas d'entrée = pas de recherche en cours, le bouton est affiché.
 
          Rien n'est conservé : replier la carte efface l'entrée. Une adresse
@@ -336,6 +336,18 @@
       '</div>';
     }
 
+    /* Limite quotidienne atteinte (429) : la phrase du serveur, dans la teinte
+       d'alerte, à la place du résultat. « Fermer » ramène le bouton — une ville
+       déjà en cache côté serveur reste consultable, elle n'est jamais refusée. */
+    function renderNearbyQuota(item, message) {
+      return '<div class="nearby-warning" role="alert">' +
+          icon('alert') +
+          '<div><p>' + esc(message) + '</p></div>' +
+        '</div>' +
+        '<button type="button" class="btn-tiny nearby-dismiss" ' +
+          'data-nearby-close="' + esc(item.id) + '">' + esc(labelsOf(item).close) + '</button>';
+    }
+
     function renderNearby(item) {
       // Sans identifiant d'administration il n'y a rien à interroger : plutôt
       // qu'un bouton qui échouerait à coup sûr, on n'en met pas.
@@ -353,6 +365,8 @@
         inner = renderNearbyFallback(item, current.message);
       } else if (current.phase === 'error') {
         inner = renderNearbyButton(item, current.message);
+      } else if (current.phase === 'quota') {
+        inner = renderNearbyQuota(item, current.message);
       } else {
         inner = renderNearbyResult(item, current);
       }
@@ -676,6 +690,10 @@
         setNearby(id, { phase: 'result', result: result, lat: lat, lon: lon });
       }, function (error) {
         if (isStale(id, token)) return;
+        if (error && error.status === 429) {
+          setNearby(id, { phase: 'quota', message: error.detail || error.message });
+          return;
+        }
         // Le bouton revient avec le message, la recherche reste relançable.
         setNearby(id, { phase: 'error', message: nearbyErrorText(item, error) });
       });

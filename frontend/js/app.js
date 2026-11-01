@@ -80,6 +80,11 @@
     return App.screens.logs.mount(root);
   }, ADMIN);
 
+  // Limite quotidienne de jetons : consommation du jour et alertes email.
+  App.router.add('/alerts', function (root) {
+    return App.screens.alerts.mount(root);
+  }, ADMIN);
+
   App.router.add('/extractions/:id', function (root, params) {
     return App.screens.editor.mount(root, params);
   }, ADMIN);

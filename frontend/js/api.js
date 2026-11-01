@@ -111,6 +111,10 @@
             }
             var httpError = new Error(describeHttpError(response, payload));
             httpError.status = response.status;
+            // « detail » brut du serveur quand c'est une phrase : un 429 (limite
+            // quotidienne) l'affiche tel quel, sans le confondre avec une panne.
+            httpError.detail = payload && typeof payload === 'object' &&
+              typeof payload.detail === 'string' ? payload.detail : null;
             // 502/503/504 : la reponse vient du proxy, pas de FastAPI — la
             // requete a pu aboutir cote serveur malgre l'erreur.
             httpError.gateway = response.status === 502 ||
@@ -1213,6 +1217,82 @@
     return isFinite(number) && number > 0 ? Math.round(number) : 0;
   }
 
+  /* --- Limite quotidienne et alertes ------------------------------------
+
+       GET  /citizen/quota                 tout utilisateur connecté
+       GET  /admin/quota                   administrateurs
+       GET  /admin/alerts?limit=           administrateurs
+       POST /admin/alerts/{id}/resend      administrateurs
+       POST /admin/alerts/test             administrateurs
+
+     limit / percent / remaining valent null pour un administrateur : il n'est
+     jamais bloqué (exempt: true), l'écran n'affiche alors aucune jauge. */
+
+  function numberOrNull(value) {
+    if (value === null || value === undefined || value === '') return null;
+    var number = Number(value);
+    return isNaN(number) ? null : number;
+  }
+
+  function normalizeQuota(raw) {
+    raw = raw || {};
+    return {
+      day: raw.day || null,
+      used: nonNegative(raw.used),
+      limit: numberOrNull(raw.limit),
+      percent: numberOrNull(raw.percent),
+      remaining: numberOrNull(raw.remaining),
+      exempt: raw.exempt === true
+    };
+  }
+
+  function normalizeQuotaUser(raw) {
+    raw = raw || {};
+    return {
+      id: String(firstDefined(raw, ['id_user', 'id'], '')),
+      name: firstDefined(raw, ['userName', 'username', 'name'], ''),
+      used: nonNegative(raw.used),
+      percent: numberOrNull(raw.percent) || 0,
+      blocked: raw.blocked === true
+    };
+  }
+
+  function normalizeAdminQuota(raw) {
+    raw = raw || {};
+    return {
+      day: raw.day || null,
+      userLimit: numberOrNull(raw.user_limit),
+      thresholds: (Array.isArray(raw.thresholds) ? raw.thresholds : [])
+        .map(Number).filter(function (value) { return !isNaN(value); }),
+      emailConfigured: raw.email_configured === true,
+      topUsers: (Array.isArray(raw.top_users) ? raw.top_users : []).map(normalizeQuotaUser)
+    };
+  }
+
+  var ALERT_STATUSES = ['pending', 'sent', 'failed', 'skipped'];
+
+  function normalizeAlertStatus(value) {
+    var key = String(value || '').toLowerCase();
+    return ALERT_STATUSES.indexOf(key) !== -1 ? key : 'pending';
+  }
+
+  function normalizeAlert(raw) {
+    raw = raw || {};
+    return {
+      id: String(firstDefined(raw, ['id_alert', 'id'], '')),
+      user: raw.user || null,
+      period: raw.period || null,
+      threshold: numberOrNull(raw.threshold),
+      used: nonNegative(raw.used),
+      limit: numberOrNull(raw.limit),
+      status: normalizeAlertStatus(raw.status),
+      sentEmail: raw.sent_email === true,
+      error: raw.error || null,
+      createdAt: raw.created_at || null,
+      sentAt: raw.sent_at || null
+    };
+  }
+
   function normalizeIndexingStatus(raw) {
     raw = raw && typeof raw === 'object' ? raw : {};
     var run = raw.run && typeof raw.run === 'object' ? raw.run : {};
@@ -1651,6 +1731,58 @@
         var list = Array.isArray(payload) ? payload
           : (payload && (payload.logs || payload.items || payload.results)) || [];
         return list.map(normalizeLog);
+      });
+    },
+
+    /* --- Limite quotidienne et alertes -------------------------------------
+       Voir le contrat au-dessus de normalizeQuota. */
+
+    getMyQuota: function () {
+      var promise = config.USE_MOCK ? App.mock.getMyQuota() : request('/citizen/quota');
+      return promise.then(normalizeQuota);
+    },
+
+    getAdminQuota: function () {
+      var promise = config.USE_MOCK ? App.mock.getAdminQuota() : request('/admin/quota');
+      return promise.then(normalizeAdminQuota);
+    },
+
+    listAlerts: function (limit) {
+      var params = { limit: Number(limit) || 100 };
+      var promise = config.USE_MOCK
+        ? App.mock.listAlerts(params)
+        : request('/admin/alerts' + queryString(params));
+      return promise.then(function (payload) {
+        var list = Array.isArray(payload) ? payload
+          : (payload && (payload.alerts || payload.items || payload.results)) || [];
+        return list.map(normalizeAlert);
+      });
+    },
+
+    /* Renvoie { status, sentEmail, error } : l'alerte telle qu'elle est après
+       la nouvelle tentative. Un échec d'envoi n'est pas une erreur HTTP. */
+    resendAlert: function (id) {
+      var promise = config.USE_MOCK
+        ? App.mock.resendAlert(id)
+        : request('/admin/alerts/' + encodeURIComponent(id) + '/resend', { method: 'POST' });
+      return promise.then(function (payload) {
+        payload = payload || {};
+        return {
+          status: normalizeAlertStatus(payload.status),
+          sentEmail: payload.sent_email === true,
+          error: payload.error || null
+        };
+      });
+    },
+
+    /* Renvoie la phrase du serveur : « envoyé », « non configuré » ou
+       « échec : … ». */
+    testAlertEmail: function () {
+      var promise = config.USE_MOCK
+        ? App.mock.testAlertEmail()
+        : request('/admin/alerts/test', { method: 'POST' });
+      return promise.then(function (payload) {
+        return String((payload && payload.email) || '');
       });
     },
 

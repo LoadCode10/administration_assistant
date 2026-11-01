@@ -1972,6 +1972,53 @@
 
     /* GET /admin/agency-cache : statistiques et entrees, la plus servie en
        tete. */
+    /* --- Limite quotidienne et alertes ------------------------------------ */
+
+    getMyQuota: function () {
+      var day = new Date().toISOString().slice(0, 10);
+      return delay({
+        day: day, used: 12400, limit: 50000, percent: 24.8, remaining: 37600, exempt: false
+      }, 200);
+    },
+
+    getAdminQuota: function () {
+      return delay({
+        day: new Date().toISOString().slice(0, 10),
+        user_limit: 50000,
+        thresholds: [80, 100],
+        email_configured: true,
+        top_users: [
+          { id_user: 'u1', userName: 'sara', used: 51200, percent: 102.4, blocked: true },
+          { id_user: 'u2', userName: 'youssef', used: 41000, percent: 82.0, blocked: false },
+          { id_user: 'u3', userName: 'amina', used: 12400, percent: 24.8, blocked: false }
+        ]
+      }, 300);
+    },
+
+    listAlerts: function () {
+      var day = new Date().toISOString().slice(0, 10);
+      return delay([
+        { id_alert: 'a3', user: 'sara', period: day, threshold: 100, used: 50100, limit: 50000,
+          status: 'failed', sent_email: false,
+          error: 'SMTPConnectError: (421, \'Service not available\')',
+          created_at: day + 'T15:40:02', sent_at: null },
+        { id_alert: 'a2', user: 'youssef', period: day, threshold: 80, used: 40210, limit: 50000,
+          status: 'sent', sent_email: true, error: null,
+          created_at: day + 'T14:02:11', sent_at: day + 'T14:02:13' },
+        { id_alert: 'a1', user: 'sara', period: day, threshold: 80, used: 40020, limit: 50000,
+          status: 'sent', sent_email: true, error: null,
+          created_at: day + 'T11:20:45', sent_at: day + 'T11:20:46' }
+      ], 300);
+    },
+
+    resendAlert: function () {
+      return delay({ status: 'sent', sent_email: true, error: null }, 500);
+    },
+
+    testAlertEmail: function () {
+      return delay({ email: 'envoyé' }, 400);
+    },
+
     getAgencyCache: function () {
       var expired = agencyCache.filter(isAgencyExpired).length;
       var saved = agencyCache.reduce(function (sum, entry) { return sum + entry.hits; }, 0);

@@ -1988,3 +1988,81 @@ body.is-standalone .screen-root { padding: 0; max-width: none; }
 @media (max-width: 620px) {
   .cache-table th, .cache-table td { padding: 7px 8px; }
 }
+
+
+/* ===========================================================================
+   LIMITE QUOTIDIENNE (#/chat) ET ALERTES (#/alerts)
+
+   Une même jauge des deux côtés : vert sous 80 %, ambre à partir de 80 %,
+   rouge à 100 %. Le pourcentage est toujours écrit à côté — la couleur ne
+   porte pas seule le sens.
+   =========================================================================== */
+
+/* --- Refus 429 dans la conversation ------------------------------------- */
+.msg.is-assistant .msg-bubble.is-quota {
+  display: flex; align-items: flex-start; gap: 8px; white-space: normal;
+  background: var(--bg-warning); color: var(--text-warning);
+  border-color: var(--border-warning);
+}
+.msg-bubble.is-quota .icon { margin-top: 2px; }
+
+.composer-box textarea:disabled { cursor: not-allowed; }
+.composer-blocked {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  max-width: 760px; margin: 6px auto 0;
+  font-size: 12px; color: var(--text-warning);
+}
+.composer-blocked[hidden] { display: none; }
+
+/* --- Jauge ---------------------------------------------------------------- */
+.quota-meter { max-width: 760px; margin: 8px auto 0; }
+.quota-meter[hidden] { display: none; }
+.quota-meter-row {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+  font-size: 11.5px; margin-bottom: 4px; font-variant-numeric: tabular-nums;
+}
+.quota-meter-label { color: var(--text-secondary); font-weight: 600; }
+.quota-meter-detail { color: var(--text-muted); }
+.quota-meter-hint { margin: 4px 0 0; font-size: 11.5px; color: var(--text-warning); }
+.quota-meter.is-over .quota-meter-hint { color: var(--text-danger); }
+
+.quota-track {
+  height: 5px; border-radius: 99px; background: var(--surface-1); overflow: hidden;
+}
+.quota-bar {
+  display: block; height: 100%; border-radius: 99px;
+  background: var(--text-success); transition: width .18s ease;
+}
+.is-warn .quota-bar { background: var(--text-warning); }
+.is-over .quota-bar { background: var(--fill-danger); }
+@media (prefers-reduced-motion: reduce) {
+  .quota-bar { transition: none; }
+}
+
+/* --- Écran Alertes ------------------------------------------------------- */
+.kpi-row.alerts-kpi { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 620px) {
+  .kpi-row.alerts-kpi { grid-template-columns: minmax(0, 1fr); }
+}
+.alerts-email {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 8px;
+}
+.alerts-card { padding: 0; overflow: hidden; margin-bottom: 10px; }
+.alerts-card .chart-head { padding: 14px 16px 0; }
+.alerts-card .chart-head h2 { margin: 0; }
+.alerts-card > .inline-error { margin: 0 16px 16px; }
+.alerts-empty {
+  padding: 18px 16px 22px; font-size: 13px; color: var(--text-secondary); text-align: center;
+}
+.alerts-meter { display: flex; align-items: center; gap: 8px; min-width: 140px; }
+.alerts-meter .quota-track { flex: 1; }
+.alerts-meter-value {
+  font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap;
+  min-width: 48px; text-align: end; color: var(--text-secondary);
+}
+.alerts-meter.is-warn .alerts-meter-value { color: var(--text-warning); }
+.alerts-meter.is-over .alerts-meter-value { color: var(--text-danger); font-weight: 600; }
+.alerts-mail { text-align: center; width: 1%; }
+.alerts-yes { color: var(--text-success); font-weight: 600; }
+.alerts-no { color: var(--text-danger); font-weight: 600; }
+.alerts-error { max-width: 260px; color: var(--text-secondary); overflow-wrap: anywhere; }

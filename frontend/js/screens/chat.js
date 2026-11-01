@@ -44,7 +44,12 @@
       error: '',
       // Identifiants des procédures déjà suivies : décide du libellé du bouton
       // sous chaque source.
-      trackedIds: {}
+      trackedIds: {},
+      // Limite quotidienne atteinte (429, ou jauge à 100 %) : le champ et le
+      // bouton restent désactivés jusqu'au lendemain.
+      blocked: false,
+      // Dernière réponse de GET /citizen/quota ; null tant qu'elle n'est pas là.
+      quota: null
     };
 
     var destroyed = false;
@@ -60,6 +65,9 @@
           '<button type="button" class="btn-primary composer-send" data-action="send" ' +
             'aria-label="Envoyer">' + icon('send') + '</button>' +
         '</div>' +
+        '<p class="composer-blocked" id="chat-blocked" hidden>' + icon('alert', 'icon-sm') +
+          '<span>Limite quotidienne atteinte — réessayez demain.</span></p>' +
+        '<div class="quota-meter" id="chat-quota" hidden></div>' +
         '<p class="composer-hint">Entrée pour envoyer, Maj + Entrée pour aller à la ligne.</p>' +
       '</div>';
 
@@ -67,6 +75,8 @@
     var errorNode = view.querySelector('#chat-error');
     var input = view.querySelector('#chat-input');
     var sendButton = view.querySelector('[data-action="send"]');
+    var blockedNode = view.querySelector('#chat-blocked');
+    var quotaNode = view.querySelector('#chat-quota');
 
     /* --- Fil des discussions (rendu par la coque) --------------------------- */
 
@@ -132,7 +142,18 @@
        deux bibliothèques manque (CDN injoignable), h.markdownToHtml renvoie
        null : on retombe alors sur le texte échappé. */
 
+    /* Refus du serveur (429, limite quotidienne) : ce n'est ni une réponse ni
+       une panne. Bulle ambre côté assistant, sous la question restée visible ;
+       elle n'existe que dans la page, le serveur n'a rien enregistré. */
+    function renderNotice(message) {
+      return '<div class="msg is-assistant">' +
+        '<div class="msg-bubble is-quota" role="alert">' + icon('alert') +
+          '<span>' + esc(message.content) + '</span></div>' +
+        '</div>';
+    }
+
     function renderMessage(message) {
+      if (message.role === 'notice') return renderNotice(message);
       var side = message.role === 'user' ? 'is-user' : 'is-assistant';
       var html = message.role === 'assistant'
         ? h.markdownToHtml(message.content) : null;
@@ -194,6 +215,74 @@
         '</div>';
 
       if (!keepScroll) streamNode.scrollTop = streamNode.scrollHeight;
+    }
+
+    /* --- Limite quotidienne -------------------------------------------------- */
+
+    var QUOTA_WARN = 80;
+
+    function formatPercent(value) {
+      return Number(value || 0).toLocaleString('fr-FR', { maximumFractionDigits: 1 });
+    }
+
+    // Un seul endroit décide de l'état du champ : attente d'une réponse,
+    // limite atteinte, ou libre.
+    function syncComposer() {
+      sendButton.disabled = state.pending || state.blocked;
+      input.disabled = state.blocked;
+      blockedNode.hidden = !state.blocked;
+    }
+
+    /* Jauge sous le champ. Masquée pour un compte exempté (administrateur) et
+       tant que rien n'est chargé : une jauge vide se lirait « 0 % utilisé ». */
+    function renderQuota() {
+      var quota = state.quota;
+      if (!quota || quota.exempt || quota.limit === null) {
+        quotaNode.hidden = true;
+        quotaNode.innerHTML = '';
+        return;
+      }
+
+      var percent = quota.percent !== null ? quota.percent
+        : (quota.limit ? 100 * quota.used / quota.limit : 0);
+      var tone = percent >= 100 ? 'is-over' : (percent >= QUOTA_WARN ? 'is-warn' : 'is-ok');
+      var detail = App.charts.fmt(quota.used) + ' / ' + App.charts.fmt(quota.limit) + ' jetons';
+
+      quotaNode.hidden = false;
+      quotaNode.className = 'quota-meter ' + tone;
+      quotaNode.innerHTML =
+        '<div class="quota-meter-row" title="' + esc(detail) + '">' +
+          '<span class="quota-meter-label">Utilisation du jour : ' +
+            esc(formatPercent(percent)) + ' %</span>' +
+          '<span class="quota-meter-detail">' + esc(detail) + '</span>' +
+        '</div>' +
+        '<div class="quota-track" role="progressbar" aria-label="Utilisation du jour" ' +
+            'aria-valuemin="0" aria-valuemax="100" ' +
+            'aria-valuenow="' + Math.round(Math.min(percent, 100)) + '">' +
+          '<span class="quota-bar" style="width:' + Math.min(percent, 100) + '%"></span>' +
+        '</div>' +
+        (percent >= QUOTA_WARN
+          ? '<p class="quota-meter-hint">Vous approchez de votre limite quotidienne.</p>'
+          : '');
+    }
+
+    /* Relue à l'ouverture, après chaque réponse et après un 429. Le serveur
+       compte avec la même règle que son refus : à 100 %, le champ se ferme
+       sans attendre un envoi voué à l'échec. Un échec de lecture ne change
+       rien — la jauge est une indication, pas une condition d'envoi. */
+    function loadQuota() {
+      return App.api.getMyQuota().then(function (quota) {
+        if (destroyed) return;
+        state.quota = quota;
+        if (!quota.exempt && quota.limit !== null) {
+          state.blocked = quota.used >= quota.limit;
+          syncComposer();
+        }
+        renderQuota();
+      }, function () {
+        /* Jauge absente ou périmée : l'envoi reste possible, et un 429
+           éventuel sera dit dans la conversation. */
+      });
     }
 
     function showError(message) {
@@ -327,7 +416,7 @@
 
     function send() {
       var question = input.value.trim();
-      if (!question || state.pending) return;
+      if (!question || state.pending || state.blocked) return;
 
       var previousId = state.conversationId;
       var optimistic = {
@@ -340,16 +429,17 @@
       showError('');
       input.value = '';
       autoGrow();
-      sendButton.disabled = true;
+      syncComposer();
       renderStream();
 
       App.api.sendMessage(previousId, question).then(function (result) {
         if (destroyed) return;
         state.pending = false;
-        sendButton.disabled = false;
+        syncComposer();
         state.conversationId = result.conversationId;
         if (result.message) state.messages.push(result.message);
         renderStream();
+        loadQuota();
         // La discussion vient peut-être de naître, et dans tous les cas elle
         // remonte en tête de la colonne : on relit la liste plutôt que de
         // deviner son nouveau rang.
@@ -357,7 +447,23 @@
       }, function (error) {
         if (destroyed) return;
         state.pending = false;
-        sendButton.disabled = false;
+
+        /* Limite quotidienne : la question reste affichée, la raison
+           s'affiche dessous, et le champ se ferme. Rendre le texte au champ
+           inviterait à renvoyer une question qui sera refusée de nouveau. */
+        if (error && error.status === 429) {
+          state.blocked = true;
+          state.messages.push({
+            id: 'notice-' + Date.now(), role: 'notice',
+            content: error.detail || error.message, sources: []
+          });
+          syncComposer();
+          renderStream();
+          loadQuota();
+          return;
+        }
+
+        syncComposer();
         // La question n'a pas abouti : on retire la bulle et on rend le texte
         // au champ. Laisser un message sans réponse ferait croire qu'il est
         // parti et que le serveur se tait.
@@ -435,6 +541,7 @@
       openConversation(list[0].id);
     });
     loadTracked();
+    loadQuota();
 
     return {
       destroy: function () {

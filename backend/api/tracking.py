@@ -11,6 +11,9 @@ from core.logging import record_usage
 from services import agency_cache
 from services.search_agent import search_agencies, reverse_geocode_cached
 
+from core.quota import check_quota, evaluate_alerts
+from services.notifier import dispatch_alerts
+
 router = APIRouter(tags=["tracking"])
 
 def serialize_tracked_proc(tracked_proc) -> dict:
@@ -216,6 +219,7 @@ def find_nearby_agencies(
       return _nearby_response(administration, hit.city_label, hit.result, True, hit.created_at)
 
   # 3. Cache miss: real search with the AI agent
+  check_quota(db, current_user)
   try:
     result = search_agencies(
       administration.nom_administration_fr,
@@ -232,5 +236,10 @@ def find_nearby_agencies(
   if result.get("texte"):
     agency_cache.save(db, admin_id, key, ville, result)
 
+  # 5. Alerts, then commit, then emails in the background
+  db.flush()
+  alert_ids = evaluate_alerts(db, current_user.id_user, current_user.role == "admin")
   db.commit()
+  dispatch_alerts(alert_ids)
+  
   return _nearby_response(administration, ville, result, False, datetime.now()) 
