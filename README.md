@@ -28,7 +28,7 @@ It has two faces:
 13. [Data model](#13-data-model)
 14. [Project structure](#14-project-structure)
 15. [Security](#15-security)
-16. [Known limitations and roadmap](#16-known-limitations-and-roadmap)
+16. [Ragas Evaluation](#16-ragas-evaluation)
 
 ---
 
@@ -716,3 +716,31 @@ Notable constraints: `alerts (kind, scope_id, period, threshold)` is unique, so 
 - Use a long random `JWT_SECRET` in production and serve the application over **HTTPS**. Then also set `secure=True` on the session cookie, and geolocation will work in every browser.
 - Update `allow_origins` in `main.py` if the frontend is served from another origin. Behind the bundled nginx, everything is same-origin.
 - The `dns` entries in `docker-compose.yml` are specific to one network. Remove or adapt them for your environment.
+
+---
+
+## 16. Ragas Evaluation
+
+We evaluated the assistant on **164 questions** (80 FR, 69 AR answerable + 15 out-of-scope) using **Ragas 0.4.3** with **DeepSeek as LLM-as-judge**.
+
+| Metric | Score |
+|---|---|
+| Faithfulness (excl. refusals) | **0.97** |
+| Context recall | 0.89 |
+| Context precision | 0.79 |
+| Answer relevancy | 0.76 |
+| Retrieval Hit@3 (vector) | **88.6%** |
+| Correct refusal on out-of-scope | **15/15** |
+
+**Retrieval modes compared (Hit@3):** Vector 88.6% · Hybrid RRF 83.2% · BM25 69.1%
+
+**Key findings**
+- Generation is reliable: the model almost never makes things up.
+- Retrieval is the main bottleneck: 17 of 149 questions miss the right procedure in the top 3.
+- Hybrid search brought no gain over vector search (p = 0.169).
+- French and Arabic perform equally (< 0.05 gap on every metric).
+
+📄 Full reports:
+- [Ragas evaluation report](docs/evaluation/RAGAS_Evaluation_Report.pdf)
+- [Retrieval evaluation report](docs/evaluation/Retrieval_Evaluation_Report.pdf)
+
