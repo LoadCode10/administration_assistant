@@ -741,6 +741,6 @@ We evaluated the assistant on **164 questions** (80 FR, 69 AR answerable + 15 ou
 - French and Arabic perform equally (< 0.05 gap on every metric).
 
 📄 Full reports:
-- [Ragas evaluation report](docs/evaluation/RAGAS_Evaluation_Report.pdf)
-- [Retrieval evaluation report](docs/evaluation/Retrieval_Evaluation_Report.pdf)
+- [Ragas evaluation report](docs/evaluation/RAGAS_Evaluation_Report_164.pdf)
+- [Retrieval evaluation report](docs/evaluation/RAG_retrieval_evaluation_report.pdf)
 
